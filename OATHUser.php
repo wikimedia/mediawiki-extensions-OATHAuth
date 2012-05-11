@@ -14,11 +14,14 @@ class OATHUser {
 	/**
 	 * Constructor. Can't be called directly. Call one of the static NewFrom* methods
 	 * @param $id Int Database id for the group
-	 * @param $name String User-defined name of the group
-	 * @param $position int
-	 * @param $project string|null
+	 * @param $account
+	 * @param $secret
+	 * @param $secretReset
+	 * @param $scratchTokens
+	 * @param $scratchTokensReset
+	 * @param bool $isValidated bool
 	 */
-	public function __construct( $id, $account, $secret=null, $secretReset = null, $scratchTokens=null, $scratchTokensReset=null, $isValidated=false ) {
+	public function __construct( $id, $account, $secret = null, $secretReset = null, $scratchTokens = null, $scratchTokensReset = null, $isValidated = false ) {
 		$this->id = $id;
 		$this->account = $account;
 		$this->isEnabled = true;
@@ -36,7 +39,7 @@ class OATHUser {
 		if ( $scratchTokens ) {
 			$this->scratchTokens = $scratchTokens;
 		} else {
-			$this->regenerateScratchTokens();
+			$this->regenerateScratchTokens(); // FIXME: Missing parameter
 			$this->isEnabled = false;
 		}
 		if ( $scratchTokensReset ) {
@@ -47,6 +50,9 @@ class OATHUser {
 		$this->isValidated = $isValidated;
 	}
 
+	/**
+	 * @param $reset bool
+	 */
 	public function regenerateScratchTokens( $reset ) {
 		$scratchTokens = array();
 		for ( $i = 0; $i < 5; $i++ ) {
@@ -109,10 +115,12 @@ class OATHUser {
 	}
 
 	/**
+	 * @param $token
+	 * @param $reset bool
 	 * @return Boolean
 	 */
-	public function verifyToken( $token, $reset=false ) {
-		if ( $reset ) {
+	public function verifyToken( $token, $reset = false ) {
+			if ( $reset ) {
 			$secret = $this->secretReset;
 		} else {
 			$secret = $this->secret;
@@ -139,7 +147,7 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $name string
+	 * @param $user User
 	 * @return OATHUser|null
 	 */
 	public static function newFromUser( $user ) {
@@ -180,7 +188,7 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $name string
+	 * @param $username string
 	 * @return OATHUser|null
 	 */
 	public static function newFromUsername( $username ) {
@@ -228,7 +236,7 @@ class OATHUser {
 			array(  'secret' => $this->secretReset,
 				'secret_reset' => null,
 				'scratch_tokens' => base64_encode( serialize( $this->scratchTokensReset ) ),
-		       		'scratch_tokens_reset' => null,
+				'scratch_tokens_reset' => null,
 			),
 			array( 'id' => $this->id ),
 			__METHOD__
@@ -236,7 +244,6 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $token string
 	 * @return bool
 	 */
 	public function validate() {
@@ -263,7 +270,6 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $id int
 	 * @return bool
 	 */
 	public function disable() {
@@ -276,11 +282,11 @@ class OATHUser {
 	}
 
 	/**
-	 * @static
 	 * @param $template
 	 * @return bool
 	 */
 	static function ModifyUITemplate( &$template ) {
+		// FIXME: First assignment of $input unused
 		$input = array( 'msg' => 'oathauth-token', 'type' => 'text', 'name' => 'token', 'value' => '', 'helptext' => 'oathauth-tokenhelp' );
 		$input = '<td class="mw-label"><label for="wpOATHToken">' . wfMsgHtml( 'oathauth-token' ) . '</label></td><td class="mw-input">' . Html::input( 'wpOATHToken', null, 'password', array( 'class' => 'loginPassword', 'id' => 'wpOATHToken', 'tabindex' => '2', 'size' => '20' ) ) . '</td>';
 		$template->set( 'extrafields', $input );
@@ -289,7 +295,6 @@ class OATHUser {
 	}
 
 	/**
-	 * @static
 	 * @param $username string
 	 * @param $password string
 	 * @param $result bool

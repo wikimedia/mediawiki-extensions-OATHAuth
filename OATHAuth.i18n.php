@@ -48,4 +48,5 @@ $messages['en'] = array(
  * @author Ryan Lane <rlane@wikimedia.org>
  */
 $messages['qqq'] = array(
+	'oathauth-desc' => '{{desc}}',
 );
