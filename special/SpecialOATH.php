@@ -76,7 +76,10 @@ class SpecialOATH extends SpecialPage {
 		return true;
 	}
 
-	function displaySecret( $reset=false ) {
+	/**
+	 * @param $reset bool
+	 */
+	function displaySecret( $reset = false ) {
 		$this->getOutput()->addModules( 'ext.oathauth' );
 		if ( $reset ) {
 			$secret = $this->OATHUser->getSecretReset();
@@ -198,6 +201,10 @@ class SpecialOATH extends SpecialPage {
 		$this->getOutput()->addHTML( $this->createResourceList( $resources ) );
 	}
 
+	/**
+	 * @param $resources array
+	 * @return string
+	 */
 	function createResourceList( $resources ) {
 		$resourceList = '';
 		foreach ( $resources as $resource ) {
@@ -207,8 +214,8 @@ class SpecialOATH extends SpecialPage {
 	}
 
 	/**
-	 * @param  $formData
-	 * @param string $entryPoint
+	 * @param $formData array
+	 * @param $entryPoint string
 	 * @return bool
 	 */
 	function tryValidateSubmit( $formData, $entryPoint = 'internal' ) {
@@ -246,8 +253,8 @@ class SpecialOATH extends SpecialPage {
 	}
 
 	/**
-	 * @param  $formData
-	 * @param string $entryPoint
+	 * @param $formData array
+	 * @param $entryPoint string
 	 * @return bool
 	 */
 	function tryDisableSubmit( $formData, $entryPoint = 'internal' ) {
@@ -268,8 +275,8 @@ class SpecialOATH extends SpecialPage {
 	}
 
 	/**
-	 * @param  $formData
-	 * @param string $entryPoint
+	 * @param $formData array
+	 * @param $entryPoint string
 	 * @return bool
 	 */
 	function tryResetSubmit( $formData, $entryPoint = 'internal' ) {
