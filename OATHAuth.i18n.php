@@ -42,6 +42,8 @@ $messages['en'] = array(
 	'oathauth-failedtodisableoauth' => 'Failed to disable two factor authentication.',
 	'oathauth-reattemptdisable' => 'Reattempt disabling of two factor authentication.',
 	'oathauth-failedtoresetoath' => 'Failed to reset two factor credentials.',
+	'oathauth-notloggedin' => 'Login required',
+	'oathauth-mustbeloggedin' => 'You must be logged in to perform this action.',
 );
 
 /** Message documentation (Message documentation)
@@ -74,4 +76,6 @@ $messages['qqq'] = array(
 	'oathauth-failedtodisableoauth' => 'Plain text found Special:OATH when disabling OATH has been unsuccessful.',
 	'oathauth-reattemptdisable' => 'Link found when disabling OATH credentials has failed on Special:OATH.',
 	'oathauth-failedtoresetoath' => 'Plain text found on Special:OATH when reseting OATH has been unsuccessful.',
+	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.',
+	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 );

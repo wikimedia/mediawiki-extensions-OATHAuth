@@ -18,6 +18,12 @@ class SpecialOATH extends SpecialPage {
 	}
 
 	function execute( $par ) {
+		if ( !$this->getUser()->isLoggedIn() ) {
+			$this->setHeaders();
+			$this->getOutput()->setPagetitle( wfMsg( 'oathauth-notloggedin' ) );
+			$this->getOutput()->addWikiMsg( 'oathauth-mustbeloggedin' );
+			return;
+		}
 		$action = $this->getRequest()->getVal( 'action' );
 		if ( $action == "enable" ) {
 			$this->enable();
