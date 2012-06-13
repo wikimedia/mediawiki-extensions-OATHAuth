@@ -295,6 +295,16 @@ class OATHUser {
 	}
 
 	/**
+	 * @param $extraFields array
+	 * @return bool
+	 */
+	static function ChangePasswordForm( &$extraFields ) {
+		$tokenField = array( 'wpOATHToken', 'oathauth-token', 'password', '' );
+		array_push( $extraFields, $tokenField );
+		return true;
+	}
+
+	/**
 	 * @param $username string
 	 * @param $password string
 	 * @param $result bool
