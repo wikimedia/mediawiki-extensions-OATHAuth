@@ -315,7 +315,7 @@ class OATHUser {
 
 		$token = $wgRequest->getText( 'wpOATHToken' );
 		$user = OATHUser::newFromUsername( $username );
-		if ( $user->isEnabled() && $user->isValidated() ) {
+		if ( $user && $user->isEnabled() && $user->isValidated() ) {
 			$result = $user->verifyToken( $token );
 		}
 
