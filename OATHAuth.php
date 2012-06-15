@@ -50,6 +50,7 @@ $wgResourceModules['ext.oathauth'] = array(
 
 $wgHooks['ChainAuth'][] = 'OATHUser::ChainAuth';
 $wgHooks['UserLoginForm'][] = 'OATHUser::ModifyUITemplate';
+$wgHooks['ChangePasswordForm'][] = 'OATHUser::ChangePasswordForm';
 # Schema updates
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efOATHAuthSchemaUpdates';
 
