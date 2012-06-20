@@ -79,3 +79,223 @@ $messages['qqq'] = array(
 	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 );
+
+/** German (Deutsch)
+ * @author Kghbln
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'oathauth-desc' => 'Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Zwei-Faktor-Authentifizierung',
+	'oathauth-account' => 'Zwei-Faktor-Kontoname:',
+	'oathauth-secret' => 'Zwei-Faktor-Geheimschlüssel:',
+	'oathauth-enable' => 'Die Zwei-Faktor-Authentifizierung aktivieren',
+	'oathauth-failedtoenableoauth' => 'Die Zwei-Faktor-Authentifizierung konnte nicht aktiviert werden.',
+	'oathauth-alreadyenabled' => 'Die Zwei-Faktor-Authentifizierung ist bereits aktiviert.',
+	'oathauth-verify' => 'Den Zwei-Faktor-Token bestätigten',
+	'openstackmanager-scratchtokens' => 'Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreibe sie auf und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, dein Konto zu retten. Diese Token werden dir niemals wieder angezeigt werden.',
+	'oathauth-reset' => 'Die Zwei-Faktor-Anmeldeinformationen zurücksetzen',
+	'oathauth-donotdeleteoldsecret' => 'Bitte lösche deine alten Anmeldeinformationen nicht, bis du deine neuen Anmeldeinformationen erfolgreich bestätigt hast.',
+	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Aktueller Token',
+	'oathauth-newtoken' => 'Neuer Token',
+	'oathauth-disable' => 'Die Zwei-Faktor-Authentifizierung deaktivieren',
+	'oathauth-displayoathinfo' => 'Optionen zur Zwei-Faktor-Authentifizierung',
+	'oathauth-validatedoath' => 'Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt durchgesetzt.',
+	'oathauth-backtodisplay' => 'Zurück zu den Optionen zur Zwei-Faktor-Authentifizierung',
+	'oathauth-failedtovalidateoauth' => 'Die Zwei-Faktor-Anmeldeinformationen konnten nicht bestätigt werden.',
+	'oathauth-reattemptreset' => 'Das Zurücksetzen der Zwei-Faktor-Anmeldeinformationen wird nun erneut versucht.',
+	'oathauth-reattemptenable' => 'Das Aktivieren der Zwei-Faktor-Anmeldeinformationen wird nun erneut versucht.',
+	'oathauth-disabledoath' => 'Die Zwei-Faktor-Authentifizierung wurde deaktiviert.',
+	'oathauth-failedtodisableoauth' => 'Die Zwei-Faktor-Authentifizierung konnte nicht deaktiviert werden.',
+	'oathauth-reattemptdisable' => 'Das Deaktivieren der Zwei-Faktor-Anmeldeinformationen wird nun erneut versucht.',
+	'oathauth-failedtoresetoath' => 'Die Zwei-Faktor-Anmeldeinformationen konnten nicht zurückgesetzt werden.',
+	'oathauth-notloggedin' => 'Anmeldung erforderlich',
+	'oathauth-mustbeloggedin' => 'Du musst angemeldet sein, um diese Aktion durchführen zu können.',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'openstackmanager-scratchtokens' => 'Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreiben Sie sie auf und verwahren Sie sie an einem sicheren Ort. Sofern Ihnen Ihr Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, Ihr Konto zu retten. Diese Token werden Ihnen niemals wieder angezeigt werden.',
+	'oathauth-donotdeleteoldsecret' => 'Bitte löschen Sie Ihre alten Anmeldeinformationen nicht, bis Sie Ihre neuen Anmeldeinformationen erfolgreich bestätigt haben.',
+);
+
+/** Spanish (español)
+ * @author Armando-Martin
+ */
+$messages['es'] = array(
+	'oathauth-desc' => 'Proporciona soporte de autenticación utilizando contraseñas de una sola vez basadas en HMAC',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Autenticación de dos factores',
+	'oathauth-account' => 'Nombre de cuenta de dos factores:',
+	'oathauth-secret' => 'Clave secreta de dos factores:',
+	'oathauth-enable' => 'Habilitar la autenticación de dos factores',
+	'oathauth-failedtoenableoauth' => 'Error al habilitar la autenticación de dos factores.',
+	'oathauth-alreadyenabled' => 'Ya está habilitada la autenticación de dos factores.',
+	'oathauth-verify' => 'Verificar clave de dos factores',
+	'openstackmanager-scratchtokens' => 'La lista siguiente es una lista de claves de memoria virtual de un solo uso. Estas claves sólo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y manténlas en un lugar seguro. Si pierdes tu teléfono, estas claves son la única manera de rescatar tu cuenta. Estas claves nunca se mostrarán una segunda vez.',
+	'oathauth-reset' => 'Restablecer credenciales de dos factores',
+	'oathauth-donotdeleteoldsecret' => 'No elimines las viejas credenciales hasta haber validado correctamente tus nuevas credenciales.',
+	'oathauth-token' => 'Clave',
+	'oathauth-currenttoken' => 'Clave actual',
+	'oathauth-newtoken' => 'Nueva clave',
+	'oathauth-disable' => 'Deshabilitar la autenticación de dos factores',
+	'oathauth-displayoathinfo' => 'Opciones de autenticación de dos factores',
+	'oathauth-validatedoath' => 'Se han validado las credenciales de dos factores. Ahora se aplicará la autenticación de dos factores.',
+	'oathauth-backtodisplay' => 'Volver a las opciones de dos factores.',
+	'oathauth-failedtovalidateoauth' => 'Error al validar las credenciales de dos factores',
+	'oathauth-reattemptreset' => 'Reintentar la reposición de credenciales de dos factores.',
+	'oathauth-reattemptenable' => 'Reintentar la activación de la autenticación de dos factores.',
+	'oathauth-disabledoath' => 'Se ha deshabilitado la autenticación de dos factores.',
+	'oathauth-failedtodisableoauth' => 'Error al deshabilitar la autenticación de dos factores.',
+	'oathauth-reattemptdisable' => 'Reintentar la desactivación de la autenticación de dos factores.',
+	'oathauth-failedtoresetoath' => 'Error al restablecer las credenciales de dos factores',
+	'oathauth-notloggedin' => 'Es necesario iniciar sesión',
+	'oathauth-mustbeloggedin' => 'Debes haber iniciado sesión para realizar esta acción.',
+);
+
+/** Galician (galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'oathauth-desc' => 'Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Autenticación de dous factores',
+	'oathauth-account' => 'Nome da conta de dous factores:',
+	'oathauth-secret' => 'Clave secreta de dous factores:',
+	'oathauth-enable' => 'Activar a autenticación de dous factores',
+	'oathauth-failedtoenableoauth' => 'Erro ao activar a autenticación de dous factores.',
+	'oathauth-alreadyenabled' => 'A autenticación de dous factores xa está activada.',
+	'oathauth-verify' => 'Comprobar o pase de dous factores',
+	'openstackmanager-scratchtokens' => 'A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. Esta é a única vez que poderá ver os pases.',
+	'oathauth-reset' => 'Restablecer as credenciais de dous factores',
+	'oathauth-donotdeleteoldsecret' => 'Non borre as súas credenciais vellas ata que valide correctamente as novas.',
+	'oathauth-token' => 'Pase',
+	'oathauth-currenttoken' => 'Pase actual',
+	'oathauth-newtoken' => 'Novo pase',
+	'oathauth-disable' => 'Desactivar a autenticación de dous factores',
+	'oathauth-displayoathinfo' => 'Opcións da autenticación de dous factores',
+	'oathauth-validatedoath' => 'Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.',
+	'oathauth-backtodisplay' => 'Volver ás opcións de dous factores.',
+	'oathauth-failedtovalidateoauth' => 'Erro ao validar as credenciais de dous factores',
+	'oathauth-reattemptreset' => 'Reintentar o restablecemento das credenciais de dous factores.',
+	'oathauth-reattemptenable' => 'Reintentar a activación da autenticación de dous factores.',
+	'oathauth-disabledoath' => 'Desactivouse a autenticación de dous factores.',
+	'oathauth-failedtodisableoauth' => 'Erro ao desactivar a autenticación de dous factores.',
+	'oathauth-reattemptdisable' => 'Reintentar a desactivación da autenticación de dous factores.',
+	'oathauth-failedtoresetoath' => 'Erro ao restablecer as credenciais de dous factores.',
+	'oathauth-notloggedin' => 'Cómpre acceder ao sistema',
+	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
+);
+
+/** Macedonian (македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'oathauth-desc' => 'Овозможува заверка на корисничката веродостојност со HMAC врз основа на еднократни лозинки',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Двофакторска заверка',
+	'oathauth-account' => 'Двофакторско корисничко име:',
+	'oathauth-secret' => 'Двофакторски таен клуч:',
+	'oathauth-enable' => 'Овозможување на двофакторска заверка на веродостојноста',
+	'oathauth-failedtoenableoauth' => 'Не успеав да овозможам двофакторска заверка.',
+	'oathauth-alreadyenabled' => 'Двофакторската заверка е веќе овозможена.',
+	'oathauth-verify' => 'Потврдете го двофакторскиот жетон',
+	'openstackmanager-scratchtokens' => 'Ова е список на еднократни жетони. Можат да се користат само еднаш и служат за непредвидени случаи. Запишете ги и чувајте ги на безбедно место. Ако го загубите телефонот, жетоните се единствен начин да си ја повратите сметката. Овие жетони никогаш повеќе нема да се прикажат.',
+	'oathauth-reset' => 'Презадавање на двофакторско полномоштво',
+	'oathauth-donotdeleteoldsecret' => 'Не ги бришете податоците од вашето постојно полномоштво додека успешно не ги заверите новите.',
+	'oathauth-token' => 'Жетон',
+	'oathauth-currenttoken' => 'Постоен жетон',
+	'oathauth-newtoken' => 'Нов жетон',
+	'oathauth-disable' => 'Оневозможување на двофакторска заверка на веродостојноста',
+	'oathauth-displayoathinfo' => 'Поставки за двофакторската заверка',
+	'oathauth-validatedoath' => 'Двофакторското полномоштво е заверено. Сега стапува на сила.',
+	'oathauth-backtodisplay' => 'Назад на поставките.',
+	'oathauth-failedtovalidateoauth' => 'Не успеав да го заверам двофакторското полномоштво',
+	'oathauth-reattemptreset' => 'Обиди се пак да го зададеш новото полномоштво.',
+	'oathauth-reattemptenable' => 'Обиди се пак да ја овозможиш двофакторската заверка.',
+	'oathauth-disabledoath' => 'Двофакторската заверка е оневозможена.',
+	'oathauth-failedtodisableoauth' => 'Не успеав да ја оневозможам двофакторската заверка.',
+	'oathauth-reattemptdisable' => 'Обиди се пак да ја оневозможиш двофакторската заверка.',
+	'oathauth-failedtoresetoath' => 'Не успеав одново да го зададам двофакторското полномоштво.',
+	'oathauth-notloggedin' => 'Мора да се најавите',
+	'oathauth-mustbeloggedin' => 'Мора да сте најавени за да ја извршите оваа постапка.',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'oathauth-desc' => 'Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Twee-factor authenticatie',
+	'oathauth-account' => 'Gebruikersnaam voor twee-factor:',
+	'oathauth-secret' => 'Geheime sleutel voor twee-factor:',
+	'oathauth-enable' => 'Twee-factor authenticatie inschakelen',
+	'oathauth-failedtoenableoauth' => 'Het inschakelen van twee-factor authenticatie is mislukt.',
+	'oathauth-alreadyenabled' => 'Twee-factor authenticatie al ingeschakeld.',
+	'oathauth-verify' => 'Twee-factortoken controleren',
+	'openstackmanager-scratchtokens' => 'De onderstaande lijst bevat tokens voor eenmalig gebruik. Deze tokens kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen. Noteer deze tokens alstublieft en bewaar ze op een veilige plaats. Als u uw telefoon bent verloren, zijn deze tokens de enige manier om uw gebruiker te redden. Deze tokens worden nooit meer weergegeven.',
+	'oathauth-reset' => 'Twee-factorgegevens opnieuw instellen',
+	'oathauth-donotdeleteoldsecret' => 'Verwijder uw oude gegevens niet totdat u bent gevalideerd met uw nieuwe gegevens.',
+	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Huidige token',
+	'oathauth-newtoken' => 'Nieuwe token',
+	'oathauth-disable' => 'Twee-factor authenticatie uitschakelen',
+	'oathauth-displayoathinfo' => 'Instellingen voor twee-factor authenticatie',
+	'oathauth-validatedoath' => 'De gebruikersgegevens voor twee-factor zijn gevalideerd. Twee-factor authenticatie is nu verplicht.',
+	'oathauth-backtodisplay' => 'Terug naar instellingen voor twee-factor authenticatie.',
+	'oathauth-failedtovalidateoauth' => 'Het valideren van de gebruikersgegevens voor twee-factor is mislukt.',
+	'oathauth-reattemptreset' => 'Opnieuw proberen om twee-factorgegevens in te stellen',
+	'oathauth-reattemptenable' => 'Opnieuw proberen om twee-factor authenticatie in te stellen.',
+	'oathauth-disabledoath' => 'Twee-factor authenticatie is uitgeschakeld.',
+	'oathauth-failedtodisableoauth' => 'Het uitschakelen van twee-factor authenticatie is mislukt.',
+	'oathauth-reattemptdisable' => 'Opnieuw proberen om twee-factor authenticatie uit te schakelen.',
+	'oathauth-failedtoresetoath' => 'Het opnieuw instellen van de gebruikersgegevens voor twee-factor is mislukt.',
+	'oathauth-notloggedin' => 'Aanmelden verplicht',
+	'oathauth-mustbeloggedin' => 'U moet aangemeld zijn om deze handeling uit te voeren.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'oathauth-desc' => 'Nagbibigay ng suporta ng pagpapatunay sa pamamagitan ng pang-isang ulit na mga hudyat na nakabatay sa HMAC',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Dalawang Salik na Pagpapatunay',
+	'oathauth-account' => 'Dalawang Salik na Pangalan ng Akawnt:',
+	'oathauth-secret' => 'Dalawang Salik na Susi ng Lihim:',
+	'oathauth-enable' => 'Paganahin ang Dalawang Salik na Pagpapatunay',
+	'oathauth-failedtoenableoauth' => 'Nabigo sa pagpapaandar ng dalawang salik na pagpapatunay.',
+	'oathauth-alreadyenabled' => 'Gumagana na ang dalawang salik na pagpapatunay.',
+	'oathauth-verify' => 'Tiyakin ang dalawang salik na panghalip',
+	'openstackmanager-scratchtokens' => 'Ang sumusunod na lista ay isang listahan ng mga pang-isahang ulit na paggamit na mga panghalip na nagagasgas. Ang mga panghalip na ito ay magagamit lamang nang isang beses, at mga para sa paggamit na pangkagipitan. Pakisulat ang mga ito at itabi sa isang ligtas na lugar. Kapag naiwala mo ang telepono mo, ang mga panghalip na ito lang ang makasasaklolo sa akawnt mo. Hindi na muling ipapakita pa ang mga panghalip na ito.',
+	'oathauth-reset' => 'Itakdang Muli ang Dalawang Salik na mga Kredensiyal',
+	'oathauth-donotdeleteoldsecret' => 'Mangyaring huwag burahin ang luma mong mga kredensiyal hanggang sa matagumpay mo nang napagtibay ang bago mong mga katibayan.',
+	'oathauth-token' => 'Kahalip',
+	'oathauth-currenttoken' => 'Kasalukuyang Kahalip',
+	'oathauth-newtoken' => 'Bagong Kahalip',
+	'oathauth-disable' => 'Huwag Paganahin ang Dalawang Salik na Pagpapatunay',
+	'oathauth-displayoathinfo' => 'Mga Mapagpipilian sa Dalawang Salik na Pagpapatunay',
+	'oathauth-validatedoath' => 'Nakapagpatunay ng dalawang salik na mga katibayan. Isasakatuparan na ngayon ang dalawang salik na pagpapatunay.',
+	'oathauth-backtodisplay' => 'Bumalik sa mga pilian ng dalawang salik.',
+	'oathauth-failedtovalidateoauth' => 'Nabigo sa pagpapatunay ng dalawang salik na mga kredensiyal',
+	'oathauth-reattemptreset' => 'Tangkaing muli ang muling pagtatakda ng dalawang salik na mga kredensiyal.',
+	'oathauth-reattemptenable' => 'Muling tangkain ang pagpapagana ng dalawang salik na pagpapatunay.',
+	'oathauth-disabledoath' => 'Hindi na pinaaandar ang dalawang salik na pagpapatunay.',
+	'oathauth-failedtodisableoauth' => 'Nabigo sa hindi pagpapaandar ng dalawang salik na pagpapatunay.',
+	'oathauth-reattemptdisable' => 'Muling tangkain ang hindi na pagpapagana ng dalawang salik na pagpapatunay.',
+	'oathauth-failedtoresetoath' => 'Nabigo sa muling pagtatakda ng dalawang salik na mga kredensiyal.',
+);
+
