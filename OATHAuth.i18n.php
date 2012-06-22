@@ -157,6 +157,13 @@ $messages['es'] = array(
 	'oathauth-mustbeloggedin' => 'Debes haber iniciado sesión para realizar esta acción.',
 );
 
+/** French (français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'oathauth-token' => 'Jeton',
+);
+
 /** Galician (galego)
  * @author Toliño
  */
