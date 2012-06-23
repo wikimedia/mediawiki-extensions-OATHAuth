@@ -125,6 +125,7 @@ $messages['de-formal'] = array(
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author McDutchie
  */
 $messages['es'] = array(
 	'oathauth-desc' => 'Proporciona soporte de autenticación utilizando contraseñas de una sola vez basadas en HMAC',
@@ -136,7 +137,7 @@ $messages['es'] = array(
 	'oathauth-failedtoenableoauth' => 'Error al habilitar la autenticación de dos factores.',
 	'oathauth-alreadyenabled' => 'Ya está habilitada la autenticación de dos factores.',
 	'oathauth-verify' => 'Verificar clave de dos factores',
-	'openstackmanager-scratchtokens' => 'La lista siguiente es una lista de claves de memoria virtual de un solo uso. Estas claves sólo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y manténlas en un lugar seguro. Si pierdes tu teléfono, estas claves son la única manera de rescatar tu cuenta. Estas claves nunca se mostrarán una segunda vez.',
+	'openstackmanager-scratchtokens' => 'La lista siguiente es una lista de claves de un solo uso. Estas claves sólo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y manténlas en un lugar seguro. Si pierdes tu teléfono, estas claves son la única manera de rescatar tu cuenta. Estas claves nunca se mostrarán una segunda vez.',
 	'oathauth-reset' => 'Restablecer credenciales de dos factores',
 	'oathauth-donotdeleteoldsecret' => 'No elimines las viejas credenciales hasta haber validado correctamente tus nuevas credenciales.',
 	'oathauth-token' => 'Clave',
@@ -196,6 +197,35 @@ $messages['gl'] = array(
 	'oathauth-failedtoresetoath' => 'Erro ao restablecer as credenciais de dous factores.',
 	'oathauth-notloggedin' => 'Cómpre acceder ao sistema',
 	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
+);
+
+/** Interlingua (interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'oathauth-desc' => 'Forni supporto de authentication usante contrasignos a uso unic a base de HMAC',
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Authentication de duo factores',
+	'oathauth-account' => 'Nomine de conto de duo factores:',
+	'oathauth-secret' => 'Clave secrete de duo factores:',
+	'oathauth-enable' => 'Activar le authentication de duo factores',
+	'oathauth-failedtoenableoauth' => 'Error durante le activation del authentication de duo factores.',
+	'oathauth-alreadyenabled' => 'Le authentication de duo factores es jam activate.',
+	'oathauth-verify' => 'Verificar indicio de duo factores',
+	'openstackmanager-scratchtokens' => 'Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.',
+);
+
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'oathauth-desc' => 'ワンタイムパスワードに基づいた HMAC を使用する認証機能を提供する',
+	'oathauth' => 'OATHAuth',
+	'oathauth-token' => 'トークン',
+	'oathauth-currenttoken' => '現在のトークン',
+	'oathauth-newtoken' => '新しいトークン',
+	'oathauth-notloggedin' => 'ログインが必要',
+	'oathauth-mustbeloggedin' => 'この操作を行うにはログインする必要があります。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
