@@ -199,6 +199,25 @@ $messages['gl'] = array(
 	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
 );
 
+/** Upper Sorbian (hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Dwufaktorowa awtentifikacija',
+	'oathauth-account' => 'Kontowe mjeno dwufaktoroweje awtentifikacije:',
+	'oathauth-secret' => 'Tajny kluč dwufaktoroweje awtentfikacije:',
+	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Aktualny token',
+	'oathauth-newtoken' => 'Nowy token',
+	'oathauth-disable' => 'Dwufaktorowu awtentifikaciju znjemóžnić',
+	'oathauth-displayoathinfo' => 'Nastajenja dwufaktoroweje awtentifikacije',
+	'oathauth-backtodisplay' => 'Wróćo k nastajenjam dwufaktoroweje awtentifikacije.',
+	'oathauth-disabledoath' => 'Dwufaktorowu awtentifikaciju znjemóžnjena.',
+	'oathauth-notloggedin' => 'Přizjewjenje trěbne',
+	'oathauth-mustbeloggedin' => 'Dyrbiš přizjewjeny być, zo by tutu akciju wuwjedł.',
+);
+
 /** Interlingua (interlingua)
  * @author McDutchie
  */
