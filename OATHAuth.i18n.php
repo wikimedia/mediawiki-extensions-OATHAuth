@@ -203,17 +203,28 @@ $messages['gl'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'oathauth-desc' => 'Zmóžnja awtentifkaciju z pomocu jónkróć wužiwanych hesłow na zakładźe HMAC',
 	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Dwufaktorowa awtentifikacija',
 	'oathauth-account' => 'Kontowe mjeno dwufaktoroweje awtentifikacije:',
 	'oathauth-secret' => 'Tajny kluč dwufaktoroweje awtentfikacije:',
+	'oathauth-enable' => 'Dwufaktorowu awtentifikaciju zmóžnić',
+	'oathauth-failedtoenableoauth' => 'Dwufaktorowa awtentifikacija njeda so zmóžnić.',
+	'oathauth-alreadyenabled' => 'Dwufaktorowa awtentifikacija je so hižo zmóžniła.',
+	'oathauth-verify' => 'Dwufaktorowy token přepruwować',
+	'oathauth-reset' => 'Dwufaktorowe přizjewjenske informacije wróćo stajić',
+	'oathauth-donotdeleteoldsecret' => 'Prošu njezhašaj swoje stare přizjewjenske informacije, doniž njejsy swoje nowe přizjewjenske informacije wuspěšnje wobkrućił.',
 	'oathauth-token' => 'Token',
 	'oathauth-currenttoken' => 'Aktualny token',
 	'oathauth-newtoken' => 'Nowy token',
 	'oathauth-disable' => 'Dwufaktorowu awtentifikaciju znjemóžnić',
 	'oathauth-displayoathinfo' => 'Nastajenja dwufaktoroweje awtentifikacije',
+	'oathauth-validatedoath' => 'Dwufaktorowe přizjewjenske informacije su so wobkrućili. Dwufaktorowa awtentifikacija budźe so nětko wukonjeć.',
 	'oathauth-backtodisplay' => 'Wróćo k nastajenjam dwufaktoroweje awtentifikacije.',
+	'oathauth-failedtovalidateoauth' => 'Dwufaktorowe přizjewjenske informacije njedachu so wobkrućić',
 	'oathauth-disabledoath' => 'Dwufaktorowu awtentifikaciju znjemóžnjena.',
+	'oathauth-failedtodisableoauth' => 'Dwufaktorowa awtentifikacija njeda so znjemóžnić.',
+	'oathauth-failedtoresetoath' => 'Dwufaktorowe přizjewjenske informacije njedachu so wróćo stajić',
 	'oathauth-notloggedin' => 'Přizjewjenje trěbne',
 	'oathauth-mustbeloggedin' => 'Dyrbiš přizjewjeny być, zo by tutu akciju wuwjedł.',
 );
