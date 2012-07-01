@@ -24,3 +24,8 @@ $specialPageAliases['ar'] = array(
 $specialPageAliases['mk'] = array(
 	'OATHAuthDisplay' => array( 'Прикажи_жетон_со_OATH-информации' ),
 );
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'OATHAuthDisplay' => array( 'OATH-tokengegevens' ),
+);
