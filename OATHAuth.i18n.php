@@ -280,6 +280,7 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'oathauth-notloggedin' => 'Dir musst ageloggt sinn',
 	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
 );
 
