@@ -163,6 +163,10 @@ $messages['es'] = array(
  */
 $messages['fr'] = array(
 	'oathauth-token' => 'Jeton',
+	'oathauth-currenttoken' => 'Jeton actuel',
+	'oathauth-newtoken' => 'Nouveau jeton',
+	'oathauth-notloggedin' => 'Connexion nécessaire',
+	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
 );
 
 /** Galician (galego)
