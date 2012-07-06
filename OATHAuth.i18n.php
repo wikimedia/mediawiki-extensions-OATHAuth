@@ -160,8 +160,14 @@ $messages['es'] = array(
 
 /** French (français)
  * @author Crochet.david
+ * @author Gomoko
  */
 $messages['fr'] = array(
+	'oathauth-desc' => "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Authentification à deux facteurs',
+	'oathauth-account' => 'Nom du compte à deux facteurs:',
+	'oathauth-secret' => 'Clé secrète à deux facteurs:',
 	'oathauth-token' => 'Jeton',
 	'oathauth-currenttoken' => 'Jeton actuel',
 	'oathauth-newtoken' => 'Nouveau jeton',
