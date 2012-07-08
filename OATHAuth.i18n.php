@@ -396,5 +396,7 @@ $messages['tl'] = array(
 	'oathauth-failedtodisableoauth' => 'Nabigo sa hindi pagpapaandar ng dalawang salik na pagpapatunay.',
 	'oathauth-reattemptdisable' => 'Muling tangkain ang hindi na pagpapagana ng dalawang salik na pagpapatunay.',
 	'oathauth-failedtoresetoath' => 'Nabigo sa muling pagtatakda ng dalawang salik na mga kredensiyal.',
+	'oathauth-notloggedin' => 'Kailangan ang paglagda',
+	'oathauth-mustbeloggedin' => 'Dapat na nakalagda ka upang maisagawa ang galaw na ito.',
 );
 
