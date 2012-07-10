@@ -295,6 +295,29 @@ $messages['ia'] = array(
 	'oathauth-mustbeloggedin' => 'Es necessari aperir session pro exequer iste action.',
 );
 
+/** Italian (italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'oathauth-desc' => "Fornisce supporto per l'autenticazione utilizzando HMAC basato su una password ad uso singolo",
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'Autenticazione a due fattori',
+	'oathauth-account' => "Nome dell'account a due fattori:",
+	'oathauth-secret' => "Chiave segreta dell'account a due fattori:",
+	'oathauth-enable' => 'Abilita autenticazione a due fattori',
+	'oathauth-failedtoenableoauth' => "Impossibile abilitare l'autenticazione a due fattori.",
+	'oathauth-alreadyenabled' => "L'autenticazione a due fattori è già abilitata.",
+	'oathauth-donotdeleteoldsecret' => 'Non eliminare le vecchie credenziali fino a quando non si hai convalidato con successo le nuove credenziali.',
+	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Token attuale',
+	'oathauth-newtoken' => 'Nuovo token',
+	'oathauth-disable' => 'Disabilita autenticazione a due fattori',
+	'oathauth-displayoathinfo' => 'Opzioni autenticazione a due fattori',
+	'oathauth-disabledoath' => 'Disabilita autenticazione a due fattori.',
+	'oathauth-notloggedin' => 'Accesso richiesto',
+	'oathauth-mustbeloggedin' => 'Devi autenticarti per eseguire questa azione.',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
