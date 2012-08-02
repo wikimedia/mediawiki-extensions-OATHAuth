@@ -282,13 +282,16 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $template
+	 * @param $template UserloginTemplate
 	 * @return bool
 	 */
 	static function ModifyUITemplate( &$template ) {
-		// FIXME: First assignment of $input unused
-		$input = array( 'msg' => 'oathauth-token', 'type' => 'text', 'name' => 'token', 'value' => '', 'helptext' => 'oathauth-tokenhelp' );
-		$input = '<td class="mw-label"><label for="wpOATHToken">' . wfMsgHtml( 'oathauth-token' ) . '</label></td><td class="mw-input">' . Html::input( 'wpOATHToken', null, 'password', array( 'class' => 'loginPassword', 'id' => 'wpOATHToken', 'tabindex' => '2', 'size' => '20' ) ) . '</td>';
+		$input = '<td class="mw-label"><label for="wpOATHToken">'
+			. wfMsgHtml( 'oathauth-token' )
+			. '</label></td><td class="mw-input">'
+			. Html::input( 'wpOATHToken', null, 'password', array(
+				'class' => 'loginPassword', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
+			) ) . '</td>';
 		$template->set( 'extrafields', $input );
 
 		return true;
