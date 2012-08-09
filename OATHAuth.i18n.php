@@ -442,3 +442,11 @@ $messages['tl'] = array(
 	'oathauth-mustbeloggedin' => 'Dapat na nakalagda ka upang maisagawa ang galaw na ito.',
 );
 
+/** Traditional Chinese (‪中文（繁體）‬)
+ * @author Simon Shek
+ */
+$messages['zh-hant'] = array(
+	'oathauth-notloggedin' => '需要登入',
+	'oathauth-mustbeloggedin' => '您必須登錄才能執行此操作。',
+);
+
