@@ -408,6 +408,13 @@ $messages['nl'] = array(
 	'oathauth-mustbeloggedin' => 'U moet aangemeld zijn om deze handeling uit te voeren.',
 );
 
+/** Romanian (română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'oathauth-notloggedin' => 'Autentificare necesară',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
