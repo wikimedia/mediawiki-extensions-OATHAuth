@@ -415,6 +415,14 @@ $messages['ro'] = array(
 	'oathauth-notloggedin' => 'Autentificare necesară',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
+	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
