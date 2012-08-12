@@ -331,6 +331,13 @@ $messages['ja'] = array(
 	'oathauth-mustbeloggedin' => 'この操作を行うにはログインする必要があります。',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'oathauth-notloggedin' => 'შესვლა აუცილებელია',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -421,6 +428,13 @@ $messages['ro'] = array(
 $messages['si'] = array(
 	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
 	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
+);
+
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ */
+$messages['ta'] = array(
+	'oathauth-notloggedin' => 'புகுபதிகை செய்யப்பட வேண்டும்',
 );
 
 /** Tagalog (Tagalog)
