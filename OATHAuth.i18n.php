@@ -158,6 +158,13 @@ $messages['es'] = array(
 	'oathauth-mustbeloggedin' => 'Debes haber iniciado sesión para realizar esta acción.',
 );
 
+/** Estonian (eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'oathauth-notloggedin' => 'Vajalik on sisselogimine',
+);
+
 /** French (français)
  * @author Crochet.david
  * @author Gomoko
@@ -335,7 +342,20 @@ $messages['ja'] = array(
  * @author David1010
  */
 $messages['ka'] = array(
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => 'ორფაქტორიანი იდენტიფიკაცია',
+	'oathauth-account' => 'ორფაქტორიანი ანგარიშის სახელი:',
+	'oathauth-secret' => 'ორფაქტორიანი საიდუმლო გასაღები:',
+	'oathauth-enable' => 'ორფაქტორიანი იდენტიფიკაციის ჩართვა',
+	'oathauth-failedtoenableoauth' => 'ორფაქტორიანი იდენტიფიკაციის ჩართვა ვერ განხორციელდა.',
+	'oathauth-alreadyenabled' => 'ორფაქტორიანი იდენტიფიკაცია უკვე ჩართულია.',
+	'oathauth-disable' => 'ორფაქტორიანი იდენტიფიკაციის გამორთვა',
+	'oathauth-displayoathinfo' => 'ორფაქტორიანი იდენტიფიკაციის პარამეტრები',
+	'oathauth-backtodisplay' => 'ორი ფაქტორის პარამეტრებზე დაბრუნება.',
+	'oathauth-disabledoath' => 'ორფაქტორიანი იდენტიფიკაცია გამორთულია.',
+	'oathauth-failedtodisableoauth' => 'ორფაქტორიანი იდენტიფიკაციის გამორთვა ვერ განხორციელდა.',
 	'oathauth-notloggedin' => 'შესვლა აუცილებელია',
+	'oathauth-mustbeloggedin' => 'ამ მოქმედების შესასრულებლად, თქვენ უნდა შეხვიდეთ სისტემაში.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -426,8 +446,16 @@ $messages['ro'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'oathauth' => 'OATHAuth',
 	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
 	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
+);
+
+/** Swedish (svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'oathauth-notloggedin' => 'Inloggning krävs',
 );
 
 /** Tamil (தமிழ்)
