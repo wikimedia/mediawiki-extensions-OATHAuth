@@ -20,6 +20,12 @@ $specialPageAliases['ar'] = array(
 	'OATHAuthDisplay' => array( 'عرض_معلومات_توكين_أواث' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'OATHAuth' => array( 'OATH-Authentifizierung' ),
+	'OATHAuthDisplay' => array( 'OATH-Authentifizierung_Tokeninformationen' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'OATHAuthDisplay' => array( 'Прикажи_жетон_со_OATH-информации' ),
