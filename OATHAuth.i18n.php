@@ -200,6 +200,17 @@ $messages['fr'] = array(
 	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
 );
 
+/** Franco-Provençal (arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'oathauth' => 'OATHAuth',
+	'oathauth-token' => 'Jeton',
+	'oathauth-currenttoken' => 'Jeton d’ora',
+	'oathauth-newtoken' => 'Novél jeton',
+	'oathauth-notloggedin' => 'Branchement nècèssèro',
+);
+
 /** Galician (galego)
  * @author Toliño
  */
