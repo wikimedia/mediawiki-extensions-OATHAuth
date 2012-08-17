@@ -510,6 +510,18 @@ $messages['tl'] = array(
 	'oathauth-mustbeloggedin' => 'Dapat na nakalagda ka upang maisagawa ang galaw na ito.',
 );
 
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'oathauth-backtodisplay' => 'واپس دو اختیارات عنصر.',
+	'oathauth-disabledoath' => 'معذور تصدیق دو عنصر.',
+	'oathauth-failedtodisableoauth' => 'دو اہم عنصر کی توثیق کو غیر فعال کرنے میں ناکام رہے.',
+	'oathauth-failedtoresetoath' => 'دو عنصر کی اسناد کو دوبارہ مرتب کرنے میں ناکام رہے.',
+	'oathauth-notloggedin' => 'لاگ ان درکار',
+	'oathauth-mustbeloggedin' => 'تم ہونا چاہئے لاگ ان اس فعل کو انجام دینے کے لئے.',
+);
+
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Simon Shek
  */
