@@ -315,9 +315,10 @@ $messages['ia'] = array(
 
 /** Italian (italiano)
  * @author Beta16
+ * @author Darth Kule
  */
 $messages['it'] = array(
-	'oathauth-desc' => "Fornisce supporto per l'autenticazione utilizzando HMAC basato su una password ad uso singolo",
+	'oathauth-desc' => "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
 	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Autenticazione a due fattori',
 	'oathauth-account' => "Nome dell'account a due fattori:",
