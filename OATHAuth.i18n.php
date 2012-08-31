@@ -332,7 +332,10 @@ $messages['it'] = array(
 	'oathauth-newtoken' => 'Nuovo token',
 	'oathauth-disable' => 'Disabilita autenticazione a due fattori',
 	'oathauth-displayoathinfo' => 'Opzioni autenticazione a due fattori',
+	'oathauth-reattemptenable' => "Tentare nuovamente l'attivazione dell'autenticazione a due fattori.",
 	'oathauth-disabledoath' => 'Disabilita autenticazione a due fattori.',
+	'oathauth-failedtodisableoauth' => "Impossibile disattivare l'autenticazione a due fattori.",
+	'oathauth-reattemptdisable' => "Tentare nuovamente la disattivazione dell'autenticazione a due fattori.",
 	'oathauth-notloggedin' => 'Accesso richiesto',
 	'oathauth-mustbeloggedin' => 'Devi autenticarti per eseguire questa azione.',
 );
