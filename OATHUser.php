@@ -322,4 +322,21 @@ class OATHUser {
 		return true;
 	}
 
+	static function TwoFactorIsEnabled( &$isEnabled ) {
+		global $wgUser;
+ 
+		$user = OATHUser::newFromUser( $wgUser );
+		if ( $user && $user->isEnabled() && $user->isValidated() ) {
+			$isEnabled = true;
+			# This two-factor extension is enabled by the user,
+			# we don't need to check others.
+			return false;
+		} else {
+			$isEnabled = false;
+			# This two-factor extension isn't enabled by the user,
+			# but others may be.
+			return true;
+		}
+	}
+
 }
