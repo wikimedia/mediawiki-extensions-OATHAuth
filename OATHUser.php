@@ -322,7 +322,11 @@ class OATHUser {
 			$result = $user->verifyToken( $token );
 		}
 
-		return true;
+		if ( $result ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
