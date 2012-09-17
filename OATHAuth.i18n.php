@@ -394,6 +394,14 @@ $messages['ka'] = array(
 	'oathauth-mustbeloggedin' => 'ამ მოქმედების შესასრულებლად, თქვენ უნდა შეხვიდეთ სისტემაში.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'oathauth-notloggedin' => 'Enlogge es nüdich',
+	'oathauth-mustbeloggedin' => 'Do moß ald enjelogg sin, öm dat maache ze dörve.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
