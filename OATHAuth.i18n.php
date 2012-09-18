@@ -398,6 +398,8 @@ $messages['ka'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'oathauth-desc' => 'Määd et Enlogge met enem <code lang="en">HMAC</code>-eijmohl-Paßwoot müjjelesch.',
+	'oathauth' => 'OATHAuth',
 	'oathauth-notloggedin' => 'Enlogge es nüdich',
 	'oathauth-mustbeloggedin' => 'Do moß ald enjelogg sin, öm dat maache ze dörve.',
 );
