@@ -558,6 +558,12 @@ $messages['ur'] = array(
 	'oathauth-mustbeloggedin' => 'تم ہونا چاہئے لاگ ان اس فعل کو انجام دینے کے لئے.',
 );
 
+/** Simplified Chinese (中文（简体）‎) */
+$messages['zh-hans'] = array(
+	'oathauth-notloggedin' => '需要登入',
+	'oathauth-mustbeloggedin' => '您必须登录才能执行此操作。',
+);
+
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Simon Shek
  */
