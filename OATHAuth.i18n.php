@@ -115,7 +115,7 @@ $messages['de'] = array(
 	'oathauth-mustbeloggedin' => 'Du musst angemeldet sein, um diese Aktion durchführen zu können.',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
+/** German (formal address) (Deutsch (Sie-Form)‎)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
@@ -564,7 +564,7 @@ $messages['zh-hans'] = array(
 	'oathauth-mustbeloggedin' => '您必须登录才能执行此操作。',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
