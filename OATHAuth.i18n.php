@@ -559,8 +559,25 @@ $messages['ur'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'oathauth' => 'OATHAuth',
+	'specialpages-group-oath' => '双因素身份验证',
+	'oathauth-account' => '双因素帐户名：',
+	'oathauth-secret' => '双因素机密密钥：',
+	'oathauth-enable' => '启用双因素身份验证',
+	'oathauth-failedtoenableoauth' => '启用双因素身份验证失败。',
+	'oathauth-alreadyenabled' => '双因素身份验证已被启用。',
+	'oathauth-verify' => '验证双因素令牌',
+	'oathauth-reset' => '重置双因素凭据',
+	'oathauth-donotdeleteoldsecret' => '请在您成功验证您的新凭据之前不要删除老的凭据。',
+	'oathauth-token' => '令牌',
+	'oathauth-currenttoken' => '当前令牌',
+	'oathauth-newtoken' => '新的令牌',
+	'oathauth-disable' => '禁用双因素身份验证',
+	'oathauth-displayoathinfo' => '双因素身份验证选项',
+	'oathauth-backtodisplay' => '返回双因素选项。',
 	'oathauth-notloggedin' => '需要登入',
 	'oathauth-mustbeloggedin' => '您必须登录才能执行此操作。',
 );
