@@ -17,7 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	'oathauth-desc' => 'Provides authentication support using HMAC based one time passwords',
 
-	'oathauth' => 'OATHAuth',
+	'oath' => 'OATHAuth',
 	'specialpages-group-oath' => 'Two Factor Authentication',
 	'oathauth-account' => 'Two Factor Account Name:',
 	'oathauth-secret' => 'Two Factor Secret Key:',
