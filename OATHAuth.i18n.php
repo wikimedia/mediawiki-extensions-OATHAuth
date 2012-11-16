@@ -80,6 +80,13 @@ $messages['qqq'] = array(
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 );
 
+/** Czech (česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'oathauth-desc' => 'Poskytuje podporu pro autentizaci pomocí jednorázových hesel založených na HMAC',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
