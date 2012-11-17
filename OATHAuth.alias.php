@@ -26,6 +26,12 @@ $specialPageAliases['de'] = array(
 	'OATHAuthDisplay' => array( 'OATH-Authentifizierung_Tokeninformationen' ),
 );
 
+/** Italian (italiano) */
+$specialPageAliases['it'] = array(
+	'OATHAuth' => array( 'LoginOATH' ),
+	'OATHAuthDisplay' => array( 'Mostra_Info_Token_OATH' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'OATHAuth' => array( 'OATHЗаверка' ),
