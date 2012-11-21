@@ -264,7 +264,16 @@ class SpecialOATH extends SpecialPage {
 	 * @return bool
 	 */
 	function tryDisableSubmit( $formData, $entryPoint = 'internal' ) {
-		$result = $this->OATHUser->disable( $formData['token'] );
+		$verify = $this->OATHUser->verifyToken( $formData['token'] );
+		if ( !$verify ) {
+			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
+			$out = '<br />';
+			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptdisable' ), array(), array( 'action' => 'disable' ) );
+			$this->getOutput()->addHTML( $out );
+			return true;
+		}
+
+		$result = $this->OATHUser->disable();
 		if ( $result ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-disabledoath' );
 			$out = '<br />';
