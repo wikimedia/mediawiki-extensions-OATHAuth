@@ -42,3 +42,9 @@ $specialPageAliases['mk'] = array(
 $specialPageAliases['nl'] = array(
 	'OATHAuthDisplay' => array( 'OATH-tokengegevens' ),
 );
+
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'OATHAuth' => array( 'LoginOATH' ),
+	'OATHAuthDisplay' => array( 'Mostra_Info_Token_OATH' ),
+);
