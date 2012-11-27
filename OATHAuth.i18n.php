@@ -85,7 +85,6 @@ $messages['qqq'] = array(
  */
 $messages['cs'] = array(
 	'oathauth-desc' => 'Poskytuje podporu pro autentizaci pomocí jednorázových hesel založených na HMAC',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Dvoufaktorová autentizace',
 	'oathauth-account' => 'Název účtu pro dvoufaktorovou autentizaci:',
 	'oathauth-secret' => 'Tajný klíč pro dvoufaktorovou autentizaci:',
@@ -120,7 +119,6 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'oathauth-desc' => 'Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Zwei-Faktor-Authentifizierung',
 	'oathauth-account' => 'Zwei-Faktor-Kontoname:',
 	'oathauth-secret' => 'Zwei-Faktor-Geheimschlüssel:',
@@ -163,7 +161,6 @@ $messages['de-formal'] = array(
  */
 $messages['es'] = array(
 	'oathauth-desc' => 'Proporciona soporte de autenticación utilizando contraseñas de una sola vez basadas en HMAC',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Autenticación de dos factores',
 	'oathauth-account' => 'Nombre de cuenta de dos factores:',
 	'oathauth-secret' => 'Clave secreta de dos factores:',
@@ -205,7 +202,6 @@ $messages['et'] = array(
  */
 $messages['fr'] = array(
 	'oathauth-desc' => "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Authentification à deux facteurs',
 	'oathauth-account' => 'Nom du compte à deux facteurs:',
 	'oathauth-secret' => 'Clé secrète à deux facteurs:',
@@ -238,7 +234,6 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'oathauth' => 'OATHAuth',
 	'oathauth-token' => 'Jeton',
 	'oathauth-currenttoken' => 'Jeton d’ora',
 	'oathauth-newtoken' => 'Novél jeton',
@@ -250,7 +245,6 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'oathauth-desc' => 'Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Autenticación de dous factores',
 	'oathauth-account' => 'Nome da conta de dous factores:',
 	'oathauth-secret' => 'Clave secreta de dous factores:',
@@ -284,7 +278,6 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'oathauth-desc' => 'Zmóžnja awtentifkaciju z pomocu jónkróć wužiwanych hesłow na zakładźe HMAC',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Dwufaktorowa awtentifikacija',
 	'oathauth-account' => 'Kontowe mjeno dwufaktoroweje awtentifikacije:',
 	'oathauth-secret' => 'Tajny kluč dwufaktoroweje awtentfikacije:',
@@ -318,7 +311,6 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'oathauth-desc' => 'Forni supporto de authentication usante contrasignos a uso unic a base de HMAC',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Authentication de duo factores',
 	'oathauth-account' => 'Nomine de conto de duo factores:',
 	'oathauth-secret' => 'Clave secrete de duo factores:',
@@ -353,7 +345,6 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'oathauth-desc' => "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Autenticazione a due fattori',
 	'oathauth-account' => "Nome dell'account a due fattori:",
 	'oathauth-secret' => "Chiave segreta dell'account a due fattori:",
@@ -379,7 +370,6 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'oathauth-desc' => 'ワンタイムパスワードに基づいた HMAC を使用する認証機能を提供する',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => '二要素認証',
 	'oathauth-account' => '二要素アカウント名:',
 	'oathauth-secret' => '二要素秘密鍵:',
@@ -412,7 +402,6 @@ $messages['ja'] = array(
  * @author David1010
  */
 $messages['ka'] = array(
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'ორფაქტორიანი იდენტიფიკაცია',
 	'oathauth-account' => 'ორფაქტორიანი ანგარიშის სახელი:',
 	'oathauth-secret' => 'ორფაქტორიანი საიდუმლო გასაღები:',
@@ -433,7 +422,6 @@ $messages['ka'] = array(
  */
 $messages['ksh'] = array(
 	'oathauth-desc' => 'Määd et Enlogge met enem <code lang="en">HMAC</code>-eijmohl-Paßwoot müjjelesch.',
-	'oathauth' => 'OATHAuth',
 	'oathauth-notloggedin' => 'Enlogge es nüdich',
 	'oathauth-mustbeloggedin' => 'Do moß ald enjelogg sin, öm dat maache ze dörve.',
 );
@@ -452,7 +440,6 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'oathauth-desc' => 'Овозможува заверка на корисничката веродостојност со HMAC врз основа на еднократни лозинки',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Двофакторска заверка',
 	'oathauth-account' => 'Двофакторско корисничко име:',
 	'oathauth-secret' => 'Двофакторски таен клуч:',
@@ -487,7 +474,6 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'oathauth-desc' => 'Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Twee-factor authenticatie',
 	'oathauth-account' => 'Gebruikersnaam voor twee-factor:',
 	'oathauth-secret' => 'Geheime sleutel voor twee-factor:',
@@ -527,7 +513,6 @@ $messages['ro'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
-	'oathauth' => 'OATHAuth',
 	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
 	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
 );
@@ -551,7 +536,6 @@ $messages['ta'] = array(
  */
 $messages['tl'] = array(
 	'oathauth-desc' => 'Nagbibigay ng suporta ng pagpapatunay sa pamamagitan ng pang-isang ulit na mga hudyat na nakabatay sa HMAC',
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => 'Dalawang Salik na Pagpapatunay',
 	'oathauth-account' => 'Dalawang Salik na Pangalan ng Akawnt:',
 	'oathauth-secret' => 'Dalawang Salik na Susi ng Lihim:',
@@ -596,7 +580,6 @@ $messages['ur'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'oathauth' => 'OATHAuth',
 	'specialpages-group-oath' => '双因素身份验证',
 	'oathauth-account' => '双因素帐户名：',
 	'oathauth-secret' => '双因素机密密钥：',
