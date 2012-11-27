@@ -47,11 +47,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Raymond
  * @author Ryan Lane <rlane@wikimedia.org>
  */
 $messages['qqq'] = array(
 	'oathauth-desc' => '{{desc}}',
-	'oathauth' => 'Extension name, found on Special:Version',
+	'oath' => '{{optional}}
+Extension name, found on Special:Version',
 	'specialpages-group-oath' => 'Used in the special page list',
 	'oathauth-account' => 'Plain text associated with two factor authentication on this wiki (username@<wiki name>) found on Special:OATH.',
 	'oathauth-secret' => 'Plain text found on Special:OATH while enabling OATH',
