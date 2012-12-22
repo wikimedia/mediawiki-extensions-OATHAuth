@@ -505,9 +505,13 @@ $messages['nl'] = array(
 );
 
 /** Romanian (română)
+ * @author Firilacroco
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'oathauth-token' => 'Jeton',
+	'oathauth-currenttoken' => 'Jeton curent',
+	'oathauth-newtoken' => 'Jeton nou',
 	'oathauth-notloggedin' => 'Autentificare necesară',
 );
 
