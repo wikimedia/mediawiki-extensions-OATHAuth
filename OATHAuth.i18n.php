@@ -504,6 +504,39 @@ $messages['nl'] = array(
 	'oathauth-mustbeloggedin' => 'U moet aangemeld zijn om deze handeling uit te voeren.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'oathauth-desc' => "A dà l'apògg d'autenticassion dovrand dle ciav basà HMAC a un sol usagi",
+	'specialpages-group-oath' => 'Autenticassion a Doi Fator',
+	'oathauth-account' => 'Nòm dël Cont dij Doi Fator:',
+	'oathauth-secret' => 'Ciav Segreta dij Doi Fator:',
+	'oathauth-enable' => "Abìlita l'Autenticassion dij Doi Fator",
+	'oathauth-failedtoenableoauth' => "Falì a abilité l'autenticassion a doi fator.",
+	'oathauth-alreadyenabled' => "L'autenticassion a doi fator a l'é già abilità.",
+	'oathauth-verify' => 'Verìfica geton dij doi fator',
+	'openstackmanager-scratchtokens' => "La lista ch'a ven a l'é na lista ëd geton da dovré na vira sola. Sti geton a apeulo mach esse dovrà na vira, e a son da dovré an emergensa. Për piasì scrivje e ten-je ant un pòst sigur. S'it perde to teléfono, sti geton a son l'ùnica manera ëd salvé tò cont. Sti geton a saran mai pi torna mostà.",
+	'oathauth-reset' => 'Anula le Credensiaj dij Doi Fator',
+	'oathauth-donotdeleteoldsecret' => "Për piasì scansela pa toe veje credensiaj fin ch'it l'abie pa validà da bin toe neuve credensiaj.",
+	'oathauth-token' => 'Marca-pòst',
+	'oathauth-currenttoken' => 'Geton Corent',
+	'oathauth-newtoken' => 'Geton Neuv',
+	'oathauth-disable' => "Disabìlita l'Autenticassion dij Doi Fator",
+	'oathauth-displayoathinfo' => "Opsion dl'Autenticassion dij Doi Fator",
+	'oathauth-validatedoath' => "Validà le credensiaj dij doi fator. L'autenticassion dij doi fator a sarà adess rinforsà.",
+	'oathauth-backtodisplay' => "André a j'opsion dij doi fator.",
+	'oathauth-failedtovalidateoauth' => 'Falì a validé le credensiaj a doi fator',
+	'oathauth-reattemptreset' => "Tenta torna l'anulament dle credensiaj dij doi fator.",
+	'oathauth-reattemptenable' => "Tenta torna d'abilité l'autenticassion dij doi fator.",
+	'oathauth-disabledoath' => "Disabìlita l'autenticassion dij doi fator.",
+	'oathauth-failedtodisableoauth' => "Falì a disabilité l'autenticassion a doi fator.",
+	'oathauth-reattemptdisable' => "Tenta torna ëd disabilité l'autenticassion dij doi fator.",
+	'oathauth-failedtoresetoath' => 'Falì a anulé le credensiaj a doi fator',
+	'oathauth-notloggedin' => 'A venta rintré ant ël sistema',
+	'oathauth-mustbeloggedin' => "A dev esse intrà ant ël sistema për fé st'assion.",
+);
+
 /** Romanian (română)
  * @author Firilacroco
  * @author Stelistcristi
@@ -519,6 +552,9 @@ $messages['ro'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'oathauth-token' => 'ටෝකනය',
+	'oathauth-currenttoken' => 'වත්මන් ටෝකනය',
+	'oathauth-newtoken' => 'නව ටෝකනය',
 	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
 	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
 );
