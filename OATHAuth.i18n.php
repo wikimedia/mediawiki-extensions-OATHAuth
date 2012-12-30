@@ -552,9 +552,19 @@ $messages['ro'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'specialpages-group-oath' => 'ද්විසාධක සහතික කිරීම',
+	'oathauth-account' => 'ද්විසාධක ගිණුමේ නාමය:',
+	'oathauth-secret' => 'ද්විසාධක රහස් යතුර:',
+	'oathauth-enable' => 'ද්විසාධක සහතික කිරීම සක්‍රිය කරන්න',
+	'oathauth-verify' => 'ද්විසාධක ටෝකනය සත්‍යාපනය කරන්න',
+	'oathauth-reset' => 'ද්විසාධක සාක්ෂි පත්‍ර යළි සකසන්න',
 	'oathauth-token' => 'ටෝකනය',
 	'oathauth-currenttoken' => 'වත්මන් ටෝකනය',
 	'oathauth-newtoken' => 'නව ටෝකනය',
+	'oathauth-disable' => 'ද්විසාධක සහතික කිරීම අක්‍රිය කරන්න',
+	'oathauth-displayoathinfo' => 'ද්විසාධක සහතික කිරීම් විකල්පයන්',
+	'oathauth-backtodisplay' => 'ද්වීසාධක විකල්පයන් වෙත නැවතත්.',
+	'oathauth-disabledoath' => 'ද්විසාධක සහතික කිරීම අක්‍රිය කර ඇත.',
 	'oathauth-notloggedin' => 'ප්‍රවිෂ්ට වී සිටීම අවශ්‍යයි',
 	'oathauth-mustbeloggedin' => 'මෙම ක්‍රියාව ඉටු කිරීම සඳහා ඔබ ප්‍රවිෂ්ට වී සිටිය යුතුයි.',
 );
