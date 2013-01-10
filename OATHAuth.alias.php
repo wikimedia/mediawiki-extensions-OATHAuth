@@ -32,6 +32,12 @@ $specialPageAliases['it'] = array(
 	'OATHAuthDisplay' => array( 'Mostra_Info_Token_OATH' ),
 );
 
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'OATHAuth' => array( 'OATH인증' ),
+	'OATHAuthDisplay' => array( '토큰_OATH_정보_보기' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'OATHAuth' => array( 'OATHЗаверка' ),
