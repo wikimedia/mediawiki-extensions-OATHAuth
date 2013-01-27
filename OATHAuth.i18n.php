@@ -653,6 +653,7 @@ $messages['ur'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'oathauth-desc' => '提供使用基于HMAC的一次性密码的身份验证支持',
 	'specialpages-group-oath' => '双因素身份验证',
 	'oathauth-account' => '双因素帐户名：',
 	'oathauth-secret' => '双因素机密密钥：',
