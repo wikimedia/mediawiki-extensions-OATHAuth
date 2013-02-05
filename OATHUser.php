@@ -39,7 +39,7 @@ class OATHUser {
 		if ( $scratchTokens ) {
 			$this->scratchTokens = $scratchTokens;
 		} else {
-			$this->regenerateScratchTokens(); // FIXME: Missing parameter
+			$this->regenerateScratchTokens( false );
 			$this->isEnabled = false;
 		}
 		if ( $scratchTokensReset ) {
