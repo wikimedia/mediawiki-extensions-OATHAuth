@@ -49,6 +49,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Raymond
  * @author Ryan Lane <rlane@wikimedia.org>
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
 	'oathauth-desc' => '{{desc}}',
@@ -78,7 +79,8 @@ Extension name, found on Special:Version',
 	'oathauth-failedtodisableoauth' => 'Plain text found Special:OATH when disabling OATH has been unsuccessful.',
 	'oathauth-reattemptdisable' => 'Link found when disabling OATH credentials has failed on Special:OATH.',
 	'oathauth-failedtoresetoath' => 'Plain text found on Special:OATH when reseting OATH has been unsuccessful.',
-	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.',
+	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.
+{{Identical|Login required}}',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 );
 
