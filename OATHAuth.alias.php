@@ -54,3 +54,8 @@ $specialPageAliases['scn'] = array(
 	'OATHAuth' => array( 'LoginOATH' ),
 	'OATHAuthDisplay' => array( 'Mostra_Info_Token_OATH' ),
 );
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'OATHAuthDisplay' => array( '显示OATH令牌信息' ),
+);
