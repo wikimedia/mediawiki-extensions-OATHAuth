@@ -52,7 +52,7 @@ $messages['en'] = array(
  * @author Shirayuki
  */
 $messages['qqq'] = array(
-	'oathauth-desc' => '{{desc}}',
+	'oathauth-desc' => '{{desc|name=OATH Auth|url=http://www.mediawiki.org/wiki/Extension:OATHAuth}}',
 	'oath' => '{{optional}}
 Extension name, found on Special:Version',
 	'specialpages-group-oath' => 'Used in the special page list',
