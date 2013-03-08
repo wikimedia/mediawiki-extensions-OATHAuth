@@ -84,6 +84,14 @@ Extension name, found on Special:Version',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 );
 
+/** Breton (brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'oathauth-token' => 'Jedouer',
+	'oathauth-newtoken' => 'Jedouer nevez',
+);
+
 /** Czech (česky)
  * @author Mormegil
  */
