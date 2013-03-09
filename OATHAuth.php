@@ -54,6 +54,7 @@ $wgHooks['ChangePasswordForm'][] = 'OATHUser::ChangePasswordForm';
 $wgHooks['TwoFactorIsEnabled'][] = 'OATHUser::TwoFactorIsEnabled';
 # Schema updates
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efOATHAuthSchemaUpdates';
+$wgHooks['GetPreferences'][] = 'OATHUser::manageOATH';
 
 /**
  * @param $updater DatabaseUpdater

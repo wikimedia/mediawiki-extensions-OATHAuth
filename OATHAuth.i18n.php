@@ -44,6 +44,8 @@ $messages['en'] = array(
 	'oathauth-failedtoresetoath' => 'Failed to reset two factor credentials.',
 	'oathauth-notloggedin' => 'Login required',
 	'oathauth-mustbeloggedin' => 'You must be logged in to perform this action.',
+	'oathauth-prefs-label' => 'Two-factor authentication:',
+	'oathauth-prefs-manage' => 'Manage two-factor authentication',
 );
 
 /** Message documentation (Message documentation)
@@ -82,6 +84,8 @@ Extension name, found on Special:Version',
 	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.
 {{Identical|Login required}}',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
+	'oathauth-prefs-label' => 'Plain text label seen on Special:Preferences',
+	'oathauth-prefs-manage' => 'Link to Special:OATH from Special:Preferences',
 );
 
 /** Breton (brezhoneg)

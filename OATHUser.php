@@ -346,4 +346,20 @@ class OATHUser {
 		}
 	}
 
+	public static function manageOATH( User $user, array &$preferences ) {
+		$link = Linker::link( SpecialPage::getTitleFor( 'OATH' ),
+			wfMessage( 'oathauth-prefs-manage' )->escaped(),
+			array(),
+			array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() )
+		);
+
+		$preferences['oath'] = array(
+			'type' => 'info',
+			'raw' => 'true',
+			'default' => $link,
+			'label-message' => 'oathauth-prefs-label',
+			'section' => 'personal/info',
+		);
+		return true;
+	}
 }
