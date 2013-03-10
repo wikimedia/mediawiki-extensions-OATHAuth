@@ -57,7 +57,8 @@ $messages['qqq'] = array(
 	'oathauth-desc' => '{{desc|name=OATH Auth|url=http://www.mediawiki.org/wiki/Extension:OATHAuth}}',
 	'oath' => '{{optional}}
 Extension name, found on Special:Version',
-	'specialpages-group-oath' => 'Used in the special page list',
+	'specialpages-group-oath' => 'Used in the special page list.
+{{Identical|Two factor authentication}}',
 	'oathauth-account' => 'Plain text associated with two factor authentication on this wiki (username@<wiki name>) found on Special:OATH.',
 	'oathauth-secret' => 'Plain text found on Special:OATH while enabling OATH',
 	'oathauth-enable' => 'Page title on Special:OATH, when enabling OATH.',
@@ -84,7 +85,8 @@ Extension name, found on Special:Version',
 	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.
 {{Identical|Login required}}',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
-	'oathauth-prefs-label' => 'Plain text label seen on Special:Preferences',
+	'oathauth-prefs-label' => 'Plain text label seen on [[Special:Preferences]].
+{{Identical|Two factor authentication}}',
 	'oathauth-prefs-manage' => 'Link to Special:OATH from Special:Preferences',
 );
 
@@ -161,6 +163,8 @@ $messages['de'] = array(
 	'oathauth-failedtoresetoath' => 'Die Zwei-Faktor-Anmeldeinformationen konnten nicht zurückgesetzt werden.',
 	'oathauth-notloggedin' => 'Anmeldung erforderlich',
 	'oathauth-mustbeloggedin' => 'Du musst angemeldet sein, um diese Aktion durchführen zu können.',
+	'oathauth-prefs-label' => 'Zwei-Faktor-Authentifizierung:',
+	'oathauth-prefs-manage' => 'Zwei-Faktor-Authentifizierung verwalten',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -307,6 +311,8 @@ $messages['gl'] = array(
 	'oathauth-failedtoresetoath' => 'Erro ao restablecer as credenciais de dous factores.',
 	'oathauth-notloggedin' => 'Cómpre acceder ao sistema',
 	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
+	'oathauth-prefs-label' => 'Autenticación de dous factores:',
+	'oathauth-prefs-manage' => 'Administrar a autenticación de dous factores',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -432,6 +438,7 @@ $messages['ja'] = array(
 	'oathauth-failedtoresetoath' => '二要素信用情報のリセットに失敗しました。',
 	'oathauth-notloggedin' => 'ログインが必要',
 	'oathauth-mustbeloggedin' => 'この操作を行うにはログインする必要があります。',
+	'oathauth-prefs-label' => '二要素認証:',
 );
 
 /** Georgian (ქართული)
@@ -505,6 +512,8 @@ $messages['mk'] = array(
 	'oathauth-failedtoresetoath' => 'Не успеав одново да го зададам двофакторското полномоштво.',
 	'oathauth-notloggedin' => 'Мора да се најавите',
 	'oathauth-mustbeloggedin' => 'Мора да сте најавени за да ја извршите оваа постапка.',
+	'oathauth-prefs-label' => 'Двофакторска заверка:',
+	'oathauth-prefs-manage' => 'Раководење со двофакторската заверка',
 );
 
 /** Dutch (Nederlands)
