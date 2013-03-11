@@ -95,6 +95,7 @@ Extension name, found on Special:Version',
  */
 $messages['br'] = array(
 	'oathauth-token' => 'Jedouer',
+	'oathauth-currenttoken' => 'Jedouer red',
 	'oathauth-newtoken' => 'Jedouer nevez',
 );
 
@@ -248,6 +249,8 @@ $messages['fr'] = array(
 	'oathauth-failedtoresetoath' => 'Échec à la réinitialisation des identités à deux facteurs.',
 	'oathauth-notloggedin' => 'Connexion nécessaire',
 	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
+	'oathauth-prefs-label' => 'Authentification à deux facteurs:',
+	'oathauth-prefs-manage' => 'Gérer l’authentification à deux facteurs',
 );
 
 /** Franco-Provençal (arpetan)
