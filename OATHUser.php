@@ -347,19 +347,33 @@ class OATHUser {
 	}
 
 	public static function manageOATH( User $user, array &$preferences ) {
-		$link = Linker::link( SpecialPage::getTitleFor( 'OATH' ),
-			wfMessage( 'oathauth-prefs-manage' )->escaped(),
-			array(),
-			array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() )
-		);
+		$oathUser = OATHUser::newFromUser( $user );
 
-		$preferences['oath'] = array(
-			'type' => 'info',
-			'raw' => 'true',
-			'default' => $link,
-			'label-message' => 'oathauth-prefs-label',
-			'section' => 'personal/info',
-		);
+		$title = SpecialPage::getTitleFor( 'OATH' );
+		if ( $oathUser->isEnabled() && $oathUser->isValidated() ) {
+			$preferences['oath-disable'] = array(
+				'type' => 'info',
+				'raw' => 'true',
+				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-disable' ), array(), array( 'action' => 'disable', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
+				'label-message' => 'oathauth-prefs-label',
+				'section' => 'personal/info',
+			);
+			$preferences['oath-reset'] = array(
+				'type' => 'info',
+				'raw' => 'true',
+				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-reset' ), array(), array( 'action' => 'reset', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
+				'section' => 'personal/info',
+			);
+		} else {
+			$preferences['oath-enable'] = array(
+				'type' => 'info',
+				'raw' => 'true',
+				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-enable' ), array(), array( 'action' => 'enable', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
+				'label-message' => 'oathauth-prefs-label',
+				'section' => 'personal/info',
+			);
+		}
 		return true;
 	}
+
 }

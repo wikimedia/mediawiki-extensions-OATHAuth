@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'oathauth-disable' => 'Disable Two Factor Authentication',
 	'oathauth-displayoathinfo' => 'Two Factor Authentication Options',
 	'oathauth-validatedoath' => 'Validated two factor credentials. Two factor authentication will now be enforced.',
-	'oathauth-backtodisplay' => 'Back to two factor options.',
+	'oathauth-backtopreferences' => 'Back to preferences.',
 	'oathauth-failedtovalidateoauth' => 'Failed to validate two factor credentials',
 	'oathauth-reattemptreset' => 'Reattempt reset of two factor credentials.',
 	'oathauth-reattemptenable' => 'Reattempt enabling of two factor authentication.',
@@ -45,7 +45,6 @@ $messages['en'] = array(
 	'oathauth-notloggedin' => 'Login required',
 	'oathauth-mustbeloggedin' => 'You must be logged in to perform this action.',
 	'oathauth-prefs-label' => 'Two-factor authentication:',
-	'oathauth-prefs-manage' => 'Manage two-factor authentication',
 );
 
 /** Message documentation (Message documentation)
@@ -74,7 +73,7 @@ Extension name, found on Special:Version',
 	'oathauth-disable' => 'Page title on Special:OATH while disabling OATH.',
 	'oathauth-displayoathinfo' => 'Page title on Special:OATH when no parameters are passed.',
 	'oathauth-validatedoath' => 'Plain text found on Special:OATH after a token has been validated.',
-	'oathauth-backtodisplay' => 'Link found on Special:OATH after any action has completed.',
+	'oathauth-backtopreferences' => 'Link found on Special:OATH after any action has completed.',
 	'oathauth-failedtovalidateoauth' => 'Plain text found on Special:OATH when validation of a token has failed.',
 	'oathauth-reattemptreset' => 'Link found when resetting OATH credentials has failed on Special:OATH.',
 	'oathauth-reattemptenable' => 'Link found when enabling OATH credentials has failed on Special:OATH.',
@@ -85,9 +84,7 @@ Extension name, found on Special:Version',
 	'oathauth-notloggedin' => 'Page title seen on Special:OATH when a user is not logged in.
 {{Identical|Login required}}',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
-	'oathauth-prefs-label' => 'Plain text label seen on [[Special:Preferences]].
-{{Identical|Two factor authentication}}',
-	'oathauth-prefs-manage' => 'Link to Special:OATH from Special:Preferences',
+	'oathauth-prefs-label' => 'Plain text label seen on Special:Preferences',
 );
 
 /** Breton (brezhoneg)

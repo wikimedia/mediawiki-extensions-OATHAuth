@@ -7,7 +7,7 @@
  * @ingroup Extensions
  */
 
-class SpecialOATH extends SpecialPage {
+class SpecialOATH extends UnlistedSpecialPage {
 
 	var $OATHUser;
 
@@ -33,8 +33,6 @@ class SpecialOATH extends SpecialPage {
 			$this->reset();
 		} elseif ( $action == "disable" ) {
 			$this->disable();
-		} else {
-			$this->displayInfo();
 		}
 	}
 
@@ -44,6 +42,7 @@ class SpecialOATH extends SpecialPage {
 	function enable() {
 		$this->setHeaders();
 		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-enable' ) );
+		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		if ( !$this->OATHUser->isEnabled() ) {
 			$result = $this->OATHUser->enable();
@@ -65,6 +64,11 @@ class SpecialOATH extends SpecialPage {
 			'type' => 'hidden',
 			'default' => 'enable',
 			'name' => 'mode',
+		);
+		$info['returnto'] = array(
+			'type' => 'hidden',
+			'default' => $returnto,
+			'name' => 'returnto',
 		);
 		$info['action'] = array(
 			'type' => 'hidden',
@@ -114,6 +118,7 @@ class SpecialOATH extends SpecialPage {
 		$this->setHeaders();
 		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-enable' ) );
 		$mode = $this->getRequest()->getVal( 'mode' );
+		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		$info['token'] = array(
 			'type' => 'text',
@@ -125,6 +130,11 @@ class SpecialOATH extends SpecialPage {
 			'type' => 'hidden',
 			'default' => $mode,
 			'name' => 'mode',
+		);
+		$info['returnto'] = array(
+			'type' => 'hidden',
+			'default' => $returnto,
+			'name' => 'returnto',
 		);
 		$info['action'] = array(
 			'type' => 'hidden',
@@ -146,11 +156,17 @@ class SpecialOATH extends SpecialPage {
 	function reset() {
 		$this->setHeaders();
 		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-reset' ) );
+		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		$info['token'] = array(
 			'type' => 'text',
 			'label-message' => 'oathauth-currenttoken',
 			'name' => 'token',
+		);
+		$info['returnto'] = array(
+			'type' => 'hidden',
+			'default' => $returnto,
+			'name' => 'returnto',
 		);
 		$info['action'] = array(
 			'type' => 'hidden',
@@ -171,11 +187,17 @@ class SpecialOATH extends SpecialPage {
 	function disable() {
 		$this->setHeaders();
 		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-disable' ) );
+		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		$info['token'] = array(
 			'type' => 'text',
 			'label-message' => 'oathauth-token',
 			'name' => 'token',
+		);
+		$info['returnto'] = array(
+			'type' => 'hidden',
+			'default' => $returnto,
+			'name' => 'returnto',
 		);
 		$info['action'] = array(
 			'type' => 'hidden',
@@ -188,23 +210,6 @@ class SpecialOATH extends SpecialPage {
 		$form->setSubmitCallback( array( $this, 'tryDisableSubmit' ) );
 		$form->show();
 		return true;
-	}
-
-	/**
-	 * @return void
-	 */
-	function displayInfo() {
-		$this->setHeaders();
-		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-displayoathinfo' ) );
-
-		$resources = array();
-		if ( $this->OATHUser->isEnabled() && $this->OATHUser->isValidated() ) {
-			array_push( $resources, Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-disable' ), array(), array( 'action' => 'disable' ) ) );
-			array_push( $resources, Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reset' ), array(), array( 'action' => 'reset' ) ) );
-		} else {
-			array_push( $resources, Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-enable' ), array(), array( 'action' => 'enable' ) ) );
-		}
-		$this->getOutput()->addHTML( $this->createResourceList( $resources ) );
 	}
 
 	/**
@@ -243,15 +248,19 @@ class SpecialOATH extends SpecialPage {
 		}
 		if ( $result ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-validatedoath' );
-			$out = Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-backtodisplay' ) );
+			if ( $formData['returnto'] ) {
+				$out = '<br />';
+				$title = Title::newFromText( $formData['returnto'] );
+				$out = Linker::link( $title, wfMsgHtml( 'oathauth-backtopreferences' ) );
+			}
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
 			$out = '<br />';
 
 			if ( $reset ) {
-				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'enable', 'mode' => 'reset' ) );
+				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'enable', 'mode' => 'reset', 'returnto' => $formData['returnto'] ) );
 			} else {
-				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptenable' ), array(), array( 'action' => 'enable' ) );
+				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptenable' ), array(), array( 'action' => 'enable', 'returnto' => $formData['returnto'] ) );
 			}
 		}
 		$this->getOutput()->addHTML( $out );
@@ -276,14 +285,17 @@ class SpecialOATH extends SpecialPage {
 		$result = $this->OATHUser->disable();
 		if ( $result ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-disabledoath' );
-			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-backtodisplay' ) );
-			$this->getOutput()->addHTML( $out );
+			if ( $formData['returnto'] ) {
+				$out = '<br />';
+				$title = Title::newFromText( $formData['returnto'] );
+				$out .= Linker::link( $title, wfMsgHtml( 'oathauth-backtopreferences' ) );
+				$this->getOutput()->addHTML( $out );
+			}
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtodisableoauth' );
 			$out = '<br />';
 
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptdisable' ), array( 'action' => 'disable' ) );
+			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptdisable' ), array( 'action' => 'disable', 'returnto' => $formData['returnto'] ) );
 			$this->getOutput()->addHTML( $out );
 		}
 		return true;
@@ -299,7 +311,7 @@ class SpecialOATH extends SpecialPage {
 		if ( !$verify ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
 			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset' ) );
+			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset', 'returnto' => $formData['returnto'] ) );
 			$this->getOutput()->addHTML( $out );
 			return true;
 		}
@@ -316,13 +328,18 @@ class SpecialOATH extends SpecialPage {
 			'default' => 'reset',
 			'name' => 'mode',
 		);
+		$info['returnto'] = array(
+			'type' => 'hidden',
+			'default' => $formData['returnto'],
+			'name' => 'returnto',
+		);
 		$info['action'] = array(
 			'type' => 'hidden',
 			'default' => 'validate',
 			'name' => 'action',
 		);
 		$myContext = new DerivativeContext( $this->getContext() );
-		$myRequest = new DerivativeRequest( $this->getRequest(), array( 'action' => 'validate', 'mode' => 'reset', 'token' => '' ), false );
+		$myRequest = new DerivativeRequest( $this->getRequest(), array( 'action' => 'validate', 'mode' => 'reset', 'token' => '', 'returnto' => $formData['returnto'] ), false );
 		$myContext->setRequest( $myRequest );
 		$form = new HTMLForm( $info, $myContext );
 		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
@@ -336,7 +353,7 @@ class SpecialOATH extends SpecialPage {
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtoresetoath' );
 			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset' ) );
+			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset', 'returnto' => $formData['returnto'] ) );
 			$this->getOutput()->addHTML( $out );
 		}
 		return true;
