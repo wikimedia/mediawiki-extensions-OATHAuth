@@ -73,7 +73,7 @@ Extension name, found on Special:Version',
 	'oathauth-disable' => 'Page title on Special:OATH while disabling OATH.',
 	'oathauth-displayoathinfo' => 'Page title on Special:OATH when no parameters are passed.',
 	'oathauth-validatedoath' => 'Plain text found on Special:OATH after a token has been validated.',
-	'oathauth-backtopreferences' => 'Link found on Special:OATH after any action has completed.',
+	'oathauth-backtopreferences' => 'Used as link text. Link found on Special:OATH after any action has completed.',
 	'oathauth-failedtovalidateoauth' => 'Plain text found on Special:OATH when validation of a token has failed.',
 	'oathauth-reattemptreset' => 'Link found when resetting OATH credentials has failed on Special:OATH.',
 	'oathauth-reattemptenable' => 'Link found when enabling OATH credentials has failed on Special:OATH.',
@@ -151,7 +151,7 @@ $messages['de'] = array(
 	'oathauth-disable' => 'Die Zwei-Faktor-Authentifizierung deaktivieren',
 	'oathauth-displayoathinfo' => 'Optionen zur Zwei-Faktor-Authentifizierung',
 	'oathauth-validatedoath' => 'Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt durchgesetzt.',
-	'oathauth-backtodisplay' => 'Zurück zu den Optionen zur Zwei-Faktor-Authentifizierung',
+	'oathauth-backtopreferences' => 'Zurück zu den Einstellungen.',
 	'oathauth-failedtovalidateoauth' => 'Die Zwei-Faktor-Anmeldeinformationen konnten nicht bestätigt werden.',
 	'oathauth-reattemptreset' => 'Das Zurücksetzen der Zwei-Faktor-Anmeldeinformationen wird nun erneut versucht.',
 	'oathauth-reattemptenable' => 'Das Aktivieren der Zwei-Faktor-Anmeldeinformationen wird nun erneut versucht.',
@@ -162,7 +162,6 @@ $messages['de'] = array(
 	'oathauth-notloggedin' => 'Anmeldung erforderlich',
 	'oathauth-mustbeloggedin' => 'Du musst angemeldet sein, um diese Aktion durchführen zu können.',
 	'oathauth-prefs-label' => 'Zwei-Faktor-Authentifizierung:',
-	'oathauth-prefs-manage' => 'Zwei-Faktor-Authentifizierung verwalten',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -236,7 +235,6 @@ $messages['fr'] = array(
 	'oathauth-disable' => "Désactiver l'authentification à deux facteurs",
 	'oathauth-displayoathinfo' => "Options de l'authentification à deux facteurs",
 	'oathauth-validatedoath' => "Identifications à deux facteurs validées. L'authentification à deux facteurs sera désormais appliquée.",
-	'oathauth-backtodisplay' => 'Retour aux options de deux facteurs.',
 	'oathauth-failedtovalidateoauth' => 'Échec de validation des identifications à deux facteurs',
 	'oathauth-reattemptreset' => 'Nouvel essai de réinitialisation des identifications à deux facteurs.',
 	'oathauth-reattemptenable' => "Nouvelle tentative pour activer l'authentification à deux facteurs.",
@@ -247,7 +245,6 @@ $messages['fr'] = array(
 	'oathauth-notloggedin' => 'Connexion nécessaire',
 	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
 	'oathauth-prefs-label' => 'Authentification à deux facteurs:',
-	'oathauth-prefs-manage' => 'Gérer l’authentification à deux facteurs',
 );
 
 /** Franco-Provençal (arpetan)
@@ -301,7 +298,6 @@ $messages['gl'] = array(
 	'oathauth-disable' => 'Desactivar a autenticación de dous factores',
 	'oathauth-displayoathinfo' => 'Opcións da autenticación de dous factores',
 	'oathauth-validatedoath' => 'Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.',
-	'oathauth-backtodisplay' => 'Volver ás opcións de dous factores.',
 	'oathauth-failedtovalidateoauth' => 'Erro ao validar as credenciais de dous factores',
 	'oathauth-reattemptreset' => 'Reintentar o restablecemento das credenciais de dous factores.',
 	'oathauth-reattemptenable' => 'Reintentar a activación da autenticación de dous factores.',
@@ -312,7 +308,6 @@ $messages['gl'] = array(
 	'oathauth-notloggedin' => 'Cómpre acceder ao sistema',
 	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
 	'oathauth-prefs-label' => 'Autenticación de dous factores:',
-	'oathauth-prefs-manage' => 'Administrar a autenticación de dous factores',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -428,7 +423,7 @@ $messages['ja'] = array(
 	'oathauth-disable' => '二要素認証の無効化',
 	'oathauth-displayoathinfo' => '二要素認証のオプション',
 	'oathauth-validatedoath' => '二要素信用情報を検証しました。二要素認証を実行します。',
-	'oathauth-backtodisplay' => '二要素のオプションに戻る。',
+	'oathauth-backtopreferences' => '個人設定に戻る。',
 	'oathauth-failedtovalidateoauth' => '二要素信用情報の検証に失敗しました。',
 	'oathauth-reattemptreset' => '二要素信用情報のリセットを再試行します。',
 	'oathauth-reattemptenable' => '二要素認証の有効化を再試行します。',
@@ -502,7 +497,7 @@ $messages['mk'] = array(
 	'oathauth-disable' => 'Оневозможување на двофакторска заверка на веродостојноста',
 	'oathauth-displayoathinfo' => 'Поставки за двофакторската заверка',
 	'oathauth-validatedoath' => 'Двофакторското полномоштво е заверено. Сега стапува на сила.',
-	'oathauth-backtodisplay' => 'Назад на поставките.',
+	'oathauth-backtopreferences' => 'Назад на поставките.',
 	'oathauth-failedtovalidateoauth' => 'Не успеав да го заверам двофакторското полномоштво',
 	'oathauth-reattemptreset' => 'Обиди се пак да го зададеш новото полномоштво.',
 	'oathauth-reattemptenable' => 'Обиди се пак да ја овозможиш двофакторската заверка.',
@@ -513,7 +508,6 @@ $messages['mk'] = array(
 	'oathauth-notloggedin' => 'Мора да се најавите',
 	'oathauth-mustbeloggedin' => 'Мора да сте најавени за да ја извршите оваа постапка.',
 	'oathauth-prefs-label' => 'Двофакторска заверка:',
-	'oathauth-prefs-manage' => 'Раководење со двофакторската заверка',
 );
 
 /** Dutch (Nederlands)
@@ -538,7 +532,7 @@ $messages['nl'] = array(
 	'oathauth-disable' => 'Twee-factor authenticatie uitschakelen',
 	'oathauth-displayoathinfo' => 'Instellingen voor twee-factor authenticatie',
 	'oathauth-validatedoath' => 'De gebruikersgegevens voor twee-factor zijn gevalideerd. Twee-factor authenticatie is nu verplicht.',
-	'oathauth-backtodisplay' => 'Terug naar instellingen voor twee-factor authenticatie.',
+	'oathauth-backtopreferences' => 'Terug naar voorkeuren.',
 	'oathauth-failedtovalidateoauth' => 'Het valideren van de gebruikersgegevens voor twee-factor is mislukt.',
 	'oathauth-reattemptreset' => 'Opnieuw proberen om twee-factorgegevens in te stellen',
 	'oathauth-reattemptenable' => 'Opnieuw proberen om twee-factor authenticatie in te stellen.',
@@ -548,6 +542,7 @@ $messages['nl'] = array(
 	'oathauth-failedtoresetoath' => 'Het opnieuw instellen van de gebruikersgegevens voor twee-factor is mislukt.',
 	'oathauth-notloggedin' => 'Aanmelden verplicht',
 	'oathauth-mustbeloggedin' => 'U moet aangemeld zijn om deze handeling uit te voeren.',
+	'oathauth-prefs-label' => 'Twee-factor authenticatie:',
 );
 
 /** Piedmontese (Piemontèis)
