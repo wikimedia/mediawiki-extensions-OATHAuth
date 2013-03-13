@@ -298,6 +298,7 @@ $messages['gl'] = array(
 	'oathauth-disable' => 'Desactivar a autenticación de dous factores',
 	'oathauth-displayoathinfo' => 'Opcións da autenticación de dous factores',
 	'oathauth-validatedoath' => 'Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.',
+	'oathauth-backtopreferences' => 'Volver ás preferencias.',
 	'oathauth-failedtovalidateoauth' => 'Erro ao validar as credenciais de dous factores',
 	'oathauth-reattemptreset' => 'Reintentar o restablecemento das credenciais de dous factores.',
 	'oathauth-reattemptenable' => 'Reintentar a activación da autenticación de dous factores.',
