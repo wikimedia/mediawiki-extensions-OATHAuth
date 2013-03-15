@@ -62,6 +62,7 @@ $specialPageAliases['scn'] = array(
 
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
+	'OATHAuth' => array( 'OATH验证' ),
 	'OATHAuthDisplay' => array( '显示OATH令牌信息' ),
 );
 
