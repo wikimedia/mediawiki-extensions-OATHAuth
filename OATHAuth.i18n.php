@@ -216,6 +216,7 @@ $messages['et'] = array(
 /** French (français)
  * @author Crochet.david
  * @author Gomoko
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'oathauth-desc' => "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
@@ -235,6 +236,7 @@ $messages['fr'] = array(
 	'oathauth-disable' => "Désactiver l'authentification à deux facteurs",
 	'oathauth-displayoathinfo' => "Options de l'authentification à deux facteurs",
 	'oathauth-validatedoath' => "Identifications à deux facteurs validées. L'authentification à deux facteurs sera désormais appliquée.",
+	'oathauth-backtopreferences' => 'Retourner aux préférences.',
 	'oathauth-failedtovalidateoauth' => 'Échec de validation des identifications à deux facteurs',
 	'oathauth-reattemptreset' => 'Nouvel essai de réinitialisation des identifications à deux facteurs.',
 	'oathauth-reattemptenable' => "Nouvelle tentative pour activer l'authentification à deux facteurs.",
@@ -332,7 +334,7 @@ $messages['hsb'] = array(
 	'oathauth-disable' => 'Dwufaktorowu awtentifikaciju znjemóžnić',
 	'oathauth-displayoathinfo' => 'Nastajenja dwufaktoroweje awtentifikacije',
 	'oathauth-validatedoath' => 'Dwufaktorowe přizjewjenske informacije su so wobkrućili. Dwufaktorowa awtentifikacija budźe so nětko wukonjeć.',
-	'oathauth-backtodisplay' => 'Wróćo k nastajenjam dwufaktoroweje awtentifikacije.',
+	'oathauth-backtopreferences' => 'Wróćo k nastajenjam',
 	'oathauth-failedtovalidateoauth' => 'Dwufaktorowe přizjewjenske informacije njedachu so wobkrućić',
 	'oathauth-reattemptreset' => 'Wróćostajenje dwufaktorowych přizjewjenskich informacijow hišće raz spytać.',
 	'oathauth-reattemptenable' => 'Zmóžnjenje dwufaktoroweje awtentifikacije hišće raz spytać.',
@@ -342,6 +344,7 @@ $messages['hsb'] = array(
 	'oathauth-failedtoresetoath' => 'Dwufaktorowe přizjewjenske informacije njedachu so wróćo stajić',
 	'oathauth-notloggedin' => 'Přizjewjenje trěbne',
 	'oathauth-mustbeloggedin' => 'Dyrbiš přizjewjeny być, zo by tutu akciju wuwjedł.',
+	'oathauth-prefs-label' => 'Dwufaktorowa awtentifikacija:',
 );
 
 /** Interlingua (interlingua)
