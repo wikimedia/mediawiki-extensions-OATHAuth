@@ -308,25 +308,56 @@ class OATHUser {
 	}
 
 	/**
-	 * @param $username string
+	 * @param $user User
 	 * @param $password string
-	 * @param $result bool
+	 * @param $newpassword string
+	 * @param &$errorMsg string
 	 * @return bool
 	 */
-	static function ChainAuth( $username, $password, &$result ) {
-		global $wgRequest;
-
-		$token = $wgRequest->getText( 'wpOATHToken' );
-		$user = OATHUser::newFromUsername( $username );
-		if ( $user && $user->isEnabled() && $user->isValidated() ) {
-			$result = $user->verifyToken( $token );
-		}
-
+	static function AbortChangePassword( $user, $password, $newpassword, &$errorMsg ) {
+		$result = self::authenticate( $user );
 		if ( $result ) {
 			return true;
 		} else {
+			$errorMsg = 'oathauth-abortlogin';
 			return false;
 		}
+	}
+
+	/**
+	 * @param $user User
+	 * @param $password string
+	 * @param &$abort int
+	 * @param &$errorMsg string
+	 * @return bool
+	 */
+	static function AbortLogin( $user, $password, &$abort, &$errorMsg ) {
+		$result = self::authenticate( $user );
+		if ( $result ) {
+			return true;
+		} else {
+			$abort = LoginForm::ABORTED;
+			$errorMsg = 'oathauth-abortlogin';
+			return false;
+		}
+	}
+
+	/**
+	 * @param $user User
+	 * @return bool
+	 */
+	static function authenticate( $user ) {
+		global $wgRequest;
+		$token = $wgRequest->getText( 'wpOATHToken' );
+		$oathuser = OATHUser::newFromUser( $user );
+		# Though it's weird to default to true, we only want to deny
+		# users who have two-factor enabled and have validated their
+		# token.
+		$result = true;
+		if ( $oathuser && $oathuser->isEnabled() && $oathuser->isValidated() ) {
+			$result = $oathuser->verifyToken( $token );
+		}
+		return $result;
 	}
 
 	static function TwoFactorIsEnabled( &$isEnabled ) {

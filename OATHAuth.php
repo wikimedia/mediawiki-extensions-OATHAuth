@@ -48,7 +48,8 @@ $wgResourceModules['ext.oathauth'] = array(
 	'remoteExtPath' => 'OATHAuth',
 );
 
-$wgHooks['ChainAuth'][] = 'OATHUser::ChainAuth';
+$wgHooks['AbortChangePassword'][] = 'OATHUser::AbortChangePassword';
+$wgHooks['AbortLogin'][] = 'OATHUser::AbortLogin';
 $wgHooks['UserLoginForm'][] = 'OATHUser::ModifyUITemplate';
 $wgHooks['ChangePasswordForm'][] = 'OATHUser::ChangePasswordForm';
 $wgHooks['TwoFactorIsEnabled'][] = 'OATHUser::TwoFactorIsEnabled';

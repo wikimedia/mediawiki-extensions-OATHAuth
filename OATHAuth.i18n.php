@@ -45,6 +45,7 @@ $messages['en'] = array(
 	'oathauth-notloggedin' => 'Login required',
 	'oathauth-mustbeloggedin' => 'You must be logged in to perform this action.',
 	'oathauth-prefs-label' => 'Two-factor authentication:',
+	'oathauth-abortlogin' => 'The two-factor authentication token provided was invalid.',
 );
 
 /** Message documentation (Message documentation)
@@ -85,6 +86,7 @@ $messages['qqq'] = array(
 {{Identical|Login required}}',
 	'oathauth-mustbeloggedin' => 'Plain text seen on Special:OATH when a user is not logged in.',
 	'oathauth-prefs-label' => 'Plain text label seen on Special:Preferences',
+	'oathauth-abortlogin' => 'Error message shown on login and password change pages when authentication is aborted.',
 );
 
 /** Afrikaans (Afrikaans)
