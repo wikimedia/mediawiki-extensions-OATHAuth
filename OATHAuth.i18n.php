@@ -55,7 +55,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'oathauth-desc' => '{{desc|name=OATH Auth|url=http://www.mediawiki.org/wiki/Extension:OATHAuth}}',
 	'oath' => '{{optional}}
-Extension name, found on Special:Version',
+{{doc-special|OATH}}',
 	'specialpages-group-oath' => '{{doc-special-group|like=[[Special:OATH]]}}
 {{Identical|Two factor authentication}}',
 	'oathauth-account' => 'Plain text associated with two factor authentication on this wiki (username@<wiki name>) found on Special:OATH.',

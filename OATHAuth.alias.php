@@ -68,5 +68,6 @@ $specialPageAliases['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
+	'OATHAuth' => array( 'OATH驗證' ),
 	'OATHAuthDisplay' => array( '顯示OATH令牌信息' ),
 );
