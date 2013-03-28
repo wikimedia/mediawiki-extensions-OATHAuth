@@ -216,6 +216,7 @@ $messages['et'] = array(
 /** French (français)
  * @author Crochet.david
  * @author Gomoko
+ * @author Peter17
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -246,7 +247,7 @@ $messages['fr'] = array(
 	'oathauth-failedtoresetoath' => 'Échec à la réinitialisation des identités à deux facteurs.',
 	'oathauth-notloggedin' => 'Connexion nécessaire',
 	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
-	'oathauth-prefs-label' => 'Authentification à deux facteurs:',
+	'oathauth-prefs-label' => 'Authentification à deux facteurs :',
 );
 
 /** Franco-Provençal (arpetan)
