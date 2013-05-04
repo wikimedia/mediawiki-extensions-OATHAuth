@@ -87,6 +87,13 @@ $messages['qqq'] = array(
 	'oathauth-prefs-label' => 'Plain text label seen on Special:Preferences',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'oathauth-notloggedin' => 'Aanmelding is verpligtend',
+);
+
 /** Breton (brezhoneg)
  * @author Fohanno
  */
