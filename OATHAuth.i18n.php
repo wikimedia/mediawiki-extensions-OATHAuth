@@ -171,6 +171,7 @@ $messages['de'] = array(
 	'oathauth-notloggedin' => 'Anmeldung erforderlich',
 	'oathauth-mustbeloggedin' => 'Du musst angemeldet sein, um diese Aktion durchführen zu können.',
 	'oathauth-prefs-label' => 'Zwei-Faktor-Authentifizierung:',
+	'oathauth-abortlogin' => 'Der angegebene Zweifaktor-Authentifizierungstoken war ungültig.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -257,6 +258,7 @@ $messages['fr'] = array(
 	'oathauth-notloggedin' => 'Connexion nécessaire',
 	'oathauth-mustbeloggedin' => 'Vous devez être connecté pour effectuer cette action.',
 	'oathauth-prefs-label' => 'Authentification à deux facteurs :',
+	'oathauth-abortlogin' => 'Le jeton d’authentification à deux facteurs fourni n’était pas valide.',
 );
 
 /** Franco-Provençal (arpetan)
@@ -448,6 +450,7 @@ $messages['ja'] = array(
 	'oathauth-notloggedin' => 'ログインが必要',
 	'oathauth-mustbeloggedin' => 'この操作を行うにはログインする必要があります。',
 	'oathauth-prefs-label' => '二要素認証:',
+	'oathauth-abortlogin' => '指定した二要素認証トークンは無効でした。',
 );
 
 /** Georgian (ქართული)
@@ -522,6 +525,7 @@ $messages['mk'] = array(
 	'oathauth-notloggedin' => 'Мора да се најавите',
 	'oathauth-mustbeloggedin' => 'Мора да сте најавени за да ја извршите оваа постапка.',
 	'oathauth-prefs-label' => 'Двофакторска заверка:',
+	'oathauth-abortlogin' => 'Укажаниот жетон за двофакторска заверка е неважечки.',
 );
 
 /** Dutch (Nederlands)
