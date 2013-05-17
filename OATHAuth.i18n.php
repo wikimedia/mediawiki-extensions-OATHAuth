@@ -323,6 +323,7 @@ $messages['gl'] = array(
 	'oathauth-notloggedin' => 'Cómpre acceder ao sistema',
 	'oathauth-mustbeloggedin' => 'Cómpre acceder ao sistema para levar a cabo a acción.',
 	'oathauth-prefs-label' => 'Autenticación de dous factores:',
+	'oathauth-abortlogin' => 'O pase de autenticación de dous factores achegado non era válido.',
 );
 
 /** Upper Sorbian (hornjoserbsce)
