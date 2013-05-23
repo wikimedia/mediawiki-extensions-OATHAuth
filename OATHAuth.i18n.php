@@ -609,6 +609,13 @@ $messages['ro'] = array(
 	'oathauth-notloggedin' => 'Autentificare necesară',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'specialpages-group-oath' => 'Autendicazione a Doje Fattore',
+);
+
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
