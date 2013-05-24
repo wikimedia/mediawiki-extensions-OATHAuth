@@ -562,6 +562,7 @@ $messages['nl'] = array(
 	'oathauth-notloggedin' => 'Aanmelden verplicht',
 	'oathauth-mustbeloggedin' => 'U moet aangemeld zijn om deze handeling uit te voeren.',
 	'oathauth-prefs-label' => 'Twee-factor authenticatie:',
+	'oathauth-abortlogin' => 'Het opgegeven token voor twee-factorauthenticatie is ongeldig.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -614,6 +615,12 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'specialpages-group-oath' => 'Autendicazione a Doje Fattore',
+	'oathauth-secret' => 'Chiave segrete a Doje Fattore:',
+	'oathauth-enable' => "Abbilite l'Autendicazione a Doje Fattore",
+	'oathauth-token' => 'Gettone',
+	'oathauth-currenttoken' => 'Gettone de mò',
+	'oathauth-newtoken' => 'Gettone nuève',
+	'oathauth-disable' => "Disabbilite l'Autendicazione a Doje Fattore",
 );
 
 /** Sinhala (සිංහල)
