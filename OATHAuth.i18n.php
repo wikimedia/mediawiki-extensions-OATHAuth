@@ -126,6 +126,7 @@ $messages['cs'] = array(
 	'oathauth-disable' => 'Vypnutí dvoufaktorové autentizace',
 	'oathauth-displayoathinfo' => 'Nastavení dvoufaktorové autentizace',
 	'oathauth-validatedoath' => 'Dvoufaktorové přihlášení ověřeno. Odteď bude vynucována dvoufaktorová autentizace.',
+	'oathauth-backtopreferences' => 'Zpět na nastavení.',
 	'oathauth-failedtovalidateoauth' => 'Nepodařilo se ověřit dvoufaktorové přihlášení.',
 	'oathauth-reattemptreset' => 'Znovu zkusit reinicializovat dvoufaktorovou autentizaci.',
 	'oathauth-reattemptenable' => 'Znovu zkusit zapnout dvoufaktorovou autentizaci.',
@@ -136,6 +137,7 @@ $messages['cs'] = array(
 	'oathauth-notloggedin' => 'Vyžadováno přihlášení',
 	'oathauth-mustbeloggedin' => 'Pro tuto činnost musíte být přihlášeni.',
 	'oathauth-prefs-label' => 'Dvoufaktorová autentizace:',
+	'oathauth-abortlogin' => 'Poskytnutý dvoufaktorový ověřovací token byl neplatný.',
 );
 
 /** German (Deutsch)
