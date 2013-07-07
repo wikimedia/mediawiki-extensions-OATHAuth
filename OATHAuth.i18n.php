@@ -15,7 +15,7 @@ $messages = array();
  * @author Ryan Lane <rlane@wikimedia.org>
  */
 $messages['en'] = array(
-	'oathauth-desc' => 'Provides authentication support using HMAC based one time passwords',
+	'oathauth-desc' => 'Provides authentication support using HMAC based one-time passwords',
 
 	'oath' => 'OATHAuth',
 	'specialpages-group-oath' => 'Two Factor Authentication',
@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'oathauth-failedtoenableoauth' => 'Failed to enable two factor authentication.',
 	'oathauth-alreadyenabled' => 'Two factor authentication is already enabled.',
 	'oathauth-verify' => 'Verify two factor token',
-	'openstackmanager-scratchtokens' => 'The following list is a list of one time use scratch tokens. These tokens can only be used once, and are for emergency use. Please write these down and keep them in a secure location. If you lose your phone, these tokens are the only way to rescue your account. These tokens will never be shown again.',
+	'openstackmanager-scratchtokens' => 'The following list is a list of one-time use scratch tokens. These tokens can only be used once, and are for emergency use. Please write these down and keep them in a secure location. If you lose your phone, these tokens are the only way to rescue your account. These tokens will never be shown again.',
 	'oathauth-reset' => 'Reset Two Factor Credentials',
 	'oathauth-donotdeleteoldsecret' => 'Please do not delete your old credentials until you have successfully validated your new credentials.',
 	'oathauth-token' => 'Token',
