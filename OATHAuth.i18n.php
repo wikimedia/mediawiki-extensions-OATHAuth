@@ -488,6 +488,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'oathauth-token' => 'Token',
+	'oathauth-backtopreferences' => "Zréck op d'Astellungen.",
 	'oathauth-notloggedin' => 'Dir musst ageloggt sinn',
 	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
 );
