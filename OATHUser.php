@@ -286,12 +286,12 @@ class OATHUser {
 	 * @return bool
 	 */
 	static function ModifyUITemplate( &$template ) {
-		$input = '<td class="mw-label"><label for="wpOATHToken">'
+		$input = '<div><label for="wpOATHToken">'
 			. wfMsgHtml( 'oathauth-token' )
-			. '</label></td><td class="mw-input">'
+			. '</label>'
 			. Html::input( 'wpOATHToken', null, 'password', array(
 				'class' => 'loginPassword', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
-			) ) . '</td>';
+			) ) . '</div>';
 		$template->set( 'extrafields', $input );
 
 		return true;
