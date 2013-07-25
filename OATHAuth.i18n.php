@@ -68,7 +68,8 @@ $messages['qqq'] = array(
 	'openstackmanager-scratchtokens' => 'Plain text, found on Special:OATH while enabling OATH.',
 	'oathauth-reset' => 'Page title for Special:OATH, when resetting OATH.',
 	'oathauth-donotdeleteoldsecret' => 'Plain text, found on Special:OATH while resetting OATH.',
-	'oathauth-token' => 'HTMLForm label, found on Special:OATH, when verifying OATH.',
+	'oathauth-token' => 'HTMLForm label, found on [[Special:OATH]], when verifying OATH.
+{{Identical|Token}}',
 	'oathauth-currenttoken' => 'HTMLForm label, found on Special:OATH, when verifying OATH.',
 	'oathauth-newtoken' => 'HTMLForm label, found on Special:OATH, when verifying OATH.',
 	'oathauth-disable' => 'Page title on Special:OATH while disabling OATH.',
