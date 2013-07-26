@@ -289,8 +289,8 @@ class OATHUser {
 		$input = '<div><label for="wpOATHToken">'
 			. wfMsgHtml( 'oathauth-token' )
 			. '</label>'
-			. Html::input( 'wpOATHToken', null, 'password', array(
-				'class' => 'loginPassword', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
+			. Html::input( 'wpOATHToken', null, 'text', array(
+				'class' => 'loginText', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
 			) ) . '</div>';
 		$template->set( 'extrafields', $input );
 
