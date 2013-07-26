@@ -46,7 +46,7 @@ $specialPageAliases['ko'] = array(
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'OATHAuth' => array( 'OATHЗаверка' ),
-	'OATHAuthDisplay' => array( 'Прикажи_жетон_со_OATH-информации' ),
+	'OATHAuthDisplay' => array( 'Прикажи_знак_со_OATH-информации' ),
 );
 
 /** Dutch (Nederlands) */
