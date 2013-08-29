@@ -475,6 +475,18 @@ $messages['ka'] = array(
 	'oathauth-mustbeloggedin' => 'ამ მოქმედების შესასრულებლად, თქვენ უნდა შეხვიდეთ სისტემაში.',
 );
 
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'oathauth-token' => '토큰',
+	'oathauth-currenttoken' => '현재 토큰',
+	'oathauth-newtoken' => '새 토큰',
+	'oathauth-backtopreferences' => '사용자 환경 설정으로 돌아갑니다.',
+	'oathauth-notloggedin' => '로그인 필요',
+	'oathauth-mustbeloggedin' => '이 행동을 수행하려면 로그인해야 합니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
