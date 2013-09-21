@@ -38,6 +38,9 @@ $wgAutoloadClasses['SpecialOATH'] = $dir . 'special/SpecialOATH.php';
 $wgSpecialPages['OATH'] = 'SpecialOATH';
 $wgSpecialPageGroups['OATH'] = 'oath';
 
+$wgRedactedFunctionArguments['OATHUser::AbortChangePassword'] = array( 1, 2);
+$wgRedactedFunctionArguments['OATHUser::AbortLogin'] = 1;
+
 $wgResourceModules['ext.oathauth'] = array(
 	'scripts' => array(
 		'modules/jquery.qrcode.js',
