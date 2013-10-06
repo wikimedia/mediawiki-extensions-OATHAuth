@@ -793,6 +793,7 @@ $messages['ur'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Hzy980512
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -813,6 +814,7 @@ $messages['zh-hans'] = array(
 	'oathauth-displayoathinfo' => '双因素身份验证选项',
 	'oathauth-notloggedin' => '需要登入',
 	'oathauth-mustbeloggedin' => '您必须登录才能执行此操作。',
+	'oathauth-prefs-label' => '双重验证：',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
