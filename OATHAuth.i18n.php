@@ -515,6 +515,7 @@ $messages['lb'] = array(
 	'oathauth-backtopreferences' => "Zréck op d'Astellungen.",
 	'oathauth-notloggedin' => 'Dir musst ageloggt sinn',
 	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
+	'oathauth-prefs-label' => 'Authentifikatioun mat zwee Elementer:',
 );
 
 /** Macedonian (македонски)
