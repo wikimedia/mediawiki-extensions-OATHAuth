@@ -831,6 +831,7 @@ $messages['ur'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Hzy980512
  * @author Liuxinyu970226
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -844,7 +845,7 @@ $messages['zh-hans'] = array(
 	'oathauth-verify' => '验证双因素令牌',
 	'oathauth-reset' => '重置双因素凭据',
 	'oathauth-donotdeleteoldsecret' => '请在您成功验证您的新凭据之前不要删除老的凭据。',
-	'oathauth-token' => '令牌',
+	'oathauth-token' => '密钥',
 	'oathauth-currenttoken' => '当前令牌',
 	'oathauth-newtoken' => '新的令牌',
 	'oathauth-disable' => '禁用双因素身份验证',
