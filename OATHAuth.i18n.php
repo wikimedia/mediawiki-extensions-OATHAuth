@@ -141,7 +141,7 @@ $messages['br'] = array(
 	'oathauth-newtoken' => 'Jedouer nevez',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Mormegil
  */
 $messages['cs'] = array(
