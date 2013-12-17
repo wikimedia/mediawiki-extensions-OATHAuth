@@ -878,6 +878,7 @@ $messages['zh-hans'] = array(
 	'oathauth-failedtoenableoauth' => '启用双因素身份验证失败。',
 	'oathauth-alreadyenabled' => '双因素身份验证已被启用。',
 	'oathauth-verify' => '验证双因素令牌',
+	'openstackmanager-scratchtokens' => '下面列出的是一次性紧急权标。这些权标仅能使用一次，并仅在紧急情况下使用。请将它们记下来并妥善保管。如果您遗失了手机，唯一能够恢复您的账户就只有这些权标。这些权标不会再显示。',
 	'oathauth-reset' => '重置双因素凭据',
 	'oathauth-donotdeleteoldsecret' => '请在您成功验证您的新凭据之前不要删除老的凭据。',
 	'oathauth-token' => '密钥',
@@ -885,10 +886,19 @@ $messages['zh-hans'] = array(
 	'oathauth-newtoken' => '新的令牌',
 	'oathauth-disable' => '禁用双因素身份验证',
 	'oathauth-displayoathinfo' => '双因素身份验证选项',
+	'oathauth-validatedoath' => '已验证双因素凭据。双因素身份验证现将实施生效。',
 	'oathauth-backtopreferences' => '回到设置。',
+	'oathauth-failedtovalidateoauth' => '验证双因素凭据失败',
+	'oathauth-reattemptreset' => '再次尝试双因素凭据的重置。',
+	'oathauth-reattemptenable' => '再次尝试启用双因素身份验证。',
+	'oathauth-disabledoath' => '已禁用双因素身份验证。',
+	'oathauth-failedtodisableoauth' => '禁用双因素身份验证失败。',
+	'oathauth-reattemptdisable' => '再次尝试禁用双因素身份验证。',
+	'oathauth-failedtoresetoath' => '重置双因素凭据失败。',
 	'oathauth-notloggedin' => '需要登入',
 	'oathauth-mustbeloggedin' => '您必须登录才能执行此操作。',
 	'oathauth-prefs-label' => '双重验证：',
+	'oathauth-abortlogin' => '提供的双因素身份验证令牌无效。',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
