@@ -546,7 +546,10 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'oathauth-failedtoenableoauth' => "D'Authentifizéierung mat zwee Facteuren konnt net aktivéiert ginn.",
 	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Aktuellen Token',
+	'oathauth-newtoken' => 'Neien Token',
 	'oathauth-backtopreferences' => "Zréck op d'Astellungen.",
 	'oathauth-notloggedin' => 'Dir musst ageloggt sinn',
 	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
