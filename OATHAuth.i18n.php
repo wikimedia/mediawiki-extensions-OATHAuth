@@ -220,6 +220,41 @@ $messages['de-formal'] = array(
 	'oathauth-donotdeleteoldsecret' => 'Bitte löschen Sie Ihre alten Anmeldeinformationen nicht, bis Sie Ihre neuen Anmeldeinformationen erfolgreich bestätigt haben.',
 );
 
+/** Lower Sorbian (dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'oathauth-desc' => 'Zmóžnja awtentifkaciju z pomocu raz wužytych gronidłow na zakłaźe HMAC',
+	'specialpages-group-oath' => 'Dwójofaktorowa awtentifikacija',
+	'oathauth-account' => 'Kontowe mě dwójofaktoroweje awtentifikacije:',
+	'oathauth-secret' => 'Dwójofaktorowy pótajmny kluc:',
+	'oathauth-enable' => 'Dwójofaktorowu awtentifikaciju zmóžniś',
+	'oathauth-failedtoenableoauth' => 'Dwójofaktorowa awtentifikacija njedajo se zmóžniś.',
+	'oathauth-alreadyenabled' => 'Dwójofaktorowa awtentifikacija jo se južo zmóžniła.',
+	'oathauth-verify' => 'Dwójofaktorowy token pśeglědaś',
+	'openstackmanager-scratchtokens' => 'Slědujuca lisćina jo lisćina raz wužywajobnych specialnych tokenow. Toś te tokeny daju se jano jaden raz wužywaś a su za nuzne pady. Pšosym napiš je a zachowaj je na wěstem městnje. Jolic zgubijoš swój mobilny telefon, budu toś te tokeny jadnučka móžnosć, aby swójo konto wuchował. Toś te tokeny njepokažu śi žednje zas.',
+	'oathauth-reset' => 'Dwójofaktorowe pśizjawjeńske informacije slědk stajiś',
+	'oathauth-donotdeleteoldsecret' => 'Pšosym njelašuj swóje stare pśizjawjeńske informacije, až njejsy swóje nowe pśizjawjeńske informacije wuspěšnje wobkšuśił.',
+	'oathauth-token' => 'Token',
+	'oathauth-currenttoken' => 'Aktualny token',
+	'oathauth-newtoken' => 'Nowy token',
+	'oathauth-disable' => 'Dwójofaktorowu awtentifikaciju znjemóžniś',
+	'oathauth-displayoathinfo' => 'Nastajenja dwójofaktoroweje awtentifikacije',
+	'oathauth-validatedoath' => 'Dwójofaktorowe pśizjawjeńske informacije su se wobkšuśili. Dwójofaktorowa awtentifikacija buźo se něnto pśesajźiś.',
+	'oathauth-backtopreferences' => 'Slědk k nastajenjam',
+	'oathauth-failedtovalidateoauth' => 'Dwójofaktorowe pśizjawjeńske informacije njejsu dali se wobkšuśiś',
+	'oathauth-reattemptreset' => 'Slědkstajanje dwójofaktorowych pśizjawjeńskich informacijow hyšći raz wopytaś.',
+	'oathauth-reattemptenable' => 'Zmóžnjenje dwójofaktoroweje awtentifikacije hyšći raz wopytaś.',
+	'oathauth-disabledoath' => 'Dwójofaktorowa awtentifikacija jo se znjemóžniła.',
+	'oathauth-failedtodisableoauth' => 'Dwójofaktorowa awtentifikacija njedajo se znjemóžniś.',
+	'oathauth-reattemptdisable' => 'Znjemóžnjenje dwójofaktoroweje awtentifikacije hyšći raz wopytaś.',
+	'oathauth-failedtoresetoath' => 'Slědkstajanje dwójofaktorowych pśizjawjeńskich informacijow jo se njeraźiło.',
+	'oathauth-notloggedin' => 'Pśizjawjenje trěbne',
+	'oathauth-mustbeloggedin' => 'Musyš pśizjawjony byś, aby toś tu akciju pśewjadł.',
+	'oathauth-prefs-label' => 'Dwójofaktorowa awtentifikacija:',
+	'oathauth-abortlogin' => 'Pódany token dwójofaktoroweje awtentifikacije jo njepłaśiwy był',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  * @author McDutchie
@@ -394,6 +429,7 @@ $messages['hsb'] = array(
 	'oathauth-notloggedin' => 'Přizjewjenje trěbne',
 	'oathauth-mustbeloggedin' => 'Dyrbiš přizjewjeny być, zo by tutu akciju wuwjedł.',
 	'oathauth-prefs-label' => 'Dwufaktorowa awtentifikacija:',
+	'oathauth-abortlogin' => 'Podaty token dwufaktoroweje awtentifikacije je njepłaćiwy był',
 );
 
 /** Interlingua (interlingua)
