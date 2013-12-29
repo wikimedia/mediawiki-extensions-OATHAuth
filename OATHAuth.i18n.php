@@ -141,6 +141,13 @@ $messages['br'] = array(
 	'oathauth-newtoken' => 'Jedouer nevez',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'oathauth-notloggedin' => 'Хьай цӀарца чугӀо',
+);
+
 /** Czech (čeština)
  * @author Mormegil
  */
@@ -582,11 +589,16 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'oathauth-enable' => 'Authentifikatioun mat zwee Elementer aschalten',
 	'oathauth-failedtoenableoauth' => "D'Authentifizéierung mat zwee Facteuren konnt net aktivéiert ginn.",
 	'oathauth-token' => 'Token',
 	'oathauth-currenttoken' => 'Aktuellen Token',
 	'oathauth-newtoken' => 'Neien Token',
+	'oathauth-disable' => 'Authentifikatioun mat zwee Elementer ausschalten',
+	'oathauth-displayoathinfo' => 'Optioune vun der Authentifikatioun mat zwee Elementer',
 	'oathauth-backtopreferences' => "Zréck op d'Astellungen.",
+	'oathauth-disabledoath' => 'Authentifikatioun mat zwee Elementer ausgeschalt',
+	'oathauth-failedtodisableoauth' => "D'Authentifizéierung mat zwee Facteuren konnt net ausgeschalt ginn.",
 	'oathauth-notloggedin' => 'Dir musst ageloggt sinn',
 	'oathauth-mustbeloggedin' => 'Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.',
 	'oathauth-prefs-label' => 'Authentifikatioun mat zwee Elementer:',
