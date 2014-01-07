@@ -228,6 +228,7 @@ $messages['de-formal'] = array(
 );
 
 /** Lower Sorbian (dolnoserbski)
+ * @author Derbeth
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -255,7 +256,7 @@ $messages['dsb'] = array(
 	'oathauth-disabledoath' => 'Dwójofaktorowa awtentifikacija jo se znjemóžniła.',
 	'oathauth-failedtodisableoauth' => 'Dwójofaktorowa awtentifikacija njedajo se znjemóžniś.',
 	'oathauth-reattemptdisable' => 'Znjemóžnjenje dwójofaktoroweje awtentifikacije hyšći raz wopytaś.',
-	'oathauth-failedtoresetoath' => 'Slědkstajanje dwójofaktorowych pśizjawjeńskich informacijow jo se njeraźiło.',
+	'oathauth-failedtoresetoath' => 'Slědkstajanje dwójofaktorowych pśizjawjeńskich informacijow njejo se raźiło.',
 	'oathauth-notloggedin' => 'Pśizjawjenje trěbne',
 	'oathauth-mustbeloggedin' => 'Musyš pśizjawjony byś, aby toś tu akciju pśewjadł.',
 	'oathauth-prefs-label' => 'Dwójofaktorowa awtentifikacija:',
