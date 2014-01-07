@@ -75,8 +75,11 @@ class SpecialOATH extends UnlistedSpecialPage {
 			'default' => 'validate',
 			'name' => 'action',
 		);
-		$form = new HTMLForm( $info, 'oathauth-verify' );
-		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
+		$form = new HTMLForm(
+			$info,
+			$this->getContext(),
+			'oathauth-verify'
+		);
 		$form->setSubmitID( 'oathauth-validate-submit' );
 		$form->setSubmitCallback( array( $this, 'tryValidateSubmit' ) );
 		$form->show();
@@ -141,8 +144,11 @@ class SpecialOATH extends UnlistedSpecialPage {
 			'default' => 'validate',
 			'name' => 'action',
 		);
-		$form = new HTMLForm( $info, 'oathauth-verify' );
-		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
+		$form = new HTMLForm(
+			$info,
+			$this->getContext(),
+			'oathauth-verify'
+		);
 		$form->setSubmitID( 'oathauth-validate-submit' );
 		$form->setSubmitCallback( array( $this, 'tryValidateSubmit' ) );
 		$form->show();
@@ -173,8 +179,11 @@ class SpecialOATH extends UnlistedSpecialPage {
 			'default' => 'reset',
 			'name' => 'action',
 		);
-		$form = new HTMLForm( $info, 'oathauth-reset' );
-		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
+		$form = new HTMLForm(
+			$info,
+			$this->getContext(),
+			'oathauth-reset'
+		);
 		$form->setSubmitID( 'oauth-form-disablesubmit' );
 		$form->setSubmitCallback( array( $this, 'tryResetSubmit' ) );
 		$form->show();
@@ -204,8 +213,11 @@ class SpecialOATH extends UnlistedSpecialPage {
 			'default' => 'disable',
 			'name' => 'action',
 		);
-		$form = new HTMLForm( $info, 'oathauth-disable' );
-		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
+		$form = new HTMLForm(
+			$info,
+			$this->getContext(),
+			'oathauth-disable'
+		);
 		$form->setSubmitID( 'oauth-form-disablesubmit' );
 		$form->setSubmitCallback( array( $this, 'tryDisableSubmit' ) );
 		$form->show();
@@ -342,7 +354,6 @@ class SpecialOATH extends UnlistedSpecialPage {
 		$myRequest = new DerivativeRequest( $this->getRequest(), array( 'action' => 'validate', 'mode' => 'reset', 'token' => '', 'returnto' => $formData['returnto'] ), false );
 		$myContext->setRequest( $myRequest );
 		$form = new HTMLForm( $info, $myContext );
-		$form->setTitle( SpecialPage::getTitleFor( 'OATH' ) );
 		$form->setSubmitID( 'oathauth-validate-submit' );
 		$form->setSubmitCallback( array( $this, 'tryValidateSubmit' ) );
 		$form->show();
