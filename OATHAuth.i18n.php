@@ -711,6 +711,15 @@ $messages['nl'] = array(
 	'oathauth-abortlogin' => 'Het opgegeven token voor twee-factorauthenticatie is ongeldig.',
 );
 
+/** Polish (polski)
+ * @author Chrumps
+ */
+$messages['pl'] = array(
+	'oathauth-account' => 'Nazwa konta dwuskładnikowego:',
+	'oathauth-secret' => 'Tajny klucz dwuskładnikowy:',
+	'oathauth-enable' => 'Włączenie uwierzytelniania dwuskładnikowego',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
