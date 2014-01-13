@@ -303,6 +303,15 @@ $messages['et'] = array(
 	'oathauth-notloggedin' => 'Vajalik on sisselogimine',
 );
 
+/** Persian (فارسی)
+ * @author Armin1392
+ */
+$messages['fa'] = array(
+	'oathauth-backtopreferences' => 'بازگشت به اولویت‌ها',
+	'oathauth-failedtovalidateoauth' => 'عدم موفقیت برای معتبر ساختن ۲ عامل اعتبارنامه‌ها',
+	'oathauth-notloggedin' => 'ورود لازم شد',
+);
+
 /** French (français)
  * @author Crochet.david
  * @author Gomoko
