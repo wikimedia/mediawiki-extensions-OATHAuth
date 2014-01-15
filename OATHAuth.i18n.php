@@ -307,9 +307,31 @@ $messages['et'] = array(
  * @author Armin1392
  */
 $messages['fa'] = array(
+	'specialpages-group-oath' => 'دو عامل تأیید',
+	'oathauth-account' => 'دو عامل نام حساب:',
+	'oathauth-secret' => 'دو عامل کلید مخفی:',
+	'oathauth-enable' => 'فعال کردن دو عامل تأیید',
+	'oathauth-failedtoenableoauth' => 'عدم موفقیت فعال کردن دو عامل تأیید.',
+	'oathauth-alreadyenabled' => 'دو عامل تأیید در حال حاضر فعال شده‌است.',
+	'oathauth-verify' => 'تأیید دو عامل نمادین',
+	'oathauth-reset' => 'تنظیم مجدد دو عامل اعتبارنامه‌ها',
+	'oathauth-token' => 'نماد',
+	'oathauth-currenttoken' => 'نماد کنونی',
+	'oathauth-newtoken' => 'نماد جدید',
+	'oathauth-disable' => 'غیرفعال کردن دو عامل تأیید',
+	'oathauth-displayoathinfo' => 'گزینه‌های دو عامل تأیید',
 	'oathauth-backtopreferences' => 'بازگشت به اولویت‌ها',
 	'oathauth-failedtovalidateoauth' => 'عدم موفقیت برای معتبر ساختن ۲ عامل اعتبارنامه‌ها',
+	'oathauth-reattemptreset' => 'تلاش دوباره برای تنظیم مجدد دو عامل اعتبارنامه',
+	'oathauth-reattemptenable' => 'تلاش دوباره برای فعال کردن دو عامل تأیید.',
+	'oathauth-disabledoath' => 'غیرفعال کردن دو عامل تأیید.',
+	'oathauth-failedtodisableoauth' => 'عدم موفقیت غیرفعال کردن دو عامل تأیید.',
+	'oathauth-reattemptdisable' => 'تلاش دوباره برای غیرفعال کردن دو عامل تأیید.',
+	'oathauth-failedtoresetoath' => 'عدم موفقیت برای تنظیم مجدد دو عامل اعتبارنامه.',
 	'oathauth-notloggedin' => 'ورود لازم شد',
+	'oathauth-mustbeloggedin' => 'شما باید برای انجام این عمل  وارد سیستم شوید.',
+	'oathauth-prefs-label' => 'دو عامل تأیید:',
+	'oathauth-abortlogin' => 'دو عامل نماد تأیید ارائه شده نامعتبر بود.',
 );
 
 /** French (français)
