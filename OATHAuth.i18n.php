@@ -597,15 +597,36 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
+	'specialpages-group-oath' => '2요소 인증',
+	'oathauth-account' => '2요소 계정 이름:',
+	'oathauth-secret' => '2요소 비밀 키:',
+	'oathauth-enable' => '2요소 인증 활성화',
+	'oathauth-failedtoenableoauth' => '2요소 인증을 활성화하는 데 실패했습니다.',
+	'oathauth-alreadyenabled' => '2요소 인증이 이미 활성화되어 있습니다.',
+	'oathauth-verify' => '2요소 토큰을 검증',
+	'oathauth-reset' => '2요소 자격 정보를 다시 설정',
 	'oathauth-token' => '토큰',
 	'oathauth-currenttoken' => '현재 토큰',
 	'oathauth-newtoken' => '새 토큰',
+	'oathauth-disable' => '2요소 비활성화',
+	'oathauth-displayoathinfo' => '2요소 인증 선택',
+	'oathauth-validatedoath' => '2요소 자격 정보를 검증했습니다. 2요소 인증을 실행합니다.',
 	'oathauth-backtopreferences' => '사용자 환경 설정으로 돌아갑니다.',
+	'oathauth-failedtovalidateoauth' => '2요소 자격정보를 검증하는 데 실패했습니다',
+	'oathauth-reattemptreset' => '2요소 자격 정보 재설정을 재시도',
+	'oathauth-reattemptenable' => '2요소 인증 활성화 재시도',
+	'oathauth-disabledoath' => '2요소 인증을 비활성화',
+	'oathauth-failedtodisableoauth' => '2요소 인증을 비활성화하는 데 실패했습니다.',
+	'oathauth-reattemptdisable' => '2요소 인증을 비활성화 재시도',
+	'oathauth-failedtoresetoath' => '2요소 자격 정보 재설정에 실패했습니다.',
 	'oathauth-notloggedin' => '로그인 필요',
 	'oathauth-mustbeloggedin' => '이 행동을 수행하려면 로그인해야 합니다.',
+	'oathauth-prefs-label' => '2요소 인증:',
+	'oathauth-abortlogin' => '입력된 2요소 인증 토큰이 유효하지 않습니다.',
 );
 
 /** Colognian (Ripoarisch)
