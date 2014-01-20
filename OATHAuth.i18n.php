@@ -601,6 +601,7 @@ $messages['ka'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
+	'oathauth-desc' => '일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공',
 	'specialpages-group-oath' => '2요소 인증',
 	'oathauth-account' => '2요소 계정 이름:',
 	'oathauth-secret' => '2요소 비밀 키:',
@@ -608,7 +609,9 @@ $messages['ko'] = array(
 	'oathauth-failedtoenableoauth' => '2요소 인증을 활성화하는 데 실패했습니다.',
 	'oathauth-alreadyenabled' => '2요소 인증이 이미 활성화되어 있습니다.',
 	'oathauth-verify' => '2요소 토큰을 검증',
+	'openstackmanager-scratchtokens' => '다음 목록은 일회용 스크래치 토큰 목록입니다. 이 토큰은 한 번만 사용할 수 있으며 비상용입니다. 이것을 적어놓고 안전한 위치에 보관하세요. 핸드폰을 잊어버렸다면 이 토큰이 당신의 계정을 찾을 유일한 수단입니다. 이 토큰은 다시 볼 수 없습니다.',
 	'oathauth-reset' => '2요소 자격 정보를 다시 설정',
+	'oathauth-donotdeleteoldsecret' => '새로운 자격 정보의 검증을 완료할 때까지 이전 자격 정보를 삭제하지 마세요.',
 	'oathauth-token' => '토큰',
 	'oathauth-currenttoken' => '현재 토큰',
 	'oathauth-newtoken' => '새 토큰',
