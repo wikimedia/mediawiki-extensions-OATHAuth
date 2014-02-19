@@ -21,10 +21,22 @@ $specialPageAliases['ar'] = array(
 	'OATHAuthDisplay' => array( 'عرض_معلومات_توكين_أواث' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'OATHAuth' => array( 'تحقيق_اوات' ),
+	'OATHAuthDisplay' => array( 'عرض_معلومات-توكين_اوات' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'OATHAuth' => array( 'OATH-Authentifizierung' ),
 	'OATHAuthDisplay' => array( 'OATH-Authentifizierung_Tokeninformationen' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'OATHAuth' => array( 'هویت‌سنجی_OAuth' ),
+	'OATHAuthDisplay' => array( 'نمایش_رمز_اطلاعات_OAuth' ),
 );
 
 /** Italian (italiano) */
