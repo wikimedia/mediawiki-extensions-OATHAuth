@@ -305,6 +305,7 @@ $messages['et'] = array(
 
 /** Persian (فارسی)
  * @author Armin1392
+ * @author Ebraminio
  */
 $messages['fa'] = array(
 	'oathauth-desc' => 'ارائهٔ‌ پشتیبانی تأیید اعتبار با استفاده از اچ‌ام‌ای‌سی بر اساس رمز‌های عبور یک‌ بار',
@@ -333,7 +334,7 @@ $messages['fa'] = array(
 	'oathauth-reattemptdisable' => 'تلاش دوباره برای غیرفعال کردن دو عامل تأیید.',
 	'oathauth-failedtoresetoath' => 'عدم موفقیت برای تنظیم مجدد دو عامل اعتبارنامه.',
 	'oathauth-notloggedin' => 'ورود لازم شد',
-	'oathauth-mustbeloggedin' => 'شما باید برای انجام این عمل  وارد سیستم شوید.',
+	'oathauth-mustbeloggedin' => 'شما باید برای انجام این عمل باید وارد شوید.',
 	'oathauth-prefs-label' => 'دو عامل تأیید:',
 	'oathauth-abortlogin' => 'دو عامل نماد تأیید ارائه شده نامعتبر بود.',
 );
