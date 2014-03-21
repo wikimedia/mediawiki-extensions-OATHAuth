@@ -265,6 +265,7 @@ $messages['dsb'] = array(
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author Fitoschido
  * @author McDutchie
  */
 $messages['es'] = array(
@@ -285,6 +286,7 @@ $messages['es'] = array(
 	'oathauth-disable' => 'Deshabilitar la autenticación de dos factores',
 	'oathauth-displayoathinfo' => 'Opciones de autenticación de dos factores',
 	'oathauth-validatedoath' => 'Se han validado las credenciales de dos factores. Ahora se aplicará la autenticación de dos factores.',
+	'oathauth-backtopreferences' => 'Volver a las preferencias.',
 	'oathauth-failedtovalidateoauth' => 'Error al validar las credenciales de dos factores',
 	'oathauth-reattemptreset' => 'Reintentar la reposición de credenciales de dos factores.',
 	'oathauth-reattemptenable' => 'Reintentar la activación de la autenticación de dos factores.',

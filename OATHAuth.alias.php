@@ -33,6 +33,11 @@ $specialPageAliases['de'] = array(
 	'OATHAuthDisplay' => array( 'OATH-Authentifizierung_Tokeninformationen' ),
 );
 
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'OATHAuthDisplay' => array( 'Malumata__Nesna_da_OATH_Vinayış' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'OATHAuth' => array( 'هویت‌سنجی_OAuth' ),
