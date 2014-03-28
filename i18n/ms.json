@@ -1,0 +1,36 @@
+{
+    "@metadata": {
+        "authors": [
+            "Anakmalaysia"
+        ]
+    },
+    "oathauth-desc": "Menyediakan sokongan penentusahan dengan menggunakan kata laluan kegunaan sekali berasaskan HMAC",
+    "specialpages-group-oath": "Penentusahan Dwifaktor",
+    "oathauth-account": "Nama Akaun Dwifaktor:",
+    "oathauth-secret": "Kunci Rahsia Dwifaktor:",
+    "oathauth-enable": "Hidupkan Penentusahan Dwifaktor",
+    "oathauth-failedtoenableoauth": "Penentusahan dwifaktor gagal dihidupkan.",
+    "oathauth-alreadyenabled": "Penentusahan dwifaktor sudah dihidupkan.",
+    "oathauth-verify": "Sahkan token dwifaktor",
+    "openstackmanager-scratchtokens": "Yang berikut ialah senarai token kegunaan sekali. Token-token ini hanya boleh digunakan sekali, malah adalah untuk kegunaan kecemasan. Sila catatkan dalam kertas dan simpan dalam tempat yang selamat. Sekiranya anda kehilangan telefon anda, token-token ini sahajalah caranya untuk menyelamatkan akaun anda. Token-token ini tidak akan dipaparkan lagi.",
+    "oathauth-reset": "Reset Watikah Dwifaktor",
+    "oathauth-donotdeleteoldsecret": "Tolong jangan padamkan watikah lama sehingga watikah baru anda berjaya disahkan.",
+    "oathauth-token": "Token",
+    "oathauth-currenttoken": "Token Semasa",
+    "oathauth-newtoken": "Token Baru",
+    "oathauth-disable": "Matikan Penentusahan Dwifaktor",
+    "oathauth-displayoathinfo": "Pilihan Penentusahan Dwifaktor",
+    "oathauth-validatedoath": "Watikah dwifaktor disahkan. Penentusahan dwifaktor kini akan berkuatkuasa.",
+    "oathauth-backtopreferences": "Kembali ke keutamaan.",
+    "oathauth-failedtovalidateoauth": "Watikah dwifaktor gagal disahkan",
+    "oathauth-reattemptreset": "Mencuba semula reset watikah dwifaktor.",
+    "oathauth-reattemptenable": "Mencuba semula penghidupan penentusahan dwifaktor.",
+    "oathauth-disabledoath": "Penentusahan dwifaktor dimatikan.",
+    "oathauth-failedtodisableoauth": "Penentusahan dwifaktor gagal dimatikan.",
+    "oathauth-reattemptdisable": "Mencuba semula pematian penentusahan dwifaktor.",
+    "oathauth-failedtoresetoath": "Watikah dwifaktor gagal direset.",
+    "oathauth-notloggedin": "Log masuk diperlukan",
+    "oathauth-mustbeloggedin": "Anda mesti log masuk untuk melakukan tindakan ini.",
+    "oathauth-prefs-label": "Penentusahan dwifaktor:",
+    "oathauth-abortlogin": "Token penentusahan dwifaktor yang diberikan adalah tidak sah."
+}

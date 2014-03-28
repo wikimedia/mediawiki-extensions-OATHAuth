@@ -21,13 +21,14 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'OATHAuth',
 	'author' => 'Ryan Lane',
-	'version' => '0.1',
+	'version' => '0.2.0',
 	'url' => 'http://mediawiki.org/wiki/Extension:OATHAuth',
 	'descriptionmsg' => 'oathauth-desc',
 );
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 
+$wgMessagesDirs['OATHAuth'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['OATHAuth'] = $dir . 'OATHAuth.i18n.php';
 $wgExtensionMessagesFiles['OATHAuthAlias'] = $dir . 'OATHAuth.alias.php';
 $wgAutoloadClasses['HOTP'] = $dir . 'lib/hotp.php';

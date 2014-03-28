@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "පසිඳු කාවින්ද"
+        ]
+    },
+    "oathauth-disabledoath": "معذور تصدیق دو عنصر.",
+    "oathauth-failedtodisableoauth": "دو اہم عنصر کی توثیق کو غیر فعال کرنے میں ناکام رہے.",
+    "oathauth-failedtoresetoath": "دو عنصر کی اسناد کو دوبارہ مرتب کرنے میں ناکام رہے.",
+    "oathauth-notloggedin": "لاگ ان درکار",
+    "oathauth-mustbeloggedin": "تم ہونا چاہئے لاگ ان اس فعل کو انجام دینے کے لئے."
+}

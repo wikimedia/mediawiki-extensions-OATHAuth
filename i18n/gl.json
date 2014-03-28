@@ -1,0 +1,36 @@
+{
+    "@metadata": {
+        "authors": [
+            "Toliño"
+        ]
+    },
+    "oathauth-desc": "Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez",
+    "specialpages-group-oath": "Autenticación de dous factores",
+    "oathauth-account": "Nome da conta de dous factores:",
+    "oathauth-secret": "Clave secreta de dous factores:",
+    "oathauth-enable": "Activar a autenticación de dous factores",
+    "oathauth-failedtoenableoauth": "Erro ao activar a autenticación de dous factores.",
+    "oathauth-alreadyenabled": "A autenticación de dous factores xa está activada.",
+    "oathauth-verify": "Comprobar o pase de dous factores",
+    "openstackmanager-scratchtokens": "A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. Esta é a única vez que poderá ver os pases.",
+    "oathauth-reset": "Restablecer as credenciais de dous factores",
+    "oathauth-donotdeleteoldsecret": "Non borre as súas credenciais vellas ata que valide correctamente as novas.",
+    "oathauth-token": "Pase",
+    "oathauth-currenttoken": "Pase actual",
+    "oathauth-newtoken": "Novo pase",
+    "oathauth-disable": "Desactivar a autenticación de dous factores",
+    "oathauth-displayoathinfo": "Opcións da autenticación de dous factores",
+    "oathauth-validatedoath": "Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.",
+    "oathauth-backtopreferences": "Volver ás preferencias.",
+    "oathauth-failedtovalidateoauth": "Erro ao validar as credenciais de dous factores",
+    "oathauth-reattemptreset": "Reintentar o restablecemento das credenciais de dous factores.",
+    "oathauth-reattemptenable": "Reintentar a activación da autenticación de dous factores.",
+    "oathauth-disabledoath": "Desactivouse a autenticación de dous factores.",
+    "oathauth-failedtodisableoauth": "Erro ao desactivar a autenticación de dous factores.",
+    "oathauth-reattemptdisable": "Reintentar a desactivación da autenticación de dous factores.",
+    "oathauth-failedtoresetoath": "Erro ao restablecer as credenciais de dous factores.",
+    "oathauth-notloggedin": "Cómpre acceder ao sistema",
+    "oathauth-mustbeloggedin": "Cómpre acceder ao sistema para levar a cabo a acción.",
+    "oathauth-prefs-label": "Autenticación de dous factores:",
+    "oathauth-abortlogin": "O pase de autenticación de dous factores achegado non era válido."
+}

@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": [
+            "Simon Shek"
+        ]
+    },
+    "oathauth-notloggedin": "需要登入",
+    "oathauth-mustbeloggedin": "您必須登錄才能執行此操作。"
+}

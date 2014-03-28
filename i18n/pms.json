@@ -1,0 +1,34 @@
+{
+    "@metadata": {
+        "authors": [
+            "Borichèt",
+            "Dragonòt"
+        ]
+    },
+    "oathauth-desc": "A dà un supòrt d'autenticassion dovrand HMAC basà su dle ciav a usagi ùnich",
+    "specialpages-group-oath": "Autenticassion a Doi Fator",
+    "oathauth-account": "Nòm dël Cont dij Doi Fator:",
+    "oathauth-secret": "Ciav Segreta dij Doi Fator:",
+    "oathauth-enable": "Abilité l'Autenticassion a Doi Fator",
+    "oathauth-failedtoenableoauth": "Falì a abilité l'autenticassion a doi fator.",
+    "oathauth-alreadyenabled": "L'autenticassion a doi fator a l'é già abilità.",
+    "oathauth-verify": "Verifiché ël geton a doi fator",
+    "openstackmanager-scratchtokens": "La lista sì-dapress a l'é na lista ëd geton da dovré na vira sola. Sti geton a peulo mach esse dovrà na vira, e a son da dovré an cas d'emergensa. Për piasì, ch'a jë scriva e ch'a-j goerna ant un pòst sigur. S'a perd to teléfon, costi geton a son l'ùnica manera ëd salvé sò cont. Costi geton a saran mai pi mostrà torna.",
+    "oathauth-reset": "Riamposté j'identità ëd Doi Fator",
+    "oathauth-donotdeleteoldsecret": "Për piasì, ch'a scancela nen soe veje credensiaj fin ch'a l'abia pa validà për da bin soe neuve credensiaj.",
+    "oathauth-token": "Marca-pòst",
+    "oathauth-currenttoken": "Geton Corent",
+    "oathauth-newtoken": "Geton Neuv",
+    "oathauth-disable": "Disabilité l'Autenticassion a Doi Fator",
+    "oathauth-displayoathinfo": "Opsion dl'Autenticassion a Doi Fator",
+    "oathauth-validatedoath": "Credensiaj a doi fator validà. L'autenticassion a doi fator a sarà dorenavan aplicà.",
+    "oathauth-failedtovalidateoauth": "Falì a validé le credensiaj a doi fator",
+    "oathauth-reattemptreset": "Neuv tentativ d'amposté torna le credensiaj a doi fator.",
+    "oathauth-reattemptenable": "Neuv tentativ d'abilité l'autenticassion a doi fator.",
+    "oathauth-disabledoath": "Autenticassion a doi fator disabilità.",
+    "oathauth-failedtodisableoauth": "Falì a disabilité l'autenticassion a doi fator.",
+    "oathauth-reattemptdisable": "Neuv tentativ ëd disabilité l'autenticassion a doi fator.",
+    "oathauth-failedtoresetoath": "Falì a anulé le credensiaj a doi fator",
+    "oathauth-notloggedin": "A venta rintré ant ël sistema",
+    "oathauth-mustbeloggedin": "A dev esse intrà ant ël sistema për fé st'assion."
+}

@@ -1,0 +1,14 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joetaras"
+        ]
+    },
+    "specialpages-group-oath": "Autendicazione a Doje Fattore",
+    "oathauth-secret": "Chiave segrete a Doje Fattore:",
+    "oathauth-enable": "Abbilite l'Autendicazione a Doje Fattore",
+    "oathauth-token": "Gettone",
+    "oathauth-currenttoken": "Gettone de mò",
+    "oathauth-newtoken": "Gettone nuève",
+    "oathauth-disable": "Disabbilite l'Autendicazione a Doje Fattore"
+}

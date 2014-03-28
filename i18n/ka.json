@@ -1,0 +1,22 @@
+{
+    "@metadata": {
+        "authors": [
+            "David1010"
+        ]
+    },
+    "specialpages-group-oath": "ორფაქტორიანი იდენტიფიკაცია",
+    "oathauth-account": "ორფაქტორიანი ანგარიშის სახელი:",
+    "oathauth-secret": "ორფაქტორიანი საიდუმლო გასაღები:",
+    "oathauth-enable": "ორფაქტორიანი იდენტიფიკაციის ჩართვა",
+    "oathauth-failedtoenableoauth": "ორფაქტორიანი იდენტიფიკაციის ჩართვა ვერ განხორციელდა.",
+    "oathauth-alreadyenabled": "ორფაქტორიანი იდენტიფიკაცია უკვე ჩართულია.",
+    "oathauth-token": "ჟეტონი",
+    "oathauth-currenttoken": "მიმდინარე ჟეტონი",
+    "oathauth-newtoken": "ახალი ჟეტონი",
+    "oathauth-disable": "ორფაქტორიანი იდენტიფიკაციის გამორთვა",
+    "oathauth-displayoathinfo": "ორფაქტორიანი იდენტიფიკაციის პარამეტრები",
+    "oathauth-disabledoath": "ორფაქტორიანი იდენტიფიკაცია გამორთულია.",
+    "oathauth-failedtodisableoauth": "ორფაქტორიანი იდენტიფიკაციის გამორთვა ვერ განხორციელდა.",
+    "oathauth-notloggedin": "შესვლა აუცილებელია",
+    "oathauth-mustbeloggedin": "ამ მოქმედების შესასრულებლად, თქვენ უნდა შეხვიდეთ სისტემაში."
+}
