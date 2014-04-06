@@ -32,5 +32,7 @@
     "oathauth-reattemptdisable": "Reintentar la desactivación de la autenticación de dos factores.",
     "oathauth-failedtoresetoath": "Error al restablecer las credenciales de dos factores",
     "oathauth-notloggedin": "Es necesario iniciar sesión",
-    "oathauth-mustbeloggedin": "Debes haber iniciado sesión para realizar esta acción."
+    "oathauth-mustbeloggedin": "Debes haber iniciado sesión para realizar esta acción.",
+    "oathauth-prefs-label": "Autenticación en dos etapas:",
+    "oathauth-abortlogin": "La ficha de autenticación proporcionada no es válida."
 }
