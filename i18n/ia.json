@@ -1,33 +1,33 @@
 {
-    "@metadata": {
-        "authors": [
-            "McDutchie"
-        ]
-    },
-    "oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC",
-    "specialpages-group-oath": "Authentication de duo factores",
-    "oathauth-account": "Nomine de conto de duo factores:",
-    "oathauth-secret": "Clave secrete de duo factores:",
-    "oathauth-enable": "Activar le authentication de duo factores",
-    "oathauth-failedtoenableoauth": "Error durante le activation del authentication de duo factores.",
-    "oathauth-alreadyenabled": "Le authentication de duo factores es jam activate.",
-    "oathauth-verify": "Verificar indicio de duo factores",
-    "openstackmanager-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.",
-    "oathauth-reset": "Reinitialisar le informationes de identification de duo factores",
-    "oathauth-donotdeleteoldsecret": "Per favor non dele vostre ancian informationes de identification usque vos ha validate con successo vostre nove informationes de identification.",
-    "oathauth-token": "Indicio",
-    "oathauth-currenttoken": "Indicio actual",
-    "oathauth-newtoken": "Nove indicio",
-    "oathauth-disable": "Disactivar le authentication de duo factores",
-    "oathauth-displayoathinfo": "Optiones de authentication de duo factores",
-    "oathauth-validatedoath": "Le informationes de identification de duo factores ha essite validate. Le authentication de duo factores essera applicate desde ora.",
-    "oathauth-failedtovalidateoauth": "Le validation del informationes de identification de duo factores ha fallite.",
-    "oathauth-reattemptreset": "Re-tentar le reinitialisation del informationes de identification de duo factores.",
-    "oathauth-reattemptenable": "Re-tentar le activation del authentication de duo factores.",
-    "oathauth-disabledoath": "Le authentication de duo factores ha essite disactivate.",
-    "oathauth-failedtodisableoauth": "Le disactivation del authentication de duo factores ha fallite.",
-    "oathauth-reattemptdisable": "Re-tentar le disactivation del authentication de duo factores.",
-    "oathauth-failedtoresetoath": "Le reinitialisation del informationes de identification de duo factores ha fallite.",
-    "oathauth-notloggedin": "Identification necessari",
-    "oathauth-mustbeloggedin": "Es necessari aperir session pro exequer iste action."
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC",
+	"specialpages-group-oath": "Authentication de duo factores",
+	"oathauth-account": "Nomine de conto de duo factores:",
+	"oathauth-secret": "Clave secrete de duo factores:",
+	"oathauth-enable": "Activar le authentication de duo factores",
+	"oathauth-failedtoenableoauth": "Error durante le activation del authentication de duo factores.",
+	"oathauth-alreadyenabled": "Le authentication de duo factores es jam activate.",
+	"oathauth-verify": "Verificar indicio de duo factores",
+	"openstackmanager-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.",
+	"oathauth-reset": "Reinitialisar le informationes de identification de duo factores",
+	"oathauth-donotdeleteoldsecret": "Per favor non dele vostre ancian informationes de identification usque vos ha validate con successo vostre nove informationes de identification.",
+	"oathauth-token": "Indicio",
+	"oathauth-currenttoken": "Indicio actual",
+	"oathauth-newtoken": "Nove indicio",
+	"oathauth-disable": "Disactivar le authentication de duo factores",
+	"oathauth-displayoathinfo": "Optiones de authentication de duo factores",
+	"oathauth-validatedoath": "Le informationes de identification de duo factores ha essite validate. Le authentication de duo factores essera applicate desde ora.",
+	"oathauth-failedtovalidateoauth": "Le validation del informationes de identification de duo factores ha fallite.",
+	"oathauth-reattemptreset": "Re-tentar le reinitialisation del informationes de identification de duo factores.",
+	"oathauth-reattemptenable": "Re-tentar le activation del authentication de duo factores.",
+	"oathauth-disabledoath": "Le authentication de duo factores ha essite disactivate.",
+	"oathauth-failedtodisableoauth": "Le disactivation del authentication de duo factores ha fallite.",
+	"oathauth-reattemptdisable": "Re-tentar le disactivation del authentication de duo factores.",
+	"oathauth-failedtoresetoath": "Le reinitialisation del informationes de identification de duo factores ha fallite.",
+	"oathauth-notloggedin": "Identification necessari",
+	"oathauth-mustbeloggedin": "Es necessari aperir session pro exequer iste action."
 }

@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "WikiPhoenix"
-        ]
-    },
-    "oathauth-notloggedin": "Inloggning krävs"
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"oathauth-notloggedin": "Inloggning krävs"
 }

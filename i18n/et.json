@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Avjoska"
-        ]
-    },
-    "oathauth-notloggedin": "Vajalik on sisselogimine"
+	"@metadata": {
+		"authors": [
+			"Avjoska"
+		]
+	},
+	"oathauth-notloggedin": "Vajalik on sisselogimine"
 }

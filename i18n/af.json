@@ -1,8 +1,8 @@
 {
-    "@metadata": {
-        "authors": [
-            "Naudefj"
-        ]
-    },
-    "oathauth-notloggedin": "Aanmelding is verpligtend"
+	"@metadata": {
+		"authors": [
+			"Naudefj"
+		]
+	},
+	"oathauth-notloggedin": "Aanmelding is verpligtend"
 }

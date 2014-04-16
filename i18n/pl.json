@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Chrumps"
-        ]
-    },
-    "oathauth-account": "Nazwa konta dwuskładnikowego:",
-    "oathauth-secret": "Tajny klucz dwuskładnikowy:",
-    "oathauth-enable": "Włączenie uwierzytelniania dwuskładnikowego"
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"oathauth-account": "Nazwa konta dwuskładnikowego:",
+	"oathauth-secret": "Tajny klucz dwuskładnikowy:",
+	"oathauth-enable": "Włączenie uwierzytelniania dwuskładnikowego"
 }

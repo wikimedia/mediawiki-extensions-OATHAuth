@@ -1,30 +1,30 @@
 {
-    "@metadata": {
-        "authors": [
-            "ChrisPtDe"
-        ]
-    },
-    "oathauth-desc": "Balye n’assistance d’ôtentificacion empleyent HMAC basâ sur des contresegnos a usâjo solèt",
-    "specialpages-group-oath": "Ôtentificacion a doux factors",
-    "oathauth-account": "Nom du compto a doux factors :",
-    "oathauth-secret": "Cllâf secrèta a doux factors :",
-    "oathauth-enable": "Activar l’ôtentificacion a doux factors",
-    "oathauth-failedtoenableoauth": "Falyita de l’activacion de l’ôtentificacion a doux factors.",
-    "oathauth-alreadyenabled": "L’ôtentificacion a doux factors est ja activâye.",
-    "oathauth-verify": "Controlar lo jeton a doux factors",
-    "oathauth-reset": "Tornar inicialisar les refèrences a doux factors",
-    "oathauth-token": "Jeton",
-    "oathauth-currenttoken": "Jeton d’ora",
-    "oathauth-newtoken": "Novél jeton",
-    "oathauth-disable": "Dèsactivar l’ôtentificacion a doux factors",
-    "oathauth-displayoathinfo": "Chouèx de l’ôtentificacion a doux factors",
-    "oathauth-failedtovalidateoauth": "Falyita de la validacion de les refèrences a doux factors",
-    "oathauth-reattemptreset": "Tentativa novèla de remisa a zérô de les refèrences a doux factors.",
-    "oathauth-reattemptenable": "Tentativa novèla d’activacion de l’ôtentificacion a doux factors.",
-    "oathauth-disabledoath": "Ôtentificacion a doux factors dèsactivâye.",
-    "oathauth-failedtodisableoauth": "Falyita de la dèsactivacion de l’ôtentificacion a doux factors.",
-    "oathauth-reattemptdisable": "Tentativa novèla de dèsactivacion de l’ôtentificacion a doux factors.",
-    "oathauth-failedtoresetoath": "Falyita de la remisa a zérô de les refèrences a doux factors.",
-    "oathauth-notloggedin": "Branchement nècèssèro",
-    "oathauth-mustbeloggedin": "Vos dête étre branchiê por fâre cel’accion."
+	"@metadata": {
+		"authors": [
+			"ChrisPtDe"
+		]
+	},
+	"oathauth-desc": "Balye n’assistance d’ôtentificacion empleyent HMAC basâ sur des contresegnos a usâjo solèt",
+	"specialpages-group-oath": "Ôtentificacion a doux factors",
+	"oathauth-account": "Nom du compto a doux factors :",
+	"oathauth-secret": "Cllâf secrèta a doux factors :",
+	"oathauth-enable": "Activar l’ôtentificacion a doux factors",
+	"oathauth-failedtoenableoauth": "Falyita de l’activacion de l’ôtentificacion a doux factors.",
+	"oathauth-alreadyenabled": "L’ôtentificacion a doux factors est ja activâye.",
+	"oathauth-verify": "Controlar lo jeton a doux factors",
+	"oathauth-reset": "Tornar inicialisar les refèrences a doux factors",
+	"oathauth-token": "Jeton",
+	"oathauth-currenttoken": "Jeton d’ora",
+	"oathauth-newtoken": "Novél jeton",
+	"oathauth-disable": "Dèsactivar l’ôtentificacion a doux factors",
+	"oathauth-displayoathinfo": "Chouèx de l’ôtentificacion a doux factors",
+	"oathauth-failedtovalidateoauth": "Falyita de la validacion de les refèrences a doux factors",
+	"oathauth-reattemptreset": "Tentativa novèla de remisa a zérô de les refèrences a doux factors.",
+	"oathauth-reattemptenable": "Tentativa novèla d’activacion de l’ôtentificacion a doux factors.",
+	"oathauth-disabledoath": "Ôtentificacion a doux factors dèsactivâye.",
+	"oathauth-failedtodisableoauth": "Falyita de la dèsactivacion de l’ôtentificacion a doux factors.",
+	"oathauth-reattemptdisable": "Tentativa novèla de dèsactivacion de l’ôtentificacion a doux factors.",
+	"oathauth-failedtoresetoath": "Falyita de la remisa a zérô de les refèrences a doux factors.",
+	"oathauth-notloggedin": "Branchement nècèssèro",
+	"oathauth-mustbeloggedin": "Vos dête étre branchiê por fâre cel’accion."
 }

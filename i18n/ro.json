@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "Firilacroco",
-            "Stelistcristi"
-        ]
-    },
-    "oathauth-token": "Jeton",
-    "oathauth-currenttoken": "Jeton curent",
-    "oathauth-newtoken": "Jeton nou",
-    "oathauth-notloggedin": "Autentificare necesară"
+	"@metadata": {
+		"authors": [
+			"Firilacroco",
+			"Stelistcristi"
+		]
+	},
+	"oathauth-token": "Jeton",
+	"oathauth-currenttoken": "Jeton curent",
+	"oathauth-newtoken": "Jeton nou",
+	"oathauth-notloggedin": "Autentificare necesară"
 }

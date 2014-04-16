@@ -1,33 +1,33 @@
 {
-    "@metadata": {
-        "authors": [
-            "AnakngAraw"
-        ]
-    },
-    "oathauth-desc": "Nagbibigay ng suporta ng pagpapatunay sa pamamagitan ng pang-isang ulit na mga hudyat na nakabatay sa HMAC",
-    "specialpages-group-oath": "Dalawang Salik na Pagpapatunay",
-    "oathauth-account": "Dalawang Salik na Pangalan ng Akawnt:",
-    "oathauth-secret": "Dalawang Salik na Susi ng Lihim:",
-    "oathauth-enable": "Paganahin ang Dalawang Salik na Pagpapatunay",
-    "oathauth-failedtoenableoauth": "Nabigo sa pagpapaandar ng dalawang salik na pagpapatunay.",
-    "oathauth-alreadyenabled": "Gumagana na ang dalawang salik na pagpapatunay.",
-    "oathauth-verify": "Tiyakin ang dalawang salik na panghalip",
-    "openstackmanager-scratchtokens": "Ang sumusunod na lista ay isang listahan ng mga pang-isahang ulit na paggamit na mga panghalip na nagagasgas. Ang mga panghalip na ito ay magagamit lamang nang isang beses, at mga para sa paggamit na pangkagipitan. Pakisulat ang mga ito at itabi sa isang ligtas na lugar. Kapag naiwala mo ang telepono mo, ang mga panghalip na ito lang ang makasasaklolo sa akawnt mo. Hindi na muling ipapakita pa ang mga panghalip na ito.",
-    "oathauth-reset": "Itakdang Muli ang Dalawang Salik na mga Kredensiyal",
-    "oathauth-donotdeleteoldsecret": "Mangyaring huwag burahin ang luma mong mga kredensiyal hanggang sa matagumpay mo nang napagtibay ang bago mong mga katibayan.",
-    "oathauth-token": "Kahalip",
-    "oathauth-currenttoken": "Kasalukuyang Kahalip",
-    "oathauth-newtoken": "Bagong Kahalip",
-    "oathauth-disable": "Huwag Paganahin ang Dalawang Salik na Pagpapatunay",
-    "oathauth-displayoathinfo": "Mga Mapagpipilian sa Dalawang Salik na Pagpapatunay",
-    "oathauth-validatedoath": "Nakapagpatunay ng dalawang salik na mga katibayan. Isasakatuparan na ngayon ang dalawang salik na pagpapatunay.",
-    "oathauth-failedtovalidateoauth": "Nabigo sa pagpapatunay ng dalawang salik na mga kredensiyal",
-    "oathauth-reattemptreset": "Tangkaing muli ang muling pagtatakda ng dalawang salik na mga kredensiyal.",
-    "oathauth-reattemptenable": "Muling tangkain ang pagpapagana ng dalawang salik na pagpapatunay.",
-    "oathauth-disabledoath": "Hindi na pinaaandar ang dalawang salik na pagpapatunay.",
-    "oathauth-failedtodisableoauth": "Nabigo sa hindi pagpapaandar ng dalawang salik na pagpapatunay.",
-    "oathauth-reattemptdisable": "Muling tangkain ang hindi na pagpapagana ng dalawang salik na pagpapatunay.",
-    "oathauth-failedtoresetoath": "Nabigo sa muling pagtatakda ng dalawang salik na mga kredensiyal.",
-    "oathauth-notloggedin": "Kailangan ang paglagda",
-    "oathauth-mustbeloggedin": "Dapat na nakalagda ka upang maisagawa ang galaw na ito."
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"oathauth-desc": "Nagbibigay ng suporta ng pagpapatunay sa pamamagitan ng pang-isang ulit na mga hudyat na nakabatay sa HMAC",
+	"specialpages-group-oath": "Dalawang Salik na Pagpapatunay",
+	"oathauth-account": "Dalawang Salik na Pangalan ng Akawnt:",
+	"oathauth-secret": "Dalawang Salik na Susi ng Lihim:",
+	"oathauth-enable": "Paganahin ang Dalawang Salik na Pagpapatunay",
+	"oathauth-failedtoenableoauth": "Nabigo sa pagpapaandar ng dalawang salik na pagpapatunay.",
+	"oathauth-alreadyenabled": "Gumagana na ang dalawang salik na pagpapatunay.",
+	"oathauth-verify": "Tiyakin ang dalawang salik na panghalip",
+	"openstackmanager-scratchtokens": "Ang sumusunod na lista ay isang listahan ng mga pang-isahang ulit na paggamit na mga panghalip na nagagasgas. Ang mga panghalip na ito ay magagamit lamang nang isang beses, at mga para sa paggamit na pangkagipitan. Pakisulat ang mga ito at itabi sa isang ligtas na lugar. Kapag naiwala mo ang telepono mo, ang mga panghalip na ito lang ang makasasaklolo sa akawnt mo. Hindi na muling ipapakita pa ang mga panghalip na ito.",
+	"oathauth-reset": "Itakdang Muli ang Dalawang Salik na mga Kredensiyal",
+	"oathauth-donotdeleteoldsecret": "Mangyaring huwag burahin ang luma mong mga kredensiyal hanggang sa matagumpay mo nang napagtibay ang bago mong mga katibayan.",
+	"oathauth-token": "Kahalip",
+	"oathauth-currenttoken": "Kasalukuyang Kahalip",
+	"oathauth-newtoken": "Bagong Kahalip",
+	"oathauth-disable": "Huwag Paganahin ang Dalawang Salik na Pagpapatunay",
+	"oathauth-displayoathinfo": "Mga Mapagpipilian sa Dalawang Salik na Pagpapatunay",
+	"oathauth-validatedoath": "Nakapagpatunay ng dalawang salik na mga katibayan. Isasakatuparan na ngayon ang dalawang salik na pagpapatunay.",
+	"oathauth-failedtovalidateoauth": "Nabigo sa pagpapatunay ng dalawang salik na mga kredensiyal",
+	"oathauth-reattemptreset": "Tangkaing muli ang muling pagtatakda ng dalawang salik na mga kredensiyal.",
+	"oathauth-reattemptenable": "Muling tangkain ang pagpapagana ng dalawang salik na pagpapatunay.",
+	"oathauth-disabledoath": "Hindi na pinaaandar ang dalawang salik na pagpapatunay.",
+	"oathauth-failedtodisableoauth": "Nabigo sa hindi pagpapaandar ng dalawang salik na pagpapatunay.",
+	"oathauth-reattemptdisable": "Muling tangkain ang hindi na pagpapagana ng dalawang salik na pagpapatunay.",
+	"oathauth-failedtoresetoath": "Nabigo sa muling pagtatakda ng dalawang salik na mga kredensiyal.",
+	"oathauth-notloggedin": "Kailangan ang paglagda",
+	"oathauth-mustbeloggedin": "Dapat na nakalagda ka upang maisagawa ang galaw na ito."
 }
