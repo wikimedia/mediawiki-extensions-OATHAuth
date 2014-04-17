@@ -35,6 +35,7 @@ $specialPageAliases['de'] = array(
 
 /** Zazaki (Zazaki) */
 $specialPageAliases['diq'] = array(
+	'OATHAuth' => array( 'OATHAuth' ),
 	'OATHAuthDisplay' => array( 'Malumata__Nesna_da_OATH_Vinayış' ),
 );
 
