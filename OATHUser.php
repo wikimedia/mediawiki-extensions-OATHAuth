@@ -6,10 +6,30 @@
  * @file
  * @ingroup Extensions
  */
-
 class OATHUser {
+	/** @var int User ID */
+	private $id;
 
-	private $id, $secret, $secretReset, $scratchTokens, $scratchTokensReset, $account, $isEnabled, $isValidated;
+	/** @var string Two factor binary secret */
+	private $secret;
+
+	/** @var string New two factor secret when resetting */
+	private $secretReset;
+
+	/** @var string[] List of scratch tokens */
+	private $scratchTokens;
+
+	/** @var string[] New scratch tokens when resetting */
+	private $scratchTokensReset;
+
+	/** @var string Name for the two-factor account */
+	private $account;
+
+	/** @var bool Whether two-factor is enabled */
+	private $isEnabled;
+
+	/** @var bool Whether two-factor is validated */
+	private $isValidated;
 
 	/**
 	 * Constructor. Can't be called directly. Call one of the static NewFrom* methods
@@ -20,8 +40,11 @@ class OATHUser {
 	 * @param $scratchTokens
 	 * @param $scratchTokensReset
 	 * @param bool $isValidated bool
+	 * @todo Get rid of telescoping constructor anti-pattern
 	 */
-	public function __construct( $id, $account, $secret = null, $secretReset = null, $scratchTokens = null, $scratchTokensReset = null, $isValidated = false ) {
+	public function __construct( $id, $account, $secret = null, $secretReset = null,
+		$scratchTokens = null, $scratchTokensReset = null, $isValidated = false
+	) {
 		$this->id = $id;
 		$this->account = $account;
 		$this->isEnabled = true;
@@ -120,7 +143,7 @@ class OATHUser {
 	 * @return Boolean
 	 */
 	public function verifyToken( $token, $reset = false ) {
-			if ( $reset ) {
+		if ( $reset ) {
 			$secret = $this->secretReset;
 		} else {
 			$secret = $this->secret;
@@ -134,7 +157,8 @@ class OATHUser {
 			}
 		}
 		# See if the user is using a scratch token
-		for ( $i = 0; $i < count( $this->scratchTokens ); $i++ ) {
+		$length = count( $this->scratchTokens );
+		for ( $i = 0; $i < $length; $i++ ) {
 			if ( $token === $this->scratchTokens[$i] ) {
 				# If there is a scratch token, remove it from the scratch token list
 				unset( $this->scratchTokens[$i] );
@@ -219,8 +243,10 @@ class OATHUser {
 		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->update(
 			'oathauth_users',
-			array(  'secret_reset' => $this->secretReset,
-	       			'scratch_tokens_reset' => base64_encode( serialize( $this->scratchTokensReset ) ) ),
+			array(
+				'secret_reset' => $this->secretReset,
+				'scratch_tokens_reset' => base64_encode( serialize( $this->scratchTokensReset ) )
+			),
 			array( 'id' => $this->id ),
 			__METHOD__
 		);
@@ -233,7 +259,8 @@ class OATHUser {
 		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->update(
 			'oathauth_users',
-			array(  'secret' => $this->secretReset,
+			array(
+				'secret' => $this->secretReset,
 				'secret_reset' => null,
 				'scratch_tokens' => base64_encode( serialize( $this->scratchTokensReset ) ),
 				'scratch_tokens_reset' => null,
@@ -280,131 +307,4 @@ class OATHUser {
 			__METHOD__
 		);
 	}
-
-	/**
-	 * @param $template UserloginTemplate
-	 * @return bool
-	 */
-	static function ModifyUITemplate( &$template ) {
-		$input = '<div><label for="wpOATHToken">'
-			. wfMsgHtml( 'oathauth-token' )
-			. '</label>'
-			. Html::input( 'wpOATHToken', null, 'text', array(
-				'class' => 'loginText', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
-			) ) . '</div>';
-		$template->set( 'extrafields', $input );
-
-		return true;
-	}
-
-	/**
-	 * @param $extraFields array
-	 * @return bool
-	 */
-	static function ChangePasswordForm( &$extraFields ) {
-		$tokenField = array( 'wpOATHToken', 'oathauth-token', 'password', '' );
-		array_push( $extraFields, $tokenField );
-		return true;
-	}
-
-	/**
-	 * @param $user User
-	 * @param $password string
-	 * @param $newpassword string
-	 * @param &$errorMsg string
-	 * @return bool
-	 */
-	static function AbortChangePassword( $user, $password, $newpassword, &$errorMsg ) {
-		$result = self::authenticate( $user );
-		if ( $result ) {
-			return true;
-		} else {
-			$errorMsg = 'oathauth-abortlogin';
-			return false;
-		}
-	}
-
-	/**
-	 * @param $user User
-	 * @param $password string
-	 * @param &$abort int
-	 * @param &$errorMsg string
-	 * @return bool
-	 */
-	static function AbortLogin( $user, $password, &$abort, &$errorMsg ) {
-		$result = self::authenticate( $user );
-		if ( $result ) {
-			return true;
-		} else {
-			$abort = LoginForm::ABORTED;
-			$errorMsg = 'oathauth-abortlogin';
-			return false;
-		}
-	}
-
-	/**
-	 * @param $user User
-	 * @return bool
-	 */
-	static function authenticate( $user ) {
-		global $wgRequest;
-		$token = $wgRequest->getText( 'wpOATHToken' );
-		$oathuser = OATHUser::newFromUser( $user );
-		# Though it's weird to default to true, we only want to deny
-		# users who have two-factor enabled and have validated their
-		# token.
-		$result = true;
-		if ( $oathuser && $oathuser->isEnabled() && $oathuser->isValidated() ) {
-			$result = $oathuser->verifyToken( $token );
-		}
-		return $result;
-	}
-
-	static function TwoFactorIsEnabled( &$isEnabled ) {
-		global $wgUser;
- 
-		$user = OATHUser::newFromUser( $wgUser );
-		if ( $user && $user->isEnabled() && $user->isValidated() ) {
-			$isEnabled = true;
-			# This two-factor extension is enabled by the user,
-			# we don't need to check others.
-			return false;
-		} else {
-			$isEnabled = false;
-			# This two-factor extension isn't enabled by the user,
-			# but others may be.
-			return true;
-		}
-	}
-
-	public static function manageOATH( User $user, array &$preferences ) {
-		$oathUser = OATHUser::newFromUser( $user );
-
-		$title = SpecialPage::getTitleFor( 'OATH' );
-		if ( $oathUser->isEnabled() && $oathUser->isValidated() ) {
-			$preferences['oath-disable'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-disable' ), array(), array( 'action' => 'disable', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
-				'label-message' => 'oathauth-prefs-label',
-				'section' => 'personal/info',
-			);
-			$preferences['oath-reset'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-reset' ), array(), array( 'action' => 'reset', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
-				'section' => 'personal/info',
-			);
-		} else {
-			$preferences['oath-enable'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link( $title, wfMsgHtml( 'oathauth-enable' ), array(), array( 'action' => 'enable', 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ) ),
-				'label-message' => 'oathauth-prefs-label',
-				'section' => 'personal/info',
-			);
-		}
-		return true;
-	}
-
 }

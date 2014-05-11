@@ -13,7 +13,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	echo "This file is an extension to the MediaWiki software and cannot be used standalone.\n";
 	die( 1 );
 }
 
@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'OATHAuth',
 	'author' => 'Ryan Lane',
-	'version' => '0.2.0',
+	'version' => '0.2.1',
 	'url' => 'http://mediawiki.org/wiki/Extension:OATHAuth',
 	'descriptionmsg' => 'oathauth-desc',
 );
@@ -52,25 +52,12 @@ $wgResourceModules['ext.oathauth'] = array(
 	'remoteExtPath' => 'OATHAuth',
 );
 
-$wgHooks['AbortChangePassword'][] = 'OATHUser::AbortChangePassword';
-$wgHooks['AbortLogin'][] = 'OATHUser::AbortLogin';
-$wgHooks['UserLoginForm'][] = 'OATHUser::ModifyUITemplate';
-$wgHooks['ChangePasswordForm'][] = 'OATHUser::ChangePasswordForm';
-$wgHooks['TwoFactorIsEnabled'][] = 'OATHUser::TwoFactorIsEnabled';
-# Schema updates
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efOATHAuthSchemaUpdates';
-$wgHooks['GetPreferences'][] = 'OATHUser::manageOATH';
+$wgHooks['AbortChangePassword'][] = 'OATHAuthHooks::AbortChangePassword';
+$wgHooks['AbortLogin'][] = 'OATHAuthHooks::AbortLogin';
+$wgHooks['UserLoginForm'][] = 'OATHAuthHooks::ModifyUITemplate';
+$wgHooks['ChangePasswordForm'][] = 'OATHAuthHooks::ChangePasswordForm';
+$wgHooks['TwoFactorIsEnabled'][] = 'OATHAuthHooks::TwoFactorIsEnabled';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'OATHAuthHooks::OATHAuthSchemaUpdates';
+$wgHooks['GetPreferences'][] = 'OATHAuthHooks::manageOATH';
 
-/**
- * @param $updater DatabaseUpdater
- * @return bool
- */
-function efOATHAuthSchemaUpdates( $updater ) {
-	$base = dirname( __FILE__ );
-	switch ( $updater->getDB()->getType() ) {
-	case 'mysql':
-		$updater->addExtensionTable( 'oathauth_users', "$base/oathauth.sql" );
-		break;
-	}
-	return true;
-}
+

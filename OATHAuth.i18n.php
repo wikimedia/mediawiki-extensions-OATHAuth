@@ -12,6 +12,7 @@
  */
 $messages = array();
 if ( !function_exists( 'wfJsonI18nShim886e5f0000466d60' ) ) {
+	/** @noinspection PhpMissingDocCommentInspection */
 	function wfJsonI18nShim886e5f0000466d60( $cache, $code, &$cachedData ) {
 		$codeSequence = array_merge( array( $code ), $cachedData['fallbackSequence'] );
 		foreach ( $codeSequence as $csCode ) {

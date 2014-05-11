@@ -11,8 +11,7 @@ $specialPageAliases = array();
 
 /** English (English) */
 $specialPageAliases['en'] = array(
-	'OATHAuth' => array( 'OATHAuth' ),
-	'OATHAuthDisplay' => array( 'Display Token OATH Information' ),
+	'OATH' => array( 'OATH', 'OATHAuth' ),
 );
 
 /** Arabic (العربية) */

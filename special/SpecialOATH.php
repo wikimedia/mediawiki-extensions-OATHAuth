@@ -9,18 +9,27 @@
 
 class SpecialOATH extends UnlistedSpecialPage {
 
-	var $OATHUser;
+	/** @var OATHUser|null */
+	private $OATHUser;
 
-	function __construct() {
+	/**
+	 * Initialize the OATH user based on the current local User object in the context
+	 */
+	public function __construct() {
 		parent::__construct( 'OATH' );
 
 		$this->OATHUser = OATHUser::newFromUser( $this->getUser() );
 	}
 
-	function execute( $par ) {
+	/**
+	 * Perform the correct form based on the action
+	 *
+	 * @param null|string $par Sub-page
+	 */
+	public function execute( $par ) {
 		if ( !$this->getUser()->isLoggedIn() ) {
 			$this->setHeaders();
-			$this->getOutput()->setPagetitle( wfMsg( 'oathauth-notloggedin' ) );
+			$this->getOutput()->setPagetitle( $this->msg( 'oathauth-notloggedin' ) );
 			$this->getOutput()->addWikiMsg( 'oathauth-mustbeloggedin' );
 			return;
 		}
@@ -39,9 +48,9 @@ class SpecialOATH extends UnlistedSpecialPage {
 	/**
 	 * @return bool
 	 */
-	function enable() {
+	private function enable() {
 		$this->setHeaders();
-		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-enable' ) );
+		$this->getOutput()->setPagetitle( $this->msg( 'oathauth-enable' ) );
 		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		if ( !$this->OATHUser->isEnabled() ) {
@@ -92,34 +101,43 @@ class SpecialOATH extends UnlistedSpecialPage {
 	/**
 	 * @param $reset bool
 	 */
-	function displaySecret( $reset = false ) {
+	private function displaySecret( $reset = false ) {
 		$this->getOutput()->addModules( 'ext.oathauth' );
 		if ( $reset ) {
 			$secret = $this->OATHUser->getSecretReset();
 		} else {
 			$secret = $this->OATHUser->getSecret();
 		}
-		$out = '<strong>' . wfMsgHtml( 'oathauth-account' ) . '</strong> ' . $this->OATHUser->getAccount() . '<br/>';
-		$out .= '<strong>' . wfMsgHtml( 'oathauth-secret' ) . '</strong> ' . $secret . '<br/>';
-		$out .= '<br/>';
-		$out .= '<div id="qrcode"></div>';
-		$this->getOutput()->addInlineScript( 'jQuery("#qrcode").qrcode("otpauth://totp/' . $this->OATHUser->getAccount() . '?secret=' . $secret . '")' );
+		$out = '<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong> '
+			. $this->OATHUser->getAccount() . '<br/>'
+			. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong> '
+			. $secret . '<br/>'
+			. '<br/>'
+			. '<div id="qrcode"></div>';
+
+		$this->getOutput()->addInlineScript(
+			'jQuery("#qrcode").qrcode("otpauth://totp/'
+			. $this->OATHUser->getAccount()
+			. '?secret=' . $secret . '")'
+		);
 
 		$this->getOutput()->addHTML( $out );
 		$this->getOutput()->addWikiMsg( 'openstackmanager-scratchtokens' );
 		if ( $reset ) {
-			$this->getOutput()->addHTML( $this->createResourceList( $this->OATHUser->getScratchTokensReset() ) );
+			$this->getOutput()->addHTML(
+				$this->createResourceList( $this->OATHUser->getScratchTokensReset() ) );
 		} else {
-			$this->getOutput()->addHTML( $this->createResourceList( $this->OATHUser->getScratchTokens() ) );
+			$this->getOutput()->addHTML(
+				$this->createResourceList( $this->OATHUser->getScratchTokens() ) );
 		}
 	}
 
 	/**
 	 * @return bool
 	 */
-	function validate() {
+	private function validate() {
 		$this->setHeaders();
-		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-enable' ) );
+		$this->getOutput()->setPagetitle( $this->msg( 'oathauth-enable' ) );
 		$mode = $this->getRequest()->getVal( 'mode' );
 		$returnto = $this->getRequest()->getVal( 'returnto' );
 
@@ -159,9 +177,9 @@ class SpecialOATH extends UnlistedSpecialPage {
 	/**
 	 * @return bool
 	 */
-	function reset() {
+	private function reset() {
 		$this->setHeaders();
-		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-reset' ) );
+		$this->getOutput()->setPagetitle( $this->msg( 'oathauth-reset' ) );
 		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		$info['token'] = array(
@@ -193,9 +211,9 @@ class SpecialOATH extends UnlistedSpecialPage {
 	/**
 	 * @return bool
 	 */
-	function disable() {
+	private function disable() {
 		$this->setHeaders();
-		$this->getOutput()->setPagetitle( wfMsg( 'oathauth-disable' ) );
+		$this->getOutput()->setPagetitle( $this->msg( 'oathauth-disable' ) );
 		$returnto = $this->getRequest()->getVal( 'returnto' );
 
 		$info['token'] = array(
@@ -228,7 +246,7 @@ class SpecialOATH extends UnlistedSpecialPage {
 	 * @param $resources array
 	 * @return string
 	 */
-	function createResourceList( $resources ) {
+	private function createResourceList( $resources ) {
 		$resourceList = '';
 		foreach ( $resources as $resource ) {
 			$resourceList .= Html::rawElement( 'li', array(), $resource );
@@ -238,16 +256,16 @@ class SpecialOATH extends UnlistedSpecialPage {
 
 	/**
 	 * @param $formData array
-	 * @param $entryPoint string
 	 * @return bool
 	 */
-	function tryValidateSubmit( $formData, $entryPoint = 'internal' ) {
+	public function tryValidateSubmit( $formData ) {
 		$mode = $formData['mode'];
 		if ( $mode == "reset" ) {
 			$reset = true;
 		} else {
 			$reset = false;
 		}
+
 		$verify = $this->OATHUser->verifyToken( $formData['token'], $reset );
 		if ( $verify ) {
 			if ( $reset ) {
@@ -258,38 +276,63 @@ class SpecialOATH extends UnlistedSpecialPage {
 		} else {
 			$result = false;
 		}
+
+		$out = '';
 		if ( $result ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-validatedoath' );
 			if ( $formData['returnto'] ) {
 				$out = '<br />';
 				$title = Title::newFromText( $formData['returnto'] );
-				$out = Linker::link( $title, wfMsgHtml( 'oathauth-backtopreferences' ) );
+				$out .= Linker::link( $title, $this->msg( 'oathauth-backtopreferences' )->escaped() );
 			}
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
 			$out = '<br />';
 
 			if ( $reset ) {
-				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'enable', 'mode' => 'reset', 'returnto' => $formData['returnto'] ) );
+				$out .= Linker::link(
+					$this->getPageTitle(),
+					$this->msg( 'oathauth-reattemptreset' )->escaped(),
+					array(),
+					array(
+						'action' => 'enable',
+						'mode' => 'reset',
+						'returnto' => $formData['returnto']
+					)
+				);
 			} else {
-				$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptenable' ), array(), array( 'action' => 'enable', 'returnto' => $formData['returnto'] ) );
+				$out .= Linker::link(
+					$this->getPageTitle(),
+					$this->msg( 'oathauth-reattemptenable' )->escaped(),
+					array(),
+					array(
+						'action' => 'enable',
+						'returnto' => $formData['returnto']
+					)
+				);
 			}
 		}
+
 		$this->getOutput()->addHTML( $out );
+
 		return true;
 	}
 
 	/**
 	 * @param $formData array
-	 * @param $entryPoint string
 	 * @return bool
 	 */
-	function tryDisableSubmit( $formData, $entryPoint = 'internal' ) {
+	public function tryDisableSubmit( $formData ) {
 		$verify = $this->OATHUser->verifyToken( $formData['token'] );
 		if ( !$verify ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
 			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptdisable' ), array(), array( 'action' => 'disable' ) );
+			$out .= Linker::link(
+				$this->getPageTitle(),
+				$this->msg( 'oathauth-reattemptdisable' )->escaped(),
+				array(),
+				array( 'action' => 'disable' )
+			);
 			$this->getOutput()->addHTML( $out );
 			return true;
 		}
@@ -300,14 +343,21 @@ class SpecialOATH extends UnlistedSpecialPage {
 			if ( $formData['returnto'] ) {
 				$out = '<br />';
 				$title = Title::newFromText( $formData['returnto'] );
-				$out .= Linker::link( $title, wfMsgHtml( 'oathauth-backtopreferences' ) );
+				$out .= Linker::link( $title, $this->msg( 'oathauth-backtopreferences' )->escaped() );
 				$this->getOutput()->addHTML( $out );
 			}
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtodisableoauth' );
 			$out = '<br />';
 
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptdisable' ), array( 'action' => 'disable', 'returnto' => $formData['returnto'] ) );
+			$out .= Linker::link(
+				$this->getPageTitle(),
+				$this->msg( 'oathauth-reattemptdisable' )->escaped(),
+				array(
+					'action' => 'disable',
+					'returnto' => $formData['returnto'],
+				)
+			);
 			$this->getOutput()->addHTML( $out );
 		}
 		return true;
@@ -315,16 +365,25 @@ class SpecialOATH extends UnlistedSpecialPage {
 
 	/**
 	 * @param $formData array
-	 * @param $entryPoint string
 	 * @return bool
 	 */
-	function tryResetSubmit( $formData, $entryPoint = 'internal' ) {
+	public function tryResetSubmit( $formData ) {
 		$verify = $this->OATHUser->verifyToken( $formData['token'] );
 		if ( !$verify ) {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtovalidateoauth' );
 			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset', 'returnto' => $formData['returnto'] ) );
+			$out .= Linker::link(
+				$this->getPageTitle(),
+				$this->msg( 'oathauth-reattemptreset' )->escaped(),
+				array(),
+				array(
+					'action' => 'reset',
+					'returnto' => $formData['returnto']
+				)
+			);
+
 			$this->getOutput()->addHTML( $out );
+
 			return true;
 		}
 
@@ -351,7 +410,13 @@ class SpecialOATH extends UnlistedSpecialPage {
 			'name' => 'action',
 		);
 		$myContext = new DerivativeContext( $this->getContext() );
-		$myRequest = new DerivativeRequest( $this->getRequest(), array( 'action' => 'validate', 'mode' => 'reset', 'token' => '', 'returnto' => $formData['returnto'] ), false );
+		$myRequest = new DerivativeRequest( $this->getRequest(),
+			array(
+				'action' => 'validate',
+				'mode' => 'reset',
+				'token' => '',
+				'returnto' => $formData['returnto']
+			), false );
 		$myContext->setRequest( $myRequest );
 		$form = new HTMLForm( $info, $myContext );
 		$form->setSubmitID( 'oathauth-validate-submit' );
@@ -364,9 +429,18 @@ class SpecialOATH extends UnlistedSpecialPage {
 		} else {
 			$this->getOutput()->addWikiMsg( 'oathauth-failedtoresetoath' );
 			$out = '<br />';
-			$out .= Linker::link( $this->getTitle(), wfMsgHtml( 'oathauth-reattemptreset' ), array(), array( 'action' => 'reset', 'returnto' => $formData['returnto'] ) );
+			$out .= Linker::link(
+				$this->getPageTitle(),
+				$this->msg( 'oathauth-reattemptreset' )->escaped(),
+				array(),
+				array(
+					'action' => 'reset',
+					'returnto' => $formData['returnto']
+				)
+			);
 			$this->getOutput()->addHTML( $out );
 		}
+
 		return true;
 	}
 
