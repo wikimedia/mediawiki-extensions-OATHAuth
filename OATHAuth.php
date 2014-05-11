@@ -31,6 +31,7 @@ $dir = __DIR__ . '/';
 $wgMessagesDirs['OATHAuth'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['OATHAuth'] = $dir . 'OATHAuth.i18n.php';
 $wgExtensionMessagesFiles['OATHAuthAlias'] = $dir . 'OATHAuth.alias.php';
+$wgAutoloadClasses['OATHAuthHooks'] = $dir . 'OATHAuth.hooks.php';
 $wgAutoloadClasses['HOTP'] = $dir . 'lib/hotp.php';
 $wgAutoloadClasses['HOTPResult'] = $dir . 'lib/hotp.php';
 $wgAutoloadClasses['Base32'] = $dir . 'lib/base32.php';
