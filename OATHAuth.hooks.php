@@ -15,7 +15,8 @@ class OATHAuthHooks {
 			. Html::input( 'wpOATHToken', null, 'text', array(
 					'class' => 'loginText', 'id' => 'wpOATHToken', 'tabindex' => '3', 'size' => '20'
 				) ) . '</div>';
-		$template->set( 'extrafields', $input );
+
+		$template->set( 'extrafields', $template->get( 'extrafields', '' ) . $input );
 
 		return true;
 	}
@@ -27,6 +28,7 @@ class OATHAuthHooks {
 	static function ChangePasswordForm( &$extraFields ) {
 		$tokenField = array( 'wpOATHToken', 'oathauth-token', 'password', '' );
 		array_push( $extraFields, $tokenField );
+
 		return true;
 	}
 
@@ -43,6 +45,7 @@ class OATHAuthHooks {
 			return true;
 		} else {
 			$errorMsg = 'oathauth-abortlogin';
+
 			return false;
 		}
 	}
@@ -71,6 +74,7 @@ class OATHAuthHooks {
 	 */
 	static function authenticate( $user ) {
 		global $wgRequest;
+
 		$token = $wgRequest->getText( 'wpOATHToken' );
 		$oathuser = OATHUser::newFromUser( $user );
 		# Though it's weird to default to true, we only want to deny
