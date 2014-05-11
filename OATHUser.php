@@ -143,31 +143,42 @@ class OATHUser {
 	 * @return Boolean
 	 */
 	public function verifyToken( $token, $reset = false ) {
-		if ( $reset ) {
-			$secret = $this->secretReset;
-		} else {
-			$secret = $this->secret;
-		}
+		$memc = ObjectCache::newAnything( array() );
+
+		// Prevent replay attacks
+		$memcKey = wfMemcKey( 'oauthauth', 'usedtokens', $reset ? 'reset' : null, $this->getAccount() );
+		$lastWindow = (int)$memc->get( $memcKey );
+
+		$retval = false;
+		$secret = $reset ? $this->secretReset : $this->secret;
 		$results = HOTP::generateByTimeWindow( Base32::decode( $secret ), 30, -4, 4 );
-		# Check to see if the user's given token is in the list of tokens generated
-		# for the time window.
-		foreach ( $results as $result ) {
-			if ( $result->toHOTP( 6 ) === $token ) {
-				return true;
-			}
-		}
-		# See if the user is using a scratch token
-		$length = count( $this->scratchTokens );
-		for ( $i = 0; $i < $length; $i++ ) {
-			if ( $token === $this->scratchTokens[$i] ) {
-				# If there is a scratch token, remove it from the scratch token list
-				unset( $this->scratchTokens[$i] );
-				# Only return true if we removed it from the database
-				return $this->updateScratchTokens();
+		// Check to see if the user's given token is in the list of tokens generated
+		// for the time window.
+		foreach ( $results as $window => $result ) {
+			if ( $window > $lastWindow && $result->toHOTP( 6 ) === $token ) {
+				$lastWindow = $window;
+				$retval = true;
+				break;
 			}
 		}
 
-		return false;
+		// See if the user is using a scratch token
+		$length = count( $this->scratchTokens );
+		for ( $i = 0; $i < $length; $i++ ) {
+			if ( $token === $this->scratchTokens[$i] ) {
+				// If there is a scratch token, remove it from the scratch token list
+				unset( $this->scratchTokens[$i] );
+				// Only return true if we removed it from the database
+				$retval = $this->updateScratchTokens();
+				break;
+			}
+		}
+
+		if ( $retval ) {
+			$memc->set( $memcKey, $lastWindow, 30 * 8 );
+		}
+
+		return $retval;
 	}
 
 	/**

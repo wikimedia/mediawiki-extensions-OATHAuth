@@ -82,8 +82,8 @@ class HOTP {
 		$out = array();
 		$length = count( $window );
 		for ( $i = 0; $i < $length; $i++ ) {
-			$shift_counter = $window[$i];
-			$out[$shift_counter] = HOTP::generateByCounter($key, $counter + $shift_counter);
+			$shift_counter = $counter + $window[$i];
+			$out[$shift_counter] = HOTP::generateByCounter($key, $shift_counter);
 		}
 
 		return $out;
