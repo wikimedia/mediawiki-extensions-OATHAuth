@@ -4,8 +4,22 @@
  * Class representing a two-factor key
  *
  * Keys can be tied to OAUTHUsers
+ *
+ * @ingroup Extensions
  */
 class OATHAuthKey {
+	/**
+	 * Represents that a token corresponds to the main secret
+	 * @see verifyToken
+	 */
+	const MAIN_TOKEN = 1;
+
+	/**
+	 * Represents that a token corresponds to a scratch token
+	 * @see verifyToken
+	 */
+	const SCRATCH_TOKEN = -1;
+
 	/** @var string Two factor binary secret */
 	private $secret;
 
@@ -63,7 +77,8 @@ class OATHAuthKey {
 	 * @param string $token Token to verify
 	 * @param OATHUser $user
 	 *
-	 * @return bool True on match, false otherwise
+	 * @return int|false Returns a constant represent what type of token was matched,
+	 *  or false for no match
 	 */
 	public function verifyToken( $token, $user ) {
 		global $wgOATHAuthWindowRadius;
@@ -86,7 +101,7 @@ class OATHAuthKey {
 		foreach ( $results as $window => $result ) {
 			if ( $window > $lastWindow && $result->toHOTP( 6 ) === $token ) {
 				$lastWindow = $window;
-				$retval = true;
+				$retval = self::MAIN_TOKEN;
 				break;
 			}
 		}
@@ -106,7 +121,7 @@ class OATHAuthKey {
 						$user->setKey( $this );
 						$oathrepo->persist( $user );
 						// Only return true if we removed it from the database
-						$retval = true;
+						$retval = self::SCRATCH_TOKEN;
 						break;
 					}
 				}

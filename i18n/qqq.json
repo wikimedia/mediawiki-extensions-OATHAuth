@@ -5,13 +5,15 @@
 			"Ryan Lane <rlane@wikimedia.org>",
 			"Shirayuki",
 			"Purodha",
-			"Umherirrender"
+			"Umherirrender",
+            "Tyler Romeo <tylerromeo@gmail.com>"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
 	"oath": "{{optional}}\n{{doc-special|OATH}}",
 	"specialpages-group-oath": "{{doc-special-group|like=[[Special:OATH]]}}\n\nSee [[w:en:Two_factor_authentication|Wikipedia article on two factor authentication]].\n\n{{Identical|Two factor authentication}}",
 	"oathauth-account": "Plain text associated with [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication] on this wiki (username@<wiki name>) found on Special:OATH.",
+	"oathauth-legend": "Label for the legend on Special:OATH",
 	"oathauth-secret": "Plain text found on Special:OATH while enabling OATH\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-enable": "Page title on Special:OATH, when enabling OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-failedtoenableoauth": "Plain text, found on Special:OATH when failing to enable OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
@@ -37,5 +39,12 @@
 	"oathauth-notloggedin": "Page title seen on Special:OATH when a user is not logged in.\n{{Identical|Login required}}",
 	"oathauth-mustbeloggedin": "Plain text seen on Special:OATH when a user is not logged in.",
 	"oathauth-prefs-label": "Plain text label seen on Special:Preferences\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
-	"oathauth-abortlogin": "Error message shown on login and password change pages when authentication is aborted.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]"
+	"oathauth-abortlogin": "Error message shown on login and password change pages when authentication is aborted.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
+    "oathauth-step1": "Label for step 1 on Special:OATH form",
+    "oathauth-step1-test": "Text for step 1 on Special:OATH form",
+    "oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
+    "oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
+    "oathauth-step3": "Label for step 3 information on Special:OATH",
+    "oathauth-step4": "Label for step 4 information on Special:OATH",
+    "oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token"
 }

@@ -2,6 +2,8 @@
 
 /**
  * Hooks for Extension:OATHAuth
+ *
+ * @ingroup Extensions
  */
 class OATHAuthHooks {
 	/**
@@ -128,39 +130,20 @@ class OATHAuthHooks {
 		$oathUser = $oathrepo->findByUser( $user );
 
 		$title = SpecialPage::getTitleFor( 'OATH' );
-		if ( $oathUser->getKey() !== null ) {
-			$preferences['oath-disable'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link(
-					$title,
-					wfMessage( 'oathauth-disable' )->escaped(),
-					array(),
-					array(
-						'action' => 'disable',
-						'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
-					)
-				),
-				'label-message' => 'oathauth-prefs-label',
-				'section' => 'personal/info',
-			);
-		} else {
-			$preferences['oath-enable'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link(
-					$title,
-					wfMessage( 'oathauth-enable' )->escaped(),
-					array(),
-					array(
-						'action' => 'enable',
-						'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
-					)
-				),
-				'label-message' => 'oathauth-prefs-label',
-				'section' => 'personal/info',
-			);
-		}
+		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
+
+		$preferences[$msg] = array(
+			'type' => 'info',
+			'raw' => 'true',
+			'default' => Linker::link(
+				$title,
+				wfMessage( $msg )->escaped(),
+				array(),
+				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() )
+			),
+			'label-message' => 'oathauth-prefs-label',
+			'section' => 'personal/info',
+		);
 
 		return true;
 	}

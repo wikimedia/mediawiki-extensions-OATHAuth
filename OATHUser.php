@@ -3,7 +3,6 @@
 /**
  * Class representing a user from OATH's perspective
  *
- * @file
  * @ingroup Extensions
  */
 class OATHUser {

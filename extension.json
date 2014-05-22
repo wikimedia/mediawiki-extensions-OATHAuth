@@ -13,7 +13,10 @@
 		"HOTPResult": "lib/hotp.php",
 		"Base32": "lib/base32.php",
 		"OATHUser": "OATHUser.php",
-		"SpecialOATH": "special/SpecialOATH.php"
+		"SpecialOATH": "special/SpecialOATH.php",
+		"SpecialOATHEnable": "special/SpecialOATHEnable.php",
+		"SpecialOATHDisable": "special/SpecialOATHDisable.php",
+		"ProxySpecialPage": "special/ProxySpecialPage.php"
 	},
 	"ExtensionMessagesFiles": {
 		"OATHAuthAlias": "OATHAuth.alias.php"

@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ryan Lane <rlane@wikimedia.org>"
+			"Ryan Lane <rlane@wikimedia.org>",
+			"Tyler Romeo <tylerromeo@gmail.com>"
 		]
 	},
 	"oathauth-desc": "Provides authentication support using HMAC based one-time passwords",
 	"oath": "OATHAuth",
 	"specialpages-group-oath": "Two-factor authentication",
 	"oathauth-account": "Two-factor account name:",
+	"oathauth-legend": "Verify your credentials",
 	"oathauth-secret": "Two-factor secret key:",
 	"oathauth-enable": "Enable two-factor authentication",
 	"oathauth-failedtoenableoauth": "Failed to enable two-factor authentication.",
@@ -33,5 +35,12 @@
 	"oathauth-notloggedin": "Login required",
 	"oathauth-mustbeloggedin": "You must be logged in to perform this action.",
 	"oathauth-prefs-label": "Two-factor authentication:",
-	"oathauth-abortlogin": "The two-factor authentication token provided was invalid."
+	"oathauth-abortlogin": "The two-factor authentication token provided was invalid.",
+	"oathauth-step1": "Step 1: Download the app",
+	"oathauth-step1-test": "Download a mobile app for two-factor authentication (such as Google Authenticator) on to your phone.",
+	"oathauth-step2": "Step 2: Scan the QR code",
+	"oathauth-step2alt": "Or enter the secret manually:",
+	"oathauth-step3": "Step 3: Write down the scratch codes",
+	"oathauth-step4": "Step 4: Verification",
+	"oathauth-entertoken": "Enter a code from your mobile app to verify:"
 }
