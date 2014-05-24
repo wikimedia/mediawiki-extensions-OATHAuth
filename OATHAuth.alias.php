@@ -18,3 +18,8 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'OATH' => array( 'OATH验证' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'OATH' => array( 'OATH認證' ),
+);
