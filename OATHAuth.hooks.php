@@ -122,8 +122,19 @@ class OATHAuthHooks {
 			case 'sqlite':
 				$updater->addExtensionTable( 'oathauth_users', "$base/sql/mysql/tables.sql" );
 				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateOldUsersFromInstaller' ] ] );
-				$updater->dropExtensionField( 'oathauth_users', 'secret_reset',
-					"$base/sql/mysql/patch-remove_reset.sql" );
+				$updater->dropExtensionField(
+					'oathauth_users',
+					'secret_reset',
+					"$base/sql/mysql/patch-remove_reset.sql"
+				);
+				break;
+
+			case 'oracle':
+				$updater->addExtensionTable( 'oathauth_users', "$base/sql/oracle/tables.sql" );
+				break;
+
+			case 'postgres':
+				$updater->addExtensionTable( 'oathauth_users', "$base/sql/postgres/tables.sql" );
 				break;
 		}
 
