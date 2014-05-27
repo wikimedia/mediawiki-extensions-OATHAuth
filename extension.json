@@ -16,6 +16,7 @@
 		"SpecialOATH": "special/SpecialOATH.php",
 		"SpecialOATHEnable": "special/SpecialOATHEnable.php",
 		"SpecialOATHDisable": "special/SpecialOATHDisable.php",
+		"SpecialOATHLogin": "special/SpecialOATHLogin.php",
 		"ProxySpecialPage": "special/ProxySpecialPage.php"
 	},
 	"ExtensionMessagesFiles": {
@@ -28,14 +29,8 @@
 		"AbortLogin": [
 			"OATHAuthHooks::AbortLogin"
 		],
-		"UserLoginForm": [
-			"OATHAuthHooks::ModifyUITemplate"
-		],
 		"ChangePasswordForm": [
 			"OATHAuthHooks::ChangePasswordForm"
-		],
-		"TwoFactorIsEnabled": [
-			"OATHAuthHooks::TwoFactorIsEnabled"
 		],
 		"LoadExtensionSchemaUpdates": [
 			"OATHAuthHooks::OATHAuthSchemaUpdates"
