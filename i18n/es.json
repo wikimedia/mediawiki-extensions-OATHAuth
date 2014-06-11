@@ -10,7 +10,7 @@
 	"specialpages-group-oath": "Autenticación de dos factores",
 	"oathauth-account": "Nombre de cuenta de dos factores:",
 	"oathauth-secret": "Clave secreta de dos factores:",
-	"oathauth-enable": "Habilitar la autenticación de dos factores",
+	"oathauth-enable": "Activar la autenticación en dos pasos",
 	"oathauth-failedtoenableoauth": "Error al habilitar la autenticación de dos factores.",
 	"oathauth-alreadyenabled": "Ya está habilitada la autenticación de dos factores.",
 	"oathauth-verify": "Verificar clave de dos factores",
