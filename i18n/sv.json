@@ -1,8 +1,37 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Lokal Profil"
 		]
 	},
-	"oathauth-notloggedin": "Inloggning krävs"
+	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
+	"specialpages-group-oath": "Tvåstegsverifiering",
+	"oathauth-account": "Tvåstegs-kontonamn:",
+	"oathauth-secret": "Tvåstegs-hemlig nyckel:",
+	"oathauth-enable": "Aktivera tvåstegsverifiering",
+	"oathauth-failedtoenableoauth": "Det gick inte att aktivera tvåstegsverifiering.",
+	"oathauth-alreadyenabled": "Tvåstegsverifiering är redan aktiverat.",
+	"oathauth-verify": "Verifiera tvåstegsnyckeln",
+	"openstackmanager-scratchtokens": "Följande lista är en förteckning över engångsnycklar. Dessa nycklar kan enbart användas en gång och är avsedda för användning i nödfall. Vänligen skriv ner dessa och förvara dem på en säker plats. Om du förlorar din telefon, är dessa nycklar det enda sättet att rädda ditt konto. Dessa nycklar kommer aldrig att visas igen.",
+	"oathauth-reset": "Återställ tvåstegs-autentiseringsuppgifter",
+	"oathauth-donotdeleteoldsecret": "Vänligen ta inte bort dina gamla autentiseringsuppgifter förrän du framgångsrikt har validerat din nya autentiseringsuppgifter.",
+	"oathauth-token": "Nyckel",
+	"oathauth-currenttoken": "Aktuell nyckel",
+	"oathauth-newtoken": "Ny nyckel",
+	"oathauth-disable": "Inaktivera tvåstegsverifiering",
+	"oathauth-displayoathinfo": "Alternativ för tvåstegsverifiering",
+	"oathauth-validatedoath": "Validerade tvåstegs-autentiseringsuppgifter. Tvåstegsverifiering kommer nu att verkställas.",
+	"oathauth-backtopreferences": "Tillbaka till inställningar.",
+	"oathauth-failedtovalidateoauth": "Misslyckades med att validera tvåstegs-autentiseringsuppgifter",
+	"oathauth-reattemptreset": "Gör ett nytt försök att återställa tvåstegs-autentiseringsuppgifter.",
+	"oathauth-reattemptenable": "Gör ett nytt försök att aktivera tvåstegsverifiering.",
+	"oathauth-disabledoath": "Inaktivera tvåstegsverifiering.",
+	"oathauth-failedtodisableoauth": "Gick inte att inaktivera tvåstegsverifiering.",
+	"oathauth-reattemptdisable": "Gör ett nytt försök att inaktivera tvåstegsverifiering.",
+	"oathauth-failedtoresetoath": "Gick inte att återställa tvåstegs-autentiseringsuppgifter.",
+	"oathauth-notloggedin": "Inloggning krävs",
+	"oathauth-mustbeloggedin": "Du måste vara inloggad för att utföra denna åtgärd.",
+	"oathauth-prefs-label": "Tvåstegsverifiering:",
+	"oathauth-abortlogin": "Den angivna tvåstegsverifieringsnyckeln var ogiltig"
 }
