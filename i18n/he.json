@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"oathauth-desc": "תמיכה באימות באמצעות ססמאות חד־פעמיות מבוססות־HMAC",
+	"specialpages-group-oath": "אימות דו־רכיבי",
+	"oathauth-account": "שם חשבון דו־רכיבי:",
+	"oathauth-secret": "מפתח סודי דו־רכיבי:",
+	"oathauth-enable": "הפעלת אימות דו־רכיבי",
+	"oathauth-failedtoenableoauth": "הפעלת אימות דו־רכיבי לא הצליחה.",
+	"oathauth-alreadyenabled": "אימות דו־רכיבי כבר מופעל.",
+	"oathauth-verify": "וידוא אסימון דו־רכיבי",
+	"openstackmanager-scratchtokens": "להלן רשימה של אסימונים חד־פעמיים זמניים. אפשר להשתמש באסימונים האלה רק פעם אחת במצב חירום. נא לרשום אותם ולשמור אותם במקום בטוח. אם הטלפון שלך יאבד, האסימונים האלה יהיו דרכך היחידה להציל את החשבון שלך. האסימונים האלה לא יוצגו שוב לעולם.",
+	"oathauth-reset": "איפוס נתוני האמנה דו־רכיביים",
+	"oathauth-donotdeleteoldsecret": "נא לא למחוק את נתוני ההאמנה הישנים שלך עד שווידאת את תקינותם של נתוני ההאמנה החדשים שלך.",
+	"oathauth-token": "אסימון",
+	"oathauth-currenttoken": "אסימון נוכחי",
+	"oathauth-newtoken": "אסימון חדש",
+	"oathauth-disable": "כיבוי אימות דו־רכיבי",
+	"oathauth-displayoathinfo": "אפשרויות אימות דו־רכיבי",
+	"oathauth-validatedoath": "תקינות נתוני ההאמנה הדו־רכיביים נבדקה. מעכשיו ייכפה אימות דו־רכיבי.",
+	"oathauth-backtopreferences": "חזרה להעדפות.",
+	"oathauth-failedtovalidateoauth": "בדיקת התקינות של נתוני ההאמנה הדו־רכיביים נכשלה.",
+	"oathauth-reattemptreset": "לנסות שוב לאפס את נתוני ההאמנה הדו־רכיביים.",
+	"oathauth-reattemptenable": "לנסות שוב להפעיל אימות דו־רכיבי.",
+	"oathauth-disabledoath": "אימות דו־רכיבי כובה.",
+	"oathauth-failedtodisableoauth": "כיבוי אימות דו־רכיבי נכשל.",
+	"oathauth-reattemptdisable": "לנסות שוב לכבות אימות דו־רכיבי.",
+	"oathauth-failedtoresetoath": "איפוס נתוני האמנה דו־רכיביים נכשל.",
+	"oathauth-notloggedin": "נדרשת כניסה לחשבון",
+	"oathauth-mustbeloggedin": "צריך להיכנס לחשבון כדי לבצע את הפעולה הזאת.",
+	"oathauth-prefs-label": "אימות דו־רכיבי:",
+	"oathauth-abortlogin": "אסימון האימות הדו־רכיבי שניתן היה בלתי־תקין."
+}
