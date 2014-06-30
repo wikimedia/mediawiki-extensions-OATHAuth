@@ -182,6 +182,7 @@ class OATHAuthHooks {
 		$base = dirname( __FILE__ );
 		switch ( $updater->getDB()->getType() ) {
 			case 'mysql':
+			case 'sqlite':
 				$updater->addExtensionTable( 'oathauth_users', "$base/oathauth.sql" );
 				break;
 		}
