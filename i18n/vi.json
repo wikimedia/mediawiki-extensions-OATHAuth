@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"specialpages-group-oath": "Xác thực dùng hai nhân tố",
+	"oathauth-account": "Tên tài khoản hai nhân tố:",
+	"oathauth-secret": "Chìa khóa bí mật hai nhân tố:",
+	"oathauth-token": "Dấu hiệu"
+}

@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Alan ffm"
 		]
 	},
 	"oathauth-account": "Nazwa konta dwuskładnikowego:",
 	"oathauth-secret": "Tajny klucz dwuskładnikowy:",
-	"oathauth-enable": "Włączenie uwierzytelniania dwuskładnikowego"
+	"oathauth-enable": "Włączenie uwierzytelniania dwuskładnikowego",
+	"oathauth-token": "Token",
+	"oathauth-newtoken": "Nowy token",
+	"oathauth-backtopreferences": "Wróć do preferencji.",
+	"oathauth-notloggedin": "musisz się zalogować",
+	"oathauth-mustbeloggedin": "Musisz być zalogowany aby wykonać tę akcję."
 }
