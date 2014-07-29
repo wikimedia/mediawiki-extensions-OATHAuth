@@ -6,7 +6,7 @@
 			"McDutchie"
 		]
 	},
-	"oathauth-desc": "Proporciona soporte de autenticación utilizando contraseñas de una sola vez basadas en HMAC",
+	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
 	"specialpages-group-oath": "Autenticación de dos factores",
 	"oathauth-account": "Nombre de cuenta de dos factores:",
 	"oathauth-secret": "Clave secreta de dos factores:",
