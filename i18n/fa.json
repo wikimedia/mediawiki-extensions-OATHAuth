@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Armin1392",
-			"Ebraminio"
+			"Ebraminio",
+			"Alirezaaa"
 		]
 	},
 	"oathauth-desc": "ارائهٔ‌ پشتیبانی تأیید اعتبار با استفاده از اچ‌ام‌ای‌سی بر اساس رمز‌های عبور یک‌ بار",
@@ -18,7 +19,7 @@
 	"oathauth-donotdeleteoldsecret": "لطفاً اعتبارنامه‌های قدیمی خود را تا زمانی که شما اعتبارنامه‌های جدید خود را با موفقیت معتبر نساخته‌اید، حذف نکنید.",
 	"oathauth-token": "نماد",
 	"oathauth-currenttoken": "نماد کنونی",
-	"oathauth-newtoken": "نماد جدید",
+	"oathauth-newtoken": "نماد تازه",
 	"oathauth-disable": "غیرفعال کردن دو عامل تأیید",
 	"oathauth-displayoathinfo": "گزینه‌های دو عامل تأیید",
 	"oathauth-validatedoath": "معتبر ساختن دو فاکتور اعتبارنامه. دو فاکتور تأیید اکنون اجرا خواهد‌شد.",
