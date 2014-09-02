@@ -1,9 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Simon Shek"
+			"Simon Shek",
+			"Cwlin0416"
 		]
 	},
+	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認証",
+	"specialpages-group-oath": "雙重認証",
+	"oathauth-account": "雙認証帳號名稱：",
+	"oathauth-secret": "雙認証秘密金鑰：",
+	"oathauth-enable": "開啟雙重認証",
+	"oathauth-failedtoenableoauth": "開啟雙重認証失敗。",
+	"oathauth-alreadyenabled": "雙重認証已經開啟。",
+	"oathauth-verify": "檢驗雙重認証密鑰",
+	"oathauth-reset": "重設雙重認証憑證",
+	"oathauth-donotdeleteoldsecret": "在您成功取得新憑證之前請勿刪除您的舊憑證。",
+	"oathauth-token": "密鑰",
+	"oathauth-currenttoken": "目前密鑰",
+	"oathauth-newtoken": "新密鑰",
+	"oathauth-disable": "停用雙重認証",
+	"oathauth-displayoathinfo": "雙重認証選項",
+	"oathauth-validatedoath": "已驗証雙認証憑證。雙重認証現在已強制執行。",
+	"oathauth-backtopreferences": "返回偏好設定。",
+	"oathauth-failedtovalidateoauth": "驗証雙重認証失敗。",
+	"oathauth-reattemptreset": "重試重設雙重認証。",
+	"oathauth-reattemptenable": "重試開啟雙重認証。",
+	"oathauth-disabledoath": "已停用雙重認証。",
+	"oathauth-failedtodisableoauth": "停用雙重認証失敗。",
+	"oathauth-reattemptdisable": "重試停用雙重認証。",
+	"oathauth-failedtoresetoath": "重設雙重認証憑證失敗。",
 	"oathauth-notloggedin": "需要登入",
-	"oathauth-mustbeloggedin": "您必須登錄才能執行此操作。"
+	"oathauth-mustbeloggedin": "您必須登錄才能執行此操作。",
+	"oathauth-prefs-label": "雙重認証：",
+	"oathauth-abortlogin": "提供的雙重認証密鑰無效。"
 }
