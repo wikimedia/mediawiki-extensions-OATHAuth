@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"oathauth-token": "Chave",
+	"oathauth-currenttoken": "Chave atual",
+	"oathauth-newtoken": "Nova chave",
+	"oathauth-notloggedin": "Autenticação necessária",
+	"oathauth-mustbeloggedin": "Deve iniciar sessão para realizar esta ação."
+}
