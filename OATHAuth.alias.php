@@ -31,5 +31,5 @@ $specialPageAliases['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
-	'OATH' => array( 'OATH 認證' ),
+	'OATH' => array( 'OATH_認證' ),
 );
