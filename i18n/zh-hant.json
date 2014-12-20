@@ -30,7 +30,7 @@
 	"oathauth-reattemptdisable": "重試停用雙重認証。",
 	"oathauth-failedtoresetoath": "重設雙重認証憑證失敗。",
 	"oathauth-notloggedin": "需要登入",
-	"oathauth-mustbeloggedin": "您必須登錄才能執行此操作。",
+	"oathauth-mustbeloggedin": "您必須登入才能執行此操作。",
 	"oathauth-prefs-label": "雙重認証：",
 	"oathauth-abortlogin": "提供的雙重認証密鑰無效。"
 }
