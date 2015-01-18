@@ -24,6 +24,11 @@ $specialPageAliases['arz'] = array(
 	'OATH' => array( 'اواث', 'اواث_اوث' ),
 );
 
+/** Urdu (اردو) */
+$specialPageAliases['ur'] = array(
+	'OATH' => array( 'حلف_نامہ' ),
+);
+
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
 	'OATH' => array( 'OATH验证' ),
