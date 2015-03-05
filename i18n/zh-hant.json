@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Simon Shek",
-			"Cwlin0416"
+			"Cwlin0416",
+			"LNDDYL"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認証",
@@ -15,9 +16,9 @@
 	"oathauth-verify": "檢驗雙重認証密鑰",
 	"oathauth-reset": "重設雙重認証憑證",
 	"oathauth-donotdeleteoldsecret": "在您成功取得新憑證之前請勿刪除您的舊憑證。",
-	"oathauth-token": "密鑰",
-	"oathauth-currenttoken": "目前密鑰",
-	"oathauth-newtoken": "新密鑰",
+	"oathauth-token": "金鑰",
+	"oathauth-currenttoken": "目前金鑰",
+	"oathauth-newtoken": "新金鑰",
 	"oathauth-disable": "停用雙重認証",
 	"oathauth-displayoathinfo": "雙重認証選項",
 	"oathauth-validatedoath": "已驗証雙認証憑證。雙重認証現在已強制執行。",
