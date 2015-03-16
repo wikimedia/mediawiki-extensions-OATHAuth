@@ -3,12 +3,13 @@
 		"authors": [
 			"Raymond",
 			"Ryan Lane <rlane@wikimedia.org>",
-			"Shirayuki"
+			"Shirayuki",
+			"Purodha"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=http://www.mediawiki.org/wiki/Extension:OATHAuth}}",
 	"oath": "{{optional}}\n{{doc-special|OATH}}",
-	"specialpages-group-oath": "{{doc-special-group|like=[[Special:OATH]]}}\n{{Identical|Two factor authentication}}",
+	"specialpages-group-oath": "{{doc-special-group|like=[[Special:OATH]]}}\n\nSee [[w:en:Two_factor_authentication|Wikipedia article on two factor authentication]].\n\n{{Identical|Two factor authentication}}",
 	"oathauth-account": "Plain text associated with two factor authentication on this wiki (username@<wiki name>) found on Special:OATH.",
 	"oathauth-secret": "Plain text found on Special:OATH while enabling OATH",
 	"oathauth-enable": "Page title on Special:OATH, when enabling OATH.",

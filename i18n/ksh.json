@@ -5,6 +5,8 @@
 		]
 	},
 	"oathauth-desc": "Määd et Enlogge met enem <code lang=\"en\">HMAC</code>-eijmohl-Paßwoot müjjelesch.",
+	"specialpages-group-oath": "Two-factor authentication !FUZZY!! <!--\n\thttps://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Specialpages-group-oath/en\n-->",
+	"oathauth-backtopreferences": "Jangk retuhr noh de Enschtällonge.",
 	"oathauth-notloggedin": "Enlogge es nüdich",
 	"oathauth-mustbeloggedin": "Do moß ald enjelogg sin, öm dat maache ze dörve."
 }
