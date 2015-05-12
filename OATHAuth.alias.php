@@ -19,12 +19,12 @@ $specialPageAliases['ar'] = array(
 	'OATH' => array( 'أواث', 'أواث_أوث' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'OATH' => array( 'اواث', 'اواث_اوث' ),
 );
 
-/** لوری (لوری) */
+/** لوری مینجایی (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
 	'OATH' => array( 'قسم' ),
 );
