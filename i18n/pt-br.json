@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Araceletorres"
+		]
+	},
+	"specialpages-group-oath": "Autenticação de dois fatores",
+	"oathauth-account": "Nome da conta de dois fatores:",
+	"oathauth-secret": "Chave secreta de dois fatores:",
+	"oathauth-enable": "Ativar autenticação de dois fatores",
+	"oathauth-failedtoenableoauth": "Falha ao ativar autenticação de dois fatores.",
+	"oathauth-alreadyenabled": "A autenticação de dois fatores já está ativada.",
+	"oathauth-backtopreferences": "Voltas às preferências.",
+	"oathauth-disabledoath": "Desativar autenticação de dois fatores.",
+	"oathauth-failedtodisableoauth": "Falha ao desativar autenticação de dois fatores.",
+	"oathauth-notloggedin": "Login necessário",
+	"oathauth-mustbeloggedin": "Você deve estar logado para realizar esta ação.",
+	"oathauth-prefs-label": "Autenticação de dois fatores:"
+}
