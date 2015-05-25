@@ -117,7 +117,7 @@ class OATHAuthKey {
 					if ( $token === $this->scratchTokens[$i] ) {
 						// If there is a scratch token, remove it from the scratch token list
 						unset( $this->scratchTokens[$i] );
-						$oathrepo = new OATHUserRepository( wfGetLB() );
+						$oathrepo = OATHAuthHooks::getOATHUserRepository();
 						$user->setKey( $this );
 						$oathrepo->persist( $user );
 						// Only return true if we removed it from the database

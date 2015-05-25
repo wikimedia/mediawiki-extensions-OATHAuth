@@ -24,6 +24,23 @@ class OATHAuthHooks {
 	}
 
 	/**
+	 * Get the singleton OATH user repository
+	 *
+	 * @return OATHUserRepository
+	 */
+	public static function getOATHUserRepository() {
+		global $wgOATHAuthDatabase;
+
+		static $service = null;
+
+		if ( $service == null ) {
+			$service = new OATHUserRepository( wfGetLB( $wgOATHAuthDatabase ) );
+		}
+
+		return $service;
+	}
+
+	/**
 	 * @param $extraFields array
 	 * @return bool
 	 */
@@ -43,6 +60,7 @@ class OATHAuthHooks {
 	 */
 	static function AbortChangePassword( $user, $password, $newpassword, &$errorMsg ) {
 		$result = self::authenticate( $user );
+
 		if ( $result ) {
 			return true;
 		} else {
@@ -78,8 +96,7 @@ class OATHAuthHooks {
 		global $wgRequest;
 
 		$token = $wgRequest->getText( 'wpOATHToken' );
-		$oathrepo = new OATHUserRepository( wfGetLB() );
-		$oathuser = $oathrepo->findByUser( $user );
+		$oathuser = self::getOATHUserRepository()->findByUser( $user );
 		# Though it's weird to default to true, we only want to deny
 		# users who have two-factor enabled and have validated their
 		# token.
@@ -102,8 +119,7 @@ class OATHAuthHooks {
 	static function TwoFactorIsEnabled( &$isEnabled ) {
 		global $wgUser;
 
-		$oathrepo = new OATHUserRepository( wfGetLB() );
-		$user = $oathrepo->findByUser( $wgUser );
+		$user = self::getOATHUserRepository()->findByUser( $wgUser );
 		if ( $user && $user->getKey() !== null ) {
 			$isEnabled = true;
 			# This two-factor extension is enabled by the user,
@@ -126,8 +142,7 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function manageOATH( User $user, array &$preferences ) {
-		$oathrepo = new OATHUserRepository( wfGetLB() );
-		$oathUser = $oathrepo->findByUser( $user );
+		$oathUser = self::getOATHUserRepository()->findByUser( $user );
 
 		$title = SpecialPage::getTitleFor( 'OATH' );
 		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
