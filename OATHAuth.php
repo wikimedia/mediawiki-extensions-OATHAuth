@@ -26,6 +26,21 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'oathauth-desc',
 );
 
+/**
+ * The number of token windows in each direction that should be valid
+ *
+ * This tells OATH to accept tokens for a range of $wgOATHAuthWindowRadius * 2 windows
+ * (which is effectively ((1 + 2 * $wgOATHAuthWindowRadius) * 30) seconds).
+ * This range of valid windows is centered around the current time.
+ *
+ * The purpose of this configuration variable is to account for differences between
+ * the user's clock and the server's clock. However, it is recommended to keep it as
+ * low as possible.
+ *
+ * @var int
+ */
+$wgOATHAuthWindowRadius = 4;
+
 $dir = __DIR__ . '/';
 
 $wgMessagesDirs['OATHAuth'] = __DIR__ . '/i18n';

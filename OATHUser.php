@@ -143,6 +143,8 @@ class OATHUser {
 	 * @return Boolean
 	 */
 	public function verifyToken( $token, $reset = false ) {
+		global $wgOATHAuthWindowRadius;
+
 		$memc = ObjectCache::newAnything( array() );
 
 		// Prevent replay attacks
@@ -151,7 +153,9 @@ class OATHUser {
 
 		$retval = false;
 		$secret = $reset ? $this->secretReset : $this->secret;
-		$results = HOTP::generateByTimeWindow( Base32::decode( $secret ), 30, -4, 4 );
+		$results = HOTP::generateByTimeWindow(
+			Base32::decode( $secret ),
+			30, -$wgOATHAuthWindowRadius, $wgOATHAuthWindowRadius );
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
@@ -175,7 +179,7 @@ class OATHUser {
 		}
 
 		if ( $retval ) {
-			$memc->set( $memcKey, $lastWindow, 30 * 8 );
+			$memc->set( $memcKey, $lastWindow, 30 * (1 + 2 * $wgOATHAuthWindowRadius) );
 		}
 
 		return $retval;
