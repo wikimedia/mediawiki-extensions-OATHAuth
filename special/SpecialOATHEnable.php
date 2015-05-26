@@ -20,7 +20,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 	 * @param OATHUser $user
 	 */
 	public function __construct( OATHUserRepository $repository, OATHUser $user ) {
-		parent::__construct( 'OATH', '', false );
+		parent::__construct( 'OATH', 'oathauth-enable', false );
 
 		$this->OATHRepository = $repository;
 		$this->OATHUser = $user;

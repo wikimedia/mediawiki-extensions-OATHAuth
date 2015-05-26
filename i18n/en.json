@@ -42,5 +42,7 @@
 	"oathauth-step2alt": "Or enter the secret manually:",
 	"oathauth-step3": "Step 3: Write down the scratch codes",
 	"oathauth-step4": "Step 4: Verification",
-	"oathauth-entertoken": "Enter a code from your mobile app to verify:"
+	"oathauth-entertoken": "Enter a code from your mobile app to verify:",
+	"right-oathauth-enable": "Enable two-factor authentication",
+	"action-oathauth-enable": "enable two-factor authentication"
 }

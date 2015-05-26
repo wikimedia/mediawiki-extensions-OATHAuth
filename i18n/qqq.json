@@ -46,5 +46,7 @@
 	"oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
 	"oathauth-step3": "Label for step 3 information on Special:OATH",
 	"oathauth-step4": "Label for step 4 information on Special:OATH",
-	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token"
+	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token",
+	"right-oathauth-enable": "{{doc-right|oathauth-enable}}",
+	"action-oathauth-enable": "{{doc-action|oathauth-enable}}"
 }

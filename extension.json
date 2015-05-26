@@ -69,5 +69,13 @@
 	"SpecialPages": {
 		"OATH": "SpecialOATH"
 	},
+	"AvailableRights": [
+		"oathauth-enable"
+	],
+	"GroupPermissions": {
+		"*": {
+			"oathauth-enable": true
+		}
+	},
 	"manifest_version": 1
 }

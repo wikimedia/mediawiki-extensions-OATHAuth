@@ -142,6 +142,10 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function manageOATH( User $user, array &$preferences ) {
+		if ( !$user->isAllowed( 'oathauth-enable' ) ) {
+			return true;
+		}
+
 		$oathUser = self::getOATHUserRepository()->findByUser( $user );
 
 		$title = SpecialPage::getTitleFor( 'OATH' );
