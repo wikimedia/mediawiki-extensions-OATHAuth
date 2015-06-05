@@ -26,7 +26,7 @@ $specialPageAliases['arz'] = array(
 
 /** Northern Luri (لوری مینجایی) */
 $specialPageAliases['lrc'] = array(
-	'OATH' => array( 'قسم' ),
+	'OATH' => array( 'قأسأم' ),
 );
 
 /** Urdu (اردو) */
