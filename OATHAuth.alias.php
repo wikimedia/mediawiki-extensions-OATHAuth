@@ -24,7 +24,7 @@ $specialPageAliases['arz'] = array(
 	'OATH' => array( 'اواث', 'اواث_اوث' ),
 );
 
-/** Northern Luri (لوری مینجایی) */
+/** Northern Luri (لۊری شومالی) */
 $specialPageAliases['lrc'] = array(
 	'OATH' => array( 'قأسأم' ),
 );
