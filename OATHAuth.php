@@ -53,7 +53,6 @@ $wgAutoloadClasses['Base32'] = $dir . 'lib/base32.php';
 $wgAutoloadClasses['OATHUser'] = $dir . 'OATHUser.php';
 $wgAutoloadClasses['SpecialOATH'] = $dir . 'special/SpecialOATH.php';
 $wgSpecialPages['OATH'] = 'SpecialOATH';
-$wgSpecialPageGroups['OATH'] = 'oath';
 
 $wgResourceModules['ext.oathauth'] = array(
 	'scripts' => array(

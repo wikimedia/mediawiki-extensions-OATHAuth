@@ -444,4 +444,7 @@ class SpecialOATH extends UnlistedSpecialPage {
 		return true;
 	}
 
+	protected function getGroupName() {
+		return 'oath';
+	}
 }
