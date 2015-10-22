@@ -7,7 +7,7 @@
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
 	"specialpages-group-oath": "Twee-factor authenticatie",
-	"oathauth-account": "Gebruikersnaam voor twee-factor:",
+	"oathauth-account": "Accountnaam voor twee-factor:",
 	"oathauth-secret": "Geheime sleutel voor twee-factor:",
 	"oathauth-enable": "Twee-factor authenticatie inschakelen",
 	"oathauth-failedtoenableoauth": "Het inschakelen van twee-factor authenticatie is mislukt.",
