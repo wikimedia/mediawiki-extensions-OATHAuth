@@ -115,11 +115,11 @@ class SpecialOATH extends UnlistedSpecialPage {
 			. '<br/>'
 			. '<div id="qrcode"></div>';
 
-		$this->getOutput()->addInlineScript(
+		$this->getOutput()->addHTML( ResourceLoader::makeInlineScript(
 			'jQuery("#qrcode").qrcode("otpauth://totp/'
 			. $this->OATHUser->getAccount()
 			. '?secret=' . $secret . '")'
-		);
+		) );
 
 		$this->getOutput()->addHTML( $out );
 		$this->getOutput()->addWikiMsg( 'openstackmanager-scratchtokens' );
