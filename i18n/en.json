@@ -45,5 +45,11 @@
 	"oathauth-step4": "Step 4: Verification",
 	"oathauth-entertoken": "Enter a code from your mobile app to verify:",
 	"right-oathauth-enable": "Enable two-factor authentication",
-	"action-oathauth-enable": "enable two-factor authentication"
+	"action-oathauth-enable": "enable two-factor authentication",
+	"oathauth-auth-token-label": "Token",
+	"oathauth-auth-token-help": "The one-time password used as the second factor of two-factor authentication.",
+	"oathauth-auth-ui": "Please enter verification code from your mobile app",
+	"oathauth-throttled": "Too many verification attempts! Please wait $1.",
+	"oathauth-login-failed": "Verification failed.",
+	"oathauth-describe-provider": "Two-factor authentication (OATH)."
 }
