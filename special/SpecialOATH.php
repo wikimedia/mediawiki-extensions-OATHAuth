@@ -116,9 +116,16 @@ class SpecialOATH extends UnlistedSpecialPage {
 			. '<div id="qrcode"></div>';
 
 		$this->getOutput()->addHTML( ResourceLoader::makeInlineScript(
-			'jQuery("#qrcode").qrcode("otpauth://totp/'
-			. $this->OATHUser->getAccount()
-			. '?secret=' . $secret . '")'
+			Xml::encodeJsCall( 'mw.loader.using', array(
+				array( 'ext.oathauth' ),
+				new XmlJsCode(
+					'function () {'
+						. '$("#qrcode").qrcode("otpauth://totp/'
+						. $this->OATHUser->getAccount()
+						. '?secret=' . $secret. '");'
+					. '}'
+				)
+			) )
 		) );
 
 		$this->getOutput()->addHTML( $out );
