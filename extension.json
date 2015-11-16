@@ -7,6 +7,7 @@
 	"type": "other",
 	"AutoloadClasses": {
 		"OATHAuthHooks": "OATHAuth.hooks.php",
+		"OATHAuthLegacyHooks": "OATHAuth.hooks.legacy.php",
 		"OATHAuthKey": "OATHAuthKey.php",
 		"OATHAuthUtils": "OATHAuthUtils.php",
 		"OATHUserRepository": "OATHUserRepository.php",
@@ -18,29 +19,23 @@
 		"SpecialOATHEnable": "special/SpecialOATHEnable.php",
 		"SpecialOATHDisable": "special/SpecialOATHDisable.php",
 		"SpecialOATHLogin": "special/SpecialOATHLogin.php",
-		"ProxySpecialPage": "special/ProxySpecialPage.php"
+		"ProxySpecialPage": "special/ProxySpecialPage.php",
+		"TOTPAuthenticationRequest": "auth/TOTPAuthenticationRequest.php",
+		"TOTPSecondaryAuthenticationProvider": "auth/TOTPSecondaryAuthenticationProvider.php"
 	},
 	"ExtensionMessagesFiles": {
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
+	"callback": "OATHAuthHooks::onRegistration",
 	"Hooks": {
-		"AbortChangePassword": [
-			"OATHAuthHooks::AbortChangePassword"
-		],
-		"AbortLogin": [
-			"OATHAuthHooks::AbortLogin"
-		],
-		"ChangePasswordForm": [
-			"OATHAuthHooks::ChangePasswordForm"
-		],
 		"TwoFactorIsEnabled": [
-			"OATHAuthHooks::TwoFactorIsEnabled"
+			"OATHAuthHooks::onTwoFactorIsEnabled"
 		],
 		"LoadExtensionSchemaUpdates": [
-			"OATHAuthHooks::OATHAuthSchemaUpdates"
+			"OATHAuthHooks::onLoadExtensionSchemaUpdates"
 		],
 		"GetPreferences": [
-			"OATHAuthHooks::manageOATH"
+			"OATHAuthHooks::onGetPreferences"
 		]
 	},
 	"MessagesDirs": {

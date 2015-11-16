@@ -1,5 +1,10 @@
 <?php
 
+use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\ConfirmLinkSecondaryAuthenticationProvider;
+use MediaWiki\Auth\EmailNotificationSecondaryAuthenticationProvider;
+
 /**
  * Hooks for Extension:OATHAuth
  *
@@ -24,85 +29,63 @@ class OATHAuthHooks {
 	}
 
 	/**
-	 * @param $extraFields array
+	 * Register hooks which depend on MediaWiki core version
+	 */
+	public static function onRegistration() {
+		global $wgDisableAuthManager, $wgAuthManagerAutoConfig;
+
+		if ( !$wgDisableAuthManager && class_exists( AuthManager::class ) ) {
+			$wgAuthManagerAutoConfig['secondaryauth'] += [
+				TOTPSecondaryAuthenticationProvider::class => [
+					'class' => TOTPSecondaryAuthenticationProvider::class,
+					// after non-interactive prroviders but before the ones that run after a
+					// succesful authentication
+					'sort' => 50,
+				]
+			];
+			Hooks::register( 'AuthChangeFormFields', 'OATHAuthHooks::onAuthChangeFormFields' );
+		} else {
+			Hooks::register( 'AbortChangePassword', 'OATHAuthLegacyHooks::AbortChangePassword' );
+			Hooks::register( 'AbortLogin', 'OATHAuthLegacyHooks::AbortLogin' );
+			Hooks::register( 'ChangePasswordForm', 'OATHAuthLegacyHooks::ChangePasswordForm' );
+		}
+	}
+
+	/**
+	 * @param AuthenticationRequest[] $requests
+	 * @param array $fieldInfo Field information array (union of the
+	 *    AuthenticationRequest::getFieldInfo() responses).
+	 * @param array $formDescriptor HTMLForm descriptor. The special key 'weight' can be set
+	 *   to change the order of the fields.
+	 * @param string $action One of the AuthManager::ACTION_* constants.
 	 * @return bool
 	 */
-	static function ChangePasswordForm( &$extraFields ) {
-		$tokenField = array( 'wpOATHToken', 'oathauth-token', 'password', '' );
-		array_push( $extraFields, $tokenField );
-
+	public static function onAuthChangeFormFields(
+		array $requests, array $fieldInfo, array &$formDescriptor, $action
+	) {
+		if ( isset( $fieldInfo['OATHToken'] ) ) {
+			$formDescriptor['OATHToken'] += [
+				'cssClass' => 'loginText',
+				'id' => 'wpOATHToken',
+				'size' => 20,
+				'autofocus' => true,
+				'persistent' => false,
+			];
+		}
 		return true;
-	}
-
-	/**
-	 * @param $user User
-	 * @param $password string
-	 * @param $newpassword string
-	 * @param &$errorMsg string
-	 * @return bool
-	 */
-	static function AbortChangePassword( $user, $password, $newpassword, &$errorMsg ) {
-		global $wgRequest;
-
-		$token = $wgRequest->getText( 'wpOATHToken' );
-		$oathrepo = self::getOATHUserRepository();
-		$oathuser = $oathrepo->findByUser( $user );
-		# Though it's weird to default to true, we only want to deny
-		# users who have two-factor enabled and have validated their
-		# token.
-		$result = true;
-
-		if ( $oathuser->getKey() !== null ) {
-			$result = $oathuser->getKey()->verifyToken( $token, $oathuser );
-		}
-
-		if ( $result ) {
-			return true;
-		} else {
-			$errorMsg = 'oathauth-abortlogin';
-
-			return false;
-		}
-	}
-
-	/**
-	 * @param $user User
-	 * @param $password string
-	 * @param &$abort int
-	 * @param &$errorMsg string
-	 * @return bool
-	 */
-	static function AbortLogin( $user, $password, &$abort, &$errorMsg ) {
-		$context = RequestContext::getMain();
-		$request = $context->getRequest();
-		$output = $context->getOutput();
-
-		$oathrepo = self::getOATHUserRepository();
-		$oathuser = $oathrepo->findByUser( $user );
-		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
-
-		if ( $oathuser->getKey() !== null && !$request->getCheck( 'token' ) ) {
-			$encData = OATHAuthUtils::encryptSessionData(
-				$request->getValues(),
-				$uid
-			);
-			$request->setSessionData( 'oath_login', $encData );
-			$request->setSessionData( 'oath_uid', $uid );
-			$output->redirect( SpecialPage::getTitleFor( 'OATH' )->getFullURL( '', false, PROTO_CURRENT ) );
-			return false;
-		} else {
-			return true;
-		}
 	}
 
 	/**
 	 * Determine if two-factor authentication is enabled for $wgUser
 	 *
-	 * @param bool &$isEnabled Will be set to true if enabled, false otherwise
+	 * This isn't the preferred mechanism for controlling access to sensitive features
+	 * (see AuthManager::securitySensitiveOperationStatus() for that) but there is no harm in
+	 * keeping it.
 	 *
+	 * @param bool &$isEnabled Will be set to true if enabled, false otherwise
 	 * @return bool False if enabled, true otherwise
 	 */
-	static function TwoFactorIsEnabled( &$isEnabled ) {
+	public static function onTwoFactorIsEnabled( &$isEnabled ) {
 		global $wgUser;
 
 		$user = self::getOATHUserRepository()->findByUser( $wgUser );
@@ -124,10 +107,9 @@ class OATHAuthHooks {
 	 *
 	 * @param User $user
 	 * @param array $preferences
-	 *
 	 * @return bool
 	 */
-	public static function manageOATH( User $user, array &$preferences ) {
+	public static function onGetPreferences( User $user, array &$preferences ) {
 		if ( !$user->isAllowed( 'oathauth-enable' ) ) {
 			return true;
 		}
@@ -157,7 +139,7 @@ class OATHAuthHooks {
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 */
-	public static function OATHAuthSchemaUpdates( $updater ) {
+	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$base = dirname( __FILE__ );
 		switch ( $updater->getDB()->getType() ) {
 			case 'mysql':
@@ -188,8 +170,7 @@ class OATHAuthHooks {
 	 * Helper function for converting old users to the new schema
 	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
 	 *
-	 * @param DatabaseUpdater $updater
-	 *
+	 * @param DatabaseBase $db
 	 * @return bool
 	 */
 	public static function schemaUpdateOldUsers( DatabaseBase $db ) {
