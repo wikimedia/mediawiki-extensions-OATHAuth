@@ -1,0 +1,67 @@
+{
+	"name": "OATHAuth",
+	"version": "0.2.1",
+	"author": "Ryan Lane",
+	"url": "http://mediawiki.org/wiki/Extension:OATHAuth",
+	"descriptionmsg": "oathauth-desc",
+	"type": "other",
+	"AutoloadClasses": {
+		"OATHAuthHooks": "OATHAuth.hooks.php",
+		"HOTP": "lib/hotp.php",
+		"HOTPResult": "lib/hotp.php",
+		"Base32": "lib/base32.php",
+		"OATHUser": "OATHUser.php",
+		"SpecialOATH": "special/SpecialOATH.php"
+	},
+	"ExtensionMessagesFiles": {
+		"OATHAuthAlias": "OATHAuth.alias.php"
+	},
+	"Hooks": {
+		"AbortChangePassword": [
+			"OATHAuthHooks::AbortChangePassword"
+		],
+		"AbortLogin": [
+			"OATHAuthHooks::AbortLogin"
+		],
+		"UserLoginForm": [
+			"OATHAuthHooks::ModifyUITemplate"
+		],
+		"ChangePasswordForm": [
+			"OATHAuthHooks::ChangePasswordForm"
+		],
+		"TwoFactorIsEnabled": [
+			"OATHAuthHooks::TwoFactorIsEnabled"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"OATHAuthHooks::OATHAuthSchemaUpdates"
+		],
+		"GetPreferences": [
+			"OATHAuthHooks::manageOATH"
+		]
+	},
+	"MessagesDirs": {
+		"OATHAuth": [
+			"i18n"
+		]
+	},
+	"config": {
+		"OATHAuthWindowRadius": 4
+	},
+	"ResourceModules": {
+		"ext.oathauth": {
+			"scripts": [
+				"modules/jquery.qrcode.js",
+				"modules/qrcode.js"
+			],
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "OATHAuth"
+	},
+	"SpecialPages": {
+		"OATH": "SpecialOATH"
+	},
+	"manifest_version": 1
+}
