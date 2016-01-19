@@ -1,7 +1,7 @@
-(function( $ ){
-	$.fn.qrcode = function(options) {
+( function ( $ ) {
+	$.fn.qrcode = function ( options ) {
 		// if options is string,
-		if( typeof options === 'string' ){
+		if ( typeof options === 'string' ){
 			options	= { text: options };
 		}
 
@@ -81,8 +81,8 @@
 		};
 
 		return this.each(function(){
-			var element	= options.render == "canvas" ? createCanvas() : createTable();
-			jQuery(element).appendTo(this);
-		});
+			var element	= options.render === "canvas" ? createCanvas() : createTable();
+			$(element).appendTo(this);
+		} );
 	};
-})( jQuery );
+}( jQuery ) );

@@ -1,1 +1,3 @@
 modules/qrcode.js
+node_modules/**
+vendor/**
