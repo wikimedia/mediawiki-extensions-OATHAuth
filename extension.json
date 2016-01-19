@@ -2,7 +2,7 @@
 	"name": "OATHAuth",
 	"version": "0.2.1",
 	"author": "Ryan Lane",
-	"url": "http://mediawiki.org/wiki/Extension:OATHAuth",
+	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
 	"type": "other",
 	"AutoloadClasses": {
