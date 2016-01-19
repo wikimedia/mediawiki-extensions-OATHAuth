@@ -16,7 +16,7 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	wfLoadExtension( 'OATHAuth' );
 
 	$wgMessagesDirs['OATHAuth'] = __DIR__ . '/i18n';
-	$wgExtensionMessagesFiles['OATHAuthAlias'] = __DIR__ . 'OATHAuth.alias.php';
+	$wgExtensionMessagesFiles['OATHAuthAlias'] = __DIR__ . '/OATHAuth.alias.php';
 
 	/* wfWarn(
 		'Deprecated PHP entry point used for OATHAuth extension. Please use wfLoadExtension instead, ' .
