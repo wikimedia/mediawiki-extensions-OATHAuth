@@ -17,7 +17,7 @@
 	"oathauth-verify": "Vérifier le jeton à deux facteurs",
 	"openstackmanager-scratchtokens": "La liste suivante est une liste de jetons à gratter à utilisation unique. Ces jetons ne peuvent être utilisés qu'une seule fois, et servent en cas d'urgence. Veuillez les écrire et les conserver dans un endroit sûr. Si vous perdez votre téléphone, ces jetons sont le seul moyen de sauver votre compte. Ces jetons ne seront jamais affichés de nouveau.",
 	"oathauth-reset": "Réinitialiser les identités de double facteur",
-	"oathauth-donotdeleteoldsecret": "Veuillez ne pas supprimer vos anciennes identifications jusqu'à ce que vous ayez bien validé vos nouvelles identifications.",
+	"oathauth-donotdeleteoldsecret": "Veuillez ne pas supprimer vos anciennes identifications jusqu’à ce que vous ayez bien validé vos nouvelles.",
 	"oathauth-token": "Jeton",
 	"oathauth-currenttoken": "Jeton actuel",
 	"oathauth-newtoken": "Nouveau jeton",
