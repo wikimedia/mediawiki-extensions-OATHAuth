@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Elisardojm"
 		]
 	},
 	"oathauth-desc": "Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez",
@@ -14,7 +15,7 @@
 	"oathauth-verify": "Comprobar o pase de dous factores",
 	"openstackmanager-scratchtokens": "A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. Esta é a única vez que poderá ver os pases.",
 	"oathauth-reset": "Restablecer as credenciais de dous factores",
-	"oathauth-donotdeleteoldsecret": "Non borre as súas credenciais vellas ata que valide correctamente as novas.",
+	"oathauth-donotdeleteoldsecret": "Non borre as súas credenciais vellas ata que valide as novas.",
 	"oathauth-token": "Pase",
 	"oathauth-currenttoken": "Pase actual",
 	"oathauth-newtoken": "Novo pase",
