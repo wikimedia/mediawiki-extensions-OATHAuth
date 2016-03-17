@@ -3,7 +3,8 @@
 		"authors": [
 			"Armando-Martin",
 			"Fitoschido",
-			"McDutchie"
+			"McDutchie",
+			"Matiia"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
@@ -16,7 +17,7 @@
 	"oathauth-verify": "Verificar clave de dos factores",
 	"openstackmanager-scratchtokens": "La lista siguiente es una lista de claves de un solo uso. Estas claves sólo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y manténlas en un lugar seguro. Si pierdes tu teléfono, estas claves son la única manera de rescatar tu cuenta. Estas claves nunca se mostrarán una segunda vez.",
 	"oathauth-reset": "Restablecer credenciales de dos factores",
-	"oathauth-donotdeleteoldsecret": "No elimines las viejas credenciales hasta haber validado correctamente tus nuevas credenciales.",
+	"oathauth-donotdeleteoldsecret": "No elimines las viejas credenciales hasta haber validado tus nuevas credenciales.",
 	"oathauth-token": "Clave",
 	"oathauth-currenttoken": "Clave actual",
 	"oathauth-newtoken": "Nueva clave",
