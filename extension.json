@@ -7,6 +7,8 @@
 	"type": "other",
 	"AutoloadClasses": {
 		"OATHAuthHooks": "OATHAuth.hooks.php",
+		"OATHAuthKey": "OATHAuthKey.php",
+		"OATHUserRepository": "OATHUserRepository.php",
 		"HOTP": "lib/hotp.php",
 		"HOTPResult": "lib/hotp.php",
 		"Base32": "lib/base32.php",

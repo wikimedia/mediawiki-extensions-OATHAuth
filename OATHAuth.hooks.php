@@ -76,14 +76,17 @@ class OATHAuthHooks {
 		global $wgRequest;
 
 		$token = $wgRequest->getText( 'wpOATHToken' );
-		$oathuser = OATHUser::newFromUser( $user );
+		$oathrepo = new OATHUserRepository( wfGetLB() );
+		$oathuser = $oathrepo->findByUser( $user );
 		# Though it's weird to default to true, we only want to deny
 		# users who have two-factor enabled and have validated their
 		# token.
 		$result = true;
-		if ( $oathuser && $oathuser->isEnabled() && $oathuser->isValidated() ) {
-			$result = $oathuser->verifyToken( $token );
+
+		if ( $oathuser->getKey() !== null ) {
+			$result = $oathuser->getKey()->verifyToken( $token, $oathuser );
 		}
+
 		return $result;
 	}
 
@@ -97,8 +100,9 @@ class OATHAuthHooks {
 	static function TwoFactorIsEnabled( &$isEnabled ) {
 		global $wgUser;
 
-		$user = OATHUser::newFromUser( $wgUser );
-		if ( $user && $user->isEnabled() && $user->isValidated() ) {
+		$oathrepo = new OATHUserRepository( wfGetLB() );
+		$user = $oathrepo->findByUser( $wgUser );
+		if ( $user && $user->getKey() !== null ) {
 			$isEnabled = true;
 			# This two-factor extension is enabled by the user,
 			# we don't need to check others.
@@ -120,10 +124,11 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function manageOATH( User $user, array &$preferences ) {
-		$oathUser = OATHUser::newFromUser( $user );
+		$oathrepo = new OATHUserRepository( wfGetLB() );
+		$oathUser = $oathrepo->findByUser( $user );
 
 		$title = SpecialPage::getTitleFor( 'OATH' );
-		if ( $oathUser->isEnabled() && $oathUser->isValidated() ) {
+		if ( $oathUser->getKey() !== null ) {
 			$preferences['oath-disable'] = array(
 				'type' => 'info',
 				'raw' => 'true',
@@ -137,20 +142,6 @@ class OATHAuthHooks {
 					)
 				),
 				'label-message' => 'oathauth-prefs-label',
-				'section' => 'personal/info',
-			);
-			$preferences['oath-reset'] = array(
-				'type' => 'info',
-				'raw' => 'true',
-				'default' => Linker::link(
-					$title,
-					wfMessage( 'oathauth-reset' )->escaped(),
-					array(),
-					array(
-						'action' => 'reset',
-						'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
-					)
-				),
 				'section' => 'personal/info',
 			);
 		} else {
@@ -183,9 +174,55 @@ class OATHAuthHooks {
 		switch ( $updater->getDB()->getType() ) {
 			case 'mysql':
 			case 'sqlite':
-				$updater->addExtensionTable( 'oathauth_users', "$base/oathauth.sql" );
+				$updater->addExtensionTable( 'oathauth_users', "$base/sql/mysql/tables.sql" );
+				$updater->addExtensionUpdate( array( array( __CLASS__, 'schemaUpdateOldUsersFromInstaller' ) ) );
+				$updater->dropExtensionField( 'oathauth_users', 'secret_reset',
+					"$base/sql/mysql/patch-remove_reset.sql" );
 				break;
 		}
+
+		return true;
+	}
+
+	/**
+	 * Helper function for converting old users to the new schema
+	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
+	 *
+	 * @param DatabaseUpdater $updater
+	 *
+	 * @return bool
+	 */
+	public static function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
+		return self::schemaUpdateOldUsers($updater->getDB());
+	}
+
+	/**
+	 * Helper function for converting old users to the new schema
+	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
+	 *
+	 * @param DatabaseUpdater $updater
+	 *
+	 * @return bool
+	 */
+	public static function schemaUpdateOldUsers( DatabaseBase $db ) {
+		if ( !$db->fieldExists( 'oathauth_users', 'secret_reset' ) ) {
+			return true;
+		}
+
+		$res = $db->select( 'oathauth_users', array( 'id', 'scratch_tokens' ), '', __METHOD__ );
+
+		foreach ( $res as $row ) {
+			$scratchTokens = unserialize( base64_decode( $row->scratch_tokens ) );
+			if ( $scratchTokens ) {
+				$db->update(
+					'oathauth_users',
+					array( 'scratch_tokens' => implode( ',', $scratchTokens ) ),
+					array( 'id' => $row->id ),
+					__METHOD__
+				);
+			}
+		}
+
 		return true;
 	}
 }
