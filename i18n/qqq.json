@@ -6,7 +6,7 @@
 			"Shirayuki",
 			"Purodha",
 			"Umherirrender",
-            "Tyler Romeo <tylerromeo@gmail.com>"
+			"Tyler Romeo <tylerromeo@gmail.com>"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
@@ -40,11 +40,11 @@
 	"oathauth-mustbeloggedin": "Plain text seen on Special:OATH when a user is not logged in.",
 	"oathauth-prefs-label": "Plain text label seen on Special:Preferences\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-abortlogin": "Error message shown on login and password change pages when authentication is aborted.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
-    "oathauth-step1": "Label for step 1 on Special:OATH form",
-    "oathauth-step1-test": "Text for step 1 on Special:OATH form",
-    "oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
-    "oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
-    "oathauth-step3": "Label for step 3 information on Special:OATH",
-    "oathauth-step4": "Label for step 4 information on Special:OATH",
-    "oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token"
+	"oathauth-step1": "Label for step 1 on Special:OATH form",
+	"oathauth-step1-test": "Text for step 1 on Special:OATH form",
+	"oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
+	"oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
+	"oathauth-step3": "Label for step 3 information on Special:OATH",
+	"oathauth-step4": "Label for step 4 information on Special:OATH",
+	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token"
 }

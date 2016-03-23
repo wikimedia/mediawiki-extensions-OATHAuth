@@ -8,6 +8,7 @@
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
 	"specialpages-group-oath": "Zwei-Faktor-Authentifizierung",
 	"oathauth-account": "Zwei-Faktor-Kontoname:",
+	"oathauth-legend": "Deine Anmeldeinformationen verifizieren",
 	"oathauth-secret": "Zwei-Faktor-Geheimschlüssel:",
 	"oathauth-enable": "Die Zwei-Faktor-Authentifizierung aktivieren",
 	"oathauth-failedtoenableoauth": "Die Zwei-Faktor-Authentifizierung konnte nicht aktiviert werden.",
@@ -33,5 +34,12 @@
 	"oathauth-notloggedin": "Anmeldung erforderlich",
 	"oathauth-mustbeloggedin": "Du musst angemeldet sein, um diese Aktion durchführen zu können.",
 	"oathauth-prefs-label": "Zwei-Faktor-Authentifizierung:",
-	"oathauth-abortlogin": "Der angegebene Zweifaktor-Authentifizierungstoken war ungültig."
+	"oathauth-abortlogin": "Der angegebene Zweifaktor-Authentifizierungstoken war ungültig.",
+	"oathauth-step1": "Schritt 1: Lade die App herunter",
+	"oathauth-step1-test": "Lade eine mobile App (wie Google Authenticator) für die Zwei-Faktor-Authentifizierung auf dein Telefon herunter.",
+	"oathauth-step2": "Schritt 2: Scanne den QR-Code",
+	"oathauth-step2alt": "Oder gib das Geheimnis manuell ein:",
+	"oathauth-step3": "Schritt 3: Schreibe die Sondercodes auf",
+	"oathauth-step4": "Schritt 4: Verifizierung",
+	"oathauth-entertoken": "Gib zur Verifizierung einen Code von deiner mobilen App ein:"
 }
