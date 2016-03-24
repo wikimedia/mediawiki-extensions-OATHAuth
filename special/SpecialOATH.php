@@ -11,7 +11,7 @@ class SpecialOATH extends ProxySpecialPage {
 	 * @return SpecialOATHDisable|SpecialOATHEnable|SpecialPage
 	 */
 	protected function getTargetPage() {
-		$repo = new OATHUserRepository( wfGetLB() );
+		$repo = OATHAuthHooks::getOATHUserRepository();
 		$user = $repo->findByUser( $this->getUser() );
 
 		if ( $user->getKey() === null ) {
