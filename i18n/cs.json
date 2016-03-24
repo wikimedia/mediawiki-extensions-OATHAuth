@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mormegil"
+			"Mormegil",
+			"Urbanecm"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pro autentizaci pomocí jednorázových hesel založených na HMAC",
 	"specialpages-group-oath": "Dvoufaktorová autentizace",
 	"oathauth-account": "Název účtu pro dvoufaktorovou autentizaci:",
+	"oathauth-legend": "Ověření přihlašovacích údajů",
 	"oathauth-secret": "Tajný klíč pro dvoufaktorovou autentizaci:",
 	"oathauth-enable": "Zapnutí dvoufaktorové autentizace",
 	"oathauth-failedtoenableoauth": "Nepodařilo se zapnout dvoufaktorovou autentizaci.",
@@ -14,7 +16,7 @@
 	"oathauth-verify": "Ověření kódu dvoufaktorové autentizace",
 	"openstackmanager-scratchtokens": "Následující seznam obsahuje jednorázové provizorní kódy. Tyto kódy lze použít pouze jednou a slouží pro případ nouze. Opište si je a uchovávejte je na bezpečném místě. Pokud ztratíte svůj telefon, budou tyto kódy jediným způsobem, jak zachránit svůj účet. Tyto kódy se již nikdy znovu nezobrazí.",
 	"oathauth-reset": "Reinicializace dvoufaktorové autentizace",
-	"oathauth-donotdeleteoldsecret": "Staré údaje si prosím nemažte, dokud se vám úspěšně nepodaří ověřit si nové přihlášení.",
+	"oathauth-donotdeleteoldsecret": "Staré údaje si prosím nemažte, dokud se vám nepodaří ověřit si nové přihlášení.",
 	"oathauth-token": "Kód",
 	"oathauth-currenttoken": "Aktuální kód",
 	"oathauth-newtoken": "Nový kód",
@@ -32,5 +34,12 @@
 	"oathauth-notloggedin": "Vyžadováno přihlášení",
 	"oathauth-mustbeloggedin": "Pro tuto činnost musíte být přihlášeni.",
 	"oathauth-prefs-label": "Dvoufaktorová autentizace:",
-	"oathauth-abortlogin": "Poskytnutý dvoufaktorový ověřovací token byl neplatný."
+	"oathauth-abortlogin": "Poskytnutý dvoufaktorový ověřovací token byl neplatný.",
+	"oathauth-step1": "Krok 1: Stáhněte si aplikaci",
+	"oathauth-step1-test": "Stáhněte si do telefonu mobilní aplikaci pro dvoufaktorovou autentizaci (jako je třeba Google Authenticator).",
+	"oathauth-step2": "Krok 2: Naskenujte QR kód",
+	"oathauth-step2alt": "Nebo tajemství zadejte ručně:",
+	"oathauth-step3": "Krok 3: Zapište si jednorázové kódy",
+	"oathauth-step4": "Krok 4: Ověření",
+	"oathauth-entertoken": "Pro ověření zadejte kód z vaší mobilní aplikace:"
 }

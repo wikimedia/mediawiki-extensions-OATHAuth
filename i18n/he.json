@@ -7,6 +7,7 @@
 	"oathauth-desc": "תמיכה באימות באמצעות ססמאות חד־פעמיות מבוססות־HMAC",
 	"specialpages-group-oath": "אימות דו־רכיבי",
 	"oathauth-account": "שם חשבון דו־רכיבי:",
+	"oathauth-legend": "נא לבדוק את מידע הכניסה שלך",
 	"oathauth-secret": "מפתח סודי דו־רכיבי:",
 	"oathauth-enable": "הפעלת אימות דו־רכיבי",
 	"oathauth-failedtoenableoauth": "הפעלת אימות דו־רכיבי לא הצליחה.",
@@ -32,5 +33,12 @@
 	"oathauth-notloggedin": "נדרשת כניסה לחשבון",
 	"oathauth-mustbeloggedin": "צריך להיכנס לחשבון כדי לבצע את הפעולה הזאת.",
 	"oathauth-prefs-label": "אימות דו־רכיבי:",
-	"oathauth-abortlogin": "אסימון האימות הדו־רכיבי שניתן היה בלתי־תקין."
+	"oathauth-abortlogin": "אסימון האימות הדו־רכיבי שניתן היה בלתי־תקין.",
+	"oathauth-step1": "צעד 1: הורדת היישום",
+	"oathauth-step1-test": "יש להוריד את היישום לאימות דו־גורמי (כגון Google Authenticator) לטלפון שלך.",
+	"oathauth-step2": "צעד 2: סריקת קוד ה־QR",
+	"oathauth-step2alt": "אפשר גם להזין את הסוד ידנית:",
+	"oathauth-step3": "צעד 3: רישום קודי גירוד",
+	"oathauth-step4": "צעד 4: אישור",
+	"oathauth-entertoken": "נא להזין את הקוד מהיישום הנייד שלך לאישור:"
 }

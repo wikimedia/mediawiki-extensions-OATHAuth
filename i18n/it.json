@@ -9,6 +9,7 @@
 	"oathauth-desc": "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
 	"specialpages-group-oath": "Autenticazione a due fattori",
 	"oathauth-account": "Nome dell'account a due fattori:",
+	"oathauth-legend": "Verifica le tue credenziali",
 	"oathauth-secret": "Chiave segreta dell'account a due fattori:",
 	"oathauth-enable": "Abilita autenticazione a due fattori",
 	"oathauth-failedtoenableoauth": "Impossibile abilitare l'autenticazione a due fattori.",
@@ -34,5 +35,12 @@
 	"oathauth-notloggedin": "Accesso richiesto",
 	"oathauth-mustbeloggedin": "Devi autenticarti per eseguire questa azione.",
 	"oathauth-prefs-label": "Autenticazione a due fattori:",
-	"oathauth-abortlogin": "Il token di autenticazione a due fattori fornito non è valido."
+	"oathauth-abortlogin": "Il token di autenticazione a due fattori fornito non è valido.",
+	"oathauth-step1": "Passo 1: scarica l'app",
+	"oathauth-step1-test": "Scarica un'applicazione mobile per l'autenticazione a due fattori (come Google Authenticator) sul tuo cellulare.",
+	"oathauth-step2": "Passo 2: scansiona il codice QR",
+	"oathauth-step2alt": "O inserisci il codice segreto manualmente:",
+	"oathauth-step3": "Passo 3: scrivi il codice 'graffiato'",
+	"oathauth-step4": "Passo 4: verifica",
+	"oathauth-entertoken": "Inserisci un codice dalla tua applicazione mobile per verificare:"
 }

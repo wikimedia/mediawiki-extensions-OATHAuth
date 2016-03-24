@@ -4,12 +4,14 @@
 			"Crochet.david",
 			"Gomoko",
 			"Peter17",
-			"Sherbrooke"
+			"Sherbrooke",
+			"Manaviko"
 		]
 	},
 	"oathauth-desc": "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
 	"specialpages-group-oath": "Authentification à deux facteurs",
 	"oathauth-account": "Nom du compte à deux facteurs:",
+	"oathauth-legend": "Vérifiez vos informations d'identification",
 	"oathauth-secret": "Clé secrète à deux facteurs:",
 	"oathauth-enable": "Activer l'authentification à deux facteurs",
 	"oathauth-failedtoenableoauth": "Impossible d'activer l'authentification à deux facteurs.",
@@ -35,5 +37,12 @@
 	"oathauth-notloggedin": "Connexion nécessaire",
 	"oathauth-mustbeloggedin": "Vous devez être connecté pour effectuer cette action.",
 	"oathauth-prefs-label": "Authentification à deux facteurs :",
-	"oathauth-abortlogin": "Le jeton d’authentification à deux facteurs fourni n’était pas valide."
+	"oathauth-abortlogin": "Le jeton d’authentification à deux facteurs fourni n’était pas valide.",
+	"oathauth-step1": "Étape 1: Téléchargez l'application",
+	"oathauth-step1-test": "Téléchargez une application mobile pour l'authentification à deux facteurs (tel que l'authenticateur Google) sur votre téléphone mobile.",
+	"oathauth-step2": "Étape 2: Scannez le code QR",
+	"oathauth-step2alt": "Ou entrez le code secret manuellement",
+	"oathauth-step3": "Étape 3: Écrivez les codes de zéro",
+	"oathauth-step4": "Étape 4: Vérification",
+	"oathauth-entertoken": "Entrez un code à partir de votre application mobile pour vérifier:"
 }

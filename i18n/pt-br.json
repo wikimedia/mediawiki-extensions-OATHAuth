@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Araceletorres"
+			"Araceletorres",
+			"Luk3"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
 	"specialpages-group-oath": "Autenticação de dois fatores",
 	"oathauth-account": "Nome da conta de dois fatores:",
+	"oathauth-legend": "Verifique suas credenciais",
 	"oathauth-secret": "Chave secreta de dois fatores:",
 	"oathauth-enable": "Ativar autenticação de dois fatores",
 	"oathauth-failedtoenableoauth": "Falha ao ativar autenticação de dois fatores.",
@@ -25,5 +27,12 @@
 	"oathauth-failedtodisableoauth": "Falha ao desativar autenticação de dois fatores.",
 	"oathauth-notloggedin": "Login necessário",
 	"oathauth-mustbeloggedin": "Você deve estar logado para realizar esta ação.",
-	"oathauth-prefs-label": "Autenticação de dois fatores:"
+	"oathauth-prefs-label": "Autenticação de dois fatores:",
+	"oathauth-step1": "Passo 1: Baixe o aplicativo",
+	"oathauth-step1-test": "Baixe o aplicativo móvel para a autenticação de dois fatores (como o Google Authenticator) no seu telefone.",
+	"oathauth-step2": "Passo 2: Escaneie o código QR",
+	"oathauth-step2alt": "Ou introduza o segredo manualmente:",
+	"oathauth-step3": "Passo 3: Anote os códigos scratch",
+	"oathauth-step4": "Passo 4: Verificação",
+	"oathauth-entertoken": "Introduza o código do seu aplicativo móvel para verificar:"
 }
