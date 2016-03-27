@@ -29,5 +29,7 @@
 	"oathauth-reattemptdisable": "Re-tentar le disactivation del authentication de duo factores.",
 	"oathauth-failedtoresetoath": "Le reinitialisation del informationes de identification de duo factores ha fallite.",
 	"oathauth-notloggedin": "Identification necessari",
-	"oathauth-mustbeloggedin": "Es necessari aperir session pro exequer iste action."
+	"oathauth-mustbeloggedin": "Es necessari aperir session pro exequer iste action.",
+	"right-oathauth-enable": "Activar le authentication a duo factores",
+	"action-oathauth-enable": "activar le authentication a duo factores"
 }

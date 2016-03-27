@@ -43,5 +43,7 @@
 	"oathauth-step2alt": "或手动输入密钥：",
 	"oathauth-step3": "第3步：记下即时性代码",
 	"oathauth-step4": "第4步：验证",
-	"oathauth-entertoken": "输入来自您的移动应用程序的代码进行验证："
+	"oathauth-entertoken": "输入来自您的移动应用程序的代码进行验证：",
+	"right-oathauth-enable": "启用双因素验证",
+	"action-oathauth-enable": "启用双因素验证"
 }

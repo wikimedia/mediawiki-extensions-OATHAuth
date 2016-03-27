@@ -42,6 +42,6 @@
 	"oathauth-step3": "Schritt 3: Schreibe die Sondercodes auf",
 	"oathauth-step4": "Schritt 4: Verifizierung",
 	"oathauth-entertoken": "Gib zur Verifizierung einen Code von deiner mobilen App ein:",
-	"right-oathauth-enable": "Zwei-Faktor-Authentifizierung aktivieren",
+	"right-oathauth-enable": "Die Zwei-Faktor-Authentifizierung aktivieren",
 	"action-oathauth-enable": "die Zwei-Faktor-Authentifizierung zu aktivieren"
 }

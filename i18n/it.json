@@ -42,5 +42,7 @@
 	"oathauth-step2alt": "O inserisci il codice segreto manualmente:",
 	"oathauth-step3": "Passo 3: scrivi il codice 'graffiato'",
 	"oathauth-step4": "Passo 4: verifica",
-	"oathauth-entertoken": "Inserisci un codice dalla tua applicazione mobile per verificare:"
+	"oathauth-entertoken": "Inserisci un codice dalla tua applicazione mobile per verificare:",
+	"right-oathauth-enable": "Abilita autenticazione a due fattori",
+	"action-oathauth-enable": "abilitare l'autenticazione a due fattori"
 }

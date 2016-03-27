@@ -34,5 +34,7 @@
 	"oathauth-step2alt": "Ou introduza o segredo manualmente:",
 	"oathauth-step3": "Passo 3: Anote os códigos scratch",
 	"oathauth-step4": "Passo 4: Verificação",
-	"oathauth-entertoken": "Introduza o código do seu aplicativo móvel para verificar:"
+	"oathauth-entertoken": "Introduza o código do seu aplicativo móvel para verificar:",
+	"right-oathauth-enable": "Ativar autenticação de dois fatores",
+	"action-oathauth-enable": "ativar autenticação de dois fatores"
 }

@@ -5,7 +5,8 @@
 			"Gomoko",
 			"Peter17",
 			"Sherbrooke",
-			"Manaviko"
+			"Manaviko",
+			"Orlodrim"
 		]
 	},
 	"oathauth-desc": "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
@@ -44,5 +45,7 @@
 	"oathauth-step2alt": "Ou entrez le code secret manuellement",
 	"oathauth-step3": "Étape 3: Écrivez les codes de zéro",
 	"oathauth-step4": "Étape 4: Vérification",
-	"oathauth-entertoken": "Entrez un code à partir de votre application mobile pour vérifier:"
+	"oathauth-entertoken": "Entrez un code à partir de votre application mobile pour vérifier:",
+	"right-oathauth-enable": "Activer l’authentification à deux facteurs",
+	"action-oathauth-enable": "activer l’authentification à deux facteurs"
 }

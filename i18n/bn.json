@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftabuzzaman"
+		]
+	},
+	"oathauth-step1": "ধাপ ১: অ্যাপটি ডাউনলোড করুন",
+	"oathauth-step2": "ধাপ ২: কিউআর কোডটি স্ক্যান করুন",
+	"oathauth-step4": "ধাপ ৪: নিশ্চিতকরণ"
+}

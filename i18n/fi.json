@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mikahama"
+		]
+	},
+	"oathauth-step1": "Vaihe 1: Lataa sovellus",
+	"oathauth-step2": "Vaihe 2: Skannaa QR-koodi",
+	"oathauth-step2alt": "Tai syötä salainen tunnus käsin:",
+	"oathauth-step4": "Vaihe 4: Vahvistus",
+	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen vahvistus",
+	"action-oathauth-enable": "ota käyttöön kaksivaiheinen vahvistus"
+}

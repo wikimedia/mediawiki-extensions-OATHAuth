@@ -4,12 +4,14 @@
 			"Armando-Martin",
 			"Fitoschido",
 			"McDutchie",
-			"Matiia"
+			"Matiia",
+			"Macofe"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
 	"specialpages-group-oath": "Autenticación de dos factores",
 	"oathauth-account": "Nombre de cuenta de dos factores:",
+	"oathauth-legend": "Verifica tus credenciales",
 	"oathauth-secret": "Clave secreta de dos factores:",
 	"oathauth-enable": "Activar la autenticación en dos pasos",
 	"oathauth-failedtoenableoauth": "Error al habilitar la autenticación de dos factores.",
@@ -35,5 +37,14 @@
 	"oathauth-notloggedin": "Es necesario iniciar sesión",
 	"oathauth-mustbeloggedin": "Debes haber iniciado sesión para realizar esta acción.",
 	"oathauth-prefs-label": "Autenticación en dos etapas:",
-	"oathauth-abortlogin": "La ficha de autenticación proporcionada no es válida."
+	"oathauth-abortlogin": "La ficha de autenticación proporcionada no es válida.",
+	"oathauth-step1": "Paso 1: descarga la aplicación",
+	"oathauth-step1-test": "Descarga una aplicación móvil para la autenticación de dos pasos (como Google Authenticator) en tu teléfono.",
+	"oathauth-step2": "Paso 2: escanea el código QR",
+	"oathauth-step2alt": "O escribe el secreto manualmente:",
+	"oathauth-step3": "Paso 3: escribe los códigos",
+	"oathauth-step4": "Paso 4: verificación",
+	"oathauth-entertoken": "Escribe un código de tu aplicación móvil para verificar:",
+	"right-oathauth-enable": "Activar la autenticación en dos pasos",
+	"action-oathauth-enable": "activar la autenticación de dos pasos"
 }

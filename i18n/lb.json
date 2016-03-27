@@ -17,5 +17,6 @@
 	"oathauth-notloggedin": "Dir musst ageloggt sinn",
 	"oathauth-mustbeloggedin": "Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.",
 	"oathauth-prefs-label": "Authentifikatioun mat zwee Elementer:",
-	"oathauth-step1": "Schrëtt 1: D'App eroflueden"
+	"oathauth-step1": "Schrëtt 1: D'App eroflueden",
+	"oathauth-step2": "Schrëtt 2: De QR-Code scannen"
 }
