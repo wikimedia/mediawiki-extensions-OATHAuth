@@ -40,5 +40,7 @@
 	"oathauth-step2alt": "אפשר גם להזין את הסוד ידנית:",
 	"oathauth-step3": "צעד 3: רישום קודי גירוד",
 	"oathauth-step4": "צעד 4: אישור",
-	"oathauth-entertoken": "נא להזין את הקוד מהיישום הנייד שלך לאישור:"
+	"oathauth-entertoken": "נא להזין את הקוד מהיישום הנייד שלך לאישור:",
+	"right-oathauth-enable": "הפעלת אימות דו־רכיבי",
+	"action-oathauth-enable": "הפעלת אימות דו־רכיבי"
 }
