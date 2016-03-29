@@ -8,6 +8,7 @@
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
 	"specialpages-group-oath": "Tvåstegsverifiering",
 	"oathauth-account": "Tvåstegs-kontonamn:",
+	"oathauth-legend": "Verifiera dina inloggningsuppgifter",
 	"oathauth-secret": "Tvåstegs-hemlig nyckel:",
 	"oathauth-enable": "Aktivera tvåstegsverifiering",
 	"oathauth-failedtoenableoauth": "Det gick inte att aktivera tvåstegsverifiering.",
@@ -34,6 +35,7 @@
 	"oathauth-mustbeloggedin": "Du måste vara inloggad för att utföra denna åtgärd.",
 	"oathauth-prefs-label": "Tvåstegsverifiering:",
 	"oathauth-abortlogin": "Den angivna tvåstegsverifieringsnyckeln var ogiltig",
+	"oathauth-step1": "Steg 1: Ladda ned appen",
 	"oathauth-step2": "Steg 2: Skanna QR-koden",
 	"oathauth-step4": "Steg 4: Verifiering"
 }
