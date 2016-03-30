@@ -8,6 +8,7 @@
 	"oathauth-desc": "Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez",
 	"specialpages-group-oath": "Autenticación de dous factores",
 	"oathauth-account": "Nome da conta de dous factores:",
+	"oathauth-legend": "Verifique as súas credenciais",
 	"oathauth-secret": "Clave secreta de dous factores:",
 	"oathauth-enable": "Activar a autenticación de dous factores",
 	"oathauth-failedtoenableoauth": "Erro ao activar a autenticación de dous factores.",
@@ -33,5 +34,14 @@
 	"oathauth-notloggedin": "Cómpre acceder ao sistema",
 	"oathauth-mustbeloggedin": "Cómpre acceder ao sistema para levar a cabo a acción.",
 	"oathauth-prefs-label": "Autenticación de dous factores:",
-	"oathauth-abortlogin": "O pase de autenticación de dous factores achegado non era válido."
+	"oathauth-abortlogin": "O pase de autenticación de dous factores achegado non era válido.",
+	"oathauth-step1": "Paso 1: descargue a aplicación",
+	"oathauth-step1-test": "Descargue unha aplicación móbil para a autenticación de duos pasos (como Google Authenticator) no seu teléfono.",
+	"oathauth-step2": "Paso 2: escanee o código QR",
+	"oathauth-step2alt": "Ou escriba o código secreto manualmente:",
+	"oathauth-step3": "Paso 3: escriba os códigos",
+	"oathauth-step4": "Paso 4: verificación",
+	"oathauth-entertoken": "Escriba un código a partir da súa aplicación móbil para verificar:",
+	"right-oathauth-enable": "Activar a autenticación en dous pasos",
+	"action-oathauth-enable": "activar a autenticación de dous pasos"
 }
