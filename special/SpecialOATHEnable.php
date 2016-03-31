@@ -3,7 +3,6 @@
 /**
  * Special page to display key information to the user
  *
- * @file
  * @ingroup Extensions
  */
 class SpecialOATHEnable extends FormSpecialPage {
