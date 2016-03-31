@@ -8,6 +8,7 @@
 	"AutoloadClasses": {
 		"OATHAuthHooks": "OATHAuth.hooks.php",
 		"OATHAuthKey": "OATHAuthKey.php",
+		"OATHAuthUtils": "OATHAuthUtils.php",
 		"OATHUserRepository": "OATHUserRepository.php",
 		"HOTP": "lib/hotp.php",
 		"HOTPResult": "lib/hotp.php",
@@ -46,7 +47,8 @@
 	},
 	"config": {
 		"OATHAuthWindowRadius": 4,
-		"OATHAuthDatabase": false
+		"OATHAuthDatabase": false,
+		"OATHAuthSecret": false
 	},
 	"ResourceModules": {
 		"ext.oathauth": {

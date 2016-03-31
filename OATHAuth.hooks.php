@@ -81,7 +81,12 @@ class OATHAuthHooks {
 		$oathuser = $oathrepo->findByUser( $user );
 
 		if ( $oathuser->getKey() !== null && !$request->getCheck( 'token' ) ) {
-			$request->setSessionData( 'oath_login', $request->getValues() );
+			$encData = OATHAuthUtils::encryptSessionData(
+				$request->getValues(),
+				$user->getId()
+			);
+			$request->setSessionData( 'oath_login', $encData );
+			$request->setSessionData( 'oath_uid', $user->getId() );
 			$output->redirect( SpecialPage::getTitleFor( 'OATH' )->getFullURL( '', false, PROTO_CURRENT ) );
 			return false;
 		} else {
