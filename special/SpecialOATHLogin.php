@@ -91,6 +91,7 @@ class SpecialOATHLogin extends FormSpecialPage {
 	 */
 	public function onSubmit( array $formData ) {
 		$this->getRequest()->setSessionData( 'oath_login', null );
+		$this->getRequest()->setSessionData( 'oath_uid', null );
 		$this->token = $formData['token'];
 
 		return true;

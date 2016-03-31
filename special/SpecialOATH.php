@@ -20,8 +20,12 @@ class SpecialOATH extends ProxySpecialPage {
 		$page = null;
 		if ( $this->getUser()->isAnon() && $loginInfo !== null ) {
 			// User is anonymous, so they are logging in
+			$loginInfo = OATHAuthUtils::decryptSessionData(
+				$loginInfo,
+				$this->getRequest()->getSessionData( 'oath_uid' )
+			);
 			$page = new SpecialOATHLogin(
-				$repo->findByUser(User::newFromName( $loginInfo['wpName'] ) ),
+				$repo->findByUser( User::newFromName( $loginInfo['wpName'] ) ),
 				new DerivativeRequest(
 					$this->getRequest(),
 					$loginInfo,
