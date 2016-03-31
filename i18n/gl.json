@@ -21,6 +21,7 @@
 	"oathauth-currenttoken": "Pase actual",
 	"oathauth-newtoken": "Novo pase",
 	"oathauth-disable": "Desactivar a autenticación de dous factores",
+	"oathauth-login": "Conexión con autenticación en dous pasos",
 	"oathauth-displayoathinfo": "Opcións da autenticación de dous factores",
 	"oathauth-validatedoath": "Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.",
 	"oathauth-backtopreferences": "Volver ás preferencias.",

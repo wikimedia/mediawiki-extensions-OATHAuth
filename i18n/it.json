@@ -22,6 +22,7 @@
 	"oathauth-currenttoken": "Token attuale",
 	"oathauth-newtoken": "Nuovo token",
 	"oathauth-disable": "Disabilita autenticazione a due fattori",
+	"oathauth-login": "Accedi con autenticazione a due fattori",
 	"oathauth-displayoathinfo": "Opzioni autenticazione a due fattori",
 	"oathauth-validatedoath": "Convalidate le credenziali a due fattori. D'ora in poi sarà applicata l'autenticazione a due fattori.",
 	"oathauth-backtopreferences": "Torna a preferenze.",

@@ -25,6 +25,7 @@
 	"oathauth-currenttoken": "Jeton actuel",
 	"oathauth-newtoken": "Nouveau jeton",
 	"oathauth-disable": "Désactiver l'authentification à deux facteurs",
+	"oathauth-login": "Connexion avec une authentification à deux facteurs",
 	"oathauth-displayoathinfo": "Options de l'authentification à deux facteurs",
 	"oathauth-validatedoath": "Identifications à deux facteurs validées. L'authentification à deux facteurs sera désormais appliquée.",
 	"oathauth-backtopreferences": "Retourner aux préférences.",

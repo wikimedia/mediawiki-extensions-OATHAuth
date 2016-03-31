@@ -21,6 +21,7 @@
 	"oathauth-currenttoken": "Поточний код",
 	"oathauth-newtoken": "Новий код",
 	"oathauth-disable": "Вимкнути двофакторну авторизацію",
+	"oathauth-login": "Увійти в систему за допомогою двофакторної авторизації",
 	"oathauth-displayoathinfo": "Параметри двофакторної авторизації",
 	"oathauth-validatedoath": "Перевірено двофакторні облікові дані. Двофакторна авторизація тепер буде застосована.",
 	"oathauth-backtopreferences": "Назад до налаштувань.",
