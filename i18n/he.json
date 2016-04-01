@@ -20,6 +20,7 @@
 	"oathauth-currenttoken": "אסימון נוכחי",
 	"oathauth-newtoken": "אסימון חדש",
 	"oathauth-disable": "כיבוי אימות דו־רכיבי",
+	"oathauth-login": "להיכנס עם אימות דו־רכיבי",
 	"oathauth-displayoathinfo": "אפשרויות אימות דו־רכיבי",
 	"oathauth-validatedoath": "תקינות נתוני ההאמנה הדו־רכיביים נבדקה. מעכשיו ייכפה אימות דו־רכיבי.",
 	"oathauth-backtopreferences": "חזרה להעדפות.",

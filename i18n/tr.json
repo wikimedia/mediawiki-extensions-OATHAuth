@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Incelemeelemani"
+			"Incelemeelemani",
+			"Hbseren",
+			"Sayginer"
 		]
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık şifreler kullanan bir kimlik doğrulama desteği sağlar",
@@ -14,11 +16,12 @@
 	"oathauth-verify": "İki faktörlü doğrulama anahtarı",
 	"openstackmanager-scratchtokens": "Aşağıdaki listede, yalnızca bir defa kullanımlık anahtar bulunmaktadır. Bu semboller yalnızca bir defalık kullanım içindir ve acil durum kullanımlarına özel olabilir. Lütfen aşağıda yazılı anahtarı bir yere yazın ve bunu güvenli bir yerde saklayın. Eğer telefonunuzu kaybederseniz, bu simgeler hesabınızı kurtarmanın tek yolu olacaktır. Bu simgeler asla tekrar gösterilmeyecektir.",
 	"oathauth-reset": "İki Faktörlü Kimlik Doğrulamayı Sıfırla",
-	"oathauth-donotdeleteoldsecret": "Eğer başarılı bir şekilde yeni kimliğiniz doğrulandıysa, lütfen eski kimliğinizi silmeyiniz.",
+	"oathauth-donotdeleteoldsecret": "Lütfen yeni kimlik bilgilerinizi doğrulayana kadar eski kimlik bilgilerinizi silmeyiniz.",
 	"oathauth-token": "Anahtar",
 	"oathauth-currenttoken": "Geçerli Anahtar",
 	"oathauth-newtoken": "Yeni Anahtar",
 	"oathauth-disable": "İki Faktörlü Kimlik Doğrulama Devre Dışı",
+	"oathauth-login": "İki-faktörlü doğrulamayla giriş yapın",
 	"oathauth-displayoathinfo": "İki Faktörlü Kimlik Doğrulama Tercihleri",
 	"oathauth-validatedoath": "İki Faktörlü kimlik onaylandı. İki faktörlü kimlik doğrulama artık etkinleştirilecektir.",
 	"oathauth-backtopreferences": "Tercihlerime geri dön.",
@@ -32,5 +35,8 @@
 	"oathauth-notloggedin": "Giriş gerekli",
 	"oathauth-mustbeloggedin": "Bu eylemi gerçekleştirmek için giriş yapmalısınız.",
 	"oathauth-prefs-label": "İki faktörlü kimlik doğrulama:",
-	"oathauth-abortlogin": "İki faktörlü kimlik doğrulama için sağlanan anahtar geçersiz."
+	"oathauth-abortlogin": "İki faktörlü kimlik doğrulama için sağlanan anahtar geçersiz.",
+	"oathauth-step1": "1. Adım: Uygulamayı indirin",
+	"oathauth-step2": "2. Adım: QR kodunu tarayın",
+	"oathauth-step4": "4. Adım: Doğrulama"
 }

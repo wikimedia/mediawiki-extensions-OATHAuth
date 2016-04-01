@@ -23,6 +23,7 @@
 	"oathauth-currenttoken": "当前令牌",
 	"oathauth-newtoken": "新的令牌",
 	"oathauth-disable": "禁用双因素验证",
+	"oathauth-login": "通过双因素验证登录",
 	"oathauth-displayoathinfo": "双因素验证选项",
 	"oathauth-validatedoath": "已验证双因素证书。双因素验证现将实施生效。",
 	"oathauth-backtopreferences": "回到设置。",
