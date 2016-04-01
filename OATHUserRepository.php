@@ -6,14 +6,16 @@ class OATHUserRepository {
 	private $dbw;
 
 	public function __construct( LoadBalancer $lb ) {
-		$this->dbr = $lb->getConnection( DB_SLAVE );
-		$this->dbw = $lb->getConnection( DB_MASTER );
+		global $wgOATHAuthDatabase;
+		$this->dbr = $lb->getConnection( DB_SLAVE, array(), $wgOATHAuthDatabase );
+		$this->dbw = $lb->getConnection( DB_MASTER, array(), $wgOATHAuthDatabase );
 	}
 
 	public function findByUser( User $user ) {
 		$oathUser = new OATHUser( $user, null );
 
-		$res = $this->dbr->selectRow( 'oathauth_users', '*', array( 'id' => $user->getId() ), __METHOD__ );
+		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
+		$res = $this->dbr->selectRow( 'oathauth_users', '*', array( 'id' => $uid ), __METHOD__ );
 		if ($res) {
 			$key = new OATHAuthKey( $res->secret, explode( ',', $res->scratch_tokens ) );
 			$oathUser->setKey( $key );
@@ -27,7 +29,7 @@ class OATHUserRepository {
 			'oathauth_users',
 			array( 'id' ),
 			array(
-				'id' => $user->getUser()->getId(),
+				'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ),
 				'secret' => $user->getKey()->getSecret(),
 				'scratch_tokens' => implode( ',', $user->getKey()->getScratchTokens() ),
 			),
@@ -38,7 +40,7 @@ class OATHUserRepository {
 	public function remove( OATHUser $user ) {
 		$this->dbw->delete(
 			'oathauth_users',
-			array( 'id' => $user->getUser()->getId() ),
+			array( 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ),
 			__METHOD__
 		);
 	}
