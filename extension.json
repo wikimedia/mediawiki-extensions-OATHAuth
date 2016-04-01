@@ -33,6 +33,9 @@
 		"ChangePasswordForm": [
 			"OATHAuthHooks::ChangePasswordForm"
 		],
+		"TwoFactorIsEnabled": [
+			"OATHAuthHooks::TwoFactorIsEnabled"
+		],
 		"LoadExtensionSchemaUpdates": [
 			"OATHAuthHooks::OATHAuthSchemaUpdates"
 		],

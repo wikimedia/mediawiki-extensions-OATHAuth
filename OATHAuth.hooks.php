@@ -95,6 +95,30 @@ class OATHAuthHooks {
 	}
 
 	/**
+	 * Determine if two-factor authentication is enabled for $wgUser
+	 *
+	 * @param bool &$isEnabled Will be set to true if enabled, false otherwise
+	 *
+	 * @return bool False if enabled, true otherwise
+	 */
+	static function TwoFactorIsEnabled( &$isEnabled ) {
+		global $wgUser;
+
+		$user = self::getOATHUserRepository()->findByUser( $wgUser );
+		if ( $user && $user->getKey() !== null ) {
+			$isEnabled = true;
+			# This two-factor extension is enabled by the user,
+			# we don't need to check others.
+			return false;
+		} else {
+			$isEnabled = false;
+			# This two-factor extension isn't enabled by the user,
+			# but others may be.
+			return true;
+		}
+	}
+
+	/**
 	 * Add the necessary user preferences for OATHAuth
 	 *
 	 * @param User $user
