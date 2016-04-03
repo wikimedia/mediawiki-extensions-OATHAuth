@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Araceletorres",
-			"Luk3"
+			"Luk3",
+			"Tark"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
@@ -36,5 +37,5 @@
 	"oathauth-step4": "Passo 4: Verificação",
 	"oathauth-entertoken": "Introduza o código do seu aplicativo móvel para verificar:",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
-	"action-oathauth-enable": "ativar autenticação de dois fatores"
+	"action-oathauth-enable": "ativar autenticação em duas etapas"
 }
