@@ -209,7 +209,12 @@ class OATHAuthHooks {
 			return true;
 		}
 
-		$res = $db->select( 'oathauth_users', array( 'id', 'scratch_tokens' ), '', __METHOD__ );
+		$res = $db->select(
+			'oathauth_users',
+			array( 'id', 'scratch_tokens' ),
+			array( 'is_validated != 0' ),
+			__METHOD__
+		);
 
 		foreach ( $res as $row ) {
 			$scratchTokens = unserialize( base64_decode( $row->scratch_tokens ) );
@@ -222,6 +227,9 @@ class OATHAuthHooks {
 				);
 			}
 		}
+
+		// Remove rows from the table where user never completed the setup process
+		$db->delete( 'oathauth_users', array( 'is_validated' => 0 ), __METHOD__ );
 
 		return true;
 	}
