@@ -21,6 +21,7 @@
 	"oathauth-currenttoken": "Aktuální kód",
 	"oathauth-newtoken": "Nový kód",
 	"oathauth-disable": "Vypnutí dvoufaktorové autentizace",
+	"oathauth-login": "Přihlášení dvoufaktorovou autentizací",
 	"oathauth-displayoathinfo": "Nastavení dvoufaktorové autentizace",
 	"oathauth-validatedoath": "Dvoufaktorové přihlášení ověřeno. Odteď bude vynucována dvoufaktorová autentizace.",
 	"oathauth-backtopreferences": "Zpět na nastavení.",
@@ -41,5 +42,7 @@
 	"oathauth-step2alt": "Nebo tajemství zadejte ručně:",
 	"oathauth-step3": "Krok 3: Zapište si jednorázové kódy",
 	"oathauth-step4": "Krok 4: Ověření",
-	"oathauth-entertoken": "Pro ověření zadejte kód z vaší mobilní aplikace:"
+	"oathauth-entertoken": "Pro ověření zadejte kód z vaší mobilní aplikace:",
+	"right-oathauth-enable": "Zapnutí dvoufaktorové autentizace",
+	"action-oathauth-enable": "zapnout dvoufaktorovou autentizaci"
 }
