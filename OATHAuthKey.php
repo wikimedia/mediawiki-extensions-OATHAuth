@@ -89,7 +89,8 @@ class OATHAuthKey {
 
 		// Prevent replay attacks
 		$memc = ObjectCache::newAnything( array() );
-		$memcKey = wfMemcKey( 'oauthauth', 'usedtokens', $user->getUser()->getId() );
+		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() );
+		$memcKey = wfMemcKey( 'oauthauth', 'usedtokens', $uid );
 		$lastWindow = (int)$memc->get( $memcKey );
 
 		$retval = false;

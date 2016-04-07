@@ -79,14 +79,15 @@ class OATHAuthHooks {
 
 		$oathrepo = self::getOATHUserRepository();
 		$oathuser = $oathrepo->findByUser( $user );
+		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
 
 		if ( $oathuser->getKey() !== null && !$request->getCheck( 'token' ) ) {
 			$encData = OATHAuthUtils::encryptSessionData(
 				$request->getValues(),
-				$user->getId()
+				$uid
 			);
 			$request->setSessionData( 'oath_login', $encData );
-			$request->setSessionData( 'oath_uid', $user->getId() );
+			$request->setSessionData( 'oath_uid', $uid );
 			$output->redirect( SpecialPage::getTitleFor( 'OATH' )->getFullURL( '', false, PROTO_CURRENT ) );
 			return false;
 		} else {
