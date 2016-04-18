@@ -7,6 +7,9 @@
 	"oathauth-token": "Chave",
 	"oathauth-currenttoken": "Chave atual",
 	"oathauth-newtoken": "Nova chave",
+	"oathauth-login": "Entrar com autenticação de dois fatores",
 	"oathauth-notloggedin": "Autenticação necessária",
-	"oathauth-mustbeloggedin": "Deve iniciar sessão para realizar esta ação."
+	"oathauth-mustbeloggedin": "Deve iniciar sessão para realizar esta ação.",
+	"right-oathauth-enable": "Ativar autenticação de dois fatores",
+	"action-oathauth-enable": "ativar autenticação de dois fatores"
 }
