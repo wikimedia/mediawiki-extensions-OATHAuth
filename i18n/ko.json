@@ -31,7 +31,7 @@
 	"oathauth-reattemptdisable": "2요소 인증을 비활성화 재시도",
 	"oathauth-failedtoresetoath": "2요소 자격 정보 재설정에 실패했습니다.",
 	"oathauth-notloggedin": "로그인 필요",
-	"oathauth-mustbeloggedin": "이 행동을 수행하려면 로그인해야 합니다.",
+	"oathauth-mustbeloggedin": "이 동작을 수행하려면 로그인해야 합니다.",
 	"oathauth-prefs-label": "2요소 인증:",
 	"oathauth-abortlogin": "입력된 2요소 인증 토큰이 유효하지 않습니다."
 }
