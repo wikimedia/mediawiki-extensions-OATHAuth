@@ -25,6 +25,10 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$this->OATHUser = $user;
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	/**
 	 * Set the page title and add JavaScript RL modules
 	 *
