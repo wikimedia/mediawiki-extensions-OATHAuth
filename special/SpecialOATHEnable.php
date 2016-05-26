@@ -86,9 +86,9 @@ class SpecialOATHEnable extends FormSpecialPage {
 				array( 'ext.oathauth' ),
 				new XmlJsCode(
 					'function () {'
-                    . '$("#qrcode").qrcode("otpauth://totp/'
-                    . $this->OATHUser->getAccount()
-                    . '?secret=' . $secret. '");'
+					. '$("#qrcode").qrcode("otpauth://totp/'
+					. rawurlencode( $this->OATHUser->getAccount() )
+					. '?secret=' . $secret . '");'
 					. '}'
 				)
 			) )
