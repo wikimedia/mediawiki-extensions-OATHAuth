@@ -1,22 +1,20 @@
 <?php
 
 class OATHUserRepository {
-	private $dbr;
-
-	private $dbw;
+	/** @var LoadBalancer */
+	protected $lb;
 
 	public function __construct( LoadBalancer $lb ) {
-		global $wgOATHAuthDatabase;
-		$this->dbr = $lb->getConnection( DB_SLAVE, array(), $wgOATHAuthDatabase );
-		$this->dbw = $lb->getConnection( DB_MASTER, array(), $wgOATHAuthDatabase );
+		$this->lb = $lb;
 	}
 
 	public function findByUser( User $user ) {
 		$oathUser = new OATHUser( $user, null );
 
 		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
-		$res = $this->dbr->selectRow( 'oathauth_users', '*', array( 'id' => $uid ), __METHOD__ );
-		if ($res) {
+		$res = $this->getDB( DB_SLAVE )
+			->selectRow( 'oathauth_users', '*', array( 'id' => $uid ), __METHOD__ );
+		if ( $res ) {
 			$key = new OATHAuthKey( $res->secret, explode( ',', $res->scratch_tokens ) );
 			$oathUser->setKey( $key );
 		}
@@ -25,7 +23,7 @@ class OATHUserRepository {
 	}
 
 	public function persist( OATHUser $user ) {
-		$this->dbw->replace(
+		$this->getDB( DB_MASTER )->replace(
 			'oathauth_users',
 			array( 'id' ),
 			array(
@@ -38,10 +36,20 @@ class OATHUserRepository {
 	}
 
 	public function remove( OATHUser $user ) {
-		$this->dbw->delete(
+		$this->getDB( DB_MASTER )->delete(
 			'oathauth_users',
 			array( 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ),
 			__METHOD__
 		);
+	}
+
+	/**
+	 * @param integer $index DB_MASTER/DB_SLAVE
+	 * @return DBConnRef
+	 */
+	private function getDB( $index ) {
+		global $wgOATHAuthDatabase;
+
+		return $this->lb->getConnectionRef( $index, array(), $wgOATHAuthDatabase );
 	}
 }
