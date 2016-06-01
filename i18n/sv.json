@@ -37,5 +37,6 @@
 	"oathauth-abortlogin": "Den angivna tvåstegsverifieringsnyckeln var ogiltig",
 	"oathauth-step1": "Steg 1: Ladda ned appen",
 	"oathauth-step2": "Steg 2: Skanna QR-koden",
-	"oathauth-step4": "Steg 4: Verifiering"
+	"oathauth-step4": "Steg 4: Verifiering",
+	"oathauth-auth-token-label": "Nyckel"
 }

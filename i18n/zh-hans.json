@@ -46,5 +46,11 @@
 	"oathauth-step4": "第4步：验证",
 	"oathauth-entertoken": "输入来自您的移动应用程序的代码进行验证：",
 	"right-oathauth-enable": "启用双因素验证",
-	"action-oathauth-enable": "启用双因素验证"
+	"action-oathauth-enable": "启用双因素验证",
+	"oathauth-auth-token-label": "令牌",
+	"oathauth-auth-token-help": "用作双因素验证中第二因素的一次性密码。",
+	"oathauth-auth-ui": "请输入来自您的移动应用的验证码",
+	"oathauth-throttled": "尝试了太多次验证！请等待$1。",
+	"oathauth-login-failed": "验证失败。",
+	"oathauth-describe-provider": "双因素验证（OATH）。"
 }

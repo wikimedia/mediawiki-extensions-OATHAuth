@@ -6,7 +6,8 @@
 			"Shirayuki",
 			"Purodha",
 			"Umherirrender",
-			"Tyler Romeo <tylerromeo@gmail.com>"
+			"Tyler Romeo <tylerromeo@gmail.com>",
+			"Liuxinyu970226"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
@@ -50,7 +51,7 @@
 	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token",
 	"right-oathauth-enable": "{{doc-right|oathauth-enable}}",
 	"action-oathauth-enable": "{{doc-action|oathauth-enable}}",
-	"oathauth-auth-token-label": "Label of the second-factor field on special pages and in the API",
+	"oathauth-auth-token-label": "Label of the second-factor field on special pages and in the API\n{{Identical|Token}}",
 	"oathauth-auth-token-help": "Extended help message for the second factor field in the API.",
 	"oathauth-auth-ui": "Shown on top of the login form when second factor is required",
 	"oathauth-throttled": "Error message when throttling limit is hit.\n\nParameters:\n* $1 - throttle block duration",

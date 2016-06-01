@@ -7,7 +7,9 @@
 			"Sherbrooke",
 			"Manaviko",
 			"Orlodrim",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92",
+			"Yasten"
 		]
 	},
 	"oathauth-desc": "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
@@ -49,5 +51,10 @@
 	"oathauth-step4": "Étape 4 : vérification",
 	"oathauth-entertoken": "Entrez un code à partir de votre application mobile pour vérifier:",
 	"right-oathauth-enable": "Activer l’authentification à deux facteurs",
-	"action-oathauth-enable": "activer l’authentification à deux facteurs"
+	"action-oathauth-enable": "activer l’authentification à deux facteurs",
+	"oathauth-auth-token-label": "Jeton",
+	"oathauth-auth-token-help": "Le mot de passe à usage unique utilisé comme le deuxième facteur d'authentification à deux facteurs.",
+	"oathauth-auth-ui": "Veuillez entrer le code de vérification à partir de votre application mobile",
+	"oathauth-throttled": "Trop de tentatives de vérification! Veuillez attendre attendre $1.",
+	"oathauth-login-failed": "Échec de la vérification"
 }

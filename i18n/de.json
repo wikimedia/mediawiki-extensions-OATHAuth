@@ -44,5 +44,11 @@
 	"oathauth-step4": "Schritt 4: Verifizierung",
 	"oathauth-entertoken": "Gib zur Verifizierung einen Code von deiner mobilen App ein:",
 	"right-oathauth-enable": "Die Zwei-Faktor-Authentifizierung aktivieren",
-	"action-oathauth-enable": "die Zwei-Faktor-Authentifizierung zu aktivieren"
+	"action-oathauth-enable": "die Zwei-Faktor-Authentifizierung zu aktivieren",
+	"oathauth-auth-token-label": "Token",
+	"oathauth-auth-token-help": "Das Einmalpasswort, verwendet als zweiter Faktor der Zwei-Faktor-Authentifizierung.",
+	"oathauth-auth-ui": "Bitte gib den Verifizierungscode von deiner mobilen App ein",
+	"oathauth-throttled": "Zu viele Verifizierungsversuche! Bitte warte $1.",
+	"oathauth-login-failed": "Verifizierung fehlgeschlagen.",
+	"oathauth-describe-provider": "Zwei-Faktor-Authentifizierung (OATH)."
 }
