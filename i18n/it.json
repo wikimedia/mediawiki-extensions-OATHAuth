@@ -3,7 +3,8 @@
 		"authors": [
 			"Beta16",
 			"Darth Kule",
-			"Gianfranco"
+			"Gianfranco",
+			"McDutchie"
 		]
 	},
 	"oathauth-desc": "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
@@ -47,7 +48,7 @@
 	"right-oathauth-enable": "Abilita autenticazione a due fattori",
 	"action-oathauth-enable": "abilitare l'autenticazione a due fattori",
 	"oathauth-auth-token-label": "Token",
-	"oathauth-auth-token-help": "La password a uso singolo utilizzata come secondo fatture per l'autenticazione a due fattori.",
+	"oathauth-auth-token-help": "La password a uso singolo utilizzata come secondo fattore per l'autenticazione a due fattori.",
 	"oathauth-auth-ui": "Inserisci il codice di verifica dalla tua applicazione per cellulari",
 	"oathauth-throttled": "Troppi tentativi di verifica! Attendi $1.",
 	"oathauth-login-failed": "Verifica non riuscita.",

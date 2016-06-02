@@ -43,5 +43,11 @@
 	"oathauth-step4": "צעד 4: אישור",
 	"oathauth-entertoken": "נא להזין את הקוד מהיישום הנייד שלך לאישור:",
 	"right-oathauth-enable": "הפעלת אימות דו־רכיבי",
-	"action-oathauth-enable": "הפעלת אימות דו־רכיבי"
+	"action-oathauth-enable": "הפעלת אימות דו־רכיבי",
+	"oathauth-auth-token-label": "אסימון",
+	"oathauth-auth-token-help": "הססמה החד־פעמית שמשמשת בתור הגורם השני של אימות דו־גורמי.",
+	"oathauth-auth-ui": "נא להזין את קוד האימות מהיישום הנייד שלך",
+	"oathauth-throttled": "יותר מדי ניסיונות אימות! נא לנסות $1.",
+	"oathauth-login-failed": "האימות נכשל.",
+	"oathauth-describe-provider": "אימות דו־גורמי (OATH)."
 }

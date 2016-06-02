@@ -47,5 +47,8 @@
 	"oathauth-step4": "Paso 4: verificación",
 	"oathauth-entertoken": "Escribe un código de tu aplicación móvil para verificar:",
 	"right-oathauth-enable": "Activar la autenticación en dos pasos",
-	"action-oathauth-enable": "activar la autenticación de dos pasos"
+	"action-oathauth-enable": "activar la autenticación de dos pasos",
+	"oathauth-auth-ui": "Escribe el código de verificación de tu aplicación para móviles",
+	"oathauth-login-failed": "Falló la verificación.",
+	"oathauth-describe-provider": "Autenticación de dos factores (OATH)."
 }
