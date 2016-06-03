@@ -15,5 +15,7 @@
 	"oathauth-backtopreferences": "Wróć do preferencji.",
 	"oathauth-notloggedin": "musisz się zalogować",
 	"oathauth-mustbeloggedin": "Musisz być zalogowany aby wykonać tę akcję.",
-	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1."
+	"oathauth-auth-token-label": "Token",
+	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
+	"oathauth-login-failed": "Weryfikacja nie powiodła się."
 }

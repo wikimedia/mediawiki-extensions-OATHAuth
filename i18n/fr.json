@@ -57,7 +57,7 @@
 	"oathauth-auth-token-label": "Jeton",
 	"oathauth-auth-token-help": "Le mot de passe à usage unique utilisé comme le deuxième facteur d'authentification à deux facteurs.",
 	"oathauth-auth-ui": "Veuillez entrer le code de vérification à partir de votre application mobile",
-	"oathauth-throttled": "Trop de tentatives de vérification! Veuillez attendre $1.",
+	"oathauth-throttled": "Trop de tentatives de vérification ! Veuillez attendre $1.",
 	"oathauth-login-failed": "Échec de la vérification",
 	"oathauth-describe-provider": "Authentification à deux facteurs (OATH)"
 }
