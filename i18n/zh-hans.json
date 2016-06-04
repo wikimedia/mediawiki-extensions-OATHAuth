@@ -16,7 +16,7 @@
 	"oathauth-failedtoenableoauth": "启用双因素验证失败。",
 	"oathauth-alreadyenabled": "双因素验证已被启用。",
 	"oathauth-verify": "验证双因素令牌",
-	"openstackmanager-scratchtokens": "下面的列表是一次性使用的即时令牌列表。这些令牌只能使用一次，并应用于紧急用途。请将它们记下来，并保存在一个安全的位置。如果您遗失了手机，唯一能够恢复您的账户就只有这些令牌。这些令牌不会再显示。",
+	"openstackmanager-scratchtokens": "下面的列表是一次性使用的即时令牌列表。这些令牌只能使用一次，并应用于紧急用途。请将它们记下来，并保存在一个安全的位置。如果您遗失了手机，唯一能够找回您账户的方法就是这些令牌。这些令牌不会再显示。",
 	"oathauth-reset": "重置双因素证书",
 	"oathauth-donotdeleteoldsecret": "请在您验证您的新证书之前不要删除老的证书。",
 	"oathauth-token": "密钥",
