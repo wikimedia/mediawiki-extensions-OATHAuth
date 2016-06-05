@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Priviet",
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",
@@ -33,5 +34,6 @@
 	"oathauth-notloggedin": "로그인 필요",
 	"oathauth-mustbeloggedin": "이 동작을 수행하려면 로그인해야 합니다.",
 	"oathauth-prefs-label": "2요소 인증:",
-	"oathauth-abortlogin": "입력된 2요소 인증 토큰이 유효하지 않습니다."
+	"oathauth-abortlogin": "입력된 2요소 인증 토큰이 유효하지 않습니다.",
+	"oathauth-auth-token-label": "토큰"
 }
