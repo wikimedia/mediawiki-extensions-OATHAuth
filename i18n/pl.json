@@ -16,6 +16,8 @@
 	"oathauth-notloggedin": "musisz się zalogować",
 	"oathauth-mustbeloggedin": "Musisz być zalogowany aby wykonać tę akcję.",
 	"oathauth-auth-token-label": "Token",
+	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z aplikacji mobilnej",
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
-	"oathauth-login-failed": "Weryfikacja nie powiodła się."
+	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
+	"oathauth-describe-provider": "Uwierzytelnianie dwuetapowe (OATH)."
 }
