@@ -44,5 +44,9 @@
 	"oathauth-step4": "Krok 4: Ověření",
 	"oathauth-entertoken": "Pro ověření zadejte kód z vaší mobilní aplikace:",
 	"right-oathauth-enable": "Zapnutí dvoufaktorové autentizace",
-	"action-oathauth-enable": "zapnout dvoufaktorovou autentizaci"
+	"action-oathauth-enable": "zapnout dvoufaktorovou autentizaci",
+	"oathauth-auth-token-help": "Jednorázové heslo používané jako druhý faktor dvoufaktorové autentizace.",
+	"oathauth-auth-ui": "Zadejte ověřovací kód ze své mobilní aplikace",
+	"oathauth-login-failed": "Ověření se nezdařilo.",
+	"oathauth-describe-provider": "Dvoufaktorová autentizace (OATH)."
 }
