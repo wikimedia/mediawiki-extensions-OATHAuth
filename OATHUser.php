@@ -13,6 +13,7 @@ class OATHUser {
 	private $key;
 
 	/**
+	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 * @param User $user
 	 * @param OATHAuthKey $key
 	 */

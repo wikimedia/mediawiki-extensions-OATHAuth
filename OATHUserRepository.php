@@ -4,12 +4,17 @@ class OATHUserRepository {
 	/** @var LoadBalancer */
 	protected $lb;
 
+	/** @var BagOStuff */
+	protected $cache;
+
 	/**
 	 * OATHUserRepository constructor.
 	 * @param LoadBalancer $lb
+	 * @param BagOStuff $cache
 	 */
-	public function __construct( LoadBalancer $lb ) {
+	public function __construct( LoadBalancer $lb, BagOStuff $cache ) {
 		$this->lb = $lb;
+		$this->cache = $cache;
 	}
 
 	/**
@@ -17,16 +22,24 @@ class OATHUserRepository {
 	 * @return OATHUser
 	 */
 	public function findByUser( User $user ) {
-		$oathUser = new OATHUser( $user, null );
+		$oathUser = $this->cache->get( $user->getName() );
+		if ( !$oathUser ) {
+			$oathUser = new OATHUser( $user, null );
 
-		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
-		$res = $this->getDB( DB_SLAVE )
-			->selectRow( 'oathauth_users', '*', [ 'id' => $uid ], __METHOD__ );
-		if ( $res ) {
-			$key = new OATHAuthKey( $res->secret, explode( ',', $res->scratch_tokens ) );
-			$oathUser->setKey( $key );
+			$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
+			$res = $this->getDB( DB_SLAVE )->selectRow(
+				'oathauth_users',
+				'*',
+				[ 'id' => $uid ],
+				__METHOD__
+			);
+			if ( $res ) {
+				$key = new OATHAuthKey( $res->secret, explode( ',', $res->scratch_tokens ) );
+				$oathUser->setKey( $key );
+			}
+
+			$this->cache->set( $user->getName(), $oathUser );
 		}
-
 		return $oathUser;
 	}
 
@@ -44,6 +57,7 @@ class OATHUserRepository {
 			],
 			__METHOD__
 		);
+		$this->cache->set( $user->getUser()->getName(), $user );
 	}
 
 	/**
@@ -55,6 +69,7 @@ class OATHUserRepository {
 			[ 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ],
 			__METHOD__
 		);
+		$this->cache->delete( $user->getUser()->getName() );
 	}
 
 	/**
