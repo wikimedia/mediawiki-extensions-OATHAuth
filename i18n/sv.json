@@ -38,5 +38,7 @@
 	"oathauth-step1": "Steg 1: Ladda ned appen",
 	"oathauth-step2": "Steg 2: Skanna QR-koden",
 	"oathauth-step4": "Steg 4: Verifiering",
-	"oathauth-auth-token-label": "Nyckel"
+	"oathauth-auth-token-label": "Nyckel",
+	"oathauth-auth-ui": "Ange verifieringskoden från din mobilapp",
+	"oathauth-login-failed": "Verifiering misslyckades."
 }
