@@ -37,7 +37,6 @@ class SpecialOATHDisable extends FormSpecialPage {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
 		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-disable' ) );
-		$form->getOutput()->addModules( 'ext.oathauth' );
 	}
 
 	/**

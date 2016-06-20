@@ -51,14 +51,21 @@
 	"ResourceModules": {
 		"ext.oathauth": {
 			"scripts": [
-				"modules/jquery.qrcode.js",
-				"modules/qrcode.js"
+				"jquery.qrcode.js",
+				"qrcode.js"
+			]
+		},
+		"ext.oath.showqrcode": {
+			"scripts": [
+				"ext.oath.showqrcode.js"
 			],
-			"position": "top"
+			"dependencies": [
+				"ext.oathauth"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
-		"localBasePath": "",
+		"localBasePath": "modules",
 		"remoteExtPath": "OATHAuth"
 	},
 	"SpecialPages": {

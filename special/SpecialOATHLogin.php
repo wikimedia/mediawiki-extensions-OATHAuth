@@ -39,7 +39,6 @@ class SpecialOATHLogin extends FormSpecialPage {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
 		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-login' ) );
-		$form->getOutput()->addModules( 'ext.oathauth' );
 	}
 
 	/**

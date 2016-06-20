@@ -38,7 +38,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
 		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-enable' ) );
-		$form->getOutput()->addModules( 'ext.oathauth' );
+		$form->getOutput()->addModules( 'ext.oath.showqrcode' );
 	}
 
 	/**
@@ -80,19 +80,18 @@ class SpecialOATHEnable extends FormSpecialPage {
 		}
 
 		$secret = $key->getSecret();
+		$qrcodeUrl = "otpauth://totp/"
+			. rawurlencode( $this->OATHUser->getAccount() )
+			. "?secret="
+			. rawurlencode( $secret );
 
-		$this->getOutput()->addHTML( ResourceLoader::makeInlineScript(
-			Xml::encodeJsCall( 'mw.loader.using', array(
-				array( 'ext.oathauth' ),
-				new XmlJsCode(
-					'function () {'
-					. '$("#qrcode").qrcode("otpauth://totp/'
-					. rawurlencode( $this->OATHUser->getAccount() )
-					. '?secret=' . $secret . '");'
-					. '}'
-				)
-			) )
-		) );
+		$qrcodeElement = Html::element( 'div', [
+			'data-mw-qrcode-url' => $qrcodeUrl,
+			'class' => 'mw-display-qrcode',
+			// Include width/height, so js won't re-arrange layout
+			// OTOH, this will cause non-js browsers to see a big empty space.
+			'style' => 'width: 256px; height: 256px;'
+		] );
 
 		return array(
 			'app' => array(
@@ -103,7 +102,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 			),
 			'qrcode' => array(
 				'type' => 'info',
-				'default' => '<div id="qrcode"></div>',
+				'default' => $qrcodeElement,
 				'raw' => true,
 				'section' => 'step2',
 			),
