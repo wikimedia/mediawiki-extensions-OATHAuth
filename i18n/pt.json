@@ -11,5 +11,9 @@
 	"oathauth-notloggedin": "Autenticação necessária",
 	"oathauth-mustbeloggedin": "Deve iniciar sessão para realizar esta ação.",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
-	"action-oathauth-enable": "ativar autenticação de dois fatores"
+	"action-oathauth-enable": "ativar autenticação de dois fatores",
+	"oathauth-auth-token-label": "Chave",
+	"oathauth-auth-ui": "Por favor, insira o código de verificação atribuído na sua aplicação móvel",
+	"oathauth-throttled": "Muitas tentativas de verificação! Por favor, aguarde $1.",
+	"oathauth-login-failed": "A verificação falhou."
 }
