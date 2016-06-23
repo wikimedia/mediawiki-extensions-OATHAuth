@@ -5,6 +5,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
 	"type": "other",
+	"license-name": "GPL-2.0+",
 	"AutoloadClasses": {
 		"OATHAuthHooks": "OATHAuth.hooks.php",
 		"OATHAuthLegacyHooks": "OATHAuth.hooks.legacy.php",
