@@ -37,7 +37,7 @@
 	"oathauth-prefs-label": "2요소 인증:",
 	"oathauth-abortlogin": "입력된 2요소 인증 토큰이 유효하지 않습니다.",
 	"oathauth-auth-token-label": "토큰",
-	"oathauth-auth-token-help": "2단계 인층의 두번째 단계로 일회용 암호를 사용했음.",
+	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-ui": "모바일 앱의 인증검토용 코드를 넣어주세요.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "인증 검토 실패�",
