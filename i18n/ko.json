@@ -40,6 +40,6 @@
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-ui": "모바일 앱의 인증검토용 코드를 넣어주세요.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
-	"oathauth-login-failed": "인증 검토 실패�",
+	"oathauth-login-failed": "인증 검토 실패.",
 	"oathauth-describe-provider": "2단계 인증(OATH)"
 }
