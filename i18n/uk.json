@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
-			"Piramidion"
+			"Piramidion",
+			"Ата"
 		]
 	},
 	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів",
@@ -44,5 +45,11 @@
 	"oathauth-step4": "Крок 4: Перевірка",
 	"oathauth-entertoken": "Введіть код зі свого мобільного застосунку для перевірки:",
 	"right-oathauth-enable": "вмикання двофакторної авторизації",
-	"action-oathauth-enable": "вмикання двофакторної авторизації"
+	"action-oathauth-enable": "вмикання двофакторної авторизації",
+	"oathauth-auth-token-label": "Токен",
+	"oathauth-auth-token-help": "Одноразовий пароль використовується як другий фактор двофакторної автентифікації.",
+	"oathauth-auth-ui": "Будь ласка, введіть код верифікації з мобільного додатка",
+	"oathauth-throttled": "Забагато спроб верифікації! Будь ласка, зачекайте $1.",
+	"oathauth-login-failed": "Верифікація не вдалася.",
+	"oathauth-describe-provider": "Двофакторна автентифікація (OATH)."
 }
