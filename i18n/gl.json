@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Toliño",
-			"Elisardojm"
+			"Elisardojm",
+			"Banjo"
 		]
 	},
 	"oathauth-desc": "Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez",
@@ -46,6 +47,7 @@
 	"right-oathauth-enable": "Activar a autenticación en dous pasos",
 	"action-oathauth-enable": "activar a autenticación de dous pasos",
 	"oathauth-auth-token-label": "Identificador",
+	"oathauth-auth-token-help": "O contrasinal único empregado como segundo factor da autenticación de dous pasos.",
 	"oathauth-auth-ui": "Por favor, introduzca o código de verificación da app do seu móbil",
 	"oathauth-throttled": "Demasiados intentos de verificaciónǃ Por favor, espere $1.",
 	"oathauth-login-failed": "Fallou a verificación",
