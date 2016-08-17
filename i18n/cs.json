@@ -3,7 +3,8 @@
 		"authors": [
 			"Mormegil",
 			"Urbanecm",
-			"Dvorapa"
+			"Dvorapa",
+			"Martin Urbanec"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pro autentizaci pomocí jednorázových hesel založených na HMAC",
@@ -48,6 +49,7 @@
 	"action-oathauth-enable": "zapnout dvoufaktorovou autentizaci",
 	"oathauth-auth-token-help": "Jednorázové heslo používané jako druhý faktor dvoufaktorové autentizace.",
 	"oathauth-auth-ui": "Zadejte prosím ověřovací kód ze své mobilní aplikace",
+	"oathauth-throttled": "Příliš mnoho pokusů o ověření! Počkejte prosím $1.",
 	"oathauth-login-failed": "Ověření se nezdařilo.",
 	"oathauth-describe-provider": "Dvoufaktorová autentizace (OATH)."
 }
