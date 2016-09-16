@@ -21,6 +21,9 @@ class OATHUser {
 		$this->key = $key;
 	}
 
+	/**
+	 * @return User
+	 */
 	public function getUser() {
 		return $this->user;
 	}

@@ -2,8 +2,6 @@
 
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Auth\ConfirmLinkSecondaryAuthenticationProvider;
-use MediaWiki\Auth\EmailNotificationSecondaryAuthenticationProvider;
 
 /**
  * Hooks for Extension:OATHAuth
@@ -119,18 +117,17 @@ class OATHAuthHooks {
 		$title = SpecialPage::getTitleFor( 'OATH' );
 		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
 
-		$preferences[$msg] = array(
+		$preferences[$msg] = [
 			'type' => 'info',
 			'raw' => 'true',
 			'default' => Linker::link(
 				$title,
 				wfMessage( $msg )->escaped(),
-				array(),
-				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() )
+				[],
+				[ 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ]
 			),
 			'label-message' => 'oathauth-prefs-label',
-			'section' => 'personal/info',
-		);
+			'section' => 'personal/info', ];
 
 		return true;
 	}
@@ -140,12 +137,12 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$base = dirname( __FILE__ );
+		$base = __DIR__;
 		switch ( $updater->getDB()->getType() ) {
 			case 'mysql':
 			case 'sqlite':
 				$updater->addExtensionTable( 'oathauth_users', "$base/sql/mysql/tables.sql" );
-				$updater->addExtensionUpdate( array( array( __CLASS__, 'schemaUpdateOldUsersFromInstaller' ) ) );
+				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateOldUsersFromInstaller' ] ] );
 				$updater->dropExtensionField( 'oathauth_users', 'secret_reset',
 					"$base/sql/mysql/patch-remove_reset.sql" );
 				break;
@@ -163,7 +160,7 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
-		return self::schemaUpdateOldUsers($updater->getDB());
+		return self::schemaUpdateOldUsers( $updater->getDB() );
 	}
 
 	/**
@@ -180,8 +177,8 @@ class OATHAuthHooks {
 
 		$res = $db->select(
 			'oathauth_users',
-			array( 'id', 'scratch_tokens' ),
-			array( 'is_validated != 0' ),
+			[ 'id', 'scratch_tokens' ],
+			[ 'is_validated != 0' ],
 			__METHOD__
 		);
 
@@ -192,15 +189,15 @@ class OATHAuthHooks {
 			if ( $scratchTokens ) {
 				$db->update(
 					'oathauth_users',
-					array( 'scratch_tokens' => implode( ',', $scratchTokens ) ),
-					array( 'id' => $row->id ),
+					[ 'scratch_tokens' => implode( ',', $scratchTokens ) ],
+					[ 'id' => $row->id ],
 					__METHOD__
 				);
 			}
 		}
 
 		// Remove rows from the table where user never completed the setup process
-		$db->delete( 'oathauth_users', array( 'is_validated' => 0 ), __METHOD__ );
+		$db->delete( 'oathauth_users', [ 'is_validated' => 0 ], __METHOD__ );
 
 		return true;
 	}

@@ -24,13 +24,12 @@
  * @ingroup Maintenance
  */
 
-
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP =  __DIR__ . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateScratchTokenFormat extends Maintenance {
 
@@ -44,11 +43,11 @@ class UpdateScratchTokenFormat extends Maintenance {
 	public function execute() {
 		$dbw = $this->getDB( DB_MASTER );
 		if ( !OATHAuthHooks::schemaUpdateOldUsers( $dbw ) ) {
-			$this->error( "Failed to update scratch_token rows.\n", 1);
+			$this->error( "Failed to update scratch_token rows.\n", 1 );
 		}
 		$this->output( "Done.\n" );
 	}
 }
 
 $maintClass = "UpdateScratchTokenFormat";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

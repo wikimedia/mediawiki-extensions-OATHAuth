@@ -10,7 +10,7 @@ class OATHAuthLegacyHooks {
 	 * @return bool
 	 */
 	static function ChangePasswordForm( &$extraFields ) {
-		$tokenField = array( 'wpOATHToken', 'oathauth-token', 'password', '' );
+		$tokenField = [ 'wpOATHToken', 'oathauth-token', 'password', '' ];
 		array_push( $extraFields, $tokenField );
 
 		return true;

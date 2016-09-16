@@ -38,7 +38,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		if ( $oathuser->getKey() === null ) {
 			return AuthenticationResponse::newAbstain();
 		} else {
-			return AuthenticationResponse::newUI( array( new TOTPAuthenticationRequest() ),
+			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
 				wfMessage( 'oathauth-auth-ui' ), 'warning' );
 		}
 	}
@@ -51,14 +51,14 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		/** @var TOTPAuthenticationRequest $request */
 		$request = AuthenticationRequest::getRequestByClass( $reqs, TOTPAuthenticationRequest::class );
 		if ( !$request ) {
-			return AuthenticationResponse::newUI( array( new TOTPAuthenticationRequest() ),
+			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
 		$throttler = new Throttler( null, [ 'type' => 'TOTP' ] );
 		$result = $throttler->increase( $user->getName(), null, __METHOD__ );
 		if ( $result ) {
-			return AuthenticationResponse::newUI( array( new TOTPAuthenticationRequest() ),
+			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
 				new Message(
 					'oathauth-throttled',
 					[ Message::durationParam( $result['wait'] ) ]
@@ -78,7 +78,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 			$throttler->clear( $user->getName(), null );
 			return AuthenticationResponse::newPass();
 		} else {
-			return AuthenticationResponse::newUI( array( new TOTPAuthenticationRequest() ),
+			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 	}

@@ -34,7 +34,7 @@ class OATHAuthKey {
 	public static function newFromRandom() {
 		$object = new self(
 			Base32::encode( MWCryptRand::generate( 10, true ) ),
-			array()
+			[]
 		);
 
 		$object->regenerateScratchTokens();
@@ -48,12 +48,12 @@ class OATHAuthKey {
 	 */
 	public function __construct( $secret, array $scratchTokens ) {
 		// Currently harcoded values; might be used in future
-		$this->secret = array(
+		$this->secret = [
 			'mode' => 'hotp',
 			'secret' => $secret,
 			'period' => 30,
 			'algorithm' => 'SHA1',
-		);
+		];
 		$this->scratchTokens = $scratchTokens;
 	}
 
@@ -65,7 +65,7 @@ class OATHAuthKey {
 	}
 
 	/**
-	 * @return Array
+	 * @return array
 	 */
 	public function getScratchTokens() {
 		return $this->scratchTokens;
@@ -83,12 +83,12 @@ class OATHAuthKey {
 	public function verifyToken( $token, $user ) {
 		global $wgOATHAuthWindowRadius;
 
-		if ($this->secret['mode'] !== 'hotp') {
+		if ( $this->secret['mode'] !== 'hotp' ) {
 			throw new \DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
 		}
 
 		// Prevent replay attacks
-		$memc = ObjectCache::newAnything( array() );
+		$memc = ObjectCache::newAnything( [] );
 		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() );
 		$memcKey = wfMemcKey( 'oauthauth', 'usedtokens', $uid );
 		$lastWindow = (int)$memc->get( $memcKey );
@@ -96,7 +96,8 @@ class OATHAuthKey {
 		$retval = false;
 		$results = HOTP::generateByTimeWindow(
 			Base32::decode( $this->secret['secret'] ),
-			$this->secret['period'], -$wgOATHAuthWindowRadius, $wgOATHAuthWindowRadius );
+			$this->secret['period'], -$wgOATHAuthWindowRadius, $wgOATHAuthWindowRadius
+		);
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
@@ -130,15 +131,18 @@ class OATHAuthKey {
 		}
 
 		if ( $retval ) {
-			$memc->set( $memcKey, $lastWindow,
-				$this->secret['period'] * (1 + 2 * $wgOATHAuthWindowRadius) );
+			$memc->set(
+				$memcKey,
+				$lastWindow,
+				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
+			);
 		}
 
 		return $retval;
 	}
 
 	public function regenerateScratchTokens() {
-		$scratchTokens = array();
+		$scratchTokens = [];
 		for ( $i = 0; $i < 5; $i++ ) {
 			array_push( $scratchTokens, Base32::encode( MWCryptRand::generate( 10, true ) ) );
 		}

@@ -18,12 +18,10 @@ class TOTPAuthenticationRequest extends AuthenticationRequest {
 	}
 
 	public function getFieldInfo() {
-		return array(
-			'OATHToken' => array(
+		return [
+			'OATHToken' => [
 				'type' => 'string',
 				'label' => wfMessage( 'oathauth-auth-token-label' ),
-				'help' => wfMessage( 'oathauth-auth-token-help' ),
-			),
-		);
+				'help' => wfMessage( 'oathauth-auth-token-help' ), ], ];
 	}
 }

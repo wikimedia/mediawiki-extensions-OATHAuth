@@ -7,39 +7,39 @@
  */
 // @codingStandardsIgnoreFile
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'OATH' => array( 'OATH', 'OATHAuth' ),
-);
+$specialPageAliases['en'] = [
+	'OATH' => [ 'OATH', 'OATHAuth' ],
+];
 
 /** Arabic (العربية) */
-$specialPageAliases['ar'] = array(
-	'OATH' => array( 'أواث', 'أواث_أوث' ),
-);
+$specialPageAliases['ar'] = [
+	'OATH' => [ 'أواث', 'أواث_أوث' ],
+];
 
 /** Egyptian Arabic (مصرى) */
-$specialPageAliases['arz'] = array(
-	'OATH' => array( 'اواث', 'اواث_اوث' ),
-);
+$specialPageAliases['arz'] = [
+	'OATH' => [ 'اواث', 'اواث_اوث' ],
+];
 
 /** Northern Luri (لۊری شومالی) */
-$specialPageAliases['lrc'] = array(
-	'OATH' => array( 'قأسأم' ),
-);
+$specialPageAliases['lrc'] = [
+	'OATH' => [ 'قأسأم' ],
+];
 
 /** Urdu (اردو) */
-$specialPageAliases['ur'] = array(
-	'OATH' => array( 'حلف_نامہ' ),
-);
+$specialPageAliases['ur'] = [
+	'OATH' => [ 'حلف_نامہ' ],
+];
 
 /** Simplified Chinese (中文（简体）‎) */
-$specialPageAliases['zh-hans'] = array(
-	'OATH' => array( 'OATH验证' ),
-);
+$specialPageAliases['zh-hans'] = [
+	'OATH' => [ 'OATH验证' ],
+];
 
 /** Traditional Chinese (中文（繁體）‎) */
-$specialPageAliases['zh-hant'] = array(
-	'OATH' => array( 'OATH_認證' ),
-);
+$specialPageAliases['zh-hant'] = [
+	'OATH' => [ 'OATH_認證' ],
+];

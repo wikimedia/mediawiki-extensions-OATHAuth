@@ -39,9 +39,8 @@ abstract class ProxySpecialPage extends SpecialPage {
 	 */
 	public function __call( $method, $args ) {
 		$this->init();
-		return call_user_func_array( array( $this->target, $method ), $args );
+		return call_user_func_array( [ $this->target, $method ], $args );
 	}
-
 
 	/**
 	 * @return string

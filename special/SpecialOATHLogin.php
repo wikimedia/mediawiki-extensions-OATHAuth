@@ -38,7 +38,7 @@ class SpecialOATHLogin extends FormSpecialPage {
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
-		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-login' ) );
+		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-login' ) );
 	}
 
 	/**
@@ -59,25 +59,25 @@ class SpecialOATHLogin extends FormSpecialPage {
 	 * @return array[]
 	 */
 	protected function getFormFields() {
-		return array(
-			'token' => array(
+		return [
+			'token' => [
 				'type' => 'text',
 				'default' => '',
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
 				'required' => true
-			),
-			'returnto' => array(
+			],
+			'returnto' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returnto' ),
 				'name' => 'returnto',
-			),
-			'returntoquery' => array(
+			],
+			'returntoquery' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returntoquery' ),
 				'name' => 'returntoquery',
-			)
-		);
+			]
+		];
 	}
 
 	/**

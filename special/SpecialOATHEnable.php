@@ -37,7 +37,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
-		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-enable' ) );
+		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-enable' ) );
 		$form->getOutput()->addModules( 'ext.oath.showqrcode' );
 	}
 
@@ -93,20 +93,20 @@ class SpecialOATHEnable extends FormSpecialPage {
 			'style' => 'width: 256px; height: 256px;'
 		] );
 
-		return array(
-			'app' => array(
+		return [
+			'app' => [
 				'type' => 'info',
 				'default' => $this->msg( 'oathauth-step1-test' )->escaped(),
 				'raw' => true,
 				'section' => 'step1',
-			),
-			'qrcode' => array(
+			],
+			'qrcode' => [
 				'type' => 'info',
 				'default' => $qrcodeElement,
 				'raw' => true,
 				'section' => 'step2',
-			),
-			'manual' => array(
+			],
+			'manual' => [
 				'type' => 'info',
 				'label-message' => 'oathauth-step2alt',
 				'default' =>
@@ -116,33 +116,32 @@ class SpecialOATHEnable extends FormSpecialPage {
 					. $key->getSecret() . '<br/>',
 				'raw' => true,
 				'section' => 'step2',
-			),
-			'scratchtokens' => array(
+			],
+			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
 					$this->msg( 'openstackmanager-scratchtokens' )
 					. $this->createResourceList( $key->getScratchTokens() ),
 				'raw' => true,
 				'section' => 'step3',
-			),
-			'token' => array(
+			],
+			'token' => [
 				'type' => 'text',
 				'default' => '',
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
 				'section' => 'step4',
-			),
-			'returnto' => array(
+			],
+			'returnto' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returnto' ),
 				'name' => 'returnto',
-			),
-			'returntoquery' => array(
+			],
+			'returntoquery' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returntoquery' ),
-				'name' => 'returntoquery',
-			)
-		);
+				'name' => 'returntoquery', ]
+		];
 	}
 
 	/**
@@ -155,7 +154,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$key = $this->getRequest()->getSessionData( 'oathauth_key' );
 
 		if ( !$key->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			return array( 'oathauth-failedtovalidateoauth' );
+			return [ 'oathauth-failedtovalidateoauth' ];
 		}
 
 		$this->getRequest()->setSessionData( 'oathauth_key', null );
@@ -177,8 +176,8 @@ class SpecialOATHEnable extends FormSpecialPage {
 	private function createResourceList( $resources ) {
 		$resourceList = '';
 		foreach ( $resources as $resource ) {
-			$resourceList .= Html::rawElement( 'li', array(), $resource );
+			$resourceList .= Html::rawElement( 'li', [], $resource );
 		}
-		return Html::rawElement( 'ul', array(), $resourceList );
+		return Html::rawElement( 'ul', [], $resourceList );
 	}
 }

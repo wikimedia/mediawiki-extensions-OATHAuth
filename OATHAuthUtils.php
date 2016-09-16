@@ -11,8 +11,8 @@ class OATHAuthUtils {
 	 * Encrypt an aray of variables to put into the user's session. We use this
 	 * when storing the user's password in their session. We can use json as the
 	 * serialization format because $plaintextVars is an array of strings.
-	 * @param array of user input strings
-	 * @param int user_id, passed to key derivation functions so each user uses
+	 * @param array $plaintextVars array of user input strings
+	 * @param int $userId, passed to key derivation functions so each user uses
 	 *	distinct encryption and hmac keys
 	 * @return string encrypted data packet
 	 */
@@ -24,7 +24,8 @@ class OATHAuthUtils {
 
 	/**
 	 * Decrypt an encrypted packet, generated with encryptSessionData
-	 * @param string Encrypted data packet
+	 * @param string $ciphertext Encrypted data packet
+	 * @param string|int $userId
 	 * @return array of strings
 	 */
 	public static function decryptSessionData( $ciphertext, $userId ) {
@@ -51,16 +52,16 @@ class OATHAuthUtils {
 	 */
 	private static function getUserKeys( $secret, $userid ) {
 		$keymats = hash_pbkdf2( 'sha256', $secret, "oath-$userid", 10001, 64, true );
-		return array(
+		return [
 			'encrypt' => substr( $keymats, 0, 32 ),
 			'hmac' => substr( $keymats, 32, 32 ),
-		);
+		];
 	}
 
 	/**
 	 * Actually encrypt the data, using a new random IV, and prepend the hmac
 	 * of the encrypted data + IV, using a separate hmac key.
-	 * @return $hmac.$iv.$ciphertext, each component b64 encoded
+	 * @return string $hmac.$iv.$ciphertext, each component b64 encoded
 	 */
 	private static function seal( $data, $encKey, $hmacKey ) {
 		$iv = MWCryptRand::generate( 16, true );
@@ -79,7 +80,11 @@ class OATHAuthUtils {
 	/**
 	 * Decrypt data sealed using seal(). First checks the hmac to prevent various
 	 * attacks.
-	 * @return plaintext
+	 * @param $encrypted
+	 * @param $encKey
+	 * @param $hmacKey
+	 * @return string plaintext
+	 * @throws Exception
 	 */
 	private static function unseal( $encrypted, $encKey, $hmacKey ) {
 		$pieces = explode( '.', $encrypted );

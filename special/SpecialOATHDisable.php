@@ -36,7 +36,7 @@ class SpecialOATHDisable extends FormSpecialPage {
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
-		$form->getOutput()->setPagetitle( $this->msg( 'oathauth-disable' ) );
+		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-disable' ) );
 	}
 
 	/**
@@ -70,23 +70,23 @@ class SpecialOATHDisable extends FormSpecialPage {
 	 * @return array[]
 	 */
 	protected function getFormFields() {
-		return array(
-			'token' => array(
+		return [
+			'token' => [
 				'type' => 'text',
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
-			),
-			'returnto' => array(
+			],
+			'returnto' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returnto' ),
 				'name' => 'returnto',
-			),
-			'returntoquery' => array(
+			],
+			'returntoquery' => [
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returntoquery' ),
 				'name' => 'returntoquery',
-			)
-		);
+			]
+		];
 	}
 
 	/**
@@ -96,7 +96,7 @@ class SpecialOATHDisable extends FormSpecialPage {
 	 */
 	public function onSubmit( array $formData ) {
 		if ( !$this->OATHUser->getKey()->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			return array( 'oathauth-failedtovalidateoauth' );
+			return [ 'oathauth-failedtovalidateoauth' ];
 		}
 
 		$this->OATHUser->setKey( null );
