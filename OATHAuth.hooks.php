@@ -186,7 +186,9 @@ class OATHAuthHooks {
 		);
 
 		foreach ( $res as $row ) {
+			MediaWiki\suppressWarnings();
 			$scratchTokens = unserialize( base64_decode( $row->scratch_tokens ) );
+			MediaWiki\restoreWarnings();
 			if ( $scratchTokens ) {
 				$db->update(
 					'oathauth_users',
