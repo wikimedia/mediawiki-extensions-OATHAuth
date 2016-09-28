@@ -3,8 +3,9 @@
 use MediaWiki\Auth\AuthenticationRequest;
 
 /**
- * AuthManager value object for the TOTP second factor of an authentication: a pseudorandom token
- * that is generated from the current time indepdendently by the server and the client.
+ * AuthManager value object for the TOTP second factor of an authentication:
+ * a pseudorandom token that is generated from the current time independently
+ * by the server and the client.
  */
 class TOTPAuthenticationRequest extends AuthenticationRequest {
 	public $OATHToken;

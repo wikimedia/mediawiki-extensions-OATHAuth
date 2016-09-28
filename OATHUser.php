@@ -13,7 +13,6 @@ class OATHUser {
 	private $key;
 
 	/**
-	 * Constructor. Can't be called directly. Call one of the static NewFrom* methods
 	 * @param User $user
 	 * @param OATHAuthKey $key
 	 */

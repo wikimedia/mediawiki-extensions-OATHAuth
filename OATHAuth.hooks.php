@@ -38,8 +38,8 @@ class OATHAuthHooks {
 			$wgAuthManagerAutoConfig['secondaryauth'] += [
 				TOTPSecondaryAuthenticationProvider::class => [
 					'class' => TOTPSecondaryAuthenticationProvider::class,
-					// after non-interactive prroviders but before the ones that run after a
-					// succesful authentication
+					// after non-interactive providers but before the ones
+					// that run after a successful authentication
 					'sort' => 50,
 				]
 			];
