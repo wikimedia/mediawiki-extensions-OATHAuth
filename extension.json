@@ -7,6 +7,7 @@
 	"type": "other",
 	"license-name": "GPL-2.0+",
 	"AutoloadClasses": {
+		"ApiQueryOATH": "api/ApiQueryOATH.php",
 		"OATHAuthHooks": "OATHAuth.hooks.php",
 		"OATHAuthLegacyHooks": "OATHAuth.hooks.legacy.php",
 		"OATHAuthKey": "OATHAuthKey.php",
@@ -73,12 +74,24 @@
 		"OATH": "SpecialOATH"
 	},
 	"AvailableRights": [
-		"oathauth-enable"
+		"oathauth-enable",
+		"oathauth-api-all"
 	],
 	"GroupPermissions": {
 		"*": {
 			"oathauth-enable": true
 		}
+	},
+	"GrantPermissions": {
+		"oath": {
+			"oathauth-api-all": true
+		}
+	},
+	"GrantPermissionGroups": {
+		"oath": "authentication"
+	},
+	"APIMetaModules": {
+		"oath": "ApiQueryOATH"
 	},
 	"manifest_version": 1
 }

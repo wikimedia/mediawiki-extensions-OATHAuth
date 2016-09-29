@@ -56,5 +56,12 @@
 	"oathauth-auth-ui": "Shown on top of the login form when second factor is required",
 	"oathauth-throttled": "Error message when throttling limit is hit.\n\nParameters:\n* $1 - throttle block duration",
 	"oathauth-login-failed": "Error message when verifying the second factor failed.",
-	"oathauth-describe-provider": "Description of the extension as an authentication provider."
+	"oathauth-describe-provider": "Description of the extension as an authentication provider.",
+	"grant-group-authentication": "{{Related|Grant-group}}",
+	"grant-oath": "Name for grant \"oath\".\n{{Related|Grant}}",
+	"right-oathauth-api-all": "{{doc-right|oathauth-api-all}}",
+	"apihelp-query+oath-description": "{{doc-apihelp-description|query+oath}}",
+	"apihelp-query+oath-param-user": "{{doc-apihelp-param|query+oath|user}}",
+	"apihelp-query+oath-example-1": "{{doc-apihelp-example|query+oath}}",
+	"apihelp-query+oath-example-2": "{{doc-apihelp-example|query+oath}}"
 }
