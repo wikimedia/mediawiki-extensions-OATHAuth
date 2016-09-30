@@ -42,8 +42,8 @@ class UpdateScratchTokenFormat extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
-		if ( !OATHAuthHooks::schemaUpdateOldUsers( $dbr ) ) {
+		$dbw = $this->getDB( DB_MASTER );
+		if ( !OATHAuthHooks::schemaUpdateOldUsers( $dbw ) ) {
 			$this->error( "Failed to update scratch_token rows.\n", 1);
 		}
 		$this->output( "Done.\n" );
