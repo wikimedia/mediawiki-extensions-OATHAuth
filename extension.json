@@ -7,6 +7,7 @@
 	"type": "other",
 	"license-name": "GPL-2.0+",
 	"AutoloadClasses": {
+		"ApiOATHValidate": "api/ApiOATHValidate.php",
 		"ApiQueryOATH": "api/ApiQueryOATH.php",
 		"OATHAuthHooks": "OATHAuth.hooks.php",
 		"OATHAuthLegacyHooks": "OATHAuth.hooks.legacy.php",
@@ -90,8 +91,19 @@
 	"GrantPermissionGroups": {
 		"oath": "authentication"
 	},
+	"APIModules": {
+		"oathvalidate": "ApiOATHValidate"
+	},
 	"APIMetaModules": {
 		"oath": "ApiQueryOATH"
+	},
+	"RateLimits": {
+		"badoath": {
+			"user": [
+				10,
+				60
+			]
+		}
 	},
 	"manifest_version": 1
 }

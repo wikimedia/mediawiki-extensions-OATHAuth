@@ -17,21 +17,16 @@
  */
 
 /**
- * Query module to check if a user has OATH authentication enabled.
- *
- * Usage requires the 'oathauth-api-all' grant which is not given to any group
- * by default. Use of this API is security sensitive and should not be granted
- * lightly. Configuring a special 'oathauth' user group is recommended.
+ * Validate an OATH token.
  *
  * @ingroup API
  * @ingroup Extensions
  */
-class ApiQueryOATH extends ApiQueryBase {
-	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'oath' );
-	}
-
+class ApiOATHValidate extends ApiBase {
 	public function execute() {
+		// Be extra paranoid about the data that is sent
+		$this->requirePostedParameters( [ 'totp', 'token' ] );
+
 		$params = $this->extractRequestParams();
 		if ( $params['user'] === null ) {
 			$params['user'] = $this->getUser()->getName();
@@ -39,7 +34,7 @@ class ApiQueryOATH extends ApiQueryBase {
 
 		if ( !$this->getUser()->isAllowed( 'oathauth-api-all' ) ) {
 			$this->dieUsage(
-				'You do not have permission to check OATH status',
+				'You do not have permission to validate an OATH token',
 				'permissiondenied'
 			);
 		}
@@ -49,18 +44,36 @@ class ApiQueryOATH extends ApiQueryBase {
 			$this->dieUsageMsg( [ 'noname', $params['user'] ] );
 		}
 
-		$result = $this->getResult();
-		$data = [
-			ApiResult::META_BC_BOOLS => [ 'enabled' ],
+		// Don't increase pingLimiter, just check for limit exceeded
+		if ( $user->pingLimiter( 'badoath', 0 ) ) {
+			$this->dieUsageMsg( 'actionthrottledtext' );
+		}
+
+		$result = [
+			ApiResult::META_BC_BOOLS => [ 'enabled', 'valid' ],
 			'enabled' => false,
+			'valid' => false,
 		];
 
 		if ( !$user->isAnon() ) {
 			$oathUser = OATHAuthHooks::getOATHUserRepository()
 				->findByUser( $user );
-			$data['enabled'] = $oathUser && $oathUser->getKey() !== null;
+			if ( $oathUser ) {
+				$key = $oathUser->getKey();
+				if ( $key !== null ) {
+					$result['enabled'] = true;
+					$result['valid'] = $key->verifyToken(
+						$params['totp'], $oathUser ) !== false;
+				}
+			}
 		}
-		$result->addValue( 'query', $this->getModuleName(), $data );
+
+		if ( !$result['valid'] ) {
+			// Increase rate limit counter for failed request
+			$user->pingLimiter( 'badoath' );
+		}
+
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
 	public function getCacheMode( $params ) {
@@ -71,20 +84,28 @@ class ApiQueryOATH extends ApiQueryBase {
 		return true;
 	}
 
+	public function needsToken() {
+		return 'csrf';
+	}
+
 	public function getAllowedParams() {
 		return [
 			'user' => [
 				ApiBase::PARAM_TYPE => 'user',
+			],
+			'totp' => [
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
 			],
 		];
 	}
 
 	protected function getExamplesMessages() {
 		return [
-			'action=query&meta=oath'
-				=> 'apihelp-query+oath-example-1',
-			'action=query&meta=oath&oathuser=Example'
-				=> 'apihelp-query+oath-example-2',
+			'action=oathvalidate&totp=123456&token=123ABC'
+				=> 'apihelp-oath-example-1',
+			'action=oathvalidate&user=Example&totp=123456&token=123ABC'
+				=> 'apihelp-oath-example-2',
 		];
 	}
 }

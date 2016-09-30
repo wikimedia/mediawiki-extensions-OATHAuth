@@ -58,5 +58,10 @@
 	"apihelp-query+oath-description": "Check to see if two-factor authentication (OATH) is enabled for a user.",
 	"apihelp-query+oath-param-user": "User to get information about. Defaults to the current user.",
 	"apihelp-query+oath-example-1": "Get information about the current user",
-	"apihelp-query+oath-example-2": "Get information about user <kbd>Example</kbd>"
+	"apihelp-query+oath-example-2": "Get information about user <kbd>Example</kbd>",
+	"apihelp-oathvalidate-description": "Validate a two-factor authentication (OATH) token.",
+	"apihelp-oathvalidate-param-user": "User to validate token for. Defaults to the current user.",
+	"apihelp-oathvalidate-param-totp": "Two-factor authentication (OATH) token.",
+	"apihelp-oath-example-1": "Validate a token for the current user",
+	"apihelp-oath-example-2": "Validate a token for the user <kbd>Example</kbd>"
 }
