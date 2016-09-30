@@ -2,6 +2,7 @@
 
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Hooks for Extension:OATHAuth
@@ -20,7 +21,8 @@ class OATHAuthHooks {
 		static $service = null;
 
 		if ( $service == null ) {
-			$service = new OATHUserRepository( wfGetLB( $wgOATHAuthDatabase ) );
+			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+			$service = new OATHUserRepository( $factory->getMainLB( $wgOATHAuthDatabase ) );
 		}
 
 		return $service;
@@ -167,10 +169,10 @@ class OATHAuthHooks {
 	 * Helper function for converting old users to the new schema
 	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
 	 *
-	 * @param DatabaseBase $db
+	 * @param IDatabase $db
 	 * @return bool
 	 */
-	public static function schemaUpdateOldUsers( DatabaseBase $db ) {
+	public static function schemaUpdateOldUsers( IDatabase $db ) {
 		if ( !$db->fieldExists( 'oathauth_users', 'secret_reset' ) ) {
 			return true;
 		}

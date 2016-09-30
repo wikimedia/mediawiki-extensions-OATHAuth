@@ -4,6 +4,10 @@ class OATHUserRepository {
 	/** @var LoadBalancer */
 	protected $lb;
 
+	/**
+	 * OATHUserRepository constructor.
+	 * @param LoadBalancer $lb
+	 */
 	public function __construct( LoadBalancer $lb ) {
 		$this->lb = $lb;
 	}
@@ -26,6 +30,9 @@ class OATHUserRepository {
 		return $oathUser;
 	}
 
+	/**
+	 * @param OATHUser $user
+	 */
 	public function persist( OATHUser $user ) {
 		$this->getDB( DB_MASTER )->replace(
 			'oathauth_users',
@@ -39,6 +46,9 @@ class OATHUserRepository {
 		);
 	}
 
+	/**
+	 * @param OATHUser $user
+	 */
 	public function remove( OATHUser $user ) {
 		$this->getDB( DB_MASTER )->delete(
 			'oathauth_users',

@@ -109,8 +109,7 @@ class SpecialOATHLogin extends FormSpecialPage {
 	 * @return bool
 	 */
 	public function onAbortLogin( User $user, $password, &$abort, &$errorMsg ) {
-		$result = $this->OATHUser
-			->getKey()
+		$result = $this->OATHUser->getKey()
 			->verifyToken( $this->getRequest()->getVal( 'token' ), $this->OATHUser );
 
 		if ( $result ) {

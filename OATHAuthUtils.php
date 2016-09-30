@@ -48,6 +48,8 @@ class OATHAuthUtils {
 	/**
 	 * Generate encryption and hmac keys, unique to this user, based on a single
 	 * wiki secret. Use a moderate pbkdf2 work factor in case we ever leak keys.
+	 * @param string $secret
+	 * @param string|int $userid
 	 * @return array including key for encryption and integrity checking
 	 */
 	private static function getUserKeys( $secret, $userid ) {
@@ -61,6 +63,9 @@ class OATHAuthUtils {
 	/**
 	 * Actually encrypt the data, using a new random IV, and prepend the hmac
 	 * of the encrypted data + IV, using a separate hmac key.
+	 * @param string $data
+	 * @param string $encKey
+	 * @param string $hmacKey
 	 * @return string $hmac.$iv.$ciphertext, each component b64 encoded
 	 */
 	private static function seal( $data, $encKey, $hmacKey ) {
@@ -80,9 +85,9 @@ class OATHAuthUtils {
 	/**
 	 * Decrypt data sealed using seal(). First checks the hmac to prevent various
 	 * attacks.
-	 * @param $encrypted
-	 * @param $encKey
-	 * @param $hmacKey
+	 * @param string $encrypted
+	 * @param string $encKey
+	 * @param string $hmacKey
 	 * @return string plaintext
 	 * @throws Exception
 	 */
