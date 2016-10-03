@@ -42,6 +42,7 @@
 	"oathauth-mustbeloggedin": "Plain text seen on Special:OATH when a user is not logged in.",
 	"oathauth-prefs-label": "Plain text label seen on Special:Preferences\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-abortlogin": "Error message shown on login and password change pages when authentication is aborted.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
+	"oathauth-abortlogin-throttled": "Error message shown on login and password change pages when authentication is aborted due to rate limit violations.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-step1": "Label for step 1 on Special:OATH form",
 	"oathauth-step1-test": "Text for step 1 on Special:OATH form",
 	"oathauth-step2": "Label for step 2, the QR code, on Special:OATH",

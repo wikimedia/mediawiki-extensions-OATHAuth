@@ -109,6 +109,13 @@ class SpecialOATHLogin extends FormSpecialPage {
 	 * @return bool
 	 */
 	public function onAbortLogin( User $user, $password, &$abort, &$errorMsg ) {
+		// Don't increase pingLimiter, just check for limit exceeded.
+		if ( $this->OATHUser->getUser()->pingLimiter( 'badoath', 0 ) ) {
+			$abort = LoginForm::THROTTLED;
+			$errorMsg = 'oathauth-abortlogin-throttled';
+			return false;
+		}
+
 		$result = $this->OATHUser->getKey()
 			->verifyToken( $this->getRequest()->getVal( 'token' ), $this->OATHUser );
 
