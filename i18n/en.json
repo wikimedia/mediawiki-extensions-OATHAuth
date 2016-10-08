@@ -51,5 +51,12 @@
 	"oathauth-auth-ui": "Please enter verification code from your mobile app",
 	"oathauth-throttled": "Too many verification attempts! Please wait $1.",
 	"oathauth-login-failed": "Verification failed.",
-	"oathauth-describe-provider": "Two-factor authentication (OATH)."
+	"oathauth-describe-provider": "Two-factor authentication (OATH).",
+	"grant-group-authentication": "Perform authentication actions for self and others",
+	"grant-oath": "Access two-factor authentication (OATH) information for self and others",
+	"right-oathauth-api-all": "Query and validate OATH information for self and others",
+	"apihelp-query+oath-description": "Check to see if two-factor authentication (OATH) is enabled for a user.",
+	"apihelp-query+oath-param-user": "User to get information about. Defaults to the current user.",
+	"apihelp-query+oath-example-1": "Get information about the current user",
+	"apihelp-query+oath-example-2": "Get information about user <kbd>Example</kbd>"
 }
