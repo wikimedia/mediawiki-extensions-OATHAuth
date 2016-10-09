@@ -19,5 +19,6 @@
 	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z aplikacji mobilnej",
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
 	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
-	"oathauth-describe-provider": "Uwierzytelnianie dwuetapowe (OATH)."
+	"oathauth-describe-provider": "Uwierzytelnianie dwuetapowe (OATH).",
+	"apihelp-query+oath-example-1": "Pobierz informacje o aktualnym użytkowniku"
 }

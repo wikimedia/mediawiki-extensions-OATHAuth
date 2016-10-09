@@ -3,7 +3,8 @@
 		"authors": [
 			"Incelemeelemani",
 			"Hbseren",
-			"Sayginer"
+			"Sayginer",
+			"HakanIST"
 		]
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık şifreler kullanan bir kimlik doğrulama desteği sağlar",
@@ -38,5 +39,6 @@
 	"oathauth-abortlogin": "İki faktörlü kimlik doğrulama için sağlanan anahtar geçersiz.",
 	"oathauth-step1": "1. Adım: Uygulamayı indirin",
 	"oathauth-step2": "2. Adım: QR kodunu tarayın",
-	"oathauth-step4": "4. Adım: Doğrulama"
+	"oathauth-step4": "4. Adım: Doğrulama",
+	"grant-group-authentication": "Kimlik doğrulama işlemlerini kendin ve diğerleri için uygula"
 }

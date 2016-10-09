@@ -52,5 +52,12 @@
 	"oathauth-auth-ui": "请输入来自您的移动应用的验证码",
 	"oathauth-throttled": "尝试了太多次验证！请等待$1。",
 	"oathauth-login-failed": "验证失败。",
-	"oathauth-describe-provider": "双因素验证（OATH）。"
+	"oathauth-describe-provider": "双因素验证（OATH）。",
+	"grant-group-authentication": "为自己和他人执行身份验证操作",
+	"grant-oath": "访问自己和他人的双因素验证（OATH）信息",
+	"right-oathauth-api-all": "查询并验证自己和他人的OATH信息",
+	"apihelp-query+oath-description": "检查是否为某一用户启用双因素验证（OATH）。",
+	"apihelp-query+oath-param-user": "获取相关信息的用户。默认为当前用户。",
+	"apihelp-query+oath-example-1": "获取有关当前用户的信息",
+	"apihelp-query+oath-example-2": "获取有关用户<kbd>Example</kbd>的信息"
 }

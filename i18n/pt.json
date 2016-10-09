@@ -15,5 +15,8 @@
 	"oathauth-auth-token-label": "Chave",
 	"oathauth-auth-ui": "Por favor, insira o código de verificação atribuído na sua aplicação móvel",
 	"oathauth-throttled": "Muitas tentativas de verificação! Por favor, aguarde $1.",
-	"oathauth-login-failed": "A verificação falhou."
+	"oathauth-login-failed": "A verificação falhou.",
+	"grant-group-authentication": "Executar ações de autenticação para si e para os outros",
+	"apihelp-query+oath-description": "Verifique se a autenticação de dois fatores (OATH) está ativa para um utilizador.",
+	"apihelp-query+oath-example-1": "Obter informações sobre o utilizador atual"
 }

@@ -50,5 +50,9 @@
 	"oathauth-auth-ui": "Bitte gib den Verifizierungscode von deiner mobilen App ein",
 	"oathauth-throttled": "Zu viele Verifizierungsversuche! Bitte warte $1.",
 	"oathauth-login-failed": "Verifizierung fehlgeschlagen.",
-	"oathauth-describe-provider": "Zwei-Faktor-Authentifizierung (OATH)."
+	"oathauth-describe-provider": "Zwei-Faktor-Authentifizierung (OATH).",
+	"grant-group-authentication": "Authentifizierungs-Aktionen für sich selbst und andere ausführen",
+	"grant-oath": "Auf Zwei-Faktor-Authentifizierungs-Informationen für sich selbst und andere zugreifen",
+	"right-oathauth-api-all": "OATH-Informationen für sich selbst und andere abfragen und validieren",
+	"apihelp-query+oath-example-1": "Ruft Informationen über den aktuellen Benutzer ab"
 }

@@ -50,5 +50,12 @@
 	"oathauth-auth-ui": "נא להזין את קוד האימות מהיישום הנייד שלך",
 	"oathauth-throttled": "יותר מדי ניסיונות אימות! נא לנסות $1.",
 	"oathauth-login-failed": "האימות נכשל.",
-	"oathauth-describe-provider": "אימות דו־גורמי (OATH)."
+	"oathauth-describe-provider": "אימות דו־גורמי (OATH).",
+	"grant-group-authentication": "ביצוע פעולות זיהוי עבור עצמך ועבור אחרים",
+	"grant-oath": "גישה למידע של זיהוי דו־גורמי (OATH) על עצמך ועל אחרים",
+	"right-oathauth-api-all": "שליחת שאילתה לקבלת מידע על OATH ובדיקת תקינותו עבור עצמך ועבור אחרים",
+	"apihelp-query+oath-description": "בדיקה האם זיהוי דו־גורמי (OATH) מופעל למשתמש הזה.",
+	"apihelp-query+oath-param-user": "על איזה משתמש לקבל מידע. בררת המחדל היא המשתמש הנוכחי.",
+	"apihelp-query+oath-example-1": "קבלת מידע על המשתמש הנוכחי",
+	"apihelp-query+oath-example-2": "קבלת מידע על משתמש <kbd>Example</kbd>"
 }

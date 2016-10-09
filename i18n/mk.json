@@ -49,5 +49,12 @@
 	"oathauth-auth-ui": "Внесете потврден код од вашиот мобилен прилог.",
 	"oathauth-throttled": "Направивте премногу обиди за заверка! Почекајте $1.",
 	"oathauth-login-failed": "Заверката не успеа.",
-	"oathauth-describe-provider": "Двочинителска заверка (OATH)."
+	"oathauth-describe-provider": "Двочинителска заверка (OATH).",
+	"grant-group-authentication": "Вршење заверка за себе и други",
+	"grant-oath": "Пристап до податоците за двочинителска заверка (OATH) за себе и други",
+	"right-oathauth-api-all": "Барање и проверка на податоци за OATH за себе и други",
+	"apihelp-query+oath-description": "Проверка дали двочинителската заверка (OATH) е овозможена за даден корисник.",
+	"apihelp-query+oath-param-user": "За кој корисник да се дадат информации. По основно: тековниот корисник.",
+	"apihelp-query+oath-example-1": "Дај информации за тековниот корисник.",
+	"apihelp-query+oath-example-2": "Дај информации за корисникот <kbd>Пример</kbd>"
 }

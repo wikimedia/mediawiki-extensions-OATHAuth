@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"AnakngAraw"
+			"AnakngAraw",
+			"Emem.calist"
 		]
 	},
 	"oathauth-desc": "Nagbibigay ng suporta ng pagpapatunay sa pamamagitan ng pang-isang ulit na mga hudyat na nakabatay sa HMAC",
@@ -29,5 +30,6 @@
 	"oathauth-reattemptdisable": "Muling tangkain ang hindi na pagpapagana ng dalawang salik na pagpapatunay.",
 	"oathauth-failedtoresetoath": "Nabigo sa muling pagtatakda ng dalawang salik na mga kredensiyal.",
 	"oathauth-notloggedin": "Kailangan ang paglagda",
-	"oathauth-mustbeloggedin": "Dapat na nakalagda ka upang maisagawa ang galaw na ito."
+	"oathauth-mustbeloggedin": "Dapat na nakalagda ka upang maisagawa ang galaw na ito.",
+	"apihelp-query+oath-example-1": "Maghanap ng kaukulang impormasyon tungkol sa 'current user'"
 }
