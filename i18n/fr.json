@@ -59,5 +59,12 @@
 	"oathauth-auth-ui": "Veuillez entrer le code de vérification à partir de votre application mobile",
 	"oathauth-throttled": "Trop de tentatives de vérification ! Veuillez attendre $1.",
 	"oathauth-login-failed": "Échec de la vérification",
-	"oathauth-describe-provider": "Authentification à deux facteurs (OATH)"
+	"oathauth-describe-provider": "Authentification à deux facteurs (OATH)",
+	"grant-group-authentication": "Effectuer les actions d’authentification pour soi-même et les autres",
+	"grant-oath": "Accéder aux informations (OAuth) d’authentification à deux facteurs pour soi-même et les autres",
+	"right-oathauth-api-all": "Demander et valider les informations OAuth pour soi-même et les autres",
+	"apihelp-query+oath-description": "Vérifier pour voir si l’authentification à deux facteurs (OAuth) est activée pour un utilisateur.",
+	"apihelp-query+oath-param-user": "Utilisateur au sujet duquel obtenir des informations. Par défaut, l’utilisateur actuel.",
+	"apihelp-query+oath-example-1": "Obtenir des informations sur l’utilisateur actuel",
+	"apihelp-query+oath-example-2": "Obtenir des informations sur l’utilisateur <kbd>Example</kbd>"
 }

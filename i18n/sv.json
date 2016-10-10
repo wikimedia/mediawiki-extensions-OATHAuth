@@ -40,5 +40,7 @@
 	"oathauth-step4": "Steg 4: Verifiering",
 	"oathauth-auth-token-label": "Nyckel",
 	"oathauth-auth-ui": "Ange verifieringskoden från din mobilapp",
-	"oathauth-login-failed": "Verifiering misslyckades."
+	"oathauth-login-failed": "Verifiering misslyckades.",
+	"grant-group-authentication": "Använd OAuth för autentisering",
+	"apihelp-query+oath-example-1": "Skaffa information om den aktuella användaren."
 }

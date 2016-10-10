@@ -52,5 +52,7 @@
 	"oathauth-auth-ui": "Inserisci il codice di verifica dalla tua applicazione per cellulari",
 	"oathauth-throttled": "Troppi tentativi di verifica! Attendi $1.",
 	"oathauth-login-failed": "Verifica non riuscita.",
-	"oathauth-describe-provider": "Autenticazione a due fattori (OATH)."
+	"oathauth-describe-provider": "Autenticazione a due fattori (OATH).",
+	"apihelp-query+oath-example-1": "Ottieni informazioni sull'utente attuale",
+	"apihelp-query+oath-example-2": "Ottieni informazioni sull'utente <kbd>Example</kbd>"
 }
