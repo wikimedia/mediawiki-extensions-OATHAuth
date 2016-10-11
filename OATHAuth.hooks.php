@@ -29,29 +29,6 @@ class OATHAuthHooks {
 	}
 
 	/**
-	 * Register hooks which depend on MediaWiki core version
-	 */
-	public static function onRegistration() {
-		global $wgDisableAuthManager, $wgAuthManagerAutoConfig;
-
-		if ( !$wgDisableAuthManager && class_exists( AuthManager::class ) ) {
-			$wgAuthManagerAutoConfig['secondaryauth'] += [
-				TOTPSecondaryAuthenticationProvider::class => [
-					'class' => TOTPSecondaryAuthenticationProvider::class,
-					// after non-interactive providers but before the ones
-					// that run after a successful authentication
-					'sort' => 50,
-				]
-			];
-			Hooks::register( 'AuthChangeFormFields', 'OATHAuthHooks::onAuthChangeFormFields' );
-		} else {
-			Hooks::register( 'AbortChangePassword', 'OATHAuthLegacyHooks::AbortChangePassword' );
-			Hooks::register( 'AbortLogin', 'OATHAuthLegacyHooks::AbortLogin' );
-			Hooks::register( 'ChangePasswordForm', 'OATHAuthLegacyHooks::ChangePasswordForm' );
-		}
-	}
-
-	/**
 	 * @param AuthenticationRequest[] $requests
 	 * @param array $fieldInfo Field information array (union of the
 	 *    AuthenticationRequest::getFieldInfo() responses).

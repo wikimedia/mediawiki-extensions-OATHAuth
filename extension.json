@@ -1,6 +1,6 @@
 {
 	"name": "OATHAuth",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"author": "Ryan Lane",
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
@@ -10,7 +10,6 @@
 		"ApiOATHValidate": "api/ApiOATHValidate.php",
 		"ApiQueryOATH": "api/ApiQueryOATH.php",
 		"OATHAuthHooks": "OATHAuth.hooks.php",
-		"OATHAuthLegacyHooks": "OATHAuth.hooks.legacy.php",
 		"OATHAuthKey": "OATHAuthKey.php",
 		"OATHAuthUtils": "OATHAuthUtils.php",
 		"OATHUserRepository": "OATHUserRepository.php",
@@ -26,11 +25,21 @@
 		"TOTPAuthenticationRequest": "auth/TOTPAuthenticationRequest.php",
 		"TOTPSecondaryAuthenticationProvider": "auth/TOTPSecondaryAuthenticationProvider.php"
 	},
+	"AuthManagerAutoConfig": {
+		"secondaryauth": {
+			"TOTPSecondaryAuthenticationProvider":{
+				"class": "TOTPSecondaryAuthenticationProvider",
+				"sort": 50
+			}
+		}
+	},
 	"ExtensionMessagesFiles": {
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
-	"callback": "OATHAuthHooks::onRegistration",
 	"Hooks": {
+		"AuthChangeFormFields": [
+			"OATHAuthHooks::onAuthChangeFormFields"
+		],
 		"TwoFactorIsEnabled": [
 			"OATHAuthHooks::onTwoFactorIsEnabled"
 		],
