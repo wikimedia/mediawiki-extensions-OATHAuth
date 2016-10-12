@@ -63,5 +63,10 @@
 	"apihelp-query+oath-description": "{{doc-apihelp-description|query+oath}}",
 	"apihelp-query+oath-param-user": "{{doc-apihelp-param|query+oath|user}}",
 	"apihelp-query+oath-example-1": "{{doc-apihelp-example|query+oath}}",
-	"apihelp-query+oath-example-2": "{{doc-apihelp-example|query+oath}}"
+	"apihelp-query+oath-example-2": "{{doc-apihelp-example|query+oath}}",
+	"apihelp-oathvalidate-description": "{{doc-apihelp-description|oathvalidate}}",
+	"apihelp-oathvalidate-param-user": "{{doc-apihelp-param|oathvalidate|user}}",
+	"apihelp-oathvalidate-param-totp": "{{doc-apihelp-param|oathvalidate|totp}}",
+	"apihelp-oath-example-1": "{{doc-apihelp-example|oathvalidate}}",
+	"apihelp-oath-example-2": "{{doc-apihelp-example|oathvalidate}}"
 }
