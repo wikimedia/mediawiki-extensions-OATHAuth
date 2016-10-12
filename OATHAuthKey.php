@@ -80,7 +80,7 @@ class OATHAuthKey {
 	 * @return int|false Returns a constant represent what type of token was matched,
 	 *  or false for no match
 	 */
-	public function verifyToken( $token, $user ) {
+	public function verifyToken( $token, OATHUser $user ) {
 		global $wgOATHAuthWindowRadius;
 
 		if ( $this->secret['mode'] !== 'hotp' ) {
@@ -136,6 +136,9 @@ class OATHAuthKey {
 				$lastWindow,
 				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
 			);
+		} else {
+			// Increase rate limit counter for failed request
+			$user->getUser()->pingLimiter( 'badoath' );
 		}
 
 		return $retval;

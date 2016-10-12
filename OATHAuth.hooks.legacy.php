@@ -35,14 +35,18 @@ class OATHAuthLegacyHooks {
 		$result = true;
 
 		if ( $oathuser->getKey() !== null ) {
-			$result = $oathuser->getKey()->verifyToken( $token, $oathuser );
+			// Don't increase pingLimiter, just check for limit exceeded.
+			if ( $user->pingLimiter( 'badoath', 0 ) ) {
+				$result = 'oathauth-abortlogin-throttled';
+			} elseif ( !$oathuser->getKey()->verifyToken( $token, $oathuser ) ) {
+				$result = 'oathauth-abortlogin';
+			}
 		}
 
-		if ( $result ) {
+		if ( $result === true ) {
 			return true;
 		} else {
-			$errorMsg = 'oathauth-abortlogin';
-
+			$errorMsg = $result;
 			return false;
 		}
 	}

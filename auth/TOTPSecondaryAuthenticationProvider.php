@@ -4,7 +4,6 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Auth\Throttler;
 use MediaWiki\Session\SessionManager;
 
 /**
@@ -55,16 +54,6 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
-		$throttler = new Throttler( null, [ 'type' => 'TOTP' ] );
-		$result = $throttler->increase( $user->getName(), null, __METHOD__ );
-		if ( $result ) {
-			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
-				new Message(
-					'oathauth-throttled',
-					[ Message::durationParam( $result['wait'] ) ]
-				), 'error' );
-		}
-
 		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
 		$token = $request->OATHToken;
 
@@ -74,8 +63,18 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 			return AuthenticationResponse::newAbstain();
 		}
 
+		// Don't increase pingLimiter, just check for limit exceeded.
+		if ( $user->pingLimiter( 'badoath', 0 ) ) {
+			return AuthenticationResponse::newUI(
+				[ new TOTPAuthenticationRequest() ],
+				new Message(
+					'oathauth-throttled',
+					// Arbitrary duration given here
+					[ Message::durationParam( 60 ) ]
+				), 'error' );
+		}
+
 		if ( $oathuser->getKey()->verifyToken( $token, $oathuser ) ) {
-			$throttler->clear( $user->getName(), null );
 			return AuthenticationResponse::newPass();
 		} else {
 			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],

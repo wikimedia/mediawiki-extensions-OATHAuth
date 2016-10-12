@@ -37,6 +37,7 @@
 	"oathauth-mustbeloggedin": "You must be logged in to perform this action.",
 	"oathauth-prefs-label": "Two-factor authentication:",
 	"oathauth-abortlogin": "The two-factor authentication token provided was invalid.",
+	"oathauth-abortlogin-throttled": "Too many verification attempts! Please try again later.",
 	"oathauth-step1": "Step 1: Download the app",
 	"oathauth-step1-test": "Download a mobile app for two-factor authentication (such as Google Authenticator) on to your phone.",
 	"oathauth-step2": "Step 2: Scan the QR code",

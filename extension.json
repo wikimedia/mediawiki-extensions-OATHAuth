@@ -99,6 +99,7 @@
 	},
 	"RateLimits": {
 		"badoath": {
+			"&can-bypass": false,
 			"user": [
 				10,
 				60

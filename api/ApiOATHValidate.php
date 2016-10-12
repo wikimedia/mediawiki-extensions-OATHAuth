@@ -44,7 +44,7 @@ class ApiOATHValidate extends ApiBase {
 			$this->dieUsageMsg( [ 'noname', $params['user'] ] );
 		}
 
-		// Don't increase pingLimiter, just check for limit exceeded
+		// Don't increase pingLimiter, just check for limit exceeded.
 		if ( $user->pingLimiter( 'badoath', 0 ) ) {
 			$this->dieUsageMsg( 'actionthrottledtext' );
 		}
@@ -66,11 +66,6 @@ class ApiOATHValidate extends ApiBase {
 						$params['totp'], $oathUser ) !== false;
 				}
 			}
-		}
-
-		if ( !$result['valid'] ) {
-			// Increase rate limit counter for failed request
-			$user->pingLimiter( 'badoath' );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

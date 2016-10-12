@@ -95,6 +95,12 @@ class SpecialOATHDisable extends FormSpecialPage {
 	 * @return array|bool
 	 */
 	public function onSubmit( array $formData ) {
+		// Don't increase pingLimiter, just check for limit exceeded.
+		if ( $this->OATHUser->getUser()->pingLimiter( 'badoath', 0 ) ) {
+			// Arbitrary duration given here
+			return [ 'oauthauth-throttled', Message::durationParam( 60 ) ];
+		}
+
 		if ( !$this->OATHUser->getKey()->verifyToken( $formData['token'], $this->OATHUser ) ) {
 			return [ 'oathauth-failedtovalidateoauth' ];
 		}
