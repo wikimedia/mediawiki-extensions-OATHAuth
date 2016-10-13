@@ -11,7 +11,8 @@
 			"Wladek92",
 			"Yasten",
 			"McDutchie",
-			"Trial"
+			"Trial",
+			"Urhixidur"
 		]
 	},
 	"oathauth-desc": "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
@@ -45,6 +46,7 @@
 	"oathauth-mustbeloggedin": "Vous devez être connecté pour effectuer cette action.",
 	"oathauth-prefs-label": "Authentification à deux facteurs :",
 	"oathauth-abortlogin": "Le jeton d’authentification à deux facteurs fourni n’était pas valide.",
+	"oathauth-abortlogin-throttled": "Trop de tentatives de vérification ! Veuillez réessayer ultérieurement.",
 	"oathauth-step1": "Étape 1 : téléchargez l’application",
 	"oathauth-step1-test": "Téléchargez une application mobile pour l’authentification à deux facteurs (tel que ''Google Authenticator'') sur votre téléphone mobile.",
 	"oathauth-step2": "Étape 2 : scannez le code QR",
@@ -62,9 +64,14 @@
 	"oathauth-describe-provider": "Authentification à deux facteurs (OATH)",
 	"grant-group-authentication": "Effectuer les actions d’authentification pour soi-même et les autres",
 	"grant-oath": "Accéder aux informations (OAuth) d’authentification à deux facteurs pour soi-même et les autres",
-	"right-oathauth-api-all": "Demander et valider les informations OAuth pour soi-même et les autres",
-	"apihelp-query+oath-description": "Vérifier pour voir si l’authentification à deux facteurs (OAuth) est activée pour un utilisateur.",
+	"right-oathauth-api-all": "Demander et valider les informations OATH pour soi-même et les autres",
+	"apihelp-query+oath-description": "Vérifier si l’authentification à deux facteurs (OATH) est activée pour un utilisateur.",
 	"apihelp-query+oath-param-user": "Utilisateur au sujet duquel obtenir des informations. Par défaut, l’utilisateur actuel.",
 	"apihelp-query+oath-example-1": "Obtenir des informations sur l’utilisateur actuel",
-	"apihelp-query+oath-example-2": "Obtenir des informations sur l’utilisateur <kbd>Example</kbd>"
+	"apihelp-query+oath-example-2": "Obtenir des informations sur l’utilisateur <kbd>Example</kbd>",
+	"apihelp-oathvalidate-description": "Valider un jeton d’authentification à deux facteurs (OATH).",
+	"apihelp-oathvalidate-param-user": "Utilisateur pour lequel valider le jeton. Par défaut, l’utilisateur actuel.",
+	"apihelp-oathvalidate-param-totp": "Jeton d’authentification à deux facteurs (OATH).",
+	"apihelp-oath-example-1": "Valider un jeton pour l’utilisateur actuel",
+	"apihelp-oath-example-2": "Valider un jeton pour l’utilisateur <kbd>Example</kbd>"
 }

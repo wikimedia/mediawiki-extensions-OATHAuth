@@ -35,6 +35,7 @@
 	"oathauth-mustbeloggedin": "Мора да сте најавени за да ја извршите оваа постапка.",
 	"oathauth-prefs-label": "Двочинителска заверка:",
 	"oathauth-abortlogin": "Укажаната шифра за двочинителска заверка е неважечка.",
+	"oathauth-abortlogin-throttled": "Направивте премногу обиди за заверка! Обидете се подоцна.",
 	"oathauth-step1": "Чекор 1: Преземете го прилогот",
 	"oathauth-step1-test": "На телефонот мреземете мобилен прилог за двочинителска заверка (како Google Authenticator).",
 	"oathauth-step2": "Чекор 2: Отчитајте го QR-кодот",
@@ -56,5 +57,10 @@
 	"apihelp-query+oath-description": "Проверка дали двочинителската заверка (OATH) е овозможена за даден корисник.",
 	"apihelp-query+oath-param-user": "За кој корисник да се дадат информации. По основно: тековниот корисник.",
 	"apihelp-query+oath-example-1": "Дај информации за тековниот корисник.",
-	"apihelp-query+oath-example-2": "Дај информации за корисникот <kbd>Пример</kbd>"
+	"apihelp-query+oath-example-2": "Дај информации за корисникот <kbd>Пример</kbd>",
+	"apihelp-oathvalidate-description": "Провери шифра за двочинителска заверка (OATH).",
+	"apihelp-oathvalidate-param-user": "Корисник чија шифра треба да се завери. По основно: тековниот корисник.",
+	"apihelp-oathvalidate-param-totp": "Шифра за двочинителска заверка (OATH).",
+	"apihelp-oath-example-1": "Провери шифра за тековниот корисник",
+	"apihelp-oath-example-2": "Провери шифра за корисникот <kbd>Пример</kbd>"
 }

@@ -15,10 +15,12 @@
 	"oathauth-backtopreferences": "Wróć do preferencji.",
 	"oathauth-notloggedin": "musisz się zalogować",
 	"oathauth-mustbeloggedin": "Musisz być zalogowany aby wykonać tę akcję.",
+	"oathauth-abortlogin-throttled": "Zbyt wiele prób weryfikacji! Proszę spróbować później.",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z aplikacji mobilnej",
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
 	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
 	"oathauth-describe-provider": "Uwierzytelnianie dwuetapowe (OATH).",
-	"apihelp-query+oath-example-1": "Pobierz informacje o aktualnym użytkowniku"
+	"apihelp-query+oath-example-1": "Pobierz informacje o aktualnym użytkowniku",
+	"apihelp-oathvalidate-param-totp": "Token uwierzytelniania dwuetapowego (OATH)."
 }

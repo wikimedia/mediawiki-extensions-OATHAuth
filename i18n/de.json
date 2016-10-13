@@ -36,6 +36,7 @@
 	"oathauth-mustbeloggedin": "Du musst angemeldet sein, um diese Aktion durchführen zu können.",
 	"oathauth-prefs-label": "Zwei-Faktor-Authentifizierung:",
 	"oathauth-abortlogin": "Der angegebene Zweifaktor-Authentifizierungstoken war ungültig.",
+	"oathauth-abortlogin-throttled": "Zu viele Verifizierungsversuche! Bitte später erneut versuchen.",
 	"oathauth-step1": "Schritt 1: Lade die App herunter",
 	"oathauth-step1-test": "Lade eine mobile App (wie Google Authenticator) für die Zwei-Faktor-Authentifizierung auf dein Telefon herunter.",
 	"oathauth-step2": "Schritt 2: Scanne den QR-Code",
@@ -54,5 +55,10 @@
 	"grant-group-authentication": "Authentifizierungs-Aktionen für sich selbst und andere ausführen",
 	"grant-oath": "Auf Zwei-Faktor-Authentifizierungs-Informationen für sich selbst und andere zugreifen",
 	"right-oathauth-api-all": "OATH-Informationen für sich selbst und andere abfragen und validieren",
-	"apihelp-query+oath-example-1": "Ruft Informationen über den aktuellen Benutzer ab"
+	"apihelp-query+oath-example-1": "Ruft Informationen über den aktuellen Benutzer ab",
+	"apihelp-oathvalidate-description": "Validiert einen Token der Zwei-Faktor-Authentifizierung (OATH).",
+	"apihelp-oathvalidate-param-user": "Benutzer, für den der Token validiert werden soll. Standard ist der aktuelle Benutzer.",
+	"apihelp-oathvalidate-param-totp": "Token der Zwei-Faktor-Authentifizierung (OATH).",
+	"apihelp-oath-example-1": "Validiert einen Token für den aktuellen Benutzer",
+	"apihelp-oath-example-2": "Validiert einen Token für den Benutzer <kbd>Beispiel</kbd>"
 }

@@ -38,6 +38,7 @@
 	"oathauth-mustbeloggedin": "您必须登录才能执行此操作。",
 	"oathauth-prefs-label": "双因素验证：",
 	"oathauth-abortlogin": "提供的双因素验证令牌无效。",
+	"oathauth-abortlogin-throttled": "尝试了太多次验证！请稍后再试。",
 	"oathauth-step1": "第1步：下载应用程序",
 	"oathauth-step1-test": "在您的手机上下载用于双因素验证的移动应用程序（例如Google Authenticator）。",
 	"oathauth-step2": "第2步：扫描二维码",
@@ -59,5 +60,10 @@
 	"apihelp-query+oath-description": "检查是否为某一用户启用双因素验证（OATH）。",
 	"apihelp-query+oath-param-user": "获取相关信息的用户。默认为当前用户。",
 	"apihelp-query+oath-example-1": "获取有关当前用户的信息",
-	"apihelp-query+oath-example-2": "获取有关用户<kbd>Example</kbd>的信息"
+	"apihelp-query+oath-example-2": "获取有关用户<kbd>Example</kbd>的信息",
+	"apihelp-oathvalidate-description": "验证一个双因素验证（OATH）令牌。",
+	"apihelp-oathvalidate-param-user": "要验证令牌的用户。默认为当前用户。",
+	"apihelp-oathvalidate-param-totp": "双因素验证（OATH）令牌。",
+	"apihelp-oath-example-1": "验证当前用户的令牌",
+	"apihelp-oath-example-2": "验证用户<kbd>Example</kbd>的令牌"
 }

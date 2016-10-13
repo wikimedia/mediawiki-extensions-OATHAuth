@@ -37,6 +37,7 @@
 	"oathauth-mustbeloggedin": "Cómpre acceder ao sistema para levar a cabo a acción.",
 	"oathauth-prefs-label": "Autenticación de dous factores:",
 	"oathauth-abortlogin": "O pase de autenticación de dous factores achegado non era válido.",
+	"oathauth-abortlogin-throttled": "Demasiados intentos de verificaciónǃ Por favor, inténteo de novo máis tarde.",
 	"oathauth-step1": "Paso 1: descargue a aplicación",
 	"oathauth-step1-test": "Descargue unha aplicación móbil para a autenticación de duos pasos (como Google Authenticator) no seu teléfono.",
 	"oathauth-step2": "Paso 2: escanee o código QR",
@@ -58,5 +59,10 @@
 	"apihelp-query+oath-description": "Comprobar se a autenticación en dous factores (OAuth) está activa para un usuario.",
 	"apihelp-query+oath-param-user": "Usuario do que obter a información. Por defecto é o usuario actual.",
 	"apihelp-query+oath-example-1": "Obter información sobre o usuario actual",
-	"apihelp-query+oath-example-2": "Obter información sobre o usuario <kbd>Exemplo</kbd>"
+	"apihelp-query+oath-example-2": "Obter información sobre o usuario <kbd>Exemplo</kbd>",
+	"apihelp-oathvalidate-description": "Validar un pase de autenticación en dous factores (OATH)",
+	"apihelp-oathvalidate-param-user": "Usuario ó que validar o pase. Por defecto, o usuario actual.",
+	"apihelp-oathvalidate-param-totp": "Pase de autenticación en dos factores (OATH)",
+	"apihelp-oath-example-1": "Validar un pase para o usuario actual",
+	"apihelp-oath-example-2": "Validar un pase para o usuario <kbd>Exemplo</kbd>"
 }
