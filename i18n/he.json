@@ -36,6 +36,7 @@
 	"oathauth-mustbeloggedin": "צריך להיכנס לחשבון כדי לבצע את הפעולה הזאת.",
 	"oathauth-prefs-label": "אימות דו־רכיבי:",
 	"oathauth-abortlogin": "אסימון האימות הדו־רכיבי שניתן היה בלתי־תקין.",
+	"oathauth-abortlogin-throttled": "יותר מדי ניסיונות אימות! נא לנסות שוב מאוחר יותר.",
 	"oathauth-step1": "צעד 1: הורדת היישום",
 	"oathauth-step1-test": "יש להוריד את היישום לאימות דו־גורמי (כגון Google Authenticator) לטלפון שלך.",
 	"oathauth-step2": "צעד 2: סריקת קוד ה־QR",
@@ -57,5 +58,10 @@
 	"apihelp-query+oath-description": "בדיקה האם זיהוי דו־גורמי (OATH) מופעל למשתמש הזה.",
 	"apihelp-query+oath-param-user": "על איזה משתמש לקבל מידע. בררת המחדל היא המשתמש הנוכחי.",
 	"apihelp-query+oath-example-1": "קבלת מידע על המשתמש הנוכחי",
-	"apihelp-query+oath-example-2": "קבלת מידע על משתמש <kbd>Example</kbd>"
+	"apihelp-query+oath-example-2": "קבלת מידע על משתמש <kbd>Example</kbd>",
+	"apihelp-oathvalidate-description": "בדיקת תקינות של אסימון אימות דו־גורמי (OATH).",
+	"apihelp-oathvalidate-param-user": "לאיזה משתמש לאמת את האסימון. בררת המחדל היא המשתמש הנוכחי.",
+	"apihelp-oathvalidate-param-totp": "אסימון אימות דו־גורמי (OATH).",
+	"apihelp-oath-example-1": "בדיקת תקינות של אסימון עבור המשתמש הנוכחי.",
+	"apihelp-oath-example-2": "בדיקת אסימון עבור המשתמש <kbd>Example</kbd>"
 }

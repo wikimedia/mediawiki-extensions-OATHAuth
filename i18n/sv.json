@@ -42,5 +42,6 @@
 	"oathauth-auth-ui": "Ange verifieringskoden från din mobilapp",
 	"oathauth-login-failed": "Verifiering misslyckades.",
 	"grant-group-authentication": "Använd OAuth för autentisering",
-	"apihelp-query+oath-example-1": "Skaffa information om den aktuella användaren."
+	"apihelp-query+oath-example-1": "Skaffa information om den aktuella användaren.",
+	"apihelp-query+oath-example-2": "Hämta information om användaren <kbd>Example</kbd>"
 }
