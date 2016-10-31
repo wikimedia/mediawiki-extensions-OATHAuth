@@ -58,7 +58,8 @@
 	"config": {
 		"OATHAuthWindowRadius": 4,
 		"OATHAuthDatabase": false,
-		"OATHAuthSecret": false
+		"OATHAuthSecret": false,
+		"OATHAuthAccountPrefix": false
 	},
 	"ResourceModules": {
 		"ext.oathauth": {
