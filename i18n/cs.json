@@ -51,5 +51,7 @@
 	"oathauth-auth-ui": "Zadejte prosím ověřovací kód ze své mobilní aplikace",
 	"oathauth-throttled": "Příliš mnoho pokusů o ověření! Počkejte prosím $1.",
 	"oathauth-login-failed": "Ověření se nezdařilo.",
-	"oathauth-describe-provider": "Dvoufaktorová autentizace (OATH)."
+	"oathauth-describe-provider": "Dvoufaktorová autentizace (OATH).",
+	"grant-group-authentication": "Použití OAuth pro autentizaci",
+	"grant-oath": "Přístup k informacím o dvoufaktorové autentizaci (OATH) u sebe a ostatních"
 }
