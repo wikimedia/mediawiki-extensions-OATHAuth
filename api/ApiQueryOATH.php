@@ -37,16 +37,11 @@ class ApiQueryOATH extends ApiQueryBase {
 			$params['user'] = $this->getUser()->getName();
 		}
 
-		if ( !$this->getUser()->isAllowed( 'oathauth-api-all' ) ) {
-			$this->dieUsage(
-				'You do not have permission to check OATH status',
-				'permissiondenied'
-			);
-		}
+		$this->checkUserRightsAny( 'oathauth-api-all' );
 
 		$user = User::newFromName( $params['user'] );
 		if ( $user === false ) {
-			$this->dieUsageMsg( [ 'noname', $params['user'] ] );
+			$this->dieWithError( 'noname' );
 		}
 
 		$result = $this->getResult();

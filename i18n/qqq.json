@@ -61,6 +61,7 @@
 	"grant-group-authentication": "{{Related|Grant-group}}",
 	"grant-oath": "Name for grant \"oath\".\n{{Related|Grant}}",
 	"right-oathauth-api-all": "{{doc-right|oathauth-api-all}}",
+	"action-oathauth-api-all": "{{doc-action|oathauth-api-all}}",
 	"apihelp-query+oath-description": "{{doc-apihelp-description|query+oath}}",
 	"apihelp-query+oath-param-user": "{{doc-apihelp-param|query+oath|user}}",
 	"apihelp-query+oath-example-1": "{{doc-apihelp-example|query+oath}}",

@@ -32,21 +32,16 @@ class ApiOATHValidate extends ApiBase {
 			$params['user'] = $this->getUser()->getName();
 		}
 
-		if ( !$this->getUser()->isAllowed( 'oathauth-api-all' ) ) {
-			$this->dieUsage(
-				'You do not have permission to validate an OATH token',
-				'permissiondenied'
-			);
-		}
+		$this->checkUserRightsAny( 'oathauth-api-all' );
 
 		$user = User::newFromName( $params['user'] );
 		if ( $user === false ) {
-			$this->dieUsageMsg( [ 'noname', $params['user'] ] );
+			$this->dieWithError( 'noname' );
 		}
 
 		// Don't increase pingLimiter, just check for limit exceeded.
 		if ( $user->pingLimiter( 'badoath', 0 ) ) {
-			$this->dieUsageMsg( 'actionthrottledtext' );
+			$this->dieWithError( 'apierror-ratelimited' );
 		}
 
 		$result = [
