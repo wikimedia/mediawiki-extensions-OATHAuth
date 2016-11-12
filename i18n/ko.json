@@ -36,10 +36,18 @@
 	"oathauth-mustbeloggedin": "이 동작을 수행하려면 로그인해야 합니다.",
 	"oathauth-prefs-label": "2요소 인증:",
 	"oathauth-abortlogin": "입력된 2요소 인증 토큰이 유효하지 않습니다.",
+	"oathauth-step1": "1단계: 앱을 다운로드하세요",
+	"oathauth-step1-test": "2요소 인증을 위한 모바일 앱(Google Authenticator 등)을 전화로 다운로드하세요.",
+	"oathauth-step2": "2단계: QR 코드를 스캔하세요",
+	"oathauth-step2alt": "아니면 수동으로 비밀 키를 입력하세요:",
+	"oathauth-step3": "3단계: 스크래치 코드를 기록하세요",
+	"oathauth-step4": "4단계: 확인",
+	"oathauth-entertoken": "확인을 위해 모바일 앱에서 코드를 입력하세요:",
 	"oathauth-auth-token-label": "토큰",
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-ui": "모바일 앱의 인증검토용 코드를 넣어주세요.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "인증 검토 실패.",
-	"oathauth-describe-provider": "2단계 인증(OATH)"
+	"oathauth-describe-provider": "2단계 인증(OATH)",
+	"grant-group-authentication": "인증을 위해 OAuth 사용"
 }
