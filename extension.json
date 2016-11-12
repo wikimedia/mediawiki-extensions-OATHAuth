@@ -5,6 +5,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
 	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.27.0"
+	},
 	"license-name": "GPL-2.0+",
 	"AutoloadClasses": {
 		"ApiOATHValidate": "api/ApiOATHValidate.php",
@@ -20,7 +23,6 @@
 		"SpecialOATH": "special/SpecialOATH.php",
 		"SpecialOATHEnable": "special/SpecialOATHEnable.php",
 		"SpecialOATHDisable": "special/SpecialOATHDisable.php",
-		"SpecialOATHLogin": "special/SpecialOATHLogin.php",
 		"ProxySpecialPage": "special/ProxySpecialPage.php",
 		"TOTPAuthenticationRequest": "auth/TOTPAuthenticationRequest.php",
 		"TOTPSecondaryAuthenticationProvider": "auth/TOTPSecondaryAuthenticationProvider.php"
