@@ -87,11 +87,13 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
-		if ( !$user->isAllowed( 'oathauth-enable' ) ) {
+		$oathUser = self::getOATHUserRepository()->findByUser( $user );
+
+		// If there is no existing key, and the user is not allowed to enable it,
+		// we have nothing to show. (
+		if ( $oathUser->getKey() === null && !$user->isAllowed( 'oathauth-enable' ) ) {
 			return true;
 		}
-
-		$oathUser = self::getOATHUserRepository()->findByUser( $user );
 
 		$title = SpecialPage::getTitleFor( 'OATH' );
 		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
