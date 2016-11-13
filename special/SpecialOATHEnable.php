@@ -80,10 +80,13 @@ class SpecialOATHEnable extends FormSpecialPage {
 		}
 
 		$secret = $key->getSecret();
+		$label = "{$this->OATHUser->getIssuer()}:{$this->OATHUser->getAccount()}";
 		$qrcodeUrl = "otpauth://totp/"
-			. rawurlencode( $this->OATHUser->getAccount() )
+			. rawurlencode( $label )
 			. "?secret="
-			. rawurlencode( $secret );
+			. rawurlencode( $secret )
+			. "&issuer="
+			. rawurlencode( $this->OATHUser->getIssuer() );
 
 		$qrcodeElement = Html::element( 'div', [
 			'data-mw-qrcode-url' => $qrcodeUrl,

@@ -31,13 +31,19 @@ class OATHUser {
 	/**
 	 * @return String
 	 */
-	public function getAccount() {
+	public function getIssuer() {
 		global $wgSitename, $wgOATHAuthAccountPrefix;
-
 		if ( $wgOATHAuthAccountPrefix !== false ) {
-			return "$wgOATHAuthAccountPrefix:{$this->user->getName()}";
+			return $wgOATHAuthAccountPrefix;
 		}
-		return "$wgSitename:{$this->user->getName()}";
+		return $wgSitename;
+	}
+
+	/**
+	 * @return String
+	 */
+	public function getAccount() {
+		return $this->user->getName();
 	}
 
 	/**
