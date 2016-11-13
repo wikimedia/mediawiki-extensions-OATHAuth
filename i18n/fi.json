@@ -1,13 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mikahama"
+			"Mikahama",
+			"Stryn"
 		]
 	},
+	"specialpages-group-oath": "Kaksivaiheinen tunnistautuminen",
+	"oathauth-account": "Kaksivaiheisen tilin nimi:",
+	"oathauth-legend": "Tarkista tunnistetietosi",
+	"oathauth-secret": "Kaksivaiheinen salausavain:",
+	"oathauth-enable": "Ota käyttöön kaksivaiheinen tunnistautuminen",
+	"oathauth-failedtoenableoauth": "Kaksivaiheisen tunnistautumisen käyttöönotto epäonnistui.",
+	"oathauth-alreadyenabled": "Kaksivaiheinen tunnistautuminen on jo otettu käyttöön.",
 	"oathauth-step1": "Vaihe 1: Lataa sovellus",
 	"oathauth-step2": "Vaihe 2: Skannaa QR-koodi",
 	"oathauth-step2alt": "Tai syötä salainen tunnus käsin:",
 	"oathauth-step4": "Vaihe 4: Vahvistus",
 	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen vahvistus",
-	"action-oathauth-enable": "ota käyttöön kaksivaiheinen vahvistus"
+	"action-oathauth-enable": "ota käyttöön kaksivaiheinen vahvistus",
+	"oathauth-auth-ui": "Syötä vahvistuskoodi mobiilisovelluksestasi"
 }
