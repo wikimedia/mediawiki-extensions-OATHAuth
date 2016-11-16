@@ -62,18 +62,11 @@
 		"OATHAuthAccountPrefix": false
 	},
 	"ResourceModules": {
-		"ext.oathauth": {
-			"scripts": [
-				"jquery.qrcode.js",
-				"qrcode.js"
-			]
-		},
 		"ext.oath.showqrcode": {
 			"scripts": [
+				"jquery.qrcode.js",
+				"qrcode.js",
 				"ext.oath.showqrcode.js"
-			],
-			"dependencies": [
-				"ext.oathauth"
 			]
 		}
 	},
