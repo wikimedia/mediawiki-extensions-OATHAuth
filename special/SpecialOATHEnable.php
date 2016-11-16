@@ -39,6 +39,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$form->setWrapperLegend( false );
 		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-enable' ) );
 		$form->getOutput()->addModules( 'ext.oath.showqrcode' );
+		$form->getOutput()->addModuleStyles( 'ext.oath.showqrcode.styles' );
 	}
 
 	/**
@@ -92,7 +93,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 			'data-mw-qrcode-url' => $qrcodeUrl,
 			'class' => 'mw-display-qrcode',
 			// Include width/height, so js won't re-arrange layout
-			// OTOH, this will cause non-js browsers to see a big empty space.
+			// And non-js users will have this hidden with CSS
 			'style' => 'width: 256px; height: 256px;'
 		] );
 

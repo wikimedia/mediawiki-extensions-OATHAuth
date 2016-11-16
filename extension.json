@@ -68,6 +68,11 @@
 				"qrcode.js",
 				"ext.oath.showqrcode.js"
 			]
+		},
+		"ext.oath.showqrcode.styles": {
+			"styles": [
+				"ext.oath.showqrcode.styles.css"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
