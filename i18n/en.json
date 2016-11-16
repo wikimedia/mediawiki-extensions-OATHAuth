@@ -15,6 +15,7 @@
 	"oathauth-token": "Token",
 	"oathauth-disable": "Disable two-factor authentication",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",
+	"oathauth-noscratchforvalidation": "You cannot use a scratch code to confirm two-factor authentication. Scratch codes are for backup and incidental use only. Please use a verification code from your code generator.",
 	"oathauth-failedtovalidateoath": "Failed to validate two-factor credentials",
 	"oathauth-disabledoath": "Disabled two-factor authentication.",
 	"oathauth-prefs-label": "Two-factor authentication:",

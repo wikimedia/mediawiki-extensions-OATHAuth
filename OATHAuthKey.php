@@ -156,4 +156,16 @@ class OATHAuthKey {
 		}
 		$this->scratchTokens = $scratchTokens;
 	}
+
+	/**
+	 * Check if a token is one of the scratch tokens for this two factor key.
+	 *
+	 * @param string $token Token to verify
+	 *
+	 * @return bool true if this is a scratch token.
+	 */
+	public function isScratchToken( $token ) {
+		$token = preg_replace( '/\s+/', '', $token );
+		return in_array( $token, $this->scratchTokens, true );
+	}
 }

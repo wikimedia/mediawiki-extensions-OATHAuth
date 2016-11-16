@@ -157,6 +157,10 @@ class SpecialOATHEnable extends FormSpecialPage {
 		/** @var OATHAuthKey $key */
 		$key = $this->getRequest()->getSessionData( 'oathauth_key' );
 
+		if ( $key->isScratchToken( $formData['token'] ) ) {
+			// A scratch token is not allowed for enrollement
+			return [ 'oathauth-noscratchforvalidation' ];
+		}
 		if ( !$key->verifyToken( $formData['token'], $this->OATHUser ) ) {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
