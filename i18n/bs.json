@@ -12,7 +12,7 @@
 	"oathauth-failedtoenableoauth": "Ne mogu uključiti potvrdu u 2 koraka.",
 	"oathauth-alreadyenabled": "Potvrda u 2 koraka već je uključena.",
 	"oathauth-verify": "Potvrdi žeton",
-	"openstackmanager-scratchtokens": "Sljedeći spisak sadrži žetone za jednokratnu upotrebu. Mogu se koristiti samo jednom i to u hitnim slučajevima. Zapišite i čuvajte ih na sigurnom mjestu. Ako izgubite telefon, jedino će oni moći spasiti Vaš račun. Ovi žetoni više se nikad neće prikazati.",
+	"oathauth-scratchtokens": "Sljedeći spisak sadrži žetone za jednokratnu upotrebu. Mogu se koristiti samo jednom i to u hitnim slučajevima. Zapišite i čuvajte ih na sigurnom mjestu. Ako izgubite telefon, jedino će oni moći spasiti Vaš račun. Ovi žetoni više se nikad neće prikazati.",
 	"oathauth-reset": "Resetiraj dvofaktorske podatake",
 	"oathauth-donotdeleteoldsecret": "Ne brišite stare podatke dok ne potvrdite nove.",
 	"oathauth-token": "Žeton",

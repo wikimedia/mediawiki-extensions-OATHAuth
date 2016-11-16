@@ -13,7 +13,7 @@
 	"oathauth-failedtoenableoauth": "Het inschakelen van twee-factor authenticatie is mislukt.",
 	"oathauth-alreadyenabled": "Twee-factor authenticatie al ingeschakeld.",
 	"oathauth-verify": "Twee-factortoken controleren",
-	"openstackmanager-scratchtokens": "De onderstaande lijst bevat tokens voor eenmalig gebruik. Deze tokens kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen. Noteer deze tokens en bewaar ze op een veilige plaats. Als u uw telefoon bent verloren, zijn deze tokens de enige manier om uw gebruiker te redden. Deze tokens worden nooit meer weergegeven.",
+	"oathauth-scratchtokens": "De onderstaande lijst bevat tokens voor eenmalig gebruik. Deze tokens kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen. Noteer deze tokens en bewaar ze op een veilige plaats. Als u uw telefoon bent verloren, zijn deze tokens de enige manier om uw gebruiker te redden. Deze tokens worden nooit meer weergegeven.",
 	"oathauth-reset": "Twee-factorgegevens opnieuw instellen",
 	"oathauth-donotdeleteoldsecret": "Verwijder uw oude gegevens niet totdat u bent gevalideerd met uw nieuwe gegevens.",
 	"oathauth-token": "Token",

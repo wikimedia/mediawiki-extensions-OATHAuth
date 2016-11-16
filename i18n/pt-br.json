@@ -15,7 +15,7 @@
 	"oathauth-failedtoenableoauth": "Falha ao ativar autenticação de dois fatores.",
 	"oathauth-alreadyenabled": "A autenticação de dois fatores já está ativada.",
 	"oathauth-verify": "Verificar chave de dois fatores",
-	"openstackmanager-scratchtokens": "A lista a seguir é uma lista de chaves de uso único. Essas chaves só podem ser usadas uma vez, e são para uso de emergência. Por favor, anote-as e mantenha-as em um local seguro. Se você perder seu telefone, essas chaves são a única maneira de recuperar sua conta. Essas chaves nunca serão mostradas novamente.",
+	"oathauth-scratchtokens": "A lista a seguir é uma lista de chaves de uso único. Essas chaves só podem ser usadas uma vez, e são para uso de emergência. Por favor, anote-as e mantenha-as em um local seguro. Se você perder seu telefone, essas chaves são a única maneira de recuperar sua conta. Essas chaves nunca serão mostradas novamente.",
 	"oathauth-reset": "Redefinir credenciais de dois fatores",
 	"oathauth-donotdeleteoldsecret": "Por favor, não exclua as credenciais antigas até que você tenha validado com sucesso suas novas credenciais.",
 	"oathauth-token": "Chave",

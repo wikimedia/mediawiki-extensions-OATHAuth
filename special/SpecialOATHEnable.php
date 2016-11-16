@@ -124,7 +124,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
-					$this->msg( 'openstackmanager-scratchtokens' )
+					$this->msg( 'oathauth-scratchtokens' )
 					. $this->createResourceList( $key->getScratchTokens() ),
 				'raw' => true,
 				'section' => 'step3',

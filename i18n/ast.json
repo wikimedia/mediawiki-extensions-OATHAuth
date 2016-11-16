@@ -13,7 +13,7 @@
 	"oathauth-failedtoenableoauth": "Error al activar la identificación de dos factores.",
 	"oathauth-alreadyenabled": "La identificación de dos factores yá ta activada.",
 	"oathauth-verify": "Comprobar el pase de dos factores",
-	"openstackmanager-scratchtokens": "La siguiente llista ye una llista de pases d'un solu usu. Estos pases sólo puen utilizase una vez, y son pa usu d'emerxencia. Por favor, apúnteles y guárdeles nun llugar seguru. Si pierde'l teléfonu, estos pases son la única manera de rescatar la so cuenta. Estos pases nunca volverán a apaecer.",
+	"oathauth-scratchtokens": "La siguiente llista ye una llista de pases d'un solu usu. Estos pases sólo puen utilizase una vez, y son pa usu d'emerxencia. Por favor, apúnteles y guárdeles nun llugar seguru. Si pierde'l teléfonu, estos pases son la única manera de rescatar la so cuenta. Estos pases nunca volverán a apaecer.",
 	"oathauth-reset": "Reaniciar les credenciales de dos factores",
 	"oathauth-donotdeleteoldsecret": "Nun desanicies les credenciales antigües mentanto nun valides les nueves.",
 	"oathauth-token": "Pase",

@@ -15,7 +15,7 @@
 	"oathauth-failedtoenableoauth": "İki faktörlü kimlik doğrulaması etkinleştirilemedi.",
 	"oathauth-alreadyenabled": "İki faktörlü kimlik doğrulaması zaten etkin.",
 	"oathauth-verify": "İki faktörlü doğrulama anahtarı",
-	"openstackmanager-scratchtokens": "Aşağıdaki listede, yalnızca bir defa kullanımlık anahtar bulunmaktadır. Bu semboller yalnızca bir defalık kullanım içindir ve acil durum kullanımlarına özel olabilir. Lütfen aşağıda yazılı anahtarı bir yere yazın ve bunu güvenli bir yerde saklayın. Eğer telefonunuzu kaybederseniz, bu simgeler hesabınızı kurtarmanın tek yolu olacaktır. Bu simgeler asla tekrar gösterilmeyecektir.",
+	"oathauth-scratchtokens": "Aşağıdaki listede, yalnızca bir defa kullanımlık anahtar bulunmaktadır. Bu semboller yalnızca bir defalık kullanım içindir ve acil durum kullanımlarına özel olabilir. Lütfen aşağıda yazılı anahtarı bir yere yazın ve bunu güvenli bir yerde saklayın. Eğer telefonunuzu kaybederseniz, bu simgeler hesabınızı kurtarmanın tek yolu olacaktır. Bu simgeler asla tekrar gösterilmeyecektir.",
 	"oathauth-reset": "İki Faktörlü Kimlik Doğrulamayı Sıfırla",
 	"oathauth-donotdeleteoldsecret": "Lütfen yeni kimlik bilgilerinizi doğrulayana kadar eski kimlik bilgilerinizi silmeyiniz.",
 	"oathauth-token": "Anahtar",

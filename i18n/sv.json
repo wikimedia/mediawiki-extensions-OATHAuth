@@ -14,7 +14,7 @@
 	"oathauth-failedtoenableoauth": "Det gick inte att aktivera tvåstegsverifiering.",
 	"oathauth-alreadyenabled": "Tvåstegsverifiering är redan aktiverat.",
 	"oathauth-verify": "Verifiera tvåstegsnyckeln",
-	"openstackmanager-scratchtokens": "Följande lista är en förteckning över engångsnycklar. Dessa nycklar kan enbart användas en gång och är avsedda för användning i nödfall. Vänligen skriv ner dessa och förvara dem på en säker plats. Om du förlorar din telefon, är dessa nycklar det enda sättet att rädda ditt konto. Dessa nycklar kommer aldrig att visas igen.",
+	"oathauth-scratchtokens": "Följande lista är en förteckning över engångsnycklar. Dessa nycklar kan enbart användas en gång och är avsedda för användning i nödfall. Vänligen skriv ner dessa och förvara dem på en säker plats. Om du förlorar din telefon, är dessa nycklar det enda sättet att rädda ditt konto. Dessa nycklar kommer aldrig att visas igen.",
 	"oathauth-reset": "Återställ tvåstegs-autentiseringsuppgifter",
 	"oathauth-donotdeleteoldsecret": "Vänligen ta inte bort dina gamla autentiseringsuppgifter förrän du framgångsrikt har validerat din nya autentiseringsuppgifter.",
 	"oathauth-token": "Nyckel",

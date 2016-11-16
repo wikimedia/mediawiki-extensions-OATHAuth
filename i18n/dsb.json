@@ -13,7 +13,7 @@
 	"oathauth-failedtoenableoauth": "Dwójofaktorowa awtentifikacija njedajo se zmóžniś.",
 	"oathauth-alreadyenabled": "Dwójofaktorowa awtentifikacija jo se južo zmóžniła.",
 	"oathauth-verify": "Dwójofaktorowy token pśeglědaś",
-	"openstackmanager-scratchtokens": "Slědujuca lisćina jo lisćina raz wužywajobnych specialnych tokenow. Toś te tokeny daju se jano jaden raz wužywaś a su za nuzne pady. Pšosym napiš je a zachowaj je na wěstem městnje. Jolic zgubijoš swój mobilny telefon, budu toś te tokeny jadnučka móžnosć, aby swójo konto wuchował. Toś te tokeny njepokažu śi žednje zas.",
+	"oathauth-scratchtokens": "Slědujuca lisćina jo lisćina raz wužywajobnych specialnych tokenow. Toś te tokeny daju se jano jaden raz wužywaś a su za nuzne pady. Pšosym napiš je a zachowaj je na wěstem městnje. Jolic zgubijoš swój mobilny telefon, budu toś te tokeny jadnučka móžnosć, aby swójo konto wuchował. Toś te tokeny njepokažu śi žednje zas.",
 	"oathauth-reset": "Dwójofaktorowe pśizjawjeńske informacije slědk stajiś",
 	"oathauth-donotdeleteoldsecret": "Pšosym njelašuj swóje stare pśizjawjeńske informacije, až njejsy swóje nowe pśizjawjeńske informacije wuspěšnje wobkšuśił.",
 	"oathauth-token": "Token",

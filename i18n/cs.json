@@ -16,7 +16,7 @@
 	"oathauth-failedtoenableoauth": "Nepodařilo se zapnout dvoufaktorovou autentizaci.",
 	"oathauth-alreadyenabled": "Dvoufaktorová autentizace již je zapnuta.",
 	"oathauth-verify": "Ověření kódu dvoufaktorové autentizace",
-	"openstackmanager-scratchtokens": "Následující seznam obsahuje jednorázové provizorní kódy. Tyto kódy lze použít pouze jednou a slouží pro případ nouze. Opište si je a uchovávejte je na bezpečném místě. Pokud ztratíte svůj telefon, budou tyto kódy jediným způsobem, jak zachránit svůj účet. Tyto kódy se již nikdy znovu nezobrazí.",
+	"oathauth-scratchtokens": "Následující seznam obsahuje jednorázové provizorní kódy. Tyto kódy lze použít pouze jednou a slouží pro případ nouze. Opište si je a uchovávejte je na bezpečném místě. Pokud ztratíte svůj telefon, budou tyto kódy jediným způsobem, jak zachránit svůj účet. Tyto kódy se již nikdy znovu nezobrazí.",
 	"oathauth-reset": "Reinicializace dvoufaktorové autentizace",
 	"oathauth-donotdeleteoldsecret": "Staré údaje si prosím nemažte, dokud se vám nepodaří ověřit si nové přihlášení.",
 	"oathauth-token": "Kód",

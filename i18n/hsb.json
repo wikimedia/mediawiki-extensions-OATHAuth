@@ -12,7 +12,7 @@
 	"oathauth-failedtoenableoauth": "Dwufaktorowa awtentifikacija njeda so zmóžnić.",
 	"oathauth-alreadyenabled": "Dwufaktorowa awtentifikacija je so hižo zmóžniła.",
 	"oathauth-verify": "Dwufaktorowy token přepruwować",
-	"openstackmanager-scratchtokens": "Slědowaca lisćina je lisćina jónkróć wužiwajomnych specialnych tokenow. Tute tokeny dadźa so jenož jadyn raz wužiwać a su za nuzowe pady. Prošu napisaj je a wobchowaj je na wěstym městnje. Jeli zhubiš swój mobilny telefon, budu tute tokeny jenička móžnosć, zo by swoje konto zachował. Tute tokeny so ći ženje znowa njepokazaja.",
+	"oathauth-scratchtokens": "Slědowaca lisćina je lisćina jónkróć wužiwajomnych specialnych tokenow. Tute tokeny dadźa so jenož jadyn raz wužiwać a su za nuzowe pady. Prošu napisaj je a wobchowaj je na wěstym městnje. Jeli zhubiš swój mobilny telefon, budu tute tokeny jenička móžnosć, zo by swoje konto zachował. Tute tokeny so ći ženje znowa njepokazaja.",
 	"oathauth-reset": "Dwufaktorowe přizjewjenske informacije wróćo stajić",
 	"oathauth-donotdeleteoldsecret": "Prošu njezhašaj swoje stare přizjewjenske informacije, doniž njejsy swoje nowe přizjewjenske informacije wuspěšnje wobkrućił.",
 	"oathauth-token": "Token",

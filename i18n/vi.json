@@ -13,7 +13,7 @@
 	"oathauth-failedtoenableoauth": "Thất bại khi bật xác thực dùng hai nhân tố.",
 	"oathauth-alreadyenabled": "Xác thực dùng hai nhân tố đã được kích hoạt.",
 	"oathauth-verify": "Xác minh thẻ hai nhân tố",
-	"openstackmanager-scratchtokens": "Danh sách sau có các thẻ dùng một lần. Các thẻ này chỉ có thể dùng một lần cho mục đích khẩn cấp. Xin hãy ghi xuống các thẻ này và lưu giữ chúng tại một nơi an toàn. Nếu bạn mất điện thoại của bạn, các thẻ này là phương sách duy nhất để cứu tài khoản của bạn. Từ nay các thẻ này sẽ không bao giờ được hiển thị.",
+	"oathauth-scratchtokens": "Danh sách sau có các thẻ dùng một lần. Các thẻ này chỉ có thể dùng một lần cho mục đích khẩn cấp. Xin hãy ghi xuống các thẻ này và lưu giữ chúng tại một nơi an toàn. Nếu bạn mất điện thoại của bạn, các thẻ này là phương sách duy nhất để cứu tài khoản của bạn. Từ nay các thẻ này sẽ không bao giờ được hiển thị.",
 	"oathauth-reset": "Đặt lại thông tin xác thực dùng hai nhân tố",
 	"oathauth-donotdeleteoldsecret": "Xin đừng xóa các thông tin xác thực cũ cho đến khi đã xác nhận thành công các thông tin xác thực mới của bạn.",
 	"oathauth-token": "Thẻ",

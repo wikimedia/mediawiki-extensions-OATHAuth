@@ -16,7 +16,7 @@
 	"oathauth-failedtoenableoauth": "Impossibile abilitare l'autenticazione a due fattori.",
 	"oathauth-alreadyenabled": "L'autenticazione a due fattori è già abilitata.",
 	"oathauth-verify": "Verificare il token a due fattori",
-	"openstackmanager-scratchtokens": "Il seguente è un elenco di token monouso. Questi token possono essere utilizzati solo una volta e sono per casi di emergenza. Sei pregato di annotarteli e tenerli in un luogo sicuro. Se perdi il telefono, questi token sono l'unico modo per recuperare l'accesso al tuo account. Questi token non saranno mostrati mai più.",
+	"oathauth-scratchtokens": "Il seguente è un elenco di token monouso. Questi token possono essere utilizzati solo una volta e sono per casi di emergenza. Sei pregato di annotarteli e tenerli in un luogo sicuro. Se perdi il telefono, questi token sono l'unico modo per recuperare l'accesso al tuo account. Questi token non saranno mostrati mai più.",
 	"oathauth-reset": "Reimpostare le credenziali a due fattori",
 	"oathauth-donotdeleteoldsecret": "Non cancellare le vecchie credenziali fino a quando non hai convalidato le nuove credenziali.",
 	"oathauth-token": "Token",

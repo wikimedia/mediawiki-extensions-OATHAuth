@@ -14,7 +14,7 @@
 	"oathauth-failedtoenableoauth": "Die Zwei-Faktor-Authentifizierung konnte nicht aktiviert werden.",
 	"oathauth-alreadyenabled": "Die Zwei-Faktor-Authentifizierung ist bereits aktiviert.",
 	"oathauth-verify": "Den Zwei-Faktor-Token bestätigten",
-	"openstackmanager-scratchtokens": "Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreibe sie auf und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, dein Konto zu retten. Diese Token werden dir niemals wieder angezeigt werden.",
+	"oathauth-scratchtokens": "Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreibe sie auf und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, dein Konto zu retten. Diese Token werden dir niemals wieder angezeigt werden.",
 	"oathauth-reset": "Die Zwei-Faktor-Anmeldeinformationen zurücksetzen",
 	"oathauth-donotdeleteoldsecret": "Bitte lösche deine alten Anmeldeinformationen nicht, bis du deine neuen Anmeldeinformationen bestätigt hast.",
 	"oathauth-token": "Token",

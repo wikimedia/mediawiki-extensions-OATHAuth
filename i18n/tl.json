@@ -13,7 +13,7 @@
 	"oathauth-failedtoenableoauth": "Nabigo sa pagpapaandar ng dalawang salik na pagpapatunay.",
 	"oathauth-alreadyenabled": "Gumagana na ang dalawang salik na pagpapatunay.",
 	"oathauth-verify": "Tiyakin ang dalawang salik na panghalip",
-	"openstackmanager-scratchtokens": "Ang sumusunod na lista ay isang listahan ng mga pang-isahang ulit na paggamit na mga panghalip na nagagasgas. Ang mga panghalip na ito ay magagamit lamang nang isang beses, at mga para sa paggamit na pangkagipitan. Pakisulat ang mga ito at itabi sa isang ligtas na lugar. Kapag naiwala mo ang telepono mo, ang mga panghalip na ito lang ang makasasaklolo sa akawnt mo. Hindi na muling ipapakita pa ang mga panghalip na ito.",
+	"oathauth-scratchtokens": "Ang sumusunod na lista ay isang listahan ng mga pang-isahang ulit na paggamit na mga panghalip na nagagasgas. Ang mga panghalip na ito ay magagamit lamang nang isang beses, at mga para sa paggamit na pangkagipitan. Pakisulat ang mga ito at itabi sa isang ligtas na lugar. Kapag naiwala mo ang telepono mo, ang mga panghalip na ito lang ang makasasaklolo sa akawnt mo. Hindi na muling ipapakita pa ang mga panghalip na ito.",
 	"oathauth-reset": "Itakdang Muli ang Dalawang Salik na mga Kredensiyal",
 	"oathauth-donotdeleteoldsecret": "Mangyaring huwag burahin ang luma mong mga kredensiyal hanggang sa matagumpay mo nang napagtibay ang bago mong mga katibayan.",
 	"oathauth-token": "Kahalip",

@@ -15,7 +15,7 @@
 	"oathauth-failedtoenableoauth": "Erro ao activar a autenticación de dous factores.",
 	"oathauth-alreadyenabled": "A autenticación de dous factores xa está activada.",
 	"oathauth-verify": "Comprobar o pase de dous factores",
-	"openstackmanager-scratchtokens": "A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. Esta é a única vez que poderá ver os pases.",
+	"oathauth-scratchtokens": "A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. Esta é a única vez que poderá ver os pases.",
 	"oathauth-reset": "Restablecer as credenciais de dous factores",
 	"oathauth-donotdeleteoldsecret": "Non borre as súas credenciais vellas ata que valide as novas.",
 	"oathauth-token": "Pase",

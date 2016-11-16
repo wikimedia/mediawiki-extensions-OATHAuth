@@ -12,7 +12,7 @@
 	"oathauth-failedtoenableoauth": "Impossibile activar le authentication bifactorial.",
 	"oathauth-alreadyenabled": "Le authentication bifactorial es jam activate.",
 	"oathauth-verify": "Verificar indicio bifactorial",
-	"openstackmanager-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.",
+	"oathauth-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.",
 	"oathauth-reset": "Reinitialisar credentiales bifactorial",
 	"oathauth-donotdeleteoldsecret": "Per favor non dele vostre ancian informationes de identification usque vos ha validate con successo vostre nove informationes de identification.",
 	"oathauth-token": "Indicio",

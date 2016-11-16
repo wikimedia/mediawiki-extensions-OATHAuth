@@ -12,7 +12,7 @@
 	"oathauth-failedtoenableoauth": "Penentusahan dwifaktor gagal dihidupkan.",
 	"oathauth-alreadyenabled": "Penentusahan dwifaktor sudah dihidupkan.",
 	"oathauth-verify": "Sahkan token dwifaktor",
-	"openstackmanager-scratchtokens": "Yang berikut ialah senarai token kegunaan sekali. Token-token ini hanya boleh digunakan sekali, malah adalah untuk kegunaan kecemasan. Sila catatkan dalam kertas dan simpan dalam tempat yang selamat. Sekiranya anda kehilangan telefon anda, token-token ini sahajalah caranya untuk menyelamatkan akaun anda. Token-token ini tidak akan dipaparkan lagi.",
+	"oathauth-scratchtokens": "Yang berikut ialah senarai token kegunaan sekali. Token-token ini hanya boleh digunakan sekali, malah adalah untuk kegunaan kecemasan. Sila catatkan dalam kertas dan simpan dalam tempat yang selamat. Sekiranya anda kehilangan telefon anda, token-token ini sahajalah caranya untuk menyelamatkan akaun anda. Token-token ini tidak akan dipaparkan lagi.",
 	"oathauth-reset": "Reset Watikah Dwifaktor",
 	"oathauth-donotdeleteoldsecret": "Tolong jangan padamkan watikah lama sehingga watikah baru anda berjaya disahkan.",
 	"oathauth-token": "Token",

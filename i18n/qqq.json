@@ -20,7 +20,7 @@
 	"oathauth-failedtoenableoauth": "Plain text, found on Special:OATH when failing to enable OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-alreadyenabled": "Plain text, found on Special:OATH when failing to enable OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-verify": "Link, found on Special:OATH when no parameters are passed.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
-	"openstackmanager-scratchtokens": "Plain text, found on Special:OATH while enabling OATH.",
+	"oathauth-scratchtokens": "Plain text, found on Special:OATH while enabling OATH.",
 	"oathauth-reset": "Page title for Special:OATH, when resetting OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-donotdeleteoldsecret": "Plain text, found on Special:OATH while resetting OATH.",
 	"oathauth-token": "HTMLForm label, found on [[Special:OATH]], when verifying OATH.\n{{Identical|Token}}",
