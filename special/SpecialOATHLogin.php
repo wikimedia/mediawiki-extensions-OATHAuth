@@ -65,7 +65,8 @@ class SpecialOATHLogin extends FormSpecialPage {
 				'default' => '',
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
-				'required' => true
+				'required' => true,
+				'autofocus' => true,
 			],
 			'returnto' => [
 				'type' => 'hidden',
