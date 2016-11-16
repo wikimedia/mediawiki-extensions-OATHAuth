@@ -6,6 +6,16 @@
  * @ingroup Extensions
  */
 class OATHAuthUtils {
+	/**
+	 * Check whether OATH two-factor authentication is enabled for a given user.
+	 * This is a stable method that does not change and can be used in other extensions.
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function isEnabledFor( User $user ) {
+		$oathUser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
+		return $oathUser && $oathUser->getKey();
+	}
 
 	/**
 	 * Encrypt an aray of variables to put into the user's session. We use this
