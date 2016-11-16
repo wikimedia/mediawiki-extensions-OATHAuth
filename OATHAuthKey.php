@@ -98,6 +98,11 @@ class OATHAuthKey {
 			Base32::decode( $this->secret['secret'] ),
 			$this->secret['period'], -$wgOATHAuthWindowRadius, $wgOATHAuthWindowRadius
 		);
+
+		// Remove any whitespace from the received token, which can be an intended group seperator
+		// or trimmeable whitespace
+		$token = preg_replace( '/\s+/', '', $token );
+
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
