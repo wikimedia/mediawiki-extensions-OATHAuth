@@ -35,6 +35,7 @@
 	"oathauth-mustbeloggedin": "Tien d'aniciar sesión pa facer esta aición.",
 	"oathauth-prefs-label": "Identificación de dos factores:",
 	"oathauth-abortlogin": "El pase d'identificación de dos factores dau nun ye válidu.",
+	"oathauth-abortlogin-throttled": "Demasiaos intentos de comprobación. Téntalo sero.",
 	"oathauth-step1": "Pasu 1: Descarga la app",
 	"oathauth-step1-test": "Descarga una app pa móvil pa l'autenticación de dos pasos (como Google Authenticator) al to teléfonu.",
 	"oathauth-step2": "Pasu 2: escanea'l códigu QR",
@@ -49,5 +50,7 @@
 	"oathauth-auth-ui": "Escribe'l códigu de comprobación de l'aplicación pa móvil",
 	"oathauth-throttled": "Demasiaos intentos de comprobación. Espera $1.",
 	"oathauth-login-failed": "Falló la comprobación.",
-	"oathauth-describe-provider": "Identificación de dos factores (OATH)."
+	"oathauth-describe-provider": "Identificación de dos factores (OATH).",
+	"grant-group-authentication": "Facer les aiciones d'autenticación propies y pa otros",
+	"grant-oath": "Acceder a la información d'autenticación en dos factores (OAuth) propies y pa otros"
 }

@@ -4,6 +4,7 @@
 			"Robby"
 		]
 	},
+	"oathauth-account": "Numm vum Kont:",
 	"oathauth-enable": "Authentifikatioun mat zwee Elementer aschalten",
 	"oathauth-failedtoenableoauth": "D'Authentifizéierung mat zwee Facteuren konnt net aktivéiert ginn.",
 	"oathauth-token": "Token",
