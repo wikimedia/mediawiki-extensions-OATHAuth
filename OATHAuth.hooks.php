@@ -47,6 +47,8 @@ class OATHAuthHooks {
 				'size' => 20,
 				'autofocus' => true,
 				'persistent' => false,
+				'autocomplete' => false,
+				'spellcheck' => false,
 			];
 		}
 		return true;
