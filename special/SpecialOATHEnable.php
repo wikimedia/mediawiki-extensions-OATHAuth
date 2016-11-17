@@ -117,7 +117,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 					'<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br/>'
 					. $this->OATHUser->getAccount() . '<br/><br/>'
 					. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br/>'
-					. $key->getSecret() . '<br/>',
+					. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd><br/>',
 				'raw' => true,
 				'section' => 'step2',
 			],
@@ -125,7 +125,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 				'type' => 'info',
 				'default' =>
 					$this->msg( 'oathauth-scratchtokens' )
-					. $this->createResourceList( $key->getScratchTokens() ),
+					. $this->createResourceList( $this->getScratchTokensForDisplay( $key ) ),
 				'raw' => true,
 				'section' => 'step3',
 			],
@@ -180,8 +180,42 @@ class SpecialOATHEnable extends FormSpecialPage {
 	private function createResourceList( $resources ) {
 		$resourceList = '';
 		foreach ( $resources as $resource ) {
-			$resourceList .= Html::rawElement( 'li', [], $resource );
+			$resourceList .= Html::rawElement( 'li', [], HTML::rawElement( 'kbd', [], $resource ) );
 		}
 		return Html::rawElement( 'ul', [], $resourceList );
+	}
+
+	/**
+	 * Retrieve the current secret for display purposes
+	 *
+	 * The characters of the token are split in groups of 4
+	 *
+	 * @param OATHAuthKey $key
+	 * @return String
+	 */
+	protected function getSecretForDisplay( OATHAuthKey $key ) {
+		return $this->tokenFormatterFunction( $key->getSecret() );
+	}
+
+	/**
+	 * Retrieve current scratch tokens for display purposes
+	 *
+	 * The characters of the token are split in groups of 4
+	 *
+	 * @param OATHAuthKey $key
+	 * @return string[]
+	 */
+	protected function getScratchTokensForDisplay( OATHAuthKey $key ) {
+		return array_map( [ $this, 'tokenFormatterFunction' ], $key->getScratchTokens() );
+	}
+
+	/**
+	 * Formats a key or scratch token by creating groups of 4 seperated by space characters
+	 *
+	 * @param string $token Token to format
+	 * @return string The token formatted for display
+	 */
+	private function tokenFormatterFunction( $token ) {
+		return implode( ' ', str_split( $token, 4 ) );
 	}
 }
