@@ -4,10 +4,11 @@
 			"Aftabuzzaman"
 		]
 	},
+	"oathauth-account": "অ্যাকাউন্টের নাম:",
 	"oathauth-step1": "ধাপ ১: অ্যাপটি ডাউনলোড করুন",
 	"oathauth-step2": "ধাপ ২: কিউআর কোডটি স্ক্যান করুন",
 	"oathauth-step4": "ধাপ ৪: নিশ্চিতকরণ",
 	"oathauth-auth-token-label": "টোকেন",
-	"oathauth-auth-ui": "আপনার মোবাইল অ্যাপ্লিকেশন থেকে যাচাইকরণ কোড প্রবেশ করান",
+	"oathauth-auth-ui": "আপনার প্রমাণীকরণ ডিভাইস থেকে যাচাইকরণ কোড প্রবেশ করান",
 	"oathauth-login-failed": "যাচাইকরণ ব্যর্থ হয়েছে।"
 }

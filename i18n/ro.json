@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Firilacroco",
-			"Stelistcristi"
+			"Stelistcristi",
+			"Narlotep1"
 		]
 	},
+	"oathauth-account": "Numele contului:",
 	"oathauth-token": "Jeton",
 	"oathauth-currenttoken": "Jeton curent",
 	"oathauth-newtoken": "Jeton nou",
-	"oathauth-notloggedin": "Autentificare necesară"
+	"oathauth-notloggedin": "Autentificare necesară",
+	"oathauth-auth-ui": "Va rugam introduceti codul de autentificare de pe dispozitivul dumneavoastra"
 }

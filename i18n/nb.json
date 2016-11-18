@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"oathauth-desc": "Muliggjør autentiseringsstøtte med bruk av HMAC-baserte engangspassord",
+	"specialpages-group-oath": "Tofaktor-autentisering",
+	"oathauth-account": "Kontonavn:",
+	"oathauth-legend": "Bekreft din innloggingsinformasjon",
+	"oathauth-secret": "Hemmelig nøkkel for tofaktor-autentisering:",
+	"oathauth-enable": "Slå på tofaktor-autentisering",
+	"oathauth-failedtoenableoauth": "Kunne ikke slå på tofaktor-autentisering.",
+	"oathauth-alreadyenabled": "Tofaktor-autentisering er allerede slått på.",
+	"oathauth-verify": "Bekreft tofaktor-autentiseringstegn",
+	"oathauth-scratchtokens": "Følgende liste er en liste over engangspassord. Disse kan kun brukes én gang, og bør kun brukes i nødstilfelle. Skriv dem ned og legg dem på et lurt sted. Om du mister telefonen din vil disse passordene være eneste måte å få tilbake kontoen din. Disse passordene vil aldri vises igjen.",
+	"oathauth-reset": "Nullstill tofaktor-autentisering",
+	"oathauth-token": "Tegn",
+	"oathauth-currenttoken": "Nåværende tegn",
+	"oathauth-newtoken": "Nytt tegn",
+	"oathauth-disable": "Slå av tofaktor-autentisering",
+	"oathauth-login": "Logg inn med tofaktor-autentisering",
+	"oathauth-displayoathinfo": "alternativer for tofaktor-autentisering",
+	"grant-group-authentication": "Bruk OAuth for autentisering"
+}
