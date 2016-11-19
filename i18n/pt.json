@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"oathauth-token": "Chave",
@@ -13,7 +14,7 @@
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação de dois fatores",
 	"oathauth-auth-token-label": "Chave",
-	"oathauth-auth-ui": "Por favor, insira o código de verificação atribuído na sua aplicação móvel",
+	"oathauth-auth-ui": "Insira o código de verificação do seu dispositivo de autenticação",
 	"oathauth-throttled": "Muitas tentativas de verificação! Por favor, aguarde $1.",
 	"oathauth-login-failed": "A verificação falhou.",
 	"grant-group-authentication": "Executar ações de autenticação para si e para os outros",
