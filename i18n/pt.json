@@ -5,6 +5,7 @@
 			"Hamilton Abreu"
 		]
 	},
+	"oathauth-desc": "Fornece suporte à autenticação usando palavras-passe de uso único baseadas em códigos HMAC",
 	"oathauth-token": "Chave",
 	"oathauth-currenttoken": "Chave atual",
 	"oathauth-newtoken": "Nova chave",
