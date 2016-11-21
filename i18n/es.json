@@ -10,7 +10,7 @@
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
 	"specialpages-group-oath": "Autenticación de dos factores",
-	"oathauth-account": "Nombre de cuenta de dos factores:",
+	"oathauth-account": "Nombre de la cuenta:",
 	"oathauth-legend": "Verifica tus credenciales",
 	"oathauth-secret": "Clave secreta de dos factores:",
 	"oathauth-enable": "Activar la autenticación en dos pasos",
@@ -48,7 +48,8 @@
 	"oathauth-entertoken": "Escribe un código de tu aplicación móvil para verificar:",
 	"right-oathauth-enable": "Activar la autenticación en dos pasos",
 	"action-oathauth-enable": "activar la autenticación de dos pasos",
-	"oathauth-auth-ui": "Escribe el código de verificación de tu aplicación para móviles",
+	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",
 	"oathauth-login-failed": "Falló la verificación.",
-	"oathauth-describe-provider": "Autenticación de dos factores (OATH)."
+	"oathauth-describe-provider": "Autenticación de dos factores (OATH).",
+	"grant-group-authentication": "Usar OAuth para la autenticación"
 }
