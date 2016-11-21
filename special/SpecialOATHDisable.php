@@ -75,6 +75,8 @@ class SpecialOATHDisable extends FormSpecialPage {
 				'type' => 'text',
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
+				'required' => true,
+				'autofocus' => true,
 			],
 			'returnto' => [
 				'type' => 'hidden',
