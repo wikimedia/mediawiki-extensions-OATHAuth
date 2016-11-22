@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Avjoska",
-			"Cumbril"
+			"Cumbril",
+			"Pikne"
 		]
 	},
 	"oathauth-account": "Konto nimi:",
 	"oathauth-secret": "Kaheastmelise autentimise salavõti:",
 	"oathauth-enable": "Luba kaheastmeline autentimine",
+	"oathauth-scratchtokens": "All on ühekordsete koodide nimekiri. Igat koodi saab kasutada vaid ühel korral, koodid on mõeldud hädaolukorra jaoks. Kirjuta koodid üles ja pane turvalisse kohta hoiule. Kui peaksid telefoni kaotama, on need koodid ainus võimalus oma kontot päästa. Allolevaid koode rohkem ei kuvata.",
 	"oathauth-notloggedin": "Vajalik on sisselogimine",
 	"oathauth-prefs-label": "Kaheastmeline autentimine:",
 	"oathauth-step1": "Samm 1: laadi alla rakendus",
@@ -18,5 +20,5 @@
 	"oathauth-step4": "Samm 4: kinnitamine",
 	"oathauth-entertoken": "Kinnitamiseks sisesta mobiilirakendusest pärit kood:",
 	"right-oathauth-enable": "Lubada kaheastmelist autentimist",
-	"action-oathauth-enable": "luba kaheastmeline autentimine"
+	"action-oathauth-enable": "kaheastmelist autentimist lubada"
 }
