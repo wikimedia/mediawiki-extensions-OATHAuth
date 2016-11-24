@@ -3,7 +3,7 @@
 /**
  * Class representing a two-factor key
  *
- * Keys can be tied to OAUTHUsers
+ * Keys can be tied to OATHUsers
  *
  * @ingroup Extensions
  */
