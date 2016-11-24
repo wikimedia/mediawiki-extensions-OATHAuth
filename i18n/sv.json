@@ -7,7 +7,7 @@
 	},
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
 	"specialpages-group-oath": "Tvåstegsverifiering",
-	"oathauth-account": "Tvåstegs-kontonamn:",
+	"oathauth-account": "Kontonamn:",
 	"oathauth-legend": "Verifiera dina inloggningsuppgifter",
 	"oathauth-secret": "Tvåstegs-hemlig nyckel:",
 	"oathauth-enable": "Aktivera tvåstegsverifiering",

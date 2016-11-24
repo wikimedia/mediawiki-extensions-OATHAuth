@@ -5,7 +5,8 @@
 			"아라",
 			"Ykhwong",
 			"Jonghaya",
-			"Revi"
+			"Revi",
+			"Tursetic"
 		]
 	},
 	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",
@@ -23,6 +24,7 @@
 	"oathauth-currenttoken": "현재 토큰",
 	"oathauth-newtoken": "새 토큰",
 	"oathauth-disable": "2요소 인증 비활성화",
+	"oathauth-login": "2요소 인증을 이용해 로그인",
 	"oathauth-displayoathinfo": "2요소 인증 선택",
 	"oathauth-validatedoath": "2요소 자격 정보를 검증했습니다. 2요소 인증을 실행합니다.",
 	"oathauth-backtopreferences": "사용자 환경 설정으로 돌아갑니다.",
@@ -44,6 +46,8 @@
 	"oathauth-step3": "3단계: 스크래치 코드를 기록하세요",
 	"oathauth-step4": "4단계: 확인",
 	"oathauth-entertoken": "확인을 위해 모바일 앱에서 코드를 입력하세요:",
+	"right-oathauth-enable": "2요소 인증 활성화",
+	"action-oathauth-enable": "2요소 인증 활성화",
 	"oathauth-auth-token-label": "토큰",
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-ui": "인증 장치의 인증 코드를 넣어주세요",
