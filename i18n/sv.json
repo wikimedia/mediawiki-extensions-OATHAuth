@@ -39,7 +39,7 @@
 	"oathauth-step2": "Steg 2: Skanna QR-koden",
 	"oathauth-step4": "Steg 4: Verifiering",
 	"oathauth-auth-token-label": "Nyckel",
-	"oathauth-auth-ui": "Ange verifieringskoden från din mobilapp",
+	"oathauth-auth-ui": "Ange verifieringskoden från din autentiseringsenhet",
 	"oathauth-login-failed": "Verifiering misslyckades.",
 	"grant-group-authentication": "Använd OAuth för autentisering",
 	"apihelp-query+oath-example-1": "Skaffa information om den aktuella användaren.",
