@@ -38,6 +38,7 @@ class UpdateScratchTokenFormat extends Maintenance {
 	function __construct() {
 		parent::__construct();
 		$this->mDescription = 'Script to update scratch_token column format';
+		$this->requireExtension( 'OATHAuth' );
 	}
 
 	public function execute() {
