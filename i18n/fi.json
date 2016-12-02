@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mikahama",
-			"Stryn"
+			"Stryn",
+			"Pxos"
 		]
 	},
 	"specialpages-group-oath": "Kaksivaiheinen tunnistautuminen",
@@ -16,7 +17,7 @@
 	"oathauth-step2": "Vaihe 2: Skannaa QR-koodi",
 	"oathauth-step2alt": "Tai syötä salainen tunnus käsin:",
 	"oathauth-step4": "Vaihe 4: Vahvistus",
-	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen vahvistus",
-	"action-oathauth-enable": "ota käyttöön kaksivaiheinen vahvistus",
+	"right-oathauth-enable": "Ottaa käyttöön kaksivaiheinen tunnistautuminen",
+	"action-oathauth-enable": "ottaa käyttöön kaksivaiheista tunnistautumista",
 	"oathauth-auth-ui": "Syötä vahvistuskoodi mobiilisovelluksestasi"
 }
