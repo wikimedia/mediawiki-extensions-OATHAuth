@@ -15,7 +15,7 @@
 	"oathauth-step1": "Samm 1: laadi alla rakendus",
 	"oathauth-step1-test": "Laadi kaheastmelise autentimise mobiilirakendus (näiteks Google Authenticator) oma telefoni.",
 	"oathauth-step2": "Samm 2: skaneeri QR-kood",
-	"oathauth-step2alt": "Või sisesta salavõti käsitsi.",
+	"oathauth-step2alt": "Või sisesta salavõti käsitsi:",
 	"oathauth-step3": "Samm 3: kirjuta üles ühekordsed koodid",
 	"oathauth-step4": "Samm 4: kinnitamine",
 	"oathauth-entertoken": "Kinnitamiseks sisesta mobiilirakendusest pärit kood:",
