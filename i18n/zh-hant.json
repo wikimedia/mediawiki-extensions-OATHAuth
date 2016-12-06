@@ -26,7 +26,7 @@
 	"oathauth-disable": "停用雙重認証",
 	"oathauth-login": "透過雙重認證登入",
 	"oathauth-displayoathinfo": "雙重認証選項",
-	"oathauth-validatedoath": "已驗証雙認証憑證。雙重認証現在已強制執行。",
+	"oathauth-validatedoath": "已驗証您的代碼並啟動雙重認証。",
 	"oathauth-backtopreferences": "返回偏好設定。",
 	"oathauth-failedtovalidateoauth": "驗証雙重認証失敗。",
 	"oathauth-reattemptreset": "重試重設雙重認証。",
@@ -51,9 +51,11 @@
 	"action-oathauth-enable": "啟用雙重認証",
 	"oathauth-auth-token-label": "金鑰",
 	"oathauth-auth-token-help": "用作雙重認證的一次性密碼",
-	"oathauth-auth-ui": "請輸入您的行動裝置上顯示的驗證碼",
+	"oathauth-auth-ui": "請輸入您行動裝置上顯示的驗證碼",
 	"oathauth-throttled": "驗證次數過多，請稍等 $1。",
 	"oathauth-login-failed": "驗證失敗",
 	"oathauth-describe-provider": "雙重認證(OATH)",
-	"grant-group-authentication": "為自己及其他人進行身份認證動作"
+	"grant-group-authentication": "為自己及其他人進行身份認證動作",
+	"apihelp-oathvalidate-description": "驗證雙重認証金鑰",
+	"apihelp-oathvalidate-param-totp": "雙重認証金鑰"
 }
