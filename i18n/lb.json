@@ -18,10 +18,11 @@
 	"oathauth-notloggedin": "Dir musst ageloggt sinn",
 	"oathauth-mustbeloggedin": "Dir musst ageloggt si fir dës Aktioun maachen ze kënnen.",
 	"oathauth-prefs-label": "Authentifikatioun mat zwee Elementer:",
-	"oathauth-step1": "Schrëtt 1: D'App eroflueden",
+	"oathauth-step1": "Schrëtt 1: Den Zwee-Facteur-Authentifikatiounsprogramm eroflueden",
 	"oathauth-step2": "Schrëtt 2: De QR-Code scannen",
 	"oathauth-step4": "Schrëtt 4: Verificatioun",
 	"grant-group-authentication": "Authentifikatiouns-Aktioune fir sech selwer a fir Anerer maachen",
+	"action-oathauth-api-all": "OATH-Status nokucken",
 	"apihelp-query+oath-param-user": "Benotzer vun deem d'Informatioun gefrot gëtt. Standard ass et den aktuelle Benotzer.",
 	"apihelp-query+oath-example-1": "Informatiounen iwwer den aktuelle Benotzer kréien",
 	"apihelp-query+oath-example-2": "Informatiounen iwwer de Benotzer <kbd>Beispill</kbd> kréien"
