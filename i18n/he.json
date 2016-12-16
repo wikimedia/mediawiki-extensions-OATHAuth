@@ -56,6 +56,7 @@
 	"grant-group-authentication": "ביצוע פעולות זיהוי עבור עצמך ועבור אחרים",
 	"grant-oath": "גישה למידע של אימות דו־שלבי (OATH) על עצמך ועל אחרים",
 	"right-oathauth-api-all": "שליחת שאילתה לקבלת מידע על OATH ובדיקת תקינותו עבור עצמך ועבור אחרים",
+	"action-oathauth-api-all": "בדיקת מצב OATH",
 	"apihelp-query+oath-description": "בדיקה האם האימות הדו־שלבי (OATH) מופעל עבור המשתמש הזה.",
 	"apihelp-query+oath-param-user": "על איזה משתמש לקבל מידע. בררת המחדל היא המשתמש הנוכחי.",
 	"apihelp-query+oath-example-1": "קבלת מידע על המשתמש הנוכחי",

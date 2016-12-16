@@ -3,7 +3,8 @@
 		"authors": [
 			"Mikahama",
 			"Stryn",
-			"Pxos"
+			"Pxos",
+			"Nike"
 		]
 	},
 	"specialpages-group-oath": "Kaksivaiheinen tunnistautuminen",
@@ -19,5 +20,6 @@
 	"oathauth-step4": "Vaihe 4: Vahvistus",
 	"right-oathauth-enable": "Ottaa käyttöön kaksivaiheinen tunnistautuminen",
 	"action-oathauth-enable": "ottaa käyttöön kaksivaiheista tunnistautumista",
-	"oathauth-auth-ui": "Syötä vahvistuskoodi mobiilisovelluksestasi"
+	"oathauth-auth-ui": "Syötä vahvistuskoodi mobiilisovelluksestasi",
+	"action-oathauth-api-all": "tarkistaa OATH-tilaa"
 }
