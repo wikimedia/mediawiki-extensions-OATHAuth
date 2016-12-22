@@ -15,5 +15,6 @@
 	"oathauth-prefs-label": "توثيق ذو عاملين:",
 	"oathauth-step1": "الخطوة 1: نزل التطبيق",
 	"oathauth-auth-token-label": "الرمز",
-	"oathauth-auth-ui": "رجاءاً أدخل رمز التحقق من جهاز المصادقة الخاص بك."
+	"oathauth-auth-ui": "رجاءاً أدخل رمز التحقق من جهاز المصادقة الخاص بك.",
+	"oathauth-login-failed": "فشل التحقق."
 }

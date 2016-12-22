@@ -51,5 +51,6 @@
 	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",
 	"oathauth-login-failed": "Falló la verificación.",
 	"oathauth-describe-provider": "Autenticación de dos factores (OATH).",
-	"grant-group-authentication": "Usar OAuth para la autenticación"
+	"grant-group-authentication": "Usar OAuth para la autenticación",
+	"action-oathauth-api-all": "verificar el estado de OATH"
 }
