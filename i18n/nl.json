@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Romaine"
 		]
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
@@ -13,7 +14,7 @@
 	"oathauth-failedtoenableoauth": "Het inschakelen van tweetrapsauthenticatie is mislukt.",
 	"oathauth-alreadyenabled": "Tweetrapsauthenticatie is al ingeschakeld.",
 	"oathauth-verify": "Tweetrapsauthenticatietoken controleren",
-	"oathauth-scratchtokens": "De onderstaande lijst bevat tokens voor eenmalig gebruik. Deze tokens kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen. Noteer deze tokens en bewaar ze op een veilige plaats. Als u uw telefoon bent verloren, zijn deze tokens de enige manier om uw gebruiker te redden. Deze tokens worden nooit meer weergegeven.",
+	"oathauth-scratchtokens": "De onderstaande lijst bevat tokens voor eenmalig gebruik. Deze tokens kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen. Noteer deze tokens en bewaar ze op een veilige plaats. Als u uw telefoon bent verloren, zijn deze tokens de enige manier om uw gebruikersaccount te redden. Deze tokens worden nooit meer weergegeven.",
 	"oathauth-reset": "Twee-factorgegevens opnieuw instellen",
 	"oathauth-donotdeleteoldsecret": "Verwijder uw oude gegevens niet totdat u bent gevalideerd met uw nieuwe gegevens.",
 	"oathauth-token": "Token",
