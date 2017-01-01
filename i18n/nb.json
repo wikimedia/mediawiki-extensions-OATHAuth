@@ -22,6 +22,7 @@
 	"oathauth-disable": "Slå av tofaktor-autentisering",
 	"oathauth-login": "Logg inn med tofaktor-autentisering",
 	"oathauth-displayoathinfo": "alternativer for tofaktor-autentisering",
+	"right-oathauth-enable": "Slå på tofaktor-autentisering",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-login-failed": "Verifikasjonen feilet",
 	"oathauth-describe-provider": "Tofaktor-autentisering (OATH).",
