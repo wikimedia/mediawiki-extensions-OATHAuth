@@ -93,9 +93,9 @@ class ApiOATHValidate extends ApiBase {
 	protected function getExamplesMessages() {
 		return [
 			'action=oathvalidate&totp=123456&token=123ABC'
-				=> 'apihelp-oath-example-1',
+				=> 'apihelp-oathvalidate-example-1',
 			'action=oathvalidate&user=Example&totp=123456&token=123ABC'
-				=> 'apihelp-oath-example-2',
+				=> 'apihelp-oathvalidate-example-2',
 		];
 	}
 }
