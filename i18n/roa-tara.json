@@ -10,5 +10,6 @@
 	"oathauth-token": "Gettone",
 	"oathauth-currenttoken": "Gettone de mò",
 	"oathauth-newtoken": "Gettone nuève",
-	"oathauth-disable": "Disabbilite l'Autendicazione a Doje Fattore"
+	"oathauth-disable": "Disabbilite l'Autendicazione a Doje Fattore",
+	"apihelp-oathvalidate-example-2": "Valide 'nu gettone pe l'utende <kbd>Esembie</kbd>"
 }

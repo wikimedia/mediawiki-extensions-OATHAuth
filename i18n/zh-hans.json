@@ -65,6 +65,6 @@
 	"apihelp-oathvalidate-description": "验证一个双因素验证（OATH）令牌。",
 	"apihelp-oathvalidate-param-user": "要验证令牌的用户。默认为当前用户。",
 	"apihelp-oathvalidate-param-totp": "双因素验证（OATH）令牌。",
-	"apihelp-oath-example-1": "验证当前用户的令牌",
-	"apihelp-oath-example-2": "验证用户<kbd>Example</kbd>的令牌"
+	"apihelp-oathvalidate-example-1": "验证当前用户的令牌",
+	"apihelp-oathvalidate-example-2": "验证用户<kbd>Example</kbd>的令牌"
 }

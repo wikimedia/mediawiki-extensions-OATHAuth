@@ -5,7 +5,8 @@
 			"Fitoschido",
 			"McDutchie",
 			"Matiia",
-			"Macofe"
+			"Macofe",
+			"Dgstranz"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
@@ -17,7 +18,7 @@
 	"oathauth-failedtoenableoauth": "Error al habilitar la autenticación de dos factores.",
 	"oathauth-alreadyenabled": "Ya está habilitada la autenticación de dos factores.",
 	"oathauth-verify": "Verificar clave de autenticación en dos pasos",
-	"oathauth-scratchtokens": "La lista siguiente es una lista de claves de un solo uso. Estas claves sólo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y manténlas en un lugar seguro. Si pierdes tu teléfono, estas claves son la única manera de rescatar tu cuenta. Estas claves nunca se mostrarán una segunda vez.",
+	"oathauth-scratchtokens": "La lista siguiente es una lista de claves de un solo uso. Estas claves solo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y mantenlas en un lugar seguro. Si pierdes el teléfono, estas claves son la única manera de recuperar tu cuenta. Estas claves nunca se mostrarán una segunda vez.",
 	"oathauth-reset": "Restablecer credenciales de dos factores",
 	"oathauth-donotdeleteoldsecret": "No elimines las viejas credenciales hasta haber validado tus nuevas credenciales.",
 	"oathauth-token": "Clave",
@@ -40,12 +41,12 @@
 	"oathauth-prefs-label": "Autenticación en dos etapas:",
 	"oathauth-abortlogin": "La ficha de autenticación proporcionada no es válida.",
 	"oathauth-step1": "Paso 1: descarga un programa de autenticación en dos pasos",
-	"oathauth-step1-test": "Descarga una aplicación móvil para la autenticación de dos pasos (como Google Authenticator) en tu teléfono.",
+	"oathauth-step1-test": "Descarga un programa para la autentificación de dos pasos. Puede tratarse de una aplicación móvil (como Google Authenticator) o bien de una aplicación de escritorio",
 	"oathauth-step2": "Paso 2: escanea el código QR",
 	"oathauth-step2alt": "O escribe el secreto manualmente:",
 	"oathauth-step3": "Paso 3: escribe los códigos",
 	"oathauth-step4": "Paso 4: verificación",
-	"oathauth-entertoken": "Escribe un código de tu aplicación móvil para verificar:",
+	"oathauth-entertoken": "Escribe un código de tu dispositivo de autentificación para verificar:",
 	"right-oathauth-enable": "Activar la autenticación en dos pasos",
 	"action-oathauth-enable": "activar la autenticación de dos pasos",
 	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",

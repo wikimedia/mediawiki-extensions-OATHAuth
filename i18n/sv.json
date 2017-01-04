@@ -44,5 +44,7 @@
 	"grant-group-authentication": "Använd OAuth för autentisering",
 	"action-oathauth-api-all": "kolla OATH-status",
 	"apihelp-query+oath-example-1": "Skaffa information om den aktuella användaren.",
-	"apihelp-query+oath-example-2": "Hämta information om användaren <kbd>Example</kbd>"
+	"apihelp-query+oath-example-2": "Hämta information om användaren <kbd>Example</kbd>",
+	"apihelp-oathvalidate-example-1": "Bekräfta en nyckel för aktuell användare",
+	"apihelp-oathvalidate-example-2": "Bekräfta en nyckel för användaren <kbd>Example</kbd>"
 }
