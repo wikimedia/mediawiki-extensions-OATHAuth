@@ -55,5 +55,6 @@
 	"oathauth-login-failed": "인증 검토 실패.",
 	"oathauth-describe-provider": "2단계 인증(OATH)",
 	"grant-group-authentication": "인증을 위해 OAuth 사용",
-	"action-oathauth-api-all": "OATH 상태 학인"
+	"action-oathauth-api-all": "OATH 상태 학인",
+	"apihelp-oathvalidate-example-1": "현재 사용자의 토큰 인증"
 }
