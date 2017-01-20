@@ -52,6 +52,12 @@
 	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",
 	"oathauth-login-failed": "Falló la verificación.",
 	"oathauth-describe-provider": "Autenticación de dos factores (OATH).",
-	"grant-group-authentication": "Usar OAuth para la autenticación",
-	"action-oathauth-api-all": "verificar el estado de OATH"
+	"grant-group-authentication": "Realizar acciones de autentificación para uno mismo y para otros",
+	"grant-oath": "Acceder a la autentificación de dos factores (OATH) para uno mismo y para otros",
+	"right-oathauth-api-all": "Consultar y validar la inofrmación OATH para uno mismo y para otros",
+	"action-oathauth-api-all": "verificar el estado de OATH",
+	"apihelp-query+oath-description": "Comprobar si la autentificación de dos factores (OATH) está habilitada para un usuario.",
+	"apihelp-query+oath-param-user": "Usuario del que obtener información. Por defecto, se trata del usuario actual.",
+	"apihelp-query+oath-example-1": "Obtener información sobre el usuario actual",
+	"apihelp-query+oath-example-2": "Obtener información sobre el usuario <kbd>Example</kbd>"
 }
