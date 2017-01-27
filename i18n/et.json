@@ -20,5 +20,7 @@
 	"oathauth-step4": "Samm 4: kinnitamine",
 	"oathauth-entertoken": "Kinnitamiseks sisesta autentimisseadmest pärit kood:",
 	"right-oathauth-enable": "Lubada kaheastmelist autentimist",
-	"action-oathauth-enable": "kaheastmelist autentimist lubada"
+	"action-oathauth-enable": "kaheastmelist autentimist lubada",
+	"grant-oath": "Juurdepääs enda ja teiste kaheastmelise autentimise (OATH) andmetele",
+	"right-oathauth-api-all": "Pärida ja valideerida enda ja teiste OATH-i teavet"
 }
