@@ -19,7 +19,7 @@
 	"oathauth-verify": "驗證雙重認証密鑰",
 	"oathauth-scratchtokens": "以下是一次性使用的備用密碼，這些密碼於緊急情況使用，且只能使用一次。請寫下這些密碼，並存放在安全的地方。如果您遺失了您的行動電話，這些密碼可以回復您的帳號。\n這些密碼只會於現在顯示一次，之後將不會再次顯示。",
 	"oathauth-reset": "重設雙重認証憑證",
-	"oathauth-donotdeleteoldsecret": "在成功取得新憑證之前，請勿刪除您的舊憑證。",
+	"oathauth-donotdeleteoldsecret": "在成功取得新認證之前，請勿刪除您的舊認證。",
 	"oathauth-token": "金鑰",
 	"oathauth-currenttoken": "目前金鑰",
 	"oathauth-newtoken": "新金鑰",
