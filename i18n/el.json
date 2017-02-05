@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"Protnet"
 		]
 	},
 	"oathauth-account": "Όνομα λογαριασμού δύο παραγόντων:",
@@ -12,5 +13,6 @@
 	"oathauth-newtoken": "Νέο διακριτικό",
 	"oathauth-disable": "Απενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων",
 	"oathauth-displayoathinfo": "επιλογές ελέγχου ταυτότητας δύο παραγόντων",
-	"oathauth-failedtoresetoath": "Απέτυχε η επαναφορά διαπιστευτηρίων δύο παραγόντων."
+	"oathauth-failedtoresetoath": "Απέτυχε η επαναφορά διαπιστευτηρίων δύο παραγόντων.",
+	"grant-oath": "Πρόσβαση σε πληροφορίες ταυτοποίησης δύο παραγόντων (OATH) για εαυτόν και άλλους"
 }
