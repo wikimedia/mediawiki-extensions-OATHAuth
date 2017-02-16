@@ -40,6 +40,7 @@
 	"oathauth-mustbeloggedin": "Debes haber iniciado sesión para realizar esta acción.",
 	"oathauth-prefs-label": "Autenticación en dos etapas:",
 	"oathauth-abortlogin": "La ficha de autenticación proporcionada no es válida.",
+	"oathauth-abortlogin-throttled": "¡Demasiados intentos de verificación! Por favor, inténtalo de nuevo más tarde.",
 	"oathauth-step1": "Paso 1: descarga un programa de autenticación en dos pasos",
 	"oathauth-step1-test": "Descarga un programa para la autentificación de dos pasos. Puede tratarse de una aplicación móvil (como Google Authenticator) o bien de una aplicación de escritorio",
 	"oathauth-step2": "Paso 2: escanea el código QR",
