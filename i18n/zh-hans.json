@@ -19,7 +19,7 @@
 	"oathauth-scratchtokens": "下面的列表是一次性使用的即时令牌列表。这些令牌只能使用一次，并应用于紧急用途。请将它们记下来，并保存在一个安全的位置。如果您遗失了手机，唯一能够找回您账户的方法就是这些令牌。这些令牌不会再显示。",
 	"oathauth-reset": "重置双因素凭据",
 	"oathauth-donotdeleteoldsecret": "请在您验证您的新凭据之前不要删除老的凭据。",
-	"oathauth-token": "密钥",
+	"oathauth-token": "令牌",
 	"oathauth-currenttoken": "当前令牌",
 	"oathauth-newtoken": "新的令牌",
 	"oathauth-disable": "禁用双因素验证",
