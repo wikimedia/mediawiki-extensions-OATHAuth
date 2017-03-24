@@ -39,7 +39,7 @@
 	"oathauth-abortlogin": "O pase de autenticación de dous factores achegado non era válido.",
 	"oathauth-abortlogin-throttled": "Demasiados intentos de verificaciónǃ Por favor, inténteo de novo máis tarde.",
 	"oathauth-step1": "Paso 1: descargue a un programa de autenticación en dous pasos",
-	"oathauth-step1-test": "Descargue unha aplicación móbil para a autenticación de duos pasos (como Google Authenticator) no seu teléfono.",
+	"oathauth-step1-test": "Descargue un programa para a autentificación en dous pasos. Pode tratarse dunha aplicación móbil (como Google Authenticator) ou ben dunha aplicación de escritorio",
 	"oathauth-step2": "Paso 2: escanee o código QR",
 	"oathauth-step2alt": "Ou escriba o código secreto manualmente:",
 	"oathauth-step3": "Paso 3: escriba os códigos",
