@@ -3,7 +3,8 @@
 		"authors": [
 			"SPQRobin",
 			"Siebrand",
-			"Romaine"
+			"Romaine",
+			"Sjoerddebruin"
 		]
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
@@ -35,5 +36,8 @@
 	"oathauth-mustbeloggedin": "U moet aangemeld zijn om deze handeling uit te voeren.",
 	"oathauth-prefs-label": "Tweetrapsauthenticatie:",
 	"oathauth-abortlogin": "Het opgegeven token voor twee-factorauthenticatie is ongeldig.",
+	"oathauth-entertoken": "Vul een code van uw  authenticatie-apparaat in om te bevestigen:",
+	"oathauth-auth-token-label": "Verificatiecode",
+	"oathauth-auth-ui": "Gelieve een verificatiecode van uw authenticatie-apparaat invullen",
 	"grant-group-authentication": "OAuth gebruiken voor authenticatie"
 }
