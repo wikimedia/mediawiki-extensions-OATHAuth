@@ -1,9 +1,9 @@
 .client-nojs .mw-display-qrcode {
-    display: none;
+	display: none;
 }
 
 kbd {
-    font-family: monospace, monospace;
-    white-space: nowrap;
-    font-size: larger;
+	font-family: monospace, monospace;
+	white-space: nowrap;
+	font-size: larger;
 }
