@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Xelgen"
 		]
 	},
 	"oathauth-account": "Հաշվի անունը",
-	"oathauth-auth-ui": "Խնդրում ենք մուտքագրել հաստատման կոդը  ձեր իսկության սարքից"
+	"oathauth-auth-ui": "Խնդրում ենք մուտքագրել  հաստատման կոդը ձեր նույնականացման սարքից"
 }

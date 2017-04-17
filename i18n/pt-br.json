@@ -3,12 +3,13 @@
 		"authors": [
 			"Araceletorres",
 			"Luk3",
-			"Tark"
+			"Tark",
+			"Felipe L. Ewald"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
 	"specialpages-group-oath": "Autenticação de dois fatores",
-	"oathauth-account": "Nome da conta de dois fatores:",
+	"oathauth-account": "Nome da conta:",
 	"oathauth-legend": "Verifique suas credenciais",
 	"oathauth-secret": "Chave secreta de dois fatores:",
 	"oathauth-enable": "Ativar autenticação de dois fatores",
@@ -29,13 +30,15 @@
 	"oathauth-notloggedin": "Login necessário",
 	"oathauth-mustbeloggedin": "Você deve estar logado para realizar esta ação.",
 	"oathauth-prefs-label": "Autenticação de dois fatores:",
-	"oathauth-step1": "Passo 1: Baixe o aplicativo",
-	"oathauth-step1-test": "Baixe o aplicativo móvel para a autenticação de dois fatores (como o Google Authenticator) no seu telefone.",
+	"oathauth-step1": "Passo 1: Baixe um programa de autenticação de dois fatores",
+	"oathauth-step1-test": "Baixe um programa para a autenticação de dois fatores. Pode ser um aplicativo para celular (como o Google Authenticator) ou para desktop.",
 	"oathauth-step2": "Passo 2: Escaneie o código QR",
 	"oathauth-step2alt": "Ou introduza o segredo manualmente:",
 	"oathauth-step3": "Passo 3: Anote os códigos scratch",
 	"oathauth-step4": "Passo 4: Verificação",
-	"oathauth-entertoken": "Introduza o código do seu aplicativo móvel para verificar:",
+	"oathauth-entertoken": "Digite um código do  seu dispositivo de autenticação para verificação:",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
-	"action-oathauth-enable": "ativar autenticação em duas etapas"
+	"action-oathauth-enable": "ativar autenticação em duas etapas",
+	"oathauth-auth-token-label": "Token",
+	"grant-group-authentication": "Usar OAuth para Autenticação"
 }
