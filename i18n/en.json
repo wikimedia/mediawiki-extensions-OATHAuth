@@ -16,7 +16,7 @@
 	"oathauth-disable": "Disable two-factor authentication",
 	"oathauth-displayoathinfo": "two-factor authentication options",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",
-	"oathauth-failedtovalidateoauth": "Failed to validate two-factor credentials",
+	"oathauth-failedtovalidateoath": "Failed to validate two-factor credentials",
 	"oathauth-disabledoath": "Disabled two-factor authentication.",
 	"oathauth-prefs-label": "Two-factor authentication:",
 	"oathauth-step1": "Step 1: Download a two-factor authentication program",

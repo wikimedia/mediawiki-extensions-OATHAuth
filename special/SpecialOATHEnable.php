@@ -158,7 +158,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$key = $this->getRequest()->getSessionData( 'oathauth_key' );
 
 		if ( !$key->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			return [ 'oathauth-failedtovalidateoauth' ];
+			return [ 'oathauth-failedtovalidateoath' ];
 		}
 
 		$this->getRequest()->setSessionData( 'oathauth_key', null );
