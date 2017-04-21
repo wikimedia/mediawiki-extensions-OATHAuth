@@ -22,7 +22,6 @@
 	"oathauth-currenttoken": "Current token",
 	"oathauth-newtoken": "New token",
 	"oathauth-disable": "Disable two-factor authentication",
-	"oathauth-displayoathinfo": "two-factor authentication options",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",
 	"oathauth-backtopreferences": "Back to preferences.",
 	"oathauth-failedtovalidateoauth": "Failed to validate two-factor credentials",
