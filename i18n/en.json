@@ -14,7 +14,6 @@
 	"oathauth-scratchtokens": "The following list is a list of one-time use scratch tokens. These tokens can only be used once, and are for emergency use. Please write these down and keep them in a secure location. If you lose your phone, these tokens are the only way to rescue your account. These tokens will never be shown again.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Disable two-factor authentication",
-	"oathauth-displayoathinfo": "two-factor authentication options",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",
 	"oathauth-failedtovalidateoauth": "Failed to validate two-factor credentials",
 	"oathauth-disabledoath": "Disabled two-factor authentication.",
