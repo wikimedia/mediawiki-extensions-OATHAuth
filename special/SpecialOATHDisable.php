@@ -104,7 +104,7 @@ class SpecialOATHDisable extends FormSpecialPage {
 		}
 
 		if ( !$this->OATHUser->getKey()->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			return [ 'oathauth-failedtovalidateoauth' ];
+			return [ 'oathauth-failedtovalidateoath' ];
 		}
 
 		$this->OATHUser->setKey( null );
