@@ -32,9 +32,6 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateScratchTokenFormat extends Maintenance {
-
-	private $mPurgeDays = null;
-
 	function __construct() {
 		parent::__construct();
 		$this->mDescription = 'Script to update scratch_token column format';
