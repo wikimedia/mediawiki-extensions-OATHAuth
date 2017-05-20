@@ -7,3 +7,7 @@ kbd {
 	white-space: nowrap;
 	font-size: larger;
 }
+
+fieldset {
+	page-break-inside: avoid;
+}
