@@ -15,7 +15,7 @@
 			"Urhixidur"
 		]
 	},
-	"oathauth-desc": "Fournit un support d'authentification utilisant HMAC, basé sur des mots de passe à utilisation unique.",
+	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
 	"specialpages-group-oath": "Authentification à deux facteurs",
 	"oathauth-account": "Nom du compte :",
 	"oathauth-secret": "Clé secrète d’authentification à deux facteurs :",
