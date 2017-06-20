@@ -38,4 +38,3 @@ class DisableOATHAuthForUser extends Maintenance {
 
 $maintClass = "DisableOATHAuthForUser";
 require_once RUN_MAINTENANCE_IF_MAIN;
-
