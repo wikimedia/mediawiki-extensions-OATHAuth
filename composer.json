@@ -5,7 +5,7 @@
 		"jakub-onderka/php-console-highlighter": "0.3.2"
 	},
 	"scripts": {
-		"lint": "parallel-lint --exclude vendor .",
+		"lint": "parallel-lint . --exclude vendor --exclude node_modules",
 		"phpcs": "phpcs -p -s",
 		"fix": "phpcbf",
 		"test": [
