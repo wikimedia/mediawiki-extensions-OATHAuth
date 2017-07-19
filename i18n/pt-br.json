@@ -8,6 +8,7 @@
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
+	"oath": "OATHAuth",
 	"specialpages-group-oath": "Autenticação de dois fatores",
 	"oathauth-account": "Nome da conta:",
 	"oathauth-secret": "Chave secreta de autenticação de dois fatores:",
@@ -23,7 +24,7 @@
 	"oathauth-step2alt": "Ou introduza o segredo manualmente:",
 	"oathauth-step3": "Passo 3: Anote os códigos scratch",
 	"oathauth-step4": "Passo 4: Verificação",
-	"oathauth-entertoken": "Digite um código do  seu dispositivo de autenticação para verificação:",
+	"oathauth-entertoken": "Digite um código do seu dispositivo de autenticação para verificação:",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação em duas etapas",
 	"oathauth-auth-token-label": "Token",

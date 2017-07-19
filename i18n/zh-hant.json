@@ -18,7 +18,7 @@
 	"oathauth-token": "金鑰",
 	"oathauth-disable": "停用雙重認證",
 	"oathauth-validatedoath": "已驗證您的代碼並啟動雙重認證。",
-	"oathauth-failedtovalidateoath": "驗証雙重認証失敗。",
+	"oathauth-failedtovalidateoath": "驗證雙重認證失敗。",
 	"oathauth-disabledoath": "已停用雙重認證。",
 	"oathauth-prefs-label": "雙重認證：",
 	"oathauth-step1": "第1步：下載應用程式",
