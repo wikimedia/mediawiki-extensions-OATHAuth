@@ -28,6 +28,8 @@
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação em duas etapas",
 	"oathauth-auth-token-label": "Token",
+	"oathauth-login-failed": "Verificação falhou.",
 	"grant-group-authentication": "Execute ações de autenticação para si e para os outros",
+	"action-oathauth-api-all": "verificar estado do OATH",
 	"apihelp-query+oath-param-user": "Usuário para o qual obter informações. Padrão para o usuário atual."
 }
