@@ -9,7 +9,7 @@
 			"A2093064"
 		]
 	},
-	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認証",
+	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
 	"specialpages-group-oath": "雙重認證",
 	"oathauth-account": "帳號名稱：",
 	"oathauth-secret": "雙重認證秘密金鑰：",
