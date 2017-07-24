@@ -28,8 +28,15 @@
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação em duas etapas",
 	"oathauth-auth-token-label": "Token",
+	"oathauth-throttled": "Muitas tentativas de verificação! Por favor, aguarde $1.",
 	"oathauth-login-failed": "Verificação falhou.",
 	"grant-group-authentication": "Execute ações de autenticação para si e para os outros",
 	"action-oathauth-api-all": "verificar estado do OATH",
-	"apihelp-query+oath-param-user": "Usuário para o qual obter informações. Padrão para o usuário atual."
+	"apihelp-query+oath-description": "Verifique se a autenticação de dois fatores (OATH) está habilitada para um usuário.",
+	"apihelp-query+oath-summary": "Verifique se a autenticação de dois fatores (OATH) está habilitada para um usuário.",
+	"apihelp-query+oath-param-user": "Usuário para o qual obter informações. Padrão para o usuário atual.",
+	"apihelp-query+oath-example-2": "Obter informações sobre o usuário <kbd>Exemplo</kbd>",
+	"apihelp-oathvalidate-description": "Valide um token de autenticação de dois fatos (OAUTH).",
+	"apihelp-oathvalidate-summary": "Valide um token de autenticação de dois fatos (OAUTH).",
+	"apihelp-oathvalidate-example-2": "Valide um token para o usuário <kbd>Exemplo</kbd>"
 }
