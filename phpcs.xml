@@ -11,8 +11,5 @@
 	<file>.</file>
 	<arg name="encoding" value="UTF-8" />
 	<arg name="extensions" value="php,php5,inc,sample" />
-	<exclude-pattern>vendor/</exclude-pattern>
-	<exclude-pattern>node_modules/</exclude-pattern>
-	<exclude-pattern>lib/</exclude-pattern>
-	<exclude-pattern>.git</exclude-pattern>
+	<exclude-pattern type="relative">^lib</exclude-pattern>
 </ruleset>
