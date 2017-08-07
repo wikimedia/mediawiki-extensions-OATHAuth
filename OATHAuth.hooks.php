@@ -22,7 +22,14 @@ class OATHAuthHooks {
 
 		if ( $service == null ) {
 			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-			$service = new OATHUserRepository( $factory->getMainLB( $wgOATHAuthDatabase ) );
+			$service = new OATHUserRepository(
+				$factory->getMainLB( $wgOATHAuthDatabase ),
+				new HashBagOStuff(
+					[
+						'maxKeys' => 5,
+					]
+				)
+			);
 		}
 
 		return $service;
