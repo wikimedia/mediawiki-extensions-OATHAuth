@@ -22,7 +22,7 @@ class OATHAuthUtils {
 	 * when storing the user's password in their session. We can use json as the
 	 * serialization format because $plaintextVars is an array of strings.
 	 * @param array $plaintextVars array of user input strings
-	 * @param int $userId, passed to key derivation functions so each user uses
+	 * @param int $userId passed to key derivation functions so each user uses
 	 *	distinct encryption and hmac keys
 	 * @return string encrypted data packet
 	 */
