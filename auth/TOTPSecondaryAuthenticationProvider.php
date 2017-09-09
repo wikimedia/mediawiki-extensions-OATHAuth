@@ -29,7 +29,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 
 	/**
 	 * If the user has enabled two-factor authentication, request a second factor.
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
@@ -44,7 +44,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 
 	/**
 	 * Verify the second factor.
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
 		/** @var TOTPAuthenticationRequest $request */

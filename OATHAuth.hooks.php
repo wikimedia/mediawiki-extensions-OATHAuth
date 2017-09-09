@@ -39,7 +39,7 @@ class OATHAuthHooks {
 	 * @param AuthenticationRequest[] $requests
 	 * @param array $fieldInfo Field information array (union of the
 	 *    AuthenticationRequest::getFieldInfo() responses).
-	 * @param array $formDescriptor HTMLForm descriptor. The special key 'weight' can be set
+	 * @param array &$formDescriptor HTMLForm descriptor. The special key 'weight' can be set
 	 *   to change the order of the fields.
 	 * @param string $action One of the AuthManager::ACTION_* constants.
 	 * @return bool
@@ -92,7 +92,7 @@ class OATHAuthHooks {
 	 * Add the necessary user preferences for OATHAuth
 	 *
 	 * @param User $user
-	 * @param array $preferences
+	 * @param array &$preferences
 	 * @return bool
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
