@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Auth\AuthenticationRequest;
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
 
 /**

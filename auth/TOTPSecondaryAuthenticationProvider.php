@@ -4,7 +4,6 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Session\SessionManager;
 
 /**
  * AuthManager secondary authentication provider for TOTP second-factor authentication.

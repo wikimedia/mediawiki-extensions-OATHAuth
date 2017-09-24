@@ -27,7 +27,7 @@ class OATHUserRepository {
 			$oathUser = new OATHUser( $user, null );
 
 			$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
-			$res = $this->getDB( DB_SLAVE )->selectRow(
+			$res = $this->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
 				'*',
 				[ 'id' => $uid ],
