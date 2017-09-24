@@ -3,13 +3,12 @@
 		"authors": [
 			"Firilacroco",
 			"Stelistcristi",
-			"Narlotep1"
+			"Narlotep1",
+			"Strainu"
 		]
 	},
 	"oathauth-account": "Numele contului:",
 	"oathauth-token": "Jeton",
-	"oathauth-currenttoken": "Jeton curent",
-	"oathauth-newtoken": "Jeton nou",
-	"oathauth-notloggedin": "Autentificare necesară",
+	"oathauth-step4": "Pasul 4: Verificare",
 	"oathauth-auth-ui": "Va rugam introduceti codul de autentificare de pe dispozitivul dumneavoastra"
 }
