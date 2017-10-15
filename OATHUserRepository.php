@@ -73,7 +73,7 @@ class OATHUserRepository {
 	}
 
 	/**
-	 * @param integer $index DB_MASTER/DB_SLAVE
+	 * @param integer $index DB_MASTER/DB_REPLICA
 	 * @return DBConnRef
 	 */
 	private function getDB( $index ) {
