@@ -184,7 +184,7 @@ class SpecialOATHEnable extends FormSpecialPage {
 	private function createResourceList( $resources ) {
 		$resourceList = '';
 		foreach ( $resources as $resource ) {
-			$resourceList .= Html::rawElement( 'li', [], HTML::rawElement( 'kbd', [], $resource ) );
+			$resourceList .= Html::rawElement( 'li', [], Html::rawElement( 'kbd', [], $resource ) );
 		}
 		return Html::rawElement( 'ul', [], $resourceList );
 	}
