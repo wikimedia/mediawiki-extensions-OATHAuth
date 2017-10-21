@@ -23,7 +23,7 @@ class OATHAuthUtils {
 	 * serialization format because $plaintextVars is an array of strings.
 	 * @param array $plaintextVars array of user input strings
 	 * @param int $userId passed to key derivation functions so each user uses
-	 *	distinct encryption and hmac keys
+	 * 	distinct encryption and hmac keys
 	 * @return string encrypted data packet
 	 */
 	public static function encryptSessionData( array $plaintextVars, $userId ) {
