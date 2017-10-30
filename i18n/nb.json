@@ -16,7 +16,7 @@
 	"oathauth-validatedoath": "Validerte tofaktor-attestering. Tofaktorautentisering vil nå bli iverksatt.",
 	"oathauth-noscratchforvalidation": "Du kan ikke bruke en engangskode for å bekrefte tofaktorautentisering. Engangskoder er kun til backup og nødsbruk. Bruk en bekreftelseskode fra kodegeneratoren din.",
 	"oathauth-failedtovalidateoath": "Kunne ikke validere tofaktorattestering",
-	"oathauth-disabledoath": "Slo av tofaktorautentisering.",
+	"oathauth-disabledoath": "Tofaktorautentisering er nå slått av.",
 	"oathauth-prefs-label": "Tofaktorautentisering:",
 	"oathauth-step1": "Steg 1: Last ned et program for tofaktor-autentisering",
 	"oathauth-step1-test": "Last ned et program for tofaktor-autentisering. Det kan være en mobilapp (som Google Authenticator) eller et dataprogram.",
