@@ -4,10 +4,5 @@
 			"Fohanno"
 		]
 	},
-	"oathauth-token": "Jedouer",
-	"oathauth-currenttoken": "Jedouer red",
-	"oathauth-newtoken": "Jedouer nevez",
-	"oathauth-backtopreferences": "Distreiñ d'ar penndibaboù.",
-	"oathauth-notloggedin": "Ret eo kevreañ",
-	"oathauth-mustbeloggedin": "Ret deoc'h bezañ kevreet evit kas da benn an oberiadenn-mañ."
+	"oathauth-token": "Jedouer"
 }

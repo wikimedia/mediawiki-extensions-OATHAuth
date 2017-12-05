@@ -4,8 +4,5 @@
 			"NehalDaveND"
 		]
 	},
-	"oathauth-token": "स्तोकम् (token)",
-	"oathauth-currenttoken": "वर्तमानस्तोकम्",
-	"oathauth-newtoken": "नवीनस्तोकम्",
-	"oathauth-notloggedin": "प्रवेशः अपेक्षितः"
+	"oathauth-token": "स्तोकम् (token)"
 }

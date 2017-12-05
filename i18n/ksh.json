@@ -10,21 +10,9 @@
 	"oathauth-account": "Der Nahme zom Enlogge för de Login-Pröhvong övver zwai Wähje:",
 	"oathauth-secret": "Der jeheime Schößel för de Login-Pröhvong övver zwai Wähje:",
 	"oathauth-enable": "Donn de Login-Pröhvong övver zwai Wähje enschallde",
-	"oathauth-failedtoenableoauth": "Kunnt de Login-Pröhvong övver zwai Wähje nit enschallde.",
-	"oathauth-alreadyenabled": "De Login-Pröhvong övver zwai Wähje es ald enjeschalldt.",
 	"oathauth-disable": "Donn de Login-Pröhvong övver zwai Wähje ußschallde",
-	"oathauth-displayoathinfo": "Enschtällonge för de Login-Pröhvong övver zwai Wähje",
 	"oathauth-validatedoath": "De Aanjahbe för de Login-Pröhvong övver zwai Wähje sin joht, de Login-Pröhvong övver zwai Wähje wehd jäz ",
-	"oathauth-backtopreferences": "Jangk retuhr noh de Enschtällonge.",
-	"oathauth-failedtovalidateoauth": "De Aanjahbe för de Login-Pröhvong övver zwai Wähje wohre nit joht.",
-	"oathauth-reattemptreset": "Mer versöhke norr_ens, de Aanjahbe för de Login-Pröhvong övver zwai Wähje neu ze maache.",
-	"oathauth-reattemptenable": "Mer versöhke norr_ens, de Login-Pröhvong övver zwai Wähje neu aanzeschallde.",
+	"oathauth-failedtovalidateoath": "De Aanjahbe för de Login-Pröhvong övver zwai Wähje wohre nit joht.",
 	"oathauth-disabledoath": "Mer han de Login-Pröhvong övver zwai Wähje ußjeschalldt.",
-	"oathauth-failedtodisableoauth": "Mer kunnte de Login-Pröhvong övver zwai Wähje nidd ußschallde.",
-	"oathauth-reattemptdisable": "Mer versöhke norr_ens, de Login-Pröhvong övver zwai Wähje ußzeschallde.",
-	"oathauth-failedtoresetoath": "Mer kunnte de Aanjahbe för de Login-Pröhvong övver zwai Wähje nit neu maache.",
-	"oathauth-notloggedin": "Enlogge es nüdich",
-	"oathauth-mustbeloggedin": "Do moß ald enjelogg sin, öm dat maache ze dörve.",
-	"oathauth-prefs-label": "Login-Pröhvong övver zwai Wähje:",
-	"oathauth-abortlogin": "Ein Aanjahb  för de Login-Pröhvong övver zwai Wähje wohr nit rääsch."
+	"oathauth-prefs-label": "Login-Pröhvong övver zwai Wähje:"
 }
