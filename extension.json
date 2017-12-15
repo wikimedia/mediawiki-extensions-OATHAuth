@@ -12,7 +12,7 @@
 	"AutoloadClasses": {
 		"ApiOATHValidate": "api/ApiOATHValidate.php",
 		"ApiQueryOATH": "api/ApiQueryOATH.php",
-		"OATHAuthHooks": "OATHAuth.hooks.php",
+		"OATHAuthHooks": "OATHAuthHooks.php",
 		"OATHAuthKey": "OATHAuthKey.php",
 		"OATHAuthUtils": "OATHAuthUtils.php",
 		"OATHUserRepository": "OATHUserRepository.php",
