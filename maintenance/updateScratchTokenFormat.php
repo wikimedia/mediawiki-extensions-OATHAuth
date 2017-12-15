@@ -2,7 +2,7 @@
 /**
  * Update scratch_token column format
  *
- * Usage: php update_scratch_token_format.php
+ * Usage: php updateScratchTokenFormat.php
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
