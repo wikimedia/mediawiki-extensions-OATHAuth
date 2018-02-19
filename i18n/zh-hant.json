@@ -6,7 +6,8 @@
 			"LNDDYL",
 			"Alexsh",
 			"Waihorace",
-			"A2093064"
+			"A2093064",
+			"Hello903hello"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
@@ -21,13 +22,13 @@
 	"oathauth-failedtovalidateoath": "驗證雙重認證失敗。",
 	"oathauth-disabledoath": "已停用雙重認證。",
 	"oathauth-prefs-label": "雙重認證：",
-	"oathauth-step1": "第1步：下載應用程式",
-	"oathauth-step1-test": "在你的行動電話下載雙重認證應用程式（例如Google Authenticator）",
+	"oathauth-step1": "第1步：下載雙重認證應用程式",
+	"oathauth-step1-test": "下載雙重認證的應用程式。這可以是一個流動應用程式（例如Google Authenticator）或一個桌面應用程式",
 	"oathauth-step2": "掃描QR碼",
 	"oathauth-step2alt": "或手動輸入密鑰：",
 	"oathauth-step3": "記下備用碼",
 	"oathauth-step4": "驗證",
-	"oathauth-entertoken": "輸入顯示於您行動電話上應用程式的代碼：",
+	"oathauth-entertoken": "輸入顯示於您認證設備上應用程式的代碼：",
 	"right-oathauth-enable": "啟用雙重認證",
 	"action-oathauth-enable": "啟用雙重認證",
 	"oathauth-auth-token-label": "金鑰",
