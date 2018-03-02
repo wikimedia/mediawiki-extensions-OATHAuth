@@ -10,7 +10,7 @@
 	"oathauth-account": "Benutzerkonto:",
 	"oathauth-secret": "Geheimer Schlüssel für die Zwei-Faktor-Authentifizierung:",
 	"oathauth-enable": "Die Zwei-Faktor-Authentifizierung aktivieren",
-	"oathauth-scratchtokens": "Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreibe sie auf und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, dein Konto zu retten. Diese Token werden dir niemals wieder angezeigt werden.",
+	"oathauth-scratchtokens": "Die folgende Liste ist eine Liste einmalig verwendbarer Sondertoken. Diese Token können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte schreibe sie auf und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese Token die einzige Möglichkeit sein, dein Konto zu retten. '''Diese Token werden dir niemals wieder angezeigt werden'''.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Die Zwei-Faktor-Authentifizierung deaktivieren",
 	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt durchgesetzt.",

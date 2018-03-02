@@ -4,7 +4,8 @@
 			"Araceletorres",
 			"Luk3",
 			"Tark",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
@@ -13,7 +14,7 @@
 	"oathauth-account": "Nome da conta:",
 	"oathauth-secret": "Chave secreta de autenticação de dois fatores:",
 	"oathauth-enable": "Ativar autenticação de dois fatores",
-	"oathauth-scratchtokens": "A lista a seguir é uma lista de chaves de uso único. Essas chaves só podem ser usadas uma vez, e são para uso de emergência. Por favor, anote-as e mantenha-as em um local seguro. Se você perder seu telefone, essas chaves são a única maneira de recuperar sua conta. Essas chaves nunca serão mostradas novamente.",
+	"oathauth-scratchtokens": "A lista a seguir é uma lista de chaves de uso único. Essas chaves só podem ser usadas uma vez, e são para uso de emergência. Por favor, anote-as e mantenha-as em um local seguro. Se você perder seu telefone, '''essas chaves são a única maneira de recuperar sua conta. Essas chaves nunca serão mostradas novamente'''.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Desativar autenticação de dois fatores",
 	"oathauth-validatedoath": "Credenciais de dois fatores validadas. A autenticação de dois fatores agora será aplicada.",
