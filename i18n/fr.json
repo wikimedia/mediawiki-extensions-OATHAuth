@@ -21,7 +21,7 @@
 	"oathauth-account": "Nom du compte :",
 	"oathauth-secret": "Clé secrète d’authentification à deux facteurs :",
 	"oathauth-enable": "Activer l'authentification à deux facteurs",
-	"oathauth-scratchtokens": "La liste suivante est une liste de jetons à gratter à utilisation unique. Ces jetons ne peuvent être utilisés qu'une seule fois, et servent en cas d'urgence. Veuillez les écrire et les conserver dans un endroit sûr. Si vous perdez votre téléphone, ces jetons sont le seul moyen de sauver votre compte. '''Ces jetons ne seront jamais affichés de nouveau'''.",
+	"oathauth-scratchtokens": "La liste suivante est une liste de jetons à gratter à utilisation unique. Ces jetons ne peuvent être utilisés qu'une seule fois, et servent en cas d'urgence. Veuillez les écrire et les conserver dans un endroit sûr. Si vous perdez votre téléphone, ces jetons sont le seul moyen de récupérer votre compte. '''Ces jetons ne seront jamais affichés de nouveau'''.",
 	"oathauth-token": "Jeton",
 	"oathauth-disable": "Désactiver l'authentification à deux facteurs",
 	"oathauth-validatedoath": "Identifications à deux facteurs validées. L'authentification à deux facteurs sera désormais appliquée.",
