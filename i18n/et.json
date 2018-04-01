@@ -9,7 +9,7 @@
 	"oathauth-account": "Konto nimi:",
 	"oathauth-secret": "Kaheastmelise autentimise salavõti:",
 	"oathauth-enable": "Luba kaheastmeline autentimine",
-	"oathauth-scratchtokens": "All on ühekordsete koodide nimekiri. Igat koodi saab kasutada vaid ühel korral, koodid on mõeldud hädaolukorra jaoks. Kirjuta koodid üles ja pane turvalisse kohta hoiule. Kui peaksid telefoni kaotama, on need koodid ainus võimalus oma kontot päästa. Allolevaid koode rohkem ei kuvata.",
+	"oathauth-scratchtokens": "All on ühekordsete koodide nimekiri. Igat koodi saab kasutada vaid ühel korral, koodid on mõeldud hädaolukorra jaoks. Kirjuta koodid üles ja pane turvalisse kohta hoiule. Kui peaksid telefoni kaotama, on need koodid ainus võimalus oma kontot päästa. '''Allolevaid koode rohkem ei kuvata'''.",
 	"oathauth-prefs-label": "Kaheastmeline autentimine:",
 	"oathauth-step1": "Samm 1: laadi alla kaheastmelise autentimise rakendus",
 	"oathauth-step1-test": "Laadi alla kaheastmelise autentimise programm. See võib olla mobiilirakendus (näiteks Google Authenticator) või lauaarvuti rakendus.",
