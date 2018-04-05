@@ -48,7 +48,7 @@ class OATHAuthUtils {
 	 * Get the base secret for this wiki, used to derive all of the encryption
 	 * keys. When $wgOATHAuthSecret is rotated, users who are part way through the
 	 * two-step login will get an exception, and have to re-start the login.
-	 * @return array $keys
+	 * @return string
 	 */
 	private static function getKeyMaterials() {
 		global $wgOATHAuthSecret, $wgSecretKey;

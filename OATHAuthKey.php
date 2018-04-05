@@ -20,7 +20,7 @@ class OATHAuthKey {
 	 */
 	const SCRATCH_TOKEN = -1;
 
-	/** @var string Two factor binary secret */
+	/** @var array Two factor binary secret */
 	private $secret;
 
 	/** @var string[] List of scratch tokens */
@@ -58,7 +58,7 @@ class OATHAuthKey {
 	}
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getSecret() {
 		return $this->secret['secret'];

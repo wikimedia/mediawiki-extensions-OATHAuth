@@ -15,7 +15,7 @@ class OATHUser {
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 * @param User $user
-	 * @param OATHAuthKey $key
+	 * @param OATHAuthKey|null $key
 	 */
 	public function __construct( User $user, OATHAuthKey $key = null ) {
 		$this->user = $user;
