@@ -1,5 +1,8 @@
 <?php
 
+use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\DBConnRef;
+
 class OATHUserRepository {
 	/** @var LoadBalancer */
 	protected $lb;

@@ -2,6 +2,7 @@
 
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Hooks for Extension:OATHAuth
