@@ -127,7 +127,7 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$base = __DIR__;
+		$base = dirname( __DIR__ );
 		switch ( $updater->getDB()->getType() ) {
 			case 'mysql':
 			case 'sqlite':

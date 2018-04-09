@@ -8,5 +8,5 @@
 	<file>.</file>
 	<arg name="encoding" value="UTF-8" />
 	<arg name="extensions" value="php,php5,inc,sample" />
-	<exclude-pattern type="relative">^lib</exclude-pattern>
+	<exclude-pattern type="relative">^includes/lib</exclude-pattern>
 </ruleset>
