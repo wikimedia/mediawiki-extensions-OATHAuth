@@ -109,6 +109,7 @@ class HOTPResult {
 	protected $hash;
 	protected $binary;
 	protected $decimal;
+	protected $hex;
 
 	/**
 	 * Build an HOTP Result

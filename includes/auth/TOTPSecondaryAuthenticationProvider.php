@@ -16,6 +16,12 @@ use MediaWiki\Auth\AuthManager;
  */
 class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
+	/**
+	 * @param string $action
+	 * @param array $options
+	 *
+	 * @return array
+	 */
 	public function getAuthenticationRequests( $action, array $options ) {
 		switch ( $action ) {
 			case AuthManager::ACTION_LOGIN:
@@ -28,7 +34,11 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 
 	/**
 	 * If the user has enabled two-factor authentication, request a second factor.
-	 * @inheritDoc
+	 *
+	 * @param User $user
+	 * @param array $reqs
+	 *
+	 * @return AuthenticationResponse
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
@@ -54,6 +64,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		}
 
 		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
+		/** @suppress PhanUndeclaredProperty */
 		$token = $request->OATHToken;
 
 		if ( $oathuser->getKey() === null ) {
@@ -81,6 +92,13 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		}
 	}
 
+	/**
+	 * @param User $user
+	 * @param User $creator
+	 * @param array $reqs
+	 *
+	 * @return AuthenticationResponse
+	 */
 	public function beginSecondaryAccountCreation( $user, $creator, array $reqs ) {
 		return AuthenticationResponse::newAbstain();
 	}

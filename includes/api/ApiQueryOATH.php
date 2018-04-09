@@ -58,6 +58,11 @@ class ApiQueryOATH extends ApiQueryBase {
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
 
+	/**
+	 * @param array $params
+	 *
+	 * @return string
+	 */
 	public function getCacheMode( $params ) {
 		return 'private';
 	}
