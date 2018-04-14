@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
-			"Protnet"
+			"Protnet",
+			"Nikosgranturismogt"
 		]
 	},
-	"oathauth-account": "Όνομα λογαριασμού δύο παραγόντων:",
-	"oathauth-secret": "Μυστικό κλειδί δύο παραγόντων:",
+	"oathauth-account": "Όνομα λογαριασμού:",
+	"oathauth-secret": "Μυστικό κλειδί ταυτοποίησης δύο παραγόντων:",
 	"oathauth-disable": "Απενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων",
 	"grant-oath": "Πρόσβαση σε πληροφορίες ταυτοποίησης δύο παραγόντων (OATH) για εαυτόν και άλλους"
 }
