@@ -7,7 +7,8 @@
 			"Alexsh",
 			"Waihorace",
 			"A2093064",
-			"Hello903hello"
+			"Hello903hello",
+			"Liuxinyu970226"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
@@ -38,6 +39,7 @@
 	"oathauth-login-failed": "驗證失敗",
 	"oathauth-describe-provider": "雙重認證(OATH)",
 	"grant-group-authentication": "為自己及其他人進行身份認證動作",
+	"grant-oath": "為自己與他人存取兩步驗證（OATH）資訊",
 	"apihelp-oathvalidate-description": "驗證雙重認證金鑰",
 	"apihelp-oathvalidate-param-totp": "雙重認證金鑰"
 }
