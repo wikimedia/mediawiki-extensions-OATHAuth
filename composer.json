@@ -18,5 +18,8 @@
 			"composer phpcs",
 			"minus-x check ."
 		]
+	},
+	"extra": {
+		"phan-taint-check-plugin": "1.2.0"
 	}
 }
