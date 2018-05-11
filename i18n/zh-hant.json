@@ -8,7 +8,8 @@
 			"Waihorace",
 			"A2093064",
 			"Hello903hello",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Kly"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
@@ -16,7 +17,7 @@
 	"oathauth-account": "帳號名稱：",
 	"oathauth-secret": "雙重認證秘密金鑰：",
 	"oathauth-enable": "開啟雙重認證",
-	"oathauth-scratchtokens": "以下是一次性使用的備用密碼，這些密碼於緊急情況使用，且只能使用一次。請寫下這些密碼，並存放在安全的地方。如果您遺失了您的行動電話，這些密碼可以回復您的帳號。\n這些密碼只會於現在顯示一次，之後將不會再次顯示。",
+	"oathauth-scratchtokens": "以下是一次性使用的備用密碼，這些密碼於緊急情況使用，且只能使用一次。請寫下這些密碼，並存放在安全的地方。如果您遺失了您的行動電話，這些密碼可以回復您的帳號。'''這些密碼只會於現在顯示一次，之後將不會再次顯示'''。",
 	"oathauth-token": "金鑰",
 	"oathauth-disable": "停用雙重認證",
 	"oathauth-validatedoath": "已驗證您的代碼並啟動雙重認證。",
