@@ -11,6 +11,7 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'OATH' => [ 'Two-factor authentication', 'OATH', 'OATHAuth' ],
+	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
 ];
 
 /** Arabic (العربية) */
