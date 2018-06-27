@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Aftabuzzaman",
-			"Elias Ahmmad"
+			"Elias Ahmmad",
+			"আফতাবুজ্জামান"
 		]
 	},
 	"oathauth-desc": "HMAC ভিত্তিক এক-কালীন পাসওয়ার্ড ব্যবহার করে প্রমাণীকরণ প্রদান করে",
