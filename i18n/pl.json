@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Alan ffm"
+			"Alan ffm",
+			"Openbk"
 		]
 	},
 	"specialpages-group-oath": "Uwierzytelnianie dwuskładnikowe",
@@ -18,6 +19,8 @@
 	"oathauth-step2alt": "Lub ręcznie wprowadź tajny klucz:",
 	"oathauth-step4": "Krok 4: Weryfikacja",
 	"oathauth-entertoken": "Wpisz kod z urządzenia uwierzytelniającego w celu weryfikacji:",
+	"right-oathauth-enable": "Włączenie uwierzytelniania dwuskładnikowego",
+	"action-oathauth-enable": "włączenia uwierzytelniania dwuskładnikowego",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z urządzenia uwierzytelniającego",
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
