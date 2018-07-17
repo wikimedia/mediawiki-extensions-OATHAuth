@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Tweety"
 		]
 	},
+	"oathauth-secret": "ٻه مرحلا تصديق جي ڳجهي ڄاٻي",
+	"oathauth-enable": "ٻن مرحلن واري تصديق نافذ ڪيو",
+	"oathauth-disable": "ٻن مرحلن واري تصديق بند ڪريو",
+	"oathauth-validatedoath": "ٻه مرحلا تصديق جي جانچ ڪيو. ٻه مرحلا تصيديق هاڻ نافذ ٿي چڪي آهي.",
+	"oathauth-step1": "قدم 1: ٻه مرحلي تصديق وارو پروگرام ڊائونلوڊ ڪيو",
+	"oathauth-step1-test": "ٻه مرحلي تصديق وارو پروگرام ڊائونلوڊ ڪيو. اهو ايپليڪيشن (Google Authenticator) هجي يا ٻيو ميزڀر اپليڪشن.",
+	"oathauth-step2": "قدم 2: هن QR code کي اسڪين ڪيو.",
+	"oathauth-step2alt": "يا هن ڳجه کي پاڻ داخل ڪيو:",
+	"right-oathauth-enable": "ٻن مرحلن واري تصديق نافذ ڪيو",
+	"action-oathauth-enable": "ٻن مرحلن واري تصديق نافذ ڪيو",
 	"action-oathauth-api-all": "OATH جو مرتبو چڪاسيو"
 }
