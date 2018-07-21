@@ -31,7 +31,7 @@
 	"oathauth-disabledoath": "Authentification à deux facteurs désactivée.",
 	"oathauth-prefs-label": "Authentification à deux facteurs :",
 	"oathauth-step1": "Étape 1 : téléchargez un programme d'authentification à deux facteurs",
-	"oathauth-step1-test": "Télécharger un programme pour l’authentification à deux facteurs. Il peut s'agir d'une application mobile (comme Google Authenticator) ou une application de bureau",
+	"oathauth-step1-test": "Télécharger un programme pour l’authentification à deux facteurs. Il peut s'agir d'une application mobile (comme Google Authenticator) ou une application de bureau.",
 	"oathauth-step2": "Étape 2 : scannez le code QR",
 	"oathauth-step2alt": "Ou entrez le code secret manuellement :",
 	"oathauth-step3": "Étape 3 : inscrivez les codes à gratter",
