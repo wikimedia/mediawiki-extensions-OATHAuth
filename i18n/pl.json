@@ -14,7 +14,7 @@
 	"oathauth-disable": "Wyłączenie uwierzytelniania dwuskładnikowego",
 	"oathauth-prefs-label": "Uwierzytelnianie dwuskładnikowe:",
 	"oathauth-step1": "Krok 1: Pobierz program do uwierzytelniania dwuskładnikowego",
-	"oathauth-step1-test": "Pobierz program do uwierzytelniania dwuskładnikowego. Może to być aplikacja mobilna (np. Google Authenticator) lub aplikacja komputerowa",
+	"oathauth-step1-test": "Pobierz program do uwierzytelniania dwuskładnikowego. Może to być aplikacja mobilna (np. Google Authenticator) lub aplikacja komputerowa.",
 	"oathauth-step2": "Krok 2: Zeskanuj kod QR",
 	"oathauth-step2alt": "Lub ręcznie wprowadź tajny klucz:",
 	"oathauth-step4": "Krok 4: Weryfikacja",
