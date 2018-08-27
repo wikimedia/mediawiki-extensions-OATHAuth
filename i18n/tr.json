@@ -12,7 +12,7 @@
 	"specialpages-group-oath": "İki faktörlü kimlik doğrulama",
 	"oathauth-account": "İki Faktörlü Hesap Adı:",
 	"oathauth-secret": "İki Faktörlü Gizli Anahtar:",
-	"oathauth-enable": "İki Faktörlü Doğrulamayı Etkinleştirin",
+	"oathauth-enable": "İki aşamalı doğrulamayı etkinleştir",
 	"oathauth-scratchtokens": "Aşağıdaki listede, yalnızca bir defa kullanımlık anahtar bulunmaktadır. Bu semboller yalnızca bir defalık kullanım içindir ve acil durum kullanımlarına özel olabilir. Lütfen aşağıda yazılı anahtarı bir yere yazın ve bunu güvenli bir yerde saklayın. Eğer telefonunuzu kaybederseniz, bu simgeler hesabınızı kurtarmanın tek yolu olacaktır. Bu simgeler asla tekrar gösterilmeyecektir.",
 	"oathauth-token": "Anahtar",
 	"oathauth-disable": "İki Faktörlü Kimlik Doğrulama Devre Dışı",
@@ -23,6 +23,7 @@
 	"oathauth-step1": "1. Adım: Uygulamayı indirin",
 	"oathauth-step2": "2. Adım: QR kodunu tarayın",
 	"oathauth-step4": "4. Adım: Doğrulama",
-	"right-oathauth-enable": "İki aşamalı kimlik doğrulamayı etkinleştir",
+	"right-oathauth-enable": "İki aşamalı doğrulamayı etkinleştir",
+	"action-oathauth-enable": "iki aşamalı doğrulamayı etkinleştir",
 	"grant-group-authentication": "Kimlik doğrulama işlemlerini kendin ve diğerleri için uygula"
 }
