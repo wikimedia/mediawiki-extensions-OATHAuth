@@ -22,5 +22,7 @@
 	"oathauth-entertoken": "پنهنجي تصديق واري اوزار ۾ ڏنل ڪوڊ هڻو:",
 	"right-oathauth-enable": "ٻن مرحلن واري تصديق نافذ ڪيو",
 	"action-oathauth-enable": "ٻن مرحلن واري تصديق نافذ ڪيو",
+	"oathauth-auth-token-label": "ٽوڪن",
+	"oathauth-auth-ui": "مهرباني ڪري پنهنجي تصديق واري ڊوائيس مان تصديقي ڪوڊ لڳايو",
 	"action-oathauth-api-all": "OATH جو مرتبو چڪاسيو"
 }
