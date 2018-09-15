@@ -5,10 +5,11 @@
 			"Hbseren",
 			"Sayginer",
 			"HakanIST",
-			"TmY e12"
+			"TmY e12",
+			"Vito Genovese"
 		]
 	},
-	"oathauth-desc": "HMAC tabanlı tek kullanımlık şifreler kullanan bir kimlik doğrulama desteği sağlar",
+	"oathauth-desc": "HMAC tabanlı tek kullanımlık parolalar kullanarak kimlik doğrulama desteği sağlar",
 	"specialpages-group-oath": "İki Aşamalı Doğrulama",
 	"oathauth-account": "İki Faktörlü Hesap Adı:",
 	"oathauth-secret": "İki Faktörlü Gizli Anahtar:",
