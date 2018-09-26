@@ -122,22 +122,12 @@ class OATHAuthHooks {
 
 		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
 
-		// TODO: Drop this when isOouiEnabled always returns true.
-		if ( SpecialPreferences::isOouiEnabled( RequestContext::getMain() ) ) {
-			$control = new \OOUI\ButtonWidget( [
-				'href' => SpecialPage::getTitleFor( 'OATH' )->getLinkURL( [
-					'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
-				] ),
-				'label' => wfMessage( $msg )->text(),
-			] );
-		} else {
-			$control = Linker::link(
-				SpecialPage::getTitleFor( 'OATH' ),
-				wfMessage( $msg )->escaped(),
-				[],
-				[ 'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText() ]
-			);
-		}
+		$control = new \OOUI\ButtonWidget( [
+			'href' => SpecialPage::getTitleFor( 'OATH' )->getLinkURL( [
+				'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
+			] ),
+			'label' => wfMessage( $msg )->text(),
+		] );
 
 		$preferences[$msg] = [
 			'type' => 'info',
