@@ -31,7 +31,7 @@
 	"oathauth-step2alt": "或手動輸入密鑰：",
 	"oathauth-step3": "第 3 步：記下臨時碼",
 	"oathauth-step4": "第 4 步：驗證",
-	"oathauth-entertoken": "輸入顯示於您認證設備上應用程式的代碼：",
+	"oathauth-entertoken": "輸入顯示於您認證裝置上應用程式的代碼：",
 	"right-oathauth-enable": "啟用雙重認證",
 	"action-oathauth-enable": "啟用雙重認證",
 	"oathauth-auth-token-label": "令牌",
