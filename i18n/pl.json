@@ -3,7 +3,8 @@
 		"authors": [
 			"Chrumps",
 			"Alan ffm",
-			"Openbk"
+			"Openbk",
+			"Railfail536"
 		]
 	},
 	"specialpages-group-oath": "Uwierzytelnianie dwuskładnikowe",
@@ -26,6 +27,7 @@
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
 	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
 	"oathauth-describe-provider": "Uwierzytelnianie dwuetapowe (OATH).",
+	"grant-oath": "Dostęp do informacji o weryfikacji dwuetapowej (OAUTH) dla siebie i innych",
 	"action-oathauth-api-all": "sprawdzania statusu OATH",
 	"apihelp-query+oath-example-1": "Pobierz informacje o aktualnym użytkowniku",
 	"apihelp-query+oath-example-2": "Pobierz informacje na temat użytkownika <kbd>Example</kbd>",
