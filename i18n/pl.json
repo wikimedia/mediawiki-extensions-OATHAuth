@@ -12,7 +12,7 @@
 	"oathauth-account": "Nazwa konta:",
 	"oathauth-secret": "Tajny klucz weryfikacji dwuetapowej:",
 	"oathauth-enable": "Włączanie weryfikacji dwuetapowej",
-	"oathauth-scratchtokens": "Poniżej znajduje się lista jednorazowych kodów zapasowych. Te kody będą mogły być użyte tylko raz w sytuacjach awaryjnych. Zapisz je i przechowuj w bezpiecznym miejscu, jeżeli zgubisz swój telefon będą one jedynym sposobem na odzyskanie twojego konta. '''Te kody nie zostaną wyświetlone ponownie'''.",
+	"oathauth-scratchtokens": "Poniżej znajduje się lista jednorazowych kodów zapasowych. Te kody będą mogły być użyte tylko raz w sytuacjach awaryjnych. Zapisz je i przechowuj w bezpiecznym miejscu, jeżeli zgubisz swój telefon będą one jedynym sposobem na odzyskanie konta. '''Kody nie zostaną wyświetlone ponownie'''.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Wyłączenie weryfikacji dwuetapowej",
 	"oathauth-validatedoath": "Poświadczenie dwuetapowe zostało uruchomione. Weryfikacja dwuetapowa będzie teraz wymagania podczas logowania.",
