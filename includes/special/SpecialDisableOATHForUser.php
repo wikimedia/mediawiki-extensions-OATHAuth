@@ -14,6 +14,10 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
+	protected function getLoginSecurityLevel() {
+		return $this->getName();
+	}
+
 	/**
 	 * Set the page title and add JavaScript RL modules
 	 *
