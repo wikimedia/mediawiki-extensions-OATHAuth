@@ -29,6 +29,7 @@
 	"oathauth-step3": "Passo 3: Anote os códigos scratch",
 	"oathauth-step4": "Passo 4: Verificação",
 	"oathauth-entertoken": "Digite um código do seu dispositivo de autenticação para verificação:",
+	"oathauth-enteruser": "Nome de usuário:",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação em duas etapas",
 	"oathauth-auth-token-label": "Token",
