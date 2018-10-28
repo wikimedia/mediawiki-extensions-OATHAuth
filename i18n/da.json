@@ -4,5 +4,6 @@
 			"Saederup92"
 		]
 	},
-	"oathauth-account": "Kontonavn:"
+	"oathauth-account": "Kontonavn:",
+	"oathauth-enteruser": "Brugernavn:"
 }

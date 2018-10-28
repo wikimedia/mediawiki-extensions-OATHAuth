@@ -9,7 +9,8 @@
 			"NBS",
 			"Mouse21",
 			"Patrick Star",
-			"Movses"
+			"Movses",
+			"Vlad5250"
 		]
 	},
 	"oathauth-desc": "Обеспечивает поддержку проверки подлинности с помощью HMAC на основе одноразовых паролей",
@@ -32,6 +33,9 @@
 	"oathauth-step3": "Шаг 3: Запишите скретч коды",
 	"oathauth-step4": "Шаг 4: Проверка",
 	"oathauth-entertoken": "Введите код с вашего устройства проверки подлинности, чтобы проверить:",
+	"oathauth-disable-for-user": "Отключить двухфакторную аутентификацию для пользователя",
+	"right-oathauth-disable-for-user": "Отключить двухфакторную аутентификацию для пользователя",
+	"oathauth-enteruser": "Имя участника:",
 	"right-oathauth-enable": "включение двухфакторной аутентификации",
 	"action-oathauth-enable": "включить двухфакторную аутентификацию",
 	"oathauth-auth-token-label": "Токен",
