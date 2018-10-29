@@ -27,6 +27,7 @@
 	"oathauth-step3": "Krok 3: Zapisz kody zapasowe",
 	"oathauth-step4": "Krok 4: Weryfikacja",
 	"oathauth-entertoken": "Wpisz kod z urządzenia uwierzytelniającego w celu weryfikacji:",
+	"oathauth-enteruser": "Nazwa użytkownika:",
 	"right-oathauth-enable": "Włączenie weryfikacji dwuetapowej",
 	"action-oathauth-enable": "włączenia weryfikacji dwuetapowej",
 	"oathauth-auth-token-label": "Kod",
