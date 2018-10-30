@@ -5,7 +5,8 @@
 			"Darth Kule",
 			"Gianfranco",
 			"McDutchie",
-			"Ruthven"
+			"Ruthven",
+			"Sakretsu"
 		]
 	},
 	"oathauth-desc": "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
@@ -39,6 +40,7 @@
 	"oathauth-throttled": "Troppi tentativi di verifica! Attendi $1.",
 	"oathauth-login-failed": "Verifica non riuscita.",
 	"oathauth-describe-provider": "Autenticazione a due fattori (OATH).",
+	"grant-oath": "Accede a informazioni sull'autenticazione a due fattori (OATH) proprie e di altri",
 	"apihelp-query+oath-example-1": "Ottieni informazioni sull'utente attuale",
 	"apihelp-query+oath-example-2": "Ottieni informazioni sull'utente <kbd>Example</kbd>",
 	"apihelp-oathvalidate-description": "Convalida un token di autenticazione a due fattori (OATH).",
