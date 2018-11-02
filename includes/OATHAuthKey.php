@@ -16,6 +16,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use Base32\Base32;
 use Psr\Log\LoggerInterface;
 use \MediaWiki\Logger\LoggerFactory;
 

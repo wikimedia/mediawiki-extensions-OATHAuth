@@ -18,7 +18,6 @@
 		"OATHUserRepository": "includes/OATHUserRepository.php",
 		"HOTP": "includes/lib/hotp.php",
 		"HOTPResult": "includes/lib/hotp.php",
-		"Base32": "includes/lib/base32.php",
 		"OATHUser": "includes/OATHUser.php",
 		"SpecialOATH": "includes/special/SpecialOATH.php",
 		"SpecialOATHEnable": "includes/special/SpecialOATHEnable.php",
@@ -123,5 +122,6 @@
 			]
 		}
 	},
+	"load_composer_autoloader": true,
 	"manifest_version": 1
 }
