@@ -8,7 +8,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class DisableOATHAuthForUser extends Maintenance {
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
 		$this->mDescription = 'Remove OATHAuth from a specific user';
 		$this->addArg( 'user', 'The username to remove OATHAuth from.' );
