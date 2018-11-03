@@ -36,7 +36,7 @@
 	"oathauth-disable-for-user": "Отключить двухфакторную аутентификацию для пользователя",
 	"right-oathauth-disable-for-user": "Отключить двухфакторную аутентификацию для пользователя",
 	"oathauth-enteruser": "Имя участника:",
-	"right-oathauth-enable": "включение двухфакторной аутентификации",
+	"right-oathauth-enable": "Включение двухфакторной аутентификации",
 	"action-oathauth-enable": "включить двухфакторную аутентификацию",
 	"oathauth-auth-token-label": "Токен",
 	"oathauth-auth-token-help": "Одноразовый пароль используется как второй фактор двухфакторной аутентификации.",
