@@ -25,6 +25,7 @@
 	"oathauth-step3": "ধাপ ৩: স্ক্র্যাচ কোড লিখুন",
 	"oathauth-step4": "ধাপ ৪: নিশ্চিতকরণ",
 	"oathauth-entertoken": "যাচাই করতে আপনার প্রমাণীকরণ ডিভাইস থেকে একটি কোড লিখুন:",
+	"oathauth-enteruser": "ব্যবহারকারী নাম:",
 	"right-oathauth-enable": "দুই-ধাপের প্রমাণীকরণ সক্রিয় করে",
 	"action-oathauth-enable": "দুই-ধাপের প্রমাণীকরণ সক্রিয় করার",
 	"oathauth-auth-token-label": "টোকেন",
