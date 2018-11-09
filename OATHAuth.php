@@ -3,7 +3,7 @@
  * OATHAuth extension - Support for HMAC based one time passwords
  *
  *
- * For more info see http://mediawiki.org/wiki/Extension:OATHAuth
+ * For more info see https://mediawiki.org/wiki/Extension:OATHAuth
  *
  * @file
  * @ingroup Extensions
