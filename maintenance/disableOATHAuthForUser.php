@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Session\SessionManager;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
@@ -32,6 +34,11 @@ class DisableOATHAuthForUser extends Maintenance {
 		}
 
 		$repo->remove( $oathUser, 'Maintenance script' );
+		// Kill all existing sessions. If this disable was social-engineered by an attacker,
+		// the legitimate user will hopefully login again and notice that the second factor
+		// is missing or different, and alert the operators.
+		SessionManager::singleton()->invalidateSessionsForUser( $user );
+
 		$this->output( "OATHAuth disabled for $username.\n" );
 	}
 }
