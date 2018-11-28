@@ -31,7 +31,7 @@ class DisableOATHAuthForUser extends Maintenance {
 			$this->error( "User $username doesn't have OATHAuth enabled!", 1 );
 		}
 
-		$repo->remove( $oathUser, 'Maintenance script' );
+		$repo->remove( $oathUser );
 		$this->output( "OATHAuth disabled for $username.\n" );
 	}
 }

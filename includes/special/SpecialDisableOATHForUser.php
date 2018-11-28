@@ -91,15 +91,7 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 		}
 
 		$oathUser->setKey( null );
-		$this->OATHRepository->remove( $oathUser, $this->getRequest()->getIP() );
-
-		\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
-			'OATHAuth disabled for {usertarget} by {user} from {clientip}', [
-				'user' => $this->getUser()->getName(),
-				'usertarget' => $formData['user'],
-				'clientip' => $this->getRequest()->getIP(),
-			]
-		);
+		$this->OATHRepository->remove( $oathUser );
 
 		return true;
 	}
