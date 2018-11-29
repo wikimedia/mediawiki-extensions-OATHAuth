@@ -19,5 +19,10 @@
 	"oathauth-step2": "ഘട്ടം 2: ക്യൂ.ആർ. കോഡ് സ്കാൻ ചെയുക",
 	"oathauth-step3": "ഘട്ടം 3: സ്ക്രാച്ച് കോഡുകൾ എഴുതിവെക്കുക",
 	"oathauth-step4": "ഘട്ടം 4: പരിശോധിക്കൽ",
+	"oathauth-disable-for-user": "ഒരു ഉപയോക്താവിന്റെ ദ്വി-ഘടക സാധൂകരണം ഒഴിവാക്കുക",
+	"right-oathauth-disable-for-user": "ഒരു ഉപയോക്താവിന്റെ ദ്വി-ഘടക സാധൂകരണം ഒഴിവാക്കുക",
+	"oathauth-enteruser": "ഉപയോക്തൃനാമം:",
+	"right-oathauth-enable": "ദ്വി-ഘടക സാധൂകരണം സജ്ജമാക്കുക",
+	"action-oathauth-enable": "ദ്വി-ഘടക സാധൂകരണം സജ്ജമാക്കുക",
 	"oathauth-auth-token-label": "ചീട്ട്"
 }
