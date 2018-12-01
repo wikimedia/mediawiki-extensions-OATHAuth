@@ -6,7 +6,8 @@
 			"McDutchie",
 			"Matiia",
 			"Macofe",
-			"Dgstranz"
+			"Dgstranz",
+			"MarcoAurelio"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
@@ -14,7 +15,7 @@
 	"oathauth-account": "Nombre de la cuenta:",
 	"oathauth-secret": "Clave secreta de autenticación en dos pasos:",
 	"oathauth-enable": "Activar la autenticación en dos pasos",
-	"oathauth-scratchtokens": "La lista siguiente es una lista de claves de un solo uso. Estas claves solo pueden utilizarse una vez y son para uso de emergencia. Por favor, anótalas y mantenlas en un lugar seguro. Si pierdes el teléfono, estas claves son la única manera de recuperar tu cuenta. Estas claves nunca se mostrarán una segunda vez.",
+	"oathauth-scratchtokens": "La lista siguiente es una lista de claves de un solo uso. Estas claves solo pueden utilizarse una vez y son para usar en caso de emergencia. Por favor, anótalas y mantenlas en un lugar seguro. Si pierdes el teléfono, estas claves son la única manera de recuperar tu cuenta. '''Estas claves nunca se mostrarán una segunda vez'''.",
 	"oathauth-token": "Clave",
 	"oathauth-disable": "Desactivar la autenticación en dos etapas",
 	"oathauth-validatedoath": "Se han validado las credenciales de dos factores. Ahora se aplicará la autenticación de dos factores.",
@@ -29,6 +30,11 @@
 	"oathauth-step3": "Paso 3: escribe los códigos",
 	"oathauth-step4": "Paso 4: verificación",
 	"oathauth-entertoken": "Escribe un código de tu dispositivo de autentificación para verificar:",
+	"oathauth-disable-for-user": "Desactivar la autenticación de dos factores de un usuario",
+	"right-oathauth-disable-for-user": "Desactivar la autenticación de dos factores de un usuario",
+	"oathauth-disable-intro": "Grandes poderes suponen grandes responsabilidades",
+	"oathauth-enteruser": "Nombre de usuario:",
+	"oathauth-user-not-does-not-have-oath-enabled": "El usuario no dispone de autenticación de dos factores habilitada. Nada que deshabilitar.",
 	"right-oathauth-enable": "Activar la autenticación en dos pasos",
 	"action-oathauth-enable": "activar la autenticación de dos pasos",
 	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",
@@ -39,6 +45,7 @@
 	"right-oathauth-api-all": "Consultar y validar la inofrmación OATH para uno mismo y para otros",
 	"action-oathauth-api-all": "verificar el estado de OATH",
 	"apihelp-query+oath-description": "Comprobar si la autentificación de dos factores (OATH) está habilitada para un usuario.",
+	"apihelp-query+oath-summary": "Verificar si un usuario tiene activada la autenticación de dos factores (OATH).",
 	"apihelp-query+oath-param-user": "Usuario del que obtener información. Por defecto, se trata del usuario actual.",
 	"apihelp-query+oath-example-1": "Obtener información sobre el usuario actual",
 	"apihelp-query+oath-example-2": "Obtener información sobre el usuario <kbd>Example</kbd>"
