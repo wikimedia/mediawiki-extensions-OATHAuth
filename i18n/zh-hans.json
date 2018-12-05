@@ -30,6 +30,7 @@
 	"oathauth-step3": "第3步：记下即时性代码",
 	"oathauth-step4": "第4步：验证",
 	"oathauth-entertoken": "输入来自您的验证设备的代码进行验证：",
+	"oathauth-disable-intro": "权力大，责任重大",
 	"oathauth-enteruser": "用户名：",
 	"oathauth-user-not-does-not-have-oath-enabled": "用户没有启用双因素身份验证，因此无需禁用",
 	"right-oathauth-enable": "启用双因素验证",
