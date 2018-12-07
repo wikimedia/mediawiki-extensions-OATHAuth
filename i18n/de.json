@@ -3,7 +3,8 @@
 		"authors": [
 			"Kghbln",
 			"Metalhead64",
-			"Sushi"
+			"Sushi",
+			"Hwboehm"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
@@ -45,6 +46,7 @@
 	"action-oathauth-api-all": "den Zwei-Faktor-Authentifizierungsstatus zu überprüfen",
 	"apihelp-query+oath-description": "Überprüft, ob für einen Benutzer die Zwei-Faktor-Authentifizierung (OATH) aktiviert ist.",
 	"apihelp-query+oath-summary": "Überprüft, ob für einen Benutzer die Zwei-Faktor-Authentifizierung (OATH) aktiviert ist.",
+	"apihelp-query+oath-param-user": "Benutzer, über den Informationen erhalten werden soll. Standardmäßig ist der aktuelle Benutzer voreingestellt.",
 	"apihelp-query+oath-example-1": "Ruft Informationen über den aktuellen Benutzer ab",
 	"apihelp-query+oath-example-2": "Ruft Informationen über den Benutzer <kbd>Beispiel</kbd> ab",
 	"apihelp-oathvalidate-description": "Validiert einen Token der Zwei-Faktor-Authentifizierung (OATH).",
