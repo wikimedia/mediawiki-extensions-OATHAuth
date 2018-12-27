@@ -191,7 +191,7 @@ class OATHAuthKey {
 
 	public function regenerateScratchTokens() {
 		$scratchTokens = [];
-		for ( $i = 0; $i < 5; $i++ ) {
+		for ( $i = 0; $i < 10; $i++ ) {
 			$scratchTokens[] = Base32::encode( random_bytes( 10 ) );
 		}
 		$this->scratchTokens = $scratchTokens;
