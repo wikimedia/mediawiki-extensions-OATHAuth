@@ -5,5 +5,8 @@
 		]
 	},
 	"oathauth-account": "Kontonavn:",
-	"oathauth-enteruser": "Brugernavn:"
+	"oathauth-token": "Nøgle",
+	"oathauth-enteruser": "Brugernavn:",
+	"oathauth-auth-token-label": "Nøgle",
+	"apihelp-query+oath-example-1": "Få information om den aktuelle bruger"
 }
