@@ -8,6 +8,7 @@
 		]
 	},
 	"oathauth-desc": "يوفر دعم المصادقة باستخدام كلمات مرور لمرة واحدة تستند إلى HMAC",
+	"oath": "أوث أوث",
 	"specialpages-group-oath": "توثيق ذو عاملين",
 	"oathauth-account": "اسم المستخدم:",
 	"oathauth-secret": "رمز أمان التوثيق ذي العاملين:",
