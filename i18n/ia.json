@@ -9,7 +9,7 @@
 	"oathauth-account": "Nomine de conto:",
 	"oathauth-secret": "Clave secrete de authentication bifactorial:",
 	"oathauth-enable": "Activar authentication bifactorial",
-	"oathauth-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de salvar tu conto. Iste indicios nunquam essera monstrate un altere vice.",
+	"oathauth-scratchtokens": "Le sequente lista contine indicios a uso unic. Iste indicios pote esser usate un sol vice e es pro casos de emergentia. Per favor nota los e guarda los in un loco secur. Si tu perde tu telephono, iste indicios es le sol maniera de recuperar tu conto. '''Iste indicios nunquam essera monstrate un altere vice.'''",
 	"oathauth-token": "Indicio",
 	"oathauth-disable": "Disactivar authentication bifactorial",
 	"oathauth-validatedoath": "Le credentiales bifactorial ha essite validate. Le authentication bifactorial essera applicate desde ora.",
