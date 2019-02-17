@@ -8,9 +8,9 @@
 		]
 	},
 	"specialpages-group-oath": "Dı faktorın araşt kerdış",
-	"oathauth-account": "Namey hesabi :",
-	"oathauth-token": "Mare",
+	"oathauth-account": "Nameyê hesabi:",
+	"oathauth-token": "Kılit",
 	"oathauth-prefs-label": "Dı faktorın araşt kerdış :",
 	"oathauth-enteruser": "Nameyê karberi:",
-	"oathauth-auth-token-label": "Token"
+	"oathauth-auth-token-label": "Kılit"
 }
