@@ -47,5 +47,5 @@ class UpdateScratchTokenFormat extends Maintenance {
 	}
 }
 
-$maintClass = "UpdateScratchTokenFormat";
+$maintClass = UpdateScratchTokenFormat::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
