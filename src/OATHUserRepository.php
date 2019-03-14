@@ -16,9 +16,19 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth;
+
+use MediaWiki\Logger\LoggerFactory;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\DBConnRef;
+use FormatJson;
+use CentralIdLookup;
+use MWException;
+use BagOStuff;
+use ConfigException;
+use User;
+use stdClass;
 
 class OATHUserRepository {
 	/** @var ILoadBalancer */
@@ -27,6 +37,11 @@ class OATHUserRepository {
 	/** @var BagOStuff */
 	protected $cache;
 
+	/**
+	 * @var OATHAuth
+	 */
+	protected $auth;
+
 	/** @var LoggerInterface */
 	private $logger;
 
@@ -34,12 +49,14 @@ class OATHUserRepository {
 	 * OATHUserRepository constructor.
 	 * @param ILoadBalancer $lb
 	 * @param BagOStuff $cache
+	 * @param OATHAuth $auth
 	 */
-	public function __construct( ILoadBalancer $lb, BagOStuff $cache ) {
+	public function __construct( ILoadBalancer $lb, BagOStuff $cache, OATHAuth $auth ) {
 		$this->lb = $lb;
 		$this->cache = $cache;
+		$this->auth = $auth;
 
-		$this->setLogger( \MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' ) );
+		$this->setLogger( LoggerFactory::getInstance( 'authentication' ) );
 	}
 
 	/**
@@ -52,6 +69,8 @@ class OATHUserRepository {
 	/**
 	 * @param User $user
 	 * @return OATHUser
+	 * @throws \ConfigException
+	 * @throws \MWException
 	 */
 	public function findByUser( User $user ) {
 		$oathUser = $this->cache->get( $user->getName() );
@@ -66,8 +85,22 @@ class OATHUserRepository {
 				__METHOD__
 			);
 			if ( $res ) {
-				$key = new OATHAuthKey( $res->secret, explode( ',', $res->scratch_tokens ) );
+				$data = $res->data;
+				$moduleKey = $res->module;
+				if ( $this->isLegacy( $res ) ) {
+					$module = $this->auth->getModuleByKey( 'totp' );
+					$data = $this->checkAndResolveLegacy( $data, $res );
+				} else {
+					$module = $this->auth->getModuleByKey( $moduleKey );
+				}
+				if ( $module === null ) {
+					// For sanity
+					throw new MWException( 'oathauth-module-invalid' );
+				}
+
+				$key = $module->newKey( FormatJson::decode( $data, true ) );
 				$oathUser->setKey( $key );
+				$oathUser->setModule( $module );
 			}
 
 			$this->cache->set( $user->getName(), $oathUser );
@@ -78,17 +111,20 @@ class OATHUserRepository {
 	/**
 	 * @param OATHUser $user
 	 * @param string $clientInfo
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function persist( OATHUser $user, $clientInfo ) {
 		$prevUser = $this->findByUser( $user->getUser() );
+		$data = $user->getModule()->getDataFromUser( $user );
 
 		$this->getDB( DB_MASTER )->replace(
 			'oathauth_users',
 			[ 'id' ],
 			[
 				'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ),
-				'secret' => $user->getKey()->getSecret(),
-				'scratch_tokens' => implode( ',', $user->getKey()->getScratchTokens() ),
+				'module' => $user->getModule()->getName(),
+				'data' => FormatJson::encode( $data )
 			],
 			__METHOD__
 		);
@@ -138,5 +174,41 @@ class OATHUserRepository {
 		global $wgOATHAuthDatabase;
 
 		return $this->lb->getConnectionRef( $index, [], $wgOATHAuthDatabase );
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @return bool
+	 */
+	private function isLegacy( $row ) {
+		if ( $row->module !== '' ) {
+			return false;
+		}
+		if ( property_exists( $row, 'secret' ) && $row->secret !== null ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if the DB data is in the new format,
+	 * if not converts old data to new
+	 *
+	 * @param string $data
+	 * @param stdClass $row
+	 * @return string
+	 */
+	private function checkAndResolveLegacy( $data, $row ) {
+		if ( $data ) {
+			// New data exists - no action required
+			return $data;
+		}
+		if ( property_exists( $row, 'secret' ) && property_exists( $row, 'scratch_tokens' ) ) {
+			return FormatJson::encode( [
+				'secret' => $row->secret,
+				'scratch_tokens' => $row->scratch_tokens
+			] );
+		}
+		return '';
 	}
 }

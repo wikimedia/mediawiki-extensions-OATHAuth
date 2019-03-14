@@ -68,6 +68,19 @@
 	"apihelp-oathvalidate-summary": "{{doc-apihelp-summary|oathvalidate}}",
 	"apihelp-oathvalidate-param-user": "{{doc-apihelp-param|oathvalidate|user}}",
 	"apihelp-oathvalidate-param-totp": "{{doc-apihelp-param|oathvalidate|totp}}",
+	"apihelp-oathvalidate-param-data": "{{doc-apihelp-param|oathvalidate|data}}",
 	"apihelp-oathvalidate-example-1": "{{doc-apihelp-example|oathvalidate}}",
-	"apihelp-oathvalidate-example-2": "{{doc-apihelp-example|oathvalidate}}"
+	"apihelp-oathvalidate-example-2": "{{doc-apihelp-example|oathvalidate}}",
+	"apihelp-oathvalidate-example-3": "{{doc-apihelp-example|oathvalidate}}",
+	"oauthauth-ui-no-module": "User preference value when no 2FA module is enabled",
+	"oathauth-module-totp-label": "User preference value when TOTP module is enabled",
+	"oathauth-ui-manage": "Button on Special:Preferences, that leads to [[Special:OATHManage]]",
+	"oathmanage": "{{optional}}\n{{doc-special|OATHManage}}",
+	"oathauth-ui-not-enabled-modules": "Header on Special:OATHManage under which all available, but not currently enabled, modules are listed",
+	"oathauth-ui-enabled-module": "Header on Special:OATHManage under which is the currently selected 2FA module shown",
+	"oathauth-enable-generic": "Button label that enables the module",
+	"oathauth-disable-generic": "Button label that disables the module",
+	"oathauth-ui-error-page-no-module": "Text for the error message shown when module Enable/disable page cannot be displayed because no module is enabled or specified in the request",
+	"oathauth-invalid-data-format": "Error message when the key instance cannot be created based on provided data",
+	"oathauth-invalid-key-type": "Error message when key class is unexpected"
 }

@@ -16,6 +16,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth;
+
+use User;
+
 /**
  * Class representing a user from OATH's perspective
  *
@@ -25,15 +29,20 @@ class OATHUser {
 	/** @var User */
 	private $user;
 
-	/** @var OATHAuthKey|null */
+	/** @var IAuthKey|null */
 	private $key;
+
+	/**
+	 * @var IModule
+	 */
+	private $module;
 
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 * @param User $user
-	 * @param OATHAuthKey|null $key
+	 * @param IAuthKey|null $key
 	 */
-	public function __construct( User $user, OATHAuthKey $key = null ) {
+	public function __construct( User $user, IAuthKey $key = null ) {
 		$this->user = $user;
 		$this->key = $key;
 	}
@@ -50,6 +59,7 @@ class OATHUser {
 	 */
 	public function getIssuer() {
 		global $wgSitename, $wgOATHAuthAccountPrefix;
+
 		if ( $wgOATHAuthAccountPrefix !== false ) {
 			return $wgOATHAuthAccountPrefix;
 		}
@@ -66,7 +76,7 @@ class OATHUser {
 	/**
 	 * Get the key associated with this user.
 	 *
-	 * @return null|OATHAuthKey
+	 * @return IAuthKey|null
 	 */
 	public function getKey() {
 		return $this->key;
@@ -75,9 +85,35 @@ class OATHUser {
 	/**
 	 * Set the key associated with this user.
 	 *
-	 * @param OATHAuthKey|null $key
+	 * @param IAuthKey|null $key
 	 */
-	public function setKey( OATHAuthKey $key = null ) {
+	public function setKey( $key = null ) {
 		$this->key = $key;
+	}
+
+	/**
+	 * Gets the module instance associated with this user
+	 *
+	 * @return IModule
+	 */
+	public function getModule() {
+		return $this->module;
+	}
+
+	/**
+	 * Sets the module instance associated with this user
+	 *
+	 * @param IModule|null $module
+	 */
+	public function setModule( IModule $module = null ) {
+		$this->module = $module;
+	}
+
+	/**
+	 * Disables current (if any) auth method
+	 */
+	public function disable() {
+		$this->key = null;
+		$this->module = null;
 	}
 }

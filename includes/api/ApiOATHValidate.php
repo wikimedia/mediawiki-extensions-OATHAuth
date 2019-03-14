@@ -16,6 +16,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\IModule;
+
 /**
  * Validate an OATH token.
  *
@@ -25,7 +29,8 @@
 class ApiOATHValidate extends ApiBase {
 	public function execute() {
 		// Be extra paranoid about the data that is sent
-		$this->requirePostedParameters( [ 'totp', 'token' ] );
+		$this->requireAtLeastOneParameter( $this->extractRequestParams(), 'totp', 'data' );
+		$this->requirePostedParameters( [ 'token', 'data', 'totp' ] );
 
 		$params = $this->extractRequestParams();
 		if ( $params['user'] === null ) {
@@ -48,17 +53,32 @@ class ApiOATHValidate extends ApiBase {
 			ApiResult::META_BC_BOOLS => [ 'enabled', 'valid' ],
 			'enabled' => false,
 			'valid' => false,
+			'module' => ''
 		];
 
 		if ( !$user->isAnon() ) {
-			$oathUser = OATHAuthHooks::getOATHUserRepository()
-				->findByUser( $user );
-			if ( $oathUser ) {
-				$key = $oathUser->getKey();
-				if ( $key !== null ) {
-					$result['enabled'] = true;
-					$result['valid'] = $key->verifyToken(
-						$params['totp'], $oathUser ) !== false;
+			$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+			$authUser = $userRepo->findByUser( $user );
+			if ( $authUser ) {
+				$module = $authUser->getModule();
+				if ( $module instanceof IModule ) {
+					$data = [];
+					if ( isset( $params['totp'] ) ) {
+						// Legacy
+						if ( $module instanceof TOTP ) {
+							$data = [
+								'token' => $params['totp']
+							];
+						}
+					} else {
+						$decoded = FormatJson::decode( $params['data'], true );
+						if ( is_array( $decoded ) ) {
+							$data = $decoded;
+						}
+					}
+					$result['enabled'] = $module->isEnabled( $authUser );
+					$result['valid'] = $module->verify( $authUser, $data ) !== false;
+					$result['module'] = $module->getName();
 				}
 			}
 		}
@@ -85,8 +105,11 @@ class ApiOATHValidate extends ApiBase {
 			],
 			'totp' => [
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_DEPRECATED => true
 			],
+			'data' => [
+				ApiBase::PARAM_TYPE => 'string'
+			]
 		];
 	}
 
@@ -96,6 +119,8 @@ class ApiOATHValidate extends ApiBase {
 				=> 'apihelp-oathvalidate-example-1',
 			'action=oathvalidate&user=Example&totp=123456&token=123ABC'
 				=> 'apihelp-oathvalidate-example-2',
+			'action=oathvalidate&user=Example&data={"totp":"123456"}&token=123ABC'
+				=> 'apihelp-oathvalidate-example-3',
 		];
 	}
 }

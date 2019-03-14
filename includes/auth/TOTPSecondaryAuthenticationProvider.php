@@ -20,6 +20,7 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\MediaWikiServices;
 
 /**
  * AuthManager secondary authentication provider for TOTP second-factor authentication.
@@ -57,9 +58,10 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	 * @return AuthenticationResponse
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
-		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
+		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$authUser = $userRepo->findByUser( $user );
 
-		if ( $oathuser->getKey() === null ) {
+		if ( $authUser->getKey() === null ) {
 			return AuthenticationResponse::newAbstain();
 		} else {
 			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
@@ -79,11 +81,12 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
-		$oathuser = OATHAuthHooks::getOATHUserRepository()->findByUser( $user );
+		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$authUser = $userRepo->findByUser( $user );
 		// @phan-suppress-next-line PhanUndeclaredProperty
 		$token = $request->OATHToken;
 
-		if ( $oathuser->getKey() === null ) {
+		if ( $authUser->getKey() === null ) {
 			$this->logger->warning( 'Two-factor authentication was disabled mid-authentication for '
 				. $user->getName() );
 			return AuthenticationResponse::newAbstain();
@@ -100,7 +103,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				), 'error' );
 		}
 
-		if ( $oathuser->getKey()->verifyToken( $token, $oathuser ) ) {
+		if ( $authUser->getKey()->verify( $token, $authUser ) ) {
 			return AuthenticationResponse::newPass();
 		} else {
 			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],

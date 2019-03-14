@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\Session\SessionManager;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\IModule;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -25,11 +27,10 @@ class DisableOATHAuthForUser extends Maintenance {
 			$this->error( "User $username doesn't exist!", 1 );
 		}
 
-		$repo = OATHAuthHooks::getOATHUserRepository();
-
+		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 		$oathUser = $repo->findByUser( $user );
-
-		if ( $oathUser->getKey() === null ) {
+		$module = $oathUser->getModule();
+		if ( !( $module instanceof IModule ) || $module->isEnabled( $oathUser ) === false ) {
 			$this->error( "User $username doesn't have OATHAuth enabled!", 1 );
 		}
 

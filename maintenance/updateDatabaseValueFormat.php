@@ -1,8 +1,8 @@
 <?php
 /**
- * Update scratch_token column format
+ * Converts old, TOTP specific, column values to new structure
  *
- * Usage: php updateScratchTokenFormat.php
+ * Usage: php updateDatabaseValueFormat.php
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @author Darian Anthony Patrick
+ * @author Dejan Savuljesku
  * @ingroup Maintenance
  */
 
@@ -33,10 +33,10 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
-class UpdateScratchTokenFormat extends Maintenance {
+class UpdateDatabaseValueFormat extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Script to update scratch_token column format';
+		$this->mDescription = 'Script to convert old, TOTP specific, column values to new structure';
 		$this->requireExtension( 'OATHAuth' );
 	}
 
@@ -46,12 +46,12 @@ class UpdateScratchTokenFormat extends Maintenance {
 			->getMainLB( $wgOATHAuthDatabase );
 		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
 
-		if ( !OATHAuthHooks::schemaUpdateOldUsers( $dbw ) ) {
-			$this->error( "Failed to update scratch_token rows.\n", 1 );
+		if ( !OATHAuthHooks::convertToGenericFields( $dbw ) ) {
+			$this->error( "Failed to update the data structure rows.\n", 1 );
 		}
 		$this->output( "Done.\n" );
 	}
 }
 
-$maintClass = UpdateScratchTokenFormat::class;
+$maintClass = UpdateDatabaseValueFormat::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

@@ -29,7 +29,7 @@ class TOTPAuthenticationRequest extends AuthenticationRequest {
 	public function describeCredentials() {
 		return [
 			'provider' => wfMessage( 'oathauth-describe-provider' ),
-			'account' => new \RawMessage( '$1', [ $this->username ] ),
+			'account' => new RawMessage( '$1', [ $this->username ] ),
 		] + parent::describeCredentials();
 	}
 
@@ -38,6 +38,8 @@ class TOTPAuthenticationRequest extends AuthenticationRequest {
 			'OATHToken' => [
 				'type' => 'string',
 				'label' => wfMessage( 'oathauth-auth-token-label' ),
-				'help' => wfMessage( 'oathauth-auth-token-help' ), ], ];
+				'help' => wfMessage( 'oathauth-auth-token-help' )
+			]
+		];
 	}
 }

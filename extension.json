@@ -9,36 +9,44 @@
 		"MediaWiki": ">= 1.32.0"
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
+	"attributes": {
+		"OATHAuth": {
+			"Modules": {
+				"totp": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP::factory"
+			}
+		}
+	},
 	"AutoloadClasses": {
 		"ApiOATHValidate": "includes/api/ApiOATHValidate.php",
 		"ApiQueryOATH": "includes/api/ApiQueryOATH.php",
 		"OATHAuthHooks": "includes/OATHAuthHooks.php",
-		"OATHAuthKey": "includes/OATHAuthKey.php",
 		"OATHAuthUtils": "includes/OATHAuthUtils.php",
-		"OATHUserRepository": "includes/OATHUserRepository.php",
-		"OATHUser": "includes/OATHUser.php",
 		"SpecialOATH": "includes/special/SpecialOATH.php",
-		"SpecialOATHEnable": "includes/special/SpecialOATHEnable.php",
-		"SpecialOATHDisable": "includes/special/SpecialOATHDisable.php",
 		"SpecialDisableOATHForUser": "includes/special/SpecialDisableOATHForUser.php",
 		"ProxySpecialPage": "includes/special/ProxySpecialPage.php",
 		"TOTPAuthenticationRequest": "includes/auth/TOTPAuthenticationRequest.php",
 		"TOTPSecondaryAuthenticationProvider": "includes/auth/TOTPSecondaryAuthenticationProvider.php"
 	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\OATHAuth\\": "src/"
+	},
 	"AuthManagerAutoConfig": {
 		"secondaryauth": {
-			"TOTPSecondaryAuthenticationProvider":{
-				"class": "TOTPSecondaryAuthenticationProvider",
+			"OATHSecondaryAuthenticationProvider":{
+				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\SecondaryAuthenticationProvider",
 				"sort": 50
 			}
 		}
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"ExtensionMessagesFiles": {
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
 	"Hooks": {
 		"AuthChangeFormFields": [
-			"OATHAuthHooks::onAuthChangeFormFields"
+			"\\MediaWiki\\Extension\\OATHAuth\\Hook\\AuthChangeFormFields\\TOTPExtendTokenField::callback"
 		],
 		"TwoFactorIsEnabled": [
 			"OATHAuthHooks::onTwoFactorIsEnabled"
@@ -47,7 +55,7 @@
 			"OATHAuthHooks::onLoadExtensionSchemaUpdates"
 		],
 		"GetPreferences": [
-			"OATHAuthHooks::onGetPreferences"
+			"\\MediaWiki\\Extension\\OATHAuth\\Hook\\GetPreferences\\AuthModule::callback"
 		]
 	},
 	"MessagesDirs": {
@@ -56,22 +64,30 @@
 		]
 	},
 	"config": {
-		"OATHAuthWindowRadius": 4,
-		"OATHAuthDatabase": false,
-		"OATHAuthSecret": false,
-		"OATHAuthAccountPrefix": false
+		"OATHAuthWindowRadius": {
+			"value": 4
+		},
+		"OATHAuthDatabase": {
+			"value": false
+		},
+		"OATHAuthSecret": {
+			"value": false
+		},
+		"OATHAuthAccountPrefix": {
+			"value": false
+		}
 	},
 	"ResourceModules": {
-		"ext.oath.showqrcode": {
+		"ext.oath.totp.showqrcode": {
 			"scripts": [
-				"jquery.qrcode.js",
-				"qrcode.js",
-				"ext.oath.showqrcode.js"
+				"totp/jquery.qrcode.js",
+				"totp/qrcode.js",
+				"totp/ext.oath.showqrcode.js"
 			]
 		},
-		"ext.oath.showqrcode.styles": {
+		"ext.oath.totp.showqrcode.styles": {
 			"styles": [
-				"ext.oath.showqrcode.styles.css"
+				"totp/ext.oath.showqrcode.styles.css"
 			]
 		}
 	},
@@ -81,7 +97,8 @@
 	},
 	"SpecialPages": {
 		"OATH": "SpecialOATH",
-		"DisableOATHForUser": "SpecialDisableOATHForUser"
+		"DisableOATHForUser": "SpecialDisableOATHForUser",
+		"OATHManage": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage"
 	},
 	"AvailableRights": [
 		"oathauth-enable",
@@ -137,5 +154,5 @@
 	"LogRestrictions": {
 		"oath": "oathauth-view-log"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }

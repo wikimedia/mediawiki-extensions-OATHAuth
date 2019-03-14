@@ -16,12 +16,22 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Special;
+
+use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Logger\LoggerFactory;
+use FormSpecialPage;
+use HTMLForm;
+use Message;
+
 /**
  * Special page to display key information to the user
  *
  * @ingroup Extensions
  */
-class SpecialOATHDisable extends FormSpecialPage {
+class TOTPDisable extends FormSpecialPage {
 	/** @var OATHUserRepository */
 	private $OATHRepository;
 
@@ -70,13 +80,13 @@ class SpecialOATHDisable extends FormSpecialPage {
 	}
 
 	/**
-	 * Require users to be logged in
+	 * Requires user to be logged in
 	 *
-	 * @param User $user
-	 *
-	 * @return bool|void
+	 * @param \User $user
+	 * @throws \UserBlockedError
+	 * @throws \UserNotLoggedIn
 	 */
-	protected function checkExecutePermissions( User $user ) {
+	protected function checkExecutePermissions( \User $user ) {
 		parent::checkExecutePermissions( $user );
 
 		$this->requireLogin();
@@ -109,14 +119,14 @@ class SpecialOATHDisable extends FormSpecialPage {
 
 	/**
 	 * @param array $formData
-	 *
-	 * @return array|bool
+	 * @return array|bool|\Status|string
+	 * @throws \MWException
 	 */
 	public function onSubmit( array $formData ) {
 		// Don't increase pingLimiter, just check for limit exceeded.
 		if ( $this->OATHUser->getUser()->pingLimiter( 'badoath', 0 ) ) {
 			// Arbitrary duration given here
-			\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
+			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} rate limited while disabling 2FA from {clientip}', [
 					'user' => $this->getUser()->getName(),
 					'clientip' => $this->getRequest()->getIP(),
@@ -125,14 +135,17 @@ class SpecialOATHDisable extends FormSpecialPage {
 			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
-		if ( !$this->OATHUser->getKey()->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
-				'OATHAuth {user} failed to provide a correct token while disabling 2FA from {clientip}', [
-					'user' => $this->getUser()->getName(),
-					'clientip' => $this->getRequest()->getIP(),
-				]
-			);
-			return [ 'oathauth-failedtovalidateoath' ];
+		$key = $this->OATHUser->getKey();
+		if ( $key instanceof TOTPKey ) {
+			if ( !$key->verify( $formData['token'], $this->OATHUser ) ) {
+				LoggerFactory::getInstance( 'authentication' )->info(
+					'OATHAuth {user} failed to provide a correct token while disabling 2FA from {clientip}', [
+						'user' => $this->getUser()->getName(),
+						'clientip' => $this->getRequest()->getIP(),
+					]
+				);
+				return [ 'oathauth-failedtovalidateoath' ];
+			}
 		}
 
 		$this->OATHUser->setKey( null );

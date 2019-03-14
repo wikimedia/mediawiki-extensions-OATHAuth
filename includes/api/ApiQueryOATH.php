@@ -16,6 +16,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Query module to check if a user has OATH authentication enabled.
  *
@@ -51,9 +53,11 @@ class ApiQueryOATH extends ApiQueryBase {
 		];
 
 		if ( !$user->isAnon() ) {
-			$oathUser = OATHAuthHooks::getOATHUserRepository()
-				->findByUser( $user );
-			$data['enabled'] = $oathUser && $oathUser->getKey() !== null;
+			$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+			$authUser = $userRepo->findByUser( $user );
+			$data['enabled'] = $authUser &&
+				$authUser->getModule() !== null &&
+				$authUser->getModule()->isEnabled( $authUser );
 		}
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}

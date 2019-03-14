@@ -16,25 +16,80 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Special\OATHErrorPage;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\MediaWikiServices;
+
 /**
  * Proxy page that redirects to the proper OATH special page
  */
 class SpecialOATH extends ProxySpecialPage {
 	/**
-	 * If the user already has OATH enabled, show them a page to disable
-	 * If the user has OATH disabled, show them a page to enable
+	 * @var OATHUserRepository
+	 */
+	protected $userRepo;
+
+	/**
+	 * @var OATHUser
+	 */
+	protected $authUser;
+
+	/**
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	public function __construct() {
+		parent::__construct();
+
+		$this->userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
+	}
+
+	/**
+	 * Get the currently enable module (if any) and let it
+	 * handle it - return an appropriate SpecialPage
 	 *
-	 * @return SpecialOATHDisable|SpecialOATHEnable
+	 * @return SpecialPage
 	 */
 	protected function getTargetPage() {
-		$repo = OATHAuthHooks::getOATHUserRepository();
+		$module = $this->getModule();
+		if ( $module === null ) {
+			return new OATHErrorPage();
+		}
+		return $module->getTargetPage( $this->userRepo, $this->authUser );
+	}
 
-		$user = $repo->findByUser( $this->getUser() );
+	/**
+	 * @return IModule|null
+	 */
+	protected function getModule() {
+		$module = $this->getModuleFromAuthUser();
+		if ( $module instanceof IModule ) {
+			return $module;
+		}
+		$module = $this->getModuleFromRequest();
+		if ( $module instanceof IModule ) {
+			return $module;
+		}
+		return null;
+	}
 
-		if ( $user->getKey() === null ) {
-			return new SpecialOATHEnable( $repo, $user );
-		} else {
-			return new SpecialOATHDisable( $repo, $user );
+	/**
+	 * @return IModule|null
+	 */
+	protected function getModuleFromAuthUser() {
+		return $this->authUser->getModule();
+	}
+
+	/**
+	 * @return IModule|null
+	 */
+	protected function getModuleFromRequest() {
+		$moduleKey = $this->getRequest()->getVal( 'module' );
+		if ( $moduleKey ) {
+			return MediaWikiServices::getInstance()->getService( 'OATHAuth' )->getModuleByKey( $moduleKey );
 		}
 	}
 

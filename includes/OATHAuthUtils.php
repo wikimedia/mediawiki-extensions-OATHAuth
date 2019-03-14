@@ -18,7 +18,7 @@
 
 /**
  * Utility class for various OATH functions
- *
+ * @deprecated Such functions should go to \MediaWiki\Extension\OATHAuth\OATHAuth
  * @ingroup Extensions
  */
 class OATHAuthUtils {

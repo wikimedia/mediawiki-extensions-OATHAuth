@@ -10,8 +10,9 @@ $specialPageAliases = [];
 
 /** English (English) */
 $specialPageAliases['en'] = [
-	'OATH' => [ 'Two-factor authentication', 'OATH', 'OATHAuth' ],
+	'OATH' => [ 'Two-factor_authentication', 'OATH', 'OATHAuth' ],
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
+	'OATHManage' => [ 'Manage_Two-factor_authentication', 'OATH_Manage', 'OATHManage' ]
 ];
 
 /** Arabic (العربية) */

@@ -1,4 +1,7 @@
 <?php
+
+namespace MediaWiki\Extension\OATHAuth\Key;
+
 /**
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +21,16 @@
 
 use Base32\Base32;
 use jakobo\HOTP\HOTP;
+use MediaWiki\Extension\OATHAuth\OATHUser;
 use Psr\Log\LoggerInterface;
-use \MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Logger\LoggerFactory;
+use DomainException;
+use Exception;
+use MWException;
+use ObjectCache;
+use CentralIdLookup;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\IAuthKey;
 
 /**
  * Class representing a two-factor key
@@ -28,16 +39,16 @@ use \MediaWiki\Logger\LoggerFactory;
  *
  * @ingroup Extensions
  */
-class OATHAuthKey {
+class TOTPKey implements IAuthKey {
 	/**
 	 * Represents that a token corresponds to the main secret
-	 * @see verifyToken
+	 * @see verify
 	 */
 	const MAIN_TOKEN = 1;
 
 	/**
 	 * Represents that a token corresponds to a scratch token
-	 * @see verifyToken
+	 * @see verify
 	 */
 	const SCRATCH_TOKEN = -1;
 
@@ -48,9 +59,8 @@ class OATHAuthKey {
 	private $scratchTokens;
 
 	/**
-	 * Make a new key from random values
-	 *
-	 * @return OATHAuthKey
+	 * @return TOTPKey
+	 * @throws Exception
 	 */
 	public static function newFromRandom() {
 		$object = new self(
@@ -68,7 +78,7 @@ class OATHAuthKey {
 	 * @param array $scratchTokens
 	 */
 	public function __construct( $secret, array $scratchTokens ) {
-		// Currently harcoded values; might be used in future
+		// Currently hardcoded values; might be used in future
 		$this->secret = [
 			'mode' => 'hotp',
 			'secret' => $secret,
@@ -93,25 +103,22 @@ class OATHAuthKey {
 	}
 
 	/**
-	 * Verify a token against the secret or scratch tokens
-	 *
-	 * @param string $token Token to verify
+	 * @param string $token
 	 * @param OATHUser $user
-	 *
-	 * @return int|false Returns a constant represent what type of token was matched,
-	 *  or false for no match
+	 * @return bool|int
+	 * @throws MWException
 	 */
-	public function verifyToken( $token, OATHUser $user ) {
+	public function verify( $token, OATHUser $user ) {
 		global $wgOATHAuthWindowRadius;
 
 		if ( $this->secret['mode'] !== 'hotp' ) {
-			throw new \DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
+			throw new DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
 		}
 
 		// Prevent replay attacks
 		$memc = ObjectCache::newAnything( [] );
 		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() );
-		$memcKey = wfMemcKey( 'oathauth', 'usedtokens', $uid );
+		$memcKey = ObjectCache::getLocalClusterInstance()->makeKey( 'oathauth-totp', 'usedtokens', $uid );
 		$lastWindow = (int)$memc->get( $memcKey );
 
 		$retval = false;
@@ -160,9 +167,12 @@ class OATHAuthKey {
 							'clientip' => $clientIP,
 						] );
 
-						$oathrepo = OATHAuthHooks::getOATHUserRepository();
+						$auth = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
+						$module = $auth->getModuleByKey( 'totp' );
+						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHAuthUserRepository' );
 						$user->setKey( $this );
-						$oathrepo->persist( $user, $clientIP );
+						$user->setModule( $module );
+						$userRepo->persist( $user, $clientIP );
 						// Only return true if we removed it from the database
 						$retval = self::SCRATCH_TOKEN;
 						break;

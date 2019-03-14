@@ -16,12 +16,29 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Special;
+
+use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use Html;
+use HTMLForm;
+use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+use FormSpecialPage;
+use User;
+use Exception;
+use MWException;
+use ConfigException;
+use UserBlockedError;
+use UserNotLoggedIn;
+
 /**
  * Special page to display key information to the user
  *
  * @ingroup Extensions
  */
-class SpecialOATHEnable extends FormSpecialPage {
+class TOTPEnable extends FormSpecialPage {
 	/** @var OATHUserRepository */
 	private $OATHRepository;
 
@@ -54,8 +71,8 @@ class SpecialOATHEnable extends FormSpecialPage {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegend( false );
 		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-enable' ) );
-		$form->getOutput()->addModules( 'ext.oath.showqrcode' );
-		$form->getOutput()->addModuleStyles( 'ext.oath.showqrcode.styles' );
+		$form->getOutput()->addModules( 'ext.oath.totp.showqrcode' );
+		$form->getOutput()->addModuleStyles( 'ext.oath.totp.showqrcode.styles' );
 	}
 
 	/**
@@ -73,11 +90,9 @@ class SpecialOATHEnable extends FormSpecialPage {
 	}
 
 	/**
-	 * Require users to be logged in
-	 *
 	 * @param User $user
-	 *
-	 * @return bool|void
+	 * @throws UserBlockedError
+	 * @throws UserNotLoggedIn
 	 */
 	protected function checkExecutePermissions( User $user ) {
 		parent::checkExecutePermissions( $user );
@@ -86,14 +101,15 @@ class SpecialOATHEnable extends FormSpecialPage {
 	}
 
 	/**
-	 * @return array[]
+	 * @return array
+	 * @throws Exception
 	 */
 	protected function getFormFields() {
-		$key = $this->getRequest()->getSessionData( 'oathauth_key' );
+		$key = $this->getRequest()->getSessionData( 'oathauth_totp_key' );
 
 		if ( $key === null ) {
-			$key = OATHAuthKey::newFromRandom();
-			$this->getRequest()->setSessionData( 'oathauth_key', $key );
+			$key = TOTPKey::newFromRandom();
+			$this->getRequest()->setSessionData( 'oathauth_totp_key', $key );
 		}
 
 		$secret = $key->getSecret();
@@ -161,22 +177,28 @@ class SpecialOATHEnable extends FormSpecialPage {
 				'type' => 'hidden',
 				'default' => $this->getRequest()->getVal( 'returntoquery' ),
 				'name' => 'returntoquery',
+			],
+			'module' => [
+				'type' => 'hidden',
+				'default' => 'totp',
+				'name' => 'module'
 			]
 		];
 	}
 
 	/**
 	 * @param array $formData
-	 *
-	 * @return array|bool
+	 * @return array|bool|\Status|string
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
-		/** @var OATHAuthKey $key */
-		$key = $this->getRequest()->getSessionData( 'oathauth_key' );
+		/** @var TOTPKey $key */
+		$key = $this->getRequest()->getSessionData( 'oathauth_totp_key' );
 
 		if ( $key->isScratchToken( $formData['token'] ) ) {
-			// A scratch token is not allowed for enrollement
-			\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
+			// A scratch token is not allowed for enrollment
+			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} attempted to enable 2FA using a scratch token from {clientip}', [
 					'user' => $this->getUser()->getName(),
 					'clientip' => $this->getRequest()->getIP(),
@@ -184,8 +206,8 @@ class SpecialOATHEnable extends FormSpecialPage {
 			);
 			return [ 'oathauth-noscratchforvalidation' ];
 		}
-		if ( !$key->verifyToken( $formData['token'], $this->OATHUser ) ) {
-			\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
+		if ( !$key->verify( $formData['token'], $this->OATHUser ) ) {
+			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} failed to provide a correct token while enabling 2FA from {clientip}', [
 					'user' => $this->getUser()->getName(),
 					'clientip' => $this->getRequest()->getIP(),
@@ -194,8 +216,11 @@ class SpecialOATHEnable extends FormSpecialPage {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
 
-		$this->getRequest()->setSessionData( 'oathauth_key', null );
+		$auth = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
+		$module = $auth->getModuleByKey( 'totp' );
+		$this->getRequest()->setSessionData( 'oathauth_totp_key', null );
 		$this->OATHUser->setKey( $key );
+		$this->OATHUser->setModule( $module );
 		$this->OATHRepository->persist( $this->OATHUser, $this->getRequest()->getIP() );
 
 		return true;
@@ -223,10 +248,10 @@ class SpecialOATHEnable extends FormSpecialPage {
 	 *
 	 * The characters of the token are split in groups of 4
 	 *
-	 * @param OATHAuthKey $key
+	 * @param TOTPKey $key
 	 * @return String
 	 */
-	protected function getSecretForDisplay( OATHAuthKey $key ) {
+	protected function getSecretForDisplay( TOTPKey $key ) {
 		return $this->tokenFormatterFunction( $key->getSecret() );
 	}
 
@@ -235,10 +260,10 @@ class SpecialOATHEnable extends FormSpecialPage {
 	 *
 	 * The characters of the token are split in groups of 4
 	 *
-	 * @param OATHAuthKey $key
+	 * @param TOTPKey $key
 	 * @return string[]
 	 */
-	protected function getScratchTokensForDisplay( OATHAuthKey $key ) {
+	protected function getScratchTokensForDisplay( TOTPKey $key ) {
 		return array_map( [ $this, 'tokenFormatterFunction' ], $key->getScratchTokens() );
 	}
 

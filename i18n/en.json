@@ -60,7 +60,21 @@
 	"apihelp-oathvalidate-description": "Validate a two-factor authentication (OATH) token.",
 	"apihelp-oathvalidate-summary": "Validate a two-factor authentication (OATH) token.",
 	"apihelp-oathvalidate-param-user": "User to validate token for. Defaults to the current user.",
-	"apihelp-oathvalidate-param-totp": "Two-factor authentication (OATH) token.",
+	"apihelp-oathvalidate-param-totp": "Two-factor authentication (OATH) token. Legacy, use \"data\" param instead",
 	"apihelp-oathvalidate-example-1": "Validate a token for the current user",
-	"apihelp-oathvalidate-example-2": "Validate a token for the user <kbd>Example</kbd>"
+	"apihelp-oathvalidate-example-2": "Validate a token for the user <kbd>Example</kbd>",
+	"apihelp-oathvalidate-example-3": "Validate JSON data for user <kbd>Example</kbd>",
+	"apihelp-oathvalidate-param-data": "JSON encoded data expected by the module currently activated for the user being authenticated",
+	"oauthauth-ui-no-module": "None enabled",
+	"oathauth-module-totp-label": "TOTP (one-time token)",
+	"oathauth-ui-manage": "Manage",
+	"oathmanage": "OATH Manage",
+	"oathauth-ui-not-enabled-modules": "Available methods",
+	"oathauth-ui-enabled-module": "Enabled authentication method",
+	"oathauth-enable-generic": "Enable",
+	"oathauth-disable-generic": "Disable",
+	"oathauth-ui-error-page-no-module": "No Two-factor authentication method is currently enabled.",
+	"oathauth-invalid-data-format": "Data provider is invalid to create a key for the selected auth method",
+	"oathauth-invalid-key-type": "Key set on the user does not match the required type for selected auth method"
+
 }

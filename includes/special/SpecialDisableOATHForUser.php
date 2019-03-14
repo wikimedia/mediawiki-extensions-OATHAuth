@@ -1,13 +1,18 @@
 <?php
 
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Logger\LoggerFactory;
+
 class SpecialDisableOATHForUser extends FormSpecialPage {
 	/** @var OATHUserRepository */
-	private $OATHRepository;
+	private $userRepo;
 
 	public function __construct() {
 		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
 
-		$this->OATHRepository = OATHAuthHooks::getOATHUserRepository();
+		$this->userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 	}
 
 	public function doesWrites() {
@@ -85,9 +90,10 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 		if ( $user && $user->getId() === 0 ) {
 			return [ 'oathauth-user-not-found' ];
 		}
-		$oathUser = $this->OATHRepository->findByUser( $user );
+		$oathUser = $this->userRepo->findByUser( $user );
 
-		if ( $oathUser->getKey() === null ) {
+		if ( !( $oathUser->getModule() instanceof IModule ) ||
+			!$oathUser->getModule()->isEnabled( $oathUser ) ) {
 			return [ 'oathauth-user-not-does-not-have-oath-enabled' ];
 		}
 
@@ -96,8 +102,8 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
-		$oathUser->setKey( null );
-		$this->OATHRepository->remove( $oathUser, $this->getRequest()->getIP() );
+		$oathUser->disable();
+		$this->userRepo->remove( $oathUser, $this->getRequest()->getIP() );
 
 		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
 		$logEntry->setPerformer( $this->getUser() );
@@ -105,7 +111,7 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 		$logEntry->setComment( $formData['reason'] );
 		$logEntry->insert();
 
-		\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
+		LoggerFactory::getInstance( 'authentication' )->info(
 			'OATHAuth disabled for {usertarget} by {user} from {clientip}', [
 				'user' => $this->getUser()->getName(),
 				'usertarget' => $formData['user'],

@@ -16,9 +16,9 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 
 /**
  * Hooks for Extension:OATHAuth
@@ -29,52 +29,12 @@ class OATHAuthHooks {
 	/**
 	 * Get the singleton OATH user repository
 	 *
+	 * @deprecated Use "OATHUserRepository" service
 	 * @return OATHUserRepository
 	 */
 	public static function getOATHUserRepository() {
-		global $wgOATHAuthDatabase;
-
-		static $service = null;
-
-		if ( $service == null ) {
-			$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-			$service = new OATHUserRepository(
-				$factory->getMainLB( $wgOATHAuthDatabase ),
-				new HashBagOStuff(
-					[
-						'maxKeys' => 5,
-					]
-				)
-			);
-		}
-
-		return $service;
-	}
-
-	/**
-	 * @param AuthenticationRequest[] $requests
-	 * @param array $fieldInfo Field information array (union of the
-	 *    AuthenticationRequest::getFieldInfo() responses).
-	 * @param array &$formDescriptor HTMLForm descriptor. The special key 'weight' can be set
-	 *   to change the order of the fields.
-	 * @param string $action One of the AuthManager::ACTION_* constants.
-	 * @return bool
-	 */
-	public static function onAuthChangeFormFields(
-		array $requests, array $fieldInfo, array &$formDescriptor, $action
-	) {
-		if ( isset( $fieldInfo['OATHToken'] ) ) {
-			$formDescriptor['OATHToken'] += [
-				'cssClass' => 'loginText',
-				'id' => 'wpOATHToken',
-				'size' => 20,
-				'autofocus' => true,
-				'persistent' => false,
-				'autocomplete' => false,
-				'spellcheck' => false,
-			];
-		}
-		return true;
+		return MediaWikiServices::getInstance()
+			->getService( 'OATHUserRepository' );
 	}
 
 	/**
@@ -88,10 +48,9 @@ class OATHAuthHooks {
 	 * @return bool False if enabled, true otherwise
 	 */
 	public static function onTwoFactorIsEnabled( &$isEnabled ) {
-		global $wgUser;
-
-		$user = self::getOATHUserRepository()->findByUser( $wgUser );
-		if ( $user && $user->getKey() !== null ) {
+		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$authUser = $userRepo->findByUser( RequestContext::getMain()->getUser() );
+		if ( $authUser && $authUser->getModule() !== null ) {
 			$isEnabled = true;
 			# This two-factor extension is enabled by the user,
 			# we don't need to check others.
@@ -102,41 +61,6 @@ class OATHAuthHooks {
 			# but others may be.
 			return true;
 		}
-	}
-
-	/**
-	 * Add the necessary user preferences for OATHAuth
-	 *
-	 * @param User $user
-	 * @param array &$preferences
-	 * @return bool
-	 */
-	public static function onGetPreferences( User $user, array &$preferences ) {
-		$oathUser = self::getOATHUserRepository()->findByUser( $user );
-
-		// If there is no existing key, and the user is not allowed to enable it,
-		// we have nothing to show.
-		if ( $oathUser->getKey() === null && !$user->isAllowed( 'oathauth-enable' ) ) {
-			return true;
-		}
-
-		$msg = $oathUser->getKey() !== null ? 'oathauth-disable' : 'oathauth-enable';
-
-		$control = new \OOUI\ButtonWidget( [
-			'href' => SpecialPage::getTitleFor( 'OATH' )->getLinkURL( [
-				'returnto' => SpecialPage::getTitleFor( 'Preferences' )->getPrefixedText()
-			] ),
-			'label' => wfMessage( $msg )->text(),
-		] );
-
-		$preferences[$msg] = [
-			'type' => 'info',
-			'raw' => true,
-			'default' => (string)$control,
-			'label-message' => 'oathauth-prefs-label',
-			'section' => 'personal/info', ];
-
-		return true;
 	}
 
 	/**
@@ -155,6 +79,19 @@ class OATHAuthHooks {
 					'secret_reset',
 					"$base/sql/mysql/patch-remove_reset.sql"
 				);
+				$updater->addExtensionField(
+					'oathauth_users',
+					'module',
+					"$base/sql/mysql/patch-add_generic_fields.sql"
+				);
+				/** Disabled for WMF transitionary period
+				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ] );
+				$updater->dropExtensionField(
+					'oathauth_users',
+					'secret',
+					"$base/sql/mysql/patch-remove_module_specific_fields.sql"
+				);
+				*/
 				break;
 
 			case 'oracle':
@@ -178,7 +115,77 @@ class OATHAuthHooks {
 	 * @return bool
 	 */
 	public static function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
-		return self::schemaUpdateOldUsers( $updater->getDB() );
+		global $wgOATHAuthDatabase;
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+			->getMainLB( $wgOATHAuthDatabase );
+		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
+		return self::schemaUpdateOldUsers( $dbw );
+	}
+
+	/**
+	 * Helper function for converting old, TOTP specific, column values to new structure
+	 * @param DatabaseUpdater $updater
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function schemaUpdateSubstituteForGenericFields( DatabaseUpdater $updater ) {
+		global $wgOATHAuthDatabase;
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+			->getMainLB( $wgOATHAuthDatabase );
+		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
+		return self::convertToGenericFields( $dbw );
+	}
+
+	/**
+	 * Converts old, TOTP specific, column values to new structure
+	 * @param IDatabase $db
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function convertToGenericFields( IDatabase $db ) {
+		if ( !$db->fieldExists( 'oathauth_users', 'secret' ) ) {
+			return true;
+		}
+
+		$services = MediaWikiServices::getInstance();
+		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
+		$lbFactory = $services->getDBLoadBalancerFactory();
+		while ( true ) {
+			$lbFactory->waitForReplication();
+
+			$res = $db->select(
+				'oathauth_users',
+				[ 'id', 'secret', 'scratch_tokens' ],
+				[
+					'module' => '',
+					'data IS NULL',
+					'secret IS NOT NULL'
+				],
+				__METHOD__,
+				[ 'LIMIT' => $batchSize ]
+			);
+
+			if ( $res->numRows() === 0 ) {
+				return true;
+			}
+
+			foreach ( $res as $row ) {
+				$db->update(
+					'oathauth_users',
+					[
+						'module' => 'totp',
+						'data' => FormatJson::encode( [
+							'secret' => $row->secret,
+							'scratch_tokens' => $row->scratch_tokens
+						] )
+					],
+					[ 'id' => $row->id ],
+					__METHOD__
+				);
+			}
+		}
+
+		return true;
 	}
 
 	/**
