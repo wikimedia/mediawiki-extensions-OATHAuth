@@ -12,7 +12,6 @@
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
-	"oath": "OATHAuth",
 	"specialpages-group-oath": "Autenticación en dos pasos",
 	"oathauth-account": "Nombre de la cuenta:",
 	"oathauth-secret": "Clave secreta de autenticación en dos pasos:",
