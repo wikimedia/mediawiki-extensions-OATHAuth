@@ -191,7 +191,7 @@ class TOTPEnable extends FormSpecialPage {
 
 	/**
 	 * @param array $formData
-	 * @return array|bool|\Status|string
+	 * @return array|bool
 	 * @throws ConfigException
 	 * @throws MWException
 	 */

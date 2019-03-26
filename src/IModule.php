@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Auth\AuthenticationProvider;
+use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 
 interface IModule {
 	/**
@@ -22,15 +23,6 @@ interface IModule {
 	 * @return IAuthKey
 	 */
 	public function newKey( array $data );
-
-	/**
-	 * Get special page for managing the module
-	 *
-	 * @param OATHUserRepository $userRepo
-	 * @param OATHUser $user
-	 * @return \SpecialPage
-	 */
-	public function getTargetPage( OATHUserRepository $userRepo, OATHUser $user );
 
 	/**
 	 * @param OATHUser $user
@@ -61,5 +53,13 @@ interface IModule {
 	 * @return boolean
 	 */
 	public function verify( OATHUser $user, array $data );
+
+	/**
+	 * @param string $action
+	 * @param OATHUser $user
+	 * @param OATHUserRepository $repo
+	 * @return IManageForm|null if no form is available for given action
+	 */
+	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo );
 
 }

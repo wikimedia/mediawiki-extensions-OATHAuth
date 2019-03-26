@@ -20,10 +20,7 @@
 		"ApiOATHValidate": "includes/api/ApiOATHValidate.php",
 		"ApiQueryOATH": "includes/api/ApiQueryOATH.php",
 		"OATHAuthHooks": "includes/OATHAuthHooks.php",
-		"OATHAuthUtils": "includes/OATHAuthUtils.php",
-		"SpecialOATH": "includes/special/SpecialOATH.php",
 		"SpecialDisableOATHForUser": "includes/special/SpecialDisableOATHForUser.php",
-		"ProxySpecialPage": "includes/special/ProxySpecialPage.php",
 		"TOTPAuthenticationRequest": "includes/auth/TOTPAuthenticationRequest.php",
 		"TOTPSecondaryAuthenticationProvider": "includes/auth/TOTPSecondaryAuthenticationProvider.php"
 	},
@@ -96,7 +93,6 @@
 		"remoteExtPath": "OATHAuth/modules"
 	},
 	"SpecialPages": {
-		"OATH": "SpecialOATH",
 		"DisableOATHForUser": "SpecialDisableOATHForUser",
 		"OATHManage": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage"
 	},

@@ -10,63 +10,65 @@ $specialPageAliases = [];
 
 /** English (English) */
 $specialPageAliases['en'] = [
-	'OATH' => [ 'Two-factor_authentication', 'OATH', 'OATHAuth' ],
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
-	'OATHManage' => [ 'Manage_Two-factor_authentication', 'OATH_Manage', 'OATHManage' ]
+	'OATHManage' => [ 'Manage_Two-factor_authentication', 'OATH_Manage', 'OATHManage',
+		'OATH', 'Two-factor_authentication', 'OATHAuth' ]
 ];
 
 /** Arabic (العربية) */
 $specialPageAliases['ar'] = [
-	'OATH' => [ 'أواث', 'أواث_أوث' ],
+	'OATHManage' => [ 'أواث', 'أواث_أوث' ],
 ];
 
 /** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = [
-	'OATH' => [ 'اواث', 'اواث_اوث' ],
+	'OATHManage' => [ 'اواث', 'اواث_اوث' ],
 ];
 
 /** Czech (čeština) */
 $specialPageAliases['cs'] = [
-	'OATH' => [ 'Dvoufaktorové_ověření' ],
-	'OATHManage' => [ 'Spravovat_dvoufaktorové_ověření' ],
+	'OATHManage' => [ 'Spravovat_dvoufaktorové_ověření', 'Dvoufaktorové_ověření' ],
 ];
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = [
-	'OATH' => [ 'Autenticación_de_dos_factores' ],
 	'DisableOATHForUser' => [
 		'Desactivar_la_autenticación_de_dos_factores_de_un_usuario',
 		'Desactivar_OATH_de_un_usuario'
 	],
-	'OATHManage' => [ 'Gestionar_la_autenticación_de_dos_factores', 'Gestionar_OATH' ]
+	'OATHManage' => [
+		'Gestionar_la_autenticación_de_dos_factores',
+		'Gestionar_OATH',
+		'Autenticación_de_dos_factores'
+	]
 ];
 
 /** Northern Luri (لۊری شومالی) */
 $specialPageAliases['lrc'] = [
-	'OATH' => [ 'قأسأم' ],
+	'OATHManage' => [ 'قأسأم' ],
 ];
 
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
-	'OATH' => [ 'Двофакторска_потврда_идентитета' ],
+	'OATHManage' => [ 'Двофакторска_потврда_идентитета' ],
 ];
 
 /** Serbian Latin (srpski (latinica)) */
 $specialPageAliases['sr-el'] = [
-	'OATH' => [ 'Dvofaktorska_potvrda_identiteta' ],
+	'OATHManage' => [ 'Dvofaktorska_potvrda_identiteta' ],
 ];
 
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
-	'OATH' => [ 'حلف_نامہ' ],
+	'OATHManage' => [ 'حلف_نامہ' ],
 ];
 
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = [
-	'OATH' => [ 'OATH验证' ],
+	'OATHManage' => [ 'OATH验证' ],
 ];
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = [
-	'OATH' => [ 'OATH_認證' ],
+	'OATHManage' => [ 'OATH_認證' ],
 ];

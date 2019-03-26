@@ -68,13 +68,15 @@
 	"oauthauth-ui-no-module": "None enabled",
 	"oathauth-module-totp-label": "TOTP (one-time token)",
 	"oathauth-ui-manage": "Manage",
-	"oathmanage": "OATH Manage",
+	"oathmanage": "Manage Two-factor authentication",
 	"oathauth-ui-not-enabled-modules": "Available methods",
 	"oathauth-ui-enabled-module": "Enabled authentication method",
 	"oathauth-enable-generic": "Enable",
 	"oathauth-disable-generic": "Disable",
 	"oathauth-ui-error-page-no-module": "No Two-factor authentication method is currently enabled.",
 	"oathauth-invalid-data-format": "Data provider is invalid to create a key for the selected auth method",
-	"oathauth-invalid-key-type": "Key set on the user does not match the required type for selected auth method"
+	"oathauth-invalid-key-type": "Key set on the user does not match the required type for selected auth method",
+	"oathauth-disable-page-title": "Disable $1",
+	"oathauth-enable-page-title": "Enable $1"
 
 }

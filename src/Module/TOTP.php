@@ -8,10 +8,12 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\OATHAuth\Special\TOTPDisable;
-use MediaWiki\Extension\OATHAuth\Special\TOTPEnable;
+use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use TOTPSecondaryAuthenticationProvider;
 use MWException;
+use HTMLForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPDisableForm;
 
 class TOTP implements IModule {
 	public static function factory() {
@@ -44,18 +46,6 @@ class TOTP implements IModule {
 			$data['secret'],
 			explode( ',', $data['scratch_tokens'] )
 		);
-	}
-
-	/**
-	 * @param OATHUserRepository $userRepo
-	 * @param OATHUser $user
-	 * @return TOTPDisable|TOTPEnable
-	 */
-	public function getTargetPage( OATHUserRepository $userRepo, OATHUser $user ) {
-		if ( $user->getKey() === null ) {
-			return new TOTPEnable( $userRepo, $user );
-		}
-		return new TOTPDisable( $userRepo, $user );
 	}
 
 	/**
@@ -107,5 +97,22 @@ class TOTP implements IModule {
 	 */
 	public function isEnabled( OATHUser $user ) {
 		return $user->getKey() !== false;
+	}
+
+	/**
+	 * @param string $action
+	 * @param OATHUser $user
+	 * @param OATHUserRepository $repo
+	 * @return HTMLForm|null
+	 */
+	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo ) {
+		switch ( $action ) {
+			case OATHManage::ACTION_ENABLE:
+				return new TOTPEnableForm( $user, $repo, $this );
+			case OATHManage::ACTION_DISABLE:
+				return new TOTPDisableForm( $user, $repo, $this );
+			default:
+				return null;
+		}
 	}
 }

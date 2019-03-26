@@ -83,5 +83,7 @@
 	"oathauth-disable-generic": "Button label that disables the module\n{{Identical|Disable}}",
 	"oathauth-ui-error-page-no-module": "Text for the error message shown when module Enable/disable page cannot be displayed because no module is enabled or specified in the request",
 	"oathauth-invalid-data-format": "Error message when the key instance cannot be created based on provided data",
-	"oathauth-invalid-key-type": "Error message when key class is unexpected"
+	"oathauth-invalid-key-type": "Error message when key class is unexpected",
+	"oathauth-disable-page-title": "Page title for [[Special:OATHManage]] when user is disabling a module. \n$1 - display name of the module",
+	"oathauth-enable-page-title": "Page title for [[Special:OATHManage]] when user is enabling a module. \n$1 - display name of the module"
 }

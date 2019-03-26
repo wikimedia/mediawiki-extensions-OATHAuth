@@ -25,6 +25,10 @@ use MediaWiki\Logger\LoggerFactory;
 use FormSpecialPage;
 use HTMLForm;
 use Message;
+use MWException;
+use User;
+use UserBlockedError;
+use UserNotLoggedIn;
 
 /**
  * Special page to display key information to the user
@@ -82,9 +86,9 @@ class TOTPDisable extends FormSpecialPage {
 	/**
 	 * Requires user to be logged in
 	 *
-	 * @param \User $user
-	 * @throws \UserBlockedError
-	 * @throws \UserNotLoggedIn
+	 * @param User $user
+	 * @throws UserBlockedError
+	 * @throws UserNotLoggedIn
 	 */
 	protected function checkExecutePermissions( \User $user ) {
 		parent::checkExecutePermissions( $user );
@@ -122,8 +126,8 @@ class TOTPDisable extends FormSpecialPage {
 
 	/**
 	 * @param array $formData
-	 * @return array|bool|\Status|string
-	 * @throws \MWException
+	 * @return array|bool
+	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		// Don't increase pingLimiter, just check for limit exceeded.
