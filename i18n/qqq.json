@@ -14,6 +14,7 @@
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
 	"oath": "{{optional}}\n{{doc-special|OATH}}",
+	"disableoathforuser": "{{doc-special|DisableOATHForUser}}",
 	"specialpages-group-oath": "{{doc-special-group|like=[[Special:OATH]]}}\n\nSee [[w:en:Two_factor_authentication|Wikipedia article on two factor authentication]].\n\n{{Identical|Two factor authentication}}",
 	"oathauth-account": "Plain text associated with [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication] on this wiki (username@<wiki name>) found on Special:OATH.\n{{Identical|Account name}}",
 	"oathauth-secret": "Plain text found on Special:OATH while enabling OATH\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",

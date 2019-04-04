@@ -6,6 +6,7 @@
 		]
 	},
 	"oathauth-desc": "Provides authentication support using HMAC based one-time passwords",
+	"disableoathforuser": "Disable user's two-factor authentication",
 	"oath": "OATHAuth",
 	"specialpages-group-oath": "Two-factor authentication",
 	"oathauth-account": "Account name:",
