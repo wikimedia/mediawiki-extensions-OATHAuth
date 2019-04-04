@@ -44,6 +44,7 @@
 	"grant-oath": "Access two-factor authentication (OATH) information for self and others",
 	"right-oathauth-api-all": "Query and validate OATH information for self and others",
 	"action-oathauth-api-all": "check OATH status",
+	"oathauth-user-not-found": "No user account was found with that name",
 	"apihelp-query+oath-description": "Check to see if two-factor authentication (OATH) is enabled for a user.",
 	"apihelp-query+oath-summary": "Check to see if two-factor authentication (OATH) is enabled for a user.",
 	"apihelp-query+oath-param-user": "User to get information about. Defaults to the current user.",

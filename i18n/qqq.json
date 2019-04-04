@@ -47,6 +47,7 @@
 	"oathauth-throttled": "Error message when throttling limit is hit.\n\nParameters:\n* $1 - throttle block duration",
 	"oathauth-login-failed": "Error message when verifying the second factor failed.",
 	"oathauth-describe-provider": "Description of the extension as an authentication provider.",
+	"oathauth-user-not-found": "Message that Special:DisableOATHForUser will display when no user account can be found with the name provided",
 	"grant-group-authentication": "{{Related|Grant-group}}",
 	"grant-oath": "Name for grant \"oath\".\n{{Related|Grant}}",
 	"right-oathauth-api-all": "{{doc-right|oathauth-api-all}}",
