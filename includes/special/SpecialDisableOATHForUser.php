@@ -77,7 +77,7 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 	public function onSubmit( array $formData ) {
 		$user = User::newFromName( $formData['user'] );
 		if ( $user && $user->getId() === 0 ) {
-			return [ 'user-not-found' ];
+			return [ 'oathauth-user-not-found' ];
 		}
 		$oathUser = $this->OATHRepository->findByUser( $user );
 
