@@ -65,7 +65,13 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 				'default' => '',
 				'label-message' => 'oathauth-enteruser',
 				'name' => 'user'
-			]
+			],
+			'reason' => [
+				'type' => 'text',
+				'default' => '',
+				'label-message' => 'oathauth-enterreason',
+				'name' => 'reason'
+			],
 		];
 	}
 
@@ -92,6 +98,12 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 
 		$oathUser->setKey( null );
 		$this->OATHRepository->remove( $oathUser, $this->getRequest()->getIP() );
+
+		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
+		$logEntry->setPerformer( $this->getUser() );
+		$logEntry->setTarget( $user->getUserPage() );
+		$logEntry->setComment( $formData['reason'] );
+		$logEntry->insert();
 
 		\MediaWiki\Logger\LoggerFactory::getInstance( 'authentication' )->info(
 			'OATHAuth disabled for {usertarget} by {user} from {clientip}', [
