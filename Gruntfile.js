@@ -9,7 +9,9 @@ module.exports = function ( grunt ) {
 		eslint: {
 			all: [
 				'*.js',
-				'modules/*.js'
+				'modules/*.js',
+				// Library file
+				'!modules/qrcode.js'
 			]
 		},
 		stylelint: {
