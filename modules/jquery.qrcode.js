@@ -68,7 +68,7 @@
 			$table = $( '<table></table>' )
 				.css( 'width', options.width + 'px' )
 				.css( 'height', options.height + 'px' )
-				.css( 'border', '0px' )
+				.css( 'border', '0' )
 				.css( 'border-collapse', 'collapse' )
 				.css( 'background-color', options.background );
 
