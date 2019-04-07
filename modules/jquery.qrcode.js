@@ -1,4 +1,6 @@
-( function ( $ ) {
+/* global QRCode, QRErrorCorrectLevel */
+
+( function () {
 	$.fn.qrcode = function ( options ) {
 		var createCanvas, createTable;
 
@@ -91,4 +93,4 @@
 			$( element ).appendTo( this );
 		} );
 	};
-}( jQuery ) );
+}() );
