@@ -8,13 +8,13 @@
 		// set default values
 		// typeNumber < 1 for automatic calculation
 		options = $.extend( {}, {
-			render: "canvas",
+			render: 'canvas',
 			width: 256,
 			height: 256,
 			typeNumber: -1,
 			correctLevel: QRErrorCorrectLevel.H,
-			background: "#ffffff",
-			foreground: "#000000"
+			background: '#ffffff',
+			foreground: '#000000'
 		}, options );
 
 		var createCanvas = function () {
@@ -55,10 +55,10 @@
 
 			// create table element
 			var $table = $( '<table></table>' )
-				.css( "width", options.width + "px" )
-				.css( "height", options.height + "px" )
-				.css( "border", "0px" )
-				.css( "border-collapse", "collapse" )
+				.css( 'width', options.width + 'px' )
+				.css( 'height', options.height + 'px' )
+				.css( 'border', '0px' )
+				.css( 'border-collapse', 'collapse' )
 				.css( 'background-color', options.background );
 
 			// compute tileS percentage
@@ -67,11 +67,11 @@
 
 			// draw in the table
 			for ( var row = 0; row < qrcode.getModuleCount(); row++ ) {
-				var $row = $( '<tr></tr>' ).css( 'height', tileH + "px" ).appendTo( $table );
+				var $row = $( '<tr></tr>' ).css( 'height', tileH + 'px' ).appendTo( $table );
 
 				for ( var col = 0; col < qrcode.getModuleCount(); col++ ) {
 					$( '<td></td>' )
-						.css( 'width', tileW + "px" )
+						.css( 'width', tileW + 'px' )
 						.css( 'background-color', qrcode.isDark( row, col ) ? options.foreground : options.background )
 						.appendTo( $row );
 				}
@@ -81,7 +81,7 @@
 		};
 
 		return this.each( function () {
-			var element = options.render === "canvas" ? createCanvas() : createTable();
+			var element = options.render === 'canvas' ? createCanvas() : createTable();
 			$( element ).appendTo( this );
 		} );
 	};
