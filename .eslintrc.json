@@ -10,10 +10,8 @@
 	},
 	"rules": {
 		"max-len": 0,
-		"no-jquery/no-global-selector": 0,
 		"no-undef": 0,
 		"one-var": 0,
-		"vars-on-top": 0,
-		"wrap-iife": 0
+		"vars-on-top": 0
 	}
 }
