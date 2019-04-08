@@ -8,6 +8,7 @@
 			"Pyscowicz"
 		]
 	},
+	"disableoathforuser": "Poista käytöstä käyttäjän kaksivaiheinen tunnistautuminen",
 	"specialpages-group-oath": "Kaksivaiheinen tunnistautuminen",
 	"oathauth-account": "Tilin nimi:",
 	"oathauth-secret": "Kaksivaiheisen tunnistautumisen salausavain:",

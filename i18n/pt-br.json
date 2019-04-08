@@ -9,6 +9,7 @@
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
+	"disableoathforuser": "Desativar autenticação de dois fatores do usuário",
 	"oath": "OATHAuth",
 	"specialpages-group-oath": "Autenticação de dois fatores",
 	"oathauth-account": "Nome da conta:",
@@ -46,6 +47,7 @@
 	"grant-oath": "Acesse informações de autenticação de dois fatos (OATH) para si e para os outros",
 	"right-oathauth-api-all": "Consultar e validar a informação OATH para si e para os outros",
 	"action-oathauth-api-all": "verificar estado do OATH",
+	"oathauth-user-not-found": "Nenhuma conta de usuário foi encontrada com esse nome",
 	"apihelp-query+oath-description": "Verifique se a autenticação de dois fatores (OATH) está habilitada para um usuário.",
 	"apihelp-query+oath-summary": "Verifique se a autenticação de dois fatores (OATH) está habilitada para um usuário.",
 	"apihelp-query+oath-param-user": "Usuário para o qual obter informações. Padrão para o usuário atual.",

@@ -18,6 +18,7 @@
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
+	"disableoathforuser": "Désactiver l'authentification à deux facteurs de l'utilisateur",
 	"specialpages-group-oath": "Authentification à deux facteurs",
 	"oathauth-account": "Nom du compte :",
 	"oathauth-secret": "Clé secrète d’authentification à deux facteurs :",
@@ -54,6 +55,7 @@
 	"grant-oath": "Accéder aux informations (OAuth) d’authentification à deux facteurs pour soi-même et les autres",
 	"right-oathauth-api-all": "Demander et valider les informations OATH pour soi-même et les autres",
 	"action-oathauth-api-all": "vérifier l'état OATH",
+	"oathauth-user-not-found": "Aucun compte utilisateur trouvé avec ce nom",
 	"apihelp-query+oath-description": "Vérifier si l’authentification à deux facteurs (OATH) est activée pour un utilisateur.",
 	"apihelp-query+oath-summary": "Vérifie si l'authentification à deux facteurs (OATH) est activée chez un utilisateur",
 	"apihelp-query+oath-param-user": "Utilisateur au sujet duquel obtenir des informations. Par défaut, l’utilisateur actuel.",

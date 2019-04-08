@@ -6,6 +6,7 @@
 		]
 	},
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
+	"disableoathforuser": "Inaktivera användarens tvåfaktorsautentisering",
 	"specialpages-group-oath": "Tvåfaktorsautentisering",
 	"oathauth-account": "Kontonamn:",
 	"oathauth-secret": "Hemlig nyckel för tvåfaktorsautentisering:",
@@ -42,6 +43,7 @@
 	"grant-oath": "Få tillgång till information om tvåfaktorsautentisering (OATH) för dig själv och andra",
 	"right-oathauth-api-all": "Fråga och bekräfta OATH-information för dig själv och andra",
 	"action-oathauth-api-all": "kolla OATH-status",
+	"oathauth-user-not-found": "Inget användarkonto med detta namn hittades",
 	"apihelp-query+oath-description": "Kolla för att se om tvåfaktorsautentisering (OATH) är aktiverat för en användare.",
 	"apihelp-query+oath-summary": "Kolla för att se om tvåfaktorsautentisering (OATH) är aktiverat för en användare.",
 	"apihelp-query+oath-param-user": "Användare att hämta information om. Standard är den nuvarande användaren.",

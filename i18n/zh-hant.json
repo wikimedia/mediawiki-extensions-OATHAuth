@@ -50,6 +50,7 @@
 	"grant-oath": "為自己與他人存取兩步驗證（OATH）資訊",
 	"right-oathauth-api-all": "查詢並驗證自己和他人的OATH資訊",
 	"action-oathauth-api-all": "檢查 OATH 狀態",
+	"oathauth-user-not-found": "沒有找出為該名稱的使用者帳號",
 	"apihelp-query+oath-description": "檢查是否有替使用者啟用雙重認證（OATH）。",
 	"apihelp-query+oath-summary": "檢查是否有替使用者啟用雙重認證（OATH）。",
 	"apihelp-query+oath-param-user": "要取得有關資訊的使用者。預設是目前使用者。",

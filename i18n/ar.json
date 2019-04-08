@@ -46,6 +46,7 @@
 	"grant-oath": "الوصول إلى معلومات المصادقة الثنائية (OATH) للذات وغيرها",
 	"right-oathauth-api-all": "الاستعلام والتحقق من صحة معلومات OATH للنفس والآخرين",
 	"action-oathauth-api-all": "تحقق من حالة OATH",
+	"oathauth-user-not-found": "لم يتم العثور على حساب مستخدم بهذا الاسم",
 	"apihelp-query+oath-description": "تحقق لمعرفة ما إذا تم تمكين المصادقة الثنائية (OATH) للمستخدم.",
 	"apihelp-query+oath-summary": "تحقق لمعرفة ما إذا تم تمكين المصادقة الثنائية (OATH) للمستخدم.",
 	"apihelp-query+oath-param-user": "المستخدم للحصول على معلومات عنه، افتراضي للمستخدم الحالي.",

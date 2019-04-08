@@ -5,6 +5,7 @@
 		]
 	},
 	"oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC",
+	"disableoathforuser": "Disactivar authentication bifactorial pro usator",
 	"specialpages-group-oath": "Authentication bifactorial",
 	"oathauth-account": "Nomine de conto:",
 	"oathauth-secret": "Clave secrete de authentication bifactorial:",
@@ -27,5 +28,6 @@
 	"oathauth-auth-ui": "Scribe le codice de verification ab tu dispositivo de authentication",
 	"oathauth-throttled": "Troppo de tentativas de verification! Per favor attende $1.",
 	"oathauth-login-failed": "Verification fallite.",
-	"oathauth-describe-provider": "Authentication bifactorial (OATH)."
+	"oathauth-describe-provider": "Authentication bifactorial (OATH).",
+	"oathauth-user-not-found": "Nulle conto de usator ha essite trovate con iste nomine"
 }
