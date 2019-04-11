@@ -17,6 +17,7 @@
  */
 
 use Base32\Base32;
+use jakobo\HOTP\HOTP;
 use Psr\Log\LoggerInterface;
 use \MediaWiki\Logger\LoggerFactory;
 

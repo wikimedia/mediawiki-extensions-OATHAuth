@@ -16,8 +16,6 @@
 		"OATHAuthKey": "includes/OATHAuthKey.php",
 		"OATHAuthUtils": "includes/OATHAuthUtils.php",
 		"OATHUserRepository": "includes/OATHUserRepository.php",
-		"HOTP": "includes/lib/hotp.php",
-		"HOTPResult": "includes/lib/hotp.php",
 		"OATHUser": "includes/OATHUser.php",
 		"SpecialOATH": "includes/special/SpecialOATH.php",
 		"SpecialOATHEnable": "includes/special/SpecialOATHEnable.php",
