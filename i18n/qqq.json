@@ -36,6 +36,7 @@
 	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token",
 	"oathauth-disable-for-user": "Title of the special page to disable other users' two-factor authentication (OATH)",
 	"right-oathauth-disable-for-user": "{{doc-right|oathauth-disable-for-user}}",
+	"action-oathauth-disable-for-user": "{{doc-action|oathauth-disable-for-user}}",
 	"right-oathauth-view-log": "{{doc-right|oathauth-view-log}}",
 	"action-oathauth-view-log": "{{doc-action|oathauth-view-log}}",
 	"oathauth-disable-intro": "Intro message for special to disable other users' two-factor authentication (OATH)",

@@ -29,6 +29,7 @@
 	"oathauth-entertoken": "Enter a code from your authentication device to verify:",
 	"oathauth-disable-for-user": "Disable two-factor authentication for a user",
 	"right-oathauth-disable-for-user": "Disable two-factor authentication for a user",
+	"action-oathauth-disable-for-user": "disable two-factor authentication for a user",
 	"right-oathauth-view-log": "Access to log of two-factor authentication changes",
 	"action-oathauth-view-log": "access to log of two-factor authentication changes",
 	"oathauth-disable-intro": "With great power, comes great responsibility",
