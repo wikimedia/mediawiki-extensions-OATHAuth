@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
-			"Matanya"
+			"Matanya",
+			"Uziel302"
 		]
 	},
 	"oathauth-desc": "תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC",
@@ -21,7 +22,7 @@
 	"oathauth-disabledoath": "האימות הדו־שלבי כובה.",
 	"oathauth-prefs-label": "אימות דו־שלבי:",
 	"oathauth-step1": "צעד 1: הורדת תכנית לאימות דו־שלבי",
-	"oathauth-step1-test": "יש להוריד תוכנית לאימות דו־שלבי. זה יכול להיות יישום נייד (כגון המאמת של גוגל) או יישום שולחני.",
+	"oathauth-step1-test": "יש להוריד תוכנית לאימות דו־שלבי. זה יכול להיות יישום נייד (כגון [https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2 המאמת של גוגל]) או יישום שולחני.",
 	"oathauth-step2": "צעד 2: סריקת קוד ה־QR",
 	"oathauth-step2alt": "אפשר גם להזין את המפתח הסודי באופן ידני:",
 	"oathauth-step3": "צעד 3: רישום קודי גירוד",
@@ -29,8 +30,12 @@
 	"oathauth-entertoken": "נא להזין את הקוד מהמכשיר המאמת שלך לאישור:",
 	"oathauth-disable-for-user": "כיבוי אימות דו־שלבי עבור משתמש",
 	"right-oathauth-disable-for-user": "כיבוי אימות דו־שלבי עבור משתמש",
+	"action-oathauth-disable-for-user": "לכבות אימות דו־שלבי עבור משתמש",
+	"right-oathauth-view-log": "גישה ליומן של שינויים באימות דו־שלבי",
+	"action-oathauth-view-log": "לגשת ליומן של שינויים באימות דו־שלבי",
 	"oathauth-disable-intro": "עם כוח גדול באה אחריות גדולה",
 	"oathauth-enteruser": "שם משתמש:",
+	"oathauth-enterreason": "סיבה לכיבוי:",
 	"oathauth-user-not-does-not-have-oath-enabled": "אימות דו־שלבי אינו מופעל עבור המשתמש ולכן אין מה לכבות",
 	"right-oathauth-enable": "הפעלת אימות דו־שלבי",
 	"action-oathauth-enable": "להפעיל אימות דו־שלבי",
@@ -45,6 +50,9 @@
 	"right-oathauth-api-all": "שליחת שאילתה לקבלת מידע על OATH ובדיקת תקינותו עבור עצמך ועבור אחרים",
 	"action-oathauth-api-all": "בדיקת מצב OATH",
 	"oathauth-user-not-found": "לא נמצא חשבון משתמש עם השם הזה",
+	"oath-log-name": "יומן של שינויים באימות דו־שלבי",
+	"oath-log-header": "האירועים האלה עוקבים אחרי שינויים במצב האימות הדו־שלבי של משתמשים.",
+	"logentry-oath-disable-other": "$1 {{GENDER:$2|כיבה|כיבתה}} אימות דו־שלבי עבור $3",
 	"apihelp-query+oath-description": "בדיקה האם האימות הדו־שלבי (OATH) מופעל עבור המשתמש הזה.",
 	"apihelp-query+oath-summary": "בדיקה האם אימות דו־שלבי (OATH) מופעל עבור משתמש.",
 	"apihelp-query+oath-param-user": "על איזה משתמש לקבל מידע. בררת המחדל היא המשתמש הנוכחי.",
