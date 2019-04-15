@@ -46,6 +46,7 @@
 	"grant-group-authentication": "자신과 다른 사용자를 위한 인증 작업을 수행합니다",
 	"grant-oath": "자기 자신과 다른 사람에 대한 2요소 인증(OATH) 정보에 접근합니다",
 	"action-oathauth-api-all": "OATH 상태 학인",
+	"oath-log-name": "2요소 인증 기록",
 	"apihelp-query+oath-param-user": "정보를 가져올 사용자입니다. 기본값은 현재 사용자입니다.",
 	"apihelp-query+oath-example-1": "현재 사용자에 관한 정보를 가져옵니다",
 	"apihelp-query+oath-example-2": "<kbd>Example</kbd> 사용자에 관한 정보를 가져옵니다",
