@@ -2,9 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Rachmat.Wahidi",
-			"Rachmat04"
+			"Rachmat04",
+			"William Surya Permana"
 		]
 	},
+	"right-oathauth-disable-for-user": "Menonaktifkan autentikasi dua faktor pengguna lain",
+	"action-oathauth-disable-for-user": "menonaktifkan autentikasi dua faktor pengguna lain",
+	"right-oathauth-enable": "Mengaktifkan autentikasi dua faktor",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-token-help": "Kata sandi satu kali digunakan sebagai faktor kedua dari otentikasi dua-faktor.",
 	"oathauth-auth-ui": "Silakan masukkan kode verifikasi dari aplikasi telepon genggam Anda",
