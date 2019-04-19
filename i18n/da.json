@@ -18,6 +18,7 @@
 	"oathauth-disable-for-user": "Deaktiver tofaktorgodkendelse for en bruger",
 	"action-oathauth-disable-for-user": "deaktivere tofaktorgodkendelse for en bruger",
 	"oathauth-enteruser": "Brugernavn:",
+	"oathauth-enterreason": "Begrundelse for deaktivering:",
 	"action-oathauth-enable": "aktivere tofaktorgodkendelse",
 	"oathauth-auth-token-label": "Nøgle",
 	"oathauth-auth-ui": "Angiv en bekræftelseskode fra din enhed for autentifikation",
