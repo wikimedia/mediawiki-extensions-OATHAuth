@@ -93,7 +93,7 @@
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
-		"remoteExtPath": "OATHAuth"
+		"remoteExtPath": "OATHAuth/modules"
 	},
 	"SpecialPages": {
 		"OATH": "SpecialOATH",
