@@ -21,5 +21,7 @@
 	"right-oathauth-enable": "Lubada kaheastmelist autentimist",
 	"action-oathauth-enable": "kaheastmelist autentimist lubada",
 	"grant-oath": "Juurdepääs enda ja teiste kaheastmelise autentimise (OATH) andmetele",
-	"right-oathauth-api-all": "Pärida ja valideerida enda ja teiste OATH-i teavet"
+	"right-oathauth-api-all": "Pärida ja valideerida enda ja teiste OATH-i teavet",
+	"oath-log-name": "Kaheastmelise autentimise logi",
+	"oath-log-header": "Nende logisündmustega peetakse arvet kasutajate kaheastmelise autentimise staatuse muudatuste üle."
 }
