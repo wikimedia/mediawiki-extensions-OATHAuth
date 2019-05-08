@@ -1,0 +1,20 @@
+{
+	"name": "WebAuthn",
+	"version": "1.0.0",
+	"author": [
+		"Robert Vogel <vogel@hallowelt.com>",
+		"Dejan Savuljesku <savuljesku@hallowelt.com>"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:WebAuthn",
+	"descriptionmsg": "webauthn-desc",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.32.0",
+		"extensions": {
+			"OATHAuth": ">= 0.2.2"
+		}
+	},
+	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
+	"load_composer_autoloader": true,
+	"manifest_version": 1
+}
