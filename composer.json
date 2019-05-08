@@ -1,6 +1,7 @@
 {
 	"require": {
-		"web-auth/webauthn-lib": "v1.2.0"
+		"php": ">= 7.2",
+		"web-auth/webauthn-lib": "v2.1.5"
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "1.0.0",
@@ -8,6 +9,9 @@
 		"jakub-onderka/php-console-highlighter": "0.3.2",
 		"mediawiki/minus-x": "0.3.1",
 		"mediawiki/mediawiki-phan-config": "0.6.0"
+	},
+	"replace": {
+		"paragonie/random_compat": "v9.99.99"
 	},
 	"scripts": {
 		"lint": "parallel-lint . --exclude vendor --exclude node_modules",

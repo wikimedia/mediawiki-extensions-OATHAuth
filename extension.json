@@ -8,13 +8,123 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:WebAuthn",
 	"descriptionmsg": "webauthn-desc",
 	"type": "other",
+	"attributes": {
+		"OATHAuth": {
+			"Modules": {
+				"webauthn": "MediaWiki\\Extension\\WebAuthn\\Module\\WebAuthn::factory"
+			}
+		}
+	},
 	"requires": {
 		"MediaWiki": ">= 1.32.0",
 		"extensions": {
-			"OATHAuth": ">= 0.2.2"
+			"OATHAuth": ">= 0.4.1"
+		},
+		"platform": {
+			"php": ">= 7.2"
 		}
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\WebAuthn\\": "src/"
+	},
+	"MessagesDirs": {
+		"WebAuthn": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.webauthn.util": {
+			"scripts": [
+				"util/util.js"
+			]
+		},
+		"ext.webauthn.ui.base": {
+			"scripts": [
+				"ui/CredentialForm.js"
+			],
+			"styles": [
+				"stylesheets/widget.styles.less"
+			],
+			"dependencies": [
+				"oojs-ui",
+				"ext.webauthn.util",
+				"mediawiki.jqueryMsg"
+			],
+			"messages": [
+				"webauthn-error-browser-unsupported",
+				"webauthn-error-browser-unsupported-console",
+				"webauthn-ui-reload-page-label"
+			]
+		},
+		"ext.webauthn.register": {
+			"scripts": [
+				"util/Registrator.js",
+				"ui/RegisterForm.js",
+				"register.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-reginfo-fail",
+				"webauthn-error-reg-generic"
+			]
+		},
+		"ext.webauthn.login": {
+			"scripts": [
+				"util/Authenticator.js",
+				"ui/LoginForm.js",
+				"login.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-authinfo-fail",
+				"webauthn-error-auth-generic"
+			]
+		},
+		"ext.webauthn.manage": {
+			"scripts": [
+				"util/Authenticator.js",
+				"ui/ManageForm.js",
+				"manage.js"
+			],
+			"styles": [
+				"stylesheets/manage.styles.less"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-authinfo-fail",
+				"webauthn-error-auth-generic"
+			]
+		},
+		"ext.webauthn.disable": {
+			"scripts": [
+				"util/Authenticator.js",
+				"disable.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-authinfo-fail",
+				"webauthn-error-auth-generic"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "WebAuthn/resources"
+	},
+	"APIModules": {
+		"webauthn": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn"
+	},
 	"load_composer_autoloader": true,
-	"manifest_version": 1
+	"manifest_version": 2
 }
