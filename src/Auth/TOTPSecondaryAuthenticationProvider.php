@@ -16,11 +16,16 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Auth;
+
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use Message;
+use User;
 
 /**
  * AuthManager secondary authentication provider for TOTP second-factor authentication.
@@ -61,7 +66,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 		$authUser = $userRepo->findByUser( $user );
 
-		if ( $authUser->getKey() === null ) {
+		if ( !( $authUser->getModule() instanceof TOTP ) ) {
 			return AuthenticationResponse::newAbstain();
 		} else {
 			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],
@@ -86,7 +91,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		// @phan-suppress-next-line PhanUndeclaredProperty
 		$token = $request->OATHToken;
 
-		if ( $authUser->getKey() === null ) {
+		if ( !( $authUser->getModule() instanceof TOTP ) ) {
 			$this->logger->warning( 'Two-factor authentication was disabled mid-authentication for '
 				. $user->getName() );
 			return AuthenticationResponse::newAbstain();
@@ -103,7 +108,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				), 'error' );
 		}
 
-		if ( $authUser->getKey()->verify( $token, $authUser ) ) {
+		if ( $authUser->getModule()->verify( $authUser, [ 'token' => $token ] ) ) {
 			return AuthenticationResponse::newPass();
 		} else {
 			return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ],

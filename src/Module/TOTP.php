@@ -9,7 +9,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
-use TOTPSecondaryAuthenticationProvider;
+use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MWException;
 use HTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;

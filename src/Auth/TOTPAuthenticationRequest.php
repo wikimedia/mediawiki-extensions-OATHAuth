@@ -16,7 +16,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Auth;
+
 use MediaWiki\Auth\AuthenticationRequest;
+use RawMessage;
 
 /**
  * AuthManager value object for the TOTP second factor of an authentication:

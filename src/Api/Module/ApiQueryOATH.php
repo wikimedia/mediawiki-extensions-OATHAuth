@@ -16,7 +16,13 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Api\Module;
+
 use MediaWiki\MediaWikiServices;
+use ApiQueryBase;
+use ApiBase;
+use ApiResult;
+use User;
 
 /**
  * Query module to check if a user has OATH authentication enabled.

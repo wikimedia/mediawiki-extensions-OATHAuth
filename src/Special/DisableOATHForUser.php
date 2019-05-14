@@ -1,11 +1,22 @@
 <?php
 
+namespace MediaWiki\Extension\OATHAuth\Special;
+
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Logger\LoggerFactory;
+use FormSpecialPage;
+use HTMLForm;
+use User;
+use UserBlockedError;
+use UserNotLoggedIn;
+use ConfigException;
+use Message;
+use MWException;
+use ManualLogEntry;
 
-class SpecialDisableOATHForUser extends FormSpecialPage {
+class DisableOATHForUser extends FormSpecialPage {
 	/** @var OATHUserRepository */
 	private $userRepo;
 
@@ -50,9 +61,9 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 	}
 
 	/**
-	 * Require users to be logged in
-	 *
 	 * @param User $user
+	 * @throws UserBlockedError
+	 * @throws UserNotLoggedIn
 	 */
 	protected function checkExecutePermissions( User $user ) {
 		parent::checkExecutePermissions( $user );
@@ -84,8 +95,9 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 
 	/**
 	 * @param array $formData
-	 *
 	 * @return array|bool
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		$user = User::newFromName( $formData['user'] );

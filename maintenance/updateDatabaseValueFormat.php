@@ -25,6 +25,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates\UpdateTables;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -40,13 +41,16 @@ class UpdateDatabaseValueFormat extends Maintenance {
 		$this->requireExtension( 'OATHAuth' );
 	}
 
+	/**
+	 * @throws ConfigException
+	 */
 	public function execute() {
 		global $wgOATHAuthDatabase;
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 			->getMainLB( $wgOATHAuthDatabase );
 		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
 
-		if ( !OATHAuthHooks::convertToGenericFields( $dbw ) ) {
+		if ( !UpdateTables::convertToGenericFields( $dbw ) ) {
 			$this->error( "Failed to update the data structure rows.\n", 1 );
 		}
 		$this->output( "Done.\n" );

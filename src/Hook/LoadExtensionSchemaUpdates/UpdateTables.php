@@ -1,103 +1,76 @@
 <?php
-/**
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- */
 
+namespace MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates;
+
+use DatabaseUpdater;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use Wikimedia;
+use FormatJson;
+use ConfigException;
 
-/**
- * Hooks for Extension:OATHAuth
- *
- * @ingroup Extensions
- */
-class OATHAuthHooks {
+class UpdateTables {
 	/**
-	 * Get the singleton OATH user repository
-	 *
-	 * @deprecated Use "OATHUserRepository" service
-	 * @return OATHUserRepository
+	 * @var DatabaseUpdater
 	 */
-	public static function getOATHUserRepository() {
-		return MediaWikiServices::getInstance()
-			->getService( 'OATHUserRepository' );
-	}
+	protected $updater;
 
 	/**
-	 * Determine if two-factor authentication is enabled for the current user
-	 *
-	 * This isn't the preferred mechanism for controlling access to sensitive features
-	 * (see AuthManager::securitySensitiveOperationStatus() for that) but there is no harm in
-	 * keeping it.
-	 *
-	 * @param bool &$isEnabled Will be set to true if enabled, false otherwise
-	 * @return bool False if enabled, true otherwise
+	 * @var string
 	 */
-	public static function onTwoFactorIsEnabled( &$isEnabled ) {
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		$authUser = $userRepo->findByUser( RequestContext::getMain()->getUser() );
-		if ( $authUser && $authUser->getModule() !== null ) {
-			$isEnabled = true;
-			# This two-factor extension is enabled by the user,
-			# we don't need to check others.
-			return false;
-		} else {
-			$isEnabled = false;
-			# This two-factor extension isn't enabled by the user,
-			# but others may be.
-			return true;
-		}
-	}
+	protected $base;
 
 	/**
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 */
-	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$base = dirname( __DIR__ );
-		switch ( $updater->getDB()->getType() ) {
+	public static function callback( $updater ) {
+		$dir = dirname( dirname( dirname( __DIR__ ) ) );
+		$handler = new static( $updater, $dir );
+		return $handler->execute();
+	}
+
+	/**
+	 * @param DatabaseUpdater $updater
+	 * @param string $base
+	 */
+	protected function __construct( $updater, $base ) {
+		$this->updater = $updater;
+		$this->base = $base;
+	}
+
+	protected function execute() {
+		switch ( $this->updater->getDB()->getType() ) {
 			case 'mysql':
 			case 'sqlite':
-				$updater->addExtensionTable( 'oathauth_users', "$base/sql/mysql/tables.sql" );
-				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateOldUsersFromInstaller' ] ] );
-				$updater->dropExtensionField(
+				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/mysql/tables.sql" );
+				$this->updater->addExtensionUpdate( [ [ $this, 'schemaUpdateOldUsersFromInstaller' ] ] );
+				$this->updater->dropExtensionField(
 					'oathauth_users',
 					'secret_reset',
-					"$base/sql/mysql/patch-remove_reset.sql"
+					"{$this->base}/sql/mysql/patch-remove_reset.sql"
 				);
-				$updater->addExtensionField(
+				$this->updater->addExtensionField(
 					'oathauth_users',
 					'module',
-					"$base/sql/mysql/patch-add_generic_fields.sql"
+					"{$this->base}/sql/mysql/patch-add_generic_fields.sql"
 				);
-				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ] );
-				$updater->dropExtensionField(
+				$this->updater->addExtensionUpdate(
+					[ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ]
+				);
+				$this->updater->dropExtensionField(
 					'oathauth_users',
 					'secret',
-					"$base/sql/mysql/patch-remove_module_specific_fields.sql"
+					"{$this->base}/sql/mysql/patch-remove_module_specific_fields.sql"
 				);
 				break;
 
 			case 'oracle':
-				$updater->addExtensionTable( 'oathauth_users', "$base/sql/oracle/tables.sql" );
+				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/oracle/tables.sql" );
 				break;
 
 			case 'postgres':
-				$updater->addExtensionTable( 'oathauth_users', "$base/sql/postgres/tables.sql" );
+				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/postgres/tables.sql" );
 				break;
 		}
 
@@ -106,13 +79,12 @@ class OATHAuthHooks {
 
 	/**
 	 * Helper function for converting old users to the new schema
-	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
 	 *
 	 * @param DatabaseUpdater $updater
 	 *
 	 * @return bool
 	 */
-	public static function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
+	public function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
 		global $wgOATHAuthDatabase;
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 			->getMainLB( $wgOATHAuthDatabase );
@@ -188,7 +160,6 @@ class OATHAuthHooks {
 
 	/**
 	 * Helper function for converting old users to the new schema
-	 * @see OATHAuthHooks::OATHAuthSchemaUpdates
 	 *
 	 * @param IDatabase $db
 	 * @return bool

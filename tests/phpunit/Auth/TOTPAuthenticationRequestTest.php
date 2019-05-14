@@ -1,6 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\OATHAuth\Tests\Auth;
+
 use MediaWiki\Auth\AuthenticationRequestTestCase;
+use MediaWiki\Extension\OATHAuth\Auth\TOTPAuthenticationRequest;
 
 class TOTPAuthenticationRequestTest extends AuthenticationRequestTestCase {
 

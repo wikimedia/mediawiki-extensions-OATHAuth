@@ -16,9 +16,15 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\OATHAuth\Api\Module;
+
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Extension\OATHAuth\IModule;
+use ApiBase;
+use User;
+use ApiResult;
+use FormatJson;
 
 /**
  * Validate an OATH token.

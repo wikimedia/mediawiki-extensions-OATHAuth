@@ -34,7 +34,7 @@ interface IManageForm {
 	public function setSubmitCallback( $cb );
 
 	/**
-	 * @return @return bool|Status
+	 * @return bool|Status
 	 */
 	public function show();
 

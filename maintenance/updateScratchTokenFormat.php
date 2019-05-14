@@ -25,6 +25,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates\UpdateTables;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -46,7 +47,7 @@ class UpdateScratchTokenFormat extends Maintenance {
 			->getMainLB( $wgOATHAuthDatabase );
 		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
 
-		if ( !OATHAuthHooks::schemaUpdateOldUsers( $dbw ) ) {
+		if ( !UpdateTables::schemaUpdateOldUsers( $dbw ) ) {
 			$this->error( "Failed to update scratch_token rows.\n", 1 );
 		}
 		$this->output( "Done.\n" );
