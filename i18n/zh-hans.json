@@ -7,7 +7,8 @@
 			"Yfdyh000",
 			"Hanyanbo98",
 			"WQL",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"科劳"
 		]
 	},
 	"oathauth-desc": "提供使用基于HMAC的一次性密码的身份验证支持",
@@ -45,6 +46,7 @@
 	"grant-oath": "访问自己和他人的双因素验证（OATH）信息",
 	"right-oathauth-api-all": "查询并验证自己和他人的OATH信息",
 	"action-oathauth-api-all": "检查OATH状态",
+	"oath-log-header": "通过事件记录，可追溯用户的双因素验证状态。",
 	"apihelp-query+oath-description": "检查是否为某一用户启用双因素验证（OATH）。",
 	"apihelp-query+oath-summary": "检查双因素验证（OATH）是否为某一用户启用。",
 	"apihelp-query+oath-param-user": "获取相关信息的用户。默认为当前用户。",
