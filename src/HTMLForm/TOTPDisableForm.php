@@ -2,45 +2,12 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Logger\LoggerFactory;
-use OOUIHTMLForm;
-use MediaWiki\Extension\OATHAuth\OATHUser;
 use Message;
+use MWException;
 
-class TOTPDisableForm extends OOUIHTMLForm implements IManageForm {
-	/**
-	 * @var OATHUser
-	 */
-	protected $oathUser;
-
-	/**
-	 * @var OATHUserRepository
-	 */
-	protected $oathRepo;
-
-	/**
-	 * @var IModule
-	 */
-	protected $module;
-
-	/**
-	 * Initialize the form
-	 *
-	 * @param OATHUser $oathUser
-	 * @param OATHUserRepository $oathRepo
-	 * @param IModule $module
-	 */
-	public function __construct( OATHUser $oathUser, OATHUserRepository $oathRepo, IModule $module ) {
-		$this->oathUser = $oathUser;
-		$this->oathRepo = $oathRepo;
-		$this->module = $module;
-
-		parent::__construct( $this->getDescriptors(), null, "oathauth" );
-	}
-
+class TOTPDisableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	/**
 	 * Add content to output when operation was successful
 	 */
@@ -66,7 +33,7 @@ class TOTPDisableForm extends OOUIHTMLForm implements IManageForm {
 	/**
 	 * @param array $formData
 	 * @return array|bool
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		// Don't increase pingLimiter, just check for limit exceeded.
@@ -81,9 +48,9 @@ class TOTPDisableForm extends OOUIHTMLForm implements IManageForm {
 			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
-		$key = $this->oathUser->getKey();
-		if ( $key instanceof TOTPKey ) {
-			if ( !$key->verify( $formData['token'], $this->oathUser ) ) {
+		$module = $this->oathUser->getModule();
+		if ( $module instanceof TOTP ) {
+			if ( !$module->verify( $this->oathUser, [ 'token' => $formData['token'] ] ) ) {
 				LoggerFactory::getInstance( 'authentication' )->info(
 					'OATHAuth {user} failed to provide a correct token while disabling 2FA from {clientip}', [
 						'user' => $this->getUser()->getName(),
@@ -94,7 +61,7 @@ class TOTPDisableForm extends OOUIHTMLForm implements IManageForm {
 			}
 		}
 
-		$this->oathUser->setKey( null );
+		$this->oathUser->setKeys();
 		$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP() );
 
 		return true;

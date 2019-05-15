@@ -2,12 +2,14 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
+use stdClass;
+
 interface IAuthKey {
 
 	/**
-	 * @param string $token
+	 * @param array|stdClass $data
 	 * @param OATHUser $user
 	 * @return mixed
 	 */
-	public function verify( $token, OATHUser $user );
+	public function verify( $data, OATHUser $user );
 }

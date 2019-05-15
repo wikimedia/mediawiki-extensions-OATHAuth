@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use MediaWiki\Auth\AuthenticationProvider;
+use MediaWiki\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 
 interface IModule {
@@ -31,7 +31,7 @@ interface IModule {
 	public function getDataFromUser( OATHUser $user );
 
 	/**
-	 * @return AuthenticationProvider
+	 * @return SecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider();
 
@@ -61,5 +61,4 @@ interface IModule {
 	 * @return IManageForm|null if no form is available for given action
 	 */
 	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo );
-
 }

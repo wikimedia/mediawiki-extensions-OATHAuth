@@ -2,18 +2,18 @@
 
 namespace MediaWiki\Extension\OATHAuth\Module;
 
-use MediaWiki\Auth\AuthenticationProvider;
+use MediaWiki\Auth\SecondaryAuthenticationProvider;
+use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
-use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MWException;
-use HTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPDisableForm;
+use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 
 class TOTP implements IModule {
 	public static function factory() {
@@ -54,18 +54,20 @@ class TOTP implements IModule {
 	 * @throws MWException
 	 */
 	public function getDataFromUser( OATHUser $user ) {
-		$key = $user->getKey();
+		$key = $user->getFirstKey();
 		if ( !( $key instanceof TOTPKey ) ) {
 			throw new MWException( 'oathauth-invalid-key-type' );
 		}
 		return [
-			'secret' => $key->getSecret(),
-			'scratch_tokens' => implode( ',', $key->getScratchTokens() ),
+			'keys' => [ [
+				'secret' => $key->getSecret(),
+				'scratch_tokens' => implode( ',', $key->getScratchTokens() ),
+			] ]
 		];
 	}
 
 	/**
-	 * @return AuthenticationProvider
+	 * @return SecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider() {
 		return new TOTPSecondaryAuthenticationProvider();
@@ -81,12 +83,11 @@ class TOTP implements IModule {
 		if ( !isset( $data['token'] ) ) {
 			return false;
 		}
-		$token = $data['token'];
-		$key = $user->getKey();
+		$key = $user->getFirstKey();
 		if ( !( $key instanceof TOTPKey ) ) {
 			return false;
 		}
-		return $key->verify( $token, $user );
+		return $key->verify( $data, $user );
 	}
 
 	/**
@@ -96,14 +97,14 @@ class TOTP implements IModule {
 	 * @return bool
 	 */
 	public function isEnabled( OATHUser $user ) {
-		return $user->getKey() !== false;
+		return $user->getFirstKey() instanceof TOTPKey;
 	}
 
 	/**
 	 * @param string $action
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
-	 * @return HTMLForm|null
+	 * @return IManageForm|null
 	 */
 	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo ) {
 		switch ( $action ) {
@@ -114,5 +115,12 @@ class TOTP implements IModule {
 			default:
 				return null;
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getConfig() {
+		return null;
 	}
 }

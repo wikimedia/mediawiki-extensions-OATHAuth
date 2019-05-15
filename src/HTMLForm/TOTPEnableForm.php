@@ -2,43 +2,11 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
-use OOUIHTMLForm;
-use MediaWiki\Extension\OATHAuth\OATHUser;
 use Html;
 
-class TOTPEnableForm extends OOUIHTMLForm implements IManageForm {
-	/**
-	 * @var OATHUser
-	 */
-	protected $oathUser;
-	/**
-	 * @var OATHUserRepository
-	 */
-	protected $oathRepo;
-	/**
-	 * @var IModule
-	 */
-	protected $module;
-
-	/**
-	 * Initialize the form
-	 *
-	 * @param OATHUser $oathUser
-	 * @param OATHUserRepository $oathRepo
-	 * @param IModule $module
-	 */
-	public function __construct( OATHUser $oathUser, OATHUserRepository $oathRepo, IModule $module ) {
-		$this->oathUser = $oathUser;
-		$this->oathRepo = $oathRepo;
-		$this->module = $module;
-
-		parent::__construct( $this->getDescriptors(), null, "oathauth" );
-	}
-
+class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	/**
 	 * @param array|bool|\Status|string $submitResult
 	 * @return string
@@ -192,7 +160,7 @@ class TOTPEnableForm extends OOUIHTMLForm implements IManageForm {
 			);
 			return [ 'oathauth-noscratchforvalidation' ];
 		}
-		if ( !$key->verify( $formData['token'], $this->oathUser ) ) {
+		if ( !$key->verify( [ 'token' => $formData['token'] ], $this->oathUser ) ) {
 			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} failed to provide a correct token while enabling 2FA from {clientip}', [
 					'user' => $this->getUser()->getName(),
@@ -203,7 +171,7 @@ class TOTPEnableForm extends OOUIHTMLForm implements IManageForm {
 		}
 
 		$this->getRequest()->setSessionData( 'oathauth_totp_key', null );
-		$this->oathUser->setKey( $key );
+		$this->oathUser->setKeys( [ $key ] );
 		$this->oathUser->setModule( $this->module );
 		$this->oathRepo->persist( $this->oathUser, $this->getRequest()->getIP() );
 

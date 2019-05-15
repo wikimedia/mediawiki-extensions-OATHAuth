@@ -98,9 +98,18 @@ class OATHUserRepository {
 					throw new MWException( 'oathauth-module-invalid' );
 				}
 
-				$key = $module->newKey( FormatJson::decode( $data, true ) );
-				$oathUser->setKey( $key );
 				$oathUser->setModule( $module );
+				$decodedData = FormatJson::decode( $res->data, 1 );
+				if ( !isset( $decodedData['keys'] ) && $module->getName() === 'totp' ) {
+					// Legacy single-key setup
+					$key = $module->newKey( $decodedData );
+					$oathUser->addKey( $key );
+				} elseif ( is_array( $decodedData['keys'] ) ) {
+					foreach ( $decodedData['keys'] as $keyData ) {
+						$key = $module->newKey( $keyData );
+						$oathUser->addKey( $key );
+					}
+				}
 			}
 
 			$this->cache->set( $user->getName(), $oathUser );

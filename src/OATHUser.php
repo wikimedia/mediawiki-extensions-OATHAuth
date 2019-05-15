@@ -29,8 +29,8 @@ class OATHUser {
 	/** @var User */
 	private $user;
 
-	/** @var IAuthKey|null */
-	private $key;
+	/** @var IAuthKey[] */
+	private $keys;
 
 	/**
 	 * @var IModule
@@ -40,11 +40,11 @@ class OATHUser {
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 * @param User $user
-	 * @param IAuthKey|null $key
+	 * @param IAuthKey[] $keys
 	 */
-	public function __construct( User $user, IAuthKey $key = null ) {
+	public function __construct( User $user, $keys = [] ) {
 		$this->user = $user;
-		$this->key = $key;
+		$this->setKeys( $keys );
 	}
 
 	/**
@@ -76,19 +76,46 @@ class OATHUser {
 	/**
 	 * Get the key associated with this user.
 	 *
+	 * @return IAuthKey[]|array
+	 */
+	public function getKeys() {
+		return $this->keys;
+	}
+
+	/**
+	 * Useful for modules that operate on single-key premise,
+	 * as well as testing the key type, since first key is
+	 * necessarily the same type as others
+	 *
 	 * @return IAuthKey|null
 	 */
-	public function getKey() {
-		return $this->key;
+	public function getFirstKey() {
+		if ( !empty( $this->keys ) ) {
+			return $this->keys[0];
+		}
+		return null;
 	}
 
 	/**
 	 * Set the key associated with this user.
 	 *
-	 * @param IAuthKey|null $key
+	 * @param IAuthKey[] $keys
 	 */
-	public function setKey( $key = null ) {
-		$this->key = $key;
+	public function setKeys( $keys = [] ) {
+		$this->keys = [];
+		if ( is_array( $keys ) ) {
+			foreach ( $keys as $key ) {
+				$this->addKey( $key );
+			}
+		}
+	}
+
+	public function addKey( IAuthKey $key ) {
+		if ( !$this->keyTypeCorrect( $key ) ) {
+			return;
+		}
+
+		$this->keys[] = $key;
 	}
 
 	/**
@@ -113,7 +140,22 @@ class OATHUser {
 	 * Disables current (if any) auth method
 	 */
 	public function disable() {
-		$this->key = null;
+		$this->keys = [];
 		$this->module = null;
+	}
+
+	/**
+	 * All keys set for the user must be of the same type
+	 *
+	 * @param IAuthKey $key
+	 * @return bool
+	 */
+	private function keyTypeCorrect( IAuthKey $key ) {
+		foreach ( $this->keys as $keyToTest ) {
+			if ( get_class( $keyToTest ) !== get_class( $key ) ) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

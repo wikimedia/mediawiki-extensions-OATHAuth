@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\OATHAuth\Auth;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
+use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\MediaWikiServices;
 use User;
 
@@ -45,8 +46,9 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		if ( $module === null ) {
 			return AuthenticationResponse::newAbstain();
 		}
-		$moduleAuthProvider = $module->getSecondaryAuthProvider();
-		return $moduleAuthProvider->beginSecondaryAuthentication( $user, $reqs );
+
+		$provider = $this->getProviderForModule( $module );
+		return $provider->beginSecondaryAuthentication( $user, $reqs );
 	}
 
 	/**
@@ -58,7 +60,19 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			->findByUser( $user );
 
 		$module = $authUser->getModule();
-		$moduleAuthProvider = $module->getSecondaryAuthProvider();
-		return $moduleAuthProvider->continueSecondaryAuthentication( $user, $reqs );
+		$provider = $this->getProviderForModule( $module );
+		return $provider->continueSecondaryAuthentication( $user, $reqs );
+	}
+
+	/**
+	 * @param IModule $module
+	 * @return SecondaryAuthenticationProvider
+	 */
+	private function getProviderForModule( IModule $module ) {
+		$provider = $module->getSecondaryAuthProvider();
+		$provider->setLogger( $this->logger );
+		$provider->setManager( $this->manager );
+		$provider->setConfig( $this->config );
+		return $provider;
 	}
 }

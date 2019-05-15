@@ -61,6 +61,10 @@ class OATHManage extends SpecialPage {
 	 * @var string
 	 */
 	protected $requestedModule;
+	/**
+	 * @var bool
+	 */
+	protected $genericActionHandled = false;
 
 	/**
 	 * Initializes a page to manage available 2FA modules
@@ -87,6 +91,10 @@ class OATHManage extends SpecialPage {
 		$this->setAction();
 		$this->setModule();
 		$this->addEnabledModule();
+		if ( $this->isGenericAction() && $this->genericActionHandled ) {
+			// If generic action is handled by the enabled module
+			return;
+		}
 		$this->addNotEnabledModules();
 	}
 
@@ -152,6 +160,10 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function addModule( IModule $module, $enabled ) {
+		if ( $this->genericActionHandled ) {
+			// If generic action is handled by previous (non-enabled) module
+			return;
+		}
 		$this->addModuleGeneric( $module, $enabled );
 		if ( $this->requestedModule === $module->getName() ) {
 			$this->addModuleCustomForm( $module, $enabled );
@@ -169,7 +181,6 @@ class OATHManage extends SpecialPage {
 		$label = new LabelWidget( [
 			'label' => $module->getDisplayName()->text()
 		] );
-		$layout->addItems( [ $label ] );
 
 		if ( $this->requestedModule !== $module->getName() || !$this->isGenericAction() ) {
 			// Add a generic action button
@@ -184,6 +195,7 @@ class OATHManage extends SpecialPage {
 			] );
 			$layout->addItems( [ $button ] );
 		}
+		$layout->addItems( [ $label ] );
 		$this->getOutput()->addHTML( (string)$layout );
 	}
 
@@ -222,6 +234,8 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->clearHTML();
 		$this->getOutput()->setPageTitle( $pageTitle );
 		$this->getOutput()->addBacklinkSubtitle( $this->getOutput()->getTitle() );
+
+		$this->genericActionHandled = true;
 	}
 
 	/**

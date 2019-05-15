@@ -1,7 +1,11 @@
 {
 	"name": "OATHAuth",
 	"version": "0.3.0",
-	"author": "Ryan Lane",
+	"author": [
+		"Ryan Lane",
+		"Robert Vogel <vogel@hallowelt.com>",
+		"Dejan Savuljesku <savuljesku@hallowelt.com>"
+	],
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
 	"type": "other",

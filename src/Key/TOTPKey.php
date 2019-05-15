@@ -103,13 +103,15 @@ class TOTPKey implements IAuthKey {
 	}
 
 	/**
-	 * @param string $token
+	 * @param array $data
 	 * @param OATHUser $user
 	 * @return bool|int
 	 * @throws MWException
 	 */
-	public function verify( $token, OATHUser $user ) {
+	public function verify( $data, OATHUser $user ) {
 		global $wgOATHAuthWindowRadius;
+
+		$token = $data['token'];
 
 		if ( $this->secret['mode'] !== 'hotp' ) {
 			throw new DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
@@ -169,8 +171,8 @@ class TOTPKey implements IAuthKey {
 
 						$auth = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
 						$module = $auth->getModuleByKey( 'totp' );
-						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHAuthUserRepository' );
-						$user->setKey( $this );
+						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+						$user->addKey( $this );
 						$user->setModule( $module );
 						$userRepo->persist( $user, $clientIP );
 						// Only return true if we removed it from the database
@@ -188,7 +190,6 @@ class TOTPKey implements IAuthKey {
 				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
 			);
 		} else {
-
 			$logger->info( 'OATHAuth user {user} failed OTP/scratch token from {clientip}', [
 				'user' => $user->getAccount(),
 				'clientip' => $clientIP,

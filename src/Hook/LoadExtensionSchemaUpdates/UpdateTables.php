@@ -55,6 +55,7 @@ class UpdateTables {
 					'module',
 					"{$this->base}/sql/mysql/patch-add_generic_fields.sql"
 				);
+
 				$this->updater->addExtensionUpdate(
 					[ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ]
 				);
@@ -63,6 +64,11 @@ class UpdateTables {
 					'secret',
 					"{$this->base}/sql/mysql/patch-remove_module_specific_fields.sql"
 				);
+
+				/*$this->updaterAddExtensionUpdate(
+					[ [ __CLASS__, 'schemaUpdateTOTPToMultipleKeys' ] ]
+				);*/
+
 				break;
 
 			case 'oracle':
@@ -107,6 +113,20 @@ class UpdateTables {
 	}
 
 	/**
+	 * Helper function for converting single TOTP keys to multi-key system
+	 * @param DatabaseUpdater $updater
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function schemaUpdateTOTPToMultipleKeys( DatabaseUpdater $updater ) {
+		global $wgOATHAuthDatabase;
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+			->getMainLB( $wgOATHAuthDatabase );
+		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
+		return self::switchTOTPToMultipleKeys( $dbw );
+	}
+
+	/**
 	 * Converts old, TOTP specific, column values to new structure
 	 * @param IDatabase $db
 	 * @return bool
@@ -145,14 +165,57 @@ class UpdateTables {
 					[
 						'module' => 'totp',
 						'data' => FormatJson::encode( [
-							'secret' => $row->secret,
-							'scratch_tokens' => $row->scratch_tokens
+							'keys' => [ [
+								'secret' => $row->secret,
+								'scratch_tokens' => $row->scratch_tokens
+							] ]
 						] )
 					],
 					[ 'id' => $row->id ],
 					__METHOD__
 				);
 			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Switch from using single keys to multi-key support
+	 *
+	 * @param IDatabase $db
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function switchTOTPToMultipleKeys( IDatabase $db ) {
+		if ( !$db->fieldExists( 'oathauth_users', 'data' ) ) {
+			return true;
+		}
+
+		$res = $db->select(
+			'oathauth_users',
+			[ 'id', 'data' ],
+			[
+				'module' => 'totp'
+			],
+			__METHOD__
+		);
+
+		foreach ( $res as $row ) {
+			$data = FormatJson::decode( $row->data, true );
+			if ( isset( $data['keys'] ) ) {
+				continue;
+			}
+			$db->update(
+				'oathauth_users',
+				[
+					'data' => FormatJson::encode( [
+						'keys' => [ $data ]
+					] )
+				],
+				[ 'id' => $row->id ],
+				__METHOD__
+			);
 		}
 
 		return true;
