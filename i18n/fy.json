@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"PiefPafPier"
+		]
+	},
+	"oathauth-enable": "Twafaktor-autentifikaasje ynskeakelje",
+	"oathauth-prefs-label": "Twafaktor-autentifikaasje:",
+	"right-oathauth-enable": "Twafaktor-autentifikaasje ynskeakelje"
+}
