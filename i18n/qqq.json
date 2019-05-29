@@ -72,5 +72,6 @@
 	"oathauth-invalid-data-format": "Error message when the key instance cannot be created based on provided data",
 	"oathauth-invalid-key-type": "Error message when key class is unexpected",
 	"oathauth-disable-page-title": "Page title for [[Special:OATHManage]] when user is disabling a module. \n$1 - display name of the module",
-	"oathauth-enable-page-title": "Page title for [[Special:OATHManage]] when user is enabling a module. \n$1 - display name of the module"
+	"oathauth-enable-page-title": "Page title for [[Special:OATHManage]] when user is enabling a module. \n$1 - display name of the module",
+	"oathauth-action-exclusive-to-2fa": "Error messages when user action is blocked due to the permission being exclusive to users with 2FA enabled"
 }

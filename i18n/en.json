@@ -64,5 +64,6 @@
 	"oathauth-invalid-data-format": "Data provider is invalid to create a key for the selected auth method",
 	"oathauth-invalid-key-type": "Key set on the user does not match the required type for selected auth method",
 	"oathauth-disable-page-title": "Disable $1",
-	"oathauth-enable-page-title": "Enable $1"
+	"oathauth-enable-page-title": "Enable $1",
+	"oathauth-action-exclusive-to-2fa": "This action can only be performed by users with Two-factor authentication enabled."
 }

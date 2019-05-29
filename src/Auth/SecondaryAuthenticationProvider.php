@@ -6,6 +6,7 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\MediaWikiServices;
 use User;
 
@@ -61,7 +62,11 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 
 		$module = $authUser->getModule();
 		$provider = $this->getProviderForModule( $module );
-		return $provider->continueSecondaryAuthentication( $user, $reqs );
+		$response = $provider->continueSecondaryAuthentication( $user, $reqs );
+		if ( $response->status === AuthenticationResponse::PASS ) {
+			$user->getRequest()->getSession()->set( OATHAuth::AUTHENTICATED_OVER_2FA, true );
+		}
+		return $response;
 	}
 
 	/**

@@ -12,6 +12,8 @@ use Config;
  * @package MediaWiki\Extension\OATHAuth
  */
 class OATHAuth {
+	const AUTHENTICATED_OVER_2FA = 'OATHAuthAuthenticatedOver2FA';
+
 	/**
 	 * @var Config
 	 */

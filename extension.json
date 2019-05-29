@@ -50,6 +50,9 @@
 		],
 		"GetPreferences": [
 			"\\MediaWiki\\Extension\\OATHAuth\\Hook\\GetPreferences\\AuthModule::callback"
+		],
+		"getUserPermissionsErrors": [
+			"\\MediaWiki\\Extension\\OATHAuth\\Hook\\GetUserPermissionsErrors\\CheckExclusiveRights::callback"
 		]
 	},
 	"MessagesDirs": {
@@ -70,6 +73,9 @@
 		},
 		"OATHAuthAccountPrefix": {
 			"value": false
+		},
+		"OATHExclusiveRights": {
+			"value": []
 		}
 	},
 	"ResourceModules": {
