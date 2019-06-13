@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Mjälten"
 		]
 	},
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
@@ -28,7 +29,9 @@
 	"oathauth-entertoken": "Skriv in en kod från enheten med tvåfaktorsautentiseringen för att bekräfta:",
 	"oathauth-disable-for-user": "Inaktivera tvåfaktorsautentisering för en användare",
 	"right-oathauth-disable-for-user": "Inaktivera tvåfaktorsautentisering för en användare",
+	"action-oathauth-disable-for-user": "Inaktivera tvåfaktorsautentisering för en användare",
 	"right-oathauth-view-log": "Åtkomst till loggen över ändringar i tvåfaktorsautentiseringen",
+	"action-oathauth-view-log": "Åtkomst till loggen över ändringar i tvåfaktorsautentiseringen",
 	"oathauth-disable-intro": "Med stora krafter kommer stort ansvar",
 	"oathauth-enteruser": "Användarnamn:",
 	"oathauth-enterreason": "Anledning till inaktivering:",
