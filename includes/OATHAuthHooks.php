@@ -38,7 +38,7 @@ class OATHAuthHooks {
 	}
 
 	/**
-	 * Determine if two-factor authentication is enabled for $wgUser
+	 * Determine if two-factor authentication is enabled for the current user
 	 *
 	 * This isn't the preferred mechanism for controlling access to sensitive features
 	 * (see AuthManager::securitySensitiveOperationStatus() for that) but there is no harm in
