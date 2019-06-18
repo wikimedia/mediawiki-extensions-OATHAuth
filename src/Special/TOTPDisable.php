@@ -104,6 +104,8 @@ class TOTPDisable extends FormSpecialPage {
 				'required' => true,
 				'autofocus' => true,
 				'dir' => 'ltr',
+				'autocomplete' => false,
+				'spellcheck' => false,
 			],
 			'returnto' => [
 				'type' => 'hidden',
