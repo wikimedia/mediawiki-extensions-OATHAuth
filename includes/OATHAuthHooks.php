@@ -84,14 +84,12 @@ class OATHAuthHooks {
 					'module',
 					"$base/sql/mysql/patch-add_generic_fields.sql"
 				);
-				/** Disabled for WMF transitionary period
 				$updater->addExtensionUpdate( [ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ] );
 				$updater->dropExtensionField(
 					'oathauth_users',
 					'secret',
 					"$base/sql/mysql/patch-remove_module_specific_fields.sql"
 				);
-				*/
 				break;
 
 			case 'oracle':
