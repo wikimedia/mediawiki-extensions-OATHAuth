@@ -167,6 +167,7 @@ class TOTPEnable extends FormSpecialPage {
 				'label-message' => 'oathauth-entertoken',
 				'name' => 'token',
 				'section' => 'step4',
+				'dir' => 'ltr',
 			],
 			'returnto' => [
 				'type' => 'hidden',

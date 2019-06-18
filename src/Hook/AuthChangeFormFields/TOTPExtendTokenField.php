@@ -65,6 +65,7 @@ class TOTPExtendTokenField {
 			'cssClass' => 'loginText',
 			'id' => 'wpOATHToken',
 			'size' => 20,
+			'dir' => 'ltr',
 			'autofocus' => true,
 			'persistent' => false,
 			'autocomplete' => false,
