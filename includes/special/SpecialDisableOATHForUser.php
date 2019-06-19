@@ -69,13 +69,15 @@ class SpecialDisableOATHForUser extends FormSpecialPage {
 				'type' => 'user',
 				'default' => '',
 				'label-message' => 'oathauth-enteruser',
-				'name' => 'user'
+				'name' => 'user',
+				'required' => true,
 			],
 			'reason' => [
 				'type' => 'text',
 				'default' => '',
 				'label-message' => 'oathauth-enterreason',
-				'name' => 'reason'
+				'name' => 'reason',
+				'required' => true,
 			],
 		];
 	}
