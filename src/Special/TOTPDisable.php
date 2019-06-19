@@ -103,6 +103,7 @@ class TOTPDisable extends FormSpecialPage {
 				'name' => 'token',
 				'required' => true,
 				'autofocus' => true,
+				'dir' => 'ltr',
 			],
 			'returnto' => [
 				'type' => 'hidden',
