@@ -168,6 +168,8 @@ class TOTPEnable extends FormSpecialPage {
 				'name' => 'token',
 				'section' => 'step4',
 				'dir' => 'ltr',
+				'autocomplete' => false,
+				'spellcheck' => false,
 			],
 			'returnto' => [
 				'type' => 'hidden',
