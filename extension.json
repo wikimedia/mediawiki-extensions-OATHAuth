@@ -1,6 +1,6 @@
 {
 	"name": "OATHAuth",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"author": "Ryan Lane",
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
