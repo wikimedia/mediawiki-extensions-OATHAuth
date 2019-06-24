@@ -71,7 +71,20 @@
 	"apihelp-oathvalidate-description": "Valider un jeton d’authentification à deux facteurs (OATH).",
 	"apihelp-oathvalidate-summary": "Valider un jeton d’authentification à deux facteurs (OATH).",
 	"apihelp-oathvalidate-param-user": "Utilisateur pour lequel valider le jeton. Par défaut, l’utilisateur actuel.",
-	"apihelp-oathvalidate-param-totp": "Jeton d’authentification à deux facteurs (OATH).",
+	"apihelp-oathvalidate-param-totp": "Jeton d’authentification à deux facteurs (OATH). En patrimonial, utiliser plutôt le paramètre « data »",
 	"apihelp-oathvalidate-example-1": "Valider un jeton pour l’utilisateur actuel",
-	"apihelp-oathvalidate-example-2": "Valider un jeton pour l’utilisateur <kbd>Example</kbd>"
+	"apihelp-oathvalidate-example-2": "Valider un jeton pour l’utilisateur <kbd>Example</kbd>",
+	"apihelp-oathvalidate-example-3": "Valider les données JSON pour l’utilisateur <kbd>Exemple</kbd>",
+	"apihelp-oathvalidate-param-data": "Données encodées en JSON attendues par le module actuellement activé pour l’utilisateur à authentifier",
+	"oauthauth-ui-no-module": "Aucun activé",
+	"oathauth-module-totp-label": "TOTP (jeton à usage unique)",
+	"oathauth-ui-manage": "Gérer",
+	"oathmanage": "Gérer OATH",
+	"oathauth-ui-not-enabled-modules": "Méthodes disponibles",
+	"oathauth-ui-enabled-module": "Méthode d’authentification activée",
+	"oathauth-enable-generic": "Activer",
+	"oathauth-disable-generic": "Désactiver",
+	"oathauth-ui-error-page-no-module": "Aucune méthode d’authentification à deux facteurs n’est actuellement activée.",
+	"oathauth-invalid-data-format": "Le fournisseur de données n’est pas valide pour créer une clé pour la méthode d’authentification sélectionnée",
+	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée"
 }

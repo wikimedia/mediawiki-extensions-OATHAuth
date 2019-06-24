@@ -4,5 +4,9 @@
 			"Dr Lotus Black"
 		]
 	},
-	"oathauth-user-not-found": "ဤအမည်ဖြင့် အသုံးပြုသူအကောင့်ကို မတွေ့ပါ"
+	"oathauth-user-not-found": "ဤအမည်ဖြင့် အသုံးပြုသူအကောင့်ကို မတွေ့ပါ",
+	"oathauth-ui-manage": "စီမံရန်",
+	"oathauth-ui-not-enabled-modules": "ရရှိနိုင်သော နည်းလမ်းများ",
+	"oathauth-enable-generic": "လုပ်ခွင့်ပြုရန်",
+	"oathauth-disable-generic": "ခွင့်မပြုပါနှင့်"
 }

@@ -9,7 +9,8 @@
 			"A2093064",
 			"Hello903hello",
 			"Liuxinyu970226",
-			"Kly"
+			"Kly",
+			"神樂坂秀吉"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
@@ -68,5 +69,7 @@
 	"apihelp-oathvalidate-param-user": "要驗證令牌的使用者。預設是目前使用者。",
 	"apihelp-oathvalidate-param-totp": "雙重認證（OATH）令牌。",
 	"apihelp-oathvalidate-example-1": "驗證目前使用者的令牌",
-	"apihelp-oathvalidate-example-2": "驗證使用者 <kbd>Example</kbd> 的令牌"
+	"apihelp-oathvalidate-example-2": "驗證使用者 <kbd>Example</kbd> 的令牌",
+	"oathauth-enable-generic": "啟用",
+	"oathauth-disable-generic": "禁用"
 }

@@ -10,5 +10,6 @@
 	"oathauth-token": "Kods",
 	"right-oathauth-enable": "Iespējot divpakāpju autentifikāciju",
 	"action-oathauth-enable": "iespējot divpakāpju autentifikāciju",
-	"oathauth-auth-token-label": "Kods"
+	"oathauth-auth-token-label": "Kods",
+	"oathauth-ui-not-enabled-modules": "Pieejamās metodes"
 }

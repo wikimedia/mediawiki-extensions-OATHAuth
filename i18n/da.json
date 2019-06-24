@@ -25,5 +25,7 @@
 	"oathauth-throttled": "For mange verificeringsforsøg! Vent i $1.",
 	"oathauth-login-failed": "Verificering mislykkedes",
 	"oathauth-user-not-found": "Der blev ikke fundet nogen brugerkonto med det navn",
-	"apihelp-query+oath-example-1": "Få information om den aktuelle bruger"
+	"apihelp-query+oath-example-1": "Få information om den aktuelle bruger",
+	"oathauth-enable-generic": "Aktiver",
+	"oathauth-disable-generic": "Deaktiver"
 }
