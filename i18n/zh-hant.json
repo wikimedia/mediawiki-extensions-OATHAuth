@@ -70,6 +70,8 @@
 	"apihelp-oathvalidate-param-totp": "雙重認證（OATH）令牌。",
 	"apihelp-oathvalidate-example-1": "驗證目前使用者的令牌",
 	"apihelp-oathvalidate-example-2": "驗證使用者 <kbd>Example</kbd> 的令牌",
+	"oauthauth-ui-no-module": "全部禁用",
+	"oathauth-ui-manage": "管理",
 	"oathauth-enable-generic": "啟用",
 	"oathauth-disable-generic": "禁用"
 }

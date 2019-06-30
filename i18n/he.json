@@ -5,7 +5,8 @@
 			"Guycn2",
 			"Matanya",
 			"Uziel302",
-			"Steeve815"
+			"Steeve815",
+			"Strayblues"
 		]
 	},
 	"oathauth-desc": "תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC",
@@ -67,5 +68,5 @@
 	"apihelp-oathvalidate-example-2": "בדיקת אסימון עבור המשתמש <kbd>Example</kbd>",
 	"oathauth-enable-generic": "הפעלה",
 	"oathauth-disable-generic": "כיבוי",
-	"oathauth-ui-error-page-no-module": "כרגע אף שיטת אימות דו־שלבי לא מופעלת."
+	"oathauth-ui-error-page-no-module": "כרגע אף שיטת אימות דו־שלבי אינה מופעלת."
 }

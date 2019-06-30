@@ -4,7 +4,8 @@
 			"Chrumps",
 			"Alan ffm",
 			"Openbk",
-			"Railfail536"
+			"Railfail536",
+			"WTM"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie weryfikacji za pomocą jednorazowych kodów HMAC",
@@ -55,5 +56,13 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|wyłączył|wyłączyła}} weryfikację dwuetapową dla $3",
 	"apihelp-query+oath-example-1": "Pobierz informacje o aktualnym użytkowniku",
 	"apihelp-query+oath-example-2": "Pobierz informacje na temat użytkownika <kbd>Example</kbd>",
-	"apihelp-oathvalidate-param-totp": "Token uwierzytelniania dwuetapowego (OATH)."
+	"apihelp-oathvalidate-param-totp": "Token uwierzytelniania dwuetapowego (OATH).",
+	"oauthauth-ui-no-module": "Nie włączono",
+	"oathauth-module-totp-label": "TOTP (oparte na czasie hasło jednorazowe)",
+	"oathauth-ui-manage": "Zarządzaj",
+	"oathmanage": "Zarządzenie uwierzytelnianiem dwuetapowym (OATH)",
+	"oathauth-ui-not-enabled-modules": "Dostępne metody",
+	"oathauth-ui-enabled-module": "Włączona metoda uwierzytelniania",
+	"oathauth-enable-generic": "Włącz",
+	"oathauth-disable-generic": "Wyłącz"
 }
