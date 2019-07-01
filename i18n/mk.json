@@ -62,7 +62,17 @@
 	"apihelp-oathvalidate-param-totp": "Шифра за двочинителска заверка (OATH). По старо, може да се употреби параметарот „data“.",
 	"apihelp-oathvalidate-example-1": "Провери шифра за тековниот корисник",
 	"apihelp-oathvalidate-example-2": "Провери шифра за корисникот <kbd>Пример</kbd>",
+	"apihelp-oathvalidate-example-3": "Проверка на JSON-податоци за корисникот <kbd>Пример</kbd>",
+	"apihelp-oathvalidate-param-data": "Податоците шифрирани во JSON очекувани од модулот тековно активирани за корисникот што се заверува",
+	"oauthauth-ui-no-module": "Ниеден не е овозможен",
+	"oathauth-module-totp-label": "TOTP (еднократна шифра)",
 	"oathauth-ui-manage": "Раководи",
+	"oathmanage": "Раководење со OATH",
+	"oathauth-ui-not-enabled-modules": "Расположиви начини",
+	"oathauth-ui-enabled-module": "Овозможен начин на заверка",
 	"oathauth-enable-generic": "Овозможи",
-	"oathauth-disable-generic": "Оневозможи"
+	"oathauth-disable-generic": "Оневозможи",
+	"oathauth-ui-error-page-no-module": "Тековно нема овозможено ниеден начин на двочинителска заверка.",
+	"oathauth-invalid-data-format": "Укажан неважечки добавувач на податоци во клучот наменет за создавање на избраниот начин на заверка",
+	"oathauth-invalid-key-type": "Клучот зададен на корисникот не одговара на потребниот тип за избор на начин на заверка"
 }
