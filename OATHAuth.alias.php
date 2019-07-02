@@ -28,6 +28,7 @@ $specialPageAliases['arz'] = [
 /** Czech (čeština) */
 $specialPageAliases['cs'] = [
 	'OATH' => [ 'Dvoufaktorové_ověření' ],
+	'OATHManage' => [ 'Spravovat_dvoufaktorové_ověření' ],
 ];
 
 /** Northern Luri (لۊری شومالی) */
