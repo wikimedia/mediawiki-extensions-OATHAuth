@@ -31,6 +31,16 @@ $specialPageAliases['cs'] = [
 	'OATHManage' => [ 'Spravovat_dvoufaktorové_ověření' ],
 ];
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = [
+	'OATH' => [ 'Autenticación_de_dos_factores' ],
+	'DisableOATHForUser' => [
+		'Desactivar_la_autenticación_de_dos_factores_de_un_usuario',
+		'Desactivar_OATH_de_un_usuario'
+	],
+	'OATHManage' => [ 'Gestionar_la_autenticación_de_dos_factores', 'Gestionar_OATH' ]
+];
+
 /** Northern Luri (لۊری شومالی) */
 $specialPageAliases['lrc'] = [
 	'OATH' => [ 'قأسأم' ],
