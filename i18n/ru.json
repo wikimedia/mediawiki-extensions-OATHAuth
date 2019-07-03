@@ -10,7 +10,8 @@
 			"Mouse21",
 			"Patrick Star",
 			"Movses",
-			"Vlad5250"
+			"Vlad5250",
+			"Alexander Istomin"
 		]
 	},
 	"oathauth-desc": "Обеспечивает поддержку проверки подлинности с помощью HMAC на основе одноразовых паролей",
@@ -58,7 +59,7 @@
 	"apihelp-oathvalidate-description": "Подтвердите двухфакторный токен аутентификации (OAUTH).",
 	"apihelp-oathvalidate-summary": "Подтвердите двухфакторный токен аутентификации (OAUTH).",
 	"apihelp-oathvalidate-param-user": "Пользователь для проверки токена для. По умолчанию для текущего пользователя.",
-	"apihelp-oathvalidate-param-totp": "Токен двухфакторной аутентификации (OAUTH).",
+	"apihelp-oathvalidate-param-totp": "Токен двухфакторной аутентификации (OATH). Ради обратной совместимости, используйте параметр \"data\" взамен.",
 	"apihelp-oathvalidate-example-1": "Проверка токена для текущего пользователя",
 	"apihelp-oathvalidate-example-2": "Проверить токен для пользователя <kbd>пример</kbd>"
 }

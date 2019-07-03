@@ -11,5 +11,6 @@
 	"right-oathauth-enable": "Iespējot divpakāpju autentifikāciju",
 	"action-oathauth-enable": "iespējot divpakāpju autentifikāciju",
 	"oathauth-auth-token-label": "Kods",
+	"oathauth-ui-manage": "Pārvaldīt",
 	"oathauth-ui-not-enabled-modules": "Pieejamās metodes"
 }
