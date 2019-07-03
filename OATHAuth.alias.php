@@ -37,9 +37,22 @@ $specialPageAliases['es'] = [
 		'Desactivar_OATH_de_un_usuario'
 	],
 	'OATHManage' => [
+		'Autenticación_de_dos_factores',
 		'Gestionar_la_autenticación_de_dos_factores',
-		'Gestionar_OATH',
-		'Autenticación_de_dos_factores'
+		'Gestionar_OATH'
+	]
+];
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = [
+	'DisableOATHForUser' => [
+		'Desactivar_a_autenticación_de_dous_factores_dun_usuario',
+		'Desactivar_OATH_dun_usuario'
+	],
+	'OATHManage' => [
+		'Autenticación_de_dous_factores',
+		'Xestionar_a_autenticación_de_dous_factores',
+		'Xestionar_OATH'
 	]
 ];
 
