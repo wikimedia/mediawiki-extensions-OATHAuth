@@ -28,5 +28,9 @@
 	"action-oathauth-enable": "tweetrapsauthenticatie in te schakelen",
 	"oathauth-auth-token-label": "Verificatiecode",
 	"oathauth-auth-ui": "Gelieve een verificatiecode van uw authenticatie-apparaat invullen",
-	"grant-group-authentication": "OAuth gebruiken voor authenticatie"
+	"grant-group-authentication": "OAuth gebruiken voor authenticatie",
+	"oathauth-module-totp-label": "TOTP (eenmalig token)",
+	"oathauth-ui-manage": "Beheren",
+	"oathauth-enable-generic": "Inschakelen",
+	"oathauth-disable-generic": "Uitschakelen"
 }

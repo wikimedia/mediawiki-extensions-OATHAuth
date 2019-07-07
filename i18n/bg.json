@@ -3,10 +3,12 @@
 		"authors": [
 			"StanProg",
 			"ShockD",
-			"Vlad5250"
+			"Vlad5250",
+			"Ivml"
 		]
 	},
 	"oathauth-desc": "Позволява заверка на потребителската достоверност с HMAC върху основа на еднократни пароли",
+	"disableoathforuser": "Изключване на двукомпонентното удостоверяване за потребителя",
 	"specialpages-group-oath": "Двукомпонентно удостоверяване",
 	"oathauth-account": "Име на сметка:",
 	"oathauth-secret": "Таен ключ на двукомпонентното удостоверяване:",
@@ -27,14 +29,27 @@
 	"right-oathauth-disable-for-user": "Отключване на двукомпонентно удостоверяване на потребител",
 	"oathauth-disable-intro": "Голямата мощ подразбира голяма отговорност",
 	"oathauth-enteruser": "Потребителско име:",
+	"oathauth-enterreason": "Причина за изключване:",
 	"right-oathauth-enable": "Включване на двукомпонентно удостоверяване",
 	"action-oathauth-enable": "включване на двукомпонентно удостоверяване",
 	"oathauth-auth-token-label": "Маркер",
 	"oathauth-auth-ui": "Въведете потвърден код от устройството Ви за удостоверяване",
+	"oathauth-login-failed": "Проверката се провали.",
 	"oathauth-describe-provider": "Двукомпонентно удостоверяване (OATH).",
 	"grant-group-authentication": "Извършване на действия за удостоверяване за себе си и други",
 	"grant-oath": "Достъп до данните за двукомпонентно удостоверяване (OATH) за себе си и други",
 	"right-oathauth-api-all": "Искане и проверка на данни за OATH за себе си и други",
 	"action-oathauth-api-all": "проверяване на OATH-статут",
-	"apihelp-oathvalidate-param-totp": "Маркер за двукомпонентно удостоверяване (OATH)."
+	"oathauth-user-not-found": "Не е открита потребителска сметка с това име",
+	"oath-log-name": "Дневник на двукомпонентното удостоверяване",
+	"logentry-oath-disable-other": "$1 {{GENDER:$2|изключи}} двукомпонентното удостоверяване на $3",
+	"oauthauth-ui-no-module": "Не е включено",
+	"oathauth-ui-manage": "Управление",
+	"oathmanage": "Управление на двукомпонентното удостоверяване",
+	"oathauth-ui-not-enabled-modules": "Налични методи",
+	"oathauth-ui-enabled-module": "Включен метод за удостоверяване",
+	"oathauth-enable-generic": "Включване",
+	"oathauth-disable-generic": "Изключване",
+	"oathauth-disable-page-title": "Изключване на $1",
+	"oathauth-enable-page-title": "Включване на $1"
 }

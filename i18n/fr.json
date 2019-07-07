@@ -14,7 +14,8 @@
 			"Trial",
 			"Urhixidur",
 			"Thibaut120094",
-			"Od1n"
+			"Od1n",
+			"Derugon"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -63,28 +64,17 @@
 	"oath-log-name": "Journal d’authentification à deux facteurs",
 	"oath-log-header": "Ces événements tracent les modifications d’état de l’authentification à deux facteurs.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|a désactivé}} l’authentification à deux facteurs de $3",
-	"apihelp-query+oath-description": "Vérifier si l’authentification à deux facteurs (OATH) est activée pour un utilisateur.",
-	"apihelp-query+oath-summary": "Vérifie si l'authentification à deux facteurs (OATH) est activée chez un utilisateur",
-	"apihelp-query+oath-param-user": "Utilisateur au sujet duquel obtenir des informations. Par défaut, l’utilisateur actuel.",
-	"apihelp-query+oath-example-1": "Obtenir des informations sur l’utilisateur actuel",
-	"apihelp-query+oath-example-2": "Obtenir des informations sur l’utilisateur <kbd>Example</kbd>",
-	"apihelp-oathvalidate-description": "Valider un jeton d’authentification à deux facteurs (OATH).",
-	"apihelp-oathvalidate-summary": "Valider un jeton d’authentification à deux facteurs (OATH).",
-	"apihelp-oathvalidate-param-user": "Utilisateur pour lequel valider le jeton. Par défaut, l’utilisateur actuel.",
-	"apihelp-oathvalidate-param-totp": "Jeton d’authentification à deux facteurs (OATH). En patrimonial, utiliser plutôt le paramètre « data »",
-	"apihelp-oathvalidate-example-1": "Valider un jeton pour l’utilisateur actuel",
-	"apihelp-oathvalidate-example-2": "Valider un jeton pour l’utilisateur <kbd>Example</kbd>",
-	"apihelp-oathvalidate-example-3": "Valider les données JSON pour l’utilisateur <kbd>Exemple</kbd>",
-	"apihelp-oathvalidate-param-data": "Données encodées en JSON attendues par le module actuellement activé pour l’utilisateur à authentifier",
 	"oauthauth-ui-no-module": "Aucun activé",
 	"oathauth-module-totp-label": "TOTP (jeton à usage unique)",
 	"oathauth-ui-manage": "Gérer",
-	"oathmanage": "Gérer OATH",
+	"oathmanage": "Gérer l’authentification à deux facteurs",
 	"oathauth-ui-not-enabled-modules": "Méthodes disponibles",
 	"oathauth-ui-enabled-module": "Méthode d’authentification activée",
 	"oathauth-enable-generic": "Activer",
 	"oathauth-disable-generic": "Désactiver",
 	"oathauth-ui-error-page-no-module": "Aucune méthode d’authentification à deux facteurs n’est actuellement activée.",
 	"oathauth-invalid-data-format": "Le fournisseur de données n’est pas valide pour créer une clé pour la méthode d’authentification sélectionnée",
-	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée"
+	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée",
+	"oathauth-disable-page-title": "Désactiver $1",
+	"oathauth-enable-page-title": "Activer $1"
 }

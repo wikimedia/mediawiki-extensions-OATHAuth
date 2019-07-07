@@ -51,16 +51,5 @@
 	"oathauth-user-not-found": "Não foi encontrada nenhuma conta de utilizador com esse nome",
 	"oath-log-name": "Registo da autenticação de dois fatores",
 	"oath-log-header": "Estes eventos registam alterações do estado da autenticação de dois fatores dos utilizadores.",
-	"logentry-oath-disable-other": "$1 {{GENDER:$2|desativou}} a autenticação de dois fatores de $3",
-	"apihelp-query+oath-description": "Verificar se a autenticação de dois fatores (OATH) está ativa para um utilizador.",
-	"apihelp-query+oath-summary": "Verificar se a autenticação de dois fatores (OATH) está ativa para um utilizador.",
-	"apihelp-query+oath-param-user": "Utilizador acerca do qual será obtida informação. Por omissão, o utilizador atual.",
-	"apihelp-query+oath-example-1": "Obter informações sobre o utilizador atual",
-	"apihelp-query+oath-example-2": "Obter informação sobre o utilizador <kbd>Example</kbd>",
-	"apihelp-oathvalidate-description": "Validar uma chave de autenticação de dois fatores (OATH).",
-	"apihelp-oathvalidate-summary": "Validar uma chave de autenticação de dois fatores (OATH).",
-	"apihelp-oathvalidate-param-user": "O utilizador para o qual a chave será validada. Por omissão, o utilizador atual.",
-	"apihelp-oathvalidate-param-totp": "Chave para autenticação de dois fatores (OATH).",
-	"apihelp-oathvalidate-example-1": "Validar uma chave para o utilizador atual",
-	"apihelp-oathvalidate-example-2": "Validar uma chave para o utilizador <kbd>Example</kbd>"
+	"logentry-oath-disable-other": "$1 {{GENDER:$2|desativou}} a autenticação de dois fatores de $3"
 }

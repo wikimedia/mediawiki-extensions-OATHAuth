@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-oathvalidate-param-totp": "Маркер за двукомпонентно удостоверяване (OATH)."
+}

@@ -37,8 +37,5 @@
 	"oathauth-throttled": "Превише покушаја верификације! Сачекајте $1.",
 	"oathauth-login-failed": "Верификација није успела.",
 	"oathauth-describe-provider": "Двофакторска потврда идентитета (OATH).",
-	"action-oathauth-api-all": "проверава OATH статус",
-	"apihelp-query+oath-param-user": "Корисник за којег је потребно добити информацију. Подразумеван је тренутни корисник.",
-	"apihelp-query+oath-example-1": "Добија информације о тренутном кориснику",
-	"apihelp-query+oath-example-2": "Добија информације о кориснику <kbd>Пример</kbd>"
+	"action-oathauth-api-all": "проверава OATH статус"
 }
