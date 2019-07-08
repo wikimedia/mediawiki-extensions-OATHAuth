@@ -169,7 +169,7 @@ class TOTPKey implements IAuthKey {
 
 						$auth = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
 						$module = $auth->getModuleByKey( 'totp' );
-						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHAuthUserRepository' );
+						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 						$user->setKey( $this );
 						$user->setModule( $module );
 						$userRepo->persist( $user, $clientIP );
