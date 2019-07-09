@@ -68,7 +68,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 				'label-message' => 'oathauth-step2alt',
 				'default' =>
 					'<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br/>'
-					. $this->oathUser->getAccount() . '<br/><br/>'
+					. htmlspecialchars( $this->oathUser->getAccount() ) . '<br/><br/>'
 					. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br/>'
 					. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd><br/>',
 				'raw' => true,
