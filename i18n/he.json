@@ -55,7 +55,17 @@
 	"oath-log-name": "יומן של שינויים באימות דו־שלבי",
 	"oath-log-header": "האירועים האלה עוקבים אחרי שינויים במצב האימות הדו־שלבי של משתמשים.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|כיבה|כיבתה}} אימות דו־שלבי עבור $3",
+	"oauthauth-ui-no-module": "לא מופעל אף אחד",
+	"oathauth-module-totp-label": "TOTP (אסימון חד־פעמי)",
+	"oathauth-ui-manage": "ניהול",
+	"oathmanage": "ניהול אימות דו־שלבי",
+	"oathauth-ui-not-enabled-modules": "שיטות זמינות",
+	"oathauth-ui-enabled-module": "שיטת האימות המופעלת",
 	"oathauth-enable-generic": "הפעלה",
 	"oathauth-disable-generic": "כיבוי",
-	"oathauth-ui-error-page-no-module": "כרגע אף שיטת אימות דו־שלבי אינה מופעלת."
+	"oathauth-ui-error-page-no-module": "כרגע אף שיטת אימות דו־שלבי אינה מופעלת.",
+	"oathauth-invalid-data-format": "ספק הנתונים אינו תקין ליצירת מפתח לשיטת האימות שנבחרה",
+	"oathauth-invalid-key-type": "המפתח המוגדר על המשתמש אינו תואם את הסוג הנדרש עבור שיטת האימות שנבחרה",
+	"oathauth-disable-page-title": "לכבות את $1",
+	"oathauth-enable-page-title": "להפעיל את $1"
 }

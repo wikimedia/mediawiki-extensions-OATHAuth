@@ -37,5 +37,6 @@
 	"oathauth-throttled": "Превише покушаја верификације! Сачекајте $1.",
 	"oathauth-login-failed": "Верификација није успела.",
 	"oathauth-describe-provider": "Двофакторска потврда идентитета (OATH).",
-	"action-oathauth-api-all": "проверава OATH статус"
+	"action-oathauth-api-all": "проверава OATH статус",
+	"oauthauth-ui-no-module": "Ниједан није омогућен"
 }
