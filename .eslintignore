@@ -1,3 +1,2 @@
 modules/totp/qrcode.js
-node_modules/**
 vendor/**

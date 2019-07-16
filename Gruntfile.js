@@ -13,12 +13,7 @@ module.exports = function ( grunt ) {
 				extensions: [ '.js', '.json' ],
 				cache: true
 			},
-			all: [
-				'**/*.js{,on}',
-				'!{vendor,node_modules}/**',
-				// Library file
-				'!modules/qrcode.js'
-			]
+			all: '.'
 		},
 		stylelint: {
 			all: [
