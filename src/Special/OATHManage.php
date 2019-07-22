@@ -73,7 +73,7 @@ class OATHManage extends SpecialPage {
 	 * @throws \MWException
 	 */
 	public function __construct() {
-		parent::__construct( 'OATHManage' );
+		parent::__construct( 'OATHManage', 'oathauth-enable' );
 
 		$services = MediaWikiServices::getInstance();
 		$this->auth = $services->getService( 'OATHAuth' );
