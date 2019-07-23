@@ -57,7 +57,7 @@
 	"oauthauth-ui-no-module": "Nie włączono",
 	"oathauth-module-totp-label": "TOTP (oparte na czasie hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",
-	"oathmanage": "Zarządzenie uwierzytelnianiem dwuetapowym (OATH)",
+	"oathmanage": "Zarządzanie weryfikacją dwuetapową",
 	"oathauth-ui-not-enabled-modules": "Dostępne metody",
 	"oathauth-ui-enabled-module": "Włączona metoda uwierzytelniania",
 	"oathauth-enable-generic": "Włącz",
