@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Saederup92",
-			"Weblars"
+			"Weblars",
+			"Tinamalmgren"
 		]
 	},
 	"disableoathforuser": "Deaktivere brugeres tofaktorgodkendelse",
@@ -25,10 +26,10 @@
 	"oathauth-throttled": "For mange verificeringsforsøg! Vent i $1.",
 	"oathauth-login-failed": "Verificering mislykkedes",
 	"oathauth-user-not-found": "Der blev ikke fundet nogen brugerkonto med det navn",
-	"oathauth-ui-manage": "Administrer",
+	"oathauth-ui-manage": "Administrér",
 	"oathauth-ui-not-enabled-modules": "Tilgængelige metoder",
 	"oathauth-enable-generic": "Aktiver",
 	"oathauth-disable-generic": "Deaktiver",
-	"oathauth-disable-page-title": "Deaktiver $1",
-	"oathauth-enable-page-title": "Aktiver $1"
+	"oathauth-disable-page-title": "Deaktivér $1",
+	"oathauth-enable-page-title": "Aktivér $1"
 }

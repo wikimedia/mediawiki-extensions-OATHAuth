@@ -47,5 +47,5 @@
 	"oathauth-disable-generic": "Keela",
 	"oathauth-ui-error-page-no-module": "Ükski kaheastmelise autentimise meetod pole praegu saadaval.",
 	"oathauth-disable-page-title": "Mooduli $1 keelamine",
-	"oathauth-enable-page-title": "Mooduli $1 lubamine"
+	"oathauth-enable-page-title": "Mooduli lubamine: $1"
 }
