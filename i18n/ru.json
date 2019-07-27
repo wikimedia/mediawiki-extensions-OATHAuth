@@ -11,7 +11,8 @@
 			"Patrick Star",
 			"Movses",
 			"Vlad5250",
-			"Alexander Istomin"
+			"Alexander Istomin",
+			"Saimongoltinio"
 		]
 	},
 	"oathauth-desc": "Обеспечивает поддержку проверки подлинности с помощью HMAC на основе одноразовых паролей",
@@ -43,7 +44,7 @@
 	"action-oathauth-enable": "включить двухфакторную аутентификацию",
 	"oathauth-auth-token-label": "Токен",
 	"oathauth-auth-token-help": "Одноразовый пароль используется как второй фактор двухфакторной аутентификации.",
-	"oathauth-auth-ui": "Пожалуйста, введите код подтверждения из устройства проверки подлинности",
+	"oathauth-auth-ui": "Пожалуйста, введите  код подтверждения с вашего устройства аутентификации,",
 	"oathauth-throttled": "Слишком много попыток проверки! пожалуйста, подождите $1.",
 	"oathauth-login-failed": "Не удалось выполнить проверку.",
 	"oathauth-describe-provider": "Двухфакторная аутентификация (OATH).",

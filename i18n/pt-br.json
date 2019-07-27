@@ -43,7 +43,7 @@
 	"action-oathauth-enable": "ativar autenticação em duas etapas",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-token-help": "A senha única utilizada como o segundo fator de autenticação de dois fatores.",
-	"oathauth-auth-ui": "Por favor, digite um código de verificação do seu dispositivo de autenticação",
+	"oathauth-auth-ui": "Por favor, insira um código de verificação do seu dispositivo de autenticação.",
 	"oathauth-throttled": "Muitas tentativas de verificação! Por favor, aguarde $1.",
 	"oathauth-login-failed": "Verificação falhou.",
 	"oathauth-describe-provider": "Autenticação de dois fatores (OATH).",

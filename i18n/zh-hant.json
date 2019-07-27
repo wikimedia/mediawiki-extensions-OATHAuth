@@ -10,7 +10,8 @@
 			"Hello903hello",
 			"Liuxinyu970226",
 			"Kly",
-			"神樂坂秀吉"
+			"神樂坂秀吉",
+			"Winston Sung"
 		]
 	},
 	"oathauth-desc": "提供支援 HMAC 為基礎的一次性密碼認證",
@@ -47,7 +48,7 @@
 	"action-oathauth-enable": "啟用雙重認證",
 	"oathauth-auth-token-label": "令牌",
 	"oathauth-auth-token-help": "用作雙重認證的一次性密碼",
-	"oathauth-auth-ui": "請輸入您行動裝置上顯示的驗證碼",
+	"oathauth-auth-ui": "請輸入您行動裝置上顯示的驗證碼。",
 	"oathauth-throttled": "驗證次數過多，請稍等 $1。",
 	"oathauth-login-failed": "驗證失敗",
 	"oathauth-describe-provider": "雙重認證（OATH）。",
