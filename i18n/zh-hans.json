@@ -10,7 +10,8 @@
 			"A Chinese Wikipedian",
 			"科劳",
 			"佛壁灯",
-			"WhitePhosphorus"
+			"WhitePhosphorus",
+			"LNDDYL"
 		]
 	},
 	"oathauth-desc": "提供使用基于HMAC的一次性密码的身份验证支持",
@@ -23,7 +24,7 @@
 	"oathauth-token": "令牌",
 	"oathauth-disable": "禁用双因素验证",
 	"oathauth-validatedoath": "已验证双因素证书。双因素验证现将实时生效。",
-	"oathauth-noscratchforvalidation": "您不能使用乱码确认双因素验证。乱码只用于备份及附带使用。请使用来自您的代码生成器的确认代码。",
+	"oathauth-noscratchforvalidation": "您不能使用临时代码确认双因素验证。临时代码只用于备份及附带使用。请使用来自您的代码生成器的确认代码。",
 	"oathauth-failedtovalidateoath": "验证双因素凭据失败",
 	"oathauth-disabledoath": "已禁用双因素验证。",
 	"oathauth-prefs-label": "双因素验证：",

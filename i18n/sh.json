@@ -52,12 +52,14 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|jemu}} je onemogućio dvočiniteljsku potvrdu $3",
 	"oauthauth-ui-no-module": "Nijedan nije omogućen",
 	"oathauth-ui-manage": "Upravljaj",
-	"oathmanage": "Upravljanje OATHom",
+	"oathmanage": "Upravljanje dvočiniteljske potvrde",
 	"oathauth-ui-not-enabled-modules": "Raspoložive metode",
 	"oathauth-ui-enabled-module": "Omogućena metoda potvrde",
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",
 	"oathauth-ui-error-page-no-module": "Trenutno nema omogućena nijedna metoda dvočiniteljske potvrde.",
 	"oathauth-invalid-data-format": "Naveden nevažeći davatelj podataka u ključotu namijenjenom stvaranju izabrane metode potvrde",
-	"oathauth-invalid-key-type": "Ključ zadani korisniku ne odgovara potrebnom tipu za izbor metode potvrde"
+	"oathauth-invalid-key-type": "Ključ zadani korisniku ne odgovara potrebnom tipu za izbor metode potvrde",
+	"oathauth-disable-page-title": "Onemogući $1",
+	"oathauth-enable-page-title": "Omogući $1"
 }

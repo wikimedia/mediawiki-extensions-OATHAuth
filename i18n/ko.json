@@ -40,7 +40,7 @@
 	"action-oathauth-enable": "2요소 인증 활성화",
 	"oathauth-auth-token-label": "토큰",
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
-	"oathauth-auth-ui": "인증 장치의 인증 코드를 넣어주세요",
+	"oathauth-auth-ui": "인증 장치의 인증 코드를 입력해 주십시오.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "인증 검토 실패.",
 	"oathauth-describe-provider": "2단계 인증(OATH)",
