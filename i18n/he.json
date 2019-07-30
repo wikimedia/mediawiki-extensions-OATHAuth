@@ -43,7 +43,7 @@
 	"action-oathauth-enable": "להפעיל אימות דו־שלבי",
 	"oathauth-auth-token-label": "אסימון",
 	"oathauth-auth-token-help": "הסיסמה החד־פעמית שמשמשת בתור הגורם השני של האימות הדו־שלבי.",
-	"oathauth-auth-ui": "נא להזין את קוד האישור ממכשיר האימות שלך",
+	"oathauth-auth-ui": "נא להזין קוד אישור ממכשיר האימות שלך.",
 	"oathauth-throttled": "יותר מדי ניסיונות אימות! נא לנסות $1.",
 	"oathauth-login-failed": "האימות נכשל.",
 	"oathauth-describe-provider": "אימות דו־שלבי (OATH).",
