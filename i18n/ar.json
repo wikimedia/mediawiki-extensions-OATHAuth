@@ -62,9 +62,9 @@
 	"oathauth-ui-enabled-module": "تم تمكين طريقة المصادقة",
 	"oathauth-enable-generic": "تمكين",
 	"oathauth-disable-generic": "تعطيل",
-	"oathauth-ui-error-page-no-module": "لا توجد طريقة مصادقة ثنائية ممكّّنة حاليا.",
 	"oathauth-invalid-data-format": "مزود البيانات غير صالح لإنشاء مفتاح لطريقة المصادقة المحددة",
 	"oathauth-invalid-key-type": "لا يتطابق تعيين المفتاح على المستخدم مع النوع المطلوب لطريقة المصادقة المحددة",
 	"oathauth-disable-page-title": "تعطيل $1",
-	"oathauth-enable-page-title": "تمكين $1"
+	"oathauth-enable-page-title": "تمكين $1",
+	"oathauth-action-exclusive-to-2fa": "لا يمكن تنفيذ هذا الإجراء إلا من قبل المستخدمين ذوي المصادقة الثنائية الممكنة."
 }

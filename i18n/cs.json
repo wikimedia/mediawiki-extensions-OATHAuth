@@ -55,6 +55,5 @@
 	"oathauth-ui-enabled-module": "Zapnutá autentizační metoda",
 	"oathauth-enable-generic": "Zapnout",
 	"oathauth-disable-generic": "Vypnout",
-	"oathauth-ui-error-page-no-module": "Žádné dvoufázové ověření momentálně není zapnuté.",
 	"oathauth-disable-page-title": "Vypnout $1"
 }

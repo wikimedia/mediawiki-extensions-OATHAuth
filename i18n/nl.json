@@ -60,7 +60,6 @@
 	"oathauth-ui-enabled-module": "Authenticatie methode inschakelen",
 	"oathauth-enable-generic": "Inschakelen",
 	"oathauth-disable-generic": "Uitschakelen",
-	"oathauth-ui-error-page-no-module": "Er is momenteel geen tweetrapsauthenticatiemethode ingeschakeld.",
 	"oathauth-disable-page-title": "$1 uitschakelen",
 	"oathauth-enable-page-title": "$1 inschakelen"
 }

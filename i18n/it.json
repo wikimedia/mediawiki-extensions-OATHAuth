@@ -48,7 +48,6 @@
 	"oathauth-ui-enabled-module": "Attiva metodo autenticazione",
 	"oathauth-enable-generic": "Attiva",
 	"oathauth-disable-generic": "Disattiva",
-	"oathauth-ui-error-page-no-module": "Nessun metodo di autenticazione a due fattori è attualmente attivato.",
 	"oathauth-disable-page-title": "Disattiva $1",
 	"oathauth-enable-page-title": "Attiva $1"
 }

@@ -39,7 +39,7 @@
 	"action-oathauth-enable": "овозможување на двочинителска заверката",
 	"oathauth-auth-token-label": "Жетон",
 	"oathauth-auth-token-help": "Еднократната лозинка што служи како втор чинител во двочинителската заверка.",
-	"oathauth-auth-ui": "Внесете потврден код од вашиот уред на заверка",
+	"oathauth-auth-ui": "Внесете потврден код од вашиот уред на заверка.",
 	"oathauth-throttled": "Направивте премногу обиди за заверка! Почекајте $1.",
 	"oathauth-login-failed": "Заверката не успеа.",
 	"oathauth-describe-provider": "Двочинителска заверка (OATH).",
@@ -59,9 +59,9 @@
 	"oathauth-ui-enabled-module": "Овозможен начин на заверка",
 	"oathauth-enable-generic": "Овозможи",
 	"oathauth-disable-generic": "Оневозможи",
-	"oathauth-ui-error-page-no-module": "Тековно нема овозможено ниеден начин на двочинителска заверка.",
 	"oathauth-invalid-data-format": "Укажан неважечки добавувач на податоци во клучот наменет за создавање на избраниот начин на заверка",
 	"oathauth-invalid-key-type": "Клучот зададен на корисникот не одговара на потребниот тип за избор на начин на заверка",
 	"oathauth-disable-page-title": "Оневозможи го $1",
-	"oathauth-enable-page-title": "Овозможи го $1"
+	"oathauth-enable-page-title": "Овозможи го $1",
+	"oathauth-action-exclusive-to-2fa": "Дејството може да го вршат само корисници кои имаат овозможено двочинителска заверка."
 }

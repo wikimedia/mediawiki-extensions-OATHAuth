@@ -72,7 +72,6 @@
 	"oathauth-ui-enabled-module": "Méthode d’authentification activée",
 	"oathauth-enable-generic": "Activer",
 	"oathauth-disable-generic": "Désactiver",
-	"oathauth-ui-error-page-no-module": "Aucune méthode d’authentification à deux facteurs n’est actuellement activée.",
 	"oathauth-invalid-data-format": "Le fournisseur de données n’est pas valide pour créer une clé pour la méthode d’authentification sélectionnée",
 	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée",
 	"oathauth-disable-page-title": "Désactiver $1",

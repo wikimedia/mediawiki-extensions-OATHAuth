@@ -57,7 +57,6 @@
 	"oathauth-ui-enabled-module": "Omogućena metoda potvrde",
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",
-	"oathauth-ui-error-page-no-module": "Trenutno nema omogućena nijedna metoda dvočiniteljske potvrde.",
 	"oathauth-invalid-data-format": "Naveden nevažeći davatelj podataka u ključotu namijenjenom stvaranju izabrane metode potvrde",
 	"oathauth-invalid-key-type": "Ključ zadani korisniku ne odgovara potrebnom tipu za izbor metode potvrde",
 	"oathauth-disable-page-title": "Onemogući $1",

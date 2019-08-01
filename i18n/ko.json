@@ -55,7 +55,6 @@
 	"oathauth-ui-not-enabled-modules": "사용 가능한 방식",
 	"oathauth-enable-generic": "활성화",
 	"oathauth-disable-generic": "비활성화",
-	"oathauth-ui-error-page-no-module": "활성화된 2요소 인증 방식이 없습니다.",
 	"oathauth-disable-page-title": "$1 비활성화",
 	"oathauth-enable-page-title": "$1 활성화"
 }

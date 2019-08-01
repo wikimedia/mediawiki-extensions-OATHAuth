@@ -59,6 +59,5 @@
 	"oathauth-ui-not-enabled-modules": "Доступні способи",
 	"oathauth-ui-enabled-module": "Ввімкнений метод авторизації",
 	"oathauth-enable-generic": "Увімкнути",
-	"oathauth-disable-generic": "Вимкнути",
-	"oathauth-ui-error-page-no-module": "Жоден метод Двофакторної авторизації не ввімкнено."
+	"oathauth-disable-generic": "Вимкнути"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Fitoschido"
 		]
 	},
 	"oathauth-desc": "Ufre soporte d'identificación utilizando contraseñes pa una sola vez basaes en HMAC",
@@ -28,7 +29,7 @@
 	"action-oathauth-enable": "activar la identificación de dos factores",
 	"oathauth-auth-token-label": "Pase",
 	"oathauth-auth-token-help": "La contraseña d'un usu emplegada como segundu factor na autenticación de dos pasos.",
-	"oathauth-auth-ui": "Escribe un códigu de comprobación dende'l preséu d'identificación",
+	"oathauth-auth-ui": "Escribe un códigu de comprobación dende'l preséu d'identificación.",
 	"oathauth-throttled": "Demasiaos intentos de comprobación. Espera $1.",
 	"oathauth-login-failed": "Falló la comprobación.",
 	"oathauth-describe-provider": "Identificación de dos factores (OATH).",

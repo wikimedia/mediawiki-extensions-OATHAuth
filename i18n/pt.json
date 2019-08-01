@@ -3,7 +3,8 @@
 		"authors": [
 			"Vitorvicentevalente",
 			"Hamilton Abreu",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Fitoschido"
 		]
 	},
 	"oathauth-desc": "Fornece suporte à autenticação usando palavras-passe de uso único baseadas em códigos HMAC",
@@ -40,7 +41,7 @@
 	"action-oathauth-enable": "ativar autenticação de dois fatores",
 	"oathauth-auth-token-label": "Chave",
 	"oathauth-auth-token-help": "A palavra-passe de uso único usada como segundo fator da autenticação de dois fatores.",
-	"oathauth-auth-ui": "Insira o código de verificação do seu dispositivo de autenticação",
+	"oathauth-auth-ui": "Insira o código de verificação do seu dispositivo de autenticação.",
 	"oathauth-throttled": "Ocorreram demasiadas tentativas de verificação! Por favor, aguarde $1.",
 	"oathauth-login-failed": "A verificação falhou.",
 	"oathauth-describe-provider": "Autenticação de dois fatores (OATH).",
@@ -60,7 +61,6 @@
 	"oathauth-ui-enabled-module": "Método de autenticação ativado",
 	"oathauth-enable-generic": "Ativar",
 	"oathauth-disable-generic": "Desativar",
-	"oathauth-ui-error-page-no-module": "Não está presentemente ativado nenhum método de autenticação de dois fatores.",
 	"oathauth-invalid-data-format": "O fornecedor de dados é inválido para criar uma chave para o método de autenticação selecionado",
 	"oathauth-invalid-key-type": "A chave definida no utilizador não corresponde ao tipo necessário para o método de autenticação selecionado",
 	"oathauth-disable-page-title": "Desativar $1",

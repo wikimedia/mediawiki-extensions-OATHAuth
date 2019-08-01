@@ -68,7 +68,6 @@
 	"oathauth-ui-enabled-module": "已启用的认证方法",
 	"oathauth-enable-generic": "启用",
 	"oathauth-disable-generic": "禁用",
-	"oathauth-ui-error-page-no-module": "无已被启用的两步认证方法。",
 	"oathauth-invalid-data-format": "数据提供方无法未选定的认证方法创建密钥",
 	"oathauth-invalid-key-type": "用户设置的密钥与选定的认证类型不匹配",
 	"oathauth-disable-page-title": "禁用$1",

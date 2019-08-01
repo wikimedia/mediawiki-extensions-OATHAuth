@@ -46,7 +46,7 @@
 	"action-oathauth-enable": "activar la autenticación en dos pasos",
 	"oathauth-auth-token-label": "Clave",
 	"oathauth-auth-token-help": "La contraseña de un solo uso utilizada como segundo paso de la autenticación en dos pasos.",
-	"oathauth-auth-ui": "Escribe el código de verificación de tu dispositivo de autenticación",
+	"oathauth-auth-ui": "Proporciona un código de verificación del dispositivo de autenticación.",
 	"oathauth-throttled": "¡Demasiados intentos de verificación! espera $1",
 	"oathauth-login-failed": "Falló la verificación.",
 	"oathauth-describe-provider": "Autenticación en dos pasos (OATH).",
@@ -65,7 +65,6 @@
 	"oathauth-ui-enabled-module": "Método de autenticación habilitado",
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Desactivar",
-	"oathauth-ui-error-page-no-module": "No se encuentra habilitado ningún método de autenticación en dos pasos.",
 	"oathauth-disable-page-title": "Deshabilitar $1",
 	"oathauth-enable-page-title": "Habilitar $1"
 }

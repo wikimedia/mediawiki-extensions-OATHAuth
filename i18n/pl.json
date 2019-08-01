@@ -42,7 +42,7 @@
 	"action-oathauth-enable": "włączenia weryfikacji dwuetapowej",
 	"oathauth-auth-token-label": "Kod",
 	"oathauth-auth-token-help": "Jednorazowe klucze, używane jako drugi składnik weryfikacji dwuetapowej.",
-	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z urządzenia uwierzytelniającego",
+	"oathauth-auth-ui": "Wpisz kod weryfikacyjny z urządzenia uwierzytelniającego.",
 	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
 	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
 	"oathauth-describe-provider": "Weryfikacja dwuetapowa (OATH).",
@@ -61,5 +61,10 @@
 	"oathauth-ui-not-enabled-modules": "Dostępne metody",
 	"oathauth-ui-enabled-module": "Włączona metoda uwierzytelniania",
 	"oathauth-enable-generic": "Włącz",
-	"oathauth-disable-generic": "Wyłącz"
+	"oathauth-disable-generic": "Wyłącz",
+	"oathauth-invalid-data-format": "Dostawca danych nie mógł stworzyć klucza dla wybranej metody weryfikacji",
+	"oathauth-invalid-key-type": "Klucz ustawiony dla użytkownika nie pasuje do wymaganego typu wybranej metody weryfikacji",
+	"oathauth-disable-page-title": "Wyłącz $1",
+	"oathauth-enable-page-title": "Włącz $1",
+	"oathauth-action-exclusive-to-2fa": "Tę akcję wykonywać mogą tylko użytkownicy z włączoną weryfikacją dwuetapową."
 }

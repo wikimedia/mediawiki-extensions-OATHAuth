@@ -59,7 +59,6 @@
 	"oathauth-ui-enabled-module": "Vključi način preverjanja pristnosti",
 	"oathauth-enable-generic": "Vključi",
 	"oathauth-disable-generic": "Izključi",
-	"oathauth-ui-error-page-no-module": "Noben način dvostopenjskega preverjanja pristnosti trenutno ni vključen.",
 	"oathauth-disable-page-title": "Izključi $1",
 	"oathauth-enable-page-title": "Vključi $1"
 }
