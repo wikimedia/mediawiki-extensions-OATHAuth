@@ -56,7 +56,7 @@
 	"oathauth-module-totp-label": "TOTP (one-time token)",
 	"oathauth-ui-manage": "Manage",
 	"oathmanage": "Manage Two-factor authentication",
-	"oathauth-ui-not-enabled-modules": "Available methods",
+	"oathauth-ui-not-enabled-modules": "Switch to an alternative method",
 	"oathauth-ui-enabled-module": "Enabled authentication method",
 	"oathauth-enable-generic": "Enable",
 	"oathauth-disable-generic": "Disable",
@@ -64,5 +64,8 @@
 	"oathauth-invalid-key-type": "Key set on the user does not match the required type for selected auth method",
 	"oathauth-disable-page-title": "Disable $1",
 	"oathauth-enable-page-title": "Enable $1",
-	"oathauth-action-exclusive-to-2fa": "This action can only be performed by users with Two-factor authentication enabled."
+	"oathauth-action-exclusive-to-2fa": "This action can only be performed by users with Two-factor authentication enabled.",
+	"oathauth-ui-available-modules": "Available methods",
+	"oathauth-ui-general-help": "'''Multi-factor authentication''' ('''MFA''') is an authentication method in which a computer user is granted access only after successfully presenting two or more pieces of evidence (or factors) to an authentication mechanism: knowledge (something the user and only the user knows), possession (something the user and only the user has), and inherence (something the user and only the user is). [https://en.wikipedia.org/wiki/Multi-factor_authentication Read more]",
+	"oathauth-totp-description": "The Time-based One-Time Password algorithm (TOTP) is an extension of the HMAC-based One-time Password algorithm (HOTP) generating a one-time password by instead taking uniqueness from the current time."
 }

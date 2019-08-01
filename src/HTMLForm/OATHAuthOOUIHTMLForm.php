@@ -6,6 +6,11 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
+use OOUI\FieldsetLayout;
+use OOUI\HtmlSnippet;
+use OOUI\Layout;
+use OOUI\PanelLayout;
+use OOUI\Widget;
 use OOUIHTMLForm;
 use Psr\Log\LoggerInterface;
 
@@ -29,6 +34,23 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	protected $logger;
 
 	/**
+	 * @var Layout|null
+	 */
+	protected $layoutContainer = null;
+
+	/**
+	 * Make the form-wrapper panel padded
+	 * @var bool
+	 */
+	protected $panelPadded = true;
+
+	/**
+	 * Make the form-wrapper panel framed
+	 * @var bool
+	 */
+	protected $panelFramed = true;
+
+	/**
 	 * Initialize the form
 	 *
 	 * @param OATHUser $oathUser
@@ -45,6 +67,27 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function show( $layout = null ) {
+		$this->layoutContainer = $layout;
+		return parent::show();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function displayForm( $submitResult ) {
+		if ( !$this->layoutContainer instanceof Layout ) {
+			return parent::displayForm( $submitResult );
+		}
+
+		$this->layoutContainer->appendContent( new HtmlSnippet(
+			$this->getHTML( $submitResult )
+		) );
+	}
+
+	/**
 	 * @return array
 	 */
 	protected function getDescriptors() {
@@ -56,6 +99,32 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	 */
 	private function getLogger() {
 		return LoggerFactory::getInstance( 'authentication' );
+	}
+
+	protected function wrapFieldSetSection( $legend, $section, $attributes, $isRoot ) {
+		// to get a user visible effect, wrap the fieldset into a framed panel layout
+		$layout = new PanelLayout( array_merge( [
+			'expanded' => false,
+			'padded' => true,
+			'framed' => false,
+			'infusable' => false,
+		], [
+			'padded' => $this->panelPadded,
+			'framed' => $this->panelFramed
+		] ) );
+
+		$layout->appendContent(
+			new FieldsetLayout( [
+				'label' => $legend,
+				'infusable' => false,
+				'items' => [
+					new Widget( [
+						'content' => new HtmlSnippet( $section )
+					] ),
+				],
+			] + $attributes )
+		);
+		return $layout;
 	}
 
 	/**

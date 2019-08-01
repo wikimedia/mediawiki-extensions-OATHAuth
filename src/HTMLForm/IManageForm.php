@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use HTMLForm;
+use OOUI\Layout;
 use Title;
 use Status;
 
@@ -34,9 +35,10 @@ interface IManageForm {
 	public function setSubmitCallback( $cb );
 
 	/**
+	 * @param Layout|null $layout
 	 * @return bool|Status
 	 */
-	public function show();
+	public function show( $layout = null );
 
 	/**
 	 * @param array $formData

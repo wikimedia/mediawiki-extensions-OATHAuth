@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use Message;
 
 interface IModule {
 	/**
@@ -13,7 +14,7 @@ interface IModule {
 	public function getName();
 
 	/**
-	 * @return \Message
+	 * @return Message
 	 */
 	public function getDisplayName();
 
@@ -61,4 +62,10 @@ interface IModule {
 	 * @return IManageForm|null if no form is available for given action
 	 */
 	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo );
+
+	/**
+	 * Return Message object for the short text to be displayed as description
+	 * @return Message
+	 */
+	public function getDescriptionMessage();
 }
