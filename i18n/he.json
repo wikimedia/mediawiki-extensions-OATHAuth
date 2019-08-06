@@ -66,5 +66,6 @@
 	"oathauth-invalid-data-format": "ספק הנתונים אינו תקין ליצירת מפתח לשיטת האימות שנבחרה",
 	"oathauth-invalid-key-type": "המפתח המוגדר על המשתמש אינו תואם את הסוג הנדרש עבור שיטת האימות שנבחרה",
 	"oathauth-disable-page-title": "לכבות את $1",
-	"oathauth-enable-page-title": "להפעיל את $1"
+	"oathauth-enable-page-title": "להפעיל את $1",
+	"oathauth-action-exclusive-to-2fa": "רק משתמשים שהפעילו אימות דו־שלבי יכולים לבצע את הפעולה הזאת."
 }

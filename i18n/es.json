@@ -66,5 +66,6 @@
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Desactivar",
 	"oathauth-disable-page-title": "Deshabilitar $1",
-	"oathauth-enable-page-title": "Habilitar $1"
+	"oathauth-enable-page-title": "Habilitar $1",
+	"oathauth-action-exclusive-to-2fa": "Esta acción solo puede ser realizada por usuarios que tengan activada la autenticación en dos pasos."
 }

@@ -75,5 +75,6 @@
 	"oathauth-invalid-data-format": "Le fournisseur de données n’est pas valide pour créer une clé pour la méthode d’authentification sélectionnée",
 	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée",
 	"oathauth-disable-page-title": "Désactiver $1",
-	"oathauth-enable-page-title": "Activer $1"
+	"oathauth-enable-page-title": "Activer $1",
+	"oathauth-action-exclusive-to-2fa": "Cette action ne peut être effectuée que par des utilisateurs avec l’authentification à deux facteurs activée."
 }

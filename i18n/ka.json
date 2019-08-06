@@ -20,5 +20,11 @@
 	"oathauth-step2alt": "ან ხელით შეიყვანეთ გასაღები",
 	"oathauth-step3": "ნაბიჯი 3: ჩაიწერეთ დაკაწრული კოდები",
 	"oathauth-step4": "ნაბიჯი 4: ვერიფიკაცია",
-	"oathauth-entertoken": "დასადასტურებლად შეიყვანეთ კოდი თქვენი მობილური აპლიკაციიდან"
+	"oathauth-entertoken": "დასადასტურებლად შეიყვანეთ კოდი თქვენი მობილური აპლიკაციიდან",
+	"oauthauth-ui-no-module": "არ არის ჩართული",
+	"oathauth-module-totp-label": "TOTP (ერთჯერადი ტოკენი)",
+	"oathauth-ui-manage": "მართვა",
+	"oathmanage": "ორფაქტორიანი ავთენტიკაციის მართვა",
+	"oathauth-ui-not-enabled-modules": "ხელმისაწვდომი მეთოდები",
+	"oathauth-enable-generic": "ჩართვა"
 }
