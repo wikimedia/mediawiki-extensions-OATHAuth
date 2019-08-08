@@ -38,5 +38,6 @@
 	"oathauth-login-failed": "Верификација није успела.",
 	"oathauth-describe-provider": "Двофакторска потврда идентитета (OATH).",
 	"action-oathauth-api-all": "проверава OATH статус",
-	"oauthauth-ui-no-module": "Ниједан није омогућен"
+	"oauthauth-ui-no-module": "Ниједан није омогућен",
+	"oathmanage": "Управљање двофакторском потврдом идентитета"
 }
