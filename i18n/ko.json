@@ -43,7 +43,7 @@
 	"oathauth-auth-ui": "인증 장치의 인증 코드를 입력해 주십시오.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "인증 검토 실패.",
-	"oathauth-describe-provider": "2단계 인증(OATH)",
+	"oathauth-describe-provider": "2요소 인증(OATH)입니다.",
 	"grant-group-authentication": "자신과 다른 사용자를 위한 인증 작업을 수행합니다",
 	"grant-oath": "자기 자신과 다른 사람에 대한 2요소 인증(OATH) 정보에 접근합니다",
 	"action-oathauth-api-all": "OATH 상태 학인",
