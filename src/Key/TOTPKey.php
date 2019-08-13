@@ -27,7 +27,6 @@ use MediaWiki\Logger\LoggerFactory;
 use DomainException;
 use Exception;
 use MWException;
-use ObjectCache;
 use CentralIdLookup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
@@ -118,10 +117,10 @@ class TOTPKey implements IAuthKey {
 		}
 
 		// Prevent replay attacks
-		$memc = ObjectCache::newAnything( [] );
+		$store = MediaWikiServices::getInstance()->getMainObjectStash();
 		$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() );
-		$memcKey = ObjectCache::getLocalClusterInstance()->makeKey( 'oathauth-totp', 'usedtokens', $uid );
-		$lastWindow = (int)$memc->get( $memcKey );
+		$key = $store->makeKey( 'oathauth-totp', 'usedtokens', $uid );
+		$lastWindow = (int)$store->get( $key );
 
 		$retval = false;
 		$results = HOTP::generateByTimeWindow(
@@ -184,8 +183,8 @@ class TOTPKey implements IAuthKey {
 		}
 
 		if ( $retval ) {
-			$memc->set(
-				$memcKey,
+			$store->set(
+				$key,
 				$lastWindow,
 				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
 			);
