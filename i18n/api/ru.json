@@ -4,7 +4,8 @@
 			"Alexander Istomin",
 			"Alexandr Efremov",
 			"Kareyac",
-			"Mouse21"
+			"Mouse21",
+			"Vlad5250"
 		]
 	},
 	"apihelp-query+oath-description": "Проверьте, включена ли двухфакторная аутентификация (OATH) для пользователя.",
@@ -17,5 +18,6 @@
 	"apihelp-oathvalidate-param-user": "Пользователь для проверки токена для. По умолчанию для текущего пользователя.",
 	"apihelp-oathvalidate-param-totp": "Токен двухфакторной аутентификации (OATH). Ради обратной совместимости, используйте параметр \"data\" взамен.",
 	"apihelp-oathvalidate-example-1": "Проверка токена для текущего пользователя",
-	"apihelp-oathvalidate-example-2": "Проверить токен для пользователя <kbd>пример</kbd>"
+	"apihelp-oathvalidate-example-2": "Проверить токен для пользователя <kbd>пример</kbd>",
+	"apihelp-oathvalidate-example-3": "Проверить JSON-данные для участника <kbd>Example</kbd>"
 }
