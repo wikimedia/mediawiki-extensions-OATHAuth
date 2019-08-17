@@ -38,7 +38,7 @@
 	"action-oathauth-enable": "omogućivanje dvočiniteljske potvrde",
 	"oathauth-auth-token-label": "Žeton",
 	"oathauth-auth-token-help": "Jednokratna lozinka koja služi kao drugi činitelj u dvočiniteljskoj provjeri.",
-	"oathauth-auth-ui": "Upišite kôd za potvrdu s Vašeg uređaja",
+	"oathauth-auth-ui": "Upišite kôd za potvrdu s Vašeg uređaja potvrde.",
 	"oathauth-throttled": "Napravili ste previše pokušaja potvrde! Sačekajte $1.",
 	"oathauth-login-failed": "Potvrda nije uspjela.",
 	"oathauth-describe-provider": "Dvočiniteljska potvrda (OATH)",
@@ -60,5 +60,6 @@
 	"oathauth-invalid-data-format": "Naveden nevažeći davatelj podataka u ključotu namijenjenom stvaranju izabrane metode potvrde",
 	"oathauth-invalid-key-type": "Ključ zadani korisniku ne odgovara potrebnom tipu za izbor metode potvrde",
 	"oathauth-disable-page-title": "Onemogući $1",
-	"oathauth-enable-page-title": "Omogući $1"
+	"oathauth-enable-page-title": "Omogući $1",
+	"oathauth-action-exclusive-to-2fa": "Radnju može da vršiti samo korisnici koji imaju omogućenu dvočiniteljsku potvrdu."
 }
