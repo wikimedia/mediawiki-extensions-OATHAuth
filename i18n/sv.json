@@ -40,7 +40,7 @@
 	"action-oathauth-enable": "aktivera tvåfaktorsautentisering",
 	"oathauth-auth-token-label": "Nyckel",
 	"oathauth-auth-token-help": "Engångslösenordet används som den andra faktorn i tvåfaktorsautentiseringen.",
-	"oathauth-auth-ui": "Ange verifieringskoden från din autentiseringsenhet",
+	"oathauth-auth-ui": "Ange en verifieringskod från din autentiseringsenhet.",
 	"oathauth-throttled": "För många bekräftelseförsök! Vänta i $1.",
 	"oathauth-login-failed": "Verifiering misslyckades.",
 	"oathauth-describe-provider": "Tvåfaktorsautentisering (OATH).",
