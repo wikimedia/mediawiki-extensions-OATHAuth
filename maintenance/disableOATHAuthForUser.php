@@ -14,7 +14,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class DisableOATHAuthForUser extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Remove OATHAuth from a specific user';
+		$this->addDescription( 'Remove OATHAuth from a specific user' );
 		$this->addArg( 'user', 'The username to remove OATHAuth from.' );
 		$this->requireExtension( 'OATHAuth' );
 	}

@@ -37,7 +37,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateScratchTokenFormat extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Script to update scratch_token column format';
+		$this->addDescription( 'Script to update scratch_token column format' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 
