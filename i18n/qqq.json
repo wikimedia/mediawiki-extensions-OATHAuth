@@ -10,7 +10,8 @@
 			"Liuxinyu970226",
 			"Amire80",
 			"Siebrand",
-			"Robby"
+			"Robby",
+			"Skalman"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
@@ -61,7 +62,7 @@
 	"oath-log-header": "The Special:Log description that appears on the Special:Log page when you filter logs on this specific log name",
 	"logentry-oath-disable-other": "The template of the log entry message",
 	"oauthauth-ui-no-module": "User preference value when no 2FA module is enabled",
-	"oathauth-module-totp-label": "User preference value when TOTP module is enabled",
+	"oathauth-module-totp-label": "User preference value when the TOTP module is enabled",
 	"oathauth-ui-manage": "Button on Special:Preferences, that leads to [[Special:OATHManage]]",
 	"oathmanage": "{{optional}}\n{{doc-special|OATHManage}}",
 	"oathauth-ui-not-enabled-modules": "Header on Special:OATHManage under which all available, but not currently enabled, modules are listed",
