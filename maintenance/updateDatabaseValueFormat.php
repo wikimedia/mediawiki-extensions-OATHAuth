@@ -37,7 +37,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateDatabaseValueFormat extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Script to convert old, TOTP specific, column values to new structure';
+		$this->addDescription( 'Script to convert old, TOTP specific, column values to new structure' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 

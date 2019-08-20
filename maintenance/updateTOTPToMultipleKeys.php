@@ -37,7 +37,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateTOTPToMultipleKeys extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Script to update single TOTP keys to multi-key environment';
+		$this->addDescription( 'Script to update single TOTP keys to multi-key environment' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 
