@@ -110,6 +110,20 @@ class OATHUser {
 		}
 	}
 
+	/**
+	 * Removes all keys associated with the user
+	 * Warning: This only removes the keys in memory,
+	 * changes need to be persisted
+	 */
+	public function clearAllKeys() {
+		$this->keys = [];
+	}
+
+	/**
+	 * Adds single key to the key array
+	 *
+	 * @param IAuthKey $key
+	 */
 	public function addKey( IAuthKey $key ) {
 		if ( !$this->keyTypeCorrect( $key ) ) {
 			return;
