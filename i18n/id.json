@@ -3,7 +3,8 @@
 		"authors": [
 			"Rachmat.Wahidi",
 			"Rachmat04",
-			"William Surya Permana"
+			"William Surya Permana",
+			"Iwan Novirion"
 		]
 	},
 	"right-oathauth-disable-for-user": "Menonaktifkan autentikasi dua faktor pengguna lain",
@@ -14,5 +15,8 @@
 	"oathauth-auth-ui": "Silakan masukkan kode verifikasi dari aplikasi perangkat autentikasi Anda",
 	"oathauth-throttled": "Terlalu banyak percobaan verifikasi dilakukan! Mohon menunggu $1.",
 	"oathauth-login-failed": "Verifikasi gagal.",
-	"oathauth-describe-provider": "Otentikasi dua-faktor (OATH)."
+	"oathauth-describe-provider": "Otentikasi dua-faktor (OATH).",
+	"oauthauth-ui-no-module": "Tidak aktif",
+	"oathauth-ui-manage": "Atur",
+	"oathmanage": "Atur otentifikasi Dua Faktor"
 }
