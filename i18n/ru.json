@@ -66,7 +66,6 @@
 	"oathauth-module-totp-label": "TOTP (одноразовый пароль)",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление двухфакторной аутентификацией",
-	"oathauth-ui-not-enabled-modules": "Доступные методы",
 	"oathauth-ui-enabled-module": "Используемый метод аутентификации",
 	"oathauth-enable-generic": "Включить",
 	"oathauth-disable-generic": "Отключить",
@@ -74,5 +73,6 @@
 	"oathauth-invalid-key-type": "Набор ключей для участника не соответствует требуемому типу для выбранного метода аутентификации",
 	"oathauth-disable-page-title": "Отключить $1",
 	"oathauth-enable-page-title": "Включить $1",
-	"oathauth-action-exclusive-to-2fa": "Это действие могут выполнять только участники с включённой двухфакторной аутентификацией."
+	"oathauth-action-exclusive-to-2fa": "Это действие могут выполнять только участники с включённой двухфакторной аутентификацией.",
+	"oathauth-ui-available-modules": "Доступные методы"
 }

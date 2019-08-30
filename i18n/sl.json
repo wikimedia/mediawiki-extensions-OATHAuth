@@ -55,10 +55,10 @@
 	"oathauth-module-totp-label": "TOTP (enkratni žeton)",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljaj dvostopenjsko preverjanje pristnosti",
-	"oathauth-ui-not-enabled-modules": "Razpoložljivi načini",
 	"oathauth-ui-enabled-module": "Vključi način preverjanja pristnosti",
 	"oathauth-enable-generic": "Vključi",
 	"oathauth-disable-generic": "Izključi",
 	"oathauth-disable-page-title": "Izključi $1",
-	"oathauth-enable-page-title": "Vključi $1"
+	"oathauth-enable-page-title": "Vključi $1",
+	"oathauth-ui-available-modules": "Razpoložljivi načini"
 }

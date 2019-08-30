@@ -61,12 +61,12 @@
 	"oauthauth-ui-no-module": "Ninguno habilitado",
 	"oathauth-ui-manage": "Gestionar",
 	"oathmanage": "Gestionar la autenticación en dos pasos",
-	"oathauth-ui-not-enabled-modules": "Métodos disponibles",
 	"oathauth-ui-enabled-module": "Método de autenticación habilitado",
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Desactivar",
 	"oathauth-invalid-data-format": "El proveedor de datos no es válido para crear una clave con el método de autenticación seleccionado",
 	"oathauth-disable-page-title": "Deshabilitar $1",
 	"oathauth-enable-page-title": "Habilitar $1",
-	"oathauth-action-exclusive-to-2fa": "Esta acción solo puede ser realizada por usuarios que tengan activada la autenticación en dos pasos."
+	"oathauth-action-exclusive-to-2fa": "Esta acción solo puede ser realizada por usuarios que tengan activada la autenticación en dos pasos.",
+	"oathauth-ui-available-modules": "Métodos disponibles"
 }

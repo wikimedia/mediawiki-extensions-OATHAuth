@@ -9,7 +9,7 @@
 	"oathauth-user-not-found": "ဤအမည်ဖြင့် အသုံးပြုသူအကောင့်ကို မတွေ့ပါ",
 	"oauthauth-ui-no-module": "ဘာတစ်ခုမှ ပြုလုပ်ခွင့်မပေးထား",
 	"oathauth-ui-manage": "စီမံရန်",
-	"oathauth-ui-not-enabled-modules": "ရရှိနိုင်သော နည်းလမ်းများ",
 	"oathauth-enable-generic": "လုပ်ခွင့်ပြုရန်",
-	"oathauth-disable-generic": "ခွင့်မပြုပါနှင့်"
+	"oathauth-disable-generic": "ခွင့်မပြုပါနှင့်",
+	"oathauth-ui-available-modules": "ရရှိနိုင်သော နည်းလမ်းများ"
 }

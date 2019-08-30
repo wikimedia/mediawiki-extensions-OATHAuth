@@ -55,7 +55,7 @@
 	"oathauth-module-totp-label": "TOTP (еднократна шифра)",
 	"oathauth-ui-manage": "Раководи",
 	"oathmanage": "Раководење со двочинителската заверка",
-	"oathauth-ui-not-enabled-modules": "Расположиви начини",
+	"oathauth-ui-not-enabled-modules": "Префрли се на алтернативен начин",
 	"oathauth-ui-enabled-module": "Овозможен начин на заверка",
 	"oathauth-enable-generic": "Овозможи",
 	"oathauth-disable-generic": "Оневозможи",
@@ -63,5 +63,6 @@
 	"oathauth-invalid-key-type": "Клучот зададен на корисникот не одговара на потребниот тип за избор на начин на заверка",
 	"oathauth-disable-page-title": "Оневозможи го $1",
 	"oathauth-enable-page-title": "Овозможи го $1",
-	"oathauth-action-exclusive-to-2fa": "Дејството може да го вршат само корисници кои имаат овозможено двочинителска заверка."
+	"oathauth-action-exclusive-to-2fa": "Дејството може да го вршат само корисници кои имаат овозможено двочинителска заверка.",
+	"oathauth-ui-available-modules": "Расположиви начини"
 }

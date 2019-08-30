@@ -47,10 +47,10 @@
 	"oauthauth-ui-no-module": "Не е включено",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление на двукомпонентното удостоверяване",
-	"oathauth-ui-not-enabled-modules": "Налични методи",
 	"oathauth-ui-enabled-module": "Включен метод за удостоверяване",
 	"oathauth-enable-generic": "Включване",
 	"oathauth-disable-generic": "Изключване",
 	"oathauth-disable-page-title": "Изключване на $1",
-	"oathauth-enable-page-title": "Включване на $1"
+	"oathauth-enable-page-title": "Включване на $1",
+	"oathauth-ui-available-modules": "Налични методи"
 }

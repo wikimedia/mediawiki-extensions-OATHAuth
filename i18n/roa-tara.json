@@ -14,9 +14,9 @@
 	"oauthauth-ui-no-module": "None abbilitate",
 	"oathauth-module-totp-label": "TOTP (gettone use e gette)",
 	"oathauth-ui-manage": "Gestisce",
-	"oathauth-ui-not-enabled-modules": "Metode disponibbele",
 	"oathauth-enable-generic": "Abbilite",
 	"oathauth-disable-generic": "Disabbilite",
 	"oathauth-disable-page-title": "Disabbilite $1",
-	"oathauth-enable-page-title": "Abbilite $1"
+	"oathauth-enable-page-title": "Abbilite $1",
+	"oathauth-ui-available-modules": "Metode disponibbele"
 }

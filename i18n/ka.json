@@ -25,6 +25,6 @@
 	"oathauth-module-totp-label": "TOTP (ერთჯერადი ტოკენი)",
 	"oathauth-ui-manage": "მართვა",
 	"oathmanage": "ორფაქტორიანი ავთენტიკაციის მართვა",
-	"oathauth-ui-not-enabled-modules": "ხელმისაწვდომი მეთოდები",
-	"oathauth-enable-generic": "ჩართვა"
+	"oathauth-enable-generic": "ჩართვა",
+	"oathauth-ui-available-modules": "ხელმისაწვდომი მეთოდები"
 }

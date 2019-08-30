@@ -56,10 +56,10 @@
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",
-	"oathauth-ui-not-enabled-modules": "Beschikbare methoden",
 	"oathauth-ui-enabled-module": "Authenticatie methode inschakelen",
 	"oathauth-enable-generic": "Inschakelen",
 	"oathauth-disable-generic": "Uitschakelen",
 	"oathauth-disable-page-title": "$1 uitschakelen",
-	"oathauth-enable-page-title": "$1 inschakelen"
+	"oathauth-enable-page-title": "$1 inschakelen",
+	"oathauth-ui-available-modules": "Beschikbare methoden"
 }

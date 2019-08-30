@@ -57,7 +57,6 @@
 	"oathauth-module-totp-label": "TOTP (engångsnyckel)",
 	"oathauth-ui-manage": "Hantera",
 	"oathmanage": "Hantera tvåfaktorautentisering",
-	"oathauth-ui-not-enabled-modules": "Tillgängliga metoder",
 	"oathauth-ui-enabled-module": "Aktiverad autentiseringsmetod",
 	"oathauth-enable-generic": "Aktivera",
 	"oathauth-disable-generic": "Inaktivera",
@@ -65,5 +64,6 @@
 	"oathauth-invalid-key-type": "Nyckeln för användaren matchar inte den typ som krävs för den valda autentiseringsmetoden",
 	"oathauth-disable-page-title": "Inaktivera $1",
 	"oathauth-enable-page-title": "Aktivera $1",
-	"oathauth-action-exclusive-to-2fa": "Denna åtgärd kan endast utföras av användare som har tvåfaktorautentisering aktiverad."
+	"oathauth-action-exclusive-to-2fa": "Denna åtgärd kan endast utföras av användare som har tvåfaktorautentisering aktiverad.",
+	"oathauth-ui-available-modules": "Tillgängliga metoder"
 }

@@ -22,7 +22,7 @@
 	"action-oathauth-enable": "omogući dvostruku provjeru autentičnosti",
 	"oauthauth-ui-no-module": "Nije omogućeno",
 	"oathauth-ui-manage": "Upravljaj",
-	"oathauth-ui-not-enabled-modules": "Dostupne metode",
 	"oathauth-enable-generic": "Omogući",
-	"oathauth-disable-generic": "Onemogući"
+	"oathauth-disable-generic": "Onemogući",
+	"oathauth-ui-available-modules": "Dostupne metode"
 }

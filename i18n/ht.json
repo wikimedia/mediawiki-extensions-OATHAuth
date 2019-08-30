@@ -6,7 +6,7 @@
 	},
 	"oathauth-module-totp-label": "TOTP (one-time token)",
 	"oathauth-ui-manage": "Jere",
-	"oathauth-ui-not-enabled-modules": "Metòd disponib yo",
 	"oathauth-enable-generic": "Aktive",
-	"oathauth-disable-generic": "Dezaktive"
+	"oathauth-disable-generic": "Dezaktive",
+	"oathauth-ui-available-modules": "Metòd disponib yo"
 }

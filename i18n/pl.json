@@ -58,7 +58,6 @@
 	"oathauth-module-totp-label": "TOTP (oparte na czasie hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",
 	"oathmanage": "Zarządzanie weryfikacją dwuetapową",
-	"oathauth-ui-not-enabled-modules": "Dostępne metody",
 	"oathauth-ui-enabled-module": "Włączona metoda uwierzytelniania",
 	"oathauth-enable-generic": "Włącz",
 	"oathauth-disable-generic": "Wyłącz",
@@ -66,5 +65,6 @@
 	"oathauth-invalid-key-type": "Klucz ustawiony dla użytkownika nie pasuje do wymaganego typu wybranej metody weryfikacji",
 	"oathauth-disable-page-title": "Wyłącz $1",
 	"oathauth-enable-page-title": "Włącz $1",
-	"oathauth-action-exclusive-to-2fa": "Tę akcję wykonywać mogą tylko użytkownicy z włączoną weryfikacją dwuetapową."
+	"oathauth-action-exclusive-to-2fa": "Tę akcję wykonywać mogą tylko użytkownicy z włączoną weryfikacją dwuetapową.",
+	"oathauth-ui-available-modules": "Dostępne metody"
 }

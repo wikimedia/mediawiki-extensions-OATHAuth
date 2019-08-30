@@ -44,10 +44,10 @@
 	"oauthauth-ui-no-module": "Non attivato",
 	"oathauth-ui-manage": "Gestisci",
 	"oathmanage": "Gestisci autenticazione a due fattori",
-	"oathauth-ui-not-enabled-modules": "Metodi disponibili",
 	"oathauth-ui-enabled-module": "Attiva metodo autenticazione",
 	"oathauth-enable-generic": "Attiva",
 	"oathauth-disable-generic": "Disattiva",
 	"oathauth-disable-page-title": "Disattiva $1",
-	"oathauth-enable-page-title": "Attiva $1"
+	"oathauth-enable-page-title": "Attiva $1",
+	"oathauth-ui-available-modules": "Metodi disponibili"
 }

@@ -57,7 +57,6 @@
 	"oathauth-module-totp-label": "TOTP (chave de uso único)",
 	"oathauth-ui-manage": "Gerir",
 	"oathmanage": "Gerir autenticação de dois fatores",
-	"oathauth-ui-not-enabled-modules": "Métodos disponíveis",
 	"oathauth-ui-enabled-module": "Método de autenticação ativado",
 	"oathauth-enable-generic": "Ativar",
 	"oathauth-disable-generic": "Desativar",
@@ -65,5 +64,6 @@
 	"oathauth-invalid-key-type": "A chave definida no utilizador não corresponde ao tipo necessário para o método de autenticação selecionado",
 	"oathauth-disable-page-title": "Desativar $1",
 	"oathauth-enable-page-title": "Ativar $1",
-	"oathauth-action-exclusive-to-2fa": "Esta operação só pode ser executada por utilizadores que têm a autenticação de dois fatores ativada."
+	"oathauth-action-exclusive-to-2fa": "Esta operação só pode ser executada por utilizadores que têm a autenticação de dois fatores ativada.",
+	"oathauth-ui-available-modules": "Métodos disponíveis"
 }

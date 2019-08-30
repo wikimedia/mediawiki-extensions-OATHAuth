@@ -27,9 +27,9 @@
 	"oathauth-login-failed": "Verificering mislykkedes",
 	"oathauth-user-not-found": "Der blev ikke fundet nogen brugerkonto med det navn",
 	"oathauth-ui-manage": "Administrér",
-	"oathauth-ui-not-enabled-modules": "Tilgængelige metoder",
 	"oathauth-enable-generic": "Aktiver",
 	"oathauth-disable-generic": "Deaktiver",
 	"oathauth-disable-page-title": "Deaktivér $1",
-	"oathauth-enable-page-title": "Aktivér $1"
+	"oathauth-enable-page-title": "Aktivér $1",
+	"oathauth-ui-available-modules": "Tilgængelige metoder"
 }

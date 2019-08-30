@@ -52,9 +52,9 @@
 	"oathauth-module-totp-label": "TOTP (1회용 토큰)",
 	"oathauth-ui-manage": "관리",
 	"oathmanage": "2요소 인증 관리",
-	"oathauth-ui-not-enabled-modules": "사용 가능한 방식",
 	"oathauth-enable-generic": "활성화",
 	"oathauth-disable-generic": "비활성화",
 	"oathauth-disable-page-title": "$1 비활성화",
-	"oathauth-enable-page-title": "$1 활성화"
+	"oathauth-enable-page-title": "$1 활성화",
+	"oathauth-ui-available-modules": "사용 가능한 방식"
 }

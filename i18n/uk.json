@@ -57,7 +57,6 @@
 	"oathauth-module-totp-label": "TOTP (одноразовий жетон)",
 	"oathauth-ui-manage": "Керування",
 	"oathmanage": "Керування двофакторною автентифікацією",
-	"oathauth-ui-not-enabled-modules": "Доступні способи",
 	"oathauth-ui-enabled-module": "Ввімкнений метод авторизації",
 	"oathauth-enable-generic": "Увімкнути",
 	"oathauth-disable-generic": "Вимкнути",
@@ -65,5 +64,6 @@
 	"oathauth-invalid-key-type": "Набір ключів користувача не співпадає з обов'язковим типом для вибраного методу автентифікації",
 	"oathauth-disable-page-title": "Вимкнути $1",
 	"oathauth-enable-page-title": "Увімкнути $1",
-	"oathauth-action-exclusive-to-2fa": "Цю дію можуть виконати лише користувачі з увімкненою двофакторною автентифікацією."
+	"oathauth-action-exclusive-to-2fa": "Цю дію можуть виконати лише користувачі з увімкненою двофакторною автентифікацією.",
+	"oathauth-ui-available-modules": "Доступні способи"
 }

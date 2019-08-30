@@ -68,7 +68,7 @@
 	"oathauth-module-totp-label": "TOTP (jeton à usage unique)",
 	"oathauth-ui-manage": "Gérer",
 	"oathmanage": "Gérer l’authentification à deux facteurs",
-	"oathauth-ui-not-enabled-modules": "Méthodes disponibles",
+	"oathauth-ui-not-enabled-modules": "Basculer vers une autre méthode",
 	"oathauth-ui-enabled-module": "Méthode d’authentification activée",
 	"oathauth-enable-generic": "Activer",
 	"oathauth-disable-generic": "Désactiver",
@@ -76,5 +76,7 @@
 	"oathauth-invalid-key-type": "La clé mise sur l’utilisateur ne correspond pas au type requis pour la méthode d’authentification sélectionnée",
 	"oathauth-disable-page-title": "Désactiver $1",
 	"oathauth-enable-page-title": "Activer $1",
-	"oathauth-action-exclusive-to-2fa": "Cette action ne peut être effectuée que par des utilisateurs avec l’authentification à deux facteurs activée."
+	"oathauth-action-exclusive-to-2fa": "Cette action ne peut être effectuée que par des utilisateurs avec l’authentification à deux facteurs activée.",
+	"oathauth-ui-available-modules": "Méthodes disponibles",
+	"oathauth-totp-description": "L’algorithme de mot de passe unique basé sur le temps (TOTP) est une extension de l’algorithme de mot de passe unique basé sur le HMAC (HOTP), générant un mot de passe unique en prenant l’unicité d’après l’horodatage courant."
 }

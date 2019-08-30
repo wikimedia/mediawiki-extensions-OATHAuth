@@ -26,6 +26,9 @@
 	"oathauth-step3": "ধাপ ৩: স্ক্র্যাচ কোড লিখুন",
 	"oathauth-step4": "ধাপ ৪: নিশ্চিতকরণ",
 	"oathauth-entertoken": "যাচাই করতে আপনার প্রমাণীকরণ ডিভাইস থেকে একটি কোড লিখুন:",
+	"oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করুন",
+	"right-oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করা",
+	"action-oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করার",
 	"oathauth-disable-intro": "মহৎ শক্তির সাথে, মহৎ দায়িত্ব আসে",
 	"oathauth-enteruser": "ব্যবহারকারী নাম:",
 	"oathauth-enterreason": "নিষ্ক্রিয় করার কারণ:",
@@ -40,14 +43,15 @@
 	"action-oathauth-api-all": "OATH অবস্থা পরীক্ষা করার",
 	"oathauth-user-not-found": "এই নামে কোন ব্যবহারকারী অ্যাকাউন্ট পাওয়া যায় নি",
 	"oath-log-name": "দুই-ধাপের প্রমাণীকরণ লগ",
+	"logentry-oath-disable-other": "$1 $3-এর জন্য দুই-ধাপের প্রমাণীকরণ {{GENDER:$2|নিষ্ক্রিয় করেছেন}}",
 	"oauthauth-ui-no-module": "সক্রিয় করা নেই",
 	"oathauth-module-totp-label": "TOTP (এককালীন টোকেন)",
 	"oathauth-ui-manage": "পরিচালনা করুন",
 	"oathmanage": "দুই-ধাপের প্রমাণীকরণ পরিচালনা করুন",
-	"oathauth-ui-not-enabled-modules": "উপলব্ধ পদ্ধতিসমূহ",
 	"oathauth-ui-enabled-module": "প্রমাণীকরণ পদ্ধতি সক্রিয় করুন",
 	"oathauth-enable-generic": "সক্রিয় করুন",
 	"oathauth-disable-generic": "নিষ্ক্রিয় করুন",
 	"oathauth-disable-page-title": "$1 নিষ্ক্রিয় করুন",
-	"oathauth-enable-page-title": "$1 সক্রিয় করুন"
+	"oathauth-enable-page-title": "$1 সক্রিয় করুন",
+	"oathauth-ui-available-modules": "উপলব্ধ পদ্ধতিসমূহ"
 }

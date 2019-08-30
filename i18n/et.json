@@ -41,10 +41,10 @@
 	"oathauth-module-totp-label": "TOTP (ühekordne luba)",
 	"oathauth-ui-manage": "Halda",
 	"oathmanage": "Kaheastmelise autentimise haldamine",
-	"oathauth-ui-not-enabled-modules": "Saadaolevad meetodid",
 	"oathauth-ui-enabled-module": "Lubatud autentimismeetodid",
 	"oathauth-enable-generic": "Luba",
 	"oathauth-disable-generic": "Keela",
 	"oathauth-disable-page-title": "Mooduli $1 keelamine",
-	"oathauth-enable-page-title": "Mooduli lubamine: $1"
+	"oathauth-enable-page-title": "Mooduli lubamine: $1",
+	"oathauth-ui-available-modules": "Saadaolevad meetodid"
 }

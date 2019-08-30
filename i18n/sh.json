@@ -53,7 +53,6 @@
 	"oauthauth-ui-no-module": "Nijedan nije omogućen",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvočiniteljske potvrde",
-	"oathauth-ui-not-enabled-modules": "Raspoložive metode",
 	"oathauth-ui-enabled-module": "Omogućena metoda potvrde",
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",
@@ -61,5 +60,6 @@
 	"oathauth-invalid-key-type": "Ključ zadani korisniku ne odgovara potrebnom tipu za izbor metode potvrde",
 	"oathauth-disable-page-title": "Onemogući $1",
 	"oathauth-enable-page-title": "Omogući $1",
-	"oathauth-action-exclusive-to-2fa": "Radnju može da vršiti samo korisnici koji imaju omogućenu dvočiniteljsku potvrdu."
+	"oathauth-action-exclusive-to-2fa": "Radnju može da vršiti samo korisnici koji imaju omogućenu dvočiniteljsku potvrdu.",
+	"oathauth-ui-available-modules": "Raspoložive metode"
 }

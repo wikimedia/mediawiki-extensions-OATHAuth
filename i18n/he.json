@@ -59,7 +59,6 @@
 	"oathauth-module-totp-label": "TOTP (אסימון חד־פעמי)",
 	"oathauth-ui-manage": "ניהול",
 	"oathmanage": "ניהול אימות דו־שלבי",
-	"oathauth-ui-not-enabled-modules": "שיטות זמינות",
 	"oathauth-ui-enabled-module": "שיטת האימות המופעלת",
 	"oathauth-enable-generic": "הפעלה",
 	"oathauth-disable-generic": "כיבוי",
@@ -67,5 +66,6 @@
 	"oathauth-invalid-key-type": "המפתח המוגדר על המשתמש אינו תואם את הסוג הנדרש עבור שיטת האימות שנבחרה",
 	"oathauth-disable-page-title": "לכבות את $1",
 	"oathauth-enable-page-title": "להפעיל את $1",
-	"oathauth-action-exclusive-to-2fa": "רק משתמשים שהפעילו אימות דו־שלבי יכולים לבצע את הפעולה הזאת."
+	"oathauth-action-exclusive-to-2fa": "רק משתמשים שהפעילו אימות דו־שלבי יכולים לבצע את הפעולה הזאת.",
+	"oathauth-ui-available-modules": "שיטות זמינות"
 }

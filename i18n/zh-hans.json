@@ -65,12 +65,12 @@
 	"oathauth-module-totp-label": "两步认证",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "两步认证管理",
-	"oathauth-ui-not-enabled-modules": "可用方法",
 	"oathauth-ui-enabled-module": "已启用的认证方法",
 	"oathauth-enable-generic": "启用",
 	"oathauth-disable-generic": "禁用",
 	"oathauth-invalid-data-format": "数据提供方无法未选定的认证方法创建密钥",
 	"oathauth-invalid-key-type": "用户设置的密钥与选定的认证类型不匹配",
 	"oathauth-disable-page-title": "禁用$1",
-	"oathauth-enable-page-title": "启用$1"
+	"oathauth-enable-page-title": "启用$1",
+	"oathauth-ui-available-modules": "可用方法"
 }

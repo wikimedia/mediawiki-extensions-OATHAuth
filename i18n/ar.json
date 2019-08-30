@@ -58,7 +58,7 @@
 	"oathauth-module-totp-label": "TOTP (رمز مميز لمرة واحدة)",
 	"oathauth-ui-manage": "إدارة",
 	"oathmanage": "إدارة التوثيق ذي العاملين",
-	"oathauth-ui-not-enabled-modules": "الطرق المتاحة",
+	"oathauth-ui-not-enabled-modules": "التبديل إلى طريقة بديلة",
 	"oathauth-ui-enabled-module": "تم تمكين طريقة المصادقة",
 	"oathauth-enable-generic": "تمكين",
 	"oathauth-disable-generic": "تعطيل",
@@ -66,5 +66,8 @@
 	"oathauth-invalid-key-type": "لا يتطابق تعيين المفتاح على المستخدم مع النوع المطلوب لطريقة المصادقة المحددة",
 	"oathauth-disable-page-title": "تعطيل $1",
 	"oathauth-enable-page-title": "تمكين $1",
-	"oathauth-action-exclusive-to-2fa": "لا يمكن تنفيذ هذا الإجراء إلا من قبل المستخدمين ذوي المصادقة الثنائية الممكنة."
+	"oathauth-action-exclusive-to-2fa": "لا يمكن تنفيذ هذا الإجراء إلا من قبل المستخدمين ذوي المصادقة الثنائية الممكنة.",
+	"oathauth-ui-available-modules": "الطرق المتاحة",
+	"oathauth-ui-general-help": "'''المصادقة متعددة العوامل''' ('''MFA''') طريقة مصادقة يمنح فيها مستخدم الحاسوب إمكانية الوصول فقط بعد تقديم نوع أو أكثر من الأدلة (أو العوامل) بنجاح إلى آلية المصادقة: المعرفة (شيء يعرفه المستخدم والمستخدم فقط)، وحيازة (شيء يمتلكه المستخدم والمستخدم فقط)، والوراثة (شيء ما للمستخدم والمستخدم وحده)، [https://en.wikipedia.org/wiki/Multi-factor_authentication اقرأ المزيد]",
+	"oathauth-totp-description": "خوارزمية كلمة المرور لمرة واحدة المستندة إلى الوقت (TOTP) امتداد لخوارزمية كلمة المرور لمرة واحدة المستندة إلى HMAC والتي تقوم بإنشاء كلمة مرور لمرة واحدة عن طريق اتخاذ التفرد من الوقت الحالي بدلا من ذلك."
 }

@@ -38,9 +38,9 @@
 	"oathauth-module-totp-label": "ടി.ഒ.ടി.പി. (ഒറ്റത്തവണ ചീട്ട്)",
 	"oathauth-ui-manage": "കൈകാര്യം ചെയ്യുക",
 	"oathmanage": "ദ്വി-ഘടക സാധൂകരണം കൈകാര്യം ചെയ്യുക",
-	"oathauth-ui-not-enabled-modules": "ലഭ്യമായ മാർഗ്ഗങ്ങൾ",
 	"oathauth-enable-generic": "സജ്ജമാക്കുക",
 	"oathauth-disable-generic": "നിർജ്ജീവമാക്കുക",
 	"oathauth-disable-page-title": "$1 നിർജ്ജീവമാക്കുക",
-	"oathauth-enable-page-title": "$1 സജ്ജമാക്കുക"
+	"oathauth-enable-page-title": "$1 സജ്ജമാക്കുക",
+	"oathauth-ui-available-modules": "ലഭ്യമായ മാർഗ്ഗങ്ങൾ"
 }
