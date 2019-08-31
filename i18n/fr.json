@@ -78,5 +78,6 @@
 	"oathauth-enable-page-title": "Activer $1",
 	"oathauth-action-exclusive-to-2fa": "Cette action ne peut être effectuée que par des utilisateurs avec l’authentification à deux facteurs activée.",
 	"oathauth-ui-available-modules": "Méthodes disponibles",
+	"oathauth-ui-general-help": "'''L~’authentification multi-facteurs''' ('''MFA''') est une méthode d’authentification dans laquelle un utilisateur de la machine se voit accorder l’accès uniquement après avoir réussi à présenter deux preuves (appelées facteurs) ou plus à un mécanisme d’authentification : connaissance (quelque chose que l’utilisateur, et lui seul, connaît), possession (quelque chose que l’utilisateur, et lui seul, a), et caractère intrinsèque (quelque chose que l’utilisateur, et lui seul, est).\n[https://en.wikipedia.org/wiki/Multi-factor_authentication Lire davantage]",
 	"oathauth-totp-description": "L’algorithme de mot de passe unique basé sur le temps (TOTP) est une extension de l’algorithme de mot de passe unique basé sur le HMAC (HOTP), générant un mot de passe unique en prenant l’unicité d’après l’horodatage courant."
 }
