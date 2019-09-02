@@ -66,6 +66,7 @@
 	"oathauth-module-totp-label": "TOTP (одноразовый пароль)",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление двухфакторной аутентификацией",
+	"oathauth-ui-not-enabled-modules": "Переключиться на альтернативный метод",
 	"oathauth-ui-enabled-module": "Используемый метод аутентификации",
 	"oathauth-enable-generic": "Включить",
 	"oathauth-disable-generic": "Отключить",
