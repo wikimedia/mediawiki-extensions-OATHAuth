@@ -4,7 +4,8 @@
 			"Andriykopanytsia",
 			"Piramidion",
 			"Ата",
-			"Vlad5250"
+			"Vlad5250",
+			"Movses"
 		]
 	},
 	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів",
@@ -57,6 +58,7 @@
 	"oathauth-module-totp-label": "TOTP (одноразовий жетон)",
 	"oathauth-ui-manage": "Керування",
 	"oathmanage": "Керування двофакторною автентифікацією",
+	"oathauth-ui-not-enabled-modules": "Перемикнути на альтернативний метод",
 	"oathauth-ui-enabled-module": "Ввімкнений метод авторизації",
 	"oathauth-enable-generic": "Увімкнути",
 	"oathauth-disable-generic": "Вимкнути",
