@@ -5,10 +5,11 @@ namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Logger\LoggerFactory;
 use Html;
+use Status;
 
 class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	/**
-	 * @param array|bool|\Status|string $submitResult
+	 * @param array|bool|Status|string $submitResult
 	 * @return string
 	 */
 	public function getHTML( $submitResult ) {
@@ -28,7 +29,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	protected function getDescriptors() {
 		$key = $this->getRequest()->getSessionData( 'oathauth_totp_key' );
 
-		if ( $key === null ) {
+		if ( !$key instanceof TOTPKey ) {
 			$key = TOTPKey::newFromRandom();
 			$this->getRequest()->setSessionData( 'oathauth_totp_key', $key );
 		}
