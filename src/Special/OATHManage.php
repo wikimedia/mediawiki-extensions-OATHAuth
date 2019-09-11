@@ -84,11 +84,11 @@ class OATHManage extends SpecialPage {
 	 * @return void
 	 */
 	public function execute( $subPage ) {
-		parent::execute( $subPage );
-
 		$this->getOutput()->enableOOUI();
 		$this->setAction();
 		$this->setModule();
+
+		parent::execute( $subPage );
 
 		if ( $this->requestedModule instanceof IModule ) {
 			// Performing an action on a requested module
@@ -126,6 +126,11 @@ class OATHManage extends SpecialPage {
 		if ( !$this->hasEnabled() && !$canEnable ) {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
+		}
+
+		if ( $this->action === static::ACTION_ENABLE ) {
+			// Trying to change the 2FA method (one is already enabled)
+			$this->checkLoginSecurityLevel( 'oathauth-enable' );
 		}
 	}
 
