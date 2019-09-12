@@ -93,6 +93,9 @@ class OATHManage extends SpecialPage {
 		if ( $this->requestedModule instanceof IModule ) {
 			// Performing an action on a requested module
 			$this->clearPage();
+			if ( $this->shouldShowDisableWarning() ) {
+				return $this->showDisableWarning();
+			}
 			return $this->addModuleHTML( $this->requestedModule );
 		}
 
@@ -211,7 +214,8 @@ class OATHManage extends SpecialPage {
 				'href' => $this->getOutput()->getTitle()->getLocalURL( [
 					'action' => $this->isModuleEnabled( $module ) ?
 						static::ACTION_DISABLE : static::ACTION_ENABLE,
-					'module' => $module->getName()
+					'module' => $module->getName(),
+					'warn' => 1
 				] )
 			] );
 			$headerLayout->addItems( [ $button ] );
@@ -335,6 +339,60 @@ class OATHManage extends SpecialPage {
 			}
 		}
 		return false;
+	}
+
+	private function shouldShowDisableWarning() {
+		return (bool)$this->getRequest()->getVal( 'warn', false ) &&
+			$this->requestedModule instanceof IModule &&
+			$this->getEnabled() instanceof IModule;
+	}
+
+	private function showDisableWarning() {
+		$panel = new PanelLayout( [
+			'padded' => true,
+			'framed' => true,
+			'expanded' => false
+		] );
+		$headerMessage = $this->isSwitch() ?
+			wfMessage( 'oathauth-switch-method-warning-header' ) :
+			wfMessage( 'oathauth-disable-method-warning-header' );
+		$genericMessage = $this->isSwitch() ?
+			wfMessage(
+				'oathauth-switch-method-warning',
+				$this->getEnabled()->getDisplayName(),
+				$this->requestedModule->getDisplayName()
+			) :
+			wfMessage( 'oathauth-disable-method-warning', $this->getEnabled()->getDisplayName() );
+
+		$panel->appendContent( new HtmlSnippet(
+			$genericMessage->parseAsBlock()
+		) );
+
+		$customMessage = $this->getEnabled()->getDisableWarningMessage();
+		if ( $customMessage instanceof Message ) {
+			$panel->appendContent( new HtmlSnippet(
+				$customMessage->parseAsBlock()
+			) );
+		}
+
+		$button = new ButtonWidget( [
+			'label' => wfMessage( 'oathauth-disable-method-warning-button-label' )->plain(),
+			'href' => $this->getOutput()->getTitle()->getLocalURL( [
+				'action' => $this->action,
+				'module' => $this->requestedModule->getName()
+			] ),
+			'flags' => [ 'primary', 'progressive' ]
+		] );
+		$panel->appendContent( $button );
+
+		$this->getOutput()->setPageTitle( $headerMessage );
+		$this->getOutput()->addHTML( $panel->toString() );
+	}
+
+	private function isSwitch() {
+		return $this->requestedModule instanceof IModule &&
+			$this->action === static::ACTION_ENABLE &&
+			$this->getEnabled() instanceof IModule;
 	}
 
 }

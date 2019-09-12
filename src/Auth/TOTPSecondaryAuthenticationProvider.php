@@ -88,7 +88,6 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 
 		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 		$authUser = $userRepo->findByUser( $user );
-		// @phan-suppress-next-line PhanUndeclaredProperty
 		$token = $request->OATHToken;
 
 		if ( !( $authUser->getModule() instanceof TOTP ) ) {

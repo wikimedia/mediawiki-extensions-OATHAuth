@@ -68,4 +68,13 @@ interface IModule {
 	 * @return Message
 	 */
 	public function getDescriptionMessage();
+
+	/**
+	 * Module-specific text that will be shown when user is disabling
+	 * the module, to warn of data-loss.
+	 * This will be shown alongside generic warning message.
+	 *
+	 * @return Message|null if no additional text is needed
+	 */
+	public function getDisableWarningMessage();
 }
