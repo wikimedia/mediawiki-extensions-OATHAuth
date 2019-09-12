@@ -196,4 +196,14 @@ class WebAuthn implements IModule {
 	public function getDescriptionMessage() {
 		return wfMessage( 'webauthn-module-description' );
 	}
+
+	/**
+	 * Message that will be shown when user is disabling the module,
+	 * to warn the user of token/data loss
+	 *
+	 * @return Message|null
+	 */
+	public function getDisableWarningMessage() {
+		return null;
+	}
 }
