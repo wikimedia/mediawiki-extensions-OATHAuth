@@ -59,6 +59,7 @@
 	"oathauth-module-totp-label": "TOTP (token único)",
 	"oathauth-ui-manage": "Gerenciar",
 	"oathmanage": "Gerenciar autenticação de dois fatores",
+	"oathauth-ui-not-enabled-modules": "Mudar para um método alternativo",
 	"oathauth-ui-enabled-module": "Método de autenticação ativado",
 	"oathauth-enable-generic": "Ativar",
 	"oathauth-disable-generic": "Desativar",

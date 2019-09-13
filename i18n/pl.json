@@ -5,7 +5,8 @@
 			"Alan ffm",
 			"Openbk",
 			"Railfail536",
-			"WTM"
+			"WTM",
+			"Rail"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie weryfikacji za pomocą jednorazowych kodów HMAC",

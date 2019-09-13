@@ -3,13 +3,19 @@
 		"authors": [
 			"MaGa",
 			"Astrind",
-			"Hmxhmx"
+			"Hmxhmx",
+			"Bugoslav"
 		]
 	},
+	"oathauth-desc": "Omogućava autentifikaciju suradnika pomoću HMAC-a na temelju jednokratnih zaporki",
+	"disableoathforuser": "Onemogući suradnikovu dvofaktorsku autentifikaciju",
+	"specialpages-group-oath": "Dvofaktorska autentifikacija",
 	"oathauth-account": "Suradnički račun:",
 	"oathauth-secret": "Tajni ključ za dvostruku provjeru autentičnosti:",
-	"oathauth-enable": "Omogući dvostruku provjeru autentičnosti",
-	"oathauth-scratchtokens": "Sljedeći popis je popis jednokratnih tokena. Mogu se uporabiti jednom, i to u hitnim slučajevima. Zapišite ih i čuvajte ih na sigurnom mjestu. Ako izgubite telefon, ovi tokeni su jedini način da spasite suradnički račun. Ovi tokeni više nikada neće biti prikazani.",
+	"oathauth-enable": "Omogućavanje dvofaktorske autentifikacije",
+	"oathauth-scratchtokens": "Sljedeći popis je popis jednokratnih tokena. Mogu se uporabiti jednom, i to u hitnim slučajevima. Zapišite ih i čuvajte ih na sigurnom mjestu. Ako izgubite telefon, ovi tokeni su jedini način da spasite suradnički račun. '''Ovi tokeni više nikada neće biti prikazani'''.",
+	"oathauth-token": "Token",
+	"oathauth-disable": "Onemogući dvofaktorsku autentifikaciju",
 	"oathauth-prefs-label": "Dvostruka provjera autentičnosti:",
 	"oathauth-step1": "Prvi korak: preuzmite program za dvostruku provjeru autentičnosti",
 	"oathauth-step1-test": "Preuzmite program za dvostruku provjeru autentičnosti. Može biti aplikacija za mobilni uređaj (kao Google Authenticator) ili aplikacija za stolno računalo",
@@ -22,7 +28,9 @@
 	"action-oathauth-enable": "omogući dvostruku provjeru autentičnosti",
 	"oauthauth-ui-no-module": "Nije omogućeno",
 	"oathauth-ui-manage": "Upravljaj",
+	"oathmanage": "Upravljanje dvofaktorskom autentifikacijom",
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",
-	"oathauth-ui-available-modules": "Dostupne metode"
+	"oathauth-ui-available-modules": "Dostupne metode",
+	"oathauth-ui-general-help": "'''Multifaktorska autentifikacija''' ('''MFA''') autentifikacijska je metoda kojom se korisniku kompjutora omogućava pristup tek nakon uspješnog unosa dva ili više potvrdnih dijelova (ili faktora) u autentifikacijski mehanizam: saznanje (ono što zna samo korisnik i nitko drugi), vlasništvo (ono što posjeduje samo korisnik i nitko drugi), te osobina (ono što je svojstveno korisniku i nikom drugom). [https://en.wikipedia.org/wiki/Multi-factor_authentication Pročitajte više]"
 }

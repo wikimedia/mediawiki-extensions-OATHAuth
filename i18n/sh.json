@@ -53,6 +53,7 @@
 	"oauthauth-ui-no-module": "Nijedan nije omogućen",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvočiniteljske potvrde",
+	"oathauth-ui-not-enabled-modules": "Prebaci se na alternativnu metodu",
 	"oathauth-ui-enabled-module": "Omogućena metoda potvrde",
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",

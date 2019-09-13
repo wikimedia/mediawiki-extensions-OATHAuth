@@ -59,6 +59,7 @@
 	"oathauth-module-totp-label": "TOTP (אסימון חד־פעמי)",
 	"oathauth-ui-manage": "ניהול",
 	"oathmanage": "ניהול אימות דו־שלבי",
+	"oathauth-ui-not-enabled-modules": "מעבר לשיטה חלופית",
 	"oathauth-ui-enabled-module": "שיטת האימות המופעלת",
 	"oathauth-enable-generic": "הפעלה",
 	"oathauth-disable-generic": "כיבוי",
@@ -67,5 +68,7 @@
 	"oathauth-disable-page-title": "לכבות את $1",
 	"oathauth-enable-page-title": "להפעיל את $1",
 	"oathauth-action-exclusive-to-2fa": "רק משתמשים שהפעילו אימות דו־שלבי יכולים לבצע את הפעולה הזאת.",
-	"oathauth-ui-available-modules": "שיטות זמינות"
+	"oathauth-ui-available-modules": "שיטות זמינות",
+	"oathauth-ui-general-help": "'''אימות רב־גורמי''' ('''MFA''') הוא שיטת אימות שבה הגישה ניתנת למשתמש מחשב רק אחרי הצגת שתי ראיות (\"גורמים\") או יותר למנגנון האימות: ידיעה (משהו שהמשתמש ורק המשתמש יודע), החזקה (משהו שהמשתמש ורק המשתמש מחזיק בבעלותו), ועצמיות (תכונה שיש למשתמש עצמו ורק למשתמש עצמו). [https://en.wikipedia.org/wiki/Multi-factor_authentication מידע נוסף]",
+	"oathauth-totp-description": "אלגוריתם סיסמה חד־פעמית מבוסס זמן (או TOTP) הוא הרחבה של אלגוריתם סיסמה חד־פעמית מבוסס HMAC (או HOTP) שמייצר סיסמה חד־פעמית על־די שימוש בזמן הנוכחי לשם ייחוד."
 }
