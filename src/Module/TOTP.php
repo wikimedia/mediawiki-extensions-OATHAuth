@@ -42,10 +42,11 @@ class TOTP implements IModule {
 		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
 			throw new MWException( 'oathauth-invalid-data-format' );
 		}
-		return new TOTPKey(
-			$data['secret'],
-			explode( ',', $data['scratch_tokens'] )
-		);
+		if ( is_string( $data['scratch_tokens' ] ) ) {
+			$data['scratch_tokens'] = explode( ',', $data['scratch_tokens'] );
+		}
+
+		return TOTPKey::newFromArray( $data );
 	}
 
 	/**
@@ -59,10 +60,7 @@ class TOTP implements IModule {
 			throw new MWException( 'oathauth-invalid-key-type' );
 		}
 		return [
-			'keys' => [ [
-				'secret' => $key->getSecret(),
-				'scratch_tokens' => implode( ',', $key->getScratchTokens() ),
-			] ]
+			'keys' => [ $key->jsonSerialize() ]
 		];
 	}
 
