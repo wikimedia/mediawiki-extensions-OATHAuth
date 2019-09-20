@@ -9,7 +9,7 @@
 			"Patriccck"
 		]
 	},
-	"oathauth-desc": "Poskytuje podporu pro autentizaci pomocí jednorázových hesel založených na HMAC",
+	"oathauth-desc": "Poskytuje podporu pro ověření pomocí jednorázových hesel založených na HMAC",
 	"disableoathforuser": "Vypnutí dvoufaktorové autentizace jiného uživatele",
 	"oath": "Dvoufázové ověření",
 	"specialpages-group-oath": "Dvoufaktorová autentizace",
@@ -64,11 +64,12 @@
 	"oathauth-ui-enabled-module": "Zapnutá autentizační metoda",
 	"oathauth-enable-generic": "Zapnout",
 	"oathauth-disable-generic": "Vypnout",
+	"oathauth-invalid-data-format": "Chybný poskytovatel dat pro vytvoření klíče pro vybranou autentizační metodu",
 	"oathauth-invalid-key-type": "Klíč nastavený u uživatele neodpovídá typu požadovanému vybranou autentizační metodou",
 	"oathauth-disable-page-title": "Vypnout $1",
 	"oathauth-enable-page-title": "Zapnout $1",
 	"oathauth-action-exclusive-to-2fa": "Tuto akci mohou provádět pouze uživatelé se zapnutou dvoufaktorovou autentizací.",
 	"oathauth-ui-available-modules": "Dostupné metody",
-	"oathauth-ui-general-help": "'''Vícefaktorová autentizace''' je autentizační metoda, ve které je uživateli počítačového systému udělen přístup až poté, co autentizačnímu mechanismu úspěšně předloží dva či více důkazů (neboli faktorů): znalost (něco, co zná jen daný uživatel), vlastnictví (něco, co vlastní jen daný uživatel) a inherence (něco, čím je jen daný uživatel). [https://cs.wikipedia.org/wiki/Dvouf%C3%A1zov%C3%A9_ov%C4%9B%C5%99en%C3%AD Více informací]",
+	"oathauth-ui-general-help": "'''Vícefaktorové ověření''' je ověřovací metoda, ve které je uživateli počítačového systému udělen přístup až poté, co autentizačnímu mechanismu úspěšně předloží dva či více důkazů (neboli ověření, faktorů): znalost (něco, co zná jen daný uživatel), vlastnictví (něco, co vlastní jen daný uživatel) a inherence (něco, čím je jen daný uživatel). [https://cs.wikipedia.org/wiki/Dvouf%C3%A1zov%C3%A9_ov%C4%9B%C5%99en%C3%AD Více informací]",
 	"oathauth-totp-description": "Algoritmus jednorázového hesla založeného na čase (TOTP) je rozšíření algoritmu jednorázového hesla založeného na HMAC (HOTP), které generuje jednorázová hesla, jejichž unikátnost je odvozena z aktuálního času."
 }
