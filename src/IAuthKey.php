@@ -3,8 +3,9 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use stdClass;
+use JsonSerializable;
 
-interface IAuthKey {
+interface IAuthKey extends JsonSerializable {
 
 	/**
 	 * @param array|stdClass $data
@@ -12,4 +13,5 @@ interface IAuthKey {
 	 * @return mixed
 	 */
 	public function verify( $data, OATHUser $user );
+
 }

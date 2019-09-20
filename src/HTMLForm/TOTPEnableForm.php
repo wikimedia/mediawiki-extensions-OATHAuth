@@ -27,11 +27,14 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	}
 
 	protected function getDescriptors() {
-		$key = $this->getRequest()->getSessionData( 'oathauth_totp_key' );
-
+		$keyData = $this->getRequest()->getSessionData( 'oathauth_totp_key' ) ?? [];
+		$key = TOTPKey::newFromArray( $keyData );
 		if ( !$key instanceof TOTPKey ) {
 			$key = TOTPKey::newFromRandom();
-			$this->getRequest()->setSessionData( 'oathauth_totp_key', $key );
+			$this->getRequest()->setSessionData(
+				'oathauth_totp_key',
+				$key->jsonSerialize()
+			);
 		}
 
 		$secret = $key->getSecret();
@@ -149,7 +152,11 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	 * @throws \MWException
 	 */
 	public function onSubmit( array $formData ) {
-		$key = $this->getRequest()->getSessionData( 'oathauth_totp_key' );
+		$keyData = $this->getRequest()->getSessionData( 'oathauth_totp_key' ) ?? [];
+		$key = TOTPKey::newFromArray( $keyData );
+		if ( !$key instanceof TOTPKey ) {
+			return [ 'oathauth-invalidrequest' ];
+		}
 
 		if ( $key->isScratchToken( $formData['token'] ) ) {
 			// A scratch token is not allowed for enrollment

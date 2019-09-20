@@ -55,7 +55,7 @@ class TOTPKey implements IAuthKey {
 	private $secret;
 
 	/** @var string[] List of scratch tokens */
-	private $scratchTokens;
+	private $scratchTokens = [];
 
 	/**
 	 * @return TOTPKey
@@ -70,6 +70,31 @@ class TOTPKey implements IAuthKey {
 		$object->regenerateScratchTokens();
 
 		return $object;
+	}
+
+	/**
+	 * Create key from json encoded string
+	 *
+	 * @param string $data
+	 * @return TOTPKey|null on invalid data
+	 */
+	public static function newFromString( $data ) {
+		$data = json_decode( $data, true );
+		if ( json_last_error() !== JSON_ERROR_NONE ) {
+			return null;
+		}
+		return static::newFromArray( $data );
+	}
+
+	/**
+	 * @param array $data
+	 * @return TOTPKey|null on invalid data
+	 */
+	public static function newFromArray( array $data ) {
+		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
+			return null;
+		}
+		return new static( $data['secret'], $data['scratch_tokens'] );
 	}
 
 	/**
@@ -226,5 +251,12 @@ class TOTPKey implements IAuthKey {
 	 */
 	private function getLogger() {
 		return LoggerFactory::getInstance( 'authentication' );
+	}
+
+	public function jsonSerialize() {
+		return [
+			'secret' => $this->getSecret(),
+			'scratch_tokens' => $this->getScratchTokens()
+		];
 	}
 }
