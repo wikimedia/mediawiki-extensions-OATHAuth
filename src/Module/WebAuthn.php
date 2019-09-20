@@ -67,7 +67,7 @@ class WebAuthn implements IModule {
 			if ( !$key instanceof WebAuthnKey ) {
 				throw new MWException( 'webauthn-key-type-missmatch' );
 			}
-			$data[] = $key->getEncodedDBData();
+			$data[] = $key->jsonSerialize();
 		}
 
 		return [

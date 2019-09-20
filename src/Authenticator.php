@@ -54,6 +54,7 @@ use stdClass;
  */
 class Authenticator {
 	const SESSION_KEY = 'webauthn_session_data';
+
 	// 60 sec
 	const CLIENT_ACTION_TIMEOUT = 60000;
 
@@ -231,7 +232,9 @@ class Authenticator {
 		}
 
 		if ( $authInfo === null ) {
-			$authInfo = $this->getSessionData();
+			$authInfo = $this->getSessionData(
+				PublicKeyCredentialRequestOptions::class
+			);
 		}
 		$verificationData['authInfo'] = $authInfo;
 		$this->clearSessionData();
@@ -289,8 +292,11 @@ class Authenticator {
 		}
 
 		if ( $registerInfo === null ) {
-			$registerInfo = $this->getSessionData();
+			$registerInfo = $this->getSessionData(
+				PublicKeyCredentialCreationOptions::class
+			);
 		}
+
 		$key = $this->module->newKey();
 		if ( !( $key instanceof WebAuthnKey ) ) {
 			$this->logger->error(
@@ -329,17 +335,19 @@ class Authenticator {
 		} catch ( MWException $exception ) {
 			return Status::newFatal( $exception->getMessage() );
 		}
-
 		return Status::newFatal( 'webauthn-error-registration-failed' );
 	}
 
+	/**
+	 * @param PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data
+	 */
 	private function setSessionData( $data ) {
 		$session = $this->request->getSession();
 		$authData = $session->getSecret( 'authData' );
 		if ( !is_array( $authData ) ) {
 			$authData = [];
 		}
-		$authData[static::SESSION_KEY] = $data;
+		$authData[static::SESSION_KEY] = FormatJson::encode( $data );
 		$session->setSecret( 'authData', $authData );
 	}
 
@@ -352,10 +360,22 @@ class Authenticator {
 		}
 	}
 
-	private function getSessionData() {
+	/**
+	 * @param string $returnClass
+	 * @return PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions
+	 */
+	private function getSessionData( $returnClass ) {
 		$authData = $this->request->getSession()->getSecret( 'authData' );
-		if ( is_array( $authData ) && array_key_exists( static::SESSION_KEY, $authData ) ) {
-			return $authData[static::SESSION_KEY];
+		if ( !is_array( $authData ) ) {
+			return null;
+		}
+		if ( array_key_exists( static::SESSION_KEY, $authData ) ) {
+			$json = $authData[static::SESSION_KEY];
+			$factory = [ $returnClass, 'createFromString' ];
+			if ( !is_callable( $factory ) ) {
+				return null;
+			}
+			return call_user_func_array( $factory, [ $json ] );
 		}
 		return null;
 	}
