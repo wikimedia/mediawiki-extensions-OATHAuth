@@ -65,6 +65,7 @@
 	"oathauth-module-totp-label": "TOTP（一次性令牌）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理雙因素驗證",
+	"oathauth-ui-not-enabled-modules": "切換到替代方法",
 	"oathauth-ui-enabled-module": "已啟用的認證方法",
 	"oathauth-enable-generic": "啟用",
 	"oathauth-disable-generic": "禁用",
