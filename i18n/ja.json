@@ -5,7 +5,8 @@
 			"ネイ",
 			"Yusuke1109",
 			"Ochaochaocha3",
-			"Suyama"
+			"Suyama",
+			"Omotecho"
 		]
 	},
 	"oathauth-desc": "ワンタイムパスワードに基づいた HMAC を使用する認証機能を提供する",
@@ -33,7 +34,7 @@
 	"right-oathauth-enable": "二要素認証を有効にする",
 	"action-oathauth-enable": "二要素認証の有効化",
 	"oathauth-auth-token-label": "トークン",
-	"oathauth-auth-ui": "あなたの認証デバイスに表示された検証コードを入力してください",
+	"oathauth-auth-ui": "あなたの認証デバイスに表示された検証コードを入力してください。",
 	"oathauth-login-failed": "検証が失敗しました。",
 	"action-oathauth-api-all": "OATH ステータスを確認",
 	"oath-log-name": "二要素認証記録",

@@ -62,9 +62,11 @@
 	"oathauth-enable-generic": "Omogući",
 	"oathauth-disable-generic": "Onemogući",
 	"oathauth-invalid-data-format": "Naveden je nevrijedeći davatelj podataka za stvaranje ključa namijenjenoga izabranoj metodi autentifikacije",
+	"oathauth-invalid-key-type": "Suradnikov/suradničin predefinirani ključ ne odgovara traženom tipu za izbor metode autentifikacije",
 	"oathauth-disable-page-title": "Onemogućavanje $1",
 	"oathauth-enable-page-title": "Omogućavanje $1",
 	"oathauth-action-exclusive-to-2fa": "Radnju mogu izvršiti samo suradnici/suradnice koji/koje imaju omogućenu dvofaktorsku autentifikaciju.",
 	"oathauth-ui-available-modules": "Dostupne metode",
-	"oathauth-ui-general-help": "'''Multifaktorska autentifikacija''' ('''MFA''') autentifikacijska je metoda kojom se korisniku kompjutora omogućava pristup tek nakon uspješnog unosa dva ili više potvrdnih dijelova (ili faktora) u autentifikacijski mehanizam: saznanje (ono što zna samo korisnik i nitko drugi), vlasništvo (ono što posjeduje samo korisnik i nitko drugi), te osobina (ono što je svojstveno korisniku i nikom drugom). [https://en.wikipedia.org/wiki/Multi-factor_authentication Pročitajte više]"
+	"oathauth-ui-general-help": "'''Multifaktorska autentifikacija''' ('''MFA''') autentifikacijska je metoda kojom se korisniku kompjutora omogućava pristup tek nakon uspješnog unosa dva ili više potvrdnih dijelova (ili faktora) u autentifikacijski mehanizam: saznanje (ono što zna samo korisnik i nitko drugi), vlasništvo (ono što posjeduje samo korisnik i nitko drugi), te osobina (ono što je svojstveno korisniku i nikom drugom). [https://en.wikipedia.org/wiki/Multi-factor_authentication Pročitajte više]",
+	"oathauth-totp-description": "Jednokratna zaporka/kôd (TOTP) bazirana na vremenu kreiranja, proširenje je mogućnosti algoritma jednokratne zaporke zasnovane na HMAC-u (HOTP), koja uključuje generiranje jednokratne zaporke bez preuzimanja jedinstvenosti kôda iz trenutačnog vremena kad je zaporka kreirana."
 }
