@@ -9,7 +9,8 @@
 			"Dgstranz",
 			"MarcoAurelio",
 			"Jelou",
-			"Anarhistička Maca"
+			"Anarhistička Maca",
+			"Madamebiblio"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
@@ -68,5 +69,6 @@
 	"oathauth-disable-page-title": "Deshabilitar $1",
 	"oathauth-enable-page-title": "Habilitar $1",
 	"oathauth-action-exclusive-to-2fa": "Esta acción solo puede ser realizada por usuarios que tengan activada la autenticación en dos pasos.",
-	"oathauth-ui-available-modules": "Métodos disponibles"
+	"oathauth-ui-available-modules": "Métodos disponibles",
+	"oathauth-disable-method-warning-button-label": "Confirma y continúa"
 }

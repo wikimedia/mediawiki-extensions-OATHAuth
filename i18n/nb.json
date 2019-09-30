@@ -37,5 +37,11 @@
 	"grant-group-authentication": "Utføre autentiseringshandlinger for seg selv og andre",
 	"grant-oath": "Få tilgang til informasjon om totrinns pålogging (OATH) for seg selv og andre",
 	"right-oathauth-api-all": "Spørre mot og validere OATH-informasjon for seg selv og andre",
-	"action-oathauth-api-all": "sjekk OATH-status"
+	"action-oathauth-api-all": "sjekk OATH-status",
+	"oathauth-ui-not-enabled-modules": "Bytt til alternativ metode",
+	"oathauth-disable-method-warning-header": "Bekreft at du vil slå av metoden",
+	"oathauth-disable-method-warning-button-label": "Bekreft og fortsett",
+	"oathauth-disable-method-warning": "Hvis du slår av metode $1 for totrinns pålogging vil du ikke lenger kunne bruke denne metoden for å logge inn, og dataene som er tilknyttet denne metoden blir slettet",
+	"oathauth-switch-method-warning-header": "Bekreft bytting til en annen metode for totrinns pålogging",
+	"oathauth-switch-method-warning": "Ved å bytte til metode $2 for totrinns pålogging vil den gjeldende metoden ($1) bli slått av, og dataene som er tilknyttet den metoden blir slettet"
 }

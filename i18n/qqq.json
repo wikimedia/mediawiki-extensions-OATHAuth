@@ -85,4 +85,3 @@
 	"oathauth-switch-method-warning": "Generic message warning the user of token/data loss when switching to an alternative method.\n$1 - Current method name, $2 - Name of the method that is being switched to",
 	"oathauth-totp-disable-warning": "TOTP specific warning message when disabling/switching to alternative 2FA method"
 }
-
