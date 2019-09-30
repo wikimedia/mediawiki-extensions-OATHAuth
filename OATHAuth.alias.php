@@ -61,6 +61,19 @@ $specialPageAliases['lrc'] = [
 	'OATHManage' => [ 'قأسأم' ],
 ];
 
+/** Polish (polski) */
+$specialPageAliases['pl'] = [
+	'DisableOATHForUser' => [
+		'Wyłącz_OATH_użytkownika',
+		'Wyłącz_weryfikację_dwuetapową_użytkownika'
+	],
+	'OATHManage' => [
+		'Zarządzanie_weryfikacją_dwuetapową',
+		'Zarządzanie_OATH',
+		'Weryfikacja_dwuetapowa'
+	]
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'OATHManage' => [ 'Двофакторска_потврда_идентитета' ],
