@@ -12,7 +12,8 @@
 			"Siebrand",
 			"Robby",
 			"Skalman",
-			"A2093064"
+			"A2093064",
+			"Xiplus"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",

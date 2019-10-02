@@ -26,6 +26,15 @@
 	"action-oathauth-enable": "ottaa käyttöön kahden tekijän avulla suoritettua (''two-factor'') tunnistautumista",
 	"oathauth-auth-token-label": "Avain",
 	"oathauth-auth-ui": "Syötä vahvistuskoodi tunnistautumislaitteestasi",
+	"oathauth-throttled": "Liian monta todennusyritystä! Odota hetki $1.",
+	"oathauth-login-failed": "Todennus epäonnistui",
+	"oathauth-describe-provider": "Kaksivaiheinen tunnistautuminen (OATH).",
 	"action-oathauth-api-all": "tarkistaa OATH-tilaa",
+	"oath-log-name": "Kaksivaiheisen tunnistautumisen loki",
+	"oauthauth-ui-no-module": "Ei mitään",
+	"oathauth-ui-manage": "Hallitse",
+	"oathmanage": "Hallitse kaksivaiheista tunnistautumista",
+	"oathauth-enable-generic": "Ota käyttöön",
+	"oathauth-disable-generic": "Poista käytöstä",
 	"oathauth-disable-method-warning-button-label": "Vahvista ja jatka"
 }
