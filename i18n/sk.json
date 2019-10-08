@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Teslaton"
+			"Teslaton",
+			"Vlad5250"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pre autentifikáciu pomocou jednorázových hesiel, založených na HMAC",
+	"disableoathforuser": "Vypnúť dvojfaktorovú autentifikáciu používateľa",
 	"specialpages-group-oath": "Dvojfaktorová autentifikácia",
 	"oathauth-account": "Názov účtu:",
 	"oathauth-secret": "Tajný kľúč pre dvojfaktorovú autentifikáciu:",
@@ -23,16 +25,27 @@
 	"oathauth-step3": "Krok 3: Zapíšte si jednorazové kódy",
 	"oathauth-step4": "Krok 4: Overenie",
 	"oathauth-entertoken": "Pre overenie zadajte kód z vášho autentifikačného zariadenia:",
+	"oathauth-disable-for-user": "Vypnúť dvojfaktorovú autentifikáciu používateľa",
+	"right-oathauth-disable-for-user": "Vypnúť dvojfaktorovú autentifikáciu používateľa",
+	"action-oathauth-disable-for-user": "vypnúť dvojfaktorovú autentifikáciu používateľa",
+	"oathauth-enteruser": "Používateľské meno:",
 	"right-oathauth-enable": "Zapnutie dvojfaktorovej autentifikácie",
 	"action-oathauth-enable": "zapnúť dvojfaktorovú autentifikáciu",
 	"oathauth-auth-token-label": "Kód",
 	"oathauth-auth-token-help": "Jednorazové heslo používané ako druhý faktor dvojfaktorovej autentifikácie.",
-	"oathauth-auth-ui": "Zadajte prosím overovací kód zo svojho autentifikačného zariadenia",
+	"oathauth-auth-ui": "Zadajte prosím overovací kód zo svojho autentifikačného zariadenia.",
 	"oathauth-throttled": "Príliš veľa pokusov o overenie! Počkajte prosím $1.",
 	"oathauth-login-failed": "Overenie sa nepodarilo.",
 	"oathauth-describe-provider": "Dvojfaktorová autentifikácia (OATH).",
 	"grant-group-authentication": "Vykonávanie autentifikačných akcií pre seba alebo pre ostatných",
 	"grant-oath": "Prístup k informáciám o dvojfaktorovej autentifikácii (OATH) k sebe a ostatným",
 	"right-oathauth-api-all": "Zisťovanie a overovanie informácií týkajúcich sa OATH k sebe a ostatným",
-	"action-oathauth-api-all": "kontrolovať stav OATH"
+	"action-oathauth-api-all": "kontrolovať stav OATH",
+	"oathauth-ui-manage": "Spravovať",
+	"oathmanage": "Spravovanie dvojfaktorovej autentifikácie",
+	"oathauth-enable-generic": "Zapnúť",
+	"oathauth-disable-generic": "Vypnúť",
+	"oathauth-disable-page-title": "Vypnúť $1",
+	"oathauth-enable-page-title": "Zapnúť $1",
+	"oathauth-disable-method-warning-button-label": "Potvrdiť a pokračovať"
 }

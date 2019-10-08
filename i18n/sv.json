@@ -65,5 +65,6 @@
 	"oathauth-disable-page-title": "Inaktivera $1",
 	"oathauth-enable-page-title": "Aktivera $1",
 	"oathauth-action-exclusive-to-2fa": "Denna åtgärd kan endast utföras av användare som har tvåfaktorautentisering aktiverad.",
-	"oathauth-ui-available-modules": "Tillgängliga metoder"
+	"oathauth-ui-available-modules": "Tillgängliga metoder",
+	"oathauth-disable-method-warning-button-label": "Bekräfta och fortsätt"
 }
