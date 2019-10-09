@@ -18,7 +18,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.32.0",
 		"extensions": {
-			"OATHAuth": ">= 0.4.2"
+			"OATHAuth": ">= 0.4.3"
 		},
 		"platform": {
 			"php": ">= 7.2"
