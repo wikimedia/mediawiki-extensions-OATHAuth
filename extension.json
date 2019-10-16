@@ -16,12 +16,9 @@
 		}
 	},
 	"requires": {
-		"MediaWiki": ">= 1.32.0",
+		"MediaWiki": ">= 1.34.0",
 		"extensions": {
 			"OATHAuth": ">= 0.4.3"
-		},
-		"platform": {
-			"php": ">= 7.2"
 		}
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
