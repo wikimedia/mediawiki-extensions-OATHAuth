@@ -70,5 +70,11 @@
 	"oathauth-action-exclusive-to-2fa": "Esta operação só pode ser executada por usuários que têm a autenticação de dois fatores ativada.",
 	"oathauth-ui-available-modules": "Métodos disponíveis",
 	"oathauth-ui-general-help": "'''Autenticação multifatorial''' ('''MFA''') é um método de autenticação no qual um usuário de computador recebe acesso somente após apresentar com êxito duas ou mais evidências (ou fatores) a um mecanismo de autenticação: conhecimento (algo que o usuário e apenas o usuário sabem), posse (algo que o usuário e somente o usuário possui) e herança (algo que o usuário e somente o usuário são). [https://en.wikipedia.org/wiki/Multi-factor_authentication Leia mais]",
-	"oathauth-totp-description": "O algoritmo de senha de uso único com base no tempo (TOTP) é uma extensão do algoritmo de senha de uso único com base no HMAC (HOTP), que gera uma senha de uso único, assumindo a exclusividade do horário atual."
+	"oathauth-totp-description": "O algoritmo de senha de uso único com base no tempo (TOTP) é uma extensão do algoritmo de senha de uso único com base no HMAC (HOTP), que gera uma senha de uso único, assumindo a exclusividade do horário atual.",
+	"oathauth-disable-method-warning-header": "Confirme a desativação de um método de autenticação",
+	"oathauth-disable-method-warning-button-label": "Confirme e continue",
+	"oathauth-disable-method-warning": "Se você desabilitar o método de autenticação de dois fatores $1, não poderá mais usá-lo ao entrar e todos os dados associados a esse método de autenticação serão excluídos",
+	"oathauth-switch-method-warning-header": "Confirme a mudança para um método de autenticação diferente",
+	"oathauth-switch-method-warning": "Ao mudar para o método de autenticação de dois fatores $2, o método atual ($1) será desativado e todos os dados associados ao método de autenticação atual serão excluídos",
+	"oathauth-totp-disable-warning": "Você não poderá mais usar o dispositivo de autenticação registrado nesta conta. Todos os tokens de rascunho associados a esta conta serão invalidados."
 }
