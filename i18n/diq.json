@@ -12,5 +12,6 @@
 	"oathauth-token": "Kılit",
 	"oathauth-prefs-label": "Dı faktorın araşt kerdış :",
 	"oathauth-enteruser": "Nameyê karberi:",
-	"oathauth-auth-token-label": "Kılit"
+	"oathauth-auth-token-label": "Kılit",
+	"oathauth-invalidrequest": "Waştışo nêvêrde"
 }

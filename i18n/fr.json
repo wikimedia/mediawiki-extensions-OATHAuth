@@ -86,5 +86,6 @@
 	"oathauth-disable-method-warning": "Si vous désactivez la méthode $1 d’authentification à deux facteurs, vous ne pourrez plus utiliser cette méthode pour vous connecter et les données associées à cette méthode d’authentification seront effacée.",
 	"oathauth-switch-method-warning-header": "Confirmer le basculement vers une méthode d’authentification différente",
 	"oathauth-switch-method-warning": "En basculant vers la méthode $2 d’authentification à deux facteurs, la méthode actuelle ($1) sera désactivée et les données associées avec la méthode d’authentification actuelle seront supprimées.",
-	"oathauth-totp-disable-warning": "Vous ne pourrez plus utiliser l’appareil d’authentification enregistré avec ce compte. Tous les jetons de marquage associés avec ce compte seront invalidés."
+	"oathauth-totp-disable-warning": "Vous ne pourrez plus utiliser l’appareil d’authentification enregistré avec ce compte. Tous les jetons de marquage associés avec ce compte seront invalidés.",
+	"oathauth-invalidrequest": "Requête non valide"
 }
