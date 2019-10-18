@@ -57,5 +57,6 @@
 	"oathauth-disable-page-title": "$1 비활성화",
 	"oathauth-enable-page-title": "$1 활성화",
 	"oathauth-ui-available-modules": "사용 가능한 방식",
-	"oathauth-disable-method-warning-button-label": "확인하고 계속하기"
+	"oathauth-disable-method-warning-button-label": "확인하고 계속하기",
+	"oathauth-invalidrequest": "잘못된 요청"
 }

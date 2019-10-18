@@ -9,7 +9,8 @@
 			"Vito Genovese",
 			"Hedda",
 			"ToprakM",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Grkn gll"
 		]
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık parolalar kullanarak kimlik doğrulama desteği sağlar",
@@ -41,5 +42,6 @@
 	"oathauth-auth-ui": "Lütfen iki aşamalı doğrulama uygulamasından aldığınız kodu girin",
 	"grant-group-authentication": "Kimlik doğrulama işlemlerini kendin ve diğerleri için uygula",
 	"oauthauth-ui-no-module": "Hiçbiri etkin değil",
-	"oathmanage": "İki faktörlü kimlik doğrulamayı yönet"
+	"oathmanage": "İki faktörlü kimlik doğrulamayı yönet",
+	"oathauth-invalidrequest": "Geçersiz istek"
 }

@@ -50,5 +50,6 @@
 	"oathauth-disable-page-title": "Disattiva $1",
 	"oathauth-enable-page-title": "Attiva $1",
 	"oathauth-ui-available-modules": "Metodi disponibili",
-	"oathauth-disable-method-warning-button-label": "Conferma e continua"
+	"oathauth-disable-method-warning-button-label": "Conferma e continua",
+	"oathauth-invalidrequest": "Richiesta non valida"
 }

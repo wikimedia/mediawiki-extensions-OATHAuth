@@ -7,7 +7,8 @@
 			"Sjoerddebruin",
 			"Southparkfan",
 			"Kippenvlees1",
-			"Mainframe98"
+			"Mainframe98",
+			"LongJohn nl"
 		]
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
@@ -61,5 +62,6 @@
 	"oathauth-disable-generic": "Uitschakelen",
 	"oathauth-disable-page-title": "$1 uitschakelen",
 	"oathauth-enable-page-title": "$1 inschakelen",
-	"oathauth-ui-available-modules": "Beschikbare methoden"
+	"oathauth-ui-available-modules": "Beschikbare methoden",
+	"oathauth-invalidrequest": "Ongeldige aanvraag"
 }
