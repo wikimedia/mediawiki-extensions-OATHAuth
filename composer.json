@@ -1,6 +1,5 @@
 {
 	"require": {
-		"php": ">= 7.2",
 		"web-auth/webauthn-lib": "v2.1.5"
 	},
 	"require-dev": {
