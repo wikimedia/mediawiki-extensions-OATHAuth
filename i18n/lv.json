@@ -14,5 +14,6 @@
 	"oathauth-auth-ui": "Lūdzu, ievadi verifikācijas kodu no autentifikācijas ierīces.",
 	"oathauth-ui-manage": "Pārvaldīt",
 	"oathauth-ui-available-modules": "Pieejamās metodes",
-	"oathauth-disable-method-warning-button-label": "Apstiprināt un turpināt"
+	"oathauth-disable-method-warning-button-label": "Apstiprināt un turpināt",
+	"oathauth-invalidrequest": "Nederīgs pieprasījums"
 }

@@ -76,5 +76,6 @@
 	"oathauth-disable-method-warning": "Jeżeli wyłączysz metodę weryfikacji dwuetapowej $1, nie będziesz mógł więcej używać jej podczas logowania a wszystkie dane powiązane z tą metodą uwierzytelniania zostaną usunięte.",
 	"oathauth-switch-method-warning-header": "Potwierdź przełączanie na inną metodę uwierzytelniania",
 	"oathauth-switch-method-warning": "Przełączając metodę weryfikacji dwuetapowej na $2, obecna metoda ($1) zostanie wyłączona a wszystkie dane powiązane z obecną metodą uwierzytelniania zostaną usunięte.",
-	"oathauth-totp-disable-warning": "Nie będziesz mógł więcej korzystać z urządzenia uwierzytelniającego zarejestrowanego dla tego konta. Wszystkie kody zapasowe powiązane z tym kontem staną się nieaktualne."
+	"oathauth-totp-disable-warning": "Nie będziesz mógł więcej korzystać z urządzenia uwierzytelniającego zarejestrowanego dla tego konta. Wszystkie kody zapasowe powiązane z tym kontem staną się nieaktualne.",
+	"oathauth-invalidrequest": "Nieprawidłowe żądanie"
 }
