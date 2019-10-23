@@ -128,7 +128,7 @@ class OATHManage extends SpecialPage {
 			$this->displayRestrictionError();
 		}
 
-		if ( $this->action === static::ACTION_ENABLE ) {
+		if ( $this->action === static::ACTION_ENABLE && !$this->getRequest()->wasPosted() ) {
 			// Trying to change the 2FA method (one is already enabled)
 			$this->checkLoginSecurityLevel( 'oathauth-enable' );
 		}
