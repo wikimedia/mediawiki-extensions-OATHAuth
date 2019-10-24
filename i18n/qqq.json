@@ -10,6 +10,7 @@
 	"webauthn-ui-add-key": "Button label for adding new webauthn keys",
 	"webauthn-error-browser-unsupported": "Error message when WebAuthn API is not supported by the browser",
 	"webauthn-error-auth-generic": "Generic error message for authentication process failing",
+	"webauthn-error-reg-generic": "Generic error message for registratration process failing",
 	"webauthn-key-type-missmatch": "Error message when user is attempting webauthn authentication but has at least one key of different type (module) set",
 	"webuathn-ui-remove-key": "Button label to remove a single WebAuthn key",
 	"webauthn-error-module-not-enabled": "Error message when authentication/registration is attemped with module not enabled for the user. \n$1 - module name\n$2 - user",
