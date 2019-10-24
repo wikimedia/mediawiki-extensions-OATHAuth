@@ -1,6 +1,6 @@
-( function( $, mw ) {
-	$( function() {
+( function () {
+	$( function () {
+		// eslint-disable-next-line no-new
 		new mw.ext.webauthn.ManageFormWidget();
 	} );
-} )( jQuery, mediaWiki );
-
+}() );

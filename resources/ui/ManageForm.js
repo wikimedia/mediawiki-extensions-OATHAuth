@@ -1,6 +1,6 @@
-( function( mw, $ ) {
+( function () {
 
-	mw.ext.webauthn.ManageFormWidget = function() {
+	mw.ext.webauthn.ManageFormWidget = function () {
 		mw.ext.webauthn.ManageFormWidget.parent.call( this, {
 			$form: $( '#webauthn-manage-form' )
 		} );
@@ -17,9 +17,9 @@
 
 	OO.inheritClass( mw.ext.webauthn.ManageFormWidget, mw.ext.webauthn.CredentialForm );
 
-	mw.ext.webauthn.ManageFormWidget.prototype.setupRegisteredKeys = function() {
+	mw.ext.webauthn.ManageFormWidget.prototype.setupRegisteredKeys = function () {
 		this.$form.find( '.webauthn-key-layout' )
-			.each( function( k, keyLayout ) {
+			.each( function ( k, keyLayout ) {
 				var $keyLayout = $( keyLayout );
 				var removeButton = OO.ui.ButtonInputWidget.static.infuse(
 					$keyLayout.find( '.removeButton' )
@@ -31,14 +31,14 @@
 			}.bind( this ) );
 	};
 
-	mw.ext.webauthn.ManageFormWidget.prototype.onRemoveClick = function( friendlyName ) {
+	mw.ext.webauthn.ManageFormWidget.prototype.onRemoveClick = function ( friendlyName ) {
 		var authenticator = new mw.ext.webauthn.Authenticator();
 		authenticator.authenticate().done(
-			function( credential ) {
+			function ( credential ) {
 				this.$form.find( 'input[name="remove_key"]' ).val( friendlyName );
 				this.setCredential( credential );
-				this.$form.submit();
+				this.$form.trigger( 'submit' );
 			}.bind( this )
 		);
 	};
-} )( mediaWiki, jQuery );
+}() );

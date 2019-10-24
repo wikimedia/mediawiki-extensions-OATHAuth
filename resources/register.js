@@ -1,19 +1,18 @@
-( function( $, mw ) {
-	$( function() {
+( function () {
+	$( function () {
 		var form = new mw.ext.webauthn.RegisterFormWidget();
 
-		form.on( 'addKey', function( desiredName ) {
+		form.on( 'addKey', function ( desiredName ) {
 			var registrator = new mw.ext.webauthn.Registrator( desiredName );
 			registrator.register().then(
-				function( credential ) {
+				function ( credential ) {
 					form.readyToSubmit = true;
 					form.submitWithCredential( credential );
 				},
-				function( error ) {
+				function ( error ) {
 					form.dieWithError( error );
 				}
 			);
 		} );
 	} );
-} )( jQuery, mediaWiki );
-
+}() );

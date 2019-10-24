@@ -1,6 +1,6 @@
-( function( mw, $ ) {
+( function () {
 
-	mw.ext.webauthn.CredentialForm = function( cfg ) {
+	mw.ext.webauthn.CredentialForm = function ( cfg ) {
 		cfg = cfg || {};
 		this.$form = cfg.$form;
 		this.$form.addClass( 'webauth-credential-form' );
@@ -19,11 +19,11 @@
 	OO.initClass( mw.ext.webauthn.CredentialForm );
 	OO.mixinClass( mw.ext.webauthn.CredentialForm, OO.EventEmitter );
 
-	mw.ext.webauthn.CredentialForm.prototype.setControls = function() {
+	mw.ext.webauthn.CredentialForm.prototype.setControls = function () {
 		this.$credential = this.$form.find( 'input[name="credential"]' );
 	};
 
-	mw.ext.webauthn.CredentialForm.prototype.dieWithError = function( message, consoleMsg ) {
+	mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, consoleMsg ) {
 		consoleMsg = consoleMsg || message;
 
 		// Unrecoverable in this load - remove all content
@@ -39,7 +39,7 @@
 			framed: false
 		} );
 		reloadLink.connect( this, {
-			click: function() {
+			click: function () {
 				window.location.reload();
 			}
 		} );
@@ -47,13 +47,13 @@
 			items: [
 				icon, label, reloadLink
 			],
-			classes:[ 'form-error-message' ]
+			classes: [ 'form-error-message' ]
 		} ).$element );
 
-		throw new Error(  this.getErrorText( consoleMsg || '' ) );
+		throw new Error( this.getErrorText( consoleMsg || '' ) );
 	};
 
-	mw.ext.webauthn.CredentialForm.prototype.getErrorText = function( error ) {
+	mw.ext.webauthn.CredentialForm.prototype.getErrorText = function ( error ) {
 		var message = mw.message( error );
 		if ( message.exists() ) {
 			return message.parse();
@@ -61,15 +61,14 @@
 		return error;
 	};
 
-
-	mw.ext.webauthn.CredentialForm.prototype.setCredential = function( credential ) {
+	mw.ext.webauthn.CredentialForm.prototype.setCredential = function ( credential ) {
 		credential = JSON.stringify( credential );
 		this.$credential.val( credential );
 	};
 
-	mw.ext.webauthn.CredentialForm.prototype.submitWithCredential = function( credential ) {
+	mw.ext.webauthn.CredentialForm.prototype.submitWithCredential = function ( credential ) {
 		this.setCredential( credential );
-		this.$form.submit();
+		this.$form.trigger( 'submit' );
 	};
 
-} )( mediaWiki, jQuery );
+}() );

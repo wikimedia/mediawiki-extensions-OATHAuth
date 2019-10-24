@@ -1,17 +1,17 @@
-( function( $, mw ) {
-	$( function() {
+( function () {
+	$( function () {
 		var form = new mw.ext.webauthn.CredentialForm( {
 			$form: $( '#disable-webauthn-form' )
 		} );
 
 		var authenticator = new mw.ext.webauthn.Authenticator();
 		authenticator.authenticate().then(
-			function( credential ) {
+			function ( credential ) {
 				form.submitWithCredential( credential );
 			},
-			function( error ) {
+			function ( error ) {
 				form.dieWithError( error );
 			}
 		);
 	} );
-} ) ( jQuery, mediaWiki );
+}() );
