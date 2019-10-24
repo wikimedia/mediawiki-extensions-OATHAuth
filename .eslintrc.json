@@ -1,0 +1,36 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client",
+		"wikimedia/jquery",
+		"wikimedia/language/es6.json"
+	],
+	"globals": {
+		"mw": "readonly",
+		"OO": "readonly"
+	},
+	"rules": {
+		"arrow-parens": "off",
+		"computed-property-spacing": "off",
+		"dot-notation": "off",
+		"func-call-spacing": "off",
+		"indent": "off",
+		"key-spacing": "off",
+		"keyword-spacing": "off",
+		"max-len": "off",
+		"no-extra-bind": "off",
+		"no-multi-spaces": "off",
+		"no-multiple-empty-lines": "off",
+		"no-new": "off",
+		"no-prototype-builtins": "off",
+		"no-undef": "off",
+		"no-unused-vars": "off",
+		"quote-props": "off",
+		"quotes": "off",
+		"space-before-function-paren": "off",
+		"space-infix-ops": "off",
+		"wrap-iife": "off",
+		"no-jquery/no-event-shorthand": "off",
+		"no-jquery/no-global-selector": "off"
+	}
+}

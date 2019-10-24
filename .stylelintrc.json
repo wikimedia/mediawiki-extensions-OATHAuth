@@ -1,0 +1,7 @@
+{
+	"extends": "stylelint-config-wikimedia",
+	"rules": {
+		"selector-max-id": null,
+		"selector-class-pattern": "^(webauth|webauthn|form|oo-ui)-"
+	}
+}
