@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"webauthn-desc": "Dodaje wsparcie dla uwierzytelniania protokołem WebAuthn",
+	"webauthn-module-label": "Web Authentication (WebAuthn)",
+	"webauthn-ui-login-prompt": "Dotknij swojego urządzenia uwierzytelniającego lub wykonaj instrukcje podane przez przeglądarkę",
+	"webauthn-ui-add-key": "Dodaj klucz",
+	"webauthn-error-browser-unsupported": "Ta przeglądarka nie wspiera protokołu WebAuthentication, lub jest on niedostępny na tej stronie. Spróbuj ponownie korzystając z innej przeglądarki. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Więcej]",
+	"webauthn-error-browser-unsupported-console": "Ta przeglądarka nie wspiera protokołu WebAuthentication, lub jest on niedostępny na tej stronie",
+	"webauthn-error-auth-generic": "Proces autoryzacji został przerwany. Prosimy rozpocząć proces ponownie",
+	"webauthn-error-reg-generic": "Nie udało się zweryfikować twojego klucza. Prosimy rozpocząć proces ponownie",
+	"webauthn-key-type-missmatch": "Użytkownik zarejestrował klucze wielu typów",
+	"oathauth-webauthn-registered-keys-section-name": "Zarejestrowane klucze",
+	"webuathn-ui-remove-key": "Usuń",
+	"webauthn-error-module-not-enabled": "Moduł „$1” nie jest włączony dla {{GENDER:$1|użytkownika|użytkowniczki}} „$1”",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Użytkownik $1 włączył|Użytkowniczka $1 włączyła}} moduł WebAuthn, jednak ustawiony jest niewłaściwy klucz",
+	"webauthn-error-verification-failed": "Weryfikacja nie powiodła się",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Użytkownik|Użytkowniczka}} „$1” nie może zarejestrować nowego poświadczenia",
+	"webauthn-error-invalid-new-key": "Nowy klucz zwrócony przed moduł nie jest wymaganego typu",
+	"webauthn-error-registration-failed": "Rejestracja nowego klucza zakończyła się niepowodzeniem",
+	"webauthn-ui-key-register-help": "Wybierz nazwę użytkownika dla swojego klucza",
+	"webauthn-error-cannot-remove-key": "Klucz nie może zostać usunięty",
+	"webauthn-error-get-authinfo-fail": "Informacje potrzebne do uwierzytelnienia nie mogły zostać pozyskane.",
+	"oathauth-webauthn-add-key-section-name": "Zarejestruj nowy klucz WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Wyłącz WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Informacje potrzebne do zarejestrowania nie mogły zostać pozyskane.",
+	"webauthn-ui-disable-prompt": "Dotknij swojego urządzenia uwierzytelniającego lub wykonaj instrukcje podane przez przeglądarkę aby potwierdzić wyłączenie funkcji WebAuthentication",
+	"webauthn-error-max-keys-reached": "Możesz zarejestrować maksymalnie {{PLURAL:$1|jeden klucz|$1 klucze|$1 kluczy}}",
+	"apihelp-webauthn-summary": "Moduł  API do komunikacji pomiędzy serwerem a klientem podczas procesu rejestracji/uwierzytelniania",
+	"apihelp-webauthn-param-func": "Nazwa funkcji, która ma zostać wykonana",
+	"apihelp-webauthn-param-data": "Dane poszczególnych funkcji zakodowane w formacie JSON",
+	"webauthn-module-description": "WebAuthn (Web Authentication) jest sieciowym standardem opracowanym przez organizację World Wide Web Consortium (W3C). Jest to podstawowy komponent projektu FIDO2, znajdującego się pod opieką  FIDO Alliance. Celem projektu jest standaryzacja interfejsu autoryzacji użytkowników do aplikacji sieciowych i usług korzystając z publicznych kluczy kryptograficznych. [https://en.wikipedia.org/wiki/WebAuthn Dowiedz się więcej]",
+	"webauthn-ui-reload-page-label": "Odśwież stronę",
+	"webauthn-ui-signcount-label": "(zalogowano tym kluczem {{PLURAL:$1|jeden raz|$1 razy}})"
+}

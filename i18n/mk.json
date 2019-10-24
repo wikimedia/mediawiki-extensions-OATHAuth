@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"webauthn-error-module-not-enabled": "Модулот „$1“ не е овозможен за {{GENDER:$1|корисникот „$1“}}",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Корисникот „$1“}} го има овозможено модулот WebAuthn, но зададен е неважечки клуч",
+	"webauthn-error-verification-failed": "Проверката не успеа"
+}

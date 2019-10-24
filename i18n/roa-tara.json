@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"webauthn-ui-add-key": "Aggiunge chiave",
+	"webuathn-ui-remove-key": "Live"
+}

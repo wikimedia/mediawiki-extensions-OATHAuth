@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"MarcoAurelio"
+		]
+	},
+	"webauthn-ui-add-key": "Añadir clave",
+	"webuathn-ui-remove-key": "Eliminar",
+	"webauthn-error-cannot-register": "{{GENDER:$1|El usuario|La usuaria}} \"$1\" no puede registrar una credencial nueva",
+	"webauthn-error-cannot-remove-key": "La clave no puede ser eliminada"
+}
