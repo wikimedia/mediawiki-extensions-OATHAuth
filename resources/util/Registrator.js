@@ -53,10 +53,11 @@
 		var publicKey = this.registerData;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			( c ) => c.charCodeAt( 0 )
+			function ( c ) { return c.charCodeAt( 0 ); }
 		);
 		publicKey.user.id = Uint8Array.from(
-			window.atob( publicKey.user.id ), ( c ) => c.charCodeAt( 0 )
+			window.atob( publicKey.user.id ),
+			function ( c ) { return c.charCodeAt( 0 ); }
 		);
 
 		if ( publicKey.excludeCredentials ) {
@@ -64,7 +65,7 @@
 				return $.extend( data, {
 					id: Uint8Array.from(
 						window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-						( c ) => c.charCodeAt( 0 )
+						function ( c ) { return c.charCodeAt( 0 ); }
 					)
 				} );
 			} );
@@ -94,6 +95,10 @@
 	};
 
 	mw.ext.webauthn.Registrator.prototype.arrayToBase64String = function ( a ) {
-		return btoa( String.fromCharCode( ...a ) );
+		var strigified = '';
+		for ( var i = 0; i < a.length; i++ ) {
+			strigified += String.fromCharCode( a[ i ] );
+		}
+		return btoa( strigified );
 	};
 }() );

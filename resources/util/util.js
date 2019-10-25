@@ -8,7 +8,7 @@ mw.ext.webauthn.util = {
 			.replace( /-/g, '+' )
 			.replace( /_/g, '/' );
 
-		const pad = input.length % 4;
+		var pad = input.length % 4;
 		if ( pad ) {
 			if ( pad === 1 ) {
 				throw new Error( 'InvalidLengthError: Input base64url string is the wrong length to determine padding' );

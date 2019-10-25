@@ -51,14 +51,14 @@
 		var publicKey = this.authInfo;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			( c ) => c.charCodeAt( 0 )
+			function ( c ) { return c.charCodeAt( 0 ); }
 		);
 
 		publicKey.allowCredentials = publicKey.allowCredentials.map( function ( data ) {
 			return $.extend( data, {
 				id: Uint8Array.from(
 					atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-					( c ) => c.charCodeAt( 0 )
+					function ( c ) { return c.charCodeAt( 0 ); }
 				)
 			} );
 		} );
@@ -90,6 +90,10 @@
 	};
 
 	mw.ext.webauthn.Authenticator.prototype.arrayToBase64String = function ( a ) {
-		return btoa( String.fromCharCode( ...a ) );
+		var strigified = '';
+		for ( var i = 0; i < a.length; i++ ) {
+			strigified += String.fromCharCode( a[ i ] );
+		}
+		return btoa( strigified );
 	};
 }() );
