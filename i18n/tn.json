@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mosime"
+		]
+	},
+	"webauthn-desc": "E neela tshegetso ka netefatso ya ditaelo tsa web.",
+	"webauthn-ui-add-key": "Tsenya konopo",
+	"webauthn-error-browser-unsupported": "Browser e ga e amogele netefatso ka web kgotsa eka tswa e sena yona.",
+	"webuathn-ui-remove-key": "Tlosa",
+	"webauthn-error-invalid-new-key": "Konopo e ntša e e busitsweng kego dira mmereko o o rileng gase ya mokgwa o o amogelesegileng.",
+	"webauthn-error-cannot-remove-key": "Karolo e gana go tlosega",
+	"webauthn-error-get-authinfo-fail": "Tshedimosetso ya netefatso ga eo.",
+	"webauthn-module-description": "Netefatso ya web"
+}

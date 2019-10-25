@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"webauthn-desc": "Fornece suporte de autenticação usando o protocolo WebAuthn",
+	"webauthn-module-label": "Web Authentication (WebAuthn)",
+	"webauthn-ui-login-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do navegador",
+	"webauthn-ui-add-key": "Adicionar chave",
+	"webauthn-error-auth-generic": "O processo de autenticação foi interrompido. Por favor, inicie o processo de autenticação novamente",
+	"webauthn-error-reg-generic": "Não foi possível verificar sua chave. Por favor, inicie o processo de registro novamente",
+	"webauthn-key-type-missmatch": "O usuário possui chaves de vários tipos registradas",
+	"oathauth-webauthn-registered-keys-section-name": "Chaves registradas",
+	"webuathn-ui-remove-key": "Remover",
+	"webauthn-error-verification-failed": "Verificação falhou",
+	"webauthn-error-invalid-new-key": "A nova chave retornada pelo módulo não é do tipo obrigatório",
+	"webauthn-error-registration-failed": "Novo registro de chave falhou",
+	"webauthn-ui-key-register-help": "Escolha o apelido para sua chave",
+	"webauthn-error-cannot-remove-key": "A chave não pode ser removida",
+	"webauthn-error-get-authinfo-fail": "Não foi possível recuperar as informações de autenticação",
+	"oathauth-webauthn-add-key-section-name": "Registrar nova chave WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Desativar WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Não foi possível recuperar as informações de registro.",
+	"webauthn-ui-disable-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do navegador para confirmar a desativação da autenticação da Web",
+	"apihelp-webauthn-summary": "Módulo API para comunicação entre servidor e cliente durante o processo de registro/autenticação",
+	"apihelp-webauthn-param-func": "Nome da função solicitada a ser executada",
+	"apihelp-webauthn-param-data": "Dados codificados em JSON para a função específica",
+	"webauthn-ui-reload-page-label": "Atualizar página"
+}

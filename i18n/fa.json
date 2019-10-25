@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alireza Ivaz"
+		]
+	},
+	"webauthn-ui-add-key": "افزودن کلید",
+	"oathauth-webauthn-registered-keys-section-name": "کلیدهای ثبت‌شده",
+	"webuathn-ui-remove-key": "حذف",
+	"webauthn-ui-reload-page-label": "بارگیری دوبارۀ برگه"
+}

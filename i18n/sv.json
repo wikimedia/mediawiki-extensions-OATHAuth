@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"webauthn-ui-add-key": "Lägg till nyckel",
+	"webuathn-ui-remove-key": "Ta bort"
+}

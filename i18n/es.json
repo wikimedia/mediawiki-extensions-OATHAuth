@@ -1,11 +1,35 @@
 {
 	"@metadata": {
 		"authors": [
-			"MarcoAurelio"
+			"MarcoAurelio",
+			"Canaan9801"
 		]
 	},
+	"webauthn-desc": "Provee apoyo de autenticación usando el protocolo WebAuthn",
+	"webauthn-ui-login-prompt": "Por favor toque su aparato de verificación o siga las instrucciones del navegador.",
 	"webauthn-ui-add-key": "Añadir clave",
+	"webauthn-error-browser-unsupported": "Este navegador no apoya WebAuthentication, o no es desponsible para este sitio. Por favor intente otro navegador. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Read more]",
+	"webauthn-error-browser-unsupported-console": "Este navegador no apoya WebAuthenticaction o no es desponsible para este navegador.",
+	"webauthn-error-auth-generic": "Fue interrumpido el proceso de autenticación. Por favor reinicie de nuevo el proceso de autenticación.",
+	"webauthn-error-reg-generic": "No se pudo verificar tu clave. Por favor reinicie el proceso de registración.",
+	"webauthn-key-type-missmatch": "El usuario tiene registradas claves de varios tipos",
+	"oathauth-webauthn-registered-keys-section-name": "Claves registradas",
 	"webuathn-ui-remove-key": "Eliminar",
+	"webauthn-error-invalid-key": "{{GENDER:$1| User \"$1\"}} ha habilitado el módulo de WebAuthn, pero un clave inválida es fijada.",
+	"webauthn-error-verification-failed": "Verificación fracasada.",
 	"webauthn-error-cannot-register": "{{GENDER:$1|El usuario|La usuaria}} \"$1\" no puede registrar una credencial nueva",
-	"webauthn-error-cannot-remove-key": "La clave no puede ser eliminada"
+	"webauthn-error-invalid-new-key": "El nuevo clave devuelto por el módulo no es del tipo requerido.",
+	"webauthn-error-registration-failed": "Ha fracasado la registración del nuevo clave",
+	"webauthn-ui-key-register-help": "Eligir el apodo para su llave",
+	"webauthn-error-cannot-remove-key": "La clave no puede ser eliminada",
+	"webauthn-error-get-authinfo-fail": "No se pudo recuperar la información de autenticación.",
+	"oathauth-webauthn-add-key-section-name": "Registrar una nueva clave de WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Desactivar WebAuthn",
+	"webauthn-error-get-reginfo-fail": "No se pudo recuperar la información de registración.",
+	"webauthn-ui-disable-prompt": "Por favor toque su dispositivo de verificación o siga las instrucciones del navegador para confirmar la desactivación de WebAuthentication",
+	"apihelp-webauthn-summary": "API Module para comunicar entre el servidor y el cliente durante el proceso de registración/autenticación",
+	"apihelp-webauthn-param-func": "Nombre de la funcción pedida para ser ejecutada",
+	"apihelp-webauthn-param-data": "Datos codificados de JSOn para la función específica.",
+	"webauthn-module-description": "WebAuthn (Web Authentication) es un estándar del web publicado por el World Wide Web Consortium (W3C). WebAuthn es un componente clave del FIDO2 Project bajo la dirección del FIDO Alliance. El objetivo del proyecto es estandarizar una interfaz para autenticar usuarios a aplicaciones y servicios basados en el web mediante la criptografía de claves públicas. [https://en.wikipedia.org/wiki/WebAuthn Read more]",
+	"webauthn-ui-reload-page-label": "Recargar página"
 }

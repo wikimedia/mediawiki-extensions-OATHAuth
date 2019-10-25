@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"webauthn-ui-add-key": "Tilføj nøgle",
+	"webuathn-ui-remove-key": "Fjern",
+	"webauthn-error-cannot-remove-key": "Nøglen kunne ikke fjernes"
+}

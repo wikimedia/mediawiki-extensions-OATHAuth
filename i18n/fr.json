@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"webauthn-module-label": "Authentification web (WebAuthn)",
+	"webauthn-ui-add-key": "Ajouter une clef",
+	"webauthn-error-browser-unsupported-console": "Ce navigateur ne prend pas en charge WebAuthentication ou celui-ci n'est pas disponible pour ce site web.",
+	"webauthn-error-auth-generic": "Le processus d'authentification a été interrompu. Veuillez redémarrer l'authentification.",
+	"oathauth-webauthn-registered-keys-section-name": "Clés enregistrées",
+	"webuathn-ui-remove-key": "Supprimer",
+	"webauthn-error-module-not-enabled": "Le module « $1 » n'est pas activé pour {{GENDER:$1|l'utilisateur «  $1  »}}",
+	"webauthn-error-verification-failed": "Échec de la vérification",
+	"webauthn-error-invalid-new-key": "Le type de la nouvelle clé rendue par le module ne correspond pas au type demandé",
+	"webauthn-error-registration-failed": "Echec dans l'enregistrement de la nouvelle clé",
+	"webauthn-error-cannot-remove-key": "La clé ne peut pas être supprimée",
+	"oathauth-webauthn-disable-section-name": "Désactiver WebAuthn",
+	"webauthn-error-max-keys-reached": "Au maximum {{PLURAL:$1|$1 clé peut être entregistrée|$1 clés peuvent être enregistrées}}",
+	"webauthn-ui-reload-page-label": "Recharger la page"
+}
