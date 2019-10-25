@@ -28,7 +28,7 @@
 	"oathauth-webauthn-disable-section-name": "Disable WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Registration information could not be retrieved.",
 	"webauthn-ui-disable-prompt": "Please touch your verification device or follow the instructions from the browser in order to confirm disabling WebAuthentication",
-	"webauthn-error-max-keys-reached": "Maximum of {{PLURAL:$1|$1 key|$ 1keys}} can be registered",
+	"webauthn-error-max-keys-reached": "Maximum of {{PLURAL:$1|$1 key|$1 keys}} can be registered",
 	"apihelp-webauthn-summary": "API Module to communicate between server and client during registration/authentication process",
 	"apihelp-webauthn-param-func": "Name of the requested function to be executed",
 	"apihelp-webauthn-param-data": "JSON encoded data for the particular function",
