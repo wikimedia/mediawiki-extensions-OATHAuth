@@ -1,4 +1,4 @@
-( function ( $, mw ) {
+( function () {
 	$( function () {
 		var form = new mw.ext.webauthn.LoginFormWidget();
 
