@@ -74,5 +74,6 @@
 	"oathauth-ui-available-modules": "Métodos disponibles",
 	"oathauth-ui-general-help": "La '''autenticación  de múltiples factores''' ('''AMF''') es un método de autenticación por el que a un usuario se le concede acceso al sistema solo después de que presente con éxito dos o más pruebas (o factores) a un mecanismo de autenticación: conocimiento (algo que solo el usuario conoce), posesión (algo que solo el usuario tiene), e inherencia (algo que solo el usuario es). [https://es.wikipedia.org/wiki/Autenticaci%C3%B3n_de_m%C3%BAltiples_factores Más información]",
 	"oathauth-totp-description": "El algoritmo de contraseña de un solo uso basada en tiempo (TOTP) es una extensión del algoritmo de contraseña de un solo uso basada en HMAC (HOTP), que genera una contraseña de un solo uso al tomar la unicidad del tiempo actual.",
-	"oathauth-disable-method-warning-button-label": "Confirma y continúa"
+	"oathauth-disable-method-warning-button-label": "Confirma y continúa",
+	"oathauth-invalidrequest": "Solicitud no válida"
 }
