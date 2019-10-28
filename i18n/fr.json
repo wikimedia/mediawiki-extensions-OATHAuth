@@ -1,21 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92"
+			"Wladek92",
+			"Gomoko"
 		]
 	},
+	"webauthn-desc": "Fournit un support d’authentification pour le protocole WebAuthn",
 	"webauthn-module-label": "Authentification web (WebAuthn)",
+	"webauthn-ui-login-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur",
 	"webauthn-ui-add-key": "Ajouter une clef",
+	"webauthn-error-browser-unsupported": "Ce navigateur ne supporte pas WebAuthentication ou celui-ci n’est pas disponible pour ce site web. Veuillez essayer avec un autre navigateur. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support En savoir plus]",
 	"webauthn-error-browser-unsupported-console": "Ce navigateur ne prend pas en charge WebAuthentication ou celui-ci n'est pas disponible pour ce site web.",
 	"webauthn-error-auth-generic": "Le processus d'authentification a été interrompu. Veuillez redémarrer l'authentification.",
+	"webauthn-error-reg-generic": "Impossible de vérifier votre clé. Veuillez redémarrer le processus d’inscription.",
+	"webauthn-key-type-missmatch": "L’utilisateur a enregistré des clés de plusieurs types",
 	"oathauth-webauthn-registered-keys-section-name": "Clés enregistrées",
 	"webuathn-ui-remove-key": "Supprimer",
-	"webauthn-error-module-not-enabled": "Le module « $1 » n'est pas activé pour {{GENDER:$1|l'utilisateur «  $1  »}}",
+	"webauthn-error-module-not-enabled": "Le module « $1 » n'est pas activé pour {{GENDER:$2|l'utilisateur|l'utilisatrice}} «  $2  »",
+	"webauthn-error-invalid-key": "{{GENDER:$1| L’utilisateur| L’utilisatrice}} « $1 » a activé le module WebAuthn, mais une clé non valide est définie",
 	"webauthn-error-verification-failed": "Échec de la vérification",
+	"webauthn-error-cannot-register": "{{GENDER:$1| L’utilisateur| L’utilisatrice}} « $1 » ne peut pas enregistrer un nouveau certificaat",
 	"webauthn-error-invalid-new-key": "Le type de la nouvelle clé rendue par le module ne correspond pas au type demandé",
 	"webauthn-error-registration-failed": "Echec dans l'enregistrement de la nouvelle clé",
+	"webauthn-ui-key-register-help": "Choisir un surnom pour votre clé",
 	"webauthn-error-cannot-remove-key": "La clé ne peut pas être supprimée",
+	"webauthn-error-get-authinfo-fail": "L’information d’authentification n’a pas pu être récupérée",
+	"oathauth-webauthn-add-key-section-name": "Enregistrer une nouvelle clé WebAuthn",
 	"oathauth-webauthn-disable-section-name": "Désactiver WebAuthn",
+	"webauthn-error-get-reginfo-fail": "L’information d’enregistrement n’a pas pu être récupérée.",
+	"webauthn-ui-disable-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur pour confirmer la désactivation de WebAuthentification",
 	"webauthn-error-max-keys-reached": "Au maximum {{PLURAL:$1|$1 clé peut être entregistrée|$1 clés peuvent être enregistrées}}",
-	"webauthn-ui-reload-page-label": "Recharger la page"
+	"apihelp-webauthn-summary": "Module API pour communiquer entre serveur et client pendant le processus d’inscription/authentification",
+	"apihelp-webauthn-param-func": "Nom de la requête demandée à exécuter",
+	"apihelp-webauthn-param-data": "Données encodées en JSON pour la fonction particulière",
+	"webauthn-module-description": "WebAuthn (Web Authentication) est un standard web publié par le World Wide Web Consortium (W3C). WebAuthn est un composant cœur du projet FIDO2 sous la direction de l’Alliance FIDO. Le but de ce projet est de standardiser une interface pour authentifier les utilisateurs sur des applications basées sur le web et des services utilisant la cryptographie à clé publique. [https://en.wikipedia.org/wiki/WebAuthn En savoir plus]",
+	"webauthn-ui-reload-page-label": "Recharger la page",
+	"webauthn-ui-signcount-label": "(signé en {{PLURAL:$1|$1 fois}} avec cette clé)"
 }

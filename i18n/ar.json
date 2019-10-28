@@ -15,7 +15,7 @@
 	"webauthn-key-type-missmatch": "المستخدم لديه مفاتيح من أنواع متعددة مسجلة",
 	"oathauth-webauthn-registered-keys-section-name": "مفاتيح مسجلة",
 	"webuathn-ui-remove-key": "إزالة",
-	"webauthn-error-module-not-enabled": "الوحدة النمطية \"$1\" غير ممكنة {{GENDER:$1|للمستخدم \"$1\"|للمستخدمة \"$1\"}}",
+	"webauthn-error-module-not-enabled": "الوحدة النمطية \"$1\" غير ممكنة {{GENDER:$1|للمستخدم \"$2\"|للمستخدمة \"$2\"}}",
 	"webauthn-error-invalid-key": "{{GENDER:$1|المستخدم \"$1\"|المستخدمة \"$1\"}} قد مكن وحدة WebAuthn، ولكن تم تعيين مفتاح غير صالح",
 	"webauthn-error-verification-failed": "فشل التحقق",
 	"webauthn-error-cannot-register": "لا يمكن  {{GENDER:$1|للمستخدم \"$1\"|للمستخدمة \"$1\"}} تسجيل بيانات اعتماد جديدة",

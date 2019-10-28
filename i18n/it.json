@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"webauthn-ui-add-key": "Aggiungi chiave",
+	"oathauth-webauthn-registered-keys-section-name": "Chiavi registrate",
+	"webauthn-error-verification-failed": "Verifica non riuscita",
+	"webauthn-ui-reload-page-label": "Ricarica la pagina"
+}
