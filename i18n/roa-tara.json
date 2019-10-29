@@ -4,6 +4,11 @@
 			"Joetaras"
 		]
 	},
+	"webauthn-desc": "Dèje 'nu supporte de autendicazione ausanne 'u protocolle WebAuthn",
+	"webauthn-module-label": "Autendicazione web (WebAuthn)",
+	"webauthn-ui-login-prompt": "Pe piacere tuècche 'a verifiche d'u dispositive tune o segue le 'struziune da 'u browser",
 	"webauthn-ui-add-key": "Aggiunge chiave",
+	"webauthn-error-browser-unsupported": "Stu browser non ge supporte WebAuthentication o non g'è disponibbele pe stu site web. Pe piacere pruève cu 'n'otre browser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Lìgge de cchiù]",
+	"webauthn-error-browser-unsupported-console": "Stu browser non ge supporte WebAuthentication o non g'è disponibbele pe stu site web",
 	"webuathn-ui-remove-key": "Live"
 }
