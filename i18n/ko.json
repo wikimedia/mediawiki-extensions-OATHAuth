@@ -14,5 +14,6 @@
 	"webauthn-error-cannot-remove-key": "키는 제거할 수 없습니다",
 	"oathauth-webauthn-add-key-section-name": "새 WebAuthn 키 등록",
 	"oathauth-webauthn-disable-section-name": "WebAuthn 비활성화",
+	"webauthn-error-get-reginfo-fail": "등록 정보를 검색하지 못했습니다.",
 	"webauthn-ui-reload-page-label": "문서 새로 고침"
 }
