@@ -65,9 +65,9 @@ class UpdateTables {
 					"{$this->base}/sql/mysql/patch-remove_module_specific_fields.sql"
 				);
 
-				/*$this->updaterAddExtensionUpdate(
+				$this->updater->addExtensionUpdate(
 					[ [ __CLASS__, 'schemaUpdateTOTPToMultipleKeys' ] ]
-				);*/
+				);
 
 				break;
 
