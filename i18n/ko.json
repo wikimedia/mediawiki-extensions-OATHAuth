@@ -7,7 +7,8 @@
 			"Jonghaya",
 			"Revi",
 			"Tursetic",
-			"IRTC1015"
+			"IRTC1015",
+			"렌즈"
 		]
 	},
 	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",
@@ -18,7 +19,7 @@
 	"oathauth-scratchtokens": "다음 목록은 일회용 스크래치 토큰 목록입니다. 이 토큰들은 한 번만 사용할 수 있으며 비상용입니다. 이것들을 적어놓고 안전한 위치에 보관하세요. 전화를 분실할 경우 이 토큰들이 당신의 계정을 찾을 유일한 수단입니다. '''이 토큰들은 다시 볼 수 없습니다'''.",
 	"oathauth-token": "토큰",
 	"oathauth-disable": "2요소 인증 비활성화하기",
-	"oathauth-validatedoath": "2요소 자격 정보를 검증했습니다. 2요소 인증을 실행합니다.",
+	"oathauth-validatedoath": "2요소 자격 정보를 검증했습니다. 이제부터 2요소 인증을 실행합니다.",
 	"oathauth-noscratchforvalidation": "2요소 인증을 확인하기 위해 스크래치 코드를 사용할 수 없습니다. 스크래치 코드는 백업용 및 부수적인 용도 전용입니다. 코드 생성기의 인증 코드를 사용해 주십시오.",
 	"oathauth-failedtovalidateoath": "2요소 자격정보를 검증하는 데 실패했습니다",
 	"oathauth-disabledoath": "2요소 인증이 비활성화되었습니다.",
