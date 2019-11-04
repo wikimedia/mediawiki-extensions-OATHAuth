@@ -71,6 +71,10 @@ class UpdateTables {
 					[ [ __CLASS__, 'schemaUpdateTOTPToMultipleKeys' ] ]
 				);
 
+				$this->updater->addExtensionUpdate(
+					[ [ __CLASS__, 'schemaUpdateTOTPScratchTokensToArray' ] ]
+				);
+
 				break;
 
 			case 'postgres':
@@ -122,6 +126,16 @@ class UpdateTables {
 	 */
 	public static function schemaUpdateTOTPToMultipleKeys( DatabaseUpdater $updater ) {
 		return self::switchTOTPToMultipleKeys( self::getDatabase() );
+	}
+
+	/**
+	 * Helper function for converting single TOTP keys to multi-key system
+	 * @param DatabaseUpdater $updater
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function schemaUpdateTOTPScratchTokensToArray( DatabaseUpdater $updater ) {
+		return self::switchTOTPScratchTokensToArray( self::getDatabase() );
 	}
 
 	/**
@@ -210,6 +224,49 @@ class UpdateTables {
 					'data' => FormatJson::encode( [
 						'keys' => [ $data ]
 					] )
+				],
+				[ 'id' => $row->id ],
+				__METHOD__
+			);
+		}
+
+		return true;
+	}
+
+	/**
+	 * Switch scratch tokens from string to an array
+	 *
+	 * @param IDatabase $db
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function switchTOTPScratchTokensToArray( IDatabase $db ) {
+		if ( !$db->fieldExists( 'oathauth_users', 'data' ) ) {
+			return true;
+		}
+
+		$res = $db->select(
+			'oathauth_users',
+			[ 'id', 'data' ],
+			[
+				'module' => 'totp'
+			],
+			__METHOD__
+		);
+
+		foreach ( $res as $row ) {
+			$data = FormatJson::decode( $row->data, true );
+
+			foreach ( $data['keys'] as &$k ) {
+				if ( is_string( $k['scratch_tokens'] ) ) {
+					$k['scratch_tokens'] = explode( ',', $k['scratch_tokens'] );
+				}
+			}
+
+			$db->update(
+				'oathauth_users',
+				[
+					'data' => FormatJson::encode( $data )
 				],
 				[ 'id' => $row->id ],
 				__METHOD__
