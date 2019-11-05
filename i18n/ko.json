@@ -6,14 +6,17 @@
 	},
 	"webauthn-ui-add-key": "키 추가",
 	"webauthn-error-browser-unsupported": "이 브라우저는 WebAuthentication을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
+	"webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오",
 	"webauthn-key-type-missmatch": "사용자는 여러 유형의 등록된 키가 있습니다",
 	"oathauth-webauthn-registered-keys-section-name": "등록된 키",
 	"webuathn-ui-remove-key": "제거",
+	"webauthn-error-module-not-enabled": "\"$1\" 모듈은 {{GENDER:$2|사용자 \"$2\"}}에 대해 활성화되어 있지 않습니다",
 	"webauthn-error-verification-failed": "인증 실패",
 	"webauthn-error-registration-failed": "새로운 키 등록에 실패했습니다",
 	"webauthn-error-cannot-remove-key": "키는 제거할 수 없습니다",
 	"oathauth-webauthn-add-key-section-name": "새 WebAuthn 키 등록",
 	"oathauth-webauthn-disable-section-name": "WebAuthn 비활성화",
 	"webauthn-error-get-reginfo-fail": "등록 정보를 검색하지 못했습니다.",
+	"webauthn-error-max-keys-reached": "최대 {{PLURAL:$1|$1개의 키}}를 등록할 수 있습니다",
 	"webauthn-ui-reload-page-label": "문서 새로 고침"
 }
