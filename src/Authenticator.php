@@ -224,7 +224,7 @@ class Authenticator {
 	 */
 	public function continueAuthentication( array $verificationData, $authInfo = null ) {
 		$canAuthenticate = $this->canAuthenticate();
-		if ( !( $canAuthenticate->isGood() ) ) {
+		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->error(
 				"User {$this->oathUser->getUser()->getName()} lost authenticate ability mid-request"
 			);
@@ -283,7 +283,7 @@ class Authenticator {
 	 */
 	public function continueRegistration( $credential, $registerInfo = null ) {
 		$canRegister = $this->canRegister();
-		if ( !( $canRegister->isGood() ) ) {
+		if ( !$canRegister->isGood() ) {
 			$username = $this->oathUser->getUser()->getName();
 			$this->logger->error(
 				"User $username lost registration ability mid-request"
