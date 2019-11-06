@@ -1,6 +1,6 @@
 {
 	"require": {
-		"web-auth/webauthn-lib": "v2.1.5"
+		"web-auth/webauthn-lib": "v2.1.7"
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "1.0.0",
