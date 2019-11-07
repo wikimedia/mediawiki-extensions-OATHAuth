@@ -8,7 +8,8 @@
 			"Southparkfan",
 			"Kippenvlees1",
 			"Mainframe98",
-			"LongJohn nl"
+			"LongJohn nl",
+			"Servien"
 		]
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
@@ -56,7 +57,7 @@
 	"oauthauth-ui-no-module": "Geen ingesteld",
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
-	"oathmanage": "Tweetrapsauthenticatie beheren",
+	"oathmanage": "Tweytrapsautentikaty beheyren",
 	"oathauth-ui-enabled-module": "Authenticatie methode inschakelen",
 	"oathauth-enable-generic": "Inschakelen",
 	"oathauth-disable-generic": "Uitschakelen",
