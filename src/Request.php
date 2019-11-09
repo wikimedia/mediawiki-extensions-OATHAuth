@@ -12,6 +12,10 @@ use WebRequest;
  * functionality we actually need
  */
 class Request extends ServerRequest {
+	/**
+	 * @param WebRequest $request
+	 * @return Request
+	 */
 	public static function newFromWebRequest( WebRequest $request ) {
 		return new static(
 			$request->getMethod(),
