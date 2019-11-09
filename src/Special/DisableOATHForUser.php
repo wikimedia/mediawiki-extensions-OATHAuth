@@ -30,6 +30,9 @@ class DisableOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getLoginSecurityLevel() {
 		return $this->getName();
 	}
