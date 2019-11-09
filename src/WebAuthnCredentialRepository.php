@@ -110,12 +110,17 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		if ( $this->loaded ) {
 			return;
 		}
+
+		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuth $oath */
-		$oath = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
+		$oath = $services->getService( 'OATHAuth' );
 		$this->module = $oath->getModuleByKey( 'webauthn' );
-		$this->db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(
-			DB_MASTER
-		);
+
+		$database = $services->getMainConfig()->get( 'OATHAuthDatabase' );
+
+		$lb = $services->getDBLoadBalancerFactory()->getMainLB( $database );
+		$this->db = $lb->getConnectionRef( DB_MASTER, [], $database );
+
 		$res = $this->db->select(
 			'oathauth_users',
 			[ 'id', 'data' ],
