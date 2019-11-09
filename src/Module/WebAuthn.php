@@ -22,7 +22,7 @@ class WebAuthn implements IModule {
 	/**
 	 * Custom action for the manage form
 	 */
-	const ACTION_ADD_KEY = 'addkey';
+	public const ACTION_ADD_KEY = 'addkey';
 
 	public static function factory() {
 		return new static();

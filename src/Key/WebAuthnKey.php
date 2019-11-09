@@ -65,8 +65,8 @@ use PHP_CodeSniffer\Exceptions\RuntimeException;
  * by the client with data saved on server
  */
 class WebAuthnKey implements IAuthKey {
-	const MODE_CREATE = 'webauthn.create';
-	const MODE_AUTHENTICATE = 'webauthn.authenticate';
+	private const MODE_CREATE = 'webauthn.create';
+	private const MODE_AUTHENTICATE = 'webauthn.authenticate';
 
 	/**
 	 * User handle represents unique ID of the user.

@@ -53,10 +53,10 @@ use stdClass;
  * the authentication process
  */
 class Authenticator {
-	const SESSION_KEY = 'webauthn_session_data';
+	private const SESSION_KEY = 'webauthn_session_data';
 
 	// 60 sec
-	const CLIENT_ACTION_TIMEOUT = 60000;
+	private const CLIENT_ACTION_TIMEOUT = 60000;
 
 	/**
 	 * @var string

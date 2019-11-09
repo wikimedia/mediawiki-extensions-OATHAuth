@@ -32,10 +32,10 @@ use MWException;
  * This class provides an endpoint for all WebAuthn actions.
  */
 class WebAuthn extends ApiBase {
-	const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
-	const ACTION_REGISTER = 'register';
-	const ACTION_GET_AUTH_INFO = 'getAuthInfo';
-	const ACTION_AUTHENTICATE = 'authenticate';
+	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
+	private const ACTION_REGISTER = 'register';
+	private const ACTION_GET_AUTH_INFO = 'getAuthInfo';
+	private const ACTION_AUTHENTICATE = 'authenticate';
 
 	/**
 	 * @throws ApiUsageException
