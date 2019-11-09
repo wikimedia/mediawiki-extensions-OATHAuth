@@ -63,7 +63,9 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 * @param string $publicKeyCredentialId
 	 * @return PublicKeyCredentialSource|null
 	 */
-	public function findOneByCredentialId( string $publicKeyCredentialId ): ?PublicKeyCredentialSource {
+	public function findOneByCredentialId(
+		string $publicKeyCredentialId
+	): ?PublicKeyCredentialSource {
 		$this->load();
 		if ( isset( $this->credentials[$publicKeyCredentialId] ) ) {
 			return PublicKeyCredentialSource::createFromArray( $this->credentials[$publicKeyCredentialId] );
@@ -75,9 +77,11 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 * @param PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
 	 * @return PublicKeyCredentialSource[]
 	 */
-	public function findAllForUserEntity( PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity ): array {
+	public function findAllForUserEntity(
+		PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
+	): array {
 		$res = [];
-		foreach( $this->credentials as $credId => $data ) {
+		foreach ( $this->credentials as $credId => $data ) {
 			if ( $data['userHandle'] === $publicKeyCredentialUserEntity->getId() ) {
 				$res[] = PublicKeyCredentialSource::createFromArray( $data );
 			}
@@ -90,7 +94,9 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 * @throws MWException
 	 * @throws ConfigException
 	 */
-	public function saveCredentialSource( PublicKeyCredentialSource $publicKeyCredentialSource ): void {
+	public function saveCredentialSource(
+		PublicKeyCredentialSource $publicKeyCredentialSource
+	): void {
 		$this->updateCounterFor(
 			$publicKeyCredentialSource->getPublicKeyCredentialId(),
 			$publicKeyCredentialSource->getCounter()
