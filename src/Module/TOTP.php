@@ -14,6 +14,7 @@ use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
+use Message;
 
 class TOTP implements IModule {
 	public static function factory() {
@@ -28,6 +29,9 @@ class TOTP implements IModule {
 		return "totp";
 	}
 
+	/**
+	 * @return Message
+	 */
 	public function getDisplayName() {
 		return wfMessage( 'oathauth-module-totp-label' );
 	}

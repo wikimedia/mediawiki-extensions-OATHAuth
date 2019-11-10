@@ -92,6 +92,11 @@ class ApiOATHValidate extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
+	/**
+	 * @param array $params
+	 *
+	 * @return string
+	 */
 	public function getCacheMode( $params ) {
 		return 'private';
 	}
@@ -104,6 +109,9 @@ class ApiOATHValidate extends ApiBase {
 		return 'csrf';
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getAllowedParams() {
 		return [
 			'user' => [
@@ -119,6 +127,9 @@ class ApiOATHValidate extends ApiBase {
 		];
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function getExamplesMessages() {
 		return [
 			'action=oathvalidate&totp=123456&token=123ABC'
