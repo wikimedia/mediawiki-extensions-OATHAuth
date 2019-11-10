@@ -43,13 +43,13 @@ class TOTPKey implements IAuthKey {
 	 * Represents that a token corresponds to the main secret
 	 * @see verify
 	 */
-	const MAIN_TOKEN = 1;
+	private const MAIN_TOKEN = 1;
 
 	/**
 	 * Represents that a token corresponds to a scratch token
 	 * @see verify
 	 */
-	const SCRATCH_TOKEN = -1;
+	private const SCRATCH_TOKEN = -1;
 
 	/** @var array Two factor binary secret */
 	private $secret;

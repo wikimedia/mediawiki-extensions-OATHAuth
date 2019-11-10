@@ -40,8 +40,8 @@ use PermissionsError;
 use UserNotLoggedIn;
 
 class OATHManage extends SpecialPage {
-	const ACTION_ENABLE = 'enable';
-	const ACTION_DISABLE = 'disable';
+	public const ACTION_ENABLE = 'enable';
+	public const ACTION_DISABLE = 'disable';
 
 	/**
 	 * @var OATHAuth
