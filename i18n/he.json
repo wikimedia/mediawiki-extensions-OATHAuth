@@ -56,6 +56,7 @@
 	"oath-log-header": "האירועים האלה עוקבים אחרי שינויים במצב האימות הדו־שלבי של משתמשים.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|כיבה|כיבתה}} אימות דו־שלבי עבור $3",
 	"oauthauth-ui-no-module": "לא מופעל אף אחד",
+	"oathauth-module-invalid": "מודול ה־OATHAuth שהמשתמש רשם אינו תקין.",
 	"oathauth-module-totp-label": "TOTP (אסימון חד־פעמי)",
 	"oathauth-ui-manage": "ניהול",
 	"oathmanage": "ניהול אימות דו־שלבי",

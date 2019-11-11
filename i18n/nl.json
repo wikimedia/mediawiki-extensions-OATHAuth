@@ -57,7 +57,7 @@
 	"oauthauth-ui-no-module": "Geen ingesteld",
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
-	"oathmanage": "Tweytrapsautentikaty beheyren",
+	"oathmanage": "Tweetrapsauthenticatie beheren",
 	"oathauth-ui-enabled-module": "Authenticatie methode inschakelen",
 	"oathauth-enable-generic": "Inschakelen",
 	"oathauth-disable-generic": "Uitschakelen",
