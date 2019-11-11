@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"webauthn-desc": "Gir autentiseringsstøtte med WebAuthn-protokollen",
+	"webauthn-module-label": "Web Authentication (WebAuthn)",
+	"webauthn-ui-login-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren",
+	"webauthn-ui-add-key": "Legg til nøkkel",
+	"webauthn-error-browser-unsupported": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet. Prøv igjen med en annen nettleser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Les mer]",
+	"webauthn-error-browser-unsupported-console": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet",
+	"webauthn-error-auth-generic": "Autentiseringsprosessen ble avbrutt. Begynn på nytt",
+	"webauthn-error-reg-generic": "Kunne ikke bekrefte nøkkelen din. Begynn prosessen på nytt",
+	"webauthn-key-type-missmatch": "Brukeren har flere typer nøkler registrert",
+	"oathauth-webauthn-registered-keys-section-name": "Registrerte nøkler",
+	"webuathn-ui-remove-key": "Fjern",
+	"webauthn-error-module-not-enabled": "Modulen «$1» er ikke slått på for {{GENDER:$2|brukeren}} «$2»",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Brukeren}} «$1» har WebAuthn-modulen slått på, men en ugyldig nøkkel er angitt",
+	"webauthn-error-verification-failed": "Bekreftelse mislyktes",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Brukeren}} «$1» kan ikke registrere nye referanser",
+	"webauthn-error-invalid-new-key": "Den nye nøkkelen returnert av modulen er ikke av den påkrevde typen",
+	"webauthn-error-registration-failed": "Registrering av ny nøkkel mislyktes",
+	"webauthn-ui-key-register-help": "Velg et kallenavn for nøkkelen din",
+	"webauthn-error-cannot-remove-key": "Nøkkelen kan ikke fjernes",
+	"webauthn-error-get-authinfo-fail": "Autentiseringsinformasjon kunne ikke hentes.",
+	"oathauth-webauthn-add-key-section-name": "Registrer ny WebAuthn-nøkkel",
+	"oathauth-webauthn-disable-section-name": "Slå av WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Regisetreringsinformasjon kunne ikke hentes.",
+	"webauthn-ui-disable-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren for å bekrefte deaktivering av WebAuthentication",
+	"webauthn-error-max-keys-reached": "Maksimalt {{PLURAL:$1|én nøkkel|$1 nøkler}} kan registreres",
+	"apihelp-webauthn-summary": "API-modul for å kommunisere mellom tjeneren og klienten under registrerings-/autentiseringsprosessen",
+	"apihelp-webauthn-param-func": "Navnet på funksjonen som skal kjøres",
+	"apihelp-webauthn-param-data": "JSON-kodet data for den gitte funksjonen",
+	"webauthn-module-description": "WebAuthn (Web Authentication) er en nettstandard publisert av World Wide Web Consortium (W3C). WebAuthn er en kjernekomponent i FIDO2-prosjektet under ledelse av FIDO Alliance. Målet til prosjektet er å standardisere et grensesnitt for å autentisere brukere til nettbaserte applikasjoner og tjenester med offentlig nøkkel-kryptografi. [https://en.wikipedia.org/wiki/WebAuthn Les mer]",
+	"webauthn-ui-reload-page-label": "Last siden på nytt",
+	"webauthn-ui-signcount-label": "(logget inn {{PLURAL:$1|én gang|$1 ganger}} med denne nøkkelen)"
+}
