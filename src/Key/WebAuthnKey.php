@@ -28,9 +28,11 @@ use Cose\Algorithm\Signature\RSA\RS256;
 use Cose\Algorithm\Signature\RSA\RS512;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Request;
 use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
@@ -55,6 +57,7 @@ use Webauthn\PublicKeyCredentialLoader;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\TokenBinding\TokenBindingNotSupportedHandler;
 use Webauthn\TrustPath\EmptyTrustPath;
+use Webauthn\TrustPath\TrustPath;
 
 /**
  * This holds the information on user's private key
@@ -117,9 +120,9 @@ class WebAuthnKey implements IAuthKey {
 	protected $credentialAttestationType = '';
 
 	/**
-	 * @var mixed
+	 * @var TrustPath
 	 */
-	protected $credentialTrustPath = [];
+	protected $credentialTrustPath;
 
 	/**
 	 * @var LoggerInterface
@@ -262,6 +265,20 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getAttestationType() {
+		return $this->credentialAttestationType;
+	}
+
+	/**
+	 * @return TrustPath
+	 */
+	public function getTrustPath() {
+		return $this->credentialTrustPath;
+	}
+
+	/**
 	 * @param array $data
 	 * @param OATHUser $user
 	 * @return bool
@@ -277,7 +294,8 @@ class WebAuthnKey implements IAuthKey {
 		}
 		return $this->authenticationCeremony(
 			$data['credential'],
-			$data['authInfo']
+			$data['authInfo'],
+			$user
 		);
 	}
 
@@ -321,20 +339,31 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
+	 * @throws MWException
+	 */
+	private function checkFriendlyName() {
+		/** @var OATHUserRepository $repo */
+		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$oauthUser = $repo->findByUser( $this->context->getUser() );
+		$credRepo = new WebAuthnCredentialRepository( $oauthUser );
+		$names = $credRepo->getFriendlyNames( true );
+		$this->checkFriendlyNameInternal( $names );
+	}
+
+	/**
 	 * This will not actually work very well, as third same key will
 	 * be name Key #2 #3, should be refactored once we have defined what this
 	 * behaviour should be, for now its just a safety feature
 	 *
+	 * @param array $names Existing key's friendly names
 	 * @param int $inc
 	 * @return void
 	 */
-	private function checkFriendlyName( $inc = 2 ) {
-		$credRepo = new WebAuthnCredentialRepository();
-		$names = $credRepo->getFriendlyNamesForMWUser( $this->context->getUser(), true );
+	private function checkFriendlyNameInternal( $names, $inc = 2 ) {
 		if ( in_array( strtolower( $this->friendlyName ), $names ) ) {
 			$this->friendlyName .= " #$inc";
 			$inc++;
-			$this->checkFriendlyName( $inc );
+			$this->checkFriendlyNameInternal( $names, $inc );
 		}
 	}
 
@@ -358,7 +387,7 @@ class WebAuthnKey implements IAuthKey {
 		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
 			$attestationObjectLoader
 		);
-		$credentialRepository = new WebAuthnCredentialRepository();
+		$credentialRepository = new WebAuthnCredentialRepository( $user );
 		$extensionOutputCheckerHandler = new ExtensionOutputCheckerHandler();
 		$authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
 			$attestationStatementSupportManager,
@@ -409,9 +438,10 @@ class WebAuthnKey implements IAuthKey {
 	/**
 	 * @param string $data
 	 * @param PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions
+	 * @param OATHUser $user
 	 * @return bool
 	 */
-	private function authenticationCeremony( $data, $publicKeyCredentialRequestOptions ) {
+	private function authenticationCeremony( $data, $publicKeyCredentialRequestOptions, $user ) {
 		$attestationStatementSupportManager = new AttestationStatementSupportManager();
 		$attestationStatementSupportManager->add( new NoneAttestationStatementSupport() );
 		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport() );
@@ -431,7 +461,7 @@ class WebAuthnKey implements IAuthKey {
 		$coseAlgorithmManager->add( new RS256() );
 		$coseAlgorithmManager->add( new RS512() );
 
-		$credentialRepository = new WebAuthnCredentialRepository();
+		$credentialRepository = new WebAuthnCredentialRepository( $user );
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
 		$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
 			$credentialRepository,

@@ -4,24 +4,20 @@ namespace MediaWiki\Extension\WebAuthn;
 
 use Base64Url\Base64Url;
 use ConfigException;
-use Database;
-use FormatJson;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
+use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\MediaWikiServices;
 use MWException;
-use User;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
-	/**
-	 * @var array
-	 */
-	protected $credentials = [];
+
+	/** @var WebAuthnKey[] */
+	protected $keys = [];
 
 	/**
 	 * @var bool
@@ -29,28 +25,26 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	protected $loaded = false;
 
 	/**
-	 * @var Database
+	 * @var OATHUser
 	 */
-	protected $db;
+	protected $oauthUser;
 
 	/**
-	 * @var WebAuthn
+	 * @param OATHUser $user
 	 */
-	protected $module;
+	public function __construct( OATHUser $user ) {
+		$this->oauthUser = $user;
+	}
 
 	/**
-	 * @param User $mwUser
 	 * @param bool $lc Whether to return lowercased names
 	 * @return array
 	 */
-	public function getFriendlyNamesForMWUser( User $mwUser, $lc = false ) {
+	public function getFriendlyNames( $lc = false ) {
 		$this->load();
 		$friendlyNames = [];
-		foreach ( $this->credentials as $id => $data ) {
-			if ( $data['userMWId'] !== $mwUser->getId() ) {
-				continue;
-			}
-			$friendlyName = $data['friendlyName'];
+		foreach ( $this->keys as $key ) {
+			$friendlyName = $key->getFriendlyName();
 			if ( $lc ) {
 				$friendlyName = strtolower( $friendlyName );
 			}
@@ -67,9 +61,12 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		string $publicKeyCredentialId
 	): ?PublicKeyCredentialSource {
 		$this->load();
-		if ( isset( $this->credentials[$publicKeyCredentialId] ) ) {
-			return PublicKeyCredentialSource::createFromArray( $this->credentials[$publicKeyCredentialId] );
+		foreach ( $this->keys as $key ) {
+			if ( $key->getAttestedCredentialData()->getCredentialId() === $publicKeyCredentialId ) {
+				return $this->credentialSourceFromKey( $key );
+			}
 		}
+
 		return null;
 	}
 
@@ -81,11 +78,12 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
 	): array {
 		$res = [];
-		foreach ( $this->credentials as $credId => $data ) {
-			if ( $data['userHandle'] === $publicKeyCredentialUserEntity->getId() ) {
-				$res[] = PublicKeyCredentialSource::createFromArray( $data );
+		foreach ( $this->keys as $key ) {
+			if ( $key->getUserHandle() === $publicKeyCredentialUserEntity->getId() ) {
+				$res[] = $this->credentialSourceFromKey( $key );
 			}
 		}
+
 		return $res;
 	}
 
@@ -104,50 +102,53 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	/**
-	 * Loads credentials from DB
+	 * @param WebAuthnKey $key
+	 * @return PublicKeyCredentialSource
+	 */
+	private function credentialSourceFromKey( WebAuthnKey $key ) {
+		return PublicKeyCredentialSource::createFromArray( [
+			'userHandle' => Base64Url::encode( $key->getUserHandle() ),
+			'aaguid' => $key->getAttestedCredentialData()->getAaguid()->toString(),
+			'friendlyName' => $key->getFriendlyName(),
+			'publicKeyCredentialId' => Base64Url::encode(
+				$key->getAttestedCredentialData()->getCredentialId()
+			),
+			'credentialPublicKey' => Base64Url::encode(
+				$key->getAttestedCredentialData()->getCredentialPublicKey()
+			),
+			'counter' => $key->getSignCounter(),
+			'userMWId' => $this->oauthUser->getUser()->getId(),
+			'type' => $key->getType(),
+			'transports' => $key->getTransports(),
+			'attestationType' => $key->getAttestationType(),
+			'trustPath' => $key->getTrustPath()->jsonSerialize()
+		] );
+	}
+
+	/**
+	 * Loads keys for user
 	 */
 	private function load() {
-		if ( $this->loaded ) {
+		if ( !$this->oauthUser->getModule() instanceof WebAuthn ) {
+			// User does not have WebAuthn enabled - for sanity, as it should be checked
+			// long before it comes to this
 			return;
 		}
 
-		$services = MediaWikiServices::getInstance();
-		/** @var OATHAuth $oath */
-		$oath = $services->getService( 'OATHAuth' );
-		$this->module = $oath->getModuleByKey( 'webauthn' );
-
-		$database = $services->getMainConfig()->get( 'OATHAuthDatabase' );
-
-		$lb = $services->getDBLoadBalancerFactory()->getMainLB( $database );
-		$this->db = $lb->getConnectionRef( DB_MASTER, [], $database );
-
-		$res = $this->db->select(
-			'oathauth_users',
-			[ 'id', 'data' ],
-			[ 'module' => 'webauthn' ]
-		);
-
-		foreach ( $res as $row ) {
-			$data = FormatJson::decode( $row->data );
-			foreach ( $data->keys as $key ) {
-				$data = [
-					'userHandle' => Base64Url::encode( base64_decode( $key->userHandle ) ),
-					'aaguid' => $key->aaguid,
-					'friendlyName' => $key->friendlyName,
-					'publicKeyCredentialId' => Base64Url::encode( base64_decode( $key->publicKeyCredentialId ) ),
-					'credentialPublicKey' => Base64Url::encode( base64_decode( $key->credentialPublicKey ) ),
-					'counter' => (int)$key->counter,
-					'userMWId' => (int)$row->id,
-					'type' => $key->type,
-					'transports' => $key->transports,
-					'attestationType' => $key->attestationType,
-					'trustPath' => (array)$key->trustPath
-				];
-
-				$decodedCredentialId = base64_decode( $key->publicKeyCredentialId );
-				$this->credentials[$decodedCredentialId] = $data;
-			}
+		if ( $this->loaded ) {
+			return;
 		}
+		$keys = $this->oauthUser->getKeys();
+
+		/** @var WebAuthnKey $key */
+		foreach ( $keys as $key ) {
+			if ( !$key instanceof WebAuthnKey ) {
+				// sanity
+				continue;
+			}
+			$this->keys[] = $key;
+		}
+
 		$this->loaded = true;
 	}
 
@@ -157,25 +158,18 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 * @param string $credentialId
 	 * @param int $newCounter
 	 * @throws MWException
-	 * @throws \ConfigException
 	 */
 	private function updateCounterFor( string $credentialId, int $newCounter ): void {
 		$this->load();
-		// Do this over the module - do not edit raw DB data
-		$mwUserId = $this->credentials[$credentialId]['userMWId'];
-		/** @var OATHUserRepository $userRepo */
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		$oathUser = $userRepo->findByUser( User::newFromId( $mwUserId ) );
-		$key = $this->module->findKeyByCredentialId( $credentialId, $oathUser );
-		if ( $key === null || !( $key instanceof WebAuthnKey ) ) {
-			return;
+
+		foreach ( $this->keys as $key ) {
+			if ( $key->getAttestedCredentialData()->getCredentialId() === $credentialId ) {
+				$key->setSignCounter( $newCounter );
+			}
 		}
-		$key->setSignCounter( $newCounter );
-		$dbData = $this->module->getDataFromUser( $oathUser );
-		$this->db->update(
-			'oathauth_users',
-			[ 'data' => FormatJson::encode( $dbData ) ],
-			[ 'id' => $mwUserId, 'module' => 'webauthn' ]
-		);
+		$this->oauthUser->setKeys( $this->keys );
+		/** @var OATHUserRepository $repo */
+		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$repo->persist( $this->oauthUser );
 	}
 }
