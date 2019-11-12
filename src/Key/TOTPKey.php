@@ -22,6 +22,7 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 use Base32\Base32;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use Psr\Log\LoggerInterface;
 use MediaWiki\Logger\LoggerFactory;
 use DomainException;
@@ -195,6 +196,8 @@ class TOTPKey implements IAuthKey {
 
 						$auth = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
 						$module = $auth->getModuleByKey( 'totp' );
+
+						/** @var OATHUserRepository $userRepo */
 						$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 						$user->addKey( $this );
 						$user->setModule( $module );
