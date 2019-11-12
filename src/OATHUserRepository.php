@@ -29,6 +29,7 @@ use BagOStuff;
 use ConfigException;
 use User;
 use stdClass;
+use RequestContext;
 
 class OATHUserRepository {
 	/** @var ILoadBalancer */
@@ -119,11 +120,14 @@ class OATHUserRepository {
 
 	/**
 	 * @param OATHUser $user
-	 * @param string $clientInfo
+	 * @param string|null $clientInfo
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	public function persist( OATHUser $user, $clientInfo ) {
+	public function persist( OATHUser $user, $clientInfo = null ) {
+		if ( !$clientInfo ) {
+			$clientInfo = RequestContext::getMain()->getRequest()->getIP();
+		}
 		$prevUser = $this->findByUser( $user->getUser() );
 		$data = $user->getModule()->getDataFromUser( $user );
 
