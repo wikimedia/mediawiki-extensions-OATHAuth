@@ -92,15 +92,6 @@ class ApiOATHValidate extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
-	/**
-	 * @param array $params
-	 *
-	 * @return string
-	 */
-	public function getCacheMode( $params ) {
-		return 'private';
-	}
-
 	public function isInternal() {
 		return true;
 	}
