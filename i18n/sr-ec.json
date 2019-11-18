@@ -7,6 +7,7 @@
 			"Zoranzoki21"
 		]
 	},
+	"disableoathforuser": "Онемогућавање двофакторске потврде идентитета корисника",
 	"oath": "OATHAuth",
 	"specialpages-group-oath": "Двофакторска потврда идентитета",
 	"oathauth-account": "Име налога:",
@@ -27,8 +28,12 @@
 	"oathauth-entertoken": "Унесите код за проверу са вашег уређаја за потврду идентитета:",
 	"oathauth-disable-for-user": "Онемогућавање двофакторске потврде идентитета корисника/це",
 	"right-oathauth-disable-for-user": "онемогућавање двофакторске потврде идентитета корисника/це",
+	"action-oathauth-disable-for-user": "онемогућите двофакторску потврду идентитета за корисника",
+	"right-oathauth-view-log": "Приступ дневнику измена двофакторске потврде идентитета",
+	"action-oathauth-view-log": "приступите дневнику измена двофакторске потврде идентитета",
 	"oathauth-disable-intro": "Са великом моћи долази и велика одговорност",
 	"oathauth-enteruser": "Корисничко име:",
+	"oathauth-enterreason": "Разлог за онемогућавање:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Корисник/ца нема омогућену двофакторску потврду идентитета, тако да нема ничега за онемогућавање.",
 	"right-oathauth-enable": "омогућивање двофакторске потврде идентитета",
 	"action-oathauth-enable": "омогућите двофакторску потврду идентитета",
@@ -38,6 +43,21 @@
 	"oathauth-login-failed": "Верификација није успела.",
 	"oathauth-describe-provider": "Двофакторска потврда идентитета (OATH).",
 	"action-oathauth-api-all": "проверава OATH статус",
+	"oathauth-user-not-found": "Није пронађен кориснички налог са тим именом",
+	"oath-log-name": "Дневник двофакторске потврде идентитета",
 	"oauthauth-ui-no-module": "Ниједан није омогућен",
-	"oathmanage": "Управљање двофакторском потврдом идентитета"
+	"oathauth-module-invalid": "OATHAuth модул који је корисник регистровао је невалидан.",
+	"oathauth-module-totp-label": "TOTP (једнократни токен)",
+	"oathauth-ui-manage": "Управљај",
+	"oathmanage": "Управљање двофакторском потврдом идентитета",
+	"oathauth-ui-not-enabled-modules": "Пребацивање на алтернативну методу",
+	"oathauth-ui-enabled-module": "Омогућене методе аутенификације",
+	"oathauth-enable-generic": "Омогући",
+	"oathauth-disable-generic": "Онемогући",
+	"oathauth-disable-page-title": "Онемогућавање $1",
+	"oathauth-enable-page-title": "Омогућавање $1",
+	"oathauth-ui-available-modules": "Доступне методе",
+	"oathauth-disable-method-warning-header": "Потврда онемогућавање метода аутенификације",
+	"oathauth-disable-method-warning-button-label": "Прихвати и настави",
+	"oathauth-invalidrequest": "Невалидан захтев"
 }
