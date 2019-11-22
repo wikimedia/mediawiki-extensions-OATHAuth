@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dejan Savuljesku <savuljesku@hallowelt.com>"
+		]
+	},
+	"apihelp-webauthn-summary": "API Module to communicate between server and client during registration/authentication process",
+	"apihelp-webauthn-param-func": "Name of the requested function to be executed",
+	"apihelp-webauthn-param-data": "JSON encoded data for the particular function"
+}

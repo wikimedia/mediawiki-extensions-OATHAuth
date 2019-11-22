@@ -29,9 +29,6 @@
 	"webauthn-error-get-reginfo-fail": "Error message when registration info failed to be retrieved",
 	"webauthn-ui-disable-prompt": "Help message apparing when user is about to disable WebAuthn",
 	"webauthn-error-max-keys-reached": "Error message when user cannot register more keys, due to the limit being reached.\n$1 - maximum number of keys",
-	"apihelp-webauthn-summary": "{{doc-apihelp-summary|webauthn}}",
-	"apihelp-webauthn-param-func": "Description text for an API module parameter",
-	"apihelp-webauthn-param-data": "Description text for an API module parameter",
 	"webauthn-module-description": "Description of WebAuthn module used on Special:OATHManage",
 	"webauthn-ui-reload-page-label": "Button label for generic page reload action",
 	"webauthn-ui-signcount-label": "Label showing the number of times user used a particular key to log in. Used on Special:OATHManage.\n $1 - number of times key was used"
