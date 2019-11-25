@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Schmackes"
+		]
+	},
+	"webauthn-error-invalid-key": "{{GENDER:$1|Benutzer \"$1\"}} hat Modul WebAuthn aktiviert, aber ein ungültiger Schlüssel ist gesetzt",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Benutzer \"$1\"}} kann einen neuen Berechtigungsnachweis nicht registrieren"
+}
