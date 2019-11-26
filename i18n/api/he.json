@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-webauthn-summary": "מודול API לתקשורת בין השרת ללקוח בעת תהליך רישום/אימות",
+	"apihelp-webauthn-param-func": "שם הפונקציה המבוקשת לביצוע",
+	"apihelp-webauthn-param-data": "נתונים מקודדים ב־JSON לפונקציה מסוימת"
+}

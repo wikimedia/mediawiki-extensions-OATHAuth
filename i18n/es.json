@@ -31,9 +31,6 @@
 	"webauthn-error-get-reginfo-fail": "No se pudo recuperar la información de registro.",
 	"webauthn-ui-disable-prompt": "Por favor toca tu dispositivo de verificación o sigue las instrucciones del navegador para confirmar la desactivación de WebAuthentication",
 	"webauthn-error-max-keys-reached": "Solo puedes registrar un máximo de {{PLURAL:$1|$1 clave|$1 claves}}",
-	"apihelp-webauthn-summary": "Módulo API de comunicación entre el servidor y el cliente durante el proceso de registro/autenticación",
-	"apihelp-webauthn-param-func": "Nombre de la función cuya ejecución se solicita",
-	"apihelp-webauthn-param-data": "Datos codificados de JSON para la función específica",
 	"webauthn-module-description": "WebAuthn (Web Authentication) es un estándar del web publicado por el World Wide Web Consortium (W3C). WebAuthn es un componente clave del FIDO2 Project bajo la dirección de FIDO Alliance. El objetivo del proyecto es estandarizar una interfaz para autenticar usuarios a aplicaciones y servicios basados en la web mediante la criptografía de claves públicas. [https://en.wikipedia.org/wiki/WebAuthn Saber más]",
 	"webauthn-ui-reload-page-label": "Recargar página",
 	"webauthn-ui-signcount-label": "(se inició sesión {{PLURAL:$1|$1 vez|$1 veces}} con esta clave)"

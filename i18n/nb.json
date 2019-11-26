@@ -29,9 +29,6 @@
 	"webauthn-error-get-reginfo-fail": "Regisetreringsinformasjon kunne ikke hentes.",
 	"webauthn-ui-disable-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren for å bekrefte deaktivering av WebAuthentication",
 	"webauthn-error-max-keys-reached": "Maksimalt {{PLURAL:$1|én nøkkel|$1 nøkler}} kan registreres",
-	"apihelp-webauthn-summary": "API-modul for å kommunisere mellom tjeneren og klienten under registrerings-/autentiseringsprosessen",
-	"apihelp-webauthn-param-func": "Navnet på funksjonen som skal kjøres",
-	"apihelp-webauthn-param-data": "JSON-kodet data for den gitte funksjonen",
 	"webauthn-module-description": "WebAuthn (Web Authentication) er en nettstandard publisert av World Wide Web Consortium (W3C). WebAuthn er en kjernekomponent i FIDO2-prosjektet under ledelse av FIDO Alliance. Målet til prosjektet er å standardisere et grensesnitt for å autentisere brukere til nettbaserte applikasjoner og tjenester med offentlig nøkkel-kryptografi. [https://en.wikipedia.org/wiki/WebAuthn Les mer]",
 	"webauthn-ui-reload-page-label": "Last siden på nytt",
 	"webauthn-ui-signcount-label": "(logget inn {{PLURAL:$1|én gang|$1 ganger}} med denne nøkkelen)"

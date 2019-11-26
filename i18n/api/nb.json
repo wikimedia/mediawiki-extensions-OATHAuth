@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-webauthn-summary": "API-modul for å kommunisere mellom tjeneren og klienten under registrerings-/autentiseringsprosessen",
+	"apihelp-webauthn-param-func": "Navnet på funksjonen som skal kjøres",
+	"apihelp-webauthn-param-data": "JSON-kodet data for den gitte funksjonen"
+}

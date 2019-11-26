@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-webauthn-summary": "在註冊/驗證程序期間，用來溝通伺服器與用戶端兩方的 API 模組",
+	"apihelp-webauthn-param-func": "要執行的請求功能名稱",
+	"apihelp-webauthn-param-data": "用於特定功能的 JSON 編碼資料"
+}

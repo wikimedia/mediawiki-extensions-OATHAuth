@@ -29,9 +29,6 @@
 	"webauthn-error-get-reginfo-fail": "لا يمكن استرجاع معلومات التسجيل.",
 	"webauthn-ui-disable-prompt": "يُرجَى لمس جهاز التحقق الخاص بك أو اتباع الإرشادات من المتصفح لتأكيد تعطيل مصادقة الويب",
 	"webauthn-error-max-keys-reached": "يمكن تسجيل {{PLURAL:$1|$1 مفتاح|$1 مفاتيح}} كحد أقصى",
-	"apihelp-webauthn-summary": "وحدة API للتواصل بين الخادم والعميل أثناء عملية التسجيل/المصادقة",
-	"apihelp-webauthn-param-func": "اسم الوظيفة المطلوبة ليتم تنفيذها",
-	"apihelp-webauthn-param-data": "بيانات JSON المشفرة لوظيفة معينة",
 	"webauthn-module-description": "WebAuthn (مصادقة الويب) هو معيار ويب تم نشره بواسطة رابطة الشبكة العالمية (W3C). WebAuthn هو عنصر أساسي في مشروع FIDO2 تحت إشراف تحالف FIDO، الهدف من المشروع هو توحيد واجهة لمصادقة المستخدمين على التطبيقات والخدمات المستندة إلى الويب باستخدام تشفير المفتاح العام.[https://en.wikipedia.org/wiki/WebAuthn اقرأ المزيد]",
 	"webauthn-ui-reload-page-label": "إعادة تحميل الصفحة",
 	"webauthn-ui-signcount-label": "(تم الدخول {{PLURAL:$1|$1 مرة|$1 مرات}} بهذا المفتاح)"

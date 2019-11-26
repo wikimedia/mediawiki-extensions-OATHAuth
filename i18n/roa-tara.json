@@ -29,9 +29,6 @@
 	"webauthn-error-get-reginfo-fail": "Le 'mbormaziune de reggistraizone non ge ponne essere pigghiate.",
 	"webauthn-ui-disable-prompt": "Pe piacere tocche 'u dispositive tune pa verifiche o segue le 'struziune da 'u browser pe confermà a disabbilitazione de WebAuthentication",
 	"webauthn-error-max-keys-reached": "'Nu massime de {{PLURAL:$1|$1 chiave pò|$1 chiave ponne}} essere reggistrate",
-	"apihelp-webauthn-summary": "'U module API pe communicà 'mbrà server e client durande 'u processe de reggistrazione/autendicazione",
-	"apihelp-webauthn-param-func": "Nome d'a funzione cercate da eseguì",
-	"apihelp-webauthn-param-data": "date codifecate JSON pe 'na particolare funzione",
 	"webauthn-module-description": "WebAuthn (Web Authentication) jè 'nu stàndàrd web pubblecate da 'u Consorzie World Wide Web (W3C). WebAuthn jè 'nu combonende prengepàle d'u Pruggette FIDO2 sotte 'a guide de FIDO Alliance. L'obbiettive d'u pruggette jè standardizzà 'n'inderfacce pe autendicà le utinde sus applecaziune web-based e servizie ausanne 'na crittografije a chaive pubbleche. [https://en.wikipedia.org/wiki/WebAuthn Lìgge de cchiù]",
 	"webauthn-ui-reload-page-label": "Recareche 'a pàgene",
 	"webauthn-ui-signcount-label": "(reggistrate {{PLURAL:$1|$1 vote}} cu sta chiave)"
