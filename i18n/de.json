@@ -5,7 +5,8 @@
 			"Metalhead64",
 			"Sushi",
 			"Hwboehm",
-			"Luke081515"
+			"Luke081515",
+			"Inkowik"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
@@ -54,6 +55,21 @@
 	"oath-log-name": "Zwei-Faktor-Authentifizierungs-Logbuch",
 	"oath-log-header": "Diese Ereignisse verfolgen Änderungen des Zwei-Faktor-Authentifizierungs-Status von Benutzern",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|deaktivierte}} die Zwei-Faktor-Authentifizierung von $3",
+	"oauthauth-ui-no-module": "nicht aktiviert",
+	"oathauth-module-invalid": "Das vom Benutzer registrierte OATHAuth-Modul ist ungültig.",
+	"oathauth-module-totp-label": "TOTP (Einmal-Token)",
+	"oathauth-ui-manage": "Verwalten",
+	"oathmanage": "Zwei-Faktor-Authentifizierung verwalten",
+	"oathauth-ui-not-enabled-modules": "Eine andere Methode auswählen",
+	"oathauth-ui-enabled-module": "Aktivierte Authentifizierungsmethode",
+	"oathauth-enable-generic": "Aktivieren",
+	"oathauth-disable-generic": "Deaktivieren",
 	"oathauth-disable-page-title": "Deaktiviere $1",
-	"oathauth-enable-page-title": "Aktiviere $1"
+	"oathauth-enable-page-title": "Aktiviere $1",
+	"oathauth-action-exclusive-to-2fa": "Diese Aktion kann nur von Benutzern durchgeführt werden, die eine Zwei-Faktor-Authentifizierung aktiviert haben.",
+	"oathauth-ui-available-modules": "Verfügbare Methoden",
+	"oathauth-disable-method-warning-header": "Deaktivieren der Authentifizierungsmethode bestätigen",
+	"oathauth-disable-method-warning-button-label": "Bestätigen und fortfahren",
+	"oathauth-switch-method-warning-header": "Auswahl einer anderen Authentifizierungsmethode bestätigen",
+	"oathauth-invalidrequest": "Ungültige Anfrage"
 }
