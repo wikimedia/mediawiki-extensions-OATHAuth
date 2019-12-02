@@ -50,6 +50,7 @@
 	"action-oathauth-api-all": "OATH 상태 학인",
 	"oath-log-name": "2요소 인증 기록",
 	"oauthauth-ui-no-module": "활성화된 항목 없음",
+	"oathauth-module-invalid": "사용자가 등록한 OATHAuth 모듈이 유효하지 않습니다.",
 	"oathauth-module-totp-label": "TOTP (1회용 토큰)",
 	"oathauth-ui-manage": "관리",
 	"oathmanage": "2요소 인증 관리",

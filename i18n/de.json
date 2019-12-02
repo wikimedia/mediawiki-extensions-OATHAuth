@@ -6,7 +6,8 @@
 			"Sushi",
 			"Hwboehm",
 			"Luke081515",
-			"Inkowik"
+			"Inkowik",
+			"Killarnee"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
@@ -68,7 +69,7 @@
 	"oathauth-enable-page-title": "Aktiviere $1",
 	"oathauth-action-exclusive-to-2fa": "Diese Aktion kann nur von Benutzern durchgeführt werden, die eine Zwei-Faktor-Authentifizierung aktiviert haben.",
 	"oathauth-ui-available-modules": "Verfügbare Methoden",
-	"oathauth-disable-method-warning-header": "Deaktivieren der Authentifizierungsmethode bestätigen",
+	"oathauth-disable-method-warning-header": "Deaktivieren einer Authentifizierungsmethode bestätigen",
 	"oathauth-disable-method-warning-button-label": "Bestätigen und fortfahren",
 	"oathauth-switch-method-warning-header": "Auswahl einer anderen Authentifizierungsmethode bestätigen",
 	"oathauth-invalidrequest": "Ungültige Anfrage"
