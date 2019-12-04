@@ -12,6 +12,7 @@
 		]
 	},
 	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",
+	"disableoathforuser": "사용자에 대해 2요소 인증 비활성화하기",
 	"specialpages-group-oath": "2요소 인증",
 	"oathauth-account": "계정 이름:",
 	"oathauth-secret": "2요소 인증 비밀 키:",
