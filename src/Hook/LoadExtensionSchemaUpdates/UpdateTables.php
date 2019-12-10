@@ -71,10 +71,6 @@ class UpdateTables {
 
 				break;
 
-			case 'oracle':
-				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/oracle/tables.sql" );
-				break;
-
 			case 'postgres':
 				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/postgres/tables.sql" );
 				break;
