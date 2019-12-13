@@ -347,7 +347,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function shouldShowDisableWarning() {
-		return (bool)$this->getRequest()->getVal( 'warn', false ) &&
+		return $this->getRequest()->getBool( 'warn' ) &&
 			$this->requestedModule instanceof IModule &&
 			$this->getEnabled() instanceof IModule;
 	}
