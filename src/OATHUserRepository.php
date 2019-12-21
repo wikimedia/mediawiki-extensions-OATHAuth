@@ -76,7 +76,7 @@ class OATHUserRepository {
 	public function findByUser( User $user ) {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
-			$oathUser = new OATHUser( $user, null );
+			$oathUser = new OATHUser( $user, [] );
 
 			$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
 			$res = $this->getDB( DB_REPLICA )->selectRow(
@@ -100,7 +100,7 @@ class OATHUserRepository {
 				}
 
 				$oathUser->setModule( $module );
-				$decodedData = FormatJson::decode( $res->data, 1 );
+				$decodedData = FormatJson::decode( $res->data, true );
 				if ( !isset( $decodedData['keys'] ) && $module->getName() === 'totp' ) {
 					// Legacy single-key setup
 					$key = $module->newKey( $decodedData );

@@ -33,7 +33,7 @@ class OATHUser {
 	private $keys;
 
 	/**
-	 * @var IModule
+	 * @var ?IModule
 	 */
 	private $module;
 
@@ -42,7 +42,7 @@ class OATHUser {
 	 * @param User $user
 	 * @param IAuthKey[] $keys
 	 */
-	public function __construct( User $user, $keys = [] ) {
+	public function __construct( User $user, array $keys = [] ) {
 		$this->user = $user;
 		$this->setKeys( $keys );
 	}
@@ -101,12 +101,10 @@ class OATHUser {
 	 *
 	 * @param IAuthKey[] $keys
 	 */
-	public function setKeys( $keys = [] ) {
+	public function setKeys( array $keys = [] ) {
 		$this->keys = [];
-		if ( is_array( $keys ) ) {
-			foreach ( $keys as $key ) {
-				$this->addKey( $key );
-			}
+		foreach ( $keys as $key ) {
+			$this->addKey( $key );
 		}
 	}
 
