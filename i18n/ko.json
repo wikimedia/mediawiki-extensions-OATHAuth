@@ -60,8 +60,8 @@
 	"oathauth-disable-page-title": "$1 비활성화",
 	"oathauth-enable-page-title": "$1 활성화",
 	"oathauth-ui-available-modules": "사용 가능한 방식",
-	"oathauth-ui-general-help": "'''다요소 인증'''('''MFA''')은 지식(사용자와 사용자만이 알고 있는 것), 소유(사용자와 사용자만이 가지고 있는 것), 고유(사용자에게만 있는 것) 중 두 개 이상의 증거(또는 요인)를 인증 매커니즘에 성공적으로 제시한 후에야 컴퓨터 사용자에게 접근 권한을 부여하는 인증 방식입니다. [https://ko.wikipedia.org/wiki/다요소_인증\n 더 읽기]",
-	"oathauth-totp-description": "TOTP(Time-based One-Time Password 알고리즘)는 HMAC 기반 HOTP(One-Time Password 알고리즘)가 현재 시점에서 고유성을 대신하여 일회성 암호를 생성하는 확장입니다.",
+	"oathauth-ui-general-help": "'''다요소 인증'''('''MFA''')은 지식 (사용자가 알고 있는 것), 소유 (사용자가 가지고 있는 것), 고유 (사용자에게만 있는 것) 중 두 개 이상의 증거 (또는 요인) 를 인증 매커니즘에 성공적으로 제시한 후에야 컴퓨터 사용자에게 접근 권한을 부여하는 인증 방식입니다. [https://ko.wikipedia.org/wiki/다요소_인증 더 읽기]",
+	"oathauth-totp-description": "TOTP (Time-based One-Time Password 알고리즘)는 HMAC 기반 HOTP (HMAC-Based One-time Password) 알고리즘에서 일회성 암호를 생성하는데, TOTP는 현재 시간을 고유한 값으로 취급하여 일회용 비밀번호를 생성하는 확장 기능입니다.",
 	"oathauth-disable-method-warning-button-label": "확인하고 계속하기",
 	"oathauth-invalidrequest": "잘못된 요청"
 }

@@ -12,7 +12,8 @@
 			"佛壁灯",
 			"WhitePhosphorus",
 			"LNDDYL",
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"Tiger"
 		]
 	},
 	"oathauth-desc": "提供使用基于HMAC的一次性密码的身份验证支持",
@@ -74,6 +75,7 @@
 	"oathauth-enable-page-title": "启用$1",
 	"oathauth-ui-available-modules": "可用方法",
 	"oathauth-ui-general-help": "'''多因素验证'''（Multi-factor authentication，MFA）是一种计算机访问控制的方法，用户需要成功通过两种或更多的验证机制才能得到授权：知识（有且仅有该用户知道的信息）、所有物（有且仅有该用户拥有的物品）以及先天特征（有且仅有该用户具备的生物特征）的验证。[https://zh.wikipedia.org/wiki/%E5%A4%9A%E9%87%8D%E8%A6%81%E7%B4%A0%E9%A9%97%E8%AD%89 了解更多]",
+	"oathauth-totp-description": "基于时间的一次性密码算法（TOTP）时基于HMAC的一次性密码算法（HOTP）的扩充，它通过目前时间的唯一性来产生一次性密码。",
 	"oathauth-disable-method-warning-button-label": "确认并继续",
 	"oathauth-disable-method-warning": "如果您禁用了$1的两步验证方法，您将无法再次在登录时使用该方法进行两步验证，且所有与之相关的数据均会被清除",
 	"oathauth-totp-disable-warning": "您将无法再次使用和此账号关联的设备进行认证。所有与该账号关联的临时密码均会失效。"
