@@ -58,11 +58,14 @@
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",
+	"oathauth-ui-not-enabled-modules": "Omschakelen naar alternatieve methode",
 	"oathauth-ui-enabled-module": "Authenticatie methode inschakelen",
 	"oathauth-enable-generic": "Inschakelen",
 	"oathauth-disable-generic": "Uitschakelen",
 	"oathauth-disable-page-title": "$1 uitschakelen",
 	"oathauth-enable-page-title": "$1 inschakelen",
 	"oathauth-ui-available-modules": "Beschikbare methoden",
+	"oathauth-ui-general-help": "'''Multi-factor authentication''' ('''MFA''') is een authenticatiemethode waarbij een computergebruiker alleen toegang krijgt na het succesvol presenteren van twee of meer bewijsstukken (of factoren) in een authenticatiemechanisme: kennis (iets wat de gebruiker en alleen de gebruiker weet), bezit (iets dat de gebruiker alleen de gebruiker heeft), en inherent (iets wat de gebruiker en alleen de gebruiker is). [https://en.wikipedia.org/wiki/Multi-factor_authentication Lees meer]",
+	"oathauth-totp-description": "De Time-based One-Time Password algorithm (TOTP) is een extensie van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert door in plaats daarvan het unieke van het de huidige tijdstip te gebruiken.",
 	"oathauth-invalidrequest": "Ongeldige aanvraag"
 }
