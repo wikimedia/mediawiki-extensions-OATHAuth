@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dejan Savuljesku <savuljesku@hallowelt.com>"
+			"Dejan Savuljesku <savuljesku@hallowelt.com>",
+			"Umherirrender"
 		]
 	},
 	"apihelp-webauthn-summary": "{{doc-apihelp-summary|webauthn}}",
-	"apihelp-webauthn-param-func": "Description text for an API module parameter",
-	"apihelp-webauthn-param-data": "Description text for an API module parameter"
+	"apihelp-webauthn-param-func": "{{doc-apihelp-param|webauthn|func}}",
+	"apihelp-webauthn-param-data": "{{doc-apihelp-param|webauthn|data}}"
 }
