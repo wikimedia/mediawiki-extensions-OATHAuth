@@ -19,9 +19,6 @@ namespace MediaWiki\Extension\WebAuthn\Key;
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-use CBOR\Decoder;
-use CBOR\OtherObject\OtherObjectManager;
-use CBOR\Tag\TagObjectManager;
 use Cose\Algorithm\Manager;
 use Cose\Algorithm\Signature\ECDSA\ES256;
 use Cose\Algorithm\Signature\ECDSA\ES512;
@@ -348,28 +345,18 @@ class WebAuthnKey implements IAuthKey {
 	 * @return bool
 	 */
 	private function registrationCeremony( $data, $registrationObject, $user ) {
-		$publicKeyCredentialCreationOptions = $registrationObject;
-
-		$otherObjectManager = new OtherObjectManager();
-		$tagObjectManager = new TagObjectManager();
-		$decoder = new Decoder( $tagObjectManager, $otherObjectManager );
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
 		$attestationStatementSupportManager = new AttestationStatementSupportManager();
 		$attestationStatementSupportManager->add( new NoneAttestationStatementSupport() );
-		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport(
-			$decoder
-		) );
+		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport() );
 		$attestationStatementSupportManager->add( new PackedAttestationStatementSupport(
-			$decoder,
 			new Manager()
 		) );
 		$attestationObjectLoader = new AttestationObjectLoader(
-			$attestationStatementSupportManager,
-			$decoder
+			$attestationStatementSupportManager
 		);
 		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-			$attestationObjectLoader,
-			$decoder
+			$attestationObjectLoader
 		);
 		$credentialRepository = new WebAuthnCredentialRepository();
 		$extensionOutputCheckerHandler = new ExtensionOutputCheckerHandler();
@@ -391,7 +378,7 @@ class WebAuthnKey implements IAuthKey {
 
 			$authenticatorAttestationResponseValidator->check(
 				$response,
-				$publicKeyCredentialCreationOptions,
+				$registrationObject,
 				$request
 			);
 		} catch ( Throwable $ex ) {
@@ -425,26 +412,16 @@ class WebAuthnKey implements IAuthKey {
 	 * @return bool
 	 */
 	private function authenticationCeremony( $data, $publicKeyCredentialRequestOptions ) {
-		$otherObjectManager = new OtherObjectManager();
-		$tagObjectManager = new TagObjectManager();
-		$decoder = new Decoder( $tagObjectManager, $otherObjectManager );
-
 		$attestationStatementSupportManager = new AttestationStatementSupportManager();
 		$attestationStatementSupportManager->add( new NoneAttestationStatementSupport() );
-		$attestationStatementSupportManager->add(
-			new FidoU2FAttestationStatementSupport( $decoder )
-		);
-		$attestationStatementSupportManager->add(
-			new AndroidKeyAttestationStatementSupport( $decoder )
-		);
+		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport() );
+		$attestationStatementSupportManager->add( new AndroidKeyAttestationStatementSupport() );
 
 		$attestationObjectLoader = new AttestationObjectLoader(
-			$attestationStatementSupportManager,
-			$decoder
+			$attestationStatementSupportManager
 		);
 		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-			$attestationObjectLoader,
-			$decoder
+			$attestationObjectLoader
 		);
 		$coseAlgorithmManager = new Manager();
 		$coseAlgorithmManager->add( new ES256() );
@@ -458,7 +435,6 @@ class WebAuthnKey implements IAuthKey {
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
 		$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
 			$credentialRepository,
-			$decoder,
 			$tokenBindingHandler,
 			new ExtensionOutputCheckerHandler(),
 			$coseAlgorithmManager
