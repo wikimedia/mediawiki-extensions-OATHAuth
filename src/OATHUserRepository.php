@@ -18,18 +18,18 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use MediaWiki\Logger\LoggerFactory;
-use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\DBConnRef;
-use FormatJson;
-use CentralIdLookup;
-use MWException;
 use BagOStuff;
+use CentralIdLookup;
 use ConfigException;
-use User;
-use stdClass;
+use FormatJson;
+use MediaWiki\Logger\LoggerFactory;
+use MWException;
+use Psr\Log\LoggerInterface;
 use RequestContext;
+use stdClass;
+use User;
+use Wikimedia\Rdbms\DBConnRef;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class OATHUserRepository {
 	/** @var ILoadBalancer */

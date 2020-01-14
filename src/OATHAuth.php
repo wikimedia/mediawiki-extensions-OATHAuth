@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
+use Config;
 use ExtensionRegistry;
 use Wikimedia\Rdbms\LBFactory;
-use Config;
 
 /**
  * This class serves as a utility class for this extension

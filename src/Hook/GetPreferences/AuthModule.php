@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\OATHAuth\Hook\GetPreferences;
 
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\MediaWikiServices;
+use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\LabelWidget;
-use OOUI\ButtonWidget;
 use SpecialPage;
 use User;
 

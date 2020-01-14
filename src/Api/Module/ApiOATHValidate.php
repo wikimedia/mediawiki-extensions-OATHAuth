@@ -18,13 +18,13 @@
 
 namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Extension\OATHAuth\IModule;
 use ApiBase;
-use User;
 use ApiResult;
 use FormatJson;
+use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\MediaWikiServices;
+use User;
 
 /**
  * Validate an OATH token.

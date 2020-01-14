@@ -19,24 +19,24 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
+use ConfigException;
+use Html;
+use HTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\MediaWikiServices;
+use Message;
+use MWException;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
-use Message;
-use Html;
 use OOUI\HtmlSnippet;
-use OOUI\PanelLayout;
-use SpecialPage;
 use OOUI\LabelWidget;
-use HTMLForm;
-use ConfigException;
-use MWException;
+use OOUI\PanelLayout;
 use PermissionsError;
+use SpecialPage;
 use UserNotLoggedIn;
 
 class OATHManage extends SpecialPage {

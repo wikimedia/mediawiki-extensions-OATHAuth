@@ -18,11 +18,11 @@
 
 namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
-use MediaWiki\MediaWikiServices;
+use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
-use ApiBase;
 use ApiResult;
+use MediaWiki\MediaWikiServices;
 use User;
 
 /**
