@@ -2,19 +2,19 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Logger\LoggerFactory;
+use ConfigException;
 use FormSpecialPage;
 use HTMLForm;
+use ManualLogEntry;
+use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+use Message;
+use MWException;
 use User;
 use UserBlockedError;
 use UserNotLoggedIn;
-use ConfigException;
-use Message;
-use MWException;
-use ManualLogEntry;
 
 class DisableOATHForUser extends FormSpecialPage {
 	/** @var OATHUserRepository */

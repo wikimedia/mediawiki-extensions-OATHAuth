@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates;
 
-use DatabaseUpdater;
-use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia;
-use FormatJson;
 use ConfigException;
+use DatabaseUpdater;
+use FormatJson;
+use MediaWiki\MediaWikiServices;
+use Wikimedia;
+use Wikimedia\Rdbms\IDatabase;
 
 class UpdateTables {
 	/**

@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use Html;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Logger\LoggerFactory;
-use Html;
 use Status;
 
 class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {

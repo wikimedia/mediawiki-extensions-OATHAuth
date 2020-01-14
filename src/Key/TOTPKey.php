@@ -20,17 +20,17 @@ namespace MediaWiki\Extension\OATHAuth\Key;
  */
 
 use Base32\Base32;
-use jakobo\HOTP\HOTP;
-use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use Psr\Log\LoggerInterface;
-use MediaWiki\Logger\LoggerFactory;
+use CentralIdLookup;
 use DomainException;
 use Exception;
-use MWException;
-use CentralIdLookup;
-use MediaWiki\MediaWikiServices;
+use jakobo\HOTP\HOTP;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+use MWException;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class representing a two-factor key
