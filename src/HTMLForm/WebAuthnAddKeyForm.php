@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
+use ConfigException;
+use FormatJson;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
 use MediaWiki\Extension\WebAuthn\Authenticator;
-use FormatJson;
+use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
 use SpecialPage;
-use ConfigException;
 
 class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 

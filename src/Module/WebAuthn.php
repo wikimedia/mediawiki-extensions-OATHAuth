@@ -4,19 +4,19 @@ namespace MediaWiki\Extension\WebAuthn\Module;
 
 use MediaWiki\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
-use MediaWiki\Extension\WebAuthn\Auth\WebAuthnSecondaryAuthenticationProvider;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnDisableForm;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
+use MediaWiki\Extension\WebAuthn\Auth\WebAuthnSecondaryAuthenticationProvider;
 use MediaWiki\Extension\WebAuthn\Config\WebAuthnConfig;
-use MWException;
+use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
+use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnDisableForm;
+use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
+use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use Message;
+use MWException;
 
 class WebAuthn implements IModule {
 	/**

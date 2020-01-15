@@ -3,19 +3,19 @@
 namespace MediaWiki\Extension\WebAuthn;
 
 use Base64Url\Base64Url;
+use ConfigException;
+use Database;
+use FormatJson;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
-use MediaWiki\MediaWikiServices;
-use User;
-use FormatJson;
-use Database;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
+use MediaWiki\MediaWikiServices;
+use MWException;
+use User;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
-use MWException;
-use ConfigException;
 
 class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
 	/**

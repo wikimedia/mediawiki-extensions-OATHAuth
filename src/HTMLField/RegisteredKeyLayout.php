@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\WebAuthn\HTMLField;
 
 use HTMLFormField;
 use OOUI\ButtonInputWidget;
+use OOUI\Exception;
 use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
-use OOUI\Exception;
 use OOUI\LabelWidget;
 
 class RegisteredKeyLayout extends HTMLFormField {

@@ -2,20 +2,20 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
+use ConfigException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\RegisteredKeyLayout;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
-use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\MediaWikiServices;
-use SpecialPage;
-use OOUI\ButtonWidget;
 use MWException;
-use ConfigException;
+use OOUI\ButtonWidget;
+use SpecialPage;
 
 class WebAuthnManageForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 

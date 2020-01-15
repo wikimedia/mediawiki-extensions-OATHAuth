@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
+use ConfigException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
-use SpecialPage;
-use ConfigException;
 use MWException;
+use SpecialPage;
 
 class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 

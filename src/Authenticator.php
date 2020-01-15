@@ -19,18 +19,24 @@
 
 namespace MediaWiki\Extension\WebAuthn;
 
+use ConfigException;
 use Cose\Algorithms;
+use FormatJson;
+use IContextSource;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
+use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MWException;
 use Psr\Log\LoggerInterface;
-use User;
+use RequestContext;
 use Status;
+use stdClass;
+use User;
 use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 use Webauthn\AuthenticatorSelectionCriteria;
 use Webauthn\PublicKeyCredentialCreationOptions;
@@ -40,12 +46,6 @@ use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
 use Webauthn\PublicKeyCredentialUserEntity;
 use WebRequest;
-use RequestContext;
-use MWException;
-use FormatJson;
-use ConfigException;
-use IContextSource;
-use stdClass;
 
 /**
  * This class serves as an authentication/registration

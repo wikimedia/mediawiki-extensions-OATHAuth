@@ -34,10 +34,12 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\WebAuthn\Request;
 use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
 use MediaWiki\Logger\LoggerFactory;
+use MWException;
+use PHP_CodeSniffer\Exceptions\RuntimeException;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 use RequestContext;
-use MWException;
+use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
@@ -55,9 +57,7 @@ use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialLoader;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\TokenBinding\TokenBindingNotSupportedHandler;
-use Throwable;
 use Webauthn\TrustPath\EmptyTrustPath;
-use PHP_CodeSniffer\Exceptions\RuntimeException;
 
 /**
  * This holds the information on user's private key

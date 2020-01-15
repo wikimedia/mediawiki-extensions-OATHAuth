@@ -19,13 +19,13 @@
 namespace MediaWiki\Extension\WebAuthn\Api;
 
 use ApiBase;
+use ApiUsageException;
+use ConfigException;
 use FormatJson;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\WebAuthn\Authenticator;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
-use ApiUsageException;
-use ConfigException;
+use MediaWiki\MediaWikiServices;
 use MWException;
 
 /**
