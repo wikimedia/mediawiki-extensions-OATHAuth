@@ -35,10 +35,10 @@ use MediaWiki\Extension\WebAuthn\Request;
 use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
-use PHP_CodeSniffer\Exceptions\RuntimeException;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 use RequestContext;
+use RuntimeException;
 use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
@@ -120,7 +120,7 @@ class WebAuthnKey implements IAuthKey {
 	protected $credentialAttestationType = '';
 
 	/**
-	 * @var string
+	 * @var mixed
 	 */
 	protected $credentialTrustPath = [];
 
@@ -420,7 +420,7 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
-	 * @param array $data
+	 * @param string $data
 	 * @param PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions
 	 * @return bool
 	 */
@@ -481,6 +481,7 @@ class WebAuthnKey implements IAuthKey {
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
 				$publicKeyCredential->getRawId(),
+				// @phan-suppress-next-line PhanTypeMismatchArgument
 				$publicKeyCredential->getResponse(),
 				$publicKeyCredentialRequestOptions,
 				$request,
