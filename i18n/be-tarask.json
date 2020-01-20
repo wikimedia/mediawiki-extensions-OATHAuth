@@ -42,6 +42,7 @@
 	"grant-oath": "Доступ па двухфактарнай аўтэнтыфікацыі (OATH) для сябе ды іншых",
 	"right-oathauth-api-all": "Запытаць і праверыць інфармацыю OATH для сябе ды іншых",
 	"action-oathauth-api-all": "праверыць статус OATH",
+	"oauthauth-ui-no-module": "Ня ўключаная",
 	"oathmanage": "Кіраваньне двухфактарнай аўтэнтыфікацыяй",
 	"oathauth-ui-enabled-module": "Уключаны мэтад аўтэнтыфікацыі",
 	"oathauth-enable-generic": "Уключыць",
