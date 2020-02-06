@@ -13,7 +13,8 @@
 			"WhitePhosphorus",
 			"LNDDYL",
 			"VulpesVulpes825",
-			"Tiger"
+			"Tiger",
+			"铁桶"
 		]
 	},
 	"oathauth-desc": "提供使用基于HMAC的一次性密码的身份验证支持",
@@ -65,7 +66,7 @@
 	"oauthauth-ui-no-module": "全部禁用",
 	"oathauth-module-totp-label": "TOTP（基于时间的一次性密码）",
 	"oathauth-ui-manage": "管理",
-	"oathmanage": "两步认证管理",
+	"oathmanage": "管理双因素验证",
 	"oathauth-ui-enabled-module": "已启用的认证方法",
 	"oathauth-enable-generic": "启用",
 	"oathauth-disable-generic": "禁用",
