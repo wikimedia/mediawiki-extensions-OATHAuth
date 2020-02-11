@@ -434,7 +434,7 @@ class Authenticator {
 		/** @var OATHUser $oathUser */
 		$oathUser = $userRepo->findByUser( $mwUser );
 		$key = $oathUser->getFirstKey();
-		// If user already has webauthn enabled, and id just registering another key,
+		// If user already has webauthn enabled, and is just registering another key,
 		// make sure userHandle remains the same across keys
 		if ( $key !== null && $key instanceof WebAuthnKey ) {
 			$userHandle = $key->getUserHandle();
