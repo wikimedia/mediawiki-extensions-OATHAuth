@@ -141,13 +141,7 @@ class Authenticator {
 		$this->context = $context;
 		$this->logger = $logger;
 		$this->request = $request;
-
-		// Get the domain of the wiki - used as issuer
-		$server = $context->getConfig()->get( 'Server' );
-		$serverBits = wfParseUrl( $server );
-		if ( $serverBits !== false ) {
-			$this->serverId = $serverBits['host'];
-		}
+		$this->serverId = $this->getServerId();
 	}
 
 	/**
@@ -422,11 +416,8 @@ class Authenticator {
 	 * @throws ConfigException
 	 */
 	protected function getRegisterInfo() {
-		$rpName = wfWikiID();
-		if ( $this->context->getConfig()->has( 'Sitename' ) ) {
-			$rpName = $this->context->getConfig()->get( 'Sitename' );
-		}
-		$rpEntity = new PublicKeyCredentialRpEntity( $rpName, $this->serverId );
+		$serverName = $this->getServerName();
+		$rpEntity = new PublicKeyCredentialRpEntity( $serverName, $this->serverId );
 
 		$mwUser = $this->context->getUser();
 		/** @var OATHUserRepository $userRepo */
@@ -487,5 +478,42 @@ class Authenticator {
 		);
 
 		return $publicKeyCredentialCreationOptions;
+	}
+
+	/**
+	 * Get identifier for this server
+	 *
+	 * @return string|null
+	 */
+	private function getServerId() {
+		$rpId = $this->context->getConfig()->get( 'WebAuthnRelyingPartyID' );
+		if ( $rpId && is_string( $rpId ) ) {
+			return $rpId;
+		}
+
+		$server = $this->context->getConfig()->get( 'Server' );
+		$serverBits = wfParseUrl( $server );
+		if ( $serverBits !== false ) {
+			return $serverBits['host'];
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get name for this server
+	 *
+	 * @return string
+	 */
+	private function getServerName() {
+		$serverName = $this->context->getConfig()->get( 'WebAuthnRelyingPartyName' );
+		if ( $serverName && is_string( $serverName ) ) {
+			return $serverName;
+		}
+		if ( $this->context->getConfig()->has( 'Sitename' ) ) {
+			return $this->context->getConfig()->get( 'Sitename' );
+		}
+
+		return wfWikiID();
 	}
 }

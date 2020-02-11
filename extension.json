@@ -120,6 +120,14 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "WebAuthn/resources"
 	},
+	"config": {
+		"WebAuthnRelyingPartyName": {
+			"value": null
+		},
+	 	"WebAuthnRelyingPartyID": {
+			"value": null
+		}
+	},
 	"APIModules": {
 		"webauthn": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn"
 	},
