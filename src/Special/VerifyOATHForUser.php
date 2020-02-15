@@ -10,19 +10,25 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Message;
 use MWException;
 use User;
-use UserBlockedError;
-use UserNotLoggedIn;
 
-class DisableOATHForUser extends FormSpecialPage {
+class VerifyOATHForUser extends FormSpecialPage {
+
+	private const OATHAUTH_IS_ENABLED = 'enabled';
+	private const OATHAUTH_NOT_ENABLED = 'disabled';
+
 	/** @var OATHUserRepository */
 	private $userRepo;
 
-	public function __construct() {
-		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
+	/** @var string */
+	private $enabledStatus;
 
+	/** @var string */
+	private $targetUser;
+
+	public function __construct() {
+		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
 		$this->userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 	}
 
@@ -38,15 +44,11 @@ class DisableOATHForUser extends FormSpecialPage {
 	}
 
 	/**
-	 * Set the page title and add JavaScript RL modules
-	 *
 	 * @param HTMLForm $form
 	 */
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
-		$form->setWrapperLegend( $this->msg( 'oathauth-disable-header' ) );
-		$form->setPreText( $this->msg( 'oathauth-disable-intro' ) );
-		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-disable-for-user' ) );
+		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-verify-for-user' ) );
 	}
 
 	/**
@@ -60,18 +62,7 @@ class DisableOATHForUser extends FormSpecialPage {
 	 * @return bool
 	 */
 	public function requiresUnblock() {
-		return false;
-	}
-
-	/**
-	 * @param User $user
-	 * @throws UserBlockedError
-	 * @throws UserNotLoggedIn
-	 */
-	protected function checkExecutePermissions( User $user ) {
-		parent::checkExecutePermissions( $user );
-
-		$this->requireLogin();
+		return true;
 	}
 
 	/**
@@ -97,7 +88,7 @@ class DisableOATHForUser extends FormSpecialPage {
 			'reason' => [
 				'type' => 'text',
 				'default' => '',
-				'label-message' => 'oathauth-enterdisablereason',
+				'label-message' => 'oathauth-enterverifyreason',
 				'name' => 'reason',
 				'required' => true,
 			],
@@ -106,40 +97,37 @@ class DisableOATHForUser extends FormSpecialPage {
 
 	/**
 	 * @param array $formData
-	 * @return array|bool
+	 * @return array|true
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
-		$user = User::newFromName( $formData['user'] );
-		if ( $user && $user->getId() === 0 ) {
+		$this->targetUser = $formData['user'];
+		$user = User::newFromName( $this->targetUser );
+		if ( !$user || $user->getId() === 0 ) {
 			return [ 'oathauth-user-not-found' ];
 		}
 		$oathUser = $this->userRepo->findByUser( $user );
 
 		if ( !( $oathUser->getModule() instanceof IModule ) ||
 			!$oathUser->getModule()->isEnabled( $oathUser ) ) {
-			return [ 'oathauth-user-not-does-not-have-oath-enabled' ];
+			$result = self::OATHAUTH_NOT_ENABLED;
+		} else {
+			$result = self::OATHAUTH_IS_ENABLED;
 		}
 
-		if ( $this->getUser()->pingLimiter( 'disableoath', 0 ) ) {
-			// Arbitrary duration given here
-			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
-		}
+		$this->enabledStatus = $result;
 
-		$oathUser->disable();
-		$this->userRepo->remove( $oathUser, $this->getRequest()->getIP() );
-
-		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
+		$logEntry = new ManualLogEntry( 'oath', 'verify' );
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $user->getUserPage() );
 		$logEntry->setComment( $formData['reason'] );
 		$logEntry->insert();
 
 		LoggerFactory::getInstance( 'authentication' )->info(
-			'OATHAuth disabled for {usertarget} by {user} from {clientip}', [
+			'OATHAuth status checked for {usertarget} by {user} from {clientip}', [
 				'user' => $this->getUser()->getName(),
-				'usertarget' => $formData['user'],
+				'usertarget' => $this->targetUser,
 				'clientip' => $this->getRequest()->getIP(),
 			]
 		);
@@ -147,9 +135,26 @@ class DisableOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
+	/**
+	 * @throws MWException
+	 */
 	public function onSuccess() {
-		$this->getOutput()->addWikiMsg( 'oathauth-disabledoath' );
-		$this->getOutput()->returnToMain();
+		switch ( $this->enabledStatus ) {
+			case self::OATHAUTH_IS_ENABLED:
+				$msg = 'oathauth-verify-enabled';
+				break;
+			case self::OATHAUTH_NOT_ENABLED:
+				$msg = 'oathauth-verify-disabled';
+				break;
+			default:
+				throw new MWException(
+					'Verification was successful but status is unknown'
+				);
+		}
+
+		$out = $this->getOutput();
+		$out->addBacklinkSubtitle( $this->getPageTitle() );
+		$out->addWikiMsg( $msg, $this->targetUser );
 	}
 
 }

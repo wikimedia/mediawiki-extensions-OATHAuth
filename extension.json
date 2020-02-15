@@ -90,12 +90,14 @@
 	},
 	"SpecialPages": {
 		"DisableOATHForUser": "\\MediaWiki\\Extension\\OATHAuth\\Special\\DisableOATHForUser",
+		"VerifyOATHForUser": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
 		"OATHManage": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage"
 	},
 	"AvailableRights": [
 		"oathauth-enable",
 		"oathauth-api-all",
 		"oathauth-disable-for-user",
+		"oathauth-verify-user",
 		"oathauth-view-log"
 	],
 	"GroupPermissions": {
@@ -108,6 +110,7 @@
 		},
 		"sysop": {
 			"oathauth-disable-for-user": true,
+			"oathauth-verify-user": true,
 			"oathauth-view-log": true
 		}
 	},
