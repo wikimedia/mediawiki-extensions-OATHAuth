@@ -333,6 +333,7 @@ class OATHManage extends SpecialPage {
 	/**
 	 * Actions enable and disable are generic and all modules must
 	 * implement them, while all other actions are module-specific
+	 * @return bool
 	 */
 	private function isGenericAction() {
 		return in_array( $this->action, [ static::ACTION_ENABLE, static::ACTION_DISABLE ] );

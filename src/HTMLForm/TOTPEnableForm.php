@@ -103,7 +103,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	}
 
 	/**
-	 * @param $resources array
+	 * @param array $resources
 	 * @return string
 	 */
 	private function createResourceList( $resources ) {
