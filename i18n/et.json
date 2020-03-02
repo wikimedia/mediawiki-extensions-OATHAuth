@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"webauthn-desc": "Võimaldab autentida kasutades WebAuthni protokolli.",
+	"webauthn-module-label": "Veebiautentimine (WebAuthn)",
+	"webauthn-ui-login-prompt": "Palun puutu kinnitusseadet või järgi brauseris näidatud juhiseid.",
+	"webauthn-ui-add-key": "Lisa võti",
+	"webauthn-error-browser-unsupported": "See brauser ei toeta veebiautentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit.[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Loe veel]",
+	"webauthn-error-browser-unsupported-console": "See brauser ei toeta veebiautentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit.",
+	"webauthn-error-reg-generic": "Sinu võtit ei õnnestunud kinnitada. Palun alusta registreerimist uuesti.",
+	"oathauth-webauthn-registered-keys-section-name": "Registreeritud võtmed",
+	"webuathn-ui-remove-key": "Eemalda",
+	"webauthn-ui-key-register-help": "Vali võtmele lühinimi.",
+	"oathauth-webauthn-add-key-section-name": "Uue WebAuthni võtme registreerimine",
+	"oathauth-webauthn-disable-section-name": "WebAuthni keelamine",
+	"webauthn-ui-disable-prompt": "Palun puutu kinnitusseadet või järgi brauseris näidatud juhiseid, et kinnitada veebiautentimise keelamine.",
+	"webauthn-module-description": "WebAuthn (veebiautentimine) on veebistandard, mille avaldas World Wide Web Consortium (W3C). WebAuthn on FIDO Alliance'i hallatava projekti FIDO2 aluskomponent. Projekti eesmärk on luua standardne liides kasutajate autentimiseks veebipõhistes rakendustes ja teenustes, kasutades avaliku võtme krüptograafiat. [https://en.wikipedia.org/wiki/WebAuthn Loe veel]",
+	"webauthn-ui-reload-page-label": "Laadi lehekülg uuesti",
+	"webauthn-ui-signcount-label": "(selle võtmega sisse logitud {{PLURAL:$1|ühel korral|$1 korda}})"
+}
