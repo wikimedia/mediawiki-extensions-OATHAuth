@@ -41,6 +41,7 @@
 	"oathauth-module-totp-label": "TOTP (ühekordne luba)",
 	"oathauth-ui-manage": "Halda",
 	"oathmanage": "Kaheastmelise autentimise haldamine",
+	"oathauth-ui-not-enabled-modules": "Teisele meetodile üleminemine",
 	"oathauth-ui-enabled-module": "Lubatud autentimismeetodid",
 	"oathauth-enable-generic": "Luba",
 	"oathauth-disable-generic": "Keela",
@@ -48,5 +49,10 @@
 	"oathauth-enable-page-title": "Mooduli lubamine: $1",
 	"oathauth-ui-available-modules": "Saadaolevad meetodid",
 	"oathauth-ui-general-help": "'''Mitmeastmeline autentimine''' ('''MFA''') on autentimisviis, millega arvutikasutajale lubatakse juurdepääs alles pärast seda, kui ta on esitanud autentimissüsteemile edukalt kaks või enam tõendit: teadmine (miski, mida teab kasutaja ja ainult kasutaja), omand (miski, mis kuulub kasutajale ja ainult kasutajale) ja omapära (miski, mis kasutaja ja ainult kasutaja on). [https://en.wikipedia.org/wiki/Multi-factor_authentication Loe veel]",
-	"oathauth-totp-description": "Ajapõhiste ühekordsete pääsukoodide algoritm (TOTP) on HMAC-i põhise ühekordsete pääsukoodide algoritmi (HOTP) laiendus ühekordsete pääsukoodide genereerimiseks. Ainukordsete koodide genereerimiseks kasutab see hetkeaega."
+	"oathauth-totp-description": "Ajapõhiste ühekordsete pääsukoodide algoritm (TOTP) on HMAC-i põhise ühekordsete pääsukoodide algoritmi (HOTP) laiendus ühekordsete pääsukoodide genereerimiseks. Ainukordsete koodide genereerimiseks kasutab see hetkeaega.",
+	"oathauth-disable-method-warning-header": "Autentimismeetodi keelamise kinnitamine",
+	"oathauth-disable-method-warning-button-label": "Kinnita ja jätka",
+	"oathauth-disable-method-warning": "Kui keelad kaheastmelise autentimise meetodi $1, siis ei saa sa seda enam sisselogimiseks kasutada ning kõik selle autentimismeetodiga seotud andmed kustutatakse.",
+	"oathauth-switch-method-warning-header": "Erinevale autentimismeetodile üleminemise kinnitamine",
+	"oathauth-switch-method-warning": "Kui lähed üle kaheastmelise autentimise meetodile $2, siis praegune meetod ($1) keelatakse ning kõik praeguse autentimismeetodiga seotud andmed kustutatakse."
 }
