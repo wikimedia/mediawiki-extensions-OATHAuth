@@ -4,10 +4,11 @@
 			"Wladek92",
 			"Gomoko",
 			"Verdy p",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Urhixidur"
 		]
 	},
-	"webauthn-desc": "Fournit un support d’authentification pour le protocole WebAuthn",
+	"webauthn-desc": "Fournit la prise en charge de l’authentification selon le protocole WebAuthn",
 	"webauthn-module-label": "Authentification web (WebAuthn)",
 	"webauthn-ui-login-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur",
 	"webauthn-ui-add-key": "Ajouter une clef",
