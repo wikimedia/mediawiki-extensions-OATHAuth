@@ -48,7 +48,7 @@
 	"oathauth-disable-intro": "À grand pouvoir, grande responsabilité",
 	"oathauth-enteruser": "Nom d’utilisateur :",
 	"oathauth-enterreason": "Motif pour désactiver :",
-	"oathauth-user-not-does-not-have-oath-enabled": "L’utilisateur n’a pas activé l’authentification à deux facteurs, il n’y a donc rien a désactiver.",
+	"oathauth-user-not-does-not-have-oath-enabled": "L’utilisateur n’a pas activé l’authentification à deux facteurs, il n’y a donc rien à désactiver.",
 	"right-oathauth-enable": "Activer l’authentification à deux facteurs",
 	"action-oathauth-enable": "activer l’authentification à deux facteurs",
 	"oathauth-auth-token-label": "Jeton",
