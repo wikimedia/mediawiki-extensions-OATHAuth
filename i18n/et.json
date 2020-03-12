@@ -8,7 +8,7 @@
 	"webauthn-module-label": "Veebiautentimine (WebAuthn)",
 	"webauthn-ui-login-prompt": "Palun puutu kinnitusseadet või järgi brauseris näidatud juhiseid.",
 	"webauthn-ui-add-key": "Lisa võti",
-	"webauthn-error-browser-unsupported": "See brauser ei toeta veebiautentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit.[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Loe veel]",
+	"webauthn-error-browser-unsupported": "See brauser ei toeta veebiautentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Loe veel]",
 	"webauthn-error-browser-unsupported-console": "See brauser ei toeta veebiautentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit.",
 	"webauthn-error-reg-generic": "Sinu võtit ei õnnestunud kinnitada. Palun alusta registreerimist uuesti.",
 	"oathauth-webauthn-registered-keys-section-name": "Registreeritud võtmed",

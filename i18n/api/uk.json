@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"apihelp-webauthn-summary": "Модуль API для комунікації між сервером та клієнтом протягом процесу реєстрації/автентифікації",
+	"apihelp-webauthn-param-func": "Назва запитуваної функції, яку слід виконати",
+	"apihelp-webauthn-param-data": "JSON-кодовані дані для конкретної функції"
+}
