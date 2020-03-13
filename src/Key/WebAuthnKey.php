@@ -227,7 +227,7 @@ class WebAuthnKey implements IAuthKey {
 	 * @param string $name
 	 * @return void
 	 */
-	public function setFriendyName( $name ) {
+	private function setFriendlyName( $name ) {
 		$this->friendlyName = trim( $name );
 		$this->checkFriendlyName();
 	}
@@ -298,7 +298,7 @@ class WebAuthnKey implements IAuthKey {
 			) );
 			throw new MWException( 'webauthn-mode-invalid' );
 		}
-		$this->setFriendyName( $friendlyName );
+		$this->setFriendlyName( $friendlyName );
 		return $this->registrationCeremony( $data, $registrationObject, $user );
 	}
 
