@@ -41,6 +41,7 @@
 	"oathauth-login-failed": "Verifica non riuscita.",
 	"oathauth-describe-provider": "Autenticazione a due fattori (OATH).",
 	"grant-oath": "Accede a informazioni sull'autenticazione a due fattori (OATH) proprie e di altri",
+	"oath-log-name": "Autenticazione a due fattori",
 	"oauthauth-ui-no-module": "Non attivato",
 	"oathauth-ui-manage": "Gestisci",
 	"oathmanage": "Gestisci autenticazione a due fattori",

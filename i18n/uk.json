@@ -38,7 +38,7 @@
 	"oathauth-enteruser": "Ім'я користувача:",
 	"oathauth-enterreason": "Причина вимкнення:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Користувач не увімкнув двофакторну автентифікацію, тож нічого вимикати",
-	"right-oathauth-enable": "вмикання двофакторної авторизації",
+	"right-oathauth-enable": "Вмикання двофакторної авторизації",
 	"action-oathauth-enable": "вмикання двофакторної авторизації",
 	"oathauth-auth-token-label": "Токен",
 	"oathauth-auth-token-help": "Одноразовий пароль використовується як другий фактор двофакторної автентифікації.",
