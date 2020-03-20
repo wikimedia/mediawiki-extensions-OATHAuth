@@ -55,7 +55,7 @@ class OATHUser {
 	}
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getIssuer() {
 		global $wgSitename, $wgOATHAuthAccountPrefix;
@@ -67,7 +67,7 @@ class OATHUser {
 	}
 
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getAccount() {
 		return $this->user->getName();

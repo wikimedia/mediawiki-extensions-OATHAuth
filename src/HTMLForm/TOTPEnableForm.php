@@ -120,7 +120,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	 * The characters of the token are split in groups of 4
 	 *
 	 * @param TOTPKey $key
-	 * @return String
+	 * @return string
 	 */
 	protected function getSecretForDisplay( TOTPKey $key ) {
 		return $this->tokenFormatterFunction( $key->getSecret() );
