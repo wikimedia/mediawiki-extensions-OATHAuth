@@ -100,9 +100,11 @@
 	],
 	"GroupPermissions": {
 		"*": {
-			"oathauth-enable": true,
 			"oathauth-disable-for-user": false,
 			"oathauth-view-log": false
+		},
+		"user": {
+			"oathauth-enable": true
 		},
 		"sysop": {
 			"oathauth-disable-for-user": true,
