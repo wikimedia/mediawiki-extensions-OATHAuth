@@ -2,9 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Zpizza",
-			"Wertuose"
+			"Wertuose",
+			"Toghrul Rahimli"
 		]
 	},
+	"specialpages-group-oath": "İki faktorlu autentifikasiya",
 	"oathauth-account": "Hesab adı:",
-	"right-oathauth-enable": "ikifaktorlu autentifikasiyanı tətbiq et"
+	"oathauth-prefs-label": "İki faktorlu autentifikasiya:",
+	"right-oathauth-enable": "ikifaktorlu autentifikasiyanı tətbiq et",
+	"oauthauth-ui-no-module": "Qoşulmayıb",
+	"oathauth-ui-manage": "İdarə et"
 }
