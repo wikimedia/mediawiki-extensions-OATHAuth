@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Banjo"
+		]
+	},
+	"webauthn-module-label": "Autenticación Web (WebAuthn)",
+	"webauthn-ui-add-key": "Engadir chave",
+	"oathauth-webauthn-registered-keys-section-name": "Chaves rexistradas",
+	"webuathn-ui-remove-key": "Eliminar",
+	"webauthn-error-verification-failed": "Fallou a verificación",
+	"oathauth-webauthn-add-key-section-name": "Rexistrar nova chave WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Desactivar WebAuthn",
+	"webauthn-module-description": "WebAuthn (Autenticación Web) é un estándar web publicado polo World Wide Web Consortium (W3C). webAuthn é un compoñente central do proxecto FIDO2 baixo a guía da FIDO Alliance. O obxectivo do proxecto é estandarizar unha interface para a autenticación de usuarios para aplicacións e servizos web usando criptografía de chave pública. [https://en.wikipedia.org/wiki/WebAuthn Ler máis]",
+	"webauthn-ui-reload-page-label": "Recargar páxina"
+}
