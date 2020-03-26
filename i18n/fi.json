@@ -25,7 +25,7 @@
 	"right-oathauth-enable": "Ottaa käyttöön kahden tekijän avulla suoritettu (''two-factor'') tunnistautuminen",
 	"action-oathauth-enable": "ottaa käyttöön kahden tekijän avulla suoritettua (''two-factor'') tunnistautumista",
 	"oathauth-auth-token-label": "Poletti",
-	"oathauth-auth-ui": "Syötä vahvistuskoodi tunnistautumislaitteestasi",
+	"oathauth-auth-ui": "Syötä vahvistuskoodi tunnistautumislaitteestasi.",
 	"oathauth-throttled": "Liian monta todennusyritystä! Odota hetki $1.",
 	"oathauth-login-failed": "Todennus epäonnistui",
 	"oathauth-describe-provider": "Kaksivaiheinen tunnistautuminen (OATH).",
