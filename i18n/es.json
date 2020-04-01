@@ -60,7 +60,7 @@
 	"oath-log-name": "Registro de autenticación en dos pasos",
 	"oath-log-header": "Estos eventos registran los cambios en el estado de la autenticación en dos pasos en las cuentas de los usuarios.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|deshabilitó}} la autenticación en dos pasos de $3",
-	"oauthauth-ui-no-module": "Ninguno habilitado",
+	"oauthauth-ui-no-module": "No se activó ninguno",
 	"oathauth-module-totp-label": "TOTP (autenticador de uso único)",
 	"oathauth-ui-manage": "Gestionar",
 	"oathmanage": "Gestionar la autenticación en dos pasos",
