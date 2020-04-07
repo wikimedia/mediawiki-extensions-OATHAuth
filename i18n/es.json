@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"MarcoAurelio",
 			"Canaan9801",
-			"Fitoschido"
+			"Fitoschido",
+			"MarcoAurelio"
 		]
 	},
 	"webauthn-desc": "Brinda compatibilidad con la autenticación a través del protocolo WebAuthn",

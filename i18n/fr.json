@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92",
 			"Gomoko",
-			"Verdy p",
 			"Thibaut120094",
-			"Urhixidur"
+			"Urhixidur",
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"webauthn-desc": "Fournit la prise en charge de l’authentification selon le protocole WebAuthn",
