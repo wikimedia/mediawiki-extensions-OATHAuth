@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hwboehm",
-			"Metalhead64",
-			"Inkowik"
+			"Inkowik",
+			"Metalhead64"
 		]
 	},
 	"apihelp-query+oath-description": "Überprüft, ob für einen Benutzer die Zwei-Faktor-Authentifizierung (OATH) aktiviert ist.",

@@ -1,21 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras",
-			"Kareyac",
-			"Iniquity",
-			"Ping08",
-			"Alexandr Efremov",
-			"NBS",
-			"Mouse21",
-			"Patrick Star",
-			"Movses",
-			"Vlad5250",
 			"Alexander Istomin",
+			"Alexandr Efremov",
+			"Amire80",
+			"Iniquity",
+			"Kareyac",
+			"Katunchik",
+			"Mouse21",
+			"Movses",
+			"NBS",
+			"Okras",
+			"Patrick Star",
+			"Ping08",
 			"Saimongoltinio",
 			"Serhio Magpie",
-			"Katunchik",
-			"Amire80"
+			"Vlad5250"
 		]
 	},
 	"oathauth-desc": "Обеспечивает поддержку проверки подлинности с помощью HMAC на основе одноразовых паролей",

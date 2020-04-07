@@ -1,15 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Priviet",
-			"아라",
-			"Ykhwong",
+			"IRTC1015",
 			"Jonghaya",
+			"Priviet",
 			"Revi",
 			"Tursetic",
-			"IRTC1015",
+			"Ykhwong",
 			"렌즈",
-			"밝은소년"
+			"밝은소년",
+			"아라"
 		]
 	},
 	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",

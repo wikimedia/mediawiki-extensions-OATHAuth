@@ -1,16 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Incelemeelemani",
-			"Hbseren",
-			"Sayginer",
-			"HakanIST",
-			"TmY e12",
-			"Vito Genovese",
-			"Hedda",
-			"ToprakM",
 			"BaRaN6161 TURK",
-			"Grkn gll"
+			"Grkn gll",
+			"HakanIST",
+			"Hbseren",
+			"Hedda",
+			"Incelemeelemani",
+			"Sayginer",
+			"TmY e12",
+			"ToprakM",
+			"Vito Genovese"
 		]
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık parolalar kullanarak kimlik doğrulama desteği sağlar",

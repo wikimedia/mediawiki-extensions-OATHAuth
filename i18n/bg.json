@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg",
-			"ShockD",
-			"Vlad5250",
 			"Ivml",
-			"Stoyan"
+			"ShockD",
+			"StanProg",
+			"Stoyan",
+			"Vlad5250"
 		]
 	},
 	"oathauth-desc": "Осигурява поддръжка на удостоверяването посредством HMAC на базата на еднократни пароли",

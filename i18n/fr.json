@@ -2,20 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Crochet.david",
+			"Derugon",
 			"Gomoko",
+			"Manaviko",
+			"McDutchie",
+			"Od1n",
+			"Orlodrim",
 			"Peter17",
 			"Sherbrooke",
-			"Manaviko",
-			"Orlodrim",
-			"Verdy p",
-			"Wladek92",
-			"Yasten",
-			"McDutchie",
+			"Thibaut120094",
 			"Trial",
 			"Urhixidur",
-			"Thibaut120094",
-			"Od1n",
-			"Derugon"
+			"Verdy p",
+			"Wladek92",
+			"Yasten"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",

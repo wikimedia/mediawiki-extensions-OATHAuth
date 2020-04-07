@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kghbln",
-			"Metalhead64",
-			"Sushi",
 			"Hwboehm",
-			"Luke081515",
 			"Inkowik",
-			"Killarnee"
+			"Kghbln",
+			"Killarnee",
+			"Luke081515",
+			"Metalhead64",
+			"Sushi"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",

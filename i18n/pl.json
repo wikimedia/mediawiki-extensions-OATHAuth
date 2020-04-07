@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps",
 			"Alan ffm",
+			"Chrumps",
 			"Openbk",
+			"Rail",
 			"Railfail536",
-			"WTM",
-			"Rail"
+			"WTM"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie weryfikacji za pomocą jednorazowych kodów HMAC",

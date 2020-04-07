@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mormegil",
-			"Urbanecm",
 			"Dvorapa",
 			"Martin Urbanec",
 			"Matěj Suchánek",
-			"Patriccck"
+			"Mormegil",
+			"Patriccck",
+			"Urbanecm"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pro ověření pomocí jednorázových hesel založených na HMAC",

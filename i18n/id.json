@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iwan Novirion",
 			"Rachmat.Wahidi",
 			"Rachmat04",
-			"William Surya Permana",
-			"Iwan Novirion"
+			"William Surya Permana"
 		]
 	},
 	"oathauth-desc": "Memberikan dukungan otentikasi menggunakan kata sandi sekali-pakai berbasis HMAC",

@@ -1,20 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Simon Shek",
-			"Cwlin0416",
-			"LNDDYL",
-			"Alexsh",
-			"Waihorace",
+			"A Retired User",
 			"A2093064",
+			"Alexsh",
+			"Cwlin0416",
 			"Hello903hello",
-			"Liuxinyu970226",
 			"Kly",
-			"神樂坂秀吉",
+			"LNDDYL",
+			"Liuxinyu970226",
+			"Simon Shek",
+			"Waihorace",
 			"Winston Sung",
-			"予弦",
 			"Xiplus",
-			"A Retired User"
+			"予弦",
+			"神樂坂秀吉"
 		]
 	},
 	"oathauth-desc": "提供基於HMAC的一次性密碼驗證支援",

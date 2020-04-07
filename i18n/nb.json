@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby",
-			"Jeblad"
+			"Jeblad",
+			"Jon Harald Søby"
 		]
 	},
 	"oathauth-desc": "Muliggjør autentiseringsstøtte med bruk av HMAC-baserte engangspassord",

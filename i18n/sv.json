@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix",
 			"Lokal Profil",
 			"Mjälten",
-			"Skalman"
+			"Skalman",
+			"WikiPhoenix"
 		]
 	},
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",

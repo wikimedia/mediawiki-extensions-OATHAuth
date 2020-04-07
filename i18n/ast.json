@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu",
-			"Fitoschido"
+			"Fitoschido",
+			"Xuacu"
 		]
 	},
 	"oathauth-desc": "Ufre soporte d'identificación utilizando contraseñes pa una sola vez basaes en HMAC",

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
+			"Banjo",
 			"Elisardojm",
-			"Banjo"
+			"Toliño"
 		]
 	},
 	"oathauth-desc": "Proporciona un soporte de autenticación mediante HMAC baseado en contrasinais dunha soa vez",

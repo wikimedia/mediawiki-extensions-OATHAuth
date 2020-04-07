@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
+			"Movses",
 			"Piramidion",
-			"Ата",
 			"Vlad5250",
-			"Movses"
+			"Ата"
 		]
 	},
 	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів",

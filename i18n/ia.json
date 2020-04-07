@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie",
-			"Fitoschido"
+			"Fitoschido",
+			"McDutchie"
 		]
 	},
 	"oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC",

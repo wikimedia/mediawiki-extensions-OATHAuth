@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Araceletorres",
-			"Luk3",
-			"Tark",
+			"Eduardo Addad de Oliveira",
 			"Felipe L. Ewald",
-			"Eduardo Addad de Oliveira"
+			"Luk3",
+			"Tark"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",

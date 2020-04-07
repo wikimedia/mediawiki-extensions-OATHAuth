@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki",
-			"ネイ",
-			"Yusuke1109",
 			"Ochaochaocha3",
+			"Omotecho",
+			"Shirayuki",
 			"Suyama",
-			"Omotecho"
+			"Yusuke1109",
+			"ネイ"
 		]
 	},
 	"oathauth-desc": "ワンタイムパスワードに基づいた HMAC を使用する認証機能を提供する",

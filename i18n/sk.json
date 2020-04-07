@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Luky001",
 			"Teslaton",
-			"Vlad5250",
-			"Luky001"
+			"Vlad5250"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pre autentifikáciu pomocou jednorázových hesiel, založených na HMAC",

@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente",
-			"Hamilton Abreu",
 			"Athena in Wonderland",
 			"Fitoschido",
-			"Mansil"
+			"Hamilton Abreu",
+			"Mansil",
+			"Vitorvicentevalente"
 		]
 	},
 	"oathauth-desc": "Fornece suporte à autenticação usando palavras-passe de uso único baseadas em códigos HMAC",

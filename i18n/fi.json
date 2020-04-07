@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Mikahama",
-			"Stryn",
-			"Pxos",
 			"Nike",
+			"Pxos",
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Stryn"
 		]
 	},
 	"disableoathforuser": "Poista käytöstä käyttäjän kaksivaiheinen tunnistautuminen",

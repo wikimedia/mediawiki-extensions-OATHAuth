@@ -1,15 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin",
-			"Siebrand",
-			"Romaine",
-			"Sjoerddebruin",
-			"Southparkfan",
 			"Kippenvlees1",
-			"Mainframe98",
 			"LongJohn nl",
-			"Servien"
+			"Mainframe98",
+			"Romaine",
+			"SPQRobin",
+			"Servien",
+			"Siebrand",
+			"Sjoerddebruin",
+			"Southparkfan"
 		]
 	},
 	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
