@@ -133,7 +133,7 @@ class OATHUserRepository {
 
 		$this->getDB( DB_MASTER )->replace(
 			'oathauth_users',
-			[ 'id' ],
+			'id',
 			[
 				'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ),
 				'module' => $user->getModule()->getName(),
