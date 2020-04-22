@@ -37,7 +37,6 @@
 	"action-oathauth-view-log": "לגשת ליומן של שינויים באימות דו־שלבי",
 	"oathauth-disable-intro": "עם כוח גדול באה אחריות גדולה",
 	"oathauth-enteruser": "שם משתמש:",
-	"oathauth-enterreason": "סיבה לכיבוי:",
 	"oathauth-user-not-does-not-have-oath-enabled": "אימות דו־שלבי אינו מופעל עבור המשתמש ולכן אין מה לכבות",
 	"right-oathauth-enable": "הפעלת אימות דו־שלבי",
 	"action-oathauth-enable": "להפעיל אימות דו־שלבי",

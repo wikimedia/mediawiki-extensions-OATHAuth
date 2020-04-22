@@ -38,7 +38,6 @@
 	"action-oathauth-view-log": "přistupovat ke knize změn dvoufaktorové autentizace",
 	"oathauth-disable-intro": "S velkou mocí přichází velká zodpovědnost",
 	"oathauth-enteruser": "Uživatelské jméno:",
-	"oathauth-enterreason": "Důvod pro vypnutí:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Uživatel neměl dvoufaktorovou autentizaci zapnutou, není tedy co vypínat",
 	"right-oathauth-enable": "Zapnutí dvoufaktorové autentizace",
 	"action-oathauth-enable": "zapnout dvoufaktorovou autentizaci",

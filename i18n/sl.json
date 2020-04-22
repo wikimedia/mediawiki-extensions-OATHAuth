@@ -33,7 +33,6 @@
 	"action-oathauth-view-log": "dostop do dnevnika sprememb dvostopenjskega preverjanja pristnosti",
 	"oathauth-disable-intro": "Z veliko močjo pride velika odgovornost",
 	"oathauth-enteruser": "Uporabniško ime:",
-	"oathauth-enterreason": "Razlog za izključitev:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Uporabnik nima vključenega dvostopenjskega preverjanja pristnosti, zato ni ničesar za izključiti",
 	"right-oathauth-enable": "Dvostopenjsko preverjanje pristnosti",
 	"action-oathauth-enable": "vključi dvostopenjsko preverjanje pristnosti",

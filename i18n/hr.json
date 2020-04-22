@@ -35,7 +35,6 @@
 	"action-oathauth-view-log": "pristupanje evidenciji promjena dvofaktorske autentifikacije suradnika/suradnice",
 	"oathauth-disable-intro": "S velikom moći dolazi i velika odgovornost",
 	"oathauth-enteruser": "Suradničko ime:",
-	"oathauth-enterreason": "Razlog onemogućavanja:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Suradnik nema omogućenu dvofaktorsku autentifikaciju. Prema tome, ništa se ne može onemogućiti.",
 	"right-oathauth-enable": "Omogući dvostruku provjeru autentičnosti",
 	"action-oathauth-enable": "omogući dvostruku provjeru autentičnosti",

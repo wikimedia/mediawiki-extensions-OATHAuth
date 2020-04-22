@@ -32,7 +32,6 @@
 	"action-oathauth-disable-for-user": "vypnúť dvojfaktorovú autentifikáciu používateľa",
 	"right-oathauth-view-log": "Prístup k záznamu zmien dvojfaktorovej autentifikácie",
 	"oathauth-enteruser": "Používateľské meno:",
-	"oathauth-enterreason": "Dôvod na vypnutie:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Používateľ nemá zapnutú dvojfaktorovú autentifikáciu, nie je teda čo vypínať",
 	"right-oathauth-enable": "Zapnutie dvojfaktorovej autentifikácie",
 	"action-oathauth-enable": "zapnúť dvojfaktorovú autentifikáciu",

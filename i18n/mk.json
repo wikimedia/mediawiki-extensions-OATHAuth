@@ -33,7 +33,6 @@
 	"action-oathauth-view-log": "пристап до дневникот на промени во двочинителската заверка",
 	"oathauth-disable-intro": "Големата моќ подразбира голема одговорност",
 	"oathauth-enteruser": "Корисничко име:",
-	"oathauth-enterreason": "Причина за оневозможувањето:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Корисникот нема овозможено двочинителска заверка. Затоа, нема што да се оневозможи",
 	"right-oathauth-enable": "Овозможување на двочинителска заверка",
 	"action-oathauth-enable": "овозможување на двочинителска заверката",

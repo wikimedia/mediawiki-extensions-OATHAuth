@@ -37,7 +37,6 @@
 	"action-oathauth-view-log": "podglądu rejestru zmian weryfikacji dwuetapowej",
 	"oathauth-disable-intro": "Z wielką mocą wiąże się wielka odpowiedzialność.",
 	"oathauth-enteruser": "Nazwa użytkownika:",
-	"oathauth-enterreason": "Powód wyłączenia:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Użytkownik nie ma włączonej weryfikacji dwuetapowej, więc nie możesz jej dla niego wyłączyć.",
 	"right-oathauth-enable": "Włączenie weryfikacji dwuetapowej",
 	"action-oathauth-enable": "włączenia weryfikacji dwuetapowej",

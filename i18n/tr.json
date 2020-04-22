@@ -41,7 +41,6 @@
 	"action-oathauth-view-log": "iki faktörlü kimlik doğrulama değişikliklerinin günlüğüne erişin",
 	"oathauth-disable-intro": "Büyük güç, beraberinde büyük sorumluluklar getirir",
 	"oathauth-enteruser": "Kullanıcı adı:",
-	"oathauth-enterreason": "Devre dışı bırakma nedeni:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Kullanıcının iki faktörlü kimlik doğrulaması etkin değil, bu nedenle devre dışı bırakılacak bir şey yok",
 	"right-oathauth-enable": "İki aşamalı doğrulamayı etkinleştir",
 	"action-oathauth-enable": "iki aşamalı doğrulamayı etkinleştir",
