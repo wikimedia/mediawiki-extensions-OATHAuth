@@ -49,6 +49,7 @@
 	"action-oathauth-view-log": "{{doc-action|oathauth-view-log}}",
 	"oathauth-disable-intro": "Intro message for special to disable other users' two-factor authentication (OATH)",
 	"oathauth-enteruser": "Label for user field in special page to verify or disable two-factor authentication",
+	"oathauth-enterdisablereason": "Label for field for reason in special page to disable two-factor authentication",
 	"oathauth-enterverifyreason": "Label for field for reason in special page to verify two-factor authentication",
 	"oathauth-user-not-does-not-have-oath-enabled": "Error message when user does not have two-factor authentication (OATH) enabled",
 	"right-oathauth-enable": "{{doc-right|oathauth-enable}}",
