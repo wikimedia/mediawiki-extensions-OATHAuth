@@ -36,6 +36,7 @@
 	"action-oathauth-view-log": "akses ke log perubahan otentikasi dua faktor",
 	"oathauth-disable-intro": "Dengan kekuatan besar, pasti ada tanggung jawab besar",
 	"oathauth-enteruser": "Nama pengguna:",
+	"oathauth-enterdisablereason": "Alasan dinonaktifkan:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Pengguna tidak mengaktifkan otentikasi dua faktor, jadi tidak ada yang dapat dinonaktifkan",
 	"right-oathauth-enable": "Aktifkan otentikasi dua faktor",
 	"action-oathauth-enable": "aktifkan otentikasi dua faktor",

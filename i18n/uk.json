@@ -36,6 +36,7 @@
 	"action-oathauth-view-log": "доступ до журналу змін у двофакторній авторизації",
 	"oathauth-disable-intro": "З великою силою приходить велика відповідальність",
 	"oathauth-enteruser": "Ім'я користувача:",
+	"oathauth-enterdisablereason": "Причина вимкнення:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Користувач не увімкнув двофакторну автентифікацію, тож нічого вимикати",
 	"right-oathauth-enable": "Вмикання двофакторної авторизації",
 	"action-oathauth-enable": "вмикання двофакторної авторизації",

@@ -22,6 +22,7 @@
 	"oathauth-entertoken": "کۆدی بەرنامەی دڵنیاکەرەوەکەت لێرە بنووسە بۆ دڵنیابوونەوە لە دروست کارکردنی:",
 	"oathauth-disable-for-user": "لەکارخستنی دڵنیاکەرەوەی جووت-فاکتەر بۆ بەکارهێنەرێک",
 	"oathauth-enteruser": "ناوی بەکارھێنەر:",
+	"oathauth-enterdisablereason": "ھۆکار بۆ ناچالاککردن:",
 	"right-oathauth-enable": "کاراکردنی دڵنیاکەرەوەی جووت-فاکتەر",
 	"action-oathauth-enable": "کاراکردنی دڵنیاکەرەوەی جووت-فاکتەر",
 	"oathauth-auth-token-label": "نیشانە",

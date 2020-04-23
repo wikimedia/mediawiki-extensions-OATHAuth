@@ -46,6 +46,7 @@
 	"action-oathauth-view-log": "доступ к журналу двухфакторной аутентификации",
 	"oathauth-disable-intro": "Большая сила подразумевает большую ответственность",
 	"oathauth-enteruser": "Имя участника:",
+	"oathauth-enterdisablereason": "Причина для отключения",
 	"oathauth-user-not-does-not-have-oath-enabled": "У участника не была включена двухфакторная аутентификация. Поэтому нечего отключать",
 	"right-oathauth-enable": "Включение двухфакторной аутентификации",
 	"action-oathauth-enable": "включить двухфакторную аутентификацию",

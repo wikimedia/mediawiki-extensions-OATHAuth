@@ -31,6 +31,7 @@
 	"right-oathauth-disable-for-user": "Desactivar a autenticación de dous factores para un usuario",
 	"action-oathauth-disable-for-user": "desactivar a autenticación de dous factores para un usuario",
 	"oathauth-enteruser": "Nome de usuario:",
+	"oathauth-enterdisablereason": "Motivo para desactivar:",
 	"right-oathauth-enable": "Activar a autenticación en dous pasos",
 	"action-oathauth-enable": "activar a autenticación de dous pasos",
 	"oathauth-auth-token-label": "Identificador",

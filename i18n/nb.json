@@ -34,6 +34,7 @@
 	"action-oathauth-view-log": "få tilgang til loggen over endringer i totrinns pålogginger",
 	"oathauth-disable-intro": "Med stor makt følger stort ansvar",
 	"oathauth-enteruser": "Brukernavn:",
+	"oathauth-enterdisablereason": "Årsak for deaktivering:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Brukeren har ikke slått på totrinns pålogging, så det er ingenting å slå av",
 	"right-oathauth-enable": "Slå på totrinns pålogging",
 	"action-oathauth-enable": "slå på totrinns pålogging",

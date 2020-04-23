@@ -35,6 +35,7 @@
 	"action-oathauth-view-log": "komma åt loggen över ändringar i tvåfaktorautentiseringen",
 	"oathauth-disable-intro": "Med stor makt följer stort ansvar",
 	"oathauth-enteruser": "Användarnamn:",
+	"oathauth-enterdisablereason": "Anledning till inaktivering:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Användaren har inte aktiverat tvåfaktorautentisering, så ingenting kan inaktiveras",
 	"right-oathauth-enable": "Aktivera tvåfaktorautentisering",
 	"action-oathauth-enable": "aktivera tvåfaktorautentisering",

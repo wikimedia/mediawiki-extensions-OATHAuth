@@ -29,12 +29,16 @@
 	"oathauth-step4": "Četvrti korak: provjera",
 	"oathauth-entertoken": "Za provjeru unesite kôd s Vašeg autentifikacijskoga uređaja:",
 	"oathauth-disable-for-user": "Onemogućavanje dvofaktorske autentifikacije suradnika",
+	"oathauth-verify-for-user": "Provjera je li suradnica/suradnik omogućio dvofaktorsku autentifikaciju",
 	"right-oathauth-disable-for-user": "Onemogućavanje dvofaktorske autentifikacije suradnika/suradnice",
 	"action-oathauth-disable-for-user": "onemogućavanje dvofaktorske autentifikacije suradnika/suradnice",
+	"action-oathauth-verify-user": "provjeru je li suradnica/suradnik omogućio dvofaktorsku autentifikaciju",
 	"right-oathauth-view-log": "Pristupanje evidenciji promjena dvofaktorske autentifikacije suradnika/suradnice",
 	"action-oathauth-view-log": "pristupanje evidenciji promjena dvofaktorske autentifikacije suradnika/suradnice",
 	"oathauth-disable-intro": "S velikom moći dolazi i velika odgovornost",
 	"oathauth-enteruser": "Suradničko ime:",
+	"oathauth-enterdisablereason": "Razlog onemogućavanja:",
+	"oathauth-enterverifyreason": "Razlog provjere:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Suradnik nema omogućenu dvofaktorsku autentifikaciju. Prema tome, ništa se ne može onemogućiti.",
 	"right-oathauth-enable": "Omogući dvostruku provjeru autentičnosti",
 	"action-oathauth-enable": "omogući dvostruku provjeru autentičnosti",
@@ -72,5 +76,6 @@
 	"oathauth-disable-method-warning-header": "Potvrđivanje onemogućavanja autentifikacijske metode",
 	"oathauth-disable-method-warning-button-label": "Potvrdi i nastavi",
 	"oathauth-disable-method-warning": "Ako onemogućite dvofaktorsku autentifikacijsku metodu naziva $1, više nećete biti u mogućnosti rabiti tu metodu pri prijavljivanju, a svi će podatci povezani s tom autentifikacijskom metodom biti izbrisani.",
-	"oathauth-switch-method-warning-header": "Potvrđivanje prijelaza na ostale autentifikacijske metode"
+	"oathauth-switch-method-warning-header": "Potvrđivanje prijelaza na ostale autentifikacijske metode",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nema omogućenu dvofaktorsku autentifikaciju."
 }

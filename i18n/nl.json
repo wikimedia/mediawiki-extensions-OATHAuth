@@ -38,6 +38,7 @@
 	"right-oathauth-view-log": "Toegang hebben tot het logboek met wijzigingen aan tweetrapsauthenticatie",
 	"action-oathauth-view-log": "toegang te hebben tot het logboek met wijzigingen aan tweetrapsauthenticatie",
 	"oathauth-enteruser": "Gebruikersnaam:",
+	"oathauth-enterdisablereason": "Reden voor het uitschakelen:",
 	"oathauth-user-not-does-not-have-oath-enabled": "De gebruiker heeft geen tweetrapsauthenticatie ingesteld, er is niets om uit te schakelen",
 	"right-oathauth-enable": "Tweetrapsauthenticatie inschakelen",
 	"action-oathauth-enable": "tweetrapsauthenticatie in te schakelen",

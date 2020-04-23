@@ -33,6 +33,7 @@
 	"action-oathauth-view-log": "aportar al rexistru de cambeos de la identificación en dos pasos",
 	"oathauth-disable-intro": "Un gran poder trai una gran responsabilidá",
 	"oathauth-enteruser": "Nome d'usuariu:",
+	"oathauth-enterdisablereason": "Motivu pa desactivar:",
 	"oathauth-user-not-does-not-have-oath-enabled": "L'usuariu nun tien activada la identificación en dos pasos, nun hai nada que desactivar.",
 	"right-oathauth-enable": "Activar la identificación de dos factores",
 	"action-oathauth-enable": "activar la identificación de dos factores",

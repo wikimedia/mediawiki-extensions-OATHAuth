@@ -36,6 +36,7 @@
 	"action-oathauth-view-log": "aceder ao registo de alterações da autenticação de dois fatores",
 	"oathauth-disable-intro": "Grandes poderes acarretam grandes responsabilidades",
 	"oathauth-enteruser": "Nome de utilizador:",
+	"oathauth-enterdisablereason": "Motivo para desativar:",
 	"oathauth-user-not-does-not-have-oath-enabled": "O utilizador não tem a autenticação de dois fatores ativada, por isso não há nada para desativar",
 	"right-oathauth-enable": "Ativar autenticação de dois fatores",
 	"action-oathauth-enable": "ativar autenticação de dois fatores",

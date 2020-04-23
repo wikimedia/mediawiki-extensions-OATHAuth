@@ -33,6 +33,7 @@
 	"action-oathauth-view-log": "acceder al registro de modificationes al authentication bifactorial",
 	"oathauth-disable-intro": "Con grande poter veni grande responsabilitate",
 	"oathauth-enteruser": "Nomine de usator:",
+	"oathauth-enterdisablereason": "Motivo pro disactivar:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Le usator non ha le authentication bifactorial activate, dunque il ha nihil a disactivar",
 	"right-oathauth-enable": "Activar le authentication bifactorial",
 	"action-oathauth-enable": "activar le authentication bifactorial",

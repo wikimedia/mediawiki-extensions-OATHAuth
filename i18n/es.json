@@ -42,6 +42,7 @@
 	"action-oathauth-view-log": "acceder al registro de cambios en la autenticación en dos pasos",
 	"oathauth-disable-intro": "Un gran poder conlleva una gran responsabilidad",
 	"oathauth-enteruser": "Nombre de usuario:",
+	"oathauth-enterdisablereason": "Motivo para deshabilitar:",
 	"oathauth-user-not-does-not-have-oath-enabled": "El usuario no tiene habilitada la autenticación en dos pasos, no hay nada que deshabilitar.",
 	"right-oathauth-enable": "Activar la autenticación en dos pasos",
 	"action-oathauth-enable": "activar la autenticación en dos pasos",
