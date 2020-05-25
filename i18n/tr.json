@@ -15,6 +15,7 @@
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık parolalar kullanarak kimlik doğrulama desteği sağlar",
 	"disableoathforuser": "Kullanıcının iki faktörlü kimlik doğrulamasını devre dışı bırak",
+	"verifyoathforuser": "İki faktörlü kimlik doğrulama durumunu doğrula",
 	"specialpages-group-oath": "İki Aşamalı Doğrulama",
 	"oathauth-account": "Hesap adı:",
 	"oathauth-secret": "İki faktörlü kimlik doğrulama gizli anahtarı:",

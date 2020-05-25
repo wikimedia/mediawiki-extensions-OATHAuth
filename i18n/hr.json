@@ -9,6 +9,7 @@
 	},
 	"oathauth-desc": "Omogućava autentifikaciju suradnika pomoću HMAC-a na temelju jednokratnih zaporki",
 	"disableoathforuser": "Onemogući suradnikovu dvofaktorsku autentifikaciju",
+	"verifyoathforuser": "Verifikacija statusa dvofaktorske autentifikacije",
 	"specialpages-group-oath": "Dvofaktorska autentifikacija",
 	"oathauth-account": "Suradnički račun:",
 	"oathauth-secret": "Tajni ključ za dvofaktorsku autentifikaciju:",

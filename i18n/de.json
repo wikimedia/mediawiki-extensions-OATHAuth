@@ -12,6 +12,7 @@
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
 	"disableoathforuser": "Zwei-Faktor-Authentifizierung für Benutzer deaktivieren",
+	"verifyoathforuser": "Überprüfen des Zwei-Faktor-Authentifizierungsstatus",
 	"specialpages-group-oath": "Zwei-Faktor-Authentifizierung",
 	"oathauth-account": "Benutzerkonto:",
 	"oathauth-secret": "Geheimer Schlüssel für die Zwei-Faktor-Authentifizierung:",

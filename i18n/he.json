@@ -11,6 +11,7 @@
 	},
 	"oathauth-desc": "תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC",
 	"disableoathforuser": "כיבוי אימות דו־שלבי של משתמש",
+	"verifyoathforuser": "וידוא מצב אימות דו־גורמי",
 	"specialpages-group-oath": "אימות דו־שלבי",
 	"oathauth-account": "שם החשבון:",
 	"oathauth-secret": "המפתח הסודי של האימות הדו־שלבי:",
