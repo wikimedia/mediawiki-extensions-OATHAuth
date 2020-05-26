@@ -10,6 +10,7 @@
 		]
 	},
 	"oathauth-desc": "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
+	"verifyoathforuser": "Verifica stato autenticazione a due fattori",
 	"specialpages-group-oath": "Autenticazione a due fattori",
 	"oathauth-account": "Nome utenza:",
 	"oathauth-secret": "Chiave segreta per l'autenticazione a due fattori:",

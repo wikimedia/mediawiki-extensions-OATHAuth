@@ -10,6 +10,7 @@
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
 	"disableoathforuser": "Desativar autenticação de dois fatores do usuário",
+	"verifyoathforuser": "Verifique o status da autenticação de dois fatores",
 	"oath": "OATHAuth",
 	"specialpages-group-oath": "Autenticação de dois fatores",
 	"oathauth-account": "Nome da conta:",
