@@ -48,7 +48,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	 * @inheritDoc
 	 */
 	public function getHTML( $submitResult ) {
-		$this->getOutput()->addModuleStyles( 'ext.webauthn.manage' );
 		$this->getOutput()->addModules( 'ext.webauthn.manage' );
 		return parent::getHTML( $submitResult );
 	}
