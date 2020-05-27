@@ -11,6 +11,7 @@
 	},
 	"oathauth-desc": "Dodaje wsparcie weryfikacji za pomocą jednorazowych kodów HMAC",
 	"disableoathforuser": "Wyłącz weryfikację dwuetapową użytkownika",
+	"verifyoathforuser": "Zweryfikuj status weryfikacji dwuetapowej",
 	"specialpages-group-oath": "Weryfikacja dwuetapowa",
 	"oathauth-account": "Nazwa konta:",
 	"oathauth-secret": "Tajny klucz weryfikacji dwuetapowej:",

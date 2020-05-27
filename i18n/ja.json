@@ -12,7 +12,7 @@
 		]
 	},
 	"oathauth-desc": "HMAC に基づいたワンタイムパスワードを使用する認証機能を提供する",
-	"disableoathforuser": "利用者の二要素認証を無効化",
+	"disableoathforuser": "利用者の多要素認証を無効化",
 	"specialpages-group-oath": "二要素認証",
 	"oathauth-account": "アカウント名:",
 	"oathauth-secret": "二要素認証の秘密鍵:",
@@ -32,7 +32,7 @@
 	"oathauth-step3": "手順3: スクラッチコードを書き留めてください",
 	"oathauth-step4": "手順4: 検証",
 	"oathauth-entertoken": "検証のため、あなたの認証デバイスに表示されたコードを入力してください:",
-	"oathauth-disable-for-user": "二要素認証を無効化",
+	"oathauth-disable-for-user": "多要素認証を無効化",
 	"right-oathauth-disable-for-user": "利用者の二要素認証を無効化",
 	"action-oathauth-disable-for-user": "利用者の二要素認証の無効化",
 	"right-oathauth-view-log": "二要素認証の変更記録を閲覧",
@@ -52,7 +52,7 @@
 	"oathauth-module-totp-label": "TOTP（ワンタイムトークン）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "二要素認証の管理",
-	"oathauth-enable-generic": "有効化",
-	"oathauth-disable-generic": "無効化",
+	"oathauth-enable-generic": "有効にする",
+	"oathauth-disable-generic": "無効にする",
 	"oathauth-ui-available-modules": "利用可能な方式"
 }
