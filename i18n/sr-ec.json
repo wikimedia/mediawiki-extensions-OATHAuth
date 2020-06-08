@@ -57,7 +57,7 @@
 	"oauthauth-ui-no-module": "није омогућена",
 	"oathauth-module-invalid": "OATHAuth модул који је корисник регистровао није важећи.",
 	"oathauth-module-totp-label": "TOTP (једнократни токен)",
-	"oathauth-ui-manage": "Управљај",
+	"oathauth-ui-manage": "Управљајте",
 	"oathmanage": "Управљање двофакторском потврдом идентитета",
 	"oathauth-ui-not-enabled-modules": "Пребацивање на алтернативну методу",
 	"oathauth-ui-enabled-module": "Омогућене методе потврде идентитета",
