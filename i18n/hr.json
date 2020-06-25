@@ -74,7 +74,7 @@
 	"oathauth-enable-page-title": "Omogućavanje $1",
 	"oathauth-action-exclusive-to-2fa": "Radnju mogu izvršiti samo suradnici/suradnice koji/koje imaju omogućenu dvofaktorsku autentifikaciju.",
 	"oathauth-ui-available-modules": "Dostupne metode",
-	"oathauth-ui-general-help": "'''Multifaktorska autentifikacija''' ('''MFA''') je autentifikacijska metoda kojom se korisniku računala omogućava pristup tek nakon uspješnog unosa dva ili više potvrdnih dijelova (ili faktora) u autentifikacijski mehanizam: saznanje (ono što zna samo korisnik i nitko drugi), vlasništvo (ono što posjeduje samo korisnik i nitko drugi), te osobina (ono što je svojstveno korisniku i nikom drugom). [https://en.wikipedia.org/wiki/Multi-factor_authentication Pročitajte više]",
+	"oathauth-ui-general-help": "'''Multifaktorska autentifikacija''' ('''MFA''') autentifikacijska je metoda kojom se korisniku računala omogućava pristup tek nakon uspješnog unosa dva ili više potvrdnih dijelova (ili faktora) u autentifikacijski mehanizam: saznanje (ono što zna samo korisnik i nitko drugi), vlasništvo (ono što posjeduje samo korisnik i nitko drugi), te osobina (ono što je svojstveno korisniku i nikom drugom). [https://en.wikipedia.org/wiki/Multi-factor_authentication Pročitajte više]",
 	"oathauth-totp-description": "Jednokratna zaporka/kôd (TOTP) bazirana na vremenu kreiranja, proširenje je mogućnosti algoritma jednokratne zaporke zasnovane na HMAC-u (HOTP), koja uključuje generiranje jednokratne zaporke bez preuzimanja jedinstvenosti kôda iz trenutačnog vremena kad je zaporka kreirana.",
 	"oathauth-disable-method-warning-header": "Potvrđivanje onemogućavanja autentifikacijske metode",
 	"oathauth-disable-method-warning-button-label": "Potvrdi i nastavi",
