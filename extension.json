@@ -32,13 +32,9 @@
 		]
 	},
 	"ResourceModules": {
-		"ext.webauthn.util": {
-			"scripts": [
-				"util/util.js"
-			]
-		},
 		"ext.webauthn.ui.base": {
 			"scripts": [
+				"util/util.js",
 				"ui/CredentialForm.js"
 			],
 			"styles": [
@@ -46,7 +42,6 @@
 			],
 			"dependencies": [
 				"oojs-ui",
-				"ext.webauthn.util",
 				"mediawiki.jqueryMsg"
 			],
 			"messages": [
