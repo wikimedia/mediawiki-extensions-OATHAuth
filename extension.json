@@ -119,7 +119,7 @@
 		"WebAuthnRelyingPartyName": {
 			"value": null
 		},
-	 	"WebAuthnRelyingPartyID": {
+		"WebAuthnRelyingPartyID": {
 			"value": null
 		}
 	},
