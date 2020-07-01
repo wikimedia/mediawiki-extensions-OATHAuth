@@ -41,5 +41,6 @@
 	"oathauth-disable-page-title": "ДӀаяйа $1",
 	"oathauth-enable-page-title": "Латае $1",
 	"oathauth-ui-available-modules": "ТӀекхочу методаш",
+	"oathauth-ui-general-help": "'''Дуккха факторан аутентификаци''' ('''ДФА''') — шорйина аутентификаци, компьютеран тӀекхачаран тергонан хьесап ду, лелочунна хаамашна тӀекхача оьшу цхьаннал сов «аутентификацин механизман тешалла». [https://ru.wikipedia.org/wiki/Многофакторная_аутентификация Мадарра]",
 	"oathauth-totp-description": "TOTP (Time-based One-Time Password Algorithm) — ларйина аутентификацин цкъа мега паролаш кхуллу OATH-алгоритм, иза дика лардалар  HOTP (HMAC-Based One-Time Password Algorithm)."
 }
