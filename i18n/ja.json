@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marine-Blue"
+		]
+	},
+	"webauthn-module-label": "Web 認証 (WebAuthn)",
+	"webauthn-ui-add-key": "キーを追加",
+	"webauthn-error-reg-generic": "キーを登録できませんでした。登録の手順をやり直してください",
+	"webauthn-ui-key-register-help": "キーのニックネームを選択してください",
+	"oathauth-webauthn-add-key-section-name": "新しい WebAuth キーを登録する",
+	"oathauth-webauthn-disable-section-name": "WebAuthn を無効にする",
+	"webauthn-module-description": "WebAuth (Web Authentication, WEB認証) は World Wide Web Consortium (W3C) によって公開された Web 標準の仕様です。WebAuth は FIDO Alliance が支援する FIDO2 プロジェクトのコアコンポーネントです。プロジェクトの目標は、公開鍵暗号を使用して、Web ベースのアプリケーションとサービスの認証インターフェースを標準化することです。[https://ja.wikipedia.org/wiki/WebAuthn 詳細情報]",
+	"webauthn-ui-reload-page-label": "ページを再読み込み"
+}
