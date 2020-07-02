@@ -54,5 +54,8 @@
 	"oathmanage": "二要素認証の管理",
 	"oathauth-enable-generic": "有効にする",
 	"oathauth-disable-generic": "無効にする",
-	"oathauth-ui-available-modules": "利用可能な方式"
+	"oathauth-enable-page-title": "$1 を有効化する",
+	"oathauth-ui-available-modules": "利用可能な方式",
+	"oathauth-ui-general-help": "'''多要素認証''' ('''MFA''') とは、アクセス権を求める利用者に対し、2つ以上の異なる証拠（要素）を提示させる認証方法です:知識（本人が知っていること）、所有（本人が持っているもの）、生体（本人の身体的特徴） [https://ja.wikipedia.org/wiki/%E5%A4%9A%E8%A6%81%E7%B4%A0%E8%AA%8D%E8%A8%BC 詳細情報]",
+	"oathauth-totp-description": "時刻に基づき生成されるワンタイムパスワード (Time-based One-Time Password algorithm, TOTP) は HMAC により生成されるワンタイムパスワード (HMAC-based One-time Password, HOTP) を拡張したもので、一意性のあるパスワードを生成しません。"
 }
