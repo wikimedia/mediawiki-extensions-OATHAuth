@@ -4,6 +4,8 @@
 			"Schmackes"
 		]
 	},
+	"webauthn-desc": "Bietet Unterstützung bei der Authentifizierung mit dem WebAuthn-Protokoll",
+	"webauthn-module-label": "Web-Authentifizierung (WebAuthn)",
 	"webauthn-ui-login-prompt": "Bitte berühre dein Verifizierungsgerät oder folge den Anweisungen des Browsers",
 	"webauthn-ui-add-key": "Schlüssel hinzufügen",
 	"webauthn-error-browser-unsupported": "Dieser Browser unterstützt WebAuthentication nicht oder ist für diese Website nicht verfügbar. Bitte versuche es mit einem anderen Browser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Weiterlesen]",
