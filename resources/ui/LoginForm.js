@@ -16,7 +16,7 @@
 		if ( !this.$authInfo ) {
 			return {};
 		}
-		var authInfo = this.$authInfo.val();
+		const authInfo = this.$authInfo.val();
 		return JSON.parse( authInfo );
 	};
 

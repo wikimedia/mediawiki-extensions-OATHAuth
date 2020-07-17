@@ -1,8 +1,8 @@
 ( function () {
 	$( function () {
-		var form = new mw.ext.webauthn.LoginFormWidget();
+		const form = new mw.ext.webauthn.LoginFormWidget();
 
-		var authenticator = new mw.ext.webauthn.Authenticator(
+		const authenticator = new mw.ext.webauthn.Authenticator(
 			form.getAuthInfo()
 		);
 		authenticator.authenticate().then(

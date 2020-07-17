@@ -28,13 +28,13 @@
 
 		// Unrecoverable in this load - remove all content
 		this.$form.children().remove();
-		var icon = new OO.ui.IconWidget( {
+		const icon = new OO.ui.IconWidget( {
 			icon: 'alert'
 		} );
-		var label = new OO.ui.LabelWidget();
+		const label = new OO.ui.LabelWidget();
 		label.$element.append( this.getErrorText( message || '' ) );
 
-		var reloadLink = new OO.ui.ButtonWidget( {
+		const reloadLink = new OO.ui.ButtonWidget( {
 			label: mw.message( 'webauthn-ui-reload-page-label' ).text(),
 			framed: false
 		} );
@@ -54,7 +54,7 @@
 	};
 
 	mw.ext.webauthn.CredentialForm.prototype.getErrorText = function ( error ) {
-		var message = mw.message( error );
+		const message = mw.message( error );
 		if ( message.exists() ) {
 			return message.parse();
 		}

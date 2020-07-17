@@ -8,7 +8,7 @@
 	OO.mixinClass( mw.ext.webauthn.Authenticator, OO.EventEmitter );
 
 	mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
-		var dfd = $.Deferred();
+		const dfd = $.Deferred();
 		if ( this.authInfo === null ) {
 			this.getAuthInfo().done( function ( response ) {
 				if ( !response.webauthn.hasOwnProperty( 'auth_info' ) ) {
@@ -48,7 +48,7 @@
 	};
 
 	mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
-		var publicKey = this.authInfo;
+		const publicKey = this.authInfo;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
 			function ( c ) { return c.charCodeAt( 0 ); }
@@ -90,8 +90,8 @@
 	};
 
 	mw.ext.webauthn.Authenticator.prototype.arrayToBase64String = function ( a ) {
-		var strigified = '';
-		for ( var i = 0; i < a.length; i++ ) {
+		let strigified = '';
+		for ( let i = 0; i < a.length; i++ ) {
 			strigified += String.fromCharCode( a[ i ] );
 		}
 		return btoa( strigified );

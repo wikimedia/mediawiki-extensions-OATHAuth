@@ -9,7 +9,7 @@
 	OO.mixinClass( mw.ext.webauthn.Registrator, OO.EventEmitter );
 
 	mw.ext.webauthn.Registrator.prototype.register = function () {
-		var dfd = $.Deferred();
+		const dfd = $.Deferred();
 		if ( this.registerData === null ) {
 			this.getRegisterInfo().then(
 				function ( response ) {
@@ -50,7 +50,7 @@
 	};
 
 	mw.ext.webauthn.Registrator.prototype.createCredential = function () {
-		var publicKey = this.registerData;
+		const publicKey = this.registerData;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
 			function ( c ) { return c.charCodeAt( 0 ); }
@@ -95,8 +95,8 @@
 	};
 
 	mw.ext.webauthn.Registrator.prototype.arrayToBase64String = function ( a ) {
-		var strigified = '';
-		for ( var i = 0; i < a.length; i++ ) {
+		let strigified = '';
+		for ( let i = 0; i < a.length; i++ ) {
 			strigified += String.fromCharCode( a[ i ] );
 		}
 		return btoa( strigified );
