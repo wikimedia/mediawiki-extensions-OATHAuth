@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Evrifaessa",
 			"Grkn gll",
 			"HakanIST",
 			"Hbseren",
@@ -80,7 +81,7 @@
 	"oathauth-enable-page-title": "$1 etkinleştir",
 	"oathauth-action-exclusive-to-2fa": "Bu işlem yalnızca İki faktörlü kimlik doğrulama etkinleştirilmiş kullanıcılar tarafından gerçekleştirilebilir.",
 	"oathauth-ui-available-modules": "Mevcut yöntemler",
-	"oathauth-ui-general-help": "'''Çok faktörlü kimlik doğrulama''' '('''ÇFKD'''), bir bilgisayar kullanıcısına yalnızca bir kimlik doğrulama mekanizmasına iki veya daha fazla kanıt (veya faktör) başarıyla sunulduktan sonra erişim izni verilen bir kimlik doğrulama yöntemidir: bilgi (kullanıcının ve yalnızca kullanıcının bildiği bir şey), sahip olma (kullanıcının ve yalnızca kullanıcının sahip olduğu bir şey) ve kalıtım (kullanıcının ve yalnızca kullanıcının olduğu bir şey). [https://tr.wikipedia.org/wiki/Çok_faktörlü_kimlik_doğrulaması Daha fazla bilgi edinin]",
+	"oathauth-ui-general-help": "'''Çok faktörlü kimlik doğrulama''' ('''ÇFKD'''), bir bilgisayar kullanıcısına yalnızca bir kimlik doğrulama mekanizmasına iki veya daha fazla kanıt (veya faktör) başarıyla sunulduktan sonra erişim izni verilen bir kimlik doğrulama yöntemidir: bilgi (kullanıcının ve yalnızca kullanıcının bildiği bir şey), sahip olma (kullanıcının ve yalnızca kullanıcının sahip olduğu bir şey) ve kalıtım (kullanıcının ve yalnızca kullanıcının olduğu bir şey). [https://tr.wikipedia.org/wiki/Çok_faktörlü_kimlik_doğrulaması Daha fazla bilgi edinin]",
 	"oathauth-totp-description": "Zamana Dayalı Bir Kerelik Parola algoritması (TOTP), HMAC tabanlı Tek Seferlik Parola algoritmasının (HOTP), geçerli zamanın benzersizliğini alarak bir kerelik parola oluşturan bir uzantısıdır.",
 	"oathauth-disable-method-warning-header": "Bir kimlik doğrulama yönteminin devre dışı bırakılmasını onaylayın",
 	"oathauth-disable-method-warning-button-label": "Onayla ve devam et",
