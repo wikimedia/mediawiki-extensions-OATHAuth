@@ -74,7 +74,7 @@
 	"oathauth-module-invalid": "Error message when the OATHAuth module registered by user is invalid",
 	"oathauth-module-totp-label": "User preference value when the TOTP module is enabled",
 	"oathauth-ui-manage": "Button on Special:Preferences, that leads to [[Special:OATHManage]]",
-	"oathmanage": "{{optional}}\n{{doc-special|OATHManage}}",
+	"oathmanage": "{{doc-special|OATHManage}}",
 	"oathauth-ui-not-enabled-modules": "Header on Special:OATHManage under which all modules that are not currently enabled are listed. This is used only if user already has 2FA enabled",
 	"oathauth-ui-enabled-module": "Header on Special:OATHManage under which is the currently selected 2FA module shown",
 	"oathauth-enable-generic": "Button label that enables the module\n{{Identical|Enable}}",
