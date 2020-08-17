@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Schmackes"
+			"Schmackes",
+			"Umherirrender"
 		]
 	},
 	"webauthn-desc": "Bietet Unterstützung bei der Authentifizierung mit dem WebAuthn-Protokoll",
@@ -15,10 +16,10 @@
 	"webauthn-key-type-missmatch": "Der Benutzer hat mehrere Schlüsseltypen registriert",
 	"oathauth-webauthn-registered-keys-section-name": "Registrierte Schlüssel",
 	"webuathn-ui-remove-key": "Entfernen",
-	"webauthn-error-module-not-enabled": "Das Modul \"$1\" ist für {{GENDER:$2|Benutzer \"$2\"|Benutzerin \"$2\"}} nicht aktiviert",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Benutzer \"$1\"}} hat Modul WebAuthn aktiviert, aber ein ungültiger Schlüssel ist gesetzt",
+	"webauthn-error-module-not-enabled": "Das Modul „$1“ ist für {{GENDER:$2|Benutzer „$2“|Benutzerin „$2“}} nicht aktiviert",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Benutzer „$1“}} hat Modul WebAuthn aktiviert, aber ein ungültiger Schlüssel ist gesetzt",
 	"webauthn-error-verification-failed": "Verifizierung fehlgeschlagen.",
-	"webauthn-error-cannot-register": "{{GENDER:$1|Benutzer \"$1\"}} kann einen neuen Berechtigungsnachweis nicht registrieren",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Benutzer „$1“}} kann einen neuen Berechtigungsnachweis nicht registrieren",
 	"webauthn-error-invalid-new-key": "Der vom Modul zurückgegebene neue Schlüssel ist nicht vom erforderlichen Typ",
 	"webauthn-error-registration-failed": "Neue Schlüsselregistrierung fehlgeschlagen",
 	"webauthn-ui-key-register-help": "Wähle einen Kurznamen für deinen Schlüssel",
