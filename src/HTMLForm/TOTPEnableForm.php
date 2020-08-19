@@ -84,7 +84,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
-					$this->msg( 'oathauth-scratchtokens' )->escaped()
+					$this->msg( 'oathauth-scratchtokens' )->parse()
 					. $this->createResourceList( $this->getScratchTokensForDisplay( $key ) ),
 				'raw' => true,
 				'section' => 'step3',
