@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hzy980512"
+		]
+	},
+	"apihelp-webauthn-summary": "登録/認証プロセスの時に使用するサーバーとクライアントをつながる API モジュール",
+	"apihelp-webauthn-param-func": "リクエストした実行したい関数の名前",
+	"apihelp-webauthn-param-data": "特定の関数の JSON でエンコードしたデータ"
+}

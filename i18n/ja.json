@@ -1,15 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hzy980512",
 			"Marine-Blue"
 		]
 	},
+	"webauthn-desc": "WebAuthn を用いた認証サポートを提供する",
 	"webauthn-module-label": "Web 認証 (WebAuthn)",
+	"webauthn-ui-login-prompt": "ご使用の認証用デバイスをタッチするか、ブラウザの指示に従ってください",
 	"webauthn-ui-add-key": "キーを追加",
+	"webauthn-error-browser-unsupported": "このブラウザは WebAuthentication に対応していないか、このウェブサイトに対応していません。別のブラウザで再試行してください。[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support もっと詳しく]",
+	"webauthn-error-browser-unsupported-console": "このブラウザは WebAuthentication に対応していないか、このウェブサイトに対応していません。",
+	"webauthn-error-auth-generic": "認証プロセスは中断されました。やり直してください。",
 	"webauthn-error-reg-generic": "キーを登録できませんでした。登録の手順をやり直してください",
+	"webauthn-key-type-missmatch": "ユーザーは複数のタイプのキーを登録しました",
+	"oathauth-webauthn-registered-keys-section-name": "登録済みのキー",
+	"webuathn-ui-remove-key": "除去",
+	"webauthn-error-module-not-enabled": "モジュール「$1」は{{GENDER:$2|ユーザー「$2」}}に有効化されていません。",
+	"webauthn-error-invalid-key": "{{GENDER:$1|ユーザー「$1」}}は有効化した WebAuthn がありますが、無効なキーを設定しています。",
+	"webauthn-error-verification-failed": "検証に失敗しました",
+	"webauthn-error-cannot-register": "{{GENDER:$1|ユーザー「$1」}}は新しい証明書を登録することができません",
+	"webauthn-error-invalid-new-key": "モジュールが返した新しいキーは必要となるタイプではありません",
+	"webauthn-error-registration-failed": "新しいキーの登録に失敗しました",
 	"webauthn-ui-key-register-help": "キーのニックネームを選択してください",
+	"webauthn-error-cannot-remove-key": "キーを除去できません",
+	"webauthn-error-get-authinfo-fail": "認証情報を取得できませんでした。",
 	"oathauth-webauthn-add-key-section-name": "新しい WebAuth キーを登録する",
 	"oathauth-webauthn-disable-section-name": "WebAuthn を無効にする",
+	"webauthn-error-get-reginfo-fail": "登録情報を取得できませんでした。",
+	"webauthn-ui-disable-prompt": "WebAuthentication の無効化を確認するには、ご使用の認証用デバイスをタッチするか、ブラウザの指示に従ってください",
+	"webauthn-error-max-keys-reached": "キーを最大 {{PLURAL:$1|$1 本}}を登録できます",
 	"webauthn-module-description": "WebAuth (Web Authentication, WEB認証) は World Wide Web Consortium (W3C) によって公開された Web 標準の仕様です。WebAuth は FIDO Alliance が支援する FIDO2 プロジェクトのコアコンポーネントです。プロジェクトの目標は、公開鍵暗号を使用して、Web ベースのアプリケーションとサービスの認証インターフェースを標準化することです。[https://ja.wikipedia.org/wiki/WebAuthn 詳細情報]",
-	"webauthn-ui-reload-page-label": "ページを再読み込み"
+	"webauthn-ui-reload-page-label": "ページを再読み込み",
+	"webauthn-ui-signcount-label": "(このキーで {{PLURAL:$1|$1 回}}サインイン成功）"
 }
