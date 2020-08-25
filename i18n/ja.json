@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hzy980512",
-			"Marine-Blue"
+			"Marine-Blue",
+			"Omotecho"
 		]
 	},
 	"webauthn-desc": "WebAuthn を用いた認証サポートを提供する",
@@ -32,5 +33,5 @@
 	"webauthn-error-max-keys-reached": "キーを最大 {{PLURAL:$1|$1 本}}を登録できます",
 	"webauthn-module-description": "WebAuth (Web Authentication, WEB認証) は World Wide Web Consortium (W3C) によって公開された Web 標準の仕様です。WebAuth は FIDO Alliance が支援する FIDO2 プロジェクトのコアコンポーネントです。プロジェクトの目標は、公開鍵暗号を使用して、Web ベースのアプリケーションとサービスの認証インターフェースを標準化することです。[https://ja.wikipedia.org/wiki/WebAuthn 詳細情報]",
 	"webauthn-ui-reload-page-label": "ページを再読み込み",
-	"webauthn-ui-signcount-label": "(このキーで {{PLURAL:$1|$1 回}}サインイン成功）"
+	"webauthn-ui-signcount-label": "(このキーで {{PLURAL:$1|$1 回}}サインイン成功)"
 }
