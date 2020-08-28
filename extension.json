@@ -110,10 +110,8 @@
 	"RateLimits": {
 		"badoath": {
 			"&can-bypass": false,
-			"user": [
-				10,
-				60
-			]
+			"user": [ 10, 60 ],
+			"user-global": [ 10, 60 ]
 		}
 	},
 	"manifest_version": 1
