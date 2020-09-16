@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tkalyn"
+		]
+	},
+	"specialpages-group-oath": "Двофакторова автентіфікація",
+	"oathauth-prefs-label": "Двофакторова автентіфікація:",
+	"oauthauth-ui-no-module": "Не є запнуте",
+	"oathauth-ui-manage": "Справовати"
+}
