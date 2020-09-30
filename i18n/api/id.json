@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Daud I.F. Argana"
+		]
+	},
+	"apihelp-webauthn-summary": "Modul API untuk komunikasi antara peladen dan klien selama proses registrasi/autentikasi."
+}
