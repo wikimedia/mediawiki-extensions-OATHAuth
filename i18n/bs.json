@@ -23,7 +23,7 @@
 	"oathauth-step2alt": "Ili ručno upišite tajnu:",
 	"oathauth-step3": "3. korak: Zapišite kodove",
 	"oathauth-step4": "4. korak: Potvrda",
-	"oathauth-entertoken": "Upišite kôd za potvrdu s Vašeg uređaja:",
+	"oathauth-entertoken": "Upišite kôd za potvrdu sa svog uređaja:",
 	"right-oathauth-enable": "Uključivanje potvrde u 2 koraka",
 	"action-oathauth-enable": "uključite potvrdu u 2 koraka",
 	"oathauth-auth-token-label": "Žeton",
