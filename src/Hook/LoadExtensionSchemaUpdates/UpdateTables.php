@@ -40,7 +40,8 @@ class UpdateTables {
 	}
 
 	protected function execute() {
-		switch ( $this->updater->getDB()->getType() ) {
+		$type = $this->updater->getDB()->getType();
+		switch ( $type ) {
 			case 'mysql':
 			case 'sqlite':
 				$this->updater->addExtensionTable( 'oathauth_users', "{$this->base}/sql/mysql/tables.sql" );
@@ -50,10 +51,11 @@ class UpdateTables {
 					'secret_reset',
 					"{$this->base}/sql/mysql/patch-remove_reset.sql"
 				);
+
 				$this->updater->addExtensionField(
 					'oathauth_users',
 					'module',
-					"{$this->base}/sql/mysql/patch-add_generic_fields.sql"
+					"{$this->base}/sql/{$type}/patch-add_generic_fields.sql"
 				);
 
 				$this->updater->addExtensionUpdate(
@@ -62,7 +64,7 @@ class UpdateTables {
 				$this->updater->dropExtensionField(
 					'oathauth_users',
 					'secret',
-					"{$this->base}/sql/mysql/patch-remove_module_specific_fields.sql"
+					"{$this->base}/sql/{$type}/patch-remove_module_specific_fields.sql"
 				);
 
 				$this->updater->addExtensionUpdate(
