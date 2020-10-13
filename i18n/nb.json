@@ -77,7 +77,7 @@
 	"oathauth-totp-description": "TOTP-algoritmen (fra engelsk ''Time-based One-Time Password'') er en utvidelse av den HMAC-baserte One-time Password-algoritmen som genererer et engangspassord ved å hente unikhet fra det nåværende tidspunktet.",
 	"oathauth-disable-method-warning-header": "Bekreft at du vil slå av metoden",
 	"oathauth-disable-method-warning-button-label": "Bekreft og fortsett",
-	"oathauth-disable-method-warning": "Hvis du slår av metode $1 for totrinns pålogging vil du ikke lenger kunne bruke denne metoden for å logge inn, og dataene som er tilknyttet denne metoden blir slettet",
+	"oathauth-disable-method-warning": "Hvis du slår av metode $1 for totrinns pålogging vil du ikke lenger kunne bruke denne metoden for å logge inn, og dataene som er tilknyttet denne metoden blir slettet.",
 	"oathauth-switch-method-warning-header": "Bekreft bytting til en annen metode for totrinns pålogging",
 	"oathauth-switch-method-warning": "Ved å bytte til metode $2 for totrinns pålogging vil den gjeldende metoden ($1) bli slått av, og dataene som er tilknyttet den metoden blir slettet",
 	"oathauth-totp-disable-warning": "Du vil ikke lenger kunne bruke autentiseringsenheten som er registrert med denne kontoen. Alle engangsnøkler knyttet til denne kontoen vil deaktiveres.",
