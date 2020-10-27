@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Vito Genovese"
 		]
 	},
 	"webauthn-desc": "WebAuthn protokolünü kullanarak kimlik doğrulama desteği sağlar",
@@ -16,7 +17,7 @@
 	"oathauth-webauthn-registered-keys-section-name": "Kayıtlı anahtarlar",
 	"webuathn-ui-remove-key": "Kaldır",
 	"webauthn-error-module-not-enabled": "{{GENDER:$2|Kullanıcı \"$ \"}} için \"$1\" modülü etkin değil",
-	"webauthn-error-invalid-key": "{{GENDER:$1|\"$1\" kullanıcısında}} WebAuthn modülü etkin, ancak geçersiz bir anahtar ayarlandı",
+	"webauthn-error-invalid-key": "{{GENDER:$1|\"$1\" adlı kullanıcı}} WebAuthn modülünü etkinleştirmiş, ancak geçersiz bir anahtar ayarlanmış",
 	"webauthn-error-verification-failed": "Doğrulama başarısız",
 	"webauthn-error-cannot-register": "{{GENDER:$1|\"$1\" kullanıcısı}} yeni bir kimlik bilgisi kaydedemiyor",
 	"webauthn-error-invalid-new-key": "Modül tarafından döndürülen yeni anahtar gerekli türde değil",
