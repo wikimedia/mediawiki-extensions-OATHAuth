@@ -3,14 +3,12 @@
 	"extends": [
 		"wikimedia/client",
 		"wikimedia/jquery",
-		"wikimedia/language/es6.json"
+		"wikimedia/language/es6.json",
+		"wikimedia/mediawiki"
 	],
-	"globals": {
-		"mw": "readonly",
-		"OO": "readonly"
-	},
 	"rules": {
 		"no-prototype-builtins": "off",
-		"no-jquery/no-global-selector": "off"
+		"no-jquery/no-global-selector": "off",
+		"mediawiki/msg-doc": "off"
 	}
 }
