@@ -2,8 +2,10 @@
 <ruleset name="MediaWiki">
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
+		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPublic" />
+		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionVarUsage" />
 	</rule>
 	<file>.</file>
 	<arg name="encoding" value="UTF-8" />
-	<arg name="extensions" value="php,inc,sample" />
+	<arg name="extensions" value="php,sample" />
 </ruleset>
