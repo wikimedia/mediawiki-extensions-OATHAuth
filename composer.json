@@ -1,6 +1,6 @@
 {
 	"require": {
-		"web-auth/webauthn-lib": "v3.2.8"
+		"web-auth/webauthn-lib": "v3.2.10"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "33.0.0",
