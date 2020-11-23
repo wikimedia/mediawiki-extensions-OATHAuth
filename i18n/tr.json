@@ -27,7 +27,7 @@
 	"oathauth-scratchtokens": "Aşağıdaki liste tek kullanımlık kazı kazan simgelerinin listesidir. Bu anahtarlar yalnızca bir kez kullanılabilir ve acil kullanım içindir. Lütfen bunları not alın ve güvenli bir yerde saklayın. Telefonunuzu kaybederseniz, bu anahtar hesabınızı kurtarmanın tek yoludur. '''Bu anahtarlar bir daha asla gösterilmeyecek'''.",
 	"oathauth-token": "Anahtar",
 	"oathauth-disable": "İki faktörlü kimlik doğrulamayı devre dışı bırak",
-	"oathauth-validatedoath": "İki faktörlü kimlik bilgileri doğrulandı. Şimdi iki faktörlü kimlik doğrulama uygulanacak.",
+	"oathauth-validatedoath": "İki faktörlü kimlik bilgileri doğrulandı. Bundan sonra iki faktörlü kimlik doğrulama uygulanacak.",
 	"oathauth-noscratchforvalidation": "İki faktörlü kimlik doğrulamayı onaylamak için sıfırdan kod kullanamazsınız. Kazıma kodları yalnızca yedekleme ve arızi kullanım içindir. Lütfen kod oluşturucunuzdan bir doğrulama kodu kullanın.",
 	"oathauth-failedtovalidateoath": "İki faktörlü kimlik doğrulama başarısız oldu",
 	"oathauth-disabledoath": "İki faktörlü kimlik doğrulama devre dışı bırakıldı.",
