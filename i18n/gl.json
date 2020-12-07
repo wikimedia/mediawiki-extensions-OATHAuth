@@ -37,7 +37,7 @@
 	"action-oathauth-enable": "activar a autenticación de dous pasos",
 	"oathauth-auth-token-label": "Identificador",
 	"oathauth-auth-token-help": "O contrasinal único empregado como segundo factor da autenticación de dous pasos.",
-	"oathauth-auth-ui": "Por favor, introduzca o código de verificación do seu dispositivo de autenticación",
+	"oathauth-auth-ui": "Por favor, introduzca un código de verificación do seu dispositivo de autenticación.",
 	"oathauth-throttled": "Demasiados intentos de verificaciónǃ Por favor, espere $1.",
 	"oathauth-login-failed": "Fallou a verificación",
 	"oathauth-describe-provider": "Autenticación de dous factores (OATH).",
