@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"MuratTheTurkish"
 		]
 	},
 	"oathauth-desc": "Muliggjør autentiseringsstøtte med bruk av HMAC-baserte engangspassord",
@@ -73,7 +74,7 @@
 	"oathauth-enable-page-title": "Slå på $1",
 	"oathauth-action-exclusive-to-2fa": "Denne handlingen kan kun utføres av brukere med totrinns pålogging slått på.",
 	"oathauth-ui-available-modules": "Tilgjengelige metoder",
-	"oathauth-ui-general-help": "'''Flertrinns pålogging''' ('''MFA''' etter engelsk ''multi-factor authentication'') er en autentiseringsmetode der en databruker får tilgang kun etter å ha presentert to eller flere beviser (eller faktorer) til en autentiseringsmekanisme: kunnskap (noe brukeren og bare brukeren vet), besittelse (noe brukeren og bare brukeren har), og inherens (noe brukeren og bare brukeren er). [https://en.wikipedia.org/wiki/Multi-factor_authentication Les mer (engelsk)]",
+	"oathauth-ui-general-help": "'''Flertrinns pålogging''' ('''MFA''' etter engelsk ''multi-factor authentication'') er en autentiseringsmetode der en databruker får tilgang kun etter å ha presentert to eller flere beviser (eller faktorer) til en autentiseringsmekanisme: kunnskap (noe brukeren og bare brukeren vet), besittelse (noe brukeren og bare brukeren har), og inherens (noe brukeren og bare brukeren er). [https://no.wikipedia.org/wiki/Flerfaktor-autentisering Les mer (engelsk)]",
 	"oathauth-totp-description": "TOTP-algoritmen (fra engelsk ''Time-based One-Time Password'') er en utvidelse av den HMAC-baserte One-time Password-algoritmen som genererer et engangspassord ved å hente unikhet fra det nåværende tidspunktet.",
 	"oathauth-disable-method-warning-header": "Bekreft at du vil slå av metoden",
 	"oathauth-disable-method-warning-button-label": "Bekreft og fortsett",
