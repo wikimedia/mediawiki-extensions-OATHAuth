@@ -86,9 +86,11 @@ class UpdateTables {
 	 */
 	private static function getDatabase() {
 		global $wgOATHAuthDatabase;
+		// Global can be `null` during installation, ensure we pass `false` instead (T270147)
+		$database = $wgOATHAuthDatabase ?? false;
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $wgOATHAuthDatabase );
-		return $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
+			->getMainLB( $database );
+		return $lb->getConnectionRef( DB_MASTER, [], $database );
 	}
 
 	/**
