@@ -82,6 +82,16 @@ class UpdateTables {
 	}
 
 	/**
+	 * @return Wikimedia\Rdbms\DBConnRef
+	 */
+	private static function getDatabase() {
+		global $wgOATHAuthDatabase;
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
+			->getMainLB( $wgOATHAuthDatabase );
+		return $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
+	}
+
+	/**
 	 * Helper function for converting old users to the new schema
 	 *
 	 * @param DatabaseUpdater $updater
@@ -89,11 +99,7 @@ class UpdateTables {
 	 * @return bool
 	 */
 	public function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
-		global $wgOATHAuthDatabase;
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $wgOATHAuthDatabase );
-		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
-		return self::schemaUpdateOldUsers( $dbw );
+		return self::schemaUpdateOldUsers( self::getDatabase() );
 	}
 
 	/**
@@ -103,11 +109,7 @@ class UpdateTables {
 	 * @throws ConfigException
 	 */
 	public static function schemaUpdateSubstituteForGenericFields( DatabaseUpdater $updater ) {
-		global $wgOATHAuthDatabase;
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $wgOATHAuthDatabase );
-		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
-		return self::convertToGenericFields( $dbw );
+		return self::convertToGenericFields( self::getDatabase() );
 	}
 
 	/**
@@ -117,11 +119,7 @@ class UpdateTables {
 	 * @throws ConfigException
 	 */
 	public static function schemaUpdateTOTPToMultipleKeys( DatabaseUpdater $updater ) {
-		global $wgOATHAuthDatabase;
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $wgOATHAuthDatabase );
-		$dbw = $lb->getConnectionRef( DB_MASTER, [], $wgOATHAuthDatabase );
-		return self::switchTOTPToMultipleKeys( $dbw );
+		return self::switchTOTPToMultipleKeys( self::getDatabase() );
 	}
 
 	/**
