@@ -167,7 +167,7 @@ class WebAuthn extends ApiBase {
 		$mustBeLoggedIn = $funcPermissions['mustBeLoggedIn'] ?? false;
 		if ( $mustBeLoggedIn === true ) {
 			$user = $this->getUser();
-			if ( !$user->isLoggedIn() ) {
+			if ( !$user->isRegistered() ) {
 				$this->dieWithError( 'apierror-mustbeloggedin' );
 			}
 		}
