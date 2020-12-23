@@ -3,7 +3,8 @@
 		"authors": [
 			"Jeblad",
 			"Jon Harald Søby",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"Njardarlogar"
 		]
 	},
 	"oathauth-desc": "Muliggjør autentiseringsstøtte med bruk av HMAC-baserte engangspassord",
