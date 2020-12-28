@@ -151,7 +151,9 @@ class TOTPKey implements IAuthKey {
 		$retval = false;
 		$results = HOTP::generateByTimeWindow(
 			Base32::decode( $this->secret['secret'] ),
-			$this->secret['period'], -$wgOATHAuthWindowRadius, $wgOATHAuthWindowRadius
+			$this->secret['period'],
+			-$wgOATHAuthWindowRadius,
+			$wgOATHAuthWindowRadius
 		);
 
 		// Remove any whitespace from the received token, which can be an intended group seperator
