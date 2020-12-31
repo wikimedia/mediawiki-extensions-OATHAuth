@@ -98,9 +98,27 @@
 		"remoteExtPath": "OATHAuth/modules"
 	},
 	"SpecialPages": {
-		"DisableOATHForUser": "\\MediaWiki\\Extension\\OATHAuth\\Special\\DisableOATHForUser",
-		"VerifyOATHForUser": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
-		"OATHManage": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage"
+		"DisableOATHForUser": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\DisableOATHForUser",
+			"services": [
+				"OATHUserRepository",
+				"UserFactory"
+			]
+		},
+		"OATHManage": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage",
+			"services": [
+				"OATHUserRepository",
+				"OATHAuth"
+			]
+		},
+		"VerifyOATHForUser": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
+			"services": [
+				"OATHUserRepository",
+				"UserFactory"
+			]
+		}
 	},
 	"AvailableRights": [
 		"oathauth-enable",

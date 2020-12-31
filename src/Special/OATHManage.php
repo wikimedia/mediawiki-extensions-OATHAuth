@@ -27,7 +27,6 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\MediaWikiServices;
 use Message;
 use MWException;
 use OOUI\ButtonWidget;
@@ -47,18 +46,22 @@ class OATHManage extends SpecialPage {
 	 * @var OATHAuth
 	 */
 	protected $auth;
+
 	/**
 	 * @var OATHUserRepository
 	 */
 	protected $userRepo;
+
 	/**
 	 * @var OATHUser
 	 */
 	protected $authUser;
+
 	/**
 	 * @var string
 	 */
 	protected $action;
+
 	/**
 	 * @var IModule
 	 */
@@ -67,15 +70,17 @@ class OATHManage extends SpecialPage {
 	/**
 	 * Initializes a page to manage available 2FA modules
 	 *
+	 * @param OATHUserRepository $userRepo
+	 * @param OATHAuth $auth
+	 *
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	public function __construct() {
+	public function __construct( $userRepo, $auth ) {
 		parent::__construct( 'OATHManage', 'oathauth-enable' );
 
-		$services = MediaWikiServices::getInstance();
-		$this->auth = $services->getService( 'OATHAuth' );
-		$this->userRepo = $services->getService( 'OATHUserRepository' );
+		$this->userRepo = $userRepo;
+		$this->auth = $auth;
 		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
 	}
 
@@ -270,12 +275,10 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function isModuleRequested( IModule $module ) {
-		if ( $this->requestedModule instanceof IModule ) {
-			if ( $this->requestedModule->getName() === $module->getName() ) {
-				return true;
-			}
-		}
-		return false;
+		return (
+			$this->requestedModule instanceof IModule
+			&& $this->requestedModule->getName() === $module->getName()
+		);
 	}
 
 	private function isModuleEnabled( IModule $module ) {
