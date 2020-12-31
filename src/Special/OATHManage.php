@@ -95,9 +95,11 @@ class OATHManage extends SpecialPage {
 			// Performing an action on a requested module
 			$this->clearPage();
 			if ( $this->shouldShowDisableWarning() ) {
-				return $this->showDisableWarning();
+				$this->showDisableWarning();
+				return;
 			}
-			return $this->addModuleHTML( $this->requestedModule );
+			$this->addModuleHTML( $this->requestedModule );
+			return;
 		}
 
 		$this->addGeneralHelp();
@@ -184,7 +186,8 @@ class OATHManage extends SpecialPage {
 
 	private function addModuleHTML( IModule $module ) {
 		if ( $this->isModuleRequested( $module ) ) {
-			return $this->addCustomContent( $module );
+			$this->addCustomContent( $module );
+			return;
 		}
 
 		$panel = $this->getGenericContent( $module );
@@ -192,7 +195,7 @@ class OATHManage extends SpecialPage {
 			$this->addCustomContent( $module, $panel );
 		}
 
-		return $this->getOutput()->addHTML( (string)$panel );
+		$this->getOutput()->addHTML( (string)$panel );
 	}
 
 	/**
@@ -301,10 +304,10 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * @param IManageForm &$form
+	 * @param IManageForm $form
 	 * @param IModule $module
 	 */
-	private function ensureRequiredFormFields( IManageForm &$form, IModule $module ) {
+	private function ensureRequiredFormFields( IManageForm $form, IModule $module ) {
 		if ( !$form->hasField( 'module' ) ) {
 			$form->addHiddenField( 'module', $module->getName() );
 		}
