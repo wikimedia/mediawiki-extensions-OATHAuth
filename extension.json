@@ -1,6 +1,6 @@
 {
 	"name": "OATHAuth",
-	"version": "0.4.4",
+	"version": "0.5.0",
 	"author": [
 		"Ryan Lane",
 		"Robert Vogel <vogel@hallowelt.com>",
@@ -10,7 +10,7 @@
 	"descriptionmsg": "oathauth-desc",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
 	"attributes": {
@@ -41,10 +41,20 @@
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
 	"Hooks": {
-		"AuthChangeFormFields": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\AuthChangeFormFields\\TOTPExtendTokenField::callback",
+		"AuthChangeFormFields": "main",
 		"LoadExtensionSchemaUpdates": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\LoadExtensionSchemaUpdates\\UpdateTables::callback",
-		"GetPreferences": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\GetPreferences\\AuthModule::callback",
-		"getUserPermissionsErrors": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\GetUserPermissionsErrors\\CheckExclusiveRights::callback"
+		"GetPreferences": "main",
+		"getUserPermissionsErrors": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\HookHandler",
+			"services": [
+				"OATHUserRepository",
+				"PermissionManager",
+				"MainConfig"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"OATHAuth": [

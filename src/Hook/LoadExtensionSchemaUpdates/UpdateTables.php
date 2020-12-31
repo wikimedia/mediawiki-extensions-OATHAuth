@@ -25,7 +25,7 @@ class UpdateTables {
 	 * @return bool
 	 */
 	public static function callback( $updater ) {
-		$dir = dirname( dirname( dirname( __DIR__ ) ) );
+		$dir = dirname( __DIR__, 3 );
 		$handler = new static( $updater, $dir );
 		return $handler->execute();
 	}
@@ -172,8 +172,6 @@ class UpdateTables {
 				);
 			}
 		}
-
-		return true;
 	}
 
 	/**
