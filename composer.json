@@ -21,6 +21,7 @@
 			"composer lint",
 			"composer phpcs",
 			"minus-x check ."
-		]
+		],
+		"phan": "phan -d . --long-progress-bar"
 	}
 }
