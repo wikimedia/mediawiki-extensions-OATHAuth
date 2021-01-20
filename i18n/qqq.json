@@ -34,7 +34,7 @@
 	"oathauth-disabledoath": "Plain text found on Special:OATH when disabling OATH has been successful.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-prefs-label": "Plain text label seen on Special:Preferences\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]\n{{Identical|Two factor authentication}}",
 	"oathauth-step1": "Label for step 1 on Special:OATH form",
-	"oathauth-step1-test": "Text for step 1 on Special:OATH for. Check the name of \"Google Authenticator\" in your language in the Play Market—it's quite likely that it's translated.",
+	"oathauth-step1-test": "Text for step 1 on Special:OATH for. Check the name of \"Google Authenticator\" in your language in the Play Market—it may be translated.\n\nThis message is not parsed, so don't add formatting or links.",
 	"oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
 	"oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
 	"oathauth-step3": "Label for step 3 information on Special:OATH",
