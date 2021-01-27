@@ -9,6 +9,7 @@
 	"rules": {
 		"no-prototype-builtins": "off",
 		"no-jquery/no-global-selector": "off",
-		"mediawiki/msg-doc": "off"
+		"mediawiki/msg-doc": "off",
+		"compat/compat": "warn"
 	}
 }
