@@ -30,6 +30,5 @@
 	"webauthn-ui-disable-prompt": "Help message apparing when user is about to disable WebAuthn",
 	"webauthn-error-max-keys-reached": "Error message when user cannot register more keys, due to the limit being reached.\n$1 - maximum number of keys",
 	"webauthn-module-description": "Description of WebAuthn module used on Special:OATHManage",
-	"webauthn-ui-reload-page-label": "Button label for generic page reload action",
-	"webauthn-ui-signcount-label": "Label showing the number of times user used a particular key to log in. Used on Special:OATHManage.\n $1 - number of times key was used"
+	"webauthn-ui-reload-page-label": "Button label for generic page reload action"
 }

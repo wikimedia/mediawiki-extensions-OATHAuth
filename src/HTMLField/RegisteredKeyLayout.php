@@ -18,13 +18,9 @@ class RegisteredKeyLayout extends HTMLFormField {
 	 */
 	public function getInputHTML( $value ) {
 		$nameValue = $value['name'];
-		$signCountValue = $value['signCount'];
 
 		$name = new LabelWidget( [
 			'label' => new HtmlSnippet( '<b>' . $nameValue . '</b>' )
-		] );
-		$signCount = new LabelWidget( [
-			'label' => wfMessage( 'webauthn-ui-signcount-label', $signCountValue )->text()
 		] );
 		$removeButton = new ButtonInputWidget( [
 			'framed' => false,
@@ -39,7 +35,7 @@ class RegisteredKeyLayout extends HTMLFormField {
 		return new HorizontalLayout( [
 			'classes' => [ 'webauthn-key-layout' ],
 			'items' => [
-				$name, $signCount, $removeButton
+				$name, $removeButton
 			]
 		] );
 	}
