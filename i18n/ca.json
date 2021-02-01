@@ -30,6 +30,5 @@
 	"webauthn-ui-disable-prompt": "Toca el teu dispositiu de verificació o segueix les instruccions del navegador per tal de confirmar la desactivació de WebAuthentication",
 	"webauthn-error-max-keys-reached": "Es pot registrar un màxim de {{PLURAL:$1|$1 clau|$1 claus}}",
 	"webauthn-module-description": "WebAuthn (Web Authentication) és un estàndard de web publicat pel World Wide Web Consortium (W3C). WebAuthn és un component essencial del Projecte FIDO2 dirigit per  FIDO Alliance. L'objectiu del projecte és estandarditzar una interfície per autenticar usuaris en aplicacions i serveis web usant criptografia de clau pública. [Https://en.wikipedia.org/wiki/WebAuthn Llegeix més]",
-	"webauthn-ui-reload-page-label": "Recarrega la pàgina",
-	"webauthn-ui-signcount-label": "(ha iniciat la sessió {{PLURAL:$1|$1 cop|$1 cops}} amb aquesta clau)"
+	"webauthn-ui-reload-page-label": "Recarrega la pàgina"
 }
