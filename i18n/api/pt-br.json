@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
 	"apihelp-webauthn-summary": "Módulo API para comunicação entre servidor e cliente durante o processo de registro/autenticação",
