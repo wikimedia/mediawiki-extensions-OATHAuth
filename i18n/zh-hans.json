@@ -77,6 +77,7 @@
 	"logentry-oath-disable-other": "$1{{GENDER:$2|禁用了}}$3的双重身份验证",
 	"logentry-oath-verify": "$1{{GENDER:$2|检查了}}是否$3已启用双重身份验证",
 	"oauthauth-ui-no-module": "没有启用",
+	"oathauth-module-invalid": "用户已注册的OATHAuth模块无效。",
 	"oathauth-module-totp-label": "TOTP（基于时间的一次性密码）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理双重身份验证",
@@ -92,7 +93,13 @@
 	"oathauth-ui-available-modules": "可用方法",
 	"oathauth-ui-general-help": "'''多因素验证'''（Multi-factor authentication，MFA）是一种计算机访问控制的方法，用户需要成功通过两种或更多的验证机制才能得到授权：知识（有且仅有该用户知道的信息）、所有物（有且仅有该用户拥有的物品）以及先天特征（有且仅有该用户具备的生物特征）的验证。[https://zh.wikipedia.org/wiki/多重要素驗證 了解更多]",
 	"oathauth-totp-description": "“基于时间的一次性密码算法”（TOTP）是“基于HMAC的一次性密码算法”（HOTP）的扩展，它通过当前时间的唯一性来生成一次性密码。",
+	"oathauth-disable-method-warning-header": "确认停用一种身份验证方法",
 	"oathauth-disable-method-warning-button-label": "确认并继续",
 	"oathauth-disable-method-warning": "如果您禁用了$1的两步验证方法，您将无法再次在登录时使用该方法进行两步验证，且所有与之相关的数据均会被清除。",
-	"oathauth-totp-disable-warning": "您将无法再次使用和此账号关联的设备进行认证。所有与该账号关联的临时密码均会失效。"
+	"oathauth-switch-method-warning-header": "确认切换到另一种身份验证方法",
+	"oathauth-switch-method-warning": "切换到$2双重身份验证方法后，目前的方法（$1）将被停用，且与当前身份验证方法关联的所有数据将被删除",
+	"oathauth-totp-disable-warning": "您将无法再次使用和此账号关联的设备进行认证。所有与该账号关联的临时密码均会失效。",
+	"oathauth-invalidrequest": "无效请求",
+	"oathauth-verify-enabled": "{{GENDER:$1|$1}}已启用双重身份验证。",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}}未启用双重身份验证。"
 }
