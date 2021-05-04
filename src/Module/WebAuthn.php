@@ -172,7 +172,7 @@ class WebAuthn implements IModule {
 	 */
 	public function removeKeyByFriendlyName( $name, $user ) {
 		$keys = $user->getKeys();
-		$newKeys = array_filter( $keys, function ( $key ) use ( $name ) {
+		$newKeys = array_filter( $keys, static function ( $key ) use ( $name ) {
 			if ( !( $key instanceof WebAuthnKey ) ) {
 				return false;
 			}
