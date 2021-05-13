@@ -131,7 +131,7 @@ class OATHUserRepository {
 		$prevUser = $this->findByUser( $user->getUser() );
 		$data = $user->getModule()->getDataFromUser( $user );
 
-		$this->getDB( DB_MASTER )->replace(
+		$this->getDB( DB_PRIMARY )->replace(
 			'oathauth_users',
 			'id',
 			[
@@ -164,7 +164,7 @@ class OATHUserRepository {
 	 * @param string $clientInfo
 	 */
 	public function remove( OATHUser $user, $clientInfo ) {
-		$this->getDB( DB_MASTER )->delete(
+		$this->getDB( DB_PRIMARY )->delete(
 			'oathauth_users',
 			[ 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ],
 			__METHOD__
@@ -180,7 +180,7 @@ class OATHUserRepository {
 	}
 
 	/**
-	 * @param int $index DB_MASTER/DB_REPLICA
+	 * @param int $index DB_PRIMARY/DB_REPLICA
 	 * @return DBConnRef
 	 */
 	private function getDB( $index ) {
