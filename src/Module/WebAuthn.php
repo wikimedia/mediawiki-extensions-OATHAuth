@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\WebAuthn\Module;
 
-use MediaWiki\Auth\SecondaryAuthenticationProvider;
+use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -76,7 +76,7 @@ class WebAuthn implements IModule {
 	}
 
 	/**
-	 * @return SecondaryAuthenticationProvider
+	 * @return AbstractSecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider() {
 		return new WebAuthnSecondaryAuthenticationProvider();
