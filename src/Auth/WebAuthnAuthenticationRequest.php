@@ -59,11 +59,15 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		return [
 			'auth_info' => [
 				'type' => 'hidden',
-				'value' => $this->authInfo
+				'value' => $this->authInfo,
+				'label' => wfMessage( 'webauthn-authentication-info-label' ),
+				'help' => wfMessage( 'webauthn-authentication-info-help' ),
 			],
 			'credential' => [
 				'type' => 'hidden',
-				'value' => ''
+				'value' => '',
+				'label' => wfMessage( 'webauthn-credential-label' ),
+				'help' => wfMessage( 'webauthn-credential-help' ),
 			]
 		];
 	}
