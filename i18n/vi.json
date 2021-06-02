@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vinhtantran"
+		]
+	},
+	"webauthn-desc": "Hỗ trợ xác thực bằng giao thức WebAuth",
+	"webauthn-module-label": "Xác thực Web (WebAuthn)",
+	"webauthn-ui-login-prompt": "Vui lòng chạm vào thiết bị xác thực của bạn hoặc làm theo hướng dẫn trên trình duyệt",
+	"webauthn-ui-add-key": "Thêm chìa khóa",
+	"webauthn-error-browser-unsupported": "Trình duyệt này không hỗ trợ Xác thực Web hoặc trang web này không hỗ trợ. Vui lòng dùng một trình duyệt khác. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Đọc thêm]",
+	"webauthn-error-browser-unsupported-console": "Trình duyệt này không hỗ trợ Xác thực Web hoặc trang web này không hỗ trợ",
+	"webauthn-error-auth-generic": "Quá trình xác thực bị gián đoạn. Vui lòng bắt đầu lại quá trình xác thực",
+	"webauthn-error-reg-generic": "Không thể xác thực chìa khóa của bạn. Vui lòng bắt đầu lại quá trình đăng ký",
+	"webauthn-key-type-missmatch": "Người dùng đã đăng ký nhiều loại chìa khóa",
+	"oathauth-webauthn-registered-keys-section-name": "Chìa khóa đã đăng ký",
+	"webuathn-ui-remove-key": "Xóa",
+	"webauthn-error-module-not-enabled": "Mô đun \"$1\" chưa được bật cho {{GENDER:$2|thành viên \"$2\"}}",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Thành viên \"$1\"}} đã bật mô đun WebAuthn, nhưng chìa khóa bị thiết lập sai",
+	"webauthn-error-verification-failed": "Xác thực thất bại",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Thành viên \"$1\"}} không thể đăng ký định danh mới",
+	"webauthn-error-invalid-new-key": "Chìa khóa do mô đun trả về không phải là kiểu bắt buộc",
+	"webauthn-error-registration-failed": "Đăng ký chìa khóa mới thất bại",
+	"webauthn-ui-key-register-help": "Chọn biệt danh cho chìa khóa của bạn",
+	"webauthn-error-cannot-remove-key": "Không thể xóa chìa khóa",
+	"webauthn-error-get-authinfo-fail": "Không thể truy xuất thông tin xác thực.",
+	"oathauth-webauthn-add-key-section-name": "Đăng ký chìa khóa WebAuthn mới",
+	"oathauth-webauthn-disable-section-name": "Tắt WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Không thể truy xuất thông tin đăng ký.",
+	"webauthn-ui-disable-prompt": "Vui lòng chạm vào thiết bị xác thực của bạn hoặc làm theo hướng dẫn trên trình duyệt để xác nhận tắt Xác thực Web",
+	"webauthn-error-max-keys-reached": "Được đăng ký tối đa {{PLURAL:$1|$1 khóa}}",
+	"webauthn-module-description": "WebAuthn (Xác thực Web) là một tiêu chuẩn trên web do World Wide Web Consortium (W3C) xuất bản. WebAuthn là thành phần trọng tâm của Dự án FIDO2 do Liên minh FIDO điều hành. Mục tiêu của dự án là nhằm chuẩn hóa giao diện xác minh người dùng dành cho các ứng dụng web và các dịch vụ sử dụng công cụ mã hóa theo khóa công cộng. [https://en.wikipedia.org/wiki/WebAuthn Xem thêm (tiếng Anh)]",
+	"webauthn-ui-reload-page-label": "Tải lại trang"
+}
