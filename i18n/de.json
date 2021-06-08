@@ -31,5 +31,9 @@
 	"webauthn-ui-disable-prompt": "Berühre dein Verifizierungsgerät oder befolge die Anweisungen des Browsers, um die Deaktivierung von WebAuthentication zu bestätigen",
 	"webauthn-error-max-keys-reached": "Es {{PLURAL:$1|kann maximal 1 Schlüssel|können maximal $1 Schlüssel}} registriert werden",
 	"webauthn-module-description": "WebAuthn (Web Authentication) ist ein vom World Wide Web Consortium (W3C) veröffentlichter Webstandard. WebAuthn ist eine Kernkomponente des FIDO2-Projekts unter Leitung der FIDO Alliance. Ziel des Projekts ist die Standardisierung einer Schnittstelle zur Authentifizierung von Benutzern für webbasierte Anwendungen und Dienste mithilfe von Public-Key-Kryptografie. [https://de.wikipedia.org/wiki/WebAuthn Weiterlesen]",
-	"webauthn-ui-reload-page-label": "Seite neu laden"
+	"webauthn-ui-reload-page-label": "Seite neu laden",
+	"webauthn-authentication-info-label": "Authentifizierungsdaten",
+	"webauthn-authentication-info-help": "Authentifizierungsdaten, die an den Client zum Abrufen von Anmeldeinformationen übergeben werden",
+	"webauthn-credential-label": "Anmeldedaten des Benutzers",
+	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten"
 }
