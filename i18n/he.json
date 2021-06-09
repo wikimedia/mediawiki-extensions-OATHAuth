@@ -30,5 +30,9 @@
 	"webauthn-ui-disable-prompt": "נא לגעת במכשיר האימות שלך או לעקוב אחר ההוראות בדפדפן כדי לאשר את כיבוי WebAuthentication",
 	"webauthn-error-max-keys-reached": "אפשר לרשום {{PLURAL:$1|מפתח אחד|$1 מפתחות}} לכל היותר",
 	"webauthn-module-description": "WebAuthn (אימות וב, Web Authentication) הוא תקן וב שמפורסם על־ידי מאגד המארג העולמי (W3C). תקן WebAuthn הוא רכיב ליבה של מיזם FIDO2 תחת ההובלה של איגוד FIDO. מטרת המיזם היא לתקנן ממשק לאימות משתמשים עם יישומים ושירותים בווב באמצעות קריפטוגרפיה עם מפתחות ציבוריים. [https://en.wikipedia.org/wiki/WebAuthn מידע נוסף]",
-	"webauthn-ui-reload-page-label": "רענון הדף"
+	"webauthn-ui-reload-page-label": "רענון הדף",
+	"webauthn-authentication-info-label": "נתוני האימות",
+	"webauthn-authentication-info-help": "נתוני האימות הועברו ללקוח לשם אחזור נתוני הזדהות",
+	"webauthn-credential-label": "נתוני הזדהות משתמש",
+	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות"
 }
