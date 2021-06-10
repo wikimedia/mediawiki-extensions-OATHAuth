@@ -30,5 +30,9 @@
 	"webauthn-ui-disable-prompt": "Pe piacere tocche 'u dispositive tune pa verifiche o segue le 'struziune da 'u browser pe confermà a disabbilitazione de WebAuthentication",
 	"webauthn-error-max-keys-reached": "'Nu massime de {{PLURAL:$1|$1 chiave pò|$1 chiave ponne}} essere reggistrate",
 	"webauthn-module-description": "WebAuthn (Web Authentication) jè 'nu stàndàrd web pubblecate da 'u Consorzie World Wide Web (W3C). WebAuthn jè 'nu combonende prengepàle d'u Pruggette FIDO2 sotte 'a guide de FIDO Alliance. L'obbiettive d'u pruggette jè standardizzà 'n'inderfacce pe autendicà le utinde sus applecaziune web-based e servizie ausanne 'na crittografije a chaive pubbleche. [https://en.wikipedia.org/wiki/WebAuthn Lìgge de cchiù]",
-	"webauthn-ui-reload-page-label": "Recareche 'a pàgene"
+	"webauthn-ui-reload-page-label": "Recareche 'a pàgene",
+	"webauthn-authentication-info-label": "Date de autendicazione",
+	"webauthn-authentication-info-help": "Date de autendicazione passate a 'u client pe pigghià le credenziale",
+	"webauthn-credential-label": "Credenziale de l'utende",
+	"webauthn-credential-help": "Credenziale de l'utende ca se basane sus a le date de autendicazione"
 }
