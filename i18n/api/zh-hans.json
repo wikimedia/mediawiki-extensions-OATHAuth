@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shizhao"
+		]
+	},
+	"apihelp-webauthn-summary": "API模块，用于在注册/身份验证过程中在服务器和客户端之间进行通信",
+	"apihelp-webauthn-param-func": "要执行的请求函数名称",
+	"apihelp-webauthn-param-data": "特定函数的JSON编码数据"
+}

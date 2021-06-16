@@ -1,9 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
+			"Shizhao",
 			"WhitePhosphorus"
 		]
 	},
+	"webauthn-desc": "使用WebAuthn协议提供身份验证支持",
 	"webauthn-module-label": "Web Authentication（WebAuthn）",
-	"webauthn-module-description": "WebAuthn（Web Authentication）是万维网联盟（W3C）发布的一个网络标准。WebAuthn是FIDO联盟领导下FIDO2项目的核心部件。该项目旨在使用公钥加密来标准化用户向基于网络的应用或服务验证身份时的界面。[https://zh.wikipedia.org/wiki/WebAuthn 了解更多]"
+	"webauthn-ui-login-prompt": "请触摸您的验证设备或按照浏览器中的说明进行操作",
+	"webauthn-ui-add-key": "添加密钥",
+	"webauthn-error-browser-unsupported": "该浏览器不支持WebAuthentication或不适用于本网站。请尝试使用其他浏览器。 [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 阅读更多]",
+	"webauthn-error-browser-unsupported-console": "该浏览器不支持WebAuthentication或不适用于此网站",
+	"webauthn-error-auth-generic": "身份验证过程被中断。请重新开始身份验证过程",
+	"webauthn-error-reg-generic": "无法验证您的密钥。请重新开始注册过程",
+	"webauthn-key-type-missmatch": "用户注册了多种类型的密钥",
+	"oathauth-webauthn-registered-keys-section-name": "已注册密钥",
+	"webuathn-ui-remove-key": "移除",
+	"webauthn-error-module-not-enabled": "未为{{GENDER:$2|用户“$2”}}启用模块“$1”",
+	"webauthn-error-invalid-key": "{{GENDER:$1|用户“$1”}}启用了WebAuthn模块，但设置了无效的密钥",
+	"webauthn-error-verification-failed": "验证失败",
+	"webauthn-error-cannot-register": "{{GENDER:$1|用户“$1”}}无法注册新凭据",
+	"webauthn-error-invalid-new-key": "模块返回的新密钥不是必需的类型",
+	"webauthn-error-registration-failed": "新密钥注册失败",
+	"webauthn-ui-key-register-help": "为您的密钥选择昵称",
+	"webauthn-error-cannot-remove-key": "密钥无法移除",
+	"webauthn-error-get-authinfo-fail": "无法检索身份验证信息。",
+	"oathauth-webauthn-add-key-section-name": "注册新的WebAuthn密钥",
+	"oathauth-webauthn-disable-section-name": "禁用WebAuthn",
+	"webauthn-error-get-reginfo-fail": "无法检索注册信息。",
+	"webauthn-ui-disable-prompt": "请触摸您的验证设备或按照浏览器中的说明操作以确认禁用WebAuthentication",
+	"webauthn-error-max-keys-reached": "最多可以注册{{PLURAL:$1|$1个密钥}}",
+	"webauthn-module-description": "WebAuthn（Web Authentication）是万维网联盟（W3C）发布的一个网络标准。WebAuthn是FIDO联盟领导下FIDO2项目的核心部件。该项目旨在使用公钥加密来标准化用户向基于网络的应用或服务验证身份时的界面。[https://zh.wikipedia.org/wiki/WebAuthn 了解更多]",
+	"webauthn-ui-reload-page-label": "重新载入页面",
+	"webauthn-authentication-info-label": "认证数据",
+	"webauthn-authentication-info-help": "身份验证数据传递给客户端以进行凭据检索",
+	"webauthn-credential-label": "用户凭证",
+	"webauthn-credential-help": "基于身份验证数据的用户凭证"
 }
