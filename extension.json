@@ -69,9 +69,6 @@
 		"OATHAuthDatabase": {
 			"value": false
 		},
-		"OATHAuthSecret": {
-			"value": false
-		},
 		"OATHAuthAccountPrefix": {
 			"value": false
 		},
