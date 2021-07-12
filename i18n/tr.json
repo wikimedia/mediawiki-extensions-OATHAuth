@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Hedda",
 			"Vito Genovese"
 		]
 	},
@@ -31,5 +32,9 @@
 	"webauthn-ui-disable-prompt": "Web Kimlik Doğrulamasını devre dışı bırakmayı onaylamak için lütfen doğrulama cihazınıza dokunun veya tarayıcıdaki talimatları uygulayın.",
 	"webauthn-error-max-keys-reached": "Maksimum {{PLURAL:$1|$1 anahtar|$1 anahtar}} kaydedilebilir",
 	"webauthn-module-description": "WebAuthn (Web Kimlik Doğrulaması), World Wide Web Konsorsiyumu (W3C) tarafından yayınlanan bir web standardıdır. WebAuthn, FIDO Alliance'ın rehberliğinde FIDO2 Projesinin temel bir bileşenidir. Projenin amacı, ortak anahtarlı şifreleme kullanarak kullanıcıların web tabanlı uygulamalara ve hizmetlere kimlik doğrulaması için bir arabirimi standartlaştırmaktır. [https://tr.wikipedia.org/wiki/WebAuthn Daha fazla bilgi edinin]",
-	"webauthn-ui-reload-page-label": "Sayfayı yeniden yükle"
+	"webauthn-ui-reload-page-label": "Sayfayı yeniden yükle",
+	"webauthn-authentication-info-label": "Kimlik doğrulama verileri",
+	"webauthn-authentication-info-help": "Kimlik bilgilerinin alınması için istemciye geçirilen kimlik doğrulama verileri",
+	"webauthn-credential-label": "Kullanıcı kimlik bilgisi",
+	"webauthn-credential-help": "Kimlik doğrulama verilerine dayalı kullanıcı kimlik bilgileri"
 }
