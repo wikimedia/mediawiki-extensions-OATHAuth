@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Azniv Stepanian",
 			"Kareyac"
 		]
 	},
-	"webuathn-ui-remove-key": "Հանել"
+	"webuathn-ui-remove-key": "Հեռացնել"
 }
