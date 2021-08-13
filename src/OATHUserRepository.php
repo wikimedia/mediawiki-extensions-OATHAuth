@@ -19,10 +19,10 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use BagOStuff;
-use CentralIdLookup;
 use ConfigException;
 use FormatJson;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use Psr\Log\LoggerInterface;
 use RequestContext;
@@ -78,7 +78,10 @@ class OATHUserRepository {
 		if ( !$oathUser ) {
 			$oathUser = new OATHUser( $user, [] );
 
-			$uid = CentralIdLookup::factory()->centralIdFromLocalUser( $user );
+			$uid = MediaWikiServices::getInstance()
+				->getCentralIdLookupFactory()
+				->getLookup()
+				->centralIdFromLocalUser( $user );
 			$res = $this->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
 				'*',
@@ -135,7 +138,10 @@ class OATHUserRepository {
 			'oathauth_users',
 			'id',
 			[
-				'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ),
+				'id' => MediaWikiServices::getInstance()
+					->getCentralIdLookupFactory()
+					->getLookup()
+					->centralIdFromLocalUser( $user->getUser() ),
 				'module' => $user->getModule()->getName(),
 				'data' => FormatJson::encode( $data )
 			],
@@ -166,7 +172,10 @@ class OATHUserRepository {
 	public function remove( OATHUser $user, $clientInfo ) {
 		$this->getDB( DB_PRIMARY )->delete(
 			'oathauth_users',
-			[ 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ],
+			[ 'id' => MediaWikiServices::getInstance()
+				->getCentralIdLookupFactory()
+				->getLookup()
+				->centralIdFromLocalUser( $user->getUser() ) ],
 			__METHOD__
 		);
 
