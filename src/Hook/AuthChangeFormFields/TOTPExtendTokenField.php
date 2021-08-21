@@ -68,7 +68,7 @@ class TOTPExtendTokenField {
 			'dir' => 'ltr',
 			'autofocus' => true,
 			'persistent' => false,
-			'autocomplete' => false,
+			'autocomplete' => 'one-time-code',
 			'spellcheck' => false,
 		];
 		return true;
