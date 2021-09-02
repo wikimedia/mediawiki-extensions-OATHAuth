@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Danieldegroot2",
 			"Kippenvlees1",
 			"LongJohn nl",
 			"Mainframe98",
@@ -49,7 +50,7 @@
 	"oathauth-auth-token-label": "Verificatiecode",
 	"oathauth-auth-token-help": "Het eenmalige wachtwoord gebruikt als tweede trap van de tweetrapsauthenticatie",
 	"oathauth-auth-ui": "Voer een verificatiecode in vanaf uw authenticatieapparaat.",
-	"oathauth-throttled": "Teveel verificatiepogingen! Wacht $1.",
+	"oathauth-throttled": "Te veel verificatiepogingen! Wacht $1.",
 	"oathauth-login-failed": "Verificatie mislukt",
 	"oathauth-describe-provider": "Tweetrapsauthenticatie (OATH).",
 	"grant-group-authentication": "Authenticatie handelingen voor zichzelf en anderen kunnen uitvoeren",
