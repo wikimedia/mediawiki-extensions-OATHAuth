@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
 use ConfigException;
-use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -17,7 +16,7 @@ use MWException;
 use OOUI\ButtonWidget;
 use SpecialPage;
 
-class WebAuthnManageForm extends OATHAuthOOUIHTMLForm implements IManageForm {
+class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 	/**
 	 * @var bool
