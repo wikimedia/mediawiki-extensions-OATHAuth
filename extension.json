@@ -69,11 +69,19 @@
 				"jquery.qrcode.js",
 				"qrcode.js",
 				"ext.oath.showqrcode.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.oath.showqrcode.styles": {
 			"styles": [
 				"ext.oath.showqrcode.styles.css"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		}
 	},
