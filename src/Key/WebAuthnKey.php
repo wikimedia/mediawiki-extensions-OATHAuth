@@ -487,7 +487,7 @@ class WebAuthnKey implements IAuthKey {
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
 				$publicKeyCredential->getRawId(),
-				// @phan-suppress-next-line PhanTypeMismatchArgument
+				// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
 				$publicKeyCredential->getResponse(),
 				$publicKeyCredentialRequestOptions,
 				$request,
