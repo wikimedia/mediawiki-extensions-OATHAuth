@@ -114,7 +114,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 				$key->getAttestedCredentialData()->getCredentialId()
 			),
 			'credentialPublicKey' => Base64Url::encode(
-				$key->getAttestedCredentialData()->getCredentialPublicKey()
+				(string)$key->getAttestedCredentialData()->getCredentialPublicKey()
 			),
 			'counter' => $key->getSignCounter(),
 			'userMWId' => $this->oauthUser->getUser()->getId(),

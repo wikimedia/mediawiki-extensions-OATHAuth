@@ -187,7 +187,7 @@ class WebAuthnKey implements IAuthKey {
 			"userHandle" => base64_encode( $this->userHandle ),
 			"publicKeyCredentialId" => base64_encode( $this->attestedCredentialData->getCredentialId() ),
 			"credentialPublicKey" => base64_encode(
-				$this->attestedCredentialData->getCredentialPublicKey()
+				(string)$this->attestedCredentialData->getCredentialPublicKey()
 			),
 			"aaguid" => $this->attestedCredentialData->getAaguid()->toString(),
 			"friendlyName" => $this->friendlyName,
@@ -417,9 +417,9 @@ class WebAuthnKey implements IAuthKey {
 			return false;
 		}
 
-		$attestedCredentialData = null;
 		if ( $response->getAttestationObject()->getAuthData()->hasAttestedCredentialData() ) {
 			$this->userHandle = $registrationObject->getUser()->getId();
+			// @phan-suppress-next-line PhanPossiblyNullTypeMismatchProperty
 			$this->attestedCredentialData = $response->getAttestationObject()
 				->getAuthData()->getAttestedCredentialData();
 			$this->signCounter = $response->getAttestationObject()->getAuthData()->getSignCount();

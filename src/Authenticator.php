@@ -289,6 +289,9 @@ class Authenticator {
 			$registerInfo = $this->getSessionData(
 				PublicKeyCredentialCreationOptions::class
 			);
+			if ( $registerInfo === null ) {
+				return Status::newFatal( 'webauthn-error-registration-failed' );
+			}
 		}
 
 		$key = $this->module->newKey();
@@ -356,7 +359,7 @@ class Authenticator {
 
 	/**
 	 * @param string $returnClass
-	 * @return PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions
+	 * @return PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null
 	 */
 	private function getSessionData( $returnClass ) {
 		$authData = $this->request->getSession()->getSecret( 'authData' );
