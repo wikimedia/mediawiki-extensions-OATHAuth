@@ -30,5 +30,9 @@
 	"webauthn-ui-disable-prompt": "請輕觸您的驗證裝置或依照瀏覽器的指示說明來確認停用 WebAuthentication",
 	"webauthn-error-max-keys-reached": "最多可註冊 {{PLURAL:$1|$1 個密鑰}}",
 	"webauthn-module-description": "WebAuthn（Web Authentication）是由全球資訊網協會（World Wide Web Consortium、W3C）發佈的網路標準。WebAuthn 是在 FIDO 聯盟指引下的 FIDO2 專案之核心內容。該專案目的是要標準化基於網路應用程式且採用公鑰加密服務來驗證使用者的介面。[https://en.wikipedia.org/wiki/WebAuthn 了解更多]",
-	"webauthn-ui-reload-page-label": "重新載入頁面"
+	"webauthn-ui-reload-page-label": "重新載入頁面",
+	"webauthn-authentication-info-label": "驗證資料",
+	"webauthn-authentication-info-help": "驗證資料傳遞給客戶端以用於憑證檢索",
+	"webauthn-credential-label": "使用者憑證",
+	"webauthn-credential-help": "基於驗證資料的使用者憑證"
 }
