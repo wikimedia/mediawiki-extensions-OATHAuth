@@ -42,7 +42,7 @@ interface IModule {
 	 * but it might not be true for all future modules
 	 *
 	 * @param OATHUser $user
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isEnabled( OATHUser $user );
 
@@ -51,7 +51,7 @@ interface IModule {
 	 *
 	 * @param OATHUser $user
 	 * @param array $data
-	 * @return boolean
+	 * @return bool
 	 */
 	public function verify( OATHUser $user, array $data );
 
