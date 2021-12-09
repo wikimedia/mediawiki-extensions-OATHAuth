@@ -130,7 +130,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 */
 	private function load() {
 		if ( !$this->oauthUser->getModule() instanceof WebAuthn ) {
-			// User does not have WebAuthn enabled - for sanity, as it should be checked
+			// User does not have WebAuthn enabled - for safety, as it should be checked
 			// long before it comes to this
 			return;
 		}
@@ -143,7 +143,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		/** @var WebAuthnKey $key */
 		foreach ( $keys as $key ) {
 			if ( !$key instanceof WebAuthnKey ) {
-				// sanity
+				// Sense-check
 				continue;
 			}
 			$this->keys[] = $key;
