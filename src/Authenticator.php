@@ -46,6 +46,7 @@ use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
 use Webauthn\PublicKeyCredentialUserEntity;
 use WebRequest;
+use WikiMap;
 
 /**
  * This class serves as an authentication/registration
@@ -517,6 +518,6 @@ class Authenticator {
 			return $this->context->getConfig()->get( 'Sitename' );
 		}
 
-		return wfWikiID();
+		return WikiMap::getCurrentWikiId();
 	}
 }
