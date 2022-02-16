@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Dejan Savuljesku <savuljesku@hallowelt.com>"
 		]
 	},
@@ -16,7 +17,7 @@
 	"oathauth-webauthn-registered-keys-section-name": "Label for the section for registered keys",
 	"webuathn-ui-remove-key": "Button label to remove a single WebAuthn key",
 	"webauthn-error-module-not-enabled": "Error message when authentication/registration is attemped with module not enabled for the user. \n$1 - module name\n$2 - user",
-	"webauthn-error-invalid-key": "Error message when there is a missmatch between the module enabled for a user and the key(s) set.\n$1 - user name",
+	"webauthn-error-invalid-key": "Error message when there is a mismatch between the module enabled for a user and the key(s) set.\n$1 - username",
 	"webauthn-error-verification-failed": "Error message when verification of the WebAuthn key was not successfull",
 	"webauthn-error-cannot-register": "Error message when user cannot registrate new key.\n$1 - username",
 	"webauthn-error-invalid-new-key": "Error message when created instance of WebAuthn is not of appropriate type",
