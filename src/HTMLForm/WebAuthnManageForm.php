@@ -43,7 +43,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		IModule $module,
 		IContextSource $context
 	) {
-		// @phan-suppress-next-line PhanParamTooMany
 		parent::__construct( $oathUser, $oathRepo, $module, $context );
 
 		$this->setId( 'webauthn-manage-form' );
