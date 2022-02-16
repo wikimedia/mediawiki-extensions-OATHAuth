@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\WebAuthn\Module;
 
+use IContextSource;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
@@ -17,6 +18,7 @@ use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use Message;
 use MWException;
+use RequestContext;
 
 class WebAuthn implements IModule {
 	/**
@@ -122,23 +124,30 @@ class WebAuthn implements IModule {
 	 * @param string $action
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
+	 * @param IContextSource|null $context optional for backwards compatibility
 	 * @return IManageForm|null if no form is available for given action
 	 */
-	public function getManageForm( $action, OATHUser $user, OATHUserRepository $repo ) {
+	public function getManageForm(
+		$action,
+		OATHUser $user,
+		OATHUserRepository $repo,
+		IContextSource $context = null
+	) {
 		$module = $this;
+		$context = $context ?: RequestContext::getMain();
 		$enabledForUser = $user->getModule() instanceof self;
 		if ( $action === OATHManage::ACTION_DISABLE && $enabledForUser ) {
-			return new WebAuthnDisableForm( $user, $repo, $module );
+			return new WebAuthnDisableForm( $user, $repo, $module, $context );
 		}
 		if ( $action === OATHManage::ACTION_ENABLE && !$enabledForUser ) {
-			return new WebAuthnAddKeyForm( $user, $repo, $module );
+			return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
 		}
 		if ( $action === static::ACTION_ADD_KEY && $enabledForUser ) {
-			return new WebAuthnAddKeyForm( $user, $repo, $module );
+			return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
 		}
 
 		if ( $enabledForUser ) {
-			return new WebAuthnManageForm( $user, $repo, $module );
+			return new WebAuthnManageForm( $user, $repo, $module, $context );
 		}
 
 		return null;

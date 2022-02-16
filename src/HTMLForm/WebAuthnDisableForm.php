@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
 use ConfigException;
+use IContextSource;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -26,8 +27,14 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( OATHUser $oathUser, OATHUserRepository $oathRepo, IModule $module ) {
-		parent::__construct( $oathUser, $oathRepo, $module );
+	public function __construct(
+		OATHUser $oathUser,
+		OATHUserRepository $oathRepo,
+		IModule $module,
+		IContextSource $context
+	) {
+		// @phan-suppress-next-line PhanParamTooMany
+		parent::__construct( $oathUser, $oathRepo, $module, $context );
 
 		$this->setId( 'disable-webauthn-form' );
 		$this->suppressDefaultSubmit();
