@@ -46,7 +46,8 @@
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"UserEffectiveGroups": "main",
-		"UserGetRights": "main"
+		"UserGetRights": "main",
+		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\OATHAuth\\Notifications\\Manager::onBeforeCreateEchoEvent"
 	},
 	"HookHandlers": {
 		"main": {
