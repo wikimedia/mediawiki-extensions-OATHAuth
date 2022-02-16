@@ -34,7 +34,7 @@ class DisableOATHAuthForUser extends Maintenance {
 			$this->error( "User $username doesn't have OATHAuth enabled!", 1 );
 		}
 
-		$repo->remove( $oathUser, 'Maintenance script' );
+		$repo->remove( $oathUser, 'Maintenance script', false );
 		// Kill all existing sessions. If this disable was social-engineered by an attacker,
 		// the legitimate user will hopefully login again and notice that the second factor
 		// is missing or different, and alert the operators.
