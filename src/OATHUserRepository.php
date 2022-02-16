@@ -162,8 +162,9 @@ class OATHUserRepository {
 	/**
 	 * @param OATHUser $user
 	 * @param string $clientInfo
+	 * @param bool $self Whether they disabled it themselves
 	 */
-	public function remove( OATHUser $user, $clientInfo ) {
+	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$this->getDB( DB_MASTER )->delete(
 			'oathauth_users',
 			[ 'id' => CentralIdLookup::factory()->centralIdFromLocalUser( $user->getUser() ) ],
@@ -177,6 +178,7 @@ class OATHUserRepository {
 			'user' => $userName,
 			'clientip' => $clientInfo,
 		] );
+		Notifications\Manager::notifyDisabled( $user, $self );
 	}
 
 	/**
