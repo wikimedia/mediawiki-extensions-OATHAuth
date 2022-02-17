@@ -165,6 +165,7 @@ class OATHUserRepository {
 				'clientip' => $clientInfo,
 				'oathtype' => $user->getModule()->getName(),
 			] );
+			Notifications\Manager::notifyEnabled( $user );
 		}
 	}
 
