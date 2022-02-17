@@ -63,7 +63,6 @@ class DisablePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getBodyMessage() {
-		$self = $this->event->getExtraParam( 'self', true );
 		$message = $this->event->getExtraParam( 'self', true )
 			? 'notification-body-oathauth-disable'
 			: 'notification-body-oathauth-disable-other';
