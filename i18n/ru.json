@@ -18,6 +18,7 @@
 			"Ping08",
 			"Saimongoltinio",
 			"Serhio Magpie",
+			"Tanzun",
 			"Vlad5250"
 		]
 	},
@@ -97,5 +98,6 @@
 	"oathauth-totp-disable-warning": "Вы больше не сможете использовать устройство аутентификации, зарегистрированное в этой учетной записи. Все скретч-токены, связанные с этой учетной записью, будут аннулированы.",
 	"oathauth-invalidrequest": "Неверный запрос",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} включена двухфакторная аутентификация.",
-	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация."
+	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация.",
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} в {{PLURAL:$1|этой группе|этих группах}} отключено, пока вы не включите [[Special:Manage Two-factor authentication|двухфакторную аутентификацию]]."
 }

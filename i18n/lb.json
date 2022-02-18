@@ -19,5 +19,7 @@
 	"action-oathauth-api-all": "OATH-Status nokucken",
 	"oathauth-enable-generic": "Aschalten",
 	"oathauth-disable-generic": "Ausschalten",
-	"oathauth-invalidrequest": "Net-valabel Ufro"
+	"oathauth-invalidrequest": "Net-valabel Ufro",
+	"oathauth-notifications-disable-help": "Hëllef",
+	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Desaktivéierte Grupp|Desaktivéiert Gruppen}}"
 }
