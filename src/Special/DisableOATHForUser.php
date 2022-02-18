@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
+use ExtensionRegistry;
 use ManualLogEntry;
+use MediaWiki\CheckUser\Hooks as CheckUserHooks;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
@@ -150,6 +152,10 @@ class DisableOATHForUser extends FormSpecialPage {
 		$logEntry->setTarget( $user->getUserPage() );
 		$logEntry->setComment( $formData['reason'] );
 		$logEntry->insert();
+
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+			CheckUserHooks::updateCheckUserData( $logEntry->getRecentChange() );
+		}
 
 		LoggerFactory::getInstance( 'authentication' )->info(
 			'OATHAuth disabled for {usertarget} by {user} from {clientip}', [
