@@ -24,7 +24,6 @@ use DomainException;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
@@ -33,6 +32,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
+use UnexpectedValueException;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
 
 /**
@@ -87,20 +87,46 @@ class TOTPKey implements IAuthKey {
 	/**
 	 * @param array $data
 	 * @return TOTPKey|null on invalid data
+	 * @throws UnexpectedValueException When encryption is not configured but db is encrypted
 	 */
 	public static function newFromArray( array $data ) {
 		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
 			return null;
 		}
-		return new static( $data['id'] ?? null, $data['secret'], $data['scratch_tokens'] );
+		if ( isset( $data['nonce'] ) ) {
+			if ( !EncryptionHelper::isEnabled() ) {
+				throw new UnexpectedValueException( 'Encryption is not configured but database has encrypted data' );
+			}
+			$data['encrypted_secret'] = $data['secret'];
+			$data['secret'] = EncryptionHelper::decrypt( $data['secret'], $data['nonce'] );
+		} else {
+			$data['encrypted_secret'] = '';
+			$data['nonce'] = '';
+		}
+		return new static(
+			$data['id'] ?? null,
+			/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
+			$data['secret'],
+			$data['scratch_tokens'],
+			$data['encrypted_secret'],
+			$data['nonce']
+		);
 	}
 
 	/**
 	 * @param int|null $id the database id of this key
 	 * @param string $secret
 	 * @param array $recoveryCodes
+	 * @param string $encryptedSecret
+	 * @param string $nonce
 	 */
-	public function __construct( ?int $id, $secret, array $recoveryCodes ) {
+	public function __construct(
+		?int $id,
+		string $secret,
+		array $recoveryCodes,
+		string $encryptedSecret = '',
+		string $nonce = ''
+	) {
 		$this->id = $id;
 
 		// Currently hardcoded values; might be used in the future
@@ -109,6 +135,8 @@ class TOTPKey implements IAuthKey {
 			'secret' => $secret,
 			'period' => 30,
 			'algorithm' => 'SHA1',
+			'encrypted_secret' => $encryptedSecret,
+			'nonce' => $nonce
 		];
 		$this->recoveryCodes = array_values( $recoveryCodes );
 	}
@@ -127,6 +155,18 @@ class TOTPKey implements IAuthKey {
 		return $this->secret['secret'];
 	}
 
+	public function setEncryptedSecretAndNonce( string $encryptedSecret, string $nonce ) {
+		$this->secret['encrypted_secret'] = $encryptedSecret;
+		$this->secret['nonce'] = $nonce;
+	}
+
+	public function getEncryptedSecretAndNonce(): array {
+		return [
+			$this->secret['encrypted_secret'],
+			$this->secret['nonce'],
+		];
+	}
+
 	/**
 	 * @return string[]
 	 */
@@ -138,7 +178,7 @@ class TOTPKey implements IAuthKey {
 	 * @param array $data
 	 * @param OATHUser $user
 	 * @return bool
-	 * @throws MWException
+	 * @throws DomainException
 	 */
 	public function verify( $data, OATHUser $user ) {
 		global $wgOATHAuthWindowRadius;
@@ -263,9 +303,20 @@ class TOTPKey implements IAuthKey {
 	}
 
 	public function jsonSerialize(): array {
-		return [
-			'secret' => $this->getSecret(),
-			'scratch_tokens' => $this->getScratchTokens()
-		];
+		$encryptedData = $this->getEncryptedSecretAndNonce();
+		if ( EncryptionHelper::isEnabled() && in_array( '', $encryptedData ) ) {
+			$data = EncryptionHelper::encrypt( $this->getSecret() );
+			$this->setEncryptedSecretAndNonce( $data['secret'], $data['nonce'] );
+		} elseif ( EncryptionHelper::isEnabled() ) {
+			$data = [
+				'secret' => $encryptedData[0],
+				'nonce' => $encryptedData[1]
+			];
+		} else {
+			$data = [ 'secret' => $this->getSecret() ];
+		}
+
+		$data['scratch_tokens'] = $this->getScratchTokens();
+		return $data;
 	}
 }
