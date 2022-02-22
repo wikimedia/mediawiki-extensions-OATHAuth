@@ -165,7 +165,7 @@ class TOTPKey implements IAuthKey {
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
-			if ( $window > $lastWindow && $result->toHOTP( 6 ) === $token ) {
+			if ( $window > $lastWindow && hash_equals( $result->toHOTP( 6 ), $token ) ) {
 				$lastWindow = $window;
 				$retval = self::MAIN_TOKEN;
 
@@ -185,7 +185,7 @@ class TOTPKey implements IAuthKey {
 				$retval = false;
 			} else {
 				for ( $i = 0; $i < $length; $i++ ) {
-					if ( $token === $this->scratchTokens[$i] ) {
+					if ( hash_equals( $token, $this->scratchTokens[$i] ) ) {
 						// If there is a scratch token, remove it from the scratch token list
 						array_splice( $this->scratchTokens, $i, 1 );
 
