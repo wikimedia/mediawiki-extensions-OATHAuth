@@ -7,6 +7,7 @@ use DatabaseUpdater;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
 use Wikimedia;
+use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\IDatabase;
 
 class UpdateTables {
@@ -313,9 +314,9 @@ class UpdateTables {
 		);
 
 		foreach ( $res as $row ) {
-			Wikimedia\suppressWarnings();
+			AtEase::suppressWarnings();
 			$scratchTokens = unserialize( base64_decode( $row->scratch_tokens ) );
-			Wikimedia\restoreWarnings();
+			AtEase::restoreWarnings();
 			if ( $scratchTokens ) {
 				$db->update(
 					'oathauth_users',
