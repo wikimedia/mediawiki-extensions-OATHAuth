@@ -5,5 +5,7 @@
 		]
 	},
 	"webauthn-module-label": "Webauthenticatie (WebAuthn)",
-	"webauthn-module-description": "WebAuthn (Webauthenticatie) is een internetstandaard gepubliceerd door het World Wide Web Consortium (W3C). WebAuthn is een kerncomponent van het FIDO2-project onder begeleiding van de FIDO Alliance. Het doel van het project is om een interface te standaardiseren voor het authenticeren van gebruikers bij web-gebaseerde applicaties en diensten met behulp van public-key-cryptografie. [https://en.wikipedia.org/wiki/WebAuthn Lees meer]"
+	"webauthn-module-description": "WebAuthn (Webauthenticatie) is een internetstandaard gepubliceerd door het World Wide Web Consortium (W3C). WebAuthn is een kerncomponent van het FIDO2-project onder begeleiding van de FIDO Alliance. Het doel van het project is om een interface te standaardiseren voor het authenticeren van gebruikers bij web-gebaseerde applicaties en diensten met behulp van public-key-cryptografie. [https://en.wikipedia.org/wiki/WebAuthn Lees meer]",
+	"webauthn-ui-reload-page-label": "Pagina opnieuw laden",
+	"webauthn-authentication-info-label": "Authenticatiegegevens"
 }
