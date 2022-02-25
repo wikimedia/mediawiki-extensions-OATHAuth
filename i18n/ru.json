@@ -14,6 +14,7 @@
 			"Movses",
 			"NBS",
 			"Okras",
+			"Pacha Tchernof",
 			"Patrick Star",
 			"Ping08",
 			"Saimongoltinio",
@@ -101,5 +102,6 @@
 	"oathauth-notifications-disable-help": "Справка",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} включена двухфакторная аутентификация.",
 	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация.",
+	"oathauth-prefs-disabledgroups": "Отключенн{{PLURAL:$1|ая группа|ые группы}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} в {{PLURAL:$1|этой группе|этих группах}} отключено, пока вы не включите [[Special:Manage Two-factor authentication|двухфакторную аутентификацию]]."
 }
