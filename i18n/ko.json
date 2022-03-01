@@ -71,6 +71,7 @@
 	"oathauth-disable-method-warning-header": "인증 방식 비활성화 확인",
 	"oathauth-disable-method-warning-button-label": "확인하고 계속하기",
 	"oathauth-invalidrequest": "잘못된 요청",
+	"oathauth-notifications-disable-help": "도움말",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다."
 }
