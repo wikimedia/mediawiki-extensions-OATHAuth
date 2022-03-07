@@ -9,7 +9,8 @@
 			"Metalhead64",
 			"MuratTheTurkish",
 			"Sushi",
-			"Umherirrender"
+			"Umherirrender",
+			"Wnme"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
@@ -51,7 +52,7 @@
 	"action-oathauth-enable": "die Zwei-Faktor-Authentifizierung zu aktivieren",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-token-help": "Das Einmalpasswort, verwendet als zweiter Faktor der Zwei-Faktor-Authentifizierung.",
-	"oathauth-auth-ui": "Bitte einen Verifizierungscode vom Authentifizierungsgerät eingeben",
+	"oathauth-auth-ui": "Bitte gib einen Verifizierungscode von deinem Authentifizierungsgerät ein.",
 	"oathauth-throttled": "Zu viele Verifizierungsversuche! Bitte warte $1.",
 	"oathauth-login-failed": "Verifizierung fehlgeschlagen.",
 	"oathauth-describe-provider": "Zwei-Faktor-Authentifizierung (OATH).",
