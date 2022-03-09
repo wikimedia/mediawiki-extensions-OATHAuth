@@ -166,7 +166,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 		if ( $this->oathUser->getFirstKey() === null ) {
 			// User removed all keys
-			$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP() );
+			$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP(), true );
 		} else {
 			$this->oathRepo->persist( $this->oathUser, $this->getRequest()->getIP() );
 		}
