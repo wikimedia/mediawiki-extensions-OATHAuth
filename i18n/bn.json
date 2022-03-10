@@ -3,6 +3,7 @@
 		"authors": [
 			"Aftabuzzaman",
 			"Elias Ahmmad",
+			"MdsShakil",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -31,6 +32,7 @@
 	"oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করুন",
 	"right-oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করা",
 	"action-oathauth-disable-for-user": "একজন ব্যবহারকারীর দুই-ধাপের প্রমাণীকরণ নিষ্ক্রিয় করার",
+	"action-oathauth-verify-user": "কোনও ব্যবহারকারীর দুই ধাপের প্রমাণীকরণ সক্রিয় আছে কিনা তা যাচাই করুন",
 	"oathauth-disable-intro": "মহৎ শক্তির সাথে, মহৎ দায়িত্ব আসে",
 	"oathauth-enteruser": "ব্যবহারকারী নাম:",
 	"oathauth-enterdisablereason": "নিষ্ক্রিয় করার কারণ:",
