@@ -82,6 +82,7 @@
 	"oathauth-invalidrequest": "잘못된 요청",
 	"notification-header-oathauth-disable": "{{GENDER:$2|당신의 계정}}에서 2요소 인증이 비활성화 되었습니다.",
 	"oathauth-notifications-disable-help": "도움말",
+	"oathauth-notifications-enabled-help": "도움말",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다."
 }
