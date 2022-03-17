@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Izuchi Onyeike"
+		]
+	},
+	"notification-header-oathauth-enabled": "Nyocha nke ihe abụọ\n agbanyerela na {{GENDER:$2|akaụntụ gị}}.",
+	"notification-body-oathauth-enabled": "Ọ bụrụ\n {{GENDER:$2|ị}} emebeghị nke a, {{GENDER:$2|akaụntụ gị}} nwere ike mebiela.",
+	"oathauth-notifications-enabled-help": "Nyerem aka"
+}
