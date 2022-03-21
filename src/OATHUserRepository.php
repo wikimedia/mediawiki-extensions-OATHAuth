@@ -26,7 +26,6 @@ use MediaWiki\MediaWikiServices;
 use MWException;
 use Psr\Log\LoggerInterface;
 use RequestContext;
-use stdClass;
 use User;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -84,21 +83,13 @@ class OATHUserRepository {
 				->centralIdFromLocalUser( $user );
 			$res = $this->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
-				'*',
+				[ 'module', 'data' ],
 				[ 'id' => $uid ],
 				__METHOD__
 			);
 			if ( $res ) {
-				$data = $res->data;
-				$moduleKey = $res->module;
-				if ( $this->isLegacy( $res ) ) {
-					$module = $this->auth->getModuleByKey( 'totp' );
-					$data = $this->checkAndResolveLegacy( $data, $res );
-				} else {
-					$module = $this->auth->getModuleByKey( $moduleKey );
-				}
+				$module = $this->auth->getModuleByKey( $res->module );
 				if ( $module === null ) {
-					// For sanity
 					throw new MWException( 'oathauth-module-invalid' );
 				}
 
@@ -203,41 +194,5 @@ class OATHUserRepository {
 		global $wgOATHAuthDatabase;
 
 		return $this->lb->getConnectionRef( $index, [], $wgOATHAuthDatabase );
-	}
-
-	/**
-	 * @param stdClass $row
-	 * @return bool
-	 */
-	private function isLegacy( $row ) {
-		if ( $row->module !== '' ) {
-			return false;
-		}
-		if ( property_exists( $row, 'secret' ) && $row->secret !== null ) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if the DB data is in the new format,
-	 * if not converts old data to new
-	 *
-	 * @param string $data
-	 * @param stdClass $row
-	 * @return string
-	 */
-	private function checkAndResolveLegacy( $data, $row ) {
-		if ( $data ) {
-			// New data exists - no action required
-			return $data;
-		}
-		if ( property_exists( $row, 'secret' ) && property_exists( $row, 'scratch_tokens' ) ) {
-			return FormatJson::encode( [
-				'secret' => $row->secret,
-				'scratch_tokens' => $row->scratch_tokens
-			] );
-		}
-		return '';
 	}
 }
