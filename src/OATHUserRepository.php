@@ -84,7 +84,7 @@ class OATHUserRepository {
 				->centralIdFromLocalUser( $user );
 			$res = $this->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
-				[ 'module', 'data' ],
+				'*',
 				[ 'id' => $uid ],
 				__METHOD__
 			);
