@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ivml",
+			"Kareyac",
 			"ShockD",
 			"StanProg",
 			"Stoyan",
@@ -52,5 +53,6 @@
 	"oathauth-disable-generic": "Изключване",
 	"oathauth-disable-page-title": "Изключване на $1",
 	"oathauth-enable-page-title": "Включване на $1",
-	"oathauth-ui-available-modules": "Налични методи"
+	"oathauth-ui-available-modules": "Налични методи",
+	"oathauth-notifications-enabled-help": "Помощ"
 }
