@@ -135,8 +135,8 @@ class DisableOATHForUser extends FormSpecialPage {
 			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
-		$oathUser->disable();
 		$this->userRepo->remove( $oathUser, $this->getRequest()->getIP(), false );
+		$oathUser->disable();
 
 		// message used: logentry-oath-disable-other
 		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
