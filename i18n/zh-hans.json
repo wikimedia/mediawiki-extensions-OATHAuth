@@ -11,6 +11,7 @@
 			"Lakejason0",
 			"Liuxinyu970226",
 			"MuratTheTurkish",
+			"NACHOgao3",
 			"Stang",
 			"Tiger",
 			"Tranve",
@@ -106,6 +107,7 @@
 	"notification-body-oathauth-disable": "如果{{GENDER:$2|您}}并未这么做，{{GENDER:$2|您的帐户}}可能已被入侵。",
 	"notification-body-oathauth-disable-other": "如果{{GENDER:$2|您}}并未提出此要求，{{GENDER:$2|您}}应当联系管理员。",
 	"oathauth-notifications-disable-help": "帮助",
+	"oathauth-notifications-enabled-help": "帮助",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}已启用双重身份验证。",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}未启用双重身份验证。"
 }
