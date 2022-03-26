@@ -22,7 +22,6 @@ use ApiBase;
 use ApiResult;
 use FormatJson;
 use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\MediaWikiServices;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -35,9 +34,7 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class ApiOATHValidate extends ApiBase {
 	public function execute() {
-		// Be extra paranoid about the data that is sent
-		$this->requireAtLeastOneParameter( $this->extractRequestParams(), 'totp', 'data' );
-		$this->requirePostedParameters( [ 'token', 'data', 'totp' ] );
+		$this->requirePostedParameters( [ 'token', 'data' ] );
 
 		$params = $this->extractRequestParams();
 		if ( $params['user'] === null ) {
@@ -70,19 +67,11 @@ class ApiOATHValidate extends ApiBase {
 				$module = $authUser->getModule();
 				if ( $module instanceof IModule ) {
 					$data = [];
-					if ( isset( $params['totp'] ) ) {
-						// Legacy
-						if ( $module instanceof TOTP ) {
-							$data = [
-								'token' => $params['totp']
-							];
-						}
-					} else {
-						$decoded = FormatJson::decode( $params['data'], true );
-						if ( is_array( $decoded ) ) {
-							$data = $decoded;
-						}
+					$decoded = FormatJson::decode( $params['data'], true );
+					if ( is_array( $decoded ) ) {
+						$data = $decoded;
 					}
+
 					$result['enabled'] = $module->isEnabled( $authUser );
 					$result['valid'] = $module->verify( $authUser, $data ) !== false;
 					$result['module'] = $module->getName();
@@ -109,12 +98,9 @@ class ApiOATHValidate extends ApiBase {
 			'user' => [
 				ParamValidator::PARAM_TYPE => 'user',
 			],
-			'totp' => [
-				ParamValidator::PARAM_TYPE => 'string',
-				ParamValidator::PARAM_DEPRECATED => true
-			],
 			'data' => [
-				ParamValidator::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
 			]
 		];
 	}
@@ -124,10 +110,8 @@ class ApiOATHValidate extends ApiBase {
 	 */
 	protected function getExamplesMessages() {
 		return [
-			'action=oathvalidate&totp=123456&token=123ABC'
+			'action=oathvalidate&data={"token":"123456"}&token=123ABC'
 				=> 'apihelp-oathvalidate-example-1',
-			'action=oathvalidate&user=Example&totp=123456&token=123ABC'
-				=> 'apihelp-oathvalidate-example-2',
 			'action=oathvalidate&user=Example&data={"token":"123456"}&token=123ABC'
 				=> 'apihelp-oathvalidate-example-3',
 		];
