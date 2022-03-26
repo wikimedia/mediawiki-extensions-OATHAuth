@@ -95,11 +95,7 @@ class OATHUserRepository {
 
 				$oathUser->setModule( $module );
 				$decodedData = FormatJson::decode( $res->data, true );
-				if ( !isset( $decodedData['keys'] ) && $module->getName() === 'totp' ) {
-					// Legacy single-key setup
-					$key = $module->newKey( $decodedData );
-					$oathUser->addKey( $key );
-				} elseif ( is_array( $decodedData['keys'] ) ) {
+				if ( is_array( $decodedData['keys'] ) ) {
 					foreach ( $decodedData['keys'] as $keyData ) {
 						$key = $module->newKey( $keyData );
 						$oathUser->addKey( $key );
