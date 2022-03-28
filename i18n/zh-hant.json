@@ -5,6 +5,7 @@
 			"A2093064",
 			"Alexsh",
 			"Cwlin0416",
+			"DinoWP",
 			"Hello903hello",
 			"Kly",
 			"LNDDYL",
@@ -93,6 +94,7 @@
 	"oathauth-switch-method-warning": "依照切換成$2雙重認證方法，目前的方法（$1）將被停用，並且所有關聯目前認證方法的資料都會被刪除",
 	"oathauth-totp-disable-warning": "您將無法使用以此帳號註冊的認證裝置。所有關聯此帳號的臨時權杖將會失效。",
 	"oathauth-invalidrequest": "無效請求",
+	"oathauth-notifications-enabled-help": "幫助",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}有啟用雙重認證。",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}沒有啟用雙重認證。"
 }
