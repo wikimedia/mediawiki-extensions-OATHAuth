@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"NguoiDungKhongDinhDanh",
 			"Vinhtantran"
 		]
 	},
@@ -19,7 +20,7 @@
 	"webauthn-error-invalid-key": "{{GENDER:$1|Thành viên \"$1\"}} đã bật mô đun WebAuthn, nhưng chìa khóa bị thiết lập sai",
 	"webauthn-error-verification-failed": "Xác thực thất bại",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Thành viên \"$1\"}} không thể đăng ký định danh mới",
-	"webauthn-error-invalid-new-key": "Chìa khóa do mô đun trả về không phải là kiểu bắt buộc",
+	"webauthn-error-invalid-new-key": "Chìa khóa do mô đun trả về không thuộc kiểu bắt buộc",
 	"webauthn-error-registration-failed": "Đăng ký chìa khóa mới thất bại",
 	"webauthn-ui-key-register-help": "Chọn biệt danh cho chìa khóa của bạn",
 	"webauthn-error-cannot-remove-key": "Không thể xóa chìa khóa",
