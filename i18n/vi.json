@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Minh Nguyen",
-			"Vinhtantran"
+			"Vinhtantran",
+			"NguoiDungKhongDinhDanh",
+			"NguyenHung"
 		]
 	},
 	"oathauth-desc": "Cho phép xác nhận dùng các mật khẩu một lần dựa trên mã xác thực thông điệp được băm (HMAC)",
@@ -11,7 +13,7 @@
 	"oath": "Xác thực OATH",
 	"specialpages-group-oath": "Xác thực dùng hai nhân tố",
 	"oathauth-account": "Tên tài khoản:",
-	"oathauth-secret": "Chìa khóa bí mật để xác thực dùng hai nhân tố:",
+	"oathauth-secret": "Chìa khóa bí mật của xác thực hai nhân tố:",
 	"oathauth-enable": "Xác thực dùng hai nhân tố",
 	"oathauth-scratchtokens": "Dưới đây là danh sách các mã dùng một lần. Các mã này chỉ có thể dùng một lần khi khẩn cấp. Xin hãy ghi xuống các mã này và lưu giữ chúng ở một nơi an toàn. Nếu bạn mất điện thoại của bạn, các mã này là cách duy nhất để cứu tài khoản của bạn. '''Các mã này sẽ không bao giờ hiển thị nữa'''.",
 	"oathauth-token": "Chìa khóa",
