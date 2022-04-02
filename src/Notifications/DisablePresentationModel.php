@@ -37,7 +37,7 @@ class DisablePresentationModel extends EchoEventPresentationModel {
 	 */
 	public function getPrimaryLink() {
 		return [
-			'url' => SpecialPage::getTitleFor( 'Preferences' )->getLocalURL(),
+			'url' => SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL(),
 			'label' => $this->msg( 'oathauth-notifications-disable-primary' )->text()
 		];
 	}
