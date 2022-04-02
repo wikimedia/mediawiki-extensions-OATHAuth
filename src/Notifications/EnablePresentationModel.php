@@ -38,8 +38,8 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 	 */
 	public function getPrimaryLink() {
 		return [
-			'url' => SpecialPage::getTitleFor( 'Preferences' )->getLocalURL(),
-			'label' => $this->msg( 'oathauth-notifications-enabled-primary' )->text()
+			'url' => SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL(),
+			'label' => $this->msg( 'oathauth-notifications-enable-primary' )->text()
 		];
 	}
 
@@ -47,7 +47,7 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getSecondaryLinks() {
-		$link = $this->msg( 'oathauth-notifications-enabled-helplink' )->inContentLanguage();
+		$link = $this->msg( 'oathauth-notifications-enable-helplink' )->inContentLanguage();
 		$title = Title::newFromText( $link->plain() );
 		if ( !$title ) {
 			// Invalid title, skip
@@ -55,7 +55,7 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 		}
 		return [ [
 			'url' => $title->getLocalURL(),
-			'label' => $this->msg( 'oathauth-notifications-enabled-help' )->text(),
+			'label' => $this->msg( 'oathauth-notifications-enable-help' )->text(),
 			'icon' => 'help',
 		] ];
 	}
@@ -64,6 +64,6 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getBodyMessage() {
-		return $this->getMessageWithAgent( 'notification-body-oathauth-enabled' );
+		return $this->getMessageWithAgent( 'notification-body-oathauth-enable' );
 	}
 }
