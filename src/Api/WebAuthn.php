@@ -27,6 +27,7 @@ use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\MediaWikiServices;
 use MWException;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * This class provides an endpoint for all WebAuthn actions.
@@ -59,11 +60,11 @@ class WebAuthn extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'func' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'data' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			]
 		];
 	}
