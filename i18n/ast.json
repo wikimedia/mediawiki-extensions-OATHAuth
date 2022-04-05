@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Xuacu"
+			"Xuacu",
+			"Reedy"
 		]
 	},
 	"oathauth-desc": "Ufre soporte d'identificación utilizando contraseñes pa una sola vez basaes en HMAC",
@@ -44,7 +45,7 @@
 	"oathauth-login-failed": "Falló la comprobación.",
 	"oathauth-describe-provider": "Identificación de dos factores (OATH).",
 	"grant-group-authentication": "Facer les aiciones d'autenticación propies y pa otros",
-	"grant-oath": "Acceder a la información d'autenticación en dos factores (OAuth) propies y pa otros",
+	"grant-oath": "Acceder a la información d'autenticación en dos factores (OATH) propies y pa otros",
 	"right-oathauth-api-all": "Consultar y validar la información OATH propia y d'otros",
 	"action-oathauth-api-all": "comprobar l'estatus OATH",
 	"oathauth-user-not-found": "Nun s'alcontró nenguna cuenta d'usuariu con esi nome",
