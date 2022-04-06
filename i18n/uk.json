@@ -8,7 +8,8 @@
 			"Movses",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Ice bulldog"
 		]
 	},
 	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів",
@@ -88,6 +89,12 @@
 	"oathauth-switch-method-warning": "Під час перемикання на метод двофакторної автентифікації $2 поточний метод ($1) буде вимкнено, а всі дані, пов'язані з цим методом автентифікації, буде вилучено",
 	"oathauth-totp-disable-warning": "Ви більше не зможете використовувати пристрій автентифікації, зареєстрований у цьому обліковому записі. Усі одноразові коди, пов'язані з цим обліковим записом, будуть анульовані.",
 	"oathauth-invalidrequest": "Неприпустимий запит",
+	"notification-header-oathauth-disable": "Двофакторну автентифікацію {{GENDER:$2|вашого облікового запису}} вимкнено.",
+	"notification-body-oathauth-disable": "Якщо {{GENDER:$2|ви}} цього не робили, {{GENDER:$2|ваш обліковий запис}} може бути скомпрометованим.",
+	"notification-body-oathauth-disable-other": "Якщо {{GENDER:$2|ви}} не робили цього запиту, {{GENDER:$2|вам}} варто звернутися до адміністратора.",
+	"oathauth-notifications-disable-help": "Довідка",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} двофакторна автентифікація ввімкнена.",
-	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} двофакторна автентифікація не ввімкнена."
+	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} двофакторна автентифікація не ввімкнена.",
+	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Вимкнена група|Вимкнені групи}}:",
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} у {{PLURAL:$1|цій групі|цих групах}} вимкнено, поки ви не увімкнете [[Special:Manage Two-factor authentication|двофакторну автентифікацію]]."
 }
