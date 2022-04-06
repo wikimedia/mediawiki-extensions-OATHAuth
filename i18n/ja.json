@@ -55,7 +55,7 @@
 	"action-oathauth-api-all": "OATH 状態の確認",
 	"oath-log-name": "二段階認証の記録",
 	"oath-log-header": "これらのイベントは利用者の二段階認証の状態の変更を追跡します。",
-	"oauthauth-ui-no-module": "有効になっていません",
+	"oathauth-ui-no-module": "有効になっていません",
 	"oathauth-module-totp-label": "TOTP（ワンタイムトークン）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "二段階認証の管理",

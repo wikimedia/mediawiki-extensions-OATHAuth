@@ -64,7 +64,7 @@
 	"oath-log-header": "این رویدادها تغییرات در وضعیت تأیید اعتبار دومرحله‌ای کاربران را ردیابی می‌کنند.",
 	"logentry-oath-disable-other": "$1 تأیید اعتبار دومرحله‌ای برای $3 را {{GENDER:$2|غیرفعال کرد}}",
 	"logentry-oath-verify": "$1 فعال بودن تأیید اعتبار دومرحله‌ای برای $3 را {{GENDER:$2|بررسی کرد}}",
-	"oauthauth-ui-no-module": "هیچ پودمانی فعال نیست",
+	"oathauth-ui-no-module": "هیچ پودمانی فعال نیست",
 	"oathauth-module-invalid": "پودمان OATHAuth که کاربر ثبت کرده‌است نامعتبر است.",
 	"oathauth-module-totp-label": "تی‌اوتی‌پی (بلیط‌های یک‌بارمصرف)",
 	"oathauth-ui-manage": "مدیریت",
