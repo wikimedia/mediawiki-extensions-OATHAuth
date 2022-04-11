@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ellif",
 			"IRTC1015",
 			"Jonghaya",
 			"MemphisA5",
@@ -12,7 +13,7 @@
 			"아라"
 		]
 	},
-	"oathauth-desc": "일회용 비밀번호에 기초한 HMAC를 사용하여 인증 기능을 제공",
+	"oathauth-desc": "HMAC 기반 일회용 비밀번호를 이용한 인증 지원 제공",
 	"disableoathforuser": "사용자에 대해 2요소 인증 비활성화하기",
 	"verifyoathforuser": "2요소 인증 상태 확인",
 	"specialpages-group-oath": "2요소 인증",
@@ -35,11 +36,13 @@
 	"oathauth-step4": "4단계: 확인",
 	"oathauth-entertoken": "확인을 위해 인증 장치로부터 받은 코드를 입력하세요:",
 	"oathauth-disable-for-user": "사용자에 대해 2요소 인증 비활성화하기",
-	"oathauth-verify-for-user": "사용자에게 2요소 인증이 설정되어 있는지 확인합니다.",
+	"oathauth-verify-for-user": "사용자에게 2요소 인증이 설정되어 있는지 확인",
 	"right-oathauth-disable-for-user": "사용자에 대해 2요소 인증 비활성화하기",
 	"action-oathauth-disable-for-user": "사용자에 대해 2요소 인증 비활성화하기",
 	"right-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
+	"action-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
 	"right-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
+	"action-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
 	"oathauth-disable-intro": "권한이 클수록 책임이 커집니다",
 	"oathauth-enteruser": "사용자 이름:",
 	"oathauth-enterdisablereason": "비활성화 이유:",
@@ -82,6 +85,7 @@
 	"oathauth-invalidrequest": "잘못된 요청",
 	"notification-header-oathauth-disable": "{{GENDER:$2|당신의 계정}}에서 2요소 인증이 비활성화 되었습니다.",
 	"oathauth-notifications-disable-help": "도움말",
+	"notification-body-oathauth-enabled": "설정하지 않는다면, 계정이 위협받을 수 있습니다.",
 	"oathauth-notifications-enabled-help": "도움말",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다."
