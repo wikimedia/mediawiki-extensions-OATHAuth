@@ -60,7 +60,7 @@
 	"oath-log-header": "Các sự kiện này theo dõi sự thay đổi trạng thái xác thực dùng hai nhân tố của người dùng.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2}}đã tắt xác thực dùng hai nhân tố của $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2}}đã kiểm tra xem $3 có bật xác thực dùng hai nhân tố không",
-	"oauthauth-ui-no-module": "Không kích hoạt",
+	"oathauth-ui-no-module": "Không kích hoạt",
 	"oathauth-module-invalid": "Người dùng đã đăng ký mô-đun OATHAuth không hợp lệ.",
 	"oathauth-module-totp-label": "Mã một lần theo thời điểm",
 	"oathauth-ui-manage": "Quản lý",

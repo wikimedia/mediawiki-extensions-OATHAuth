@@ -63,7 +63,7 @@
 	"oath-log-header": "Śledzenie zmian w statusach uwierzytelniania dwuskładnikowego użytkowników.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|wyłączył|wyłączyła}} uwierzytelnianie dwuskładnikowe dla $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|sprawdził|sprawdziła}} czy $3 ma włączone uwierzytelnianie dwuskładnikowe",
-	"oauthauth-ui-no-module": "Nie włączono",
+	"oathauth-ui-no-module": "Nie włączono",
 	"oathauth-module-invalid": "Zarejestrowany przez użytkownika moduł OATHAuth jest nieprawidłowy.",
 	"oathauth-module-totp-label": "TOTP (oparte na czasie hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",

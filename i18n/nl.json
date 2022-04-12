@@ -60,7 +60,7 @@
 	"oath-log-name": "Tweetrapsauthenticatie logboek",
 	"oath-log-header": "Deze gebeurtenissen houden wijzigen bij aan de tweetrapsauthenticatiestatus van gebruikers.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|schakelde}} de tweetrapsauthenticatie van $3 uit",
-	"oauthauth-ui-no-module": "Geen ingesteld",
+	"oathauth-ui-no-module": "Geen ingesteld",
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",
