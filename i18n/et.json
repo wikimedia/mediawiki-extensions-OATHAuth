@@ -39,7 +39,7 @@
 	"right-oathauth-api-all": "Pärida ja valideerida enda ja teiste OATH-i teavet",
 	"oath-log-name": "Kaheastmelise autentimise logi",
 	"oath-log-header": "Nende logisündmustega peetakse arvet kasutajate kaheastmelise autentimise staatuse muudatuste üle.",
-	"oauthauth-ui-no-module": "Pole lubatud",
+	"oathauth-ui-no-module": "Pole lubatud",
 	"oathauth-module-totp-label": "TOTP (ühekordne luba)",
 	"oathauth-ui-manage": "Halda",
 	"oathmanage": "Kaheastmelise autentimise haldamine",

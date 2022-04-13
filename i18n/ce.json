@@ -31,7 +31,7 @@
 	"oathauth-describe-provider": "Шина-факторан аутентификаци (OATH).",
 	"grant-oath": "Шина-факторан аутентификаци (OATH) тӀекхачар",
 	"action-oathauth-api-all": "Хьажа OATH статус",
-	"oauthauth-ui-no-module": "Латина йац",
+	"oathauth-ui-no-module": "Латина йац",
 	"oathauth-module-totp-label": "TOTP (цкъа мега пароль)",
 	"oathauth-ui-manage": "Урхалладар",
 	"oathmanage": "Шина-факторан аутентификацина урхалладар",
