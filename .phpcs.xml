@@ -2,7 +2,9 @@
 <ruleset name="MediaWiki">
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.NotShortBoolReturn" />
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPublic" />
+		<exclude name="MediaWiki.Usage.StaticClosure.StaticClosure" />
 	</rule>
 	<file>.</file>
 	<arg name="encoding" value="UTF-8" />
