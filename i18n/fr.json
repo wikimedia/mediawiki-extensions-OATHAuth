@@ -12,7 +12,7 @@
 	"webauthn-module-label": "Authentification web (WebAuthn)",
 	"webauthn-ui-login-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur",
 	"webauthn-ui-add-key": "Ajouter une clef",
-	"webauthn-error-browser-unsupported": "Ce navigateur ne supporte pas WebAuthentication ou celui-ci n’est pas disponible pour ce site web. Veuillez essayer avec un autre navigateur. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support En savoir plus]",
+	"webauthn-error-browser-unsupported": "Ce navigateur ne prend pas en charge le protocole WebAuthentication ou celui-ci n’est pas disponible pour ce site web. Veuillez essayer avec un autre navigateur. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support En savoir plus].",
 	"webauthn-error-browser-unsupported-console": "Ce navigateur ne prend pas en charge WebAuthentication ou celui-ci n’est pas disponible pour ce site web.",
 	"webauthn-error-auth-generic": "Le processus d’authentification a été interrompu. Veuillez redémarrer le processus d’authentification.",
 	"webauthn-error-reg-generic": "Impossible de vérifier votre clef. Veuillez redémarrer le processus d’inscription.",
