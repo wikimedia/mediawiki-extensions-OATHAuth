@@ -6,7 +6,6 @@ use ConfigException;
 use DatabaseUpdater;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
-use Wikimedia;
 use Wikimedia\Rdbms\IDatabase;
 
 class UpdateTables {
@@ -95,7 +94,7 @@ class UpdateTables {
 	}
 
 	/**
-	 * @return Wikimedia\Rdbms\DBConnRef
+	 * @return IDatabase
 	 */
 	private static function getDatabase() {
 		global $wgOATHAuthDatabase;

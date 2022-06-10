@@ -27,7 +27,7 @@ use MWException;
 use Psr\Log\LoggerInterface;
 use RequestContext;
 use User;
-use Wikimedia\Rdbms\DBConnRef;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class OATHUserRepository {
@@ -184,7 +184,7 @@ class OATHUserRepository {
 
 	/**
 	 * @param int $index DB_PRIMARY/DB_REPLICA
-	 * @return DBConnRef
+	 * @return IDatabase
 	 */
 	private function getDB( $index ) {
 		global $wgOATHAuthDatabase;
