@@ -15,6 +15,7 @@
 			"Skalman",
 			"Tyler Romeo <tylerromeo@gmail.com>",
 			"Umherirrender",
+			"Verdy p",
 			"Xiplus",
 			"Zoranzoki21"
 		]
@@ -72,7 +73,7 @@
 	"oath-log-header": "The Special:Log description that appears on the Special:Log page when you filter logs on this specific log name",
 	"logentry-oath-disable-other": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
 	"logentry-oath-verify": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
-	"log-action-filter-oath": "{{doc-log-action-filter-type|oath}}\n{{related|Log-action-filter}}",
+	"log-action-filter-oath": "{{Doc-log-action-filter-type|oath}}\n{{Related|Log-action-filter}}",
 	"log-action-filter-oath-verify": "{{doc-log-action-filter-action|oath|verify}}",
 	"log-action-filter-oath-disable-other": "{{doc-log-action-filter-action|oath|disable-other}}",
 	"oathauth-ui-no-module": "User preference value when no 2FA module is enabled",

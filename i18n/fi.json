@@ -52,6 +52,7 @@
 	"oathauth-user-not-found": "Tämän nimistä käyttäjätiliä ei löytynyt",
 	"oath-log-name": "Kaksivaiheisen tunnistautumisen loki",
 	"oath-log-header": "Nämä tapahtumat kuvaavat muutoksia käyttäjien kaksivaiheisen tunnistautumisen tilaan.",
+	"log-action-filter-oath-disable-other": "ottaa kaksivaiheista tunnistautumista pois käytöstä toiselta käyttäjältä",
 	"oathauth-ui-no-module": "Ei mitään",
 	"oathauth-module-totp-label": "TOTP (kertakäyttöpoletti)",
 	"oathauth-ui-manage": "Hallitse",
