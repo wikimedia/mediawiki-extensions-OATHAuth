@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
 			"Vinhtantran"
 		]
@@ -16,10 +17,10 @@
 	"webauthn-key-type-missmatch": "Người dùng đã đăng ký nhiều loại chìa khóa",
 	"oathauth-webauthn-registered-keys-section-name": "Chìa khóa đã đăng ký",
 	"webuathn-ui-remove-key": "Xóa",
-	"webauthn-error-module-not-enabled": "Mô đun \"$1\" chưa được bật cho {{GENDER:$2|thành viên \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Thành viên \"$1\"}} đã bật mô đun WebAuthn, nhưng chìa khóa bị thiết lập sai",
+	"webauthn-error-module-not-enabled": "Mô đun “$1” chưa được bật cho thành viên “$2”",
+	"webauthn-error-invalid-key": "Thành viên “$1” đã bật mô đun WebAuthn, nhưng chìa khóa bị thiết lập sai",
 	"webauthn-error-verification-failed": "Xác thực thất bại",
-	"webauthn-error-cannot-register": "{{GENDER:$1|Thành viên \"$1\"}} không thể đăng ký định danh mới",
+	"webauthn-error-cannot-register": "{{GENDER:$1}}Thành viên “$1” không thể đăng ký định danh mới",
 	"webauthn-error-invalid-new-key": "Chìa khóa do mô đun trả về không thuộc kiểu bắt buộc",
 	"webauthn-error-registration-failed": "Đăng ký chìa khóa mới thất bại",
 	"webauthn-ui-key-register-help": "Chọn biệt danh cho chìa khóa của bạn",
