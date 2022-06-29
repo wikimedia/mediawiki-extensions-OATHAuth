@@ -256,7 +256,7 @@ class TOTPKey implements IAuthKey {
 		return LoggerFactory::getInstance( 'authentication' );
 	}
 
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			'secret' => $this->getSecret(),
 			'scratch_tokens' => $this->getScratchTokens()
