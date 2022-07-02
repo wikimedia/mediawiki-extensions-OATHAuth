@@ -182,7 +182,7 @@ class WebAuthnKey implements IAuthKey {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			"userHandle" => base64_encode( $this->userHandle ),
 			"publicKeyCredentialId" => base64_encode( $this->attestedCredentialData->getCredentialId() ),
