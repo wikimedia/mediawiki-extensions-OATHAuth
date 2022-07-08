@@ -48,7 +48,7 @@ class UpdateScratchTokenFormat extends Maintenance {
 		$dbw = $lb->getConnectionRef( DB_PRIMARY, [], $wgOATHAuthDatabase );
 
 		if ( !UpdateTables::schemaUpdateOldUsers( $dbw ) ) {
-			$this->error( "Failed to update scratch_token rows.\n", 1 );
+			$this->fatalError( "Failed to update scratch_token rows.\n" );
 		}
 		$this->output( "Done.\n" );
 	}
