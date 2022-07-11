@@ -89,11 +89,6 @@ class UpdateTables {
 					'oathauth_users',
 					"$typePath/patch-oathauth_users-drop-oathauth_users_id_seq.sql"
 				);
-				$this->updater->modifyExtensionField(
-					'oathauth_users',
-					'id',
-					"$typePath/patch-oathauth_users-drop-id-nextval.sql"
-				);
 				break;
 		}
 
