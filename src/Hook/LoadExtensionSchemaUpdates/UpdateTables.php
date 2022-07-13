@@ -7,7 +7,6 @@ use DatabaseUpdater;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
 use Wikimedia;
-use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\IDatabase;
 
 class UpdateTables {
@@ -52,13 +51,7 @@ class UpdateTables {
 		switch ( $type ) {
 			case 'mysql':
 			case 'sqlite':
-				$this->updater->addExtensionUpdate( [ [ $this, 'schemaUpdateOldUsersFromInstaller' ] ] );
-				$this->updater->dropExtensionField(
-					'oathauth_users',
-					'secret_reset',
-					"{$this->base}/sql/mysql/patch-remove_reset.sql"
-				);
-
+				// 1.34
 				$this->updater->addExtensionField(
 					'oathauth_users',
 					'module',
@@ -85,6 +78,7 @@ class UpdateTables {
 				break;
 
 			case 'postgres':
+				// 1.38
 				$this->updater->modifyExtensionTable(
 					'oathauth_users',
 					"$typePath/patch-oathauth_users-drop-oathauth_users_id_seq.sql"
@@ -110,17 +104,6 @@ class UpdateTables {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 			->getMainLB( $database );
 		return $lb->getConnectionRef( DB_PRIMARY, [], $database );
-	}
-
-	/**
-	 * Helper function for converting old users to the new schema
-	 *
-	 * @param DatabaseUpdater $updater
-	 *
-	 * @return bool
-	 */
-	public function schemaUpdateOldUsersFromInstaller( DatabaseUpdater $updater ) {
-		return self::schemaUpdateOldUsers( self::getDatabase() );
 	}
 
 	/**
@@ -295,41 +278,4 @@ class UpdateTables {
 		return true;
 	}
 
-	/**
-	 * Helper function for converting old users to the new schema
-	 *
-	 * @param IDatabase $db
-	 * @return bool
-	 */
-	public static function schemaUpdateOldUsers( IDatabase $db ) {
-		if ( !$db->fieldExists( 'oathauth_users', 'secret_reset', __METHOD__ ) ) {
-			return true;
-		}
-
-		$res = $db->select(
-			'oathauth_users',
-			[ 'id', 'scratch_tokens' ],
-			[ 'is_validated != 0' ],
-			__METHOD__
-		);
-
-		foreach ( $res as $row ) {
-			AtEase::suppressWarnings();
-			$scratchTokens = unserialize( base64_decode( $row->scratch_tokens ) );
-			AtEase::restoreWarnings();
-			if ( $scratchTokens ) {
-				$db->update(
-					'oathauth_users',
-					[ 'scratch_tokens' => implode( ',', $scratchTokens ) ],
-					[ 'id' => $row->id ],
-					__METHOD__
-				);
-			}
-		}
-
-		// Remove rows from the table where user never completed the setup process
-		$db->delete( 'oathauth_users', [ 'is_validated' => 0 ], __METHOD__ );
-
-		return true;
-	}
 }
