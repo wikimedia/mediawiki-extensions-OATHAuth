@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Alireza Ivaz",
-			"Huji"
+			"Huji",
+			"Jeeputer"
 		]
 	},
+	"webauthn-module-label": "اصالت‌سنجی وب (WebAuthn)",
 	"webauthn-ui-add-key": "افزودن کلید",
 	"oathauth-webauthn-registered-keys-section-name": "کلیدهای ثبت‌شده",
 	"webuathn-ui-remove-key": "حذف",
+	"webauthn-module-description": "WebAuthn (اصالت‌سنجی وب) یک استاندارد وب است که توسط کنسرسیوم وب جهان‌گستر (W3C) منتشر شده‌است. WebAuthn جزئی مهم از پروژهٔ FIDO2 تحت نظارت اتحاد فیدو است. هدف این پروژه استانداردسازی یک رابط کاربری برای اصالت‌سنجی کاربران برای نرم‌افزارها و خدمات مبتنی بر وبی است که از رمزنگاری کلید عمومی استفاده می‌کنند. [https://en.wikipedia.org/wiki/WebAuthn بیشتر بخوانید]",
 	"webauthn-ui-reload-page-label": "بارگیری دوبارۀ صفحه"
 }
