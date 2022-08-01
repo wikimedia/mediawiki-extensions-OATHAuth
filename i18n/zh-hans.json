@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Shizhao",
+			"Stang",
 			"WhitePhosphorus"
 		]
 	},
@@ -31,7 +32,7 @@
 	"webauthn-ui-disable-prompt": "请触摸您的验证设备或按照浏览器中的说明操作以确认禁用WebAuthentication",
 	"webauthn-error-max-keys-reached": "最多可以注册{{PLURAL:$1|$1个密钥}}",
 	"webauthn-module-description": "WebAuthn（Web Authentication）是万维网联盟（W3C）发布的一个网络标准。WebAuthn是FIDO联盟领导下FIDO2项目的核心部件。该项目旨在使用公钥加密来标准化用户向基于网络的应用或服务验证身份时的界面。[https://zh.wikipedia.org/wiki/WebAuthn 了解更多]",
-	"webauthn-ui-reload-page-label": "重新载入页面",
+	"webauthn-ui-reload-page-label": "重新加载页面",
 	"webauthn-authentication-info-label": "认证数据",
 	"webauthn-authentication-info-help": "身份验证数据传递给客户端以进行凭据检索",
 	"webauthn-credential-label": "用户凭证",
