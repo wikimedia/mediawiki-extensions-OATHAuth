@@ -6,7 +6,7 @@ use ConfigException;
 use DatabaseUpdater;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IMaintainableDatabase;
 
 class UpdateTables {
 	/**
@@ -94,7 +94,7 @@ class UpdateTables {
 	}
 
 	/**
-	 * @return IDatabase
+	 * @return IMaintainableDatabase
 	 */
 	private static function getDatabase() {
 		global $wgOATHAuthDatabase;
@@ -137,11 +137,11 @@ class UpdateTables {
 
 	/**
 	 * Converts old, TOTP specific, column values to new structure
-	 * @param IDatabase $db
+	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function convertToGenericFields( IDatabase $db ) {
+	public static function convertToGenericFields( IMaintainableDatabase $db ) {
 		if ( !$db->fieldExists( 'oathauth_users', 'secret', __METHOD__ ) ) {
 			return true;
 		}
@@ -190,11 +190,11 @@ class UpdateTables {
 	/**
 	 * Switch from using single keys to multi-key support
 	 *
-	 * @param IDatabase $db
+	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function switchTOTPToMultipleKeys( IDatabase $db ) {
+	public static function switchTOTPToMultipleKeys( IMaintainableDatabase $db ) {
 		if ( !$db->fieldExists( 'oathauth_users', 'data', __METHOD__ ) ) {
 			return true;
 		}
@@ -231,11 +231,11 @@ class UpdateTables {
 	/**
 	 * Switch scratch tokens from string to an array
 	 *
-	 * @param IDatabase $db
+	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function switchTOTPScratchTokensToArray( IDatabase $db ) {
+	public static function switchTOTPScratchTokensToArray( IMaintainableDatabase $db ) {
 		if ( !$db->fieldExists( 'oathauth_users', 'data' ) ) {
 			return true;
 		}
