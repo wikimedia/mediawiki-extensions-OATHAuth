@@ -1,48 +1,24 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates;
+namespace MediaWiki\Extension\OATHAuth\Hook;
 
 use ConfigException;
 use DatabaseUpdater;
 use FormatJson;
+use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
-class UpdateTables {
-	/**
-	 * @var DatabaseUpdater
-	 */
-	protected $updater;
-
-	/**
-	 * @var string
-	 */
-	protected $base;
+class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
 	/**
 	 * @param DatabaseUpdater $updater
-	 * @return bool
 	 */
-	public static function callback( $updater ) {
-		$dir = dirname( __DIR__, 3 );
-		$handler = new static( $updater, $dir );
-		return $handler->execute();
-	}
+	public function onLoadExtensionSchemaUpdates( $updater ) {
+		$type = $updater->getDB()->getType();
+		$typePath = dirname( __DIR__, 2 ) . "/sql/{$type}";
 
-	/**
-	 * @param DatabaseUpdater $updater
-	 * @param string $base
-	 */
-	protected function __construct( $updater, $base ) {
-		$this->updater = $updater;
-		$this->base = $base;
-	}
-
-	protected function execute() {
-		$type = $this->updater->getDB()->getType();
-		$typePath = "{$this->base}/sql/{$type}";
-
-		$this->updater->addExtensionTable(
+		$updater->addExtensionTable(
 			'oathauth_users',
 			"$typePath/tables-generated.sql"
 		);
@@ -51,26 +27,26 @@ class UpdateTables {
 			case 'mysql':
 			case 'sqlite':
 				// 1.34
-				$this->updater->addExtensionField(
+				$updater->addExtensionField(
 					'oathauth_users',
 					'module',
 					"$typePath/patch-add_generic_fields.sql"
 				);
 
-				$this->updater->addExtensionUpdate(
+				$updater->addExtensionUpdate(
 					[ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ]
 				);
-				$this->updater->dropExtensionField(
+				$updater->dropExtensionField(
 					'oathauth_users',
 					'secret',
 					"$typePath/patch-remove_module_specific_fields.sql"
 				);
 
-				$this->updater->addExtensionUpdate(
+				$updater->addExtensionUpdate(
 					[ [ __CLASS__, 'schemaUpdateTOTPToMultipleKeys' ] ]
 				);
 
-				$this->updater->addExtensionUpdate(
+				$updater->addExtensionUpdate(
 					[ [ __CLASS__, 'schemaUpdateTOTPScratchTokensToArray' ] ]
 				);
 
@@ -78,14 +54,12 @@ class UpdateTables {
 
 			case 'postgres':
 				// 1.38
-				$this->updater->modifyExtensionTable(
+				$updater->modifyExtensionTable(
 					'oathauth_users',
 					"$typePath/patch-oathauth_users-drop-oathauth_users_id_seq.sql"
 				);
 				break;
 		}
-
-		return true;
 	}
 
 	/**
