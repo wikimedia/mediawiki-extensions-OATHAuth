@@ -28,7 +28,7 @@
 	"webauthn-ui-key-register-help": "Choisissez un surnom pour votre clef",
 	"webauthn-error-cannot-remove-key": "La clef ne peut pas être supprimée",
 	"webauthn-error-get-authinfo-fail": "Les informations d’authentification n’ont pas pu être récupérées.",
-	"oathauth-webauthn-add-key-section-name": "Enregistrer une nouvelle clef WebAuthn",
+	"oathauth-webauthn-add-key-section-name": "Inscrire une nouvelle clef WebAuthn",
 	"oathauth-webauthn-disable-section-name": "Désactiver WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Les informations sur l’inscription n’ont pas pu être récupérées.",
 	"webauthn-ui-disable-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur pour confirmer la désactivation de WebAuthentification",
