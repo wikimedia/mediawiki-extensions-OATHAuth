@@ -65,6 +65,13 @@
 	"oathauth-module-invalid": "सदस्य द्वारा पंजीकृत OATH मॉड्यूल अमान्य है।",
 	"oathauth-module-totp-label": "TOTP (एकल-उपयोग टोकन)",
 	"oathauth-ui-manage": "प्रबंधित करें",
+	"oathmanage": "दो-कारक प्रमाणीकरण प्रबंधित करें",
+	"oathauth-ui-not-enabled-modules": "किसी वैकल्पिक तरीके का इस्तेमाल करें",
+	"oathauth-ui-enabled-module": "प्रमाणीकरण का सक्षम तरीका",
+	"oathauth-enable-generic": "सक्षम करें",
+	"oathauth-disable-generic": "अक्षम करें",
+	"oathauth-disable-page-title": "$1 अक्षम करें",
+	"oathauth-enable-page-title": "$1 सक्षम करें",
 	"oathauth-notifications-disable-help": "सहायता",
 	"oathauth-notifications-enabled-help": "सहायता"
 }
