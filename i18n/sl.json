@@ -6,7 +6,7 @@
 			"Janezdrilc"
 		]
 	},
-	"oathauth-desc": "Zagotavlja podporo za preverjanje pristnosti s pomočjo gesel za enkratno uporabo, ki temeljijo na HMAC-u",
+	"oathauth-desc": "Zagotavlja podporo za preverjanje pristnosti z uporabo gesel za enkratno uporabo, ki temeljijo na HMAC-u",
 	"disableoathforuser": "Izključi dvostopenjsko preverjanje pristnosti",
 	"specialpages-group-oath": "Dvostopenjsko preverjanje pristnosti",
 	"oathauth-account": "Ime računa:",
@@ -28,8 +28,10 @@
 	"oathauth-step4": "4. korak: Potrditev",
 	"oathauth-entertoken": "Vnesi kodo iz svoje naprave za preverjanje pristnosti:",
 	"oathauth-disable-for-user": "Izključi dvostopenjsko preverjanje pristnosti za uporabnika",
-	"right-oathauth-disable-for-user": "Izključi dvostopenjsko preverjanje pristnosti za uporabnika",
-	"action-oathauth-disable-for-user": "izključi dvostopenjsko preverjanje pristnosti za uporabnika",
+	"right-oathauth-disable-for-user": "Izključitev dvostopenjskega preverjanja pristnosti za uporabnika",
+	"action-oathauth-disable-for-user": "izključiti dvostopenjskega preverjanja pristnosti za uporabnika",
+	"right-oathauth-verify-user": "Preverjanje, ali ima uporabnik vklopljeno dvofaktorsko avtentikacijo",
+	"action-oathauth-verify-user": "preverjati, ali ima uporabnik vklopljeno dvo-faktorsko avtentikacijo",
 	"right-oathauth-view-log": "Dostop do dnevnika sprememb dvostopenjskega preverjanja pristnosti",
 	"action-oathauth-view-log": "dostop do dnevnika sprememb dvostopenjskega preverjanja pristnosti",
 	"oathauth-disable-intro": "Z veliko močjo pride velika odgovornost",
