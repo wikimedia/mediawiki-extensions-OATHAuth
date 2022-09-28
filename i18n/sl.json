@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"webauthn-desc": "Zagotavlja avtentikacijsko podporo s protokolom WebAuthn"
+}

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"webauthn-desc": "Fornece suporte de autenticação usando o protocolo WebAuthn",
+	"webauthn-module-label": "Autenticação da internet (WebAuthn)",
+	"webauthn-ui-login-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'', por favor",
+	"webauthn-ui-add-key": "Adicionar chave",
+	"webauthn-error-browser-unsupported": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet. Tente com um ''browser'' diferente, por favor. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Saiba mais]",
+	"webauthn-error-browser-unsupported-console": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet.",
+	"webauthn-error-auth-generic": "O processo de autenticação foi interrompido. Reinicie o processo de autenticação, por favor",
+	"webauthn-error-reg-generic": "Não foi possível verificar a sua chave. Reinicie o processo de registo, por favor",
+	"webauthn-key-type-missmatch": "O utilizador tem chaves de vários tipos registadas",
+	"oathauth-webauthn-registered-keys-section-name": "Chaves registadas",
+	"webuathn-ui-remove-key": "Remover",
+	"webauthn-error-module-not-enabled": "O módulo \"$1\" não está ativado para {{GENDER:$2|o utilizador|a utilizadora}} \"$2\"",
+	"webauthn-error-invalid-key": "{{GENDER:$1|O utilizador|A utilizadora}} \"$1\" tem o módulo WebAuthn ativado, mas está definida uma chave inválida",
+	"webauthn-error-verification-failed": "A verificação falhou",
+	"webauthn-error-cannot-register": "{{GENDER:$1|O utilizador|A utilizadora}} \"$1\" não pode registar uma nova credencial",
+	"webauthn-error-invalid-new-key": "A chave nova devolvida pelo módulo não é do tipo obrigatório",
+	"webauthn-error-registration-failed": "O registo da chave nova falhou",
+	"webauthn-ui-key-register-help": "Escolha o apelido da sua chave",
+	"webauthn-error-cannot-remove-key": "A chave não pode ser removida",
+	"webauthn-error-get-authinfo-fail": "Não foi possível obter as informações de autenticação.",
+	"oathauth-webauthn-add-key-section-name": "Registar nova chave WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Desativar WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Não foi possível obter as informações de registo.",
+	"webauthn-ui-disable-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'' para confirmar a desativação de WebAuthentication",
+	"webauthn-error-max-keys-reached": "Pode ser registado um máximo de $1 {{PLURAL:$1|chave|chaves}}",
+	"webauthn-module-description": "O WebAuthn (Web Authentication, autenticação na internet) é um padrão da internet publicado pelo consórcio World Wide Web Consortium (W3C). O WebAuthn é um componente central do Projeto FIDO2, sob orientação da Aliança FIDO. O objetivo do projeto é padronizar uma interface para a autenticação de utilizadores em aplicações e serviços baseados na internet usando criptografia de chave pública. [https://en.wikipedia.org/wiki/WebAuthn Ler mais]",
+	"webauthn-ui-reload-page-label": "Recarregar a página",
+	"webauthn-authentication-info-label": "Dados de autenticação",
+	"webauthn-authentication-info-help": "Dados de autenticação passados ao cliente para obtenção de credenciais",
+	"webauthn-credential-label": "Credencial do utilizador",
+	"webauthn-credential-help": "Credencial do utilizador baseada nos dados de autenticação"
+}
