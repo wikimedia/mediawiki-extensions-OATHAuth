@@ -24,7 +24,7 @@
  * @ingroup Maintenance
  */
 
-use MediaWiki\Extension\OATHAuth\Hook\LoadExtensionSchemaUpdates\UpdateTables;
+use MediaWiki\Extension\OATHAuth\Hook\UpdateTables;
 use MediaWiki\MediaWikiServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {

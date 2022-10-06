@@ -42,7 +42,7 @@
 	},
 	"Hooks": {
 		"AuthChangeFormFields": "main",
-		"LoadExtensionSchemaUpdates": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\LoadExtensionSchemaUpdates\\UpdateTables::callback",
+		"LoadExtensionSchemaUpdates": "updater",
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"UserEffectiveGroups": "main",
@@ -58,6 +58,9 @@
 				"MainConfig",
 				"UserGroupManager"
 			]
+		},
+		"updater": {
+			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\UpdateTables"
 		}
 	},
 	"MessagesDirs": {
