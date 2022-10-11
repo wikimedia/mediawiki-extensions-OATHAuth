@@ -23,7 +23,7 @@
 	"oathauth-scratchtokens": "Die folgende Liste enthält einmalig verwendbare geheime Schlüssel. Diese geheimen Schlüssel können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte notiere und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese geheimen Schlüssel die einzige Möglichkeit sein, dein Konto zu retten.\n\n'''Diese geheimen Schlüssel werden dir niemals wieder angezeigt werden'''.",
 	"oathauth-token": "Geheimer Schlüssel",
 	"oathauth-disable": "Die Zwei-Faktor-Authentifizierung deaktivieren",
-	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt durchgesetzt.",
+	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt angewendet.",
 	"oathauth-noscratchforvalidation": "Du kannst keinen geheimen Schlüssel verwenden, um die Zwei-Faktor-Authentifikation zu bestätigen. Geheime Schlüssel sind für Sicherungszwecke und die gelegentliche Nutzung vorgesehen. Bitte verwende einen Verifizierungscode von deinem Codegenerator.",
 	"oathauth-failedtovalidateoath": "Die Zwei-Faktor-Anmeldeinformationen konnten nicht bestätigt werden.",
 	"oathauth-disabledoath": "Die Zwei-Faktor-Authentifizierung wurde deaktiviert.",
