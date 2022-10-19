@@ -13,5 +13,5 @@
 	"apihelp-oathvalidate-description": "Праверыць токен двухфактарнай аўтэнтыфікацыі (OATH).",
 	"apihelp-oathvalidate-summary": "Праверыць токен двухфактарнай аўтэнтыфікацыі (OATH).",
 	"apihelp-oathvalidate-param-user": "Удзельнік, для якога трэба праверыць токен. Дапомна — цяперашні ўдзельнік.",
-	"apihelp-oathvalidate-example-1": "Праверыць токен для цяперашняга ўдзельніка"
+	"apihelp-oathvalidate-example-1": "Праверыць зьвесткі JSON для цяперашняга ўдзельніка"
 }
