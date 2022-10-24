@@ -23,7 +23,7 @@
 	"oathauth-noscratchforvalidation": "Du kan ikke bruke en engangskode for å bekrefte tofaktorautentisering. Engangskoder er kun til backup og nødsbruk. Bruk en bekreftelseskode fra kodegeneratoren din.",
 	"oathauth-failedtovalidateoath": "Kunne ikke validere akkeriditiver for tofaktorautentisering",
 	"oathauth-disabledoath": "Tofaktorautentisering er nå slått av.",
-	"oathauth-prefs-label": "tofaktorautentisering:",
+	"oathauth-prefs-label": "Tofaktorautentisering:",
 	"oathauth-step1": "Steg 1: Last ned et program for tofaktorautentisering",
 	"oathauth-step1-test": "Last ned et program for tofaktorautentisering. Det kan være en mobilapp (som Google Authenticator) eller et dataprogram.",
 	"oathauth-step2": "Steg 2: Skann QR-koden",
