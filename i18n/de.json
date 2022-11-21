@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"Hwboehm",
 			"Inkowik",
 			"Kghbln",
@@ -39,7 +40,7 @@
 	"oathauth-verify-for-user": "Überprüfe, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
 	"right-oathauth-disable-for-user": "Zwei-Faktor-Authentifizierung für einen Benutzer deaktivieren",
 	"action-oathauth-disable-for-user": "die Zwei-Faktor-Authentifizierung für einen Benutzer zu deaktivieren",
-	"right-oathauth-verify-user": "Überprüfe, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
+	"right-oathauth-verify-user": "Überprüfen, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
 	"action-oathauth-verify-user": "überprüfen, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
 	"right-oathauth-view-log": "Auf das Logbuch der Änderungen zur Zwei-Faktor-Authentifizierung zugreifen",
 	"action-oathauth-view-log": "auf das Logbuch der Änderungen zur Zwei-Faktor-Authentifizierung zuzugreifen",
