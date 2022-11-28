@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"webauthn-desc": "Forni supporto de authentication usante le protocollo WebAuthn",
+	"webauthn-module-label": "Authentication web (WebAuthn)",
+	"webauthn-ui-login-prompt": "Per favor tocca tu apparato de verification o seque le instructiones del navigator",
+	"webauthn-ui-add-key": "Adder clave",
+	"webauthn-error-browser-unsupported": "Iste navigator non supporta WebAuthentication o illo non es disponibile pro iste sito web. Per favor tenta lo con un altere navigator. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leger plus]",
+	"webauthn-error-browser-unsupported-console": "Iste navigator non supporta WebAuthentication o illo non es disponibile pro iste sito web",
+	"webauthn-error-auth-generic": "Le processo de authentication ha essite interrumpite. Per favor recomencia le processo de authentication.",
+	"webauthn-error-reg-generic": "Non poteva verificar tu clave. Per favor recomencia le processo de authentication.",
+	"webauthn-key-type-missmatch": "Le usator ha claves de plure typos registrate",
+	"oathauth-webauthn-registered-keys-section-name": "Claves registrate",
+	"webuathn-ui-remove-key": "Remover",
+	"webauthn-error-module-not-enabled": "Le modulo \"$1\" non es activate pro {{GENDER:$2|le usator \"$2\"}}",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Le usator \"$1\"}} ha le modulo WebAuthn activate, ma es configurate un clave non valide",
+	"webauthn-error-verification-failed": "Verification fallite",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Le usator \"$1\"}} non pote registrar un nove credential",
+	"webauthn-error-invalid-new-key": "Le nove clave retornate per le modulo non es del typo requirite",
+	"webauthn-error-registration-failed": "Le registration del nove clave ha fallite",
+	"webauthn-ui-key-register-help": "Selige le pseudonymo pro tu calve",
+	"webauthn-error-cannot-remove-key": "Le clave non pote esser removite",
+	"webauthn-error-get-authinfo-fail": "Le information sur le authentication non poteva esser recuperate.",
+	"oathauth-webauthn-add-key-section-name": "Registrar un nove clave WebAuthn",
+	"oathauth-webauthn-disable-section-name": "Disactivar WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Le information sur le inscription non poteva esser recuperate.",
+	"webauthn-ui-disable-prompt": "Per favor tocca tu apparato de verification o seque le instructiones del navigator pro confirmar le disactivation de WebAuthentication.",
+	"webauthn-error-max-keys-reached": "Un maximo de $1 clave{{PLURAL:$1||s}} pote esser registrate.",
+	"webauthn-module-description": "WebAuthn (Authentication Web) es un standard publicate per World Wide Web Consortium (W3C). WebAuthn es un componente central del projecto FIDO2 sub le direction del Allianita FIDO. Le objectivo del projecto es standardisar un interfacie pro authenticar usatores sur applicationes e servicios web usante le cryptographia de clave public. [https://en.wikipedia.org/wiki/WebAuthn Read more]",
+	"webauthn-ui-reload-page-label": "Recargar pagina",
+	"webauthn-authentication-info-label": "Datos de authentication",
+	"webauthn-authentication-info-help": "Datos de authentication passate al cliente pro obtener credentiales",
+	"webauthn-credential-label": "Credential del usator",
+	"webauthn-credential-help": "Credential del usator basate sur le datos de authentication"
+}

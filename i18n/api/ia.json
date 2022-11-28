@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-webauthn-summary": "Modulo API pro communicar inter le servitor e le cliente durante le processo de registration/authentication",
+	"apihelp-webauthn-param-func": "Nomine del function requestate a executar",
+	"apihelp-webauthn-param-data": "Datos codificate in JSON pro le function particular"
+}
