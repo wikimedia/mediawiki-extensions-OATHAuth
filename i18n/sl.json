@@ -59,7 +59,7 @@
 	"oath-log-header": "Ti dogodki beležijo spremembe uporabnikovega stanja dvofaktorske avtentikacije.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|je izklopil_a}} dvofaktorsko avtentikacijo uporabnika_ce $3",
 	"logentry-oath-verify": "$1 je {{GENDER:$2|preveril|preverila|preveril_a}}, ali ima $3 vklopljeno dvofaktorsko avtentikacijo",
-	"oathauth-ui-no-module": "Noben ni omogočen",
+	"oathauth-ui-no-module": "Ni vklopljeno",
 	"oathauth-module-invalid": "Modul OATHAuth, ki ga je uporabnik registriral, je neveljaven.",
 	"oathauth-module-totp-label": "TOTP (enkratni žeton)",
 	"oathauth-ui-manage": "Upravljaj",
