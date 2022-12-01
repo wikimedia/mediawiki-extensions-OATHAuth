@@ -18,7 +18,7 @@
 	"webauthn-error-reg-generic": "Impossible de vérifier votre clef. Veuillez redémarrer le processus d’inscription.",
 	"webauthn-key-type-missmatch": "L’utilisateur a enregistré des clefs de plusieurs types",
 	"oathauth-webauthn-registered-keys-section-name": "Clefs enregistrées",
-	"webuathn-ui-remove-key": "Enlever",
+	"webuathn-ui-remove-key": "Retirer",
 	"webauthn-error-module-not-enabled": "Le module « $1 » n’est pas activé pour l’utilisat{{GENDER:$2|eur|rice}} «  $2  »",
 	"webauthn-error-invalid-key": "L’utilisat{{GENDER:$1| eur|rice}} « $1 » a activé le module WebAuthn, mais une clef non valide est définie",
 	"webauthn-error-verification-failed": "Échec de la vérification",
