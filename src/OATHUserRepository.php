@@ -21,42 +21,64 @@ namespace MediaWiki\Extension\OATHAuth;
 use BagOStuff;
 use ConfigException;
 use FormatJson;
-use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MWException;
+use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use RequestContext;
 use User;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
-class OATHUserRepository {
-	/** @var ILoadBalancer */
-	protected $lb;
+class OATHUserRepository implements LoggerAwareInterface {
+	/** @var ServiceOptions */
+	private ServiceOptions $options;
+
+	/** @var LBFactory */
+	private LBFactory $lbFactory;
 
 	/** @var BagOStuff */
-	protected $cache;
+	private BagOStuff $cache;
 
-	/**
-	 * @var OATHAuth
-	 */
-	protected $auth;
+	/** @var OATHAuth */
+	private OATHAuth $auth;
+
+	/** @var CentralIdLookupFactory */
+	private CentralIdLookupFactory $centralIdLookupFactory;
 
 	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
+
+	/** @internal Only public for service wiring use. */
+	public const CONSTRUCTOR_OPTIONS = [
+		'OATHAuthDatabase',
+	];
 
 	/**
 	 * OATHUserRepository constructor.
-	 * @param ILoadBalancer $lb
+	 * @param ServiceOptions $options
+	 * @param LBFactory $lbFactory
 	 * @param BagOStuff $cache
 	 * @param OATHAuth $auth
+	 * @param CentralIdLookupFactory $centralIdLookupFactory
+	 * @param LoggerInterface $logger
 	 */
-	public function __construct( ILoadBalancer $lb, BagOStuff $cache, OATHAuth $auth ) {
-		$this->lb = $lb;
+	public function __construct(
+		ServiceOptions $options,
+		LBFactory $lbFactory,
+		BagOStuff $cache,
+		OATHAuth $auth,
+		CentralIdLookupFactory $centralIdLookupFactory,
+		LoggerInterface $logger
+	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		$this->options = $options;
+		$this->lbFactory = $lbFactory;
 		$this->cache = $cache;
 		$this->auth = $auth;
-
-		$this->setLogger( LoggerFactory::getInstance( 'authentication' ) );
+		$this->centralIdLookupFactory = $centralIdLookupFactory;
+		$this->setLogger( $logger );
 	}
 
 	/**
@@ -77,9 +99,7 @@ class OATHUserRepository {
 		if ( !$oathUser ) {
 			$oathUser = new OATHUser( $user, [] );
 
-			$uid = MediaWikiServices::getInstance()
-				->getCentralIdLookupFactory()
-				->getLookup()
+			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
 			$res = $this->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
@@ -125,9 +145,7 @@ class OATHUserRepository {
 			'oathauth_users',
 			'id',
 			[
-				'id' => MediaWikiServices::getInstance()
-					->getCentralIdLookupFactory()
-					->getLookup()
+				'id' => $this->centralIdLookupFactory->getLookup()
 					->centralIdFromLocalUser( $user->getUser() ),
 				'module' => $user->getModule()->getName(),
 				'data' => FormatJson::encode( $data )
@@ -164,9 +182,7 @@ class OATHUserRepository {
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$this->getDB( DB_PRIMARY )->delete(
 			'oathauth_users',
-			[ 'id' => MediaWikiServices::getInstance()
-				->getCentralIdLookupFactory()
-				->getLookup()
+			[ 'id' => $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user->getUser() ) ],
 			__METHOD__
 		);
@@ -186,9 +202,8 @@ class OATHUserRepository {
 	 * @param int $index DB_PRIMARY/DB_REPLICA
 	 * @return IDatabase
 	 */
-	private function getDB( $index ) {
-		global $wgOATHAuthDatabase;
-
-		return $this->lb->getConnectionRef( $index, [], $wgOATHAuthDatabase );
+	private function getDB( int $index ): IDatabase {
+		$db = $this->options->get( 'OATHAuthDatabase' );
+		return $this->lbFactory->getMainLB( $db )->getConnectionRef( $index, [], $db );
 	}
 }

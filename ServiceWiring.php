@@ -1,7 +1,9 @@
 <?php
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
@@ -12,14 +14,18 @@ return [
 		);
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ) {
-		global $wgOATHAuthDatabase;
-		$auth = $services->getService( 'OATHAuth' );
 		return new OATHUserRepository(
-			$services->getDBLoadBalancerFactory()->getMainLB( $wgOATHAuthDatabase ),
-			new \HashBagOStuff( [
+			new ServiceOptions(
+				OATHUserRepository::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig(),
+			),
+			$services->getDBLoadBalancerFactory(),
+			new HashBagOStuff( [
 				'maxKey' => 5
 			] ),
-			$auth
+			$services->getService( 'OATHAuth' ),
+			$services->getCentralIdLookupFactory(),
+			LoggerFactory::getInstance( 'authentication' )
 		);
 	}
 ];
