@@ -59,4 +59,10 @@ class OATHAuthDatabase {
 		$db = $this->options->get( 'OATHAuthDatabase' );
 		return $this->lbFactory->getMainLB( $db )->getConnectionRef( $index, [], $db );
 	}
+
+	public function waitForReplication(): void {
+		$this->lbFactory->waitForReplication( [
+			'domain' => $this->options->get( 'OATHAuthDatabase' ),
+		] );
+	}
 }
