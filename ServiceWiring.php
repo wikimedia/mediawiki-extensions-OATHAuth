@@ -1,17 +1,14 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'OATHAuth' => static function ( MediaWikiServices $services ) {
-		return new OATHAuth(
-			$services->getMainConfig(),
-			$services->getDBLoadBalancerFactory()
-		);
+	'OATHAuthModuleRegistry' => static function ( MediaWikiServices $services ) {
+		return new OATHAuthModuleRegistry();
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ) {
 		return new OATHUserRepository(
@@ -23,7 +20,7 @@ return [
 			new HashBagOStuff( [
 				'maxKey' => 5
 			] ),
-			$services->getService( 'OATHAuth' ),
+			$services->getService( 'OATHAuthModuleRegistry' ),
 			$services->getCentralIdLookupFactory(),
 			LoggerFactory::getInstance( 'authentication' )
 		);
