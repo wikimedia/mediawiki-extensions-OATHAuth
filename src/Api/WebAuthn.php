@@ -22,7 +22,7 @@ use ApiBase;
 use ApiUsageException;
 use ConfigException;
 use FormatJson;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\MediaWikiServices;
@@ -179,9 +179,9 @@ class WebAuthn extends ApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function checkModule() {
-		/** @var OATHAuth $oath */
-		$oath = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
-		$module = $oath->getModuleByKey( 'webauthn' );
+		/** @var OATHAuthModuleRegistry $moduleRegistry */
+		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
+		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
 		if ( $module === null || !( $module instanceof WebAuthnModule ) ) {
 			$this->dieWithError( 'apierror-webauthn-module-missing' );
 		}

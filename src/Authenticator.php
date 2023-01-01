@@ -24,7 +24,7 @@ use Cose\Algorithms;
 use FormatJson;
 use IContextSource;
 use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
@@ -102,12 +102,12 @@ class Authenticator {
 	 * @throws MWException
 	 */
 	public static function factory( $user, $request = null ) {
-		/** @var OATHAuth $oath */
-		$oath = MediaWikiServices::getInstance()->getService( 'OATHAuth' );
+		/** @var OATHAuthModuleRegistry $moduleRegistry */
+		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
 		/** @var OATHUserRepository $userRepo */
 		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 		/** @var WebAuthn $module */
-		$module = $oath->getModuleByKey( 'webauthn' );
+		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
 		$oathUser = $userRepo->findByUser( $user );
 		$context = RequestContext::getMain();
 		$logger = LoggerFactory::getInstance( 'authentication' );
