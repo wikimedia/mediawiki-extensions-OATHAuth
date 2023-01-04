@@ -124,7 +124,7 @@
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage",
 			"services": [
 				"OATHUserRepository",
-				"OATHAuth"
+				"OATHAuthModuleRegistry"
 			]
 		},
 		"VerifyOATHForUser": {

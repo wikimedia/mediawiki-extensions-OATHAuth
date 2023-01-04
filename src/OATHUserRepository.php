@@ -41,8 +41,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/** @var BagOStuff */
 	private BagOStuff $cache;
 
-	/** @var OATHAuth */
-	private OATHAuth $auth;
+	/** @var OATHAuthModuleRegistry */
+	private OATHAuthModuleRegistry $moduleRegistry;
 
 	/** @var CentralIdLookupFactory */
 	private CentralIdLookupFactory $centralIdLookupFactory;
@@ -60,7 +60,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @param ServiceOptions $options
 	 * @param LBFactory $lbFactory
 	 * @param BagOStuff $cache
-	 * @param OATHAuth $auth
+	 * @param OATHAuthModuleRegistry $moduleRegistry
 	 * @param CentralIdLookupFactory $centralIdLookupFactory
 	 * @param LoggerInterface $logger
 	 */
@@ -68,7 +68,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		ServiceOptions $options,
 		LBFactory $lbFactory,
 		BagOStuff $cache,
-		OATHAuth $auth,
+		OATHAuthModuleRegistry $moduleRegistry,
 		CentralIdLookupFactory $centralIdLookupFactory,
 		LoggerInterface $logger
 	) {
@@ -76,7 +76,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->options = $options;
 		$this->lbFactory = $lbFactory;
 		$this->cache = $cache;
-		$this->auth = $auth;
+		$this->moduleRegistry = $moduleRegistry;
 		$this->centralIdLookupFactory = $centralIdLookupFactory;
 		$this->setLogger( $logger );
 	}
@@ -108,7 +108,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				__METHOD__
 			);
 			if ( $res ) {
-				$module = $this->auth->getModuleByKey( $res->module );
+				$module = $this->moduleRegistry->getModuleByKey( $res->module );
 				if ( $module === null ) {
 					throw new MWException( 'oathauth-module-invalid' );
 				}
