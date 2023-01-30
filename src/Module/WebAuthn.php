@@ -17,7 +17,6 @@ use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnDisableForm;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use Message;
-use MWException;
 use RequestContext;
 
 class WebAuthn implements IModule {
@@ -55,26 +54,6 @@ class WebAuthn implements IModule {
 			return WebAuthnKey::newKey();
 		}
 		return WebAuthnKey::newFromData( $data );
-	}
-
-	/**
-	 * @param OATHUser $user
-	 * @return array
-	 * @throws MWException
-	 */
-	public function getDataFromUser( OATHUser $user ) {
-		$keys = $user->getKeys();
-		$data = [];
-		foreach ( $keys as $key ) {
-			if ( !$key instanceof WebAuthnKey ) {
-				throw new MWException( 'webauthn-key-type-missmatch' );
-			}
-			$data[] = $key->jsonSerialize();
-		}
-
-		return [
-			'keys' => $data
-		];
 	}
 
 	/**
