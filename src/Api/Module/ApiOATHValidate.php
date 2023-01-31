@@ -57,7 +57,6 @@ class ApiOATHValidate extends ApiBase {
 			ApiResult::META_BC_BOOLS => [ 'enabled', 'valid' ],
 			'enabled' => false,
 			'valid' => false,
-			'module' => ''
 		];
 
 		if ( !$user->isAnon() ) {
@@ -74,7 +73,6 @@ class ApiOATHValidate extends ApiBase {
 
 					$result['enabled'] = $module->isEnabled( $authUser );
 					$result['valid'] = $module->verify( $authUser, $data ) !== false;
-					$result['module'] = $module->getName();
 				}
 			}
 		}
