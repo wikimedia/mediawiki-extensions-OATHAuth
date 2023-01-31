@@ -66,12 +66,18 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 * @return IMaintainableDatabase
 	 */
 	private static function getDatabase() {
-		global $wgOATHAuthDatabase;
+		$services = MediaWikiServices::getInstance();
+
 		// Global can be `null` during installation, ensure we pass `false` instead (T270147)
-		$database = $wgOATHAuthDatabase ?? false;
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $database );
-		return $lb->getConnectionRef( DB_PRIMARY, [], $database );
+		// can't rely on OATHAuthModuleRegistry or the setting existing for the same reason
+		$database = false;
+		if ( $services->getMainConfig()->has( 'OATHAuthDatabase' ) ) {
+			$database = $services->getMainConfig()->get( 'OATHAuthDatabase' ) ?? false;
+		}
+
+		return $services->getDBLoadBalancerFactory()
+			->getMainLB( $database )
+			->getConnectionRef( DB_PRIMARY, [], $database );
 	}
 
 	/**

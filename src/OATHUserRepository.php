@@ -28,15 +28,13 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use RequestContext;
 use User;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\LBFactory;
 
 class OATHUserRepository implements LoggerAwareInterface {
 	/** @var ServiceOptions */
 	private ServiceOptions $options;
 
-	/** @var LBFactory */
-	private LBFactory $lbFactory;
+	/** @var OATHAuthDatabase */
+	private OATHAuthDatabase $database;
 
 	/** @var BagOStuff */
 	private BagOStuff $cache;
@@ -58,7 +56,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * OATHUserRepository constructor.
 	 * @param ServiceOptions $options
-	 * @param LBFactory $lbFactory
+	 * @param OATHAuthDatabase $database
 	 * @param BagOStuff $cache
 	 * @param OATHAuthModuleRegistry $moduleRegistry
 	 * @param CentralIdLookupFactory $centralIdLookupFactory
@@ -66,7 +64,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 */
 	public function __construct(
 		ServiceOptions $options,
-		LBFactory $lbFactory,
+		OATHAuthDatabase $database,
 		BagOStuff $cache,
 		OATHAuthModuleRegistry $moduleRegistry,
 		CentralIdLookupFactory $centralIdLookupFactory,
@@ -74,7 +72,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
-		$this->lbFactory = $lbFactory;
+		$this->database = $database;
 		$this->cache = $cache;
 		$this->moduleRegistry = $moduleRegistry;
 		$this->centralIdLookupFactory = $centralIdLookupFactory;
@@ -101,7 +99,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
-			$res = $this->getDB( DB_REPLICA )->selectRow(
+			$res = $this->database->getDB( DB_REPLICA )->selectRow(
 				'oathauth_users',
 				[ 'module', 'data' ],
 				[ 'id' => $uid ],
@@ -141,7 +139,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$prevUser = $this->findByUser( $user->getUser() );
 		$data = $user->getModule()->getDataFromUser( $user );
 
-		$this->getDB( DB_PRIMARY )->replace(
+		$this->database->getDB( DB_PRIMARY )->replace(
 			'oathauth_users',
 			'id',
 			[
@@ -180,7 +178,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @param bool $self Whether they disabled it themselves
 	 */
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
-		$this->getDB( DB_PRIMARY )->delete(
+		$this->database->getDB( DB_PRIMARY )->delete(
 			'oathauth_users',
 			[ 'id' => $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user->getUser() ) ],
@@ -196,14 +194,5 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'oathtype' => $user->getModule()->getName(),
 		] );
 		Notifications\Manager::notifyDisabled( $user, $self );
-	}
-
-	/**
-	 * @param int $index DB_PRIMARY/DB_REPLICA
-	 * @return IDatabase
-	 */
-	private function getDB( int $index ): IDatabase {
-		$db = $this->options->get( 'OATHAuthDatabase' );
-		return $this->lbFactory->getMainLB( $db )->getConnectionRef( $index, [], $db );
 	}
 }
