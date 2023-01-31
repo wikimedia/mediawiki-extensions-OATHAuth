@@ -22,6 +22,7 @@ use ApiBase;
 use ApiResult;
 use FormatJson;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -73,6 +74,19 @@ class ApiOATHValidate extends ApiBase {
 
 					$result['enabled'] = $module->isEnabled( $authUser );
 					$result['valid'] = $module->verify( $authUser, $data ) !== false;
+
+					if ( !$result['valid'] ) {
+						// Increase rate limit counter for failed request
+						$user->pingLimiter( 'badoath' );
+
+						LoggerFactory::getInstance( 'authentication' )->info(
+							'OATHAuth user {user} failed OTP/scratch token from {clientip}',
+							[
+								'user'     => $user,
+								'clientip' => $user->getRequest()->getIP(),
+							]
+						);
+					}
 				}
 			}
 		}
