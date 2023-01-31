@@ -196,6 +196,61 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * @param OATHUser $user
+	 * @param IAuthKey $key
+	 * @param string $clientInfo
+	 * @param bool $self Whether they disabled it themselves
+	 */
+	public function removeKey( OATHUser $user, IAuthKey $key, string $clientInfo, bool $self ) {
+		$keyId = $key->getId();
+		if ( !$keyId ) {
+			throw new InvalidArgumentException( 'A non-persisted key cannot be removed' );
+		}
+
+		$userId = $this->centralIdLookupFactory->getLookup()
+			->centralIdFromLocalUser( $user->getUser() );
+		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
+			->newDeleteQueryBuilder()
+			->deleteFrom( 'oathauth_devices' )
+			->where( [ 'oad_user' => $userId, 'oad_id' => $keyId ] )
+			->caller( __METHOD__ )
+			->execute();
+
+		// TODO: figure this out from the key itself
+		// After calling ->disable(), getModule() will return null so this
+		// has to be done before.
+		$keyType = $user->getModule()->getName();
+
+		// Remove the key from the user object
+		$user->setKeys(
+			array_values(
+				array_filter(
+					$user->getKeys(),
+					static function ( IAuthKey $key ) use ( $keyId ) {
+						return $key->getId() !== $keyId;
+					}
+				)
+			)
+		);
+
+		if ( !$user->getKeys() ) {
+			$user->setModule( null );
+		}
+
+		$userName = $user->getUser()->getName();
+		$this->cache->delete( $userName );
+
+		$this->logger->info( 'OATHAuth removed {oathtype} key {key} for {user} from {clientip}', [
+			'key' => $keyId,
+			'user' => $userName,
+			'clientip' => $clientInfo,
+			'oathtype' => $keyType,
+		] );
+
+		Manager::notifyDisabled( $user, $self );
+	}
+
+	/**
+	 * @param OATHUser $user
 	 * @param string $clientInfo
 	 * @param bool $self Whether the user disabled the 2FA themselves
 	 *

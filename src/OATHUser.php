@@ -81,9 +81,9 @@ class OATHUser {
 	/**
 	 * Get the key associated with this user.
 	 *
-	 * @return IAuthKey[]|array
+	 * @return IAuthKey[]
 	 */
-	public function getKeys() {
+	public function getKeys(): array {
 		return $this->keys;
 	}
 
