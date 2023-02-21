@@ -215,14 +215,6 @@ class TOTPKey implements IAuthKey {
 				$lastWindow,
 				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
 			);
-		} else {
-			$logger->info( 'OATHAuth user {user} failed OTP/scratch token from {clientip}', [
-				'user' => $user->getAccount(),
-				'clientip' => $clientIP,
-			] );
-
-			// Increase rate limit counter for failed request
-			$user->getUser()->pingLimiter( 'badoath' );
 		}
 
 		return $retval;
