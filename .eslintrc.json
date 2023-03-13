@@ -10,6 +10,8 @@
 		"no-prototype-builtins": "off",
 		"no-jquery/no-global-selector": "off",
 		"mediawiki/msg-doc": "off",
-		"compat/compat": "warn"
+		"compat/compat": "warn",
+		"es-x/no-block-scoped-variables": "warn",
+		"es-x/no-typed-arrays": "warn"
 	}
 }
