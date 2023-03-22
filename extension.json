@@ -21,7 +21,8 @@
 		}
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\OATHAuth\\": "src/"
+		"MediaWiki\\Extension\\OATHAuth\\": "src/",
+		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/"
 	},
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\OATHAuth\\Tests\\": "tests/phpunit/"
@@ -84,6 +85,9 @@
 		},
 		"OATHRequiredForGroups": {
 			"value": []
+		},
+		"OATHAuthMultipleDevicesMigrationStage": {
+			"value": 768
 		}
 	},
 	"ResourceModules": {
