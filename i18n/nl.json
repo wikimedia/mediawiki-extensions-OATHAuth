@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Danieldegroot2",
+			"HanV",
 			"Kippenvlees1",
 			"LongJohn nl",
 			"Mainframe98",
@@ -41,8 +42,8 @@
 	"action-oathauth-disable-for-user": "tweetrapsauthenticatie voor gebruikers uit te schakelen",
 	"right-oathauth-verify-user": "Controleren of een gebruiker tweetrapsauthenticatie heeft ingeschakeld",
 	"action-oathauth-verify-user": "controleren of een gebruiker tweetrapsauthenticatie heeft ingeschakeld",
-	"right-oathauth-view-log": "Toegang hebben tot het logboek met wijzigingen aan tweetrapsauthenticatie",
-	"action-oathauth-view-log": "toegang te hebben tot het logboek met wijzigingen aan tweetrapsauthenticatie",
+	"right-oathauth-view-log": "Toegang hebben tot het logboek van de wijzigingen in de tweetrapsauthenticatie",
+	"action-oathauth-view-log": "toegang tot het logboek met wijzigingen in de tweetrapsauthenticatie",
 	"oathauth-enteruser": "Gebruikersnaam:",
 	"oathauth-enterdisablereason": "Reden voor het uitschakelen:",
 	"oathauth-user-not-does-not-have-oath-enabled": "De gebruiker heeft geen tweetrapsauthenticatie ingesteld, er is niets om uit te schakelen",
