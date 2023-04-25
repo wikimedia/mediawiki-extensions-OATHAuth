@@ -31,6 +31,7 @@ use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\WikiMap\WikiMap;
 use MWException;
 use Psr\Log\LoggerInterface;
 use RequestContext;
@@ -46,7 +47,6 @@ use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
 use Webauthn\PublicKeyCredentialUserEntity;
 use WebRequest;
-use WikiMap;
 
 /**
  * This class serves as an authentication/registration
