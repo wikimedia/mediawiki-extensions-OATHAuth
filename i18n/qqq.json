@@ -16,7 +16,8 @@
 			"Xiplus",
 			"Zoranzoki21",
 			"MarcoAurelio",
-			"Reedy"
+			"Reedy",
+			"Verdy p"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
@@ -72,7 +73,7 @@
 	"oath-log-header": "The Special:Log description that appears on the Special:Log page when you filter logs on this specific log name",
 	"logentry-oath-disable-other": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
 	"logentry-oath-verify": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
-	"oathauth-ui-no-module": "User preference value when no 2FA module is enabled",
+	"oathauth-ui-no-module": "User preference value for the type of two-factor authentication operation {{msg-mw|Log-action-filter-oath}} when no 2FA module is enabled.",
 	"oathauth-module-invalid": "Error message when the OATHAuth module registered by user is invalid",
 	"oathauth-module-totp-label": "User preference value when the TOTP module is enabled",
 	"oathauth-ui-manage": "Button on Special:Preferences, that leads to [[Special:OATHManage]]",
