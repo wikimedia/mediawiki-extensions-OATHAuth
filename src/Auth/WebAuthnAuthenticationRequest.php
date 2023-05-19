@@ -19,7 +19,7 @@
 namespace MediaWiki\Extension\WebAuthn\Auth;
 
 use MediaWiki\Auth\AuthenticationRequest;
-use RawMessage;
+use MediaWiki\Language\RawMessage;
 
 class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	/**
