@@ -143,7 +143,7 @@ class HookHandler implements
 			$context = RequestContext::getMain();
 			$list = [];
 			foreach ( $disabledGroups as $disabledGroup ) {
-				$list[] = UserGroupMembership::getLink( $disabledGroup, $context, 'html' );
+				$list[] = UserGroupMembership::getLinkHTML( $disabledGroup, $context );
 			}
 			$info = $context->getLanguage()->commaList( $list );
 			$disabledInfo = [ 'oathauth-disabledgroups' => [
