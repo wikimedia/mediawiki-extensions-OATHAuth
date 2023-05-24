@@ -49,7 +49,7 @@
 	"oathauth-enterdisablereason": "無効にする理由:",
 	"oathauth-enterverifyreason": "確認する理由:",
 	"oathauth-user-not-does-not-have-oath-enabled": "利用者は二段階認証を有効化していないため、無効化する必要はありません",
-	"right-oathauth-enable": "二段階認証を有効にする",
+	"right-oathauth-enable": "二段階認証を有効化",
 	"action-oathauth-enable": "二段階認証の有効化",
 	"oathauth-auth-token-label": "トークン",
 	"oathauth-auth-ui": "あなたの認証デバイスに表示された検証コードを入力してください。",
