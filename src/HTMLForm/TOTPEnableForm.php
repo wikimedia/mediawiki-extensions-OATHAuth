@@ -7,7 +7,6 @@ use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\SvgWriter;
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -16,7 +15,6 @@ use MediaWiki\Logger\LoggerFactory;
 use OOUI\FieldLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
-use UnexpectedValueException;
 
 class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 
@@ -165,8 +163,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * @param array $formData
 	 * @return array|bool
-	 * @throws ConfigException
-	 * @throws UnexpectedValueException
 	 */
 	public function onSubmit( array $formData ) {
 		$keyData = $this->getKeyDataInSession( 'TOTPKey' );

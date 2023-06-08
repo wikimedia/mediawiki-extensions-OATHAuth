@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\CheckUser\Services\CheckUserInsert;
-use MediaWiki\Config\ConfigException;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
@@ -102,8 +100,6 @@ class DisableOATHForUser extends FormSpecialPage {
 	/**
 	 * @param array $formData
 	 * @return array|bool
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		$user = $this->userFactory->newFromName( $formData['user'] );

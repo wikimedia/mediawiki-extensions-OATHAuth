@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\CheckUser\Services\CheckUserInsert;
-use MediaWiki\Config\ConfigException;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Exception\UserBlockedError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -102,8 +100,6 @@ class VerifyOATHForUser extends FormSpecialPage {
 	/**
 	 * @param array $formData
 	 * @return array|true
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		$this->targetUser = $formData['user'];
