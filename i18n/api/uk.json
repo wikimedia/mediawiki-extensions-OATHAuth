@@ -6,13 +6,11 @@
 			"Piramidion"
 		]
 	},
-	"apihelp-query+oath-description": "Перевірка чи двофакторна автентифікація (OATH) увімкнена для користувача.",
 	"apihelp-query+oath-summary": "Перевірка чи двофакторна автентифікація (OATH) увімкнена для користувача.",
 	"apihelp-query+oath-param-user": "Користувач, про якого треба отримати інформацію. За замовчуванням ним є поточний користувач.",
 	"apihelp-query+oath-param-reason": "Причина для запиту статусу OATH.",
 	"apihelp-query+oath-example-1": "Отримати інформацію про поточного користувача",
 	"apihelp-query+oath-example-2": "Отримати інформацію про користувача <kbd>Example</kbd>",
-	"apihelp-oathvalidate-description": "Перевірити токен двофакторної автентифікації (OATH).",
 	"apihelp-oathvalidate-summary": "Перевірити токен двофакторної автентифікації (OATH).",
 	"apihelp-oathvalidate-param-user": "Користувач, для якого треба перевірити токен. За замовчуванням ним є поточний користувач.",
 	"apihelp-oathvalidate-example-1": "Перевірити токен для поточного користувача",
