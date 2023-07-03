@@ -8,7 +8,8 @@
 			"MuratTheTurkish",
 			"FiberAhmed",
 			"Alshamiri1",
-			"أَحمد"
+			"أَحمد",
+			"أيوب"
 		]
 	},
 	"oathauth-desc": "يوفر دعم المصادقة باستخدام كلمات مرور لمرة واحدة تستند إلى HMAC",
@@ -89,7 +90,7 @@
 	"oathauth-totp-disable-warning": "لن تتمكن بعد الآن من استخدام أداة المصادقة المسجلة في هذا الحساب،  سيتم إبطال جميع الرموز المميزة المرتبطة بهذا الحساب",
 	"oathauth-invalidrequest": "طلب غير صالح",
 	"notification-header-oathauth-disable": "تم تعطيل المصادقة الثنائية على {{GENDER:$2| الحساب الخاص بك}}.",
-	"notification-body-oathauth-disable": "إذا كان {{GENDER:$2| أنت}} لم تفعل هذا ، {{GENDER:$2| your account}} ربما تم اختراقه.",
+	"notification-body-oathauth-disable": "إذا لم تكن {{GENDER:$2|أنت|أنتِ}} من قام بهذا، فإن {{GENDER:$2|حسابكَ|حسابكِ}} ربما تم اختراقه.",
 	"notification-body-oathauth-disable-other": "إذا كان {{GENDER:$2| أنت}} لم تطلب هذا ، {{GENDER:$2| يجب عليك}} الاتصال بالمسؤول.",
 	"oathauth-notifications-disable-help": "مساعدة",
 	"oathauth-verify-enabled": "{{GENDER:$1| تم تمكين المصادقة الثنائية $1 }}.",
