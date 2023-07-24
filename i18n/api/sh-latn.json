@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"apihelp-query+oath-summary": "Provjera je li dvočiniteljska potvrda (OATH) omogućena za određenog korisnika.",

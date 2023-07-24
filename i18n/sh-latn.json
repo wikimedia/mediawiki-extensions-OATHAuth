@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"oathauth-desc": "Omogućuje autentifikaciju korisnika pomoću HMAC-a na temelju jednokratnih lozinki",
