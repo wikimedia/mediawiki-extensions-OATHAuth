@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bosogo"
+		]
+	},
+	"oathauth-token": "Токен",
+	"oathauth-auth-token-label": "Токен"
+}
