@@ -93,7 +93,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
 		return $services->getDBLoadBalancerFactory()
 			->getMainLB( $database )
-			->getConnectionRef( DB_PRIMARY, [], $database );
+			->getMaintenanceConnectionRef( DB_PRIMARY, [], $database );
 	}
 
 	/**
