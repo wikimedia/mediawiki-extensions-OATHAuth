@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bosogo"
+		]
+	},
+	"oathauth-account": "Аккаунттун аталышы:",
+	"oathauth-token": "Токен",
+	"oathauth-auth-token-label": "Токен",
+	"oathauth-notifications-disable-help": "Жардам"
+}
