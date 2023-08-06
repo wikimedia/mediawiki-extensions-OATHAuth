@@ -97,10 +97,8 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * @param array $credential
 	 * @return bool
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
-	private function authenticate( $credential ) {
+	private function authenticate( array $credential ): bool {
 		$verificationData = [
 			'credential' => $credential
 		];
