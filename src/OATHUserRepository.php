@@ -188,8 +188,18 @@ class OATHUserRepository implements LoggerAwareInterface {
 				];
 			}
 
-			// TODO: only update changed rows
 			$dbw = $this->database->getDB( DB_PRIMARY );
+			$dbw->startAtomic( __METHOD__ );
+
+			if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
+				$dbw->delete(
+					'oathauth_users',
+					[ 'id' => $userId ],
+					__METHOD__
+				);
+			}
+
+			// TODO: only update changed rows
 			$dbw->delete(
 				'oathauth_devices',
 				[ 'oad_user' => $userId ],
@@ -200,8 +210,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 				$rows,
 				__METHOD__
 			);
-		}
-		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
+			$dbw->endAtomic( __METHOD__ );
+		} elseif ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
 			$data = [
 				'keys' => []
 			];
