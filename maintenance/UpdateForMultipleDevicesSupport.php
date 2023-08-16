@@ -66,21 +66,28 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 					'data',
 				] )
 				->from( 'oathauth_users' )
+				->leftJoin(
+					'oathauth_devices',
+					null,
+					'oad_user = id'
+				)
 				->where( [
 					$dbw->buildComparison( '>=', [ 'id' => $min ] ),
 					$dbw->buildComparison( '<', [ 'id' => $max ] ),
+
+					// Only select rows that haven't been migrated yet, so no matching
+					// oathauth_devices row.
+					'oad_id' => null,
 				] )
 				->caller( __METHOD__ )
 				->fetchResultSet();
 
-			$toDelete = [];
 			$toAdd = [];
 
 			foreach ( $res as $row ) {
 				$decodedData = FormatJson::decode( $row->data, true );
-				if ( isset( $decodedData['keys'] ) ) {
-					$toDelete[] = (int)$row->id;
 
+				if ( isset( $decodedData['keys'] ) ) {
 					$updated += 1;
 
 					foreach ( $decodedData['keys'] as $keyData ) {
@@ -94,18 +101,11 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 			}
 
 			if ( $toAdd ) {
-				$dbw->startAtomic( __METHOD__ );
 				$dbw->insert(
 					'oathauth_devices',
 					$toAdd,
 					__METHOD__
 				);
-				$dbw->delete(
-					'oathauth_users',
-					[ 'id' => $toDelete ],
-					__METHOD__
-				);
-				$dbw->endAtomic( __METHOD__ );
 			}
 
 			$database->waitForReplication();

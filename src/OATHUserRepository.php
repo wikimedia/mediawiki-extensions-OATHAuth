@@ -104,6 +104,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 			$moduleId = null;
 			$keys = [];
+
 			if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_READ_NEW ) {
 				$res = $this->database->getDB( DB_REPLICA )->newSelectQueryBuilder()
 					->select( [
@@ -125,9 +126,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 					$moduleId = $row->oat_name;
 					$keys[] = FormatJson::decode( $row->oad_data, true );
 				}
-			}
-
-			if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_READ_OLD && !$moduleId ) {
+			} elseif ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_READ_OLD ) {
 				$res = $this->database->getDB( DB_REPLICA )->selectRow(
 					'oathauth_users',
 					[ 'module', 'data' ],
@@ -143,6 +142,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 						$keys = $decodedData['keys'];
 					}
 				}
+			} else {
+				throw new RuntimeException( 'Either READ_NEW or READ_OLD must be set' );
 			}
 
 			if ( $moduleId ) {
@@ -191,14 +192,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$dbw = $this->database->getDB( DB_PRIMARY );
 			$dbw->startAtomic( __METHOD__ );
 
-			if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
-				$dbw->delete(
-					'oathauth_users',
-					[ 'id' => $userId ],
-					__METHOD__
-				);
-			}
-
 			// TODO: only update changed rows
 			$dbw->delete(
 				'oathauth_devices',
@@ -211,7 +204,9 @@ class OATHUserRepository implements LoggerAwareInterface {
 				__METHOD__
 			);
 			$dbw->endAtomic( __METHOD__ );
-		} elseif ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
+		}
+
+		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
 			$data = [
 				'keys' => []
 			];
