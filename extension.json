@@ -16,7 +16,7 @@
 		}
 	},
 	"requires": {
-		"MediaWiki": ">= 1.40.0",
+		"MediaWiki": ">= 1.41",
 		"extensions": {
 			"OATHAuth": ">= 0.4.4"
 		}
