@@ -21,8 +21,8 @@
 namespace MediaWiki\Extension\OATHAuth\Notifications;
 
 use EchoEventPresentationModel;
+use MediaWiki\Title\Title;
 use SpecialPage;
-use Title;
 
 class EnablePresentationModel extends EchoEventPresentationModel {
 	/**
