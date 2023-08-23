@@ -31,5 +31,8 @@
 	"webauthn-error-max-keys-reached": "Maksimalt {{PLURAL:$1|én nøkkel|$1 nøkler}} kan registreres",
 	"webauthn-module-description": "WebAuthn (Web Authentication) er en nettstandard publisert av World Wide Web Consortium (W3C). WebAuthn er en kjernekomponent i FIDO2-prosjektet under ledelse av FIDO Alliance. Målet til prosjektet er å standardisere et grensesnitt for å autentisere brukere til nettbaserte applikasjoner og tjenester med offentlig nøkkel-kryptografi. [https://en.wikipedia.org/wiki/WebAuthn Les mer]",
 	"webauthn-ui-reload-page-label": "Last siden på nytt",
-	"webauthn-authentication-info-label": "Autentiseringsdata"
+	"webauthn-authentication-info-label": "Autentiseringsdata",
+	"webauthn-authentication-info-help": "Autentiseringsdata sendt til klienten for henting av legitimasjon",
+	"webauthn-credential-label": "Brukerlegitimasjon",
+	"webauthn-credential-help": "Brukerlegitimasjon basert på autentiseringsdata"
 }
