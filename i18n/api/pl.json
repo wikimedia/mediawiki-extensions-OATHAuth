@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Rail"
 		]
 	},
-	"apihelp-webauthn-summary": "Moduł  API do komunikacji pomiędzy serwerem a klientem podczas procesu rejestracji/uwierzytelniania",
+	"apihelp-webauthn-summary": "Moduł API do komunikacji pomiędzy serwerem a klientem podczas procesu rejestracji/uwierzytelniania",
 	"apihelp-webauthn-param-func": "Nazwa funkcji, która ma zostać wykonana",
 	"apihelp-webauthn-param-data": "Dane poszczególnych funkcji zakodowane w formacie JSON"
 }
