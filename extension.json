@@ -4,7 +4,8 @@
 	"author": [
 		"Ryan Lane",
 		"Robert Vogel <vogel@hallowelt.com>",
-		"Dejan Savuljesku <savuljesku@hallowelt.com>"
+		"Dejan Savuljesku <savuljesku@hallowelt.com>",
+		"Taavi Väänänen"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:OATHAuth",
 	"descriptionmsg": "oathauth-desc",
