@@ -145,6 +145,13 @@ class OATHUser {
 	}
 
 	/**
+	 * @return bool Whether this user has two-factor authentication enabled or not
+	 */
+	public function isTwoFactorAuthEnabled(): bool {
+		return count( $this->getKeys() ) >= 1;
+	}
+
+	/**
 	 * Disables current (if any) auth method
 	 */
 	public function disable() {

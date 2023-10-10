@@ -6,7 +6,6 @@ use ConfigException;
 use FormSpecialPage;
 use HTMLForm;
 use ManualLogEntry;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserFactory;
@@ -129,10 +128,10 @@ class DisableOATHForUser extends FormSpecialPage {
 		if ( !$user || ( $user->getId() === 0 ) ) {
 			return [ 'oathauth-user-not-found' ];
 		}
+
 		$oathUser = $this->userRepo->findByUser( $user );
 
-		if ( !( $oathUser->getModule() instanceof IModule ) ||
-			!$oathUser->getModule()->isEnabled( $oathUser ) ) {
+		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
 			return [ 'oathauth-user-not-does-not-have-oath-enabled' ];
 		}
 

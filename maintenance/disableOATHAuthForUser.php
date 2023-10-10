@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
 
@@ -28,10 +28,9 @@ class DisableOATHAuthForUser extends Maintenance {
 			$this->fatalError( "User $username doesn't exist!" );
 		}
 
-		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$repo = OATHAuthServices::getInstance()->getUserRepository();
 		$oathUser = $repo->findByUser( $user );
-		$module = $oathUser->getModule();
-		if ( !( $module instanceof IModule ) || $module->isEnabled( $oathUser ) === false ) {
+		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
 			$this->fatalError( "User $username doesn't have OATHAuth enabled!" );
 		}
 
