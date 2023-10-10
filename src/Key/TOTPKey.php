@@ -92,7 +92,7 @@ class TOTPKey implements IAuthKey {
 	 * @param array $scratchTokens
 	 */
 	public function __construct( $secret, array $scratchTokens ) {
-		// Currently hardcoded values; might be used in future
+		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
 			'secret' => $secret,
@@ -155,7 +155,6 @@ class TOTPKey implements IAuthKey {
 		);
 
 		// Remove any whitespace from the received token, which can be an intended group separator
-		// or trimmeable whitespace
 		$token = preg_replace( '/\s+/', '', $token );
 
 		$clientIP = $user->getUser()->getRequest()->getIP();
@@ -220,7 +219,7 @@ class TOTPKey implements IAuthKey {
 	}
 
 	/**
-	 * Check if a token is one of the scratch tokens for this two factor key.
+	 * Check if a token is one of the scratch tokens for this two-factor key.
 	 *
 	 * @param string $token Token to verify
 	 *

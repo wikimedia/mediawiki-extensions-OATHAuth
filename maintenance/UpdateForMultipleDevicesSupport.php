@@ -88,7 +88,7 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 				$decodedData = FormatJson::decode( $row->data, true );
 
 				if ( isset( $decodedData['keys'] ) ) {
-					$updated += 1;
+					$updated++;
 
 					foreach ( $decodedData['keys'] as $keyData ) {
 						$toAdd[] = [

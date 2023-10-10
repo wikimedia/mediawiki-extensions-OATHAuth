@@ -93,7 +93,6 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * @param null|string $subPage
-	 * @return void
 	 */
 	public function execute( $subPage ) {
 		$this->getOutput()->enableOOUI();
@@ -277,13 +276,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function shouldShowGenericButtons() {
-		if ( !$this->requestedModule instanceof IModule ) {
-			return true;
-		}
-		if ( !$this->isGenericAction() ) {
-			return true;
-		}
-		return false;
+		return !$this->requestedModule instanceof IModule || !$this->isGenericAction();
 	}
 
 	private function isModuleRequested( IModule $module ) {
@@ -301,7 +294,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Checks if given form instance fulfills required conditions
+	 * Verifies if the given form instance fulfills the required conditions
 	 *
 	 * @param mixed $form
 	 * @return bool
@@ -333,7 +326,7 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * When performing an action on a module (like enable/disable),
-	 * page should contain only form for that action
+	 * page should contain only the form for that action
 	 */
 	private function clearPage() {
 		if ( $this->isGenericAction() ) {
@@ -349,7 +342,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Actions enable and disable are generic and all modules must
+	 * The enable and disable actions are generic, and all modules must
 	 * implement them, while all other actions are module-specific
 	 * @return bool
 	 */

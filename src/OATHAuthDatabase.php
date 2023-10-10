@@ -34,12 +34,9 @@ class OATHAuthDatabase {
 	public const CONSTRUCTOR_OPTIONS = [
 		'OATHAuthDatabase',
 	];
+	private ServiceOptions $options;
 
-	/** @var ServiceOptions */
-	private $options;
-
-	/** @var LBFactory */
-	private $lbFactory;
+	private LBFactory $lbFactory;
 
 	/**
 	 * @param ServiceOptions $options

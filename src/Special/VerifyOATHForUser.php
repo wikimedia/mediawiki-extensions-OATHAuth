@@ -16,12 +16,8 @@ class VerifyOATHForUser extends FormSpecialPage {
 
 	private const OATHAUTH_IS_ENABLED = 'enabled';
 	private const OATHAUTH_NOT_ENABLED = 'disabled';
-
-	/** @var OATHUserRepository */
-	private $userRepo;
-
-	/** @var UserFactory */
-	private $userFactory;
+	private OATHUserRepository $userRepo;
+	private UserFactory $userFactory;
 
 	/** @var string */
 	private $enabledStatus;

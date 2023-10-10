@@ -24,7 +24,6 @@ use Exception;
 
 class OATHAuthModuleRegistry {
 
-	/** @var OATHAuthDatabase */
 	private OATHAuthDatabase $database;
 
 	/** @var array */
@@ -33,10 +32,6 @@ class OATHAuthModuleRegistry {
 	/** @var array|null */
 	private $moduleIds;
 
-	/**
-	 * @param OATHAuthDatabase $database
-	 * @param array $modules
-	 */
 	public function __construct(
 		OATHAuthDatabase $database,
 		array $modules
@@ -45,10 +40,6 @@ class OATHAuthModuleRegistry {
 		$this->modules = $modules;
 	}
 
-	/**
-	 * @param string $key
-	 * @return IModule|null
-	 */
 	public function getModuleByKey( string $key ): ?IModule {
 		if ( isset( $this->getModules()[$key] ) ) {
 			$module = call_user_func_array( $this->getModules()[$key], [] );
@@ -80,6 +71,7 @@ class OATHAuthModuleRegistry {
 
 	/**
 	 * Returns the numerical ID for the module with the specified key.
+	 *
 	 * @param string $key
 	 * @return int
 	 */

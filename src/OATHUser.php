@@ -26,8 +26,7 @@ use User;
  * @ingroup Extensions
  */
 class OATHUser {
-	/** @var User */
-	private $user;
+	private User $user;
 
 	/** @var IAuthKey[] */
 	private $keys;
@@ -84,7 +83,7 @@ class OATHUser {
 
 	/**
 	 * Useful for modules that operate on single-key premise,
-	 * as well as testing the key type, since first key is
+	 * as well as testing the key type, since the first key is(?)
 	 * necessarily the same type as others
 	 *
 	 * @return IAuthKey|null

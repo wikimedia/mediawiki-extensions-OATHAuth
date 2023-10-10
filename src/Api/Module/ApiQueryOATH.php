@@ -23,7 +23,6 @@ use ApiQueryBase;
 use ApiResult;
 use ManualLogEntry;
 use MediaWiki\MediaWikiServices;
-use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -46,12 +45,9 @@ class ApiQueryOATH extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$params = $this->extractRequestParams();
-		if ( $params['user'] === null ) {
-			$params['user'] = $this->getUser()->getName();
-		}
-
 		$this->checkUserRightsAny( [ 'oathauth-api-all', 'oathauth-verify-user' ] );
+
+		$params = $this->extractRequestParams();
 
 		$hasOAthauthApiAll = $this->getPermissionManager()
 			->userHasRight(
@@ -64,9 +60,14 @@ class ApiQueryOATH extends ApiQueryBase {
 			$this->dieWithError( [ 'apierror-missingparam', 'reason' ] );
 		}
 
-		$user = User::newFromName( $params['user'] );
-		if ( $user === false ) {
-			$this->dieWithError( 'noname' );
+		if ( $params['user'] === null ) {
+			$user = $this->getUser();
+		} else {
+			$user = MediaWikiServices::getInstance()->getUserFactory()
+				->newFromName( $params['user'] );
+			if ( $user === null ) {
+				$this->dieWithError( 'noname' );
+			}
 		}
 
 		$result = $this->getResult();

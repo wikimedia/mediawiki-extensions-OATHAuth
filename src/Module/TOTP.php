@@ -3,18 +3,15 @@
 namespace MediaWiki\Extension\OATHAuth\Module;
 
 use IContextSource;
-use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPDisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
-use Message;
 use MWException;
 
 class TOTP implements IModule {
@@ -22,25 +19,18 @@ class TOTP implements IModule {
 		return new static();
 	}
 
-	/**
-	 * Name of the module
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getName() {
 		return "totp";
 	}
 
-	/**
-	 * @return Message
-	 */
+	/** @inheritDoc */
 	public function getDisplayName() {
 		return wfMessage( 'oathauth-module-totp-label' );
 	}
 
 	/**
-	 *
-	 * @param array $data
-	 * @return IAuthKey
+	 * @inheritDoc
 	 * @throws MWException
 	 */
 	public function newKey( array $data ) {
@@ -55,7 +45,7 @@ class TOTP implements IModule {
 	}
 
 	/**
-	 * @return AbstractSecondaryAuthenticationProvider
+	 * @return TOTPSecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider() {
 		return new TOTPSecondaryAuthenticationProvider();
@@ -79,7 +69,7 @@ class TOTP implements IModule {
 	}
 
 	/**
-	 * Is this module currently enabled for the given user
+	 * Is this module currently enabled for the given user?
 	 *
 	 * @param OATHUser $user
 	 * @return bool

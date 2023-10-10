@@ -48,8 +48,8 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			return AuthenticationResponse::newAbstain();
 		}
 
-		$provider = $this->getProviderForModule( $module );
-		return $provider->beginSecondaryAuthentication( $user, $reqs );
+		return $this->getProviderForModule( $module )
+			->beginSecondaryAuthentication( $user, $reqs );
 	}
 
 	/**

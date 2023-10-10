@@ -17,11 +17,10 @@ use UserBlockedError;
 use UserNotLoggedIn;
 
 class DisableOATHForUser extends FormSpecialPage {
-	/** @var OATHUserRepository */
-	private $userRepo;
 
-	/** @var UserFactory */
-	private $userFactory;
+	private OATHUserRepository $userRepo;
+
+	private UserFactory $userFactory;
 
 	/**
 	 * @param OATHUserRepository $userRepo

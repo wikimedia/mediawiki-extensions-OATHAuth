@@ -107,7 +107,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	}
 
 	/**
-	 * Helper function for converting single TOTP keys to multi-key system
+	 * Helper function for converting single TOTP keys to the multi-key system
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 * @throws ConfigException
@@ -117,7 +117,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	}
 
 	/**
-	 * Helper function for converting single TOTP keys to multi-key system
+	 * Helper function for converting single TOTP keys to the multi-key system
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 * @throws ConfigException
@@ -127,7 +127,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	}
 
 	/**
-	 * Converts old, TOTP specific, column values to new structure
+	 * Converts old, TOTP specific, column values to a newer structure
 	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
@@ -250,6 +250,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 					$updated = true;
 				}
 			}
+			unset( $k );
 
 			if ( !$updated ) {
 				continue;

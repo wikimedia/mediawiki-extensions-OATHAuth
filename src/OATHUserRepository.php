@@ -22,6 +22,7 @@ use BagOStuff;
 use ConfigException;
 use FormatJson;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MWException;
 use Psr\Log\LoggerAwareInterface;
@@ -31,22 +32,16 @@ use RuntimeException;
 use User;
 
 class OATHUserRepository implements LoggerAwareInterface {
-	/** @var ServiceOptions */
 	private ServiceOptions $options;
 
-	/** @var OATHAuthDatabase */
 	private OATHAuthDatabase $database;
 
-	/** @var BagOStuff */
 	private BagOStuff $cache;
 
-	/** @var OATHAuthModuleRegistry */
 	private OATHAuthModuleRegistry $moduleRegistry;
 
-	/** @var CentralIdLookupFactory */
 	private CentralIdLookupFactory $centralIdLookupFactory;
 
-	/** @var LoggerInterface */
 	private LoggerInterface $logger;
 
 	/** @internal Only public for service wiring use. */
@@ -54,16 +49,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		'OATHAuthMultipleDevicesMigrationStage',
 	];
 
-	/**
-	 * OATHUserRepository constructor.
-	 *
-	 * @param ServiceOptions $options
-	 * @param OATHAuthDatabase $database
-	 * @param BagOStuff $cache
-	 * @param OATHAuthModuleRegistry $moduleRegistry
-	 * @param CentralIdLookupFactory $centralIdLookupFactory
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
 		ServiceOptions $options,
 		OATHAuthDatabase $database,
@@ -91,8 +76,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * @param User $user
 	 * @return OATHUser
-	 * @throws \ConfigException
-	 * @throws \MWException
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function findByUser( User $user ) {
 		$oathUser = $this->cache->get( $user->getName() );
@@ -251,7 +236,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * @param OATHUser $user
 	 * @param string $clientInfo
-	 * @param bool $self Whether they disabled it themselves
+	 * @param bool $self Whether the user disabled the 2FA themselves
 	 */
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$userId = $this->centralIdLookupFactory->getLookup()
@@ -280,7 +265,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'clientip' => $clientInfo,
 			'oathtype' => $user->getModule()->getName(),
 		] );
-		Notifications\Manager::notifyDisabled( $user, $self );
+		Manager::notifyDisabled( $user, $self );
 	}
 
 	private function getMultipleDevicesMigrationStage(): int {

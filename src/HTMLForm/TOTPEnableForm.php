@@ -2,12 +2,14 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use ConfigException;
 use Html;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Logger\LoggerFactory;
+use MWException;
 use Status;
 
-class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
+class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * @param array|bool|Status|string $submitResult
 	 * @return string
@@ -151,8 +153,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	/**
 	 * @param array $formData
 	 * @return array|bool
-	 * @throws \ConfigException
-	 * @throws \MWException
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
 		$keyData = $this->getRequest()->getSessionData( 'oathauth_totp_key' ) ?? [];

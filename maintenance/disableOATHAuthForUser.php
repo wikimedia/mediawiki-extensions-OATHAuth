@@ -22,8 +22,9 @@ class DisableOATHAuthForUser extends Maintenance {
 	public function execute() {
 		$username = $this->getArg( 0 );
 
-		$user = User::newFromName( $username );
-		if ( $user && $user->getId() === 0 ) {
+		$user = MediaWikiServices::getInstance()->getUserFactory()
+			->newFromName( $username );
+		if ( $user === null || $user->getId() === 0 ) {
 			$this->fatalError( "User $username doesn't exist!" );
 		}
 
@@ -35,8 +36,9 @@ class DisableOATHAuthForUser extends Maintenance {
 		}
 
 		$repo->remove( $oathUser, 'Maintenance script', false );
-		// Kill all existing sessions. If this disable was social-engineered by an attacker,
-		// the legitimate user will hopefully login again and notice that the second factor
+		// Kill all existing sessions.
+		// If this request to disable 2FA was social-engineered by an attacker,
+		// the legitimate user will hopefully log in again to the wiki, and notice that the second factor
 		// is missing or different, and alert the operators.
 		SessionManager::singleton()->invalidateSessionsForUser( $user );
 
