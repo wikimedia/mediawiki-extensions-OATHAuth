@@ -70,19 +70,18 @@ class WebAuthnKey implements IAuthKey {
 
 	/**
 	 * User handle represents unique ID of the user.
+	 *
 	 * It is a randomly generated 64-bit string.
-	 * It can change if user disables and then re-enables
-	 * webauthn module, but MUST be same for each key
-	 * if user has multiple keys set at once
+	 *
+	 * It can change if the user disables and then re-enables
+	 * webauthn module, but MUST be the same for each key
+	 * if the user has multiple keys set at once.
 	 *
 	 * @var string
 	 */
 	protected $userHandle;
 
-	/**
-	 * @var AttestedCredentialData
-	 */
-	protected $attestedCredentialData;
+	protected AttestedCredentialData $attestedCredentialData;
 
 	/**
 	 * @var string
@@ -124,19 +123,14 @@ class WebAuthnKey implements IAuthKey {
 	 */
 	protected $credentialTrustPath;
 
-	/**
-	 * @var LoggerInterface
-	 */
-	protected $logger;
+	protected LoggerInterface $logger;
+
+	protected RequestContext $context;
 
 	/**
-	 * @var RequestContext
-	 */
-	protected $context;
-
-	/**
-	 * Create new empty key instance
-	 * Used for new keys
+	 * Create a new empty key instance.
+	 *
+	 * Used for new keys.
 	 *
 	 * @return WebAuthnKey
 	 */
@@ -148,8 +142,9 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
-	 * Create new key instance from given data
-	 * Used for existing keys
+	 * Create a new key instance from given data.
+	 *
+	 * Used for existing keys.
 	 *
 	 * @param array $data
 	 * @return WebAuthnKey
@@ -164,7 +159,6 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
-	 *
 	 * @param string $mode
 	 * @param RequestContext $context
 	 */
@@ -172,7 +166,7 @@ class WebAuthnKey implements IAuthKey {
 		$this->mode = $mode;
 		$this->context = $context;
 
-		// There is not documentation on what this trust path is
+		// There is no documentation on what this trust path is
 		// and how it should be used
 		$this->credentialTrustPath = new EmptyTrustPath();
 
@@ -225,20 +219,16 @@ class WebAuthnKey implements IAuthKey {
 
 	/**
 	 * Sets friendly name
-	 * If value exists, it will be appended with unique suffix
+	 * If value exists, it will be appended with a unique suffix
 	 *
 	 * @param string $name
-	 * @return void
 	 */
 	private function setFriendlyName( $name ) {
 		$this->friendlyName = trim( $name );
 		$this->checkFriendlyName();
 	}
 
-	/**
-	 * @return AttestedCredentialData
-	 */
-	public function getAttestedCredentialData() {
+	public function getAttestedCredentialData(): AttestedCredentialData {
 		return $this->attestedCredentialData;
 	}
 
@@ -258,7 +248,6 @@ class WebAuthnKey implements IAuthKey {
 
 	/**
 	 * @param int $newCount
-	 * @return void
 	 */
 	public function setSignCounter( $newCount ) {
 		$this->signCounter = $newCount;
@@ -271,10 +260,7 @@ class WebAuthnKey implements IAuthKey {
 		return $this->credentialAttestationType;
 	}
 
-	/**
-	 * @return TrustPath
-	 */
-	public function getTrustPath() {
+	public function getTrustPath(): TrustPath {
 		return $this->credentialTrustPath;
 	}
 
@@ -307,8 +293,12 @@ class WebAuthnKey implements IAuthKey {
 	 * @return bool
 	 * @throws MWException
 	 */
-	public function verifyRegistration( $friendlyName, $data,
-		$registrationObject, OATHUser $user ) {
+	public function verifyRegistration(
+		$friendlyName,
+		$data,
+		$registrationObject,
+		OATHUser $user
+	) {
 		if ( $this->mode !== static::MODE_CREATE ) {
 			$this->logger->error( sprintf(
 				"Registration attempt by user %s while not in register mode",
@@ -352,10 +342,12 @@ class WebAuthnKey implements IAuthKey {
 
 	/**
 	 * This will not actually work very well, as third same key will
-	 * be name Key #2 #3, should be refactored once we have defined what this
-	 * behaviour should be, for now its just a safety feature
+	 * be named "Key #2 #3".
 	 *
-	 * @param array $names Existing key's friendly names
+	 * It should be refactored once we have defined what this
+	 * behaviour should be, for now it's just a safety feature.
+	 *
+	 * @param array $names Existing keys friendly names
 	 * @param int $inc
 	 * @return void
 	 */

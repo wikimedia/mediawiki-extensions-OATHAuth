@@ -15,7 +15,7 @@ class AddKeyLayout extends HTMLFormField {
 	 */
 	public function getInputHTML( $value ) {
 		// We initiate the fields disabled, to avoid user interacting
-		// with the form, until client-side script is loaded and ready
+		// with the form, until the client-side script is loaded and ready
 		$input = new TextInputWidget( [
 			'id' => 'key_name',
 			'name' => 'key_name',

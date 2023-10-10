@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\WebAuthn\Module;
 
 use IContextSource;
-use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -29,25 +28,19 @@ class WebAuthn implements IModule {
 		return new static();
 	}
 
-	/**
-	 * Name of the module
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getName() {
 		return 'webauthn';
 	}
 
-	/**
-	 * @return Message
-	 */
+	/** @inheritDoc */
 	public function getDisplayName() {
 		return wfMessage( 'webauthn-module-label' );
 	}
 
 	/**
-	 *
 	 * @param array $data
-	 * @return IAuthKey
+	 * @return WebAuthnKey
 	 */
 	public function newKey( array $data = [] ) {
 		if ( empty( $data ) ) {
@@ -57,20 +50,13 @@ class WebAuthn implements IModule {
 	}
 
 	/**
-	 * @return AbstractSecondaryAuthenticationProvider
+	 * @return WebAuthnSecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider() {
 		return new WebAuthnSecondaryAuthenticationProvider();
 	}
 
-	/**
-	 * Is this module currently enabled for the given user
-	 * Arguably, module is enabled just by the fact its set on user
-	 * but it might not be true for all future modules
-	 *
-	 * @param OATHUser $user
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function isEnabled( OATHUser $user ) {
 		if ( $user->getModule() instanceof WebAuthn ) {
 			$key = $user->getFirstKey();
@@ -150,7 +136,8 @@ class WebAuthn implements IModule {
 	}
 
 	/**
-	 * Remove single key by its friendly name
+	 * Remove single key by its friendly name.
+	 *
 	 * This will just make changes in memory, not persist them!
 	 *
 	 * @param string $name
@@ -178,9 +165,7 @@ class WebAuthn implements IModule {
 		return new WebAuthnConfig();
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getDescriptionMessage() {
 		return wfMessage( 'webauthn-module-description' );
 	}

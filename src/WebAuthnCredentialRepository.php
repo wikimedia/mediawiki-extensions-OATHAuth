@@ -24,20 +24,14 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 */
 	protected $loaded = false;
 
-	/**
-	 * @var OATHUser
-	 */
-	protected $oauthUser;
+	protected OATHUser $oauthUser;
 
-	/**
-	 * @param OATHUser $user
-	 */
 	public function __construct( OATHUser $user ) {
 		$this->oauthUser = $user;
 	}
 
 	/**
-	 * @param bool $lc Whether to return lowercased names
+	 * @param bool $lc Whether to return the names in lowercase form
 	 * @return array
 	 */
 	public function getFriendlyNames( $lc = false ) {
@@ -53,10 +47,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		return $friendlyNames;
 	}
 
-	/**
-	 * @param string $publicKeyCredentialId
-	 * @return PublicKeyCredentialSource|null
-	 */
 	public function findOneByCredentialId(
 		string $publicKeyCredentialId
 	): ?PublicKeyCredentialSource {
@@ -153,7 +143,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	/**
-	 * Set new sign counter value for the credential
+	 * Set a new sign counter-value for the credential
 	 *
 	 * @param string $credentialId
 	 * @param int $newCounter

@@ -99,14 +99,13 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 	 * @return bool
 	 */
 	private function authenticate( array $credential ): bool {
-		$verificationData = [
-			'credential' => $credential
-		];
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
 		if ( !$authenticator->isEnabled() ) {
 			return false;
 		}
-		$authenticationResult = $authenticator->continueAuthentication( $verificationData );
+		$authenticationResult = $authenticator->continueAuthentication( [
+			'credential' => $credential
+		] );
 		if ( $authenticationResult->isGood() ) {
 			$this->oathUser->setKeys();
 			$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP(), true );

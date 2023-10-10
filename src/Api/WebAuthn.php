@@ -88,10 +88,12 @@ class WebAuthn extends ApiBase {
 			$this->dieWithError( 'oathauth-apierror-func-value-not-registered' );
 		}
 		$config = $registered[$func];
-		if ( isset( $config['mustBePosted'] ) && $config['mustBePosted'] === true ) {
-			if ( !$this->getRequest()->wasPosted() ) {
-				$this->dieWithError( 'apierror-mustbeposted' );
-			}
+		if (
+			isset( $config['mustBePosted'] ) &&
+			$config['mustBePosted'] === true &&
+			!$this->getRequest()->wasPosted()
+		) {
+			$this->dieWithError( 'apierror-mustbeposted' );
 		}
 		return $func;
 	}
@@ -112,9 +114,9 @@ class WebAuthn extends ApiBase {
 	}
 
 	/**
-	 * Array of all functions that are allowed to be called
-	 * Each key must have appropriate configuration that
-	 * defines user requirements for the action
+	 * Array of all functions that are allowed to be called.
+	 * Each key must have the appropriate configuration that
+	 * defines user requirements for the action.
 	 *
 	 * @return array
 	 */
@@ -182,7 +184,7 @@ class WebAuthn extends ApiBase {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
 		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
-		if ( $module === null || !( $module instanceof WebAuthnModule ) ) {
+		if ( !( $module instanceof WebAuthnModule ) ) {
 			$this->dieWithError( 'apierror-webauthn-module-missing' );
 		}
 	}

@@ -93,8 +93,8 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 	}
 
 	protected function addModules() {
-		// It would be better to add modules in HTMLFormField class
-		// but that does not seem to work for login form
+		// It would be better to add modules in HTMLFormField class,
+		// but that does not seem to work for the login form
 		$out = RequestContext::getMain()->getOutput();
 		$out->addModules( "ext.webauthn.login" );
 	}

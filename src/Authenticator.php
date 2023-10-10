@@ -126,7 +126,6 @@ class Authenticator {
 	}
 
 	/**
-	 * Authenticator constructor.
 	 * @param OATHUserRepository $userRepo
 	 * @param IModule $module
 	 * @param OATHUser|null $oathUser
@@ -379,14 +378,12 @@ class Authenticator {
 	}
 
 	/**
-	 * Information to be sent to client to start auth process
+	 * Information to be sent to the client to start the authentication process
 	 *
 	 * @return PublicKeyCredentialRequestOptions
 	 * @throws MWException
 	 */
 	protected function getAuthInfo() {
-		$extensions = new AuthenticationExtensionsClientInputs();
-
 		$keys = $this->oathUser->getKeys();
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
@@ -399,22 +396,19 @@ class Authenticator {
 				$key->getTransports()
 			);
 		}
-		$registeredPublicKeyCredentialDescriptors = $credentialDescriptors;
 
-		$publicKeyCredentialRequestOptions = new PublicKeyCredentialRequestOptions(
+		return new PublicKeyCredentialRequestOptions(
 			random_bytes( 32 ),
 			static::CLIENT_ACTION_TIMEOUT,
 			$this->serverId,
-			$registeredPublicKeyCredentialDescriptors,
+			$credentialDescriptors,
 			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_PREFERRED,
-			$extensions
+			new AuthenticationExtensionsClientInputs()
 		);
-
-		return $publicKeyCredentialRequestOptions;
 	}
 
 	/**
-	 * Information to be sent to client to start registration process
+	 * Information to be sent to the client to start the registration process
 	 *
 	 * @return PublicKeyCredentialCreationOptions
 	 * @throws ConfigException
@@ -429,22 +423,13 @@ class Authenticator {
 		/** @var OATHUser $oathUser */
 		$oathUser = $userRepo->findByUser( $mwUser );
 		$key = $oathUser->getFirstKey();
-		// If user already has webauthn enabled, and is just registering another key,
+		// If the user already has webauthn enabled, and is just registering another key,
 		// make sure userHandle remains the same across keys
 		if ( $key !== null && $key instanceof WebAuthnKey ) {
 			$userHandle = $key->getUserHandle();
 		} else {
 			$userHandle = random_bytes( 64 );
 		}
-
-		$realName = $mwUser->getRealName() ? : $mwUser->getName();
-		$userEntity = new PublicKeyCredentialUserEntity(
-			$mwUser->getName(),
-			$userHandle,
-			$realName
-		);
-
-		$challenge = random_bytes( 32 );
 
 		// Exclude all already registered keys for user
 		$excludedPublicKeyDescriptors = [];
@@ -458,6 +443,13 @@ class Authenticator {
 			);
 		}
 
+		$realName = $mwUser->getRealName() ? : $mwUser->getName();
+		$userEntity = new PublicKeyCredentialUserEntity(
+			$mwUser->getName(),
+			$userHandle,
+			$realName
+		);
+
 		$publicKeyCredParametersList = [
 			new PublicKeyCredentialParameters(
 				'public-key',
@@ -465,23 +457,17 @@ class Authenticator {
 			)
 		];
 
-		$extensions = new AuthenticationExtensionsClientInputs();
-		// Add extensions if needed
-
-		$authenticatorSelectionCriteria = new AuthenticatorSelectionCriteria();
-		$publicKeyCredentialCreationOptions = new PublicKeyCredentialCreationOptions(
+		return new PublicKeyCredentialCreationOptions(
 			$rpEntity,
 			$userEntity,
-			$challenge,
+			random_bytes( 32 ),
 			$publicKeyCredParametersList,
 			static::CLIENT_ACTION_TIMEOUT,
 			$excludedPublicKeyDescriptors,
-			$authenticatorSelectionCriteria,
+			new AuthenticatorSelectionCriteria(),
 			PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE,
-			$extensions
+			new AuthenticationExtensionsClientInputs()
 		);
-
-		return $publicKeyCredentialCreationOptions;
 	}
 
 	/**

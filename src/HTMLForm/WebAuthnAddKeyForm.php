@@ -73,9 +73,9 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		$registrationResult = $authenticator->continueRegistration( $credential );
 		if ( $registrationResult->isGood() ) {
 			return true;
-		} else {
-			return [ $registrationResult->getMessage() ];
 		}
+
+		return [ $registrationResult->getMessage() ];
 	}
 
 	/**

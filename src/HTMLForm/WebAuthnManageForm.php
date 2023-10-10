@@ -96,11 +96,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
-		if ( !isset( $formData['credential'] ) ) {
-			return [ 'oathauth-failedtovalidateoath' ];
-		}
-
-		if ( !$this->authenticate( $formData['credential'] ) ) {
+		if ( !isset( $formData['credential'] ) || !$this->authenticate( $formData['credential'] ) ) {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
 		if ( isset( $formData['remove_key'] ) ) {
@@ -179,17 +175,15 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws ConfigException
 	 */
 	private function authenticate( $credential ) {
-		$verificationData = [
-			'credential' => $credential
-		];
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
 		if ( !$authenticator->isEnabled() ) {
 			return false;
 		}
-		$authenticationResult = $authenticator->continueAuthentication( $verificationData );
-		if ( $authenticationResult->isGood() ) {
-			return true;
-		}
-		return false;
+
+		$authenticationResult = $authenticator->continueAuthentication( [
+			'credential' => $credential
+		] );
+
+		return $authenticationResult->isGood();
 	}
 }
