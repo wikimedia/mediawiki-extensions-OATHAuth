@@ -21,10 +21,11 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use Exception;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHAuthModuleRegistry {
 
-	private OATHAuthDatabase $database;
+	private IConnectionProvider $dbProvider;
 
 	/** @var array */
 	private $modules;
@@ -33,10 +34,10 @@ class OATHAuthModuleRegistry {
 	private $moduleIds;
 
 	public function __construct(
-		OATHAuthDatabase $database,
+		IConnectionProvider $dbProvider,
 		array $modules
 	) {
-		$this->database = $database;
+		$this->dbProvider = $dbProvider;
 		$this->modules = $modules;
 	}
 
@@ -89,7 +90,7 @@ class OATHAuthModuleRegistry {
 	 */
 	public function getModuleIds(): array {
 		if ( $this->moduleIds === null ) {
-			$this->moduleIds = $this->getModuleIdsFromDatabase( DB_REPLICA );
+			$this->moduleIds = $this->getModuleIdsFromDatabase( false );
 		}
 
 		$missing = array_diff(
@@ -103,20 +104,25 @@ class OATHAuthModuleRegistry {
 				$rows[] = [ 'oat_name' => $name ];
 			}
 
-			$this->database
-				->getDB( DB_PRIMARY )
+			$this->dbProvider
+				->getPrimaryDatabase( 'virtual-oathauth' )
 				->insert( 'oathauth_types', $rows, __METHOD__ );
-			$this->moduleIds = $this->getModuleIdsFromDatabase( DB_PRIMARY );
+			$this->moduleIds = $this->getModuleIdsFromDatabase( true );
 		}
 
 		return $this->moduleIds;
 	}
 
-	private function getModuleIdsFromDatabase( int $index ): array {
+	private function getModuleIdsFromDatabase( bool $fromPrimary ): array {
 		$ids = [];
 
-		$rows = $this->database->getDB( $index )
-			->newSelectQueryBuilder()
+		if ( $fromPrimary ) {
+			$dbr = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
+		} else {
+			$dbr = $this->dbProvider->getReplicaDatabase( 'virtual-oathauth' );
+		}
+
+		$rows = $dbr->newSelectQueryBuilder()
 			->select( [ 'oat_id', 'oat_name' ] )
 			->from( 'oathauth_types' )
 			->caller( __METHOD__ )

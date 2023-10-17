@@ -29,9 +29,10 @@ use Psr\Log\LoggerInterface;
 use RequestContext;
 use RuntimeException;
 use User;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {
-	private OATHAuthDatabase $database;
+	private IConnectionProvider $dbProvider;
 
 	private BagOStuff $cache;
 
@@ -42,13 +43,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 	private LoggerInterface $logger;
 
 	public function __construct(
-		OATHAuthDatabase $database,
+		IConnectionProvider $dbProvider,
 		BagOStuff $cache,
 		OATHAuthModuleRegistry $moduleRegistry,
 		CentralIdLookupFactory $centralIdLookupFactory,
 		LoggerInterface $logger
 	) {
-		$this->database = $database;
+		$this->dbProvider = $dbProvider;
 		$this->cache = $cache;
 		$this->moduleRegistry = $moduleRegistry;
 		$this->centralIdLookupFactory = $centralIdLookupFactory;
@@ -76,7 +77,9 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
 
-			$res = $this->database->getDB( DB_REPLICA )->newSelectQueryBuilder()
+			$res = $this->dbProvider
+				->getReplicaDatabase( 'virtual-oathauth' )
+				->newSelectQueryBuilder()
 				->select( [
 					'oad_data',
 					'oat_name',
@@ -136,7 +139,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			];
 		}
 
-		$dbw = $this->database->getDB( DB_PRIMARY );
+		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->startAtomic( __METHOD__ );
 
 		// TODO: only update changed rows
@@ -181,7 +184,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$userId = $this->centralIdLookupFactory->getLookup()
 			->centralIdFromLocalUser( $user->getUser() );
-		$this->database->getDB( DB_PRIMARY )->delete(
+		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )->delete(
 			'oathauth_devices',
 			[ 'oad_user' => $userId ],
 			__METHOD__

@@ -24,7 +24,6 @@
  */
 
 use MediaWiki\Extension\OATHAuth\Hook\UpdateTables;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -41,11 +40,7 @@ class UpdateTOTPScratchTokensToArray extends Maintenance {
 	}
 
 	public function execute() {
-		$database = OATHAuthServices::getInstance()->getDatabase();
-		$dbw = $database->getDB( DB_PRIMARY );
-
-		// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
-		if ( !UpdateTables::switchTOTPScratchTokensToArray( $dbw ) ) {
+		if ( !UpdateTables::switchTOTPScratchTokensToArray() ) {
 			$this->fatalError( "Failed to update TOTP Scratch Tokens.\n" );
 		}
 		$this->output( "Done.\n" );

@@ -18,40 +18,25 @@
  * @file
  */
 
-namespace MediaWiki\Extension\OATHAuth;
+namespace MediaWiki\Extension\OATHAuth\Hook;
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Hook\MediaWikiServicesHook;
 
 /**
- * Type-safe wrapper for accessing OATHAuth services.
- *
  * @author Taavi Väänänen <hi@taavi.wtf>
  */
-class OATHAuthServices {
-	/** @var MediaWikiServices */
-	private MediaWikiServices $services;
+class MWServicesHandler implements MediaWikiServicesHook {
+	/** @inheritDoc */
+	public function onMediaWikiServices( $services ) {
+		global $wgOATHAuthDatabase, $wgVirtualDomainsMapping;
 
-	/**
-	 * @param MediaWikiServices $services
-	 */
-	public function __construct( MediaWikiServices $services ) {
-		$this->services = $services;
-	}
+		if ( !empty( $wgOATHAuthDatabase ) && !isset( $wgVirtualDomainsMapping['virtual-oathauth'] ) ) {
+			$wgVirtualDomainsMapping['virtual-oathauth'] = [ 'db' => $wgOATHAuthDatabase ];
 
-	/**
-	 * @param MediaWikiServices|null $services
-	 * @return OATHAuthServices
-	 */
-	public static function getInstance( MediaWikiServices $services = null ): OATHAuthServices {
-		return new self(
-			$services ?? MediaWikiServices::getInstance(),
-		);
-	}
-
-	/**
-	 * @return OATHAuthModuleRegistry
-	 */
-	public function getModuleRegistry(): OATHAuthModuleRegistry {
-		return $this->services->getService( 'OATHAuthModuleRegistry' );
+			wfDeprecatedMsg(
+				'$wgOATHAuthDatabase is deprecated, configure the virtual-oathauth virtual domain instead',
+				'1.42',
+			);
+		}
 	}
 }

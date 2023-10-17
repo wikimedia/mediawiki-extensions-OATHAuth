@@ -82,18 +82,11 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 * @return IMaintainableDatabase
 	 */
 	private static function getDatabase() {
-		$services = MediaWikiServices::getInstance();
-
-		// Global can be `null` during installation, ensure we pass `false` instead (T270147)
-		// can't rely on OATHAuthModuleRegistry or the setting existing for the same reason
-		$database = false;
-		if ( $services->getMainConfig()->has( 'OATHAuthDatabase' ) ) {
-			$database = $services->getMainConfig()->get( 'OATHAuthDatabase' ) ?? false;
-		}
-
-		return $services->getDBLoadBalancerFactory()
-			->getMainLB( $database )
-			->getMaintenanceConnectionRef( DB_PRIMARY, [], $database );
+		$db = MediaWikiServices::getInstance()
+			->getDBLoadBalancerFactory()
+			->getPrimaryDatabase( 'virtual-oathauth' );
+		'@phan-var IMaintainableDatabase $db';
+		return $db;
 	}
 
 	/**
@@ -103,7 +96,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 * @throws ConfigException
 	 */
 	public static function schemaUpdateSubstituteForGenericFields( DatabaseUpdater $updater ) {
-		return self::convertToGenericFields( self::getDatabase() );
+		return self::convertToGenericFields();
 	}
 
 	/**
@@ -113,7 +106,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 * @throws ConfigException
 	 */
 	public static function schemaUpdateTOTPToMultipleKeys( DatabaseUpdater $updater ) {
-		return self::switchTOTPToMultipleKeys( self::getDatabase() );
+		return self::switchTOTPToMultipleKeys();
 	}
 
 	/**
@@ -123,16 +116,17 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 * @throws ConfigException
 	 */
 	public static function schemaUpdateTOTPScratchTokensToArray( DatabaseUpdater $updater ) {
-		return self::switchTOTPScratchTokensToArray( self::getDatabase() );
+		return self::switchTOTPScratchTokensToArray();
 	}
 
 	/**
 	 * Converts old, TOTP specific, column values to a newer structure
-	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function convertToGenericFields( IMaintainableDatabase $db ) {
+	public static function convertToGenericFields() {
+		$db = self::getDatabase();
+
 		if ( !$db->fieldExists( 'oathauth_users', 'secret', __METHOD__ ) ) {
 			return true;
 		}
@@ -181,11 +175,12 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	/**
 	 * Switch from using single keys to multi-key support
 	 *
-	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function switchTOTPToMultipleKeys( IMaintainableDatabase $db ) {
+	public static function switchTOTPToMultipleKeys() {
+		$db = self::getDatabase();
+
 		if ( !$db->fieldExists( 'oathauth_users', 'data', __METHOD__ ) ) {
 			return true;
 		}
@@ -222,11 +217,12 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	/**
 	 * Switch scratch tokens from string to an array
 	 *
-	 * @param IMaintainableDatabase $db
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function switchTOTPScratchTokensToArray( IMaintainableDatabase $db ) {
+	public static function switchTOTPScratchTokensToArray() {
+		$db = self::getDatabase();
+
 		if ( !$db->fieldExists( 'oathauth_users', 'data' ) ) {
 			return true;
 		}

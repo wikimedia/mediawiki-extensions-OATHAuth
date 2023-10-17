@@ -18,8 +18,8 @@
  * @file
  */
 
-use MediaWiki\Extension\OATHAuth\OATHAuthDatabase;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
@@ -39,8 +39,9 @@ class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
 			__METHOD__
 		);
 
-		$database = $this->createMock( OATHAuthDatabase::class );
-		$database->method( 'getDB' )->willReturn( $this->db );
+		$database = $this->createMock( IConnectionProvider::class );
+		$database->method( 'getPrimaryDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->db );
+		$database->method( 'getReplicaDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->db );
 
 		$registry = new OATHAuthModuleRegistry(
 			$database,

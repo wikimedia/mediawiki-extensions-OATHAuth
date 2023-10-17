@@ -25,7 +25,6 @@
  */
 
 use MediaWiki\Extension\OATHAuth\Hook\UpdateTables;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -42,11 +41,7 @@ class UpdateTOTPToMultipleKeys extends Maintenance {
 	}
 
 	public function execute() {
-		$database = OATHAuthServices::getInstance()->getDatabase();
-		$dbw = $database->getDB( DB_PRIMARY );
-
-		// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
-		if ( !UpdateTables::switchTOTPToMultipleKeys( $dbw ) ) {
+		if ( !UpdateTables::switchTOTPToMultipleKeys() ) {
 			$this->fatalError( "Failed to update TOTP keys.\n" );
 		}
 		$this->output( "Done.\n" );

@@ -49,7 +49,8 @@
 		"getUserPermissionsErrors": "main",
 		"UserEffectiveGroups": "main",
 		"UserGetRights": "main",
-		"BeforeCreateEchoEvent": "echo"
+		"BeforeCreateEchoEvent": "echo",
+		"MediaWikiServices": "mwservices"
 	},
 	"HookHandlers": {
 		"main": {
@@ -66,6 +67,9 @@
 		},
 		"echo": {
 			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\EchoHandler"
+		},
+		"mwservices": {
+			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\MWServicesHandler"
 		}
 	},
 	"MessagesDirs": {
@@ -79,7 +83,8 @@
 			"value": 4
 		},
 		"OATHAuthDatabase": {
-			"value": false
+			"value": false,
+			"description": "Deprecated, configure the virtual-oathauth virtual domain instead."
 		},
 		"OATHAuthAccountPrefix": {
 			"value": false
@@ -221,5 +226,6 @@
 			]
 		}
 	},
+	"DatabaseVirtualDomains": [ "virtual-oathauth" ],
 	"manifest_version": 2
 }

@@ -1,31 +1,20 @@
 <?php
 
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\OATHAuth\OATHAuthDatabase;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'OATHAuthDatabase' => static function ( MediaWikiServices $services ) {
-		return new OATHAuthDatabase(
-			new ServiceOptions(
-				OATHAuthDatabase::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig(),
-			),
-			$services->getDBLoadBalancerFactory(),
-		);
-	},
 	'OATHAuthModuleRegistry' => static function ( MediaWikiServices $services ) {
 		return new OATHAuthModuleRegistry(
-			$services->getService( 'OATHAuthDatabase' ),
+			$services->getDBLoadBalancerFactory(),
 			ExtensionRegistry::getInstance()->getAttribute( 'OATHAuthModules' ),
 		);
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ) {
 		return new OATHUserRepository(
-			$services->getService( 'OATHAuthDatabase' ),
+			$services->getDBLoadBalancerFactory(),
 			new HashBagOStuff( [
 				'maxKey' => 5
 			] ),

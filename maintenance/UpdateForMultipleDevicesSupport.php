@@ -23,6 +23,7 @@ namespace MediaWiki\Extension\OATHAuth\Maintenance;
 use FormatJson;
 use LoggedUpdateMaintenance;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\MediaWikiServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -42,8 +43,9 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 	}
 
 	protected function doDBUpdates() {
-		$database = OATHAuthServices::getInstance()->getDatabase();
-		$dbw = $database->getDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()
+			->getDBLoadBalancerFactory()
+			->getPrimaryDatabase( 'virtual-oathauth' );
 
 		$maxId = $dbw->newSelectQueryBuilder()
 			->select( 'MAX(id)' )
@@ -108,7 +110,7 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 				);
 			}
 
-			$database->waitForReplication();
+			$this->waitForReplication();
 		}
 
 		$this->output( "Done, updated data for $updated users.\n" );
