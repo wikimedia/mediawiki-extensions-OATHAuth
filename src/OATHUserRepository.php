@@ -21,7 +21,6 @@ namespace MediaWiki\Extension\OATHAuth;
 use BagOStuff;
 use ConfigException;
 use FormatJson;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MWException;
@@ -32,8 +31,6 @@ use RuntimeException;
 use User;
 
 class OATHUserRepository implements LoggerAwareInterface {
-	private ServiceOptions $options;
-
 	private OATHAuthDatabase $database;
 
 	private BagOStuff $cache;
@@ -44,21 +41,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	private LoggerInterface $logger;
 
-	/** @internal Only public for service wiring use. */
-	public const CONSTRUCTOR_OPTIONS = [
-		'OATHAuthMultipleDevicesMigrationStage',
-	];
-
 	public function __construct(
-		ServiceOptions $options,
 		OATHAuthDatabase $database,
 		BagOStuff $cache,
 		OATHAuthModuleRegistry $moduleRegistry,
 		CentralIdLookupFactory $centralIdLookupFactory,
 		LoggerInterface $logger
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
 		$this->database = $database;
 		$this->cache = $cache;
 		$this->moduleRegistry = $moduleRegistry;
@@ -87,62 +76,36 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
 
-			$moduleId = null;
-			$keys = [];
+			$res = $this->database->getDB( DB_REPLICA )->newSelectQueryBuilder()
+				->select( [
+					'oad_data',
+					'oat_name',
+				] )
+				->from( 'oathauth_devices' )
+				->join( 'oathauth_types', null, [ 'oat_id = oad_type' ] )
+				->where( [ 'oad_user' => $uid ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
-			if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_READ_NEW ) {
-				$res = $this->database->getDB( DB_REPLICA )->newSelectQueryBuilder()
-					->select( [
-						'oad_data',
-						'oat_name',
-					] )
-					->from( 'oathauth_devices' )
-					->join( 'oathauth_types', null, [ 'oat_id = oad_type' ] )
-					->where( [ 'oad_user' => $uid ] )
-					->caller( __METHOD__ )
-					->fetchResultSet();
+			$module = null;
 
-				foreach ( $res as $row ) {
-					if ( $moduleId && $row->oat_name !== $moduleId ) {
-						// Not supported by current application-layer code.
-						throw new RuntimeException( "user {$uid} has multiple different oauth modules defined" );
-					}
-
-					$moduleId = $row->oat_name;
-					$keys[] = FormatJson::decode( $row->oad_data, true );
+			foreach ( $res as $row ) {
+				if ( $module && $row->oat_name !== $module->getName() ) {
+					// Not supported by current application-layer code.
+					throw new RuntimeException( "user {$uid} has multiple different oauth modules defined" );
 				}
-			} elseif ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_READ_OLD ) {
-				$res = $this->database->getDB( DB_REPLICA )->selectRow(
-					'oathauth_users',
-					[ 'module', 'data' ],
-					[ 'id' => $uid ],
-					__METHOD__
-				);
 
-				if ( $res ) {
-					$moduleId = $res->module;
-					$decodedData = FormatJson::decode( $res->data, true );
+				if ( !$module ) {
+					$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
+					$oathUser->setModule( $module );
 
-					if ( is_array( $decodedData['keys'] ) ) {
-						$keys = $decodedData['keys'];
+					if ( !$module ) {
+						throw new MWException( 'oathauth-module-invalid' );
 					}
 				}
-			} else {
-				throw new RuntimeException( 'Either READ_NEW or READ_OLD must be set' );
-			}
 
-			if ( $moduleId ) {
-				$module = $this->moduleRegistry->getModuleByKey( $moduleId );
-				if ( $module === null ) {
-					throw new MWException( 'oathauth-module-invalid' );
-				}
-
-				$oathUser->setModule( $module );
-
-				foreach ( $keys as $keyData ) {
-					$key = $module->newKey( $keyData );
-					$oathUser->addKey( $key );
-				}
+				$keyData = FormatJson::decode( $row->oad_data, true );
+				$oathUser->addKey( $module->newKey( $keyData ) );
 			}
 
 			$this->cache->set( $user->getName(), $oathUser );
@@ -163,54 +126,31 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$prevUser = $this->findByUser( $user->getUser() );
 		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
 
-		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_NEW ) {
-			$moduleId = $this->moduleRegistry->getModuleId( $user->getModule()->getName() );
-			$rows = [];
-			foreach ( $user->getKeys() as $key ) {
-				$rows[] = [
-					'oad_user' => $userId,
-					'oad_type' => $moduleId,
-					'oad_data' => FormatJson::encode( $key->jsonSerialize() )
-				];
-			}
-
-			$dbw = $this->database->getDB( DB_PRIMARY );
-			$dbw->startAtomic( __METHOD__ );
-
-			// TODO: only update changed rows
-			$dbw->delete(
-				'oathauth_devices',
-				[ 'oad_user' => $userId ],
-				__METHOD__
-			);
-			$dbw->insert(
-				'oathauth_devices',
-				$rows,
-				__METHOD__
-			);
-			$dbw->endAtomic( __METHOD__ );
-		}
-
-		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
-			$data = [
-				'keys' => []
+		$moduleId = $this->moduleRegistry->getModuleId( $user->getModule()->getName() );
+		$rows = [];
+		foreach ( $user->getKeys() as $key ) {
+			$rows[] = [
+				'oad_user' => $userId,
+				'oad_type' => $moduleId,
+				'oad_data' => FormatJson::encode( $key->jsonSerialize() )
 			];
-
-			foreach ( $user->getKeys() as $key ) {
-				$data['keys'][] = $key->jsonSerialize();
-			}
-
-			$this->database->getDB( DB_PRIMARY )->replace(
-				'oathauth_users',
-				'id',
-				[
-					'id' => $userId,
-					'module' => $user->getModule()->getName(),
-					'data' => FormatJson::encode( $data )
-				],
-				__METHOD__
-			);
 		}
+
+		$dbw = $this->database->getDB( DB_PRIMARY );
+		$dbw->startAtomic( __METHOD__ );
+
+		// TODO: only update changed rows
+		$dbw->delete(
+			'oathauth_devices',
+			[ 'oad_user' => $userId ],
+			__METHOD__
+		);
+		$dbw->insert(
+			'oathauth_devices',
+			$rows,
+			__METHOD__
+		);
+		$dbw->endAtomic( __METHOD__ );
 
 		$userName = $user->getUser()->getName();
 		$this->cache->set( $userName, $user );
@@ -241,21 +181,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$userId = $this->centralIdLookupFactory->getLookup()
 			->centralIdFromLocalUser( $user->getUser() );
-		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_NEW ) {
-			$this->database->getDB( DB_PRIMARY )->delete(
-				'oathauth_devices',
-				[ 'oad_user' => $userId ],
-				__METHOD__
-			);
-		}
-
-		if ( $this->getMultipleDevicesMigrationStage() & SCHEMA_COMPAT_WRITE_OLD ) {
-			$this->database->getDB( DB_PRIMARY )->delete(
-				'oathauth_users',
-				[ 'id' => $userId ],
-				__METHOD__
-			);
-		}
+		$this->database->getDB( DB_PRIMARY )->delete(
+			'oathauth_devices',
+			[ 'oad_user' => $userId ],
+			__METHOD__
+		);
 
 		$userName = $user->getUser()->getName();
 		$this->cache->delete( $userName );
@@ -266,9 +196,5 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'oathtype' => $user->getModule()->getName(),
 		] );
 		Manager::notifyDisabled( $user, $self );
-	}
-
-	private function getMultipleDevicesMigrationStage(): int {
-		return $this->options->get( 'OATHAuthMultipleDevicesMigrationStage' );
 	}
 }

@@ -25,10 +25,6 @@ return [
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ) {
 		return new OATHUserRepository(
-			new ServiceOptions(
-				OATHUserRepository::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig(),
-			),
 			$services->getService( 'OATHAuthDatabase' ),
 			new HashBagOStuff( [
 				'maxKey' => 5
