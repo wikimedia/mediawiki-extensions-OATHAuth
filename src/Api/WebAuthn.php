@@ -164,7 +164,7 @@ class WebAuthn extends ApiBase {
 	 */
 	protected function checkPermissions( $func ) {
 		$funcPermissions = $this->getFunctionPermissions( $func );
-		if ( empty( $funcPermissions ) ) {
+		if ( !$funcPermissions ) {
 			return;
 		}
 		$mustBeLoggedIn = $funcPermissions['mustBeLoggedIn'] ?? false;

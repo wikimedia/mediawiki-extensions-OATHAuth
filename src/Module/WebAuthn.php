@@ -43,7 +43,7 @@ class WebAuthn implements IModule {
 	 * @return WebAuthnKey
 	 */
 	public function newKey( array $data = [] ) {
-		if ( empty( $data ) ) {
+		if ( !$data ) {
 			return WebAuthnKey::newKey();
 		}
 		return WebAuthnKey::newFromData( $data );
