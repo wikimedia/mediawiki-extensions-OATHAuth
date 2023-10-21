@@ -89,10 +89,7 @@ class OATHUser {
 	 * @return IAuthKey|null
 	 */
 	public function getFirstKey() {
-		if ( !empty( $this->keys ) ) {
-			return $this->keys[0];
-		}
-		return null;
+		return $this->keys[0] ?? null;
 	}
 
 	/**
