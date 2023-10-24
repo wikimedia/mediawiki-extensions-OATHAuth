@@ -4,6 +4,7 @@
 			"Aftabuzzaman",
 			"Elias Ahmmad",
 			"MdsShakil",
+			"Tanbiruzzaman",
 			"Yahya",
 			"আফতাবুজ্জামান"
 		]
@@ -62,6 +63,7 @@
 	"oathauth-disable-page-title": "$1 নিষ্ক্রিয় করুন",
 	"oathauth-enable-page-title": "$1 সক্রিয় করুন",
 	"oathauth-ui-available-modules": "উপলব্ধ পদ্ধতিসমূহ",
+	"oathauth-ui-general-help": "'''বহু-ধাপের প্রমাণীকরণ''' ('''এমএফএ''') একটি প্রমাণীকরণ পদ্ধতি যেখানে একজন কম্পিউটার ব্যবহারকারীকে প্রমাণীকরণ পদ্ধতিতে সফলভাবে দুই বা ততোধিক প্রমাণ (বা কারণ) উপস্থাপন করার পরেই প্রবেশাধিকার দেওয়া হয়: জ্ঞান (এমন কিছু যা ব্যবহারকারী এবং শুধুমাত্র ব্যবহারকারীই জানে), দখল (ব্যবহারকারী এবং শুধুমাত্র ব্যবহারকারীরই আছে এমন কিছু), এবং অন্তর্নিহিততা (ব্যবহারকারী হয় এবং শুধুমাত্র ব্যবহারকারীই হয় এমন কিছু)। [https://bn.wikipedia.org/wiki/বহু-ধাপের_প্রমাণীকরণ আরও পড়ুন]",
 	"oathauth-disable-method-warning-button-label": "নিশ্চিত করছি ও অগ্রসর হোন",
 	"oathauth-invalidrequest": "অবৈধ অনুরোধ",
 	"oathauth-notifications-disable-help": "সাহায্য",
