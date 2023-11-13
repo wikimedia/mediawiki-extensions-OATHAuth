@@ -77,8 +77,8 @@
 	"notification-header-oathauth-disable": "{{GENDER:$2|あなたのアカウント}}で二段階認証が無効になりました。",
 	"notification-body-oathauth-disable": "もし{{GENDER:$2|あなた}}がこれを行わなかった場合、{{GENDER:$2|あなたのアカウント}}が侵害された可能性があります。",
 	"oathauth-notifications-disable-help": "ヘルプ",
-	"notification-body-oathauth-enabled": "もし{{GENDER:$2|あなた}}がこれを行わなかった場合、{{GENDER:$2|あなたのアカウント}}が侵害された可能性があります。",
-	"oathauth-notifications-enabled-help": "ヘルプ",
+	"notification-body-oathauth-enable": "もし{{GENDER:$2|あなた}}がこれを行わなかった場合、{{GENDER:$2|あなたのアカウント}}が侵害された可能性があります。",
+	"oathauth-notifications-enable-help": "ヘルプ",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}は二要素認証を有効化しています。",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}は二要素認証を有効化していません。"
 }
