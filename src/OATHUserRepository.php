@@ -120,7 +120,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				foreach ( $res as $row ) {
 					if ( $moduleId && $row->oat_name !== $moduleId ) {
 						// Not supported by current application-layer code.
-						throw new RuntimeException( "user {$uid} has multiple different oauth modules defined" );
+						throw new RuntimeException( "user {$uid} has multiple different oathauth modules defined" );
 					}
 
 					$moduleId = $row->oat_name;
@@ -244,7 +244,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				'clientip' => $clientInfo,
 				'oathtype' => $user->getModule()->getName(),
 			] );
-			Notifications\Manager::notifyEnabled( $user );
+			Manager::notifyEnabled( $user );
 		}
 	}
 
