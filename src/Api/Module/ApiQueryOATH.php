@@ -22,6 +22,7 @@ use ApiQuery;
 use ApiQueryBase;
 use ApiResult;
 use ManualLogEntry;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -36,12 +37,20 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @ingroup Extensions
  */
 class ApiQueryOATH extends ApiQueryBase {
+	private OATHUserRepository $oathUserRepository;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param OATHUserRepository $oathUserRepository
 	 */
-	public function __construct( $query, $moduleName ) {
+	public function __construct(
+		$query,
+		$moduleName,
+		OATHUserRepository $oathUserRepository
+	) {
 		parent::__construct( $query, $moduleName, 'oath' );
+		$this->oathUserRepository = $oathUserRepository;
 	}
 
 	public function execute() {
@@ -77,11 +86,8 @@ class ApiQueryOATH extends ApiQueryBase {
 		];
 
 		if ( !$user->isAnon() ) {
-			$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-			$authUser = $userRepo->findByUser( $user );
-			$data['enabled'] = $authUser &&
-				$authUser->getModule() !== null &&
-				$authUser->getModule()->isEnabled( $authUser );
+			$authUser = $this->oathUserRepository->findByUser( $user );
+			$data['enabled'] = $authUser && $authUser->isTwoFactorAuthEnabled();
 
 			// Log if the user doesn't have oathauth-api-all or if a reason is provided
 			if ( !$hasOAthauthApiAll || $reasonProvided ) {

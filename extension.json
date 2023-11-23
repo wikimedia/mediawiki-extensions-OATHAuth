@@ -171,7 +171,12 @@
 		"oathvalidate": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiOATHValidate"
 	},
 	"APIMetaModules": {
-		"oath": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiQueryOATH"
+		"oath": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiQueryOATH",
+			"services": [
+				"OATHUserRepository"
+			]
+		}
 	},
 	"RateLimits": {
 		"badoath": {
