@@ -154,9 +154,9 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			}
 
 			foreach ( $res as $row ) {
-				$db->update(
-					'oathauth_users',
-					[
+				$db->newUpdateQueryBuilder()
+					->update( 'oathauth_users' )
+					->set( [
 						'module' => 'totp',
 						'data' => FormatJson::encode( [
 							'keys' => [ [
@@ -164,10 +164,10 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 								'scratch_tokens' => $row->scratch_tokens
 							] ]
 						] )
-					],
-					[ 'id' => $row->id ],
-					__METHOD__
-				);
+					] )
+					->where( [ 'id' => $row->id ] )
+					->caller( __METHOD__ )
+					->execute();
 			}
 		}
 	}
@@ -197,16 +197,17 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			if ( isset( $data['keys'] ) ) {
 				continue;
 			}
-			$db->update(
-				'oathauth_users',
-				[
+
+			$db->newUpdateQueryBuilder()
+				->update( 'oathauth_users' )
+				->set( [
 					'data' => FormatJson::encode( [
 						'keys' => [ $data ]
 					] )
-				],
-				[ 'id' => $row->id ],
-				__METHOD__
-			);
+				] )
+				->where( [ 'id' => $row->id ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 
 		return true;
@@ -248,14 +249,12 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 				continue;
 			}
 
-			$db->update(
-				'oathauth_users',
-				[
-					'data' => FormatJson::encode( $data )
-				],
-				[ 'id' => $row->id ],
-				__METHOD__
-			);
+			$db->newUpdateQueryBuilder()
+				->update( 'oathauth_users' )
+				->set( [ 'data' => FormatJson::encode( $data ) ] )
+				->where( [ 'id' => $row->id ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 
 		return true;
