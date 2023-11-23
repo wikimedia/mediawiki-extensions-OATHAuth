@@ -137,17 +137,17 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 		while ( true ) {
 			$lbFactory->waitForReplication();
 
-			$res = $db->select(
-				'oathauth_users',
-				[ 'id', 'secret', 'scratch_tokens' ],
-				[
+			$res = $db->newSelectQueryBuilder()
+				->select( [ 'id', 'secret', 'scratch_tokens' ] )
+				->from( 'oathauth_users' )
+				->where( [
 					'module' => '',
 					'data IS NULL',
 					'secret IS NOT NULL'
-				],
-				__METHOD__,
-				[ 'LIMIT' => $batchSize ]
-			);
+				] )
+				->limit( $batchSize )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			if ( $res->numRows() === 0 ) {
 				return true;
@@ -185,14 +185,12 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			return true;
 		}
 
-		$res = $db->select(
-			'oathauth_users',
-			[ 'id', 'data' ],
-			[
-				'module' => 'totp'
-			],
-			__METHOD__
-		);
+		$res = $db->newSelectQueryBuilder()
+			->select( [ 'id', 'data' ] )
+			->from( 'oathauth_users' )
+			->where( [ 'module' => 'totp' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		foreach ( $res as $row ) {
 			$data = FormatJson::decode( $row->data, true );
@@ -227,14 +225,12 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			return true;
 		}
 
-		$res = $db->select(
-			'oathauth_users',
-			[ 'id', 'data' ],
-			[
-				'module' => 'totp'
-			],
-			__METHOD__
-		);
+		$res = $db->newSelectQueryBuilder()
+			->select( [ 'id', 'data' ] )
+			->from( 'oathauth_users' )
+			->where( [ 'module' => 'totp' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		foreach ( $res as $row ) {
 			$data = FormatJson::decode( $row->data, true );
