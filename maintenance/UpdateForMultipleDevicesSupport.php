@@ -103,11 +103,11 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 			}
 
 			if ( $toAdd ) {
-				$dbw->insert(
-					'oathauth_devices',
-					$toAdd,
-					__METHOD__
-				);
+				$dbw->newInsertQueryBuilder()
+					->insertInto( 'oathauth_devices' )
+					->rows( $toAdd )
+					->caller( __METHOD__ )
+					->execute();
 			}
 
 			$this->waitForReplication();

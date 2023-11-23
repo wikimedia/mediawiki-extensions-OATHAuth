@@ -130,14 +130,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
 
 		$moduleId = $this->moduleRegistry->getModuleId( $user->getModule()->getName() );
-		$rows = [];
-		foreach ( $user->getKeys() as $key ) {
-			$rows[] = [
-				'oad_user' => $userId,
-				'oad_type' => $moduleId,
-				'oad_data' => FormatJson::encode( $key->jsonSerialize() )
-			];
-		}
 
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->startAtomic( __METHOD__ );
@@ -148,11 +140,19 @@ class OATHUserRepository implements LoggerAwareInterface {
 			[ 'oad_user' => $userId ],
 			__METHOD__
 		);
-		$dbw->insert(
-			'oathauth_devices',
-			$rows,
-			__METHOD__
-		);
+
+		$insert = $dbw->newInsertQueryBuilder()
+			->insertInto( 'oathauth_devices' )
+			->caller( __METHOD__ );
+		foreach ( $user->getKeys() as $key ) {
+			$insert->row( [
+				'oad_user' => $userId,
+				'oad_type' => $moduleId,
+				'oad_data' => FormatJson::encode( $key->jsonSerialize() )
+			] );
+		}
+		$insert->execute();
+
 		$dbw->endAtomic( __METHOD__ );
 
 		$userName = $user->getUser()->getName();

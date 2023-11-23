@@ -99,14 +99,17 @@ class OATHAuthModuleRegistry {
 		);
 
 		if ( $missing ) {
-			$rows = [];
+			$insert = $this->dbProvider
+				->getPrimaryDatabase( 'virtual-oathauth' )
+				->newInsertQueryBuilder()
+				->insertInto( 'oathauth_types' )
+				->caller( __METHOD__ );
+
 			foreach ( $missing as $name ) {
-				$rows[] = [ 'oat_name' => $name ];
+				$insert->row( [ 'oat_name' => $name ] );
 			}
 
-			$this->dbProvider
-				->getPrimaryDatabase( 'virtual-oathauth' )
-				->insert( 'oathauth_types', $rows, __METHOD__ );
+			$insert->execute();
 			$this->moduleIds = $this->getModuleIdsFromDatabase( true );
 		}
 

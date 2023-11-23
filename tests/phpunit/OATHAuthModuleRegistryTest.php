@@ -33,11 +33,11 @@ class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry::getModuleIds
 	 */
 	public function testGetModuleIds() {
-		$this->db->insert(
-			'oathauth_types',
-			[ 'oat_name' => 'first' ],
-			__METHOD__
-		);
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'oathauth_types' )
+			->row( [ 'oat_name' => 'first' ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$database = $this->createMock( IConnectionProvider::class );
 		$database->method( 'getPrimaryDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->db );
