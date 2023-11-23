@@ -135,11 +135,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$dbw->startAtomic( __METHOD__ );
 
 		// TODO: only update changed rows
-		$dbw->delete(
-			'oathauth_devices',
-			[ 'oad_user' => $userId ],
-			__METHOD__
-		);
+		$dbw->newDeleteQueryBuilder()
+			->deleteFrom( 'oathauth_devices' )
+			->where( [ 'oad_user' => $userId ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$insert = $dbw->newInsertQueryBuilder()
 			->insertInto( 'oathauth_devices' )
@@ -184,11 +184,12 @@ class OATHUserRepository implements LoggerAwareInterface {
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
 		$userId = $this->centralIdLookupFactory->getLookup()
 			->centralIdFromLocalUser( $user->getUser() );
-		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )->delete(
-			'oathauth_devices',
-			[ 'oad_user' => $userId ],
-			__METHOD__
-		);
+		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
+			->newDeleteQueryBuilder()
+			->deleteFrom( 'oathauth_devices' )
+			->where( [ 'oad_user' => $userId ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$userName = $user->getUser()->getName();
 		$this->cache->delete( $userName );
