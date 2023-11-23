@@ -6,7 +6,6 @@ use ConfigException;
 use FormSpecialPage;
 use HTMLForm;
 use ManualLogEntry;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserFactory;
@@ -119,14 +118,9 @@ class VerifyOATHForUser extends FormSpecialPage {
 		}
 		$oathUser = $this->userRepo->findByUser( $user );
 
-		if ( !( $oathUser->getModule() instanceof IModule ) ||
-			!$oathUser->getModule()->isEnabled( $oathUser ) ) {
-			$result = self::OATHAUTH_NOT_ENABLED;
-		} else {
-			$result = self::OATHAUTH_IS_ENABLED;
-		}
-
-		$this->enabledStatus = $result;
+		$this->enabledStatus = $oathUser->isTwoFactorAuthEnabled()
+			? self::OATHAUTH_IS_ENABLED
+			: self::OATHAUTH_NOT_ENABLED;
 
 		// message used: logentry-oath-verify
 		$logEntry = new ManualLogEntry( 'oath', 'verify' );

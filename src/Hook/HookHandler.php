@@ -101,7 +101,7 @@ class HookHandler implements
 		// If there is no existing module for the user, and the user is not allowed to enable it,
 		// we have nothing to show.
 		if (
-			$oathUser->getModule() === null &&
+			!$oathUser->isTwoFactorAuthEnabled() &&
 			!$this->permissionManager->userHasRight( $user, 'oathauth-enable' )
 		) {
 			return true;
@@ -182,7 +182,7 @@ class HookHandler implements
 		}
 
 		$oathUser = $this->userRepo->findByUser( $user );
-		if ( $oathUser->getModule() === null ) {
+		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
 			// Not enabled, strip the groups
 			return $intersect;
 		}
