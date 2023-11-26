@@ -170,7 +170,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param array $credential
+	 * @param string $credential
 	 * @return bool
 	 * @throws ConfigException
 	 */
