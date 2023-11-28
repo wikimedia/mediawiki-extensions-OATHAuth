@@ -20,7 +20,8 @@
 			"Saimongoltinio",
 			"Serhio Magpie",
 			"Tanzun",
-			"Vlad5250"
+			"Vlad5250",
+			"Reedy"
 		]
 	},
 	"oathauth-desc": "Обеспечивает поддержку проверки подлинности с помощью HMAC на основе одноразовых паролей",
@@ -67,8 +68,8 @@
 	"oathauth-login-failed": "Не удалось выполнить проверку.",
 	"oathauth-describe-provider": "Двухфакторная аутентификация (OATH).",
 	"grant-group-authentication": "Выполнять действия, связанные с проверкой подлинности для себя и других",
-	"grant-oath": "Доступ к двухфакторной аутентификации (OAUTH) для себя и других",
-	"right-oathauth-api-all": "Запрос и проверка информации OAUTH для себя и других",
+	"grant-oath": "Доступ к двухфакторной аутентификации (OATH) для себя и других",
+	"right-oathauth-api-all": "Запрос и проверка информации OATH для себя и других",
 	"action-oathauth-api-all": "Проверить статус OATH",
 	"oathauth-user-not-found": "Не найдено участника с заданным именем",
 	"oath-log-name": "Журнал двухфакторной аутентификации",
