@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Msz2001",
 			"Rail"
 		]
 	},
@@ -21,7 +22,7 @@
 	"webauthn-error-cannot-register": "{{GENDER:$1|Użytkownik|Użytkowniczka}} „$1” nie może zarejestrować nowego poświadczenia",
 	"webauthn-error-invalid-new-key": "Nowy klucz zwrócony przed moduł nie jest wymaganego typu",
 	"webauthn-error-registration-failed": "Rejestracja nowego klucza zakończyła się niepowodzeniem",
-	"webauthn-ui-key-register-help": "Wybierz nazwę użytkownika dla swojego klucza",
+	"webauthn-ui-key-register-help": "Wybierz nazwę dla swojego klucza",
 	"webauthn-error-cannot-remove-key": "Klucz nie może zostać usunięty",
 	"webauthn-error-get-authinfo-fail": "Informacje potrzebne do uwierzytelnienia nie mogły zostać pozyskane.",
 	"oathauth-webauthn-add-key-section-name": "Zarejestruj nowy klucz WebAuthn",
