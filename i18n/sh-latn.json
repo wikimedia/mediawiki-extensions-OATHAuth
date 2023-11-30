@@ -80,5 +80,5 @@
 	"oathauth-totp-disable-warning": "Više nećete moći koristiti uređaj za autentifikaciju registrovan ovim računom. Svi pričuvni žetoni povezani sa njim biće proglašeni nevažećim.",
 	"oathauth-invalidrequest": "Nevažeći zahtjev",
 	"oathauth-notifications-disable-help": "Pomoć",
-	"oathauth-notifications-enabled-help": "Pomoć"
+	"oathauth-notifications-enable-help": "Pomoć"
 }

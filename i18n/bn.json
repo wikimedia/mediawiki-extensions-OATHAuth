@@ -67,7 +67,9 @@
 	"oathauth-disable-method-warning-button-label": "নিশ্চিত করছি ও অগ্রসর হোন",
 	"oathauth-invalidrequest": "অবৈধ অনুরোধ",
 	"oathauth-notifications-disable-help": "সাহায্য",
-	"oathauth-notifications-enabled-help": "সাহায্য",
+	"oathauth-notifications-disable-primary": "আপনার দুই ধাপের প্রমাণীকরণ সেটিং পরীক্ষা করুন",
+	"oathauth-notifications-enable-help": "সাহায্য",
+	"oathauth-notifications-enable-primary": "আপনার দুই ধাপের প্রমাণীকরণ সেটিং পরীক্ষা করুন",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} দুই-ধাপের প্রমাণীকরণ সক্রিয় করেছেন।",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}-এর দুই-ধাপের প্রমাণীকরণ সক্রিয় করা নেই।"
 }

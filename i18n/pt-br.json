@@ -9,7 +9,8 @@
 			"Luk3",
 			"Tark",
 			"TheEduGobi",
-			"YuriNikolai"
+			"YuriNikolai",
+			"Re demz"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",
@@ -96,9 +97,9 @@
 	"notification-body-oathauth-disable": "Se {{GENDER:$2|você}} não fez isso, {{GENDER:$2|sua conta}} pode ter sido comprometida.",
 	"notification-body-oathauth-disable-other": "Se {{GENDER:$2|você}} não solicitou isso, entre em contato com um administrador.",
 	"oathauth-notifications-disable-help": "Ajuda",
-	"notification-header-oathauth-enabled": "A autenticação de dois fatores foi ativada em {{GENDER:$2|sua conta}}.",
-	"notification-body-oathauth-enabled": "Se {{GENDER:$2|você}} não fez isso, sua conta pode ter sido comprometida.",
-	"oathauth-notifications-enabled-help": "Ajuda",
+	"notification-header-oathauth-enable": "A autenticação de dois fatores foi ativada em {{GENDER:$2|sua conta}}.",
+	"notification-body-oathauth-enable": "Se {{GENDER:$2|você}} não fez isso, sua conta pode ter sido comprometida.",
+	"oathauth-notifications-enable-help": "Ajuda",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} possui autenticação de dois fatores ativada.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} não possui autenticação de dois fatores ativada.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desativado|Grupos desativados}}:",

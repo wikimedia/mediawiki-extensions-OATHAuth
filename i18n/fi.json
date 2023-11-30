@@ -69,5 +69,5 @@
 	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
 	"oathauth-disable-method-warning-button-label": "Vahvista ja jatka",
 	"oathauth-notifications-disable-help": "Ohje",
-	"oathauth-notifications-enabled-help": "Ohje"
+	"oathauth-notifications-enable-help": "Ohje"
 }
