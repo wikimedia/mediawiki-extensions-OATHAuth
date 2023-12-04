@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"webauthn-desc": "Zagotavlja avtentikacijsko podporo s protokolom WebAuthn",
@@ -16,9 +17,9 @@
 	"oathauth-webauthn-registered-keys-section-name": "Registrirani ključi",
 	"webuathn-ui-remove-key": "Odstrani",
 	"webauthn-error-module-not-enabled": "Modul »$1« za {{GENDER:$2|uporabnika »$2«|uporabnico »$2«|uporabnika_co »$2«}} ni vklopljen",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Uporabnik »$1«|Uporabnica »$1«|Uporabnik_ca »$1«}} ima modul WebAuthn vklopljen, vendar je nastavljen neveljaven ključ",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Uporabnik »$1«|Uporabnica »$1«|Uporabnik/ca »$1«}} ima modul WebAuthn vklopljen, vendar je nastavljen neveljaven ključ",
 	"webauthn-error-verification-failed": "Preverjanje ni uspelo",
-	"webauthn-error-cannot-register": "{{GENDER:$1|Uporabnik »$1«|Uporabnica »$1«|Uporabnik_ca »$1«}} ne more registrirati nove poverilnice",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Uporabnik »$1«|Uporabnica »$1«|Uporabnik/ca »$1«}} ne more registrirati nove poverilnice",
 	"webauthn-error-invalid-new-key": "Novi ključ, ki ga vrne modul, ni zahtevane vrste",
 	"webauthn-error-registration-failed": "Registracija novega ključa ni uspela",
 	"webauthn-ui-key-register-help": "Izberite vzdevek za svoj ključ",
