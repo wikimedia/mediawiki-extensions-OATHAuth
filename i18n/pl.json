@@ -8,7 +8,9 @@
 			"Railfail536",
 			"WTM",
 			"Ostrzyciel",
-			"Jdx"
+			"Jdx",
+			"Nux",
+			"WaldiSt"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC",
@@ -65,7 +67,7 @@
 	"logentry-oath-verify": "$1 {{GENDER:$2|sprawdził|sprawdziła}} czy $3 ma włączone uwierzytelnianie dwuskładnikowe",
 	"oathauth-ui-no-module": "Nie włączono",
 	"oathauth-module-invalid": "Zarejestrowany przez użytkownika moduł OATHAuth jest nieprawidłowy.",
-	"oathauth-module-totp-label": "TOTP (oparte na czasie hasło jednorazowe)",
+	"oathauth-module-totp-label": "TOTP (ograniczone czasowo hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",
 	"oathmanage": "Zarządzanie uwierzytelnianiem dwuskładnikowym",
 	"oathauth-ui-not-enabled-modules": "Przełącz na metodę alternatywną",
