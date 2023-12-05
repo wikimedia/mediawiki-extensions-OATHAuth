@@ -2,13 +2,39 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
+			"McDutchie",
 			"Romaine"
 		]
 	},
+	"webauthn-desc": "Biedt ondersteuning voor authenticatie met behulp van het protocol WebAuthn",
 	"webauthn-module-label": "Webauthenticatie (WebAuthn)",
+	"webauthn-ui-login-prompt": "Raak uw verificatieapparaat aan of volg de instructies van de browser",
+	"webauthn-ui-add-key": "Sleutel toevoegen",
+	"webauthn-error-browser-unsupported": "Deze browser ondersteunt geen WebAuthenticatie of is niet beschikbaar voor deze website. Probeer het met een andere browser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Lees meer]",
+	"webauthn-error-browser-unsupported-console": "Deze browser ondersteunt geen WebAuthenticatie of is niet beschikbaar voor deze website",
+	"webauthn-error-auth-generic": "Het authenticatieproces is onderbroken. Start het authenticatieproces opnieuw",
+	"webauthn-error-reg-generic": "Kan uw sleutel niet verifiëren. Start het registratieproces opnieuw",
+	"webauthn-key-type-missmatch": "Gebruiker heeft sleutels van meerdere typen geregistreerd",
+	"oathauth-webauthn-registered-keys-section-name": "Geregistreerde sleutels",
 	"webuathn-ui-remove-key": "Verwijderen",
 	"webauthn-error-module-not-enabled": "Module \"$1\" is niet ingeschakeld voor {{GENDER:$2|gebruiker \"$2\"}}",
+	"webauthn-error-invalid-key": "{{GENDER:$1|Gebruiker “$1”}} heeft de module WebAuthn ingeschakeld, maar er is een ongeldige sleutel ingesteld",
+	"webauthn-error-verification-failed": "Verificatie mislukt",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Gebruiker “$1”}} kan geen nieuwe aanmeldgegevens registreren",
+	"webauthn-error-invalid-new-key": "De nieuwe sleutel die door de module wordt geretourneerd, is niet van het vereiste type",
+	"webauthn-error-registration-failed": "Registratie nieuwe sleutel mislukt",
+	"webauthn-ui-key-register-help": "Kies de bijnaam voor uw sleutel",
+	"webauthn-error-cannot-remove-key": "Sleutel kan niet worden verwijderd",
+	"webauthn-error-get-authinfo-fail": "De authenticatie-informatie kon niet worden opgevraagd.",
+	"oathauth-webauthn-add-key-section-name": "Een nieuwe WebAuthn-sleutel registreren",
+	"oathauth-webauthn-disable-section-name": "WebAuthn uitschakelen",
+	"webauthn-error-get-reginfo-fail": "De registratiegegevens kon niet worden opgevraagd.",
+	"webauthn-ui-disable-prompt": "Raak uw verificatieapparaat aan of volg de instructies van de browser om het uitschakelen van WebAuthenticatie te bevestigen",
+	"webauthn-error-max-keys-reached": "Er {{PLURAL:$1|kan niet meer dan één sleutel|kunnen niet meer dan $1 sleutels}} worden geregistreerd",
 	"webauthn-module-description": "WebAuthn (Webauthenticatie) is een internetstandaard gepubliceerd door het World Wide Web Consortium (W3C). WebAuthn is een kerncomponent van het FIDO2-project onder begeleiding van de FIDO Alliance. Het doel van het project is om een interface te standaardiseren voor het authenticeren van gebruikers bij web-gebaseerde applicaties en diensten met behulp van public-key-cryptografie. [https://en.wikipedia.org/wiki/WebAuthn Lees meer]",
 	"webauthn-ui-reload-page-label": "Pagina opnieuw laden",
-	"webauthn-authentication-info-label": "Authenticatiegegevens"
+	"webauthn-authentication-info-label": "Authenticatiegegevens",
+	"webauthn-authentication-info-help": "Authenticatiegegevens worden doorgegeven aan de cliënt voor het ophalen van referenties",
+	"webauthn-credential-label": "Aanmeldgegevens gebruiker",
+	"webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens"
 }
