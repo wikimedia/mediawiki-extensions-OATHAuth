@@ -191,9 +191,12 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		}
 
 		$this->getRequest()->setSessionData( 'oathauth_totp_key', null );
-		$this->oathUser->setKeys( [ $key ] );
-		$this->oathUser->setModule( $this->module );
-		$this->oathRepo->persist( $this->oathUser, $this->getRequest()->getIP() );
+		$this->oathRepo->createKey(
+			$this->oathUser,
+			$this->module,
+			$key->jsonSerialize(),
+			$this->getRequest()->getIP()
+		);
 
 		return true;
 	}

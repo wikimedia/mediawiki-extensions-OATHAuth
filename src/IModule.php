@@ -9,7 +9,7 @@ use Message;
 
 interface IModule {
 	/**
-	 * Name of the module
+	 * Name of the module, as declared in the OATHAuth.Modules extension.json attribute.
 	 *
 	 * @return string
 	 */
