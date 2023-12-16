@@ -18,6 +18,8 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
+use InvalidArgumentException;
+use ReflectionClass;
 use User;
 
 /**
@@ -119,10 +121,7 @@ class OATHUser {
 	 * @param IAuthKey $key
 	 */
 	public function addKey( IAuthKey $key ) {
-		if ( !$this->keyTypeCorrect( $key ) ) {
-			return;
-		}
-
+		$this->checkKeyTypeCorrect( $key );
 		$this->keys[] = $key;
 	}
 
@@ -161,16 +160,19 @@ class OATHUser {
 
 	/**
 	 * All keys set for the user must be of the same type
-	 *
 	 * @param IAuthKey $key
-	 * @return bool
 	 */
-	private function keyTypeCorrect( IAuthKey $key ) {
+	private function checkKeyTypeCorrect( IAuthKey $key ): void {
+		$newKeyClass = get_class( $key );
 		foreach ( $this->keys as $keyToTest ) {
-			if ( get_class( $keyToTest ) !== get_class( $key ) ) {
-				return false;
+			if ( get_class( $keyToTest ) !== $newKeyClass ) {
+				$first = ( new ReflectionClass( $keyToTest ) )->getShortName();
+				$second = ( new ReflectionClass( $key ) )->getShortName();
+
+				throw new InvalidArgumentException(
+					"User already has a key from a different two-factor module enabled ($first !== $second)"
+				);
 			}
 		}
-		return true;
 	}
 }
