@@ -3,6 +3,11 @@
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use ConfigException;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
+use Endroid\QrCode\Writer\SvgWriter;
 use Html;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Logger\LoggerFactory;
@@ -15,7 +20,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 * @return string
 	 */
 	public function getHTML( $submitResult ) {
-		$this->getOutput()->addModules( 'ext.oath.totp.showqrcode' );
 		$this->getOutput()->addModuleStyles( 'ext.oath.totp.showqrcode.styles' );
 
 		return parent::getHTML( $submitResult );
@@ -51,13 +55,16 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			. "&issuer="
 			. rawurlencode( $this->oathUser->getIssuer() );
 
-		$qrcodeElement = Html::element( 'div', [
-			'data-mw-qrcode-url' => $qrcodeUrl,
-			'class' => 'mw-display-qrcode',
-			// Include width/height, so js won't re-arrange layout
-			// And non-js users will have this hidden with CSS
-			'style' => 'width: 256px; height: 256px;'
-		] );
+		$qrCode = Builder::create()
+			->writer( new SvgWriter() )
+			->writerOptions( [ SvgWriter::WRITER_OPTION_EXCLUDE_XML_DECLARATION => true ] )
+			->data( $qrcodeUrl )
+			->encoding( new Encoding( 'UTF-8' ) )
+			->errorCorrectionLevel( new ErrorCorrectionLevelHigh() )
+			->roundBlockSizeMode( new RoundBlockSizeModeNone() )
+			->size( 256 )
+			->margin( 0 )
+			->build();
 
 		return [
 			'app' => [
@@ -68,7 +75,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			],
 			'qrcode' => [
 				'type' => 'info',
-				'default' => $qrcodeElement,
+				'default' => $qrCode->getString(),
 				'raw' => true,
 				'section' => 'step2',
 			],
