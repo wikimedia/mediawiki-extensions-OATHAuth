@@ -114,5 +114,6 @@
 	"oathauth-verify-enabled": "Notice that a user has 2FA enabled, shown on success at [[Special:VerifyOATHForUser]].\n$1 - Name of user",
 	"oathauth-verify-disabled": "Notice that a user does not have 2FA enabled, shown on success at [[Special:VerifyOATHForUser]].\n$1 - Name of user",
 	"oathauth-prefs-disabledgroups": "Label on Special:Preferences for groups in which the user's membership has been disabled for a lack of two-factor authentication.\n$1 - Number of groups",
-	"oathauth-prefs-disabledgroups-help": "Help message shown on Special:Preferences for the {{mw-msg|oathauth-prefs-disabledgroups}} field.\n$1 - Number of groups\n$2 - User name for GENDER"
+	"oathauth-prefs-disabledgroups-help": "Help message shown on Special:Preferences for the {{mw-msg|oathauth-prefs-disabledgroups}} field.\n$1 - Number of groups\n$2 - User name for GENDER",
+	"oathauth-qrcode-alt": "Accessibility label for the QR code image shown to users when enabling the TOTP on the [[Special:OATHManage]] page."
 }
