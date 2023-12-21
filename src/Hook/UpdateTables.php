@@ -8,7 +8,7 @@ use FormatJson;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\IMaintainableDatabase;
+use Wikimedia\Rdbms\IDatabase;
 
 class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
@@ -20,9 +20,8 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 		$baseDir = dirname( __DIR__, 2 );
 		$typePath = "$baseDir/sql/$type";
 
-		$updater->addExtensionTable(
-			'oathauth_types',
-			"$typePath/tables-generated.sql"
+		$updater->addExtensionUpdateOnVirtualDomain(
+			[ 'virtual-oathauth', 'addTable', 'oathauth_types', "$typePath/tables-generated.sql", true ]
 		);
 
 		// If the old table exists, ensure it's up-to-date so the migration
@@ -40,10 +39,13 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
 				case 'postgres':
 					// 1.38
-					$updater->modifyExtensionTable(
+					$updater->addExtensionUpdateOnVirtualDomain( [
+						'virtual-oathauth',
+						'modifyTable',
 						'oathauth_users',
-						"$typePath/patch-oathauth_users-drop-oathauth_users_id_seq.sql"
-					);
+						"$typePath/patch-oathauth_users-drop-oathauth_users_id_seq.sql",
+						true
+					] );
 					break;
 			}
 
@@ -52,22 +54,16 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 				UpdateForMultipleDevicesSupport::class,
 				"$baseDir/maintenance/UpdateForMultipleDevicesSupport.php"
 			] );
-
-			$updater->dropExtensionTable( 'oathauth_users' );
+			$updater->addExtensionUpdateOnVirtualDomain( [ 'virtual-oathauth', 'dropTable', 'oathauth_users' ] );
 		}
 
 		// add new updates here
 	}
 
-	/**
-	 * @return IMaintainableDatabase
-	 */
-	private static function getDatabase() {
-		$db = MediaWikiServices::getInstance()
+	private static function getDatabase(): IDatabase {
+		return MediaWikiServices::getInstance()
 			->getDBLoadBalancerFactory()
 			->getPrimaryDatabase( 'virtual-oathauth' );
-		'@phan-var IMaintainableDatabase $db';
-		return $db;
 	}
 
 	/**
@@ -90,11 +86,6 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	 */
 	public static function switchTOTPScratchTokensToArray() {
 		$db = self::getDatabase();
-
-		if ( !$db->fieldExists( 'oathauth_users', 'data' ) ) {
-			return true;
-		}
-
 		$res = $db->newSelectQueryBuilder()
 			->select( [ 'id', 'data' ] )
 			->from( 'oathauth_users' )
