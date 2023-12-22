@@ -32,6 +32,9 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+/**
+ * Merged December 2020; part of REL1_36
+ */
 class UpdateTOTPScratchTokensToArray extends Maintenance {
 	public function __construct() {
 		parent::__construct();

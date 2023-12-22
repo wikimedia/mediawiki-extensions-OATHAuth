@@ -31,26 +31,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			switch ( $type ) {
 				case 'mysql':
 				case 'sqlite':
-					// 1.34
-					$updater->addExtensionField(
-						'oathauth_users',
-						'module',
-						"$typePath/patch-add_generic_fields.sql"
-					);
-
-					$updater->addExtensionUpdate(
-						[ [ __CLASS__, 'schemaUpdateSubstituteForGenericFields' ] ]
-					);
-					$updater->dropExtensionField(
-						'oathauth_users',
-						'secret',
-						"$typePath/patch-remove_module_specific_fields.sql"
-					);
-
-					$updater->addExtensionUpdate(
-						[ [ __CLASS__, 'schemaUpdateTOTPToMultipleKeys' ] ]
-					);
-
+					// 1.36
 					$updater->addExtensionUpdate(
 						[ [ __CLASS__, 'schemaUpdateTOTPScratchTokensToArray' ] ]
 					);
@@ -90,26 +71,6 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	}
 
 	/**
-	 * Helper function for converting old, TOTP specific, column values to new structure
-	 * @param DatabaseUpdater $updater
-	 * @return bool
-	 * @throws ConfigException
-	 */
-	public static function schemaUpdateSubstituteForGenericFields( DatabaseUpdater $updater ) {
-		return self::convertToGenericFields();
-	}
-
-	/**
-	 * Helper function for converting single TOTP keys to the multi-key system
-	 * @param DatabaseUpdater $updater
-	 * @return bool
-	 * @throws ConfigException
-	 */
-	public static function schemaUpdateTOTPToMultipleKeys( DatabaseUpdater $updater ) {
-		return self::switchTOTPToMultipleKeys();
-	}
-
-	/**
 	 * Helper function for converting single TOTP keys to the multi-key system
 	 * @param DatabaseUpdater $updater
 	 * @return bool
@@ -120,101 +81,9 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 	}
 
 	/**
-	 * Converts old, TOTP specific, column values to a newer structure
-	 * @return bool
-	 * @throws ConfigException
-	 */
-	public static function convertToGenericFields() {
-		$db = self::getDatabase();
-
-		if ( !$db->fieldExists( 'oathauth_users', 'secret', __METHOD__ ) ) {
-			return true;
-		}
-
-		$services = MediaWikiServices::getInstance();
-		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
-		$lbFactory = $services->getDBLoadBalancerFactory();
-		while ( true ) {
-			$lbFactory->waitForReplication();
-
-			$res = $db->newSelectQueryBuilder()
-				->select( [ 'id', 'secret', 'scratch_tokens' ] )
-				->from( 'oathauth_users' )
-				->where( [
-					'module' => '',
-					'data IS NULL',
-					'secret IS NOT NULL'
-				] )
-				->limit( $batchSize )
-				->caller( __METHOD__ )
-				->fetchResultSet();
-
-			if ( $res->numRows() === 0 ) {
-				return true;
-			}
-
-			foreach ( $res as $row ) {
-				$db->newUpdateQueryBuilder()
-					->update( 'oathauth_users' )
-					->set( [
-						'module' => 'totp',
-						'data' => FormatJson::encode( [
-							'keys' => [ [
-								'secret' => $row->secret,
-								'scratch_tokens' => $row->scratch_tokens
-							] ]
-						] )
-					] )
-					->where( [ 'id' => $row->id ] )
-					->caller( __METHOD__ )
-					->execute();
-			}
-		}
-	}
-
-	/**
-	 * Switch from using single keys to multi-key support
-	 *
-	 * @return bool
-	 * @throws ConfigException
-	 */
-	public static function switchTOTPToMultipleKeys() {
-		$db = self::getDatabase();
-
-		if ( !$db->fieldExists( 'oathauth_users', 'data', __METHOD__ ) ) {
-			return true;
-		}
-
-		$res = $db->newSelectQueryBuilder()
-			->select( [ 'id', 'data' ] )
-			->from( 'oathauth_users' )
-			->where( [ 'module' => 'totp' ] )
-			->caller( __METHOD__ )
-			->fetchResultSet();
-
-		foreach ( $res as $row ) {
-			$data = FormatJson::decode( $row->data, true );
-			if ( isset( $data['keys'] ) ) {
-				continue;
-			}
-
-			$db->newUpdateQueryBuilder()
-				->update( 'oathauth_users' )
-				->set( [
-					'data' => FormatJson::encode( [
-						'keys' => [ $data ]
-					] )
-				] )
-				->where( [ 'id' => $row->id ] )
-				->caller( __METHOD__ )
-				->execute();
-		}
-
-		return true;
-	}
-
-	/**
 	 * Switch scratch tokens from string to an array
+	 *
+	 * @since 1.36
 	 *
 	 * @return bool
 	 * @throws ConfigException
