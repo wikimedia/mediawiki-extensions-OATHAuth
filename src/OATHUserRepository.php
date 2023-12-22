@@ -21,6 +21,7 @@ namespace MediaWiki\Extension\OATHAuth;
 use BagOStuff;
 use ConfigException;
 use FormatJson;
+use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MWException;
@@ -174,6 +175,57 @@ class OATHUserRepository implements LoggerAwareInterface {
 			] );
 			Manager::notifyEnabled( $user );
 		}
+	}
+
+	/**
+	 * Persists the given OAuth key in the database.
+	 *
+	 * @param OATHUser $user
+	 * @param IModule $module
+	 * @param array $keyData
+	 * @param string $clientInfo
+	 * @return IAuthKey
+	 */
+	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
+		if ( $user->getModule() && $user->getModule()->getName() !== $module->getName() ) {
+			throw new InvalidArgumentException(
+				"User already has a key from a different module enabled ({$user->getModule()->getName()})"
+			);
+		}
+
+		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
+		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
+
+		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'oathauth_devices' )
+			->row( [
+				'oad_user' => $userId,
+				'oad_type' => $moduleId,
+				'oad_data' => FormatJson::encode( $keyData ),
+			] )
+			->caller( __METHOD__ )
+			->execute();
+		$id = $dbw->insertId();
+
+		$hasExistingKey = $user->isTwoFactorAuthEnabled();
+
+		$key = $module->newKey( $keyData );
+		$user->addKey( $key );
+
+		$this->logger->info( 'OATHAuth {oathtype} key {key} added for {user} from {clientip}', [
+			'key' => $id,
+			'user' => $user->getUser()->getName(),
+			'clientip' => $clientInfo,
+			'oathtype' => $module->getName(),
+		] );
+
+		if ( !$hasExistingKey ) {
+			$user->setModule( $module );
+			Manager::notifyEnabled( $user );
+		}
+
+		return $key;
 	}
 
 	/**
