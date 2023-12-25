@@ -155,17 +155,12 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws ConfigException
 	 */
 	private function removeKey( $key ) {
-		$removed = $this->module->removeKeyByFriendlyName( $key, $this->oathUser );
-		if ( !$removed ) {
+		$key = $this->module->getKeyByFriendlyName( $key, $this->oathUser );
+		if ( !$key ) {
 			return [ 'webauthn-error-cannot-remove-key' ];
 		}
 
-		if ( $this->oathUser->getFirstKey() === null ) {
-			// User removed all keys
-			$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP(), true );
-		} else {
-			$this->oathRepo->persist( $this->oathUser, $this->getRequest()->getIP() );
-		}
+		$this->oathRepo->removeKey( $this->oathUser, $key, $this->getRequest()->getIP(), true );
 		return true;
 	}
 

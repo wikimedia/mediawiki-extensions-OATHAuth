@@ -135,26 +135,25 @@ class WebAuthn implements IModule {
 	}
 
 	/**
-	 * Remove single key by its friendly name.
-	 *
-	 * This will just make changes in memory, not persist them!
+	 * Get a single key by its name.
 	 *
 	 * @param string $name
 	 * @param OATHUser $user
 	 *
-	 * @return bool
+	 * @return WebAuthnKey|null
 	 */
-	public function removeKeyByFriendlyName( $name, $user ) {
-		$keys = $user->getKeys();
-		$newKeys = array_filter( $keys, static function ( $key ) use ( $name ) {
+	public function getKeyByFriendlyName( string $name, OATHUser $user ): ?WebAuthnKey {
+		foreach ( $user->getKeys() as $key ) {
 			if ( !( $key instanceof WebAuthnKey ) ) {
-				return false;
+				continue;
 			}
-			return $key->getFriendlyName() !== $name;
-		} );
 
-		$user->setKeys( $newKeys );
-		return $newKeys !== $keys;
+			if ( $key->getFriendlyName() === $name ) {
+				return $key;
+			}
+		}
+
+		return null;
 	}
 
 	/**
