@@ -253,6 +253,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'clientip' => $clientInfo,
 			'oathtype' => $user->getModule()->getName(),
 		] );
+
 		Manager::notifyDisabled( $user, $self );
 	}
 }

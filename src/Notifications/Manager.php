@@ -55,6 +55,7 @@ class Manager {
 			'agent' => $oUser->getUser(),
 			'extra' => [
 				'self' => $self,
+				'activeDevices' => count( $oUser->getKeys() ),
 			]
 		] );
 	}
@@ -71,7 +72,10 @@ class Manager {
 		Event::create( [
 			'type' => 'oathauth-enable',
 			'title' => SpecialPage::getTitleFor( 'Preferences' ),
-			'agent' => $oUser->getUser()
+			'agent' => $oUser->getUser(),
+			'extra' => [
+				'activeDevices' => count( $oUser->getKeys() ),
+			],
 		] );
 	}
 }
