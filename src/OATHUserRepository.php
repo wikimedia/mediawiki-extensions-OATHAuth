@@ -243,6 +243,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
+		$user->disable();
+
 		$userName = $user->getUser()->getName();
 		$this->cache->delete( $userName );
 

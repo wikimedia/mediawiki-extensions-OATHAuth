@@ -141,7 +141,6 @@ class DisableOATHForUser extends FormSpecialPage {
 		}
 
 		$this->userRepo->remove( $oathUser, $this->getRequest()->getIP(), false );
-		$oathUser->disable();
 
 		// message used: logentry-oath-disable-other
 		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
