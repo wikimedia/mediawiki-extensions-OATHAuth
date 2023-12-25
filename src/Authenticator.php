@@ -323,9 +323,14 @@ class Authenticator {
 				if ( !$this->oathUser->getModule() instanceof WebAuthn ) {
 					$this->oathUser->clearAllKeys();
 				}
-				$this->oathUser->setModule( $this->module );
-				$this->oathUser->addKey( $key );
-				$this->userRepo->persist( $this->oathUser, $this->request->getIP() );
+
+				$this->userRepo->createKey(
+					$this->oathUser,
+					$this->module,
+					$key->jsonSerialize(),
+					$this->request->getIP()
+				);
+
 				$this->clearSessionData();
 				return Status::newGood();
 			}
