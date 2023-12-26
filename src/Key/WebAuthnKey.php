@@ -68,6 +68,9 @@ class WebAuthnKey implements IAuthKey {
 	private const MODE_CREATE = 'webauthn.create';
 	private const MODE_AUTHENTICATE = 'webauthn.authenticate';
 
+	/** @var int|null */
+	private ?int $id;
+
 	/**
 	 * User handle represents unique ID of the user.
 	 *
@@ -136,6 +139,7 @@ class WebAuthnKey implements IAuthKey {
 	 */
 	public static function newKey() {
 		return new static(
+			null,
 			static::MODE_CREATE,
 			RequestContext::getMain()
 		);
@@ -151,6 +155,7 @@ class WebAuthnKey implements IAuthKey {
 	 */
 	public static function newFromData( $data ) {
 		$key = new static(
+			$data['id'] ?? null,
 			static::MODE_AUTHENTICATE,
 			RequestContext::getMain()
 		);
@@ -159,10 +164,12 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	/**
+	 * @param int|null $id
 	 * @param string $mode
 	 * @param RequestContext $context
 	 */
-	protected function __construct( $mode, $context ) {
+	protected function __construct( ?int $id, $mode, $context ) {
+		$this->id = $id;
 		$this->mode = $mode;
 		$this->context = $context;
 
@@ -208,6 +215,13 @@ class WebAuthnKey implements IAuthKey {
 			base64_decode( $data['publicKeyCredentialId'] ),
 			base64_decode( $data['credentialPublicKey'] )
 		);
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getId(): ?int {
+		return $this->id;
 	}
 
 	/**
