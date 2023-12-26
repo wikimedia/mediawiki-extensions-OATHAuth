@@ -41,13 +41,15 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 		}
 
 		$secret = $key->getSecret();
-		$label = "{$this->oathUser->getIssuer()}:{$this->oathUser->getAccount()}";
+		$issuer = $this->oathUser->getIssuer();
+		$account = $this->oathUser->getAccount();
+		$label = "{$issuer}:{$account}";
 		$qrcodeUrl = "otpauth://totp/"
 			. rawurlencode( $label )
 			. "?secret="
 			. rawurlencode( $secret )
 			. "&issuer="
-			. rawurlencode( $this->oathUser->getIssuer() );
+			. rawurlencode( $issuer );
 
 		$qrcodeElement = Html::element( 'div', [
 			'data-mw-qrcode-url' => $qrcodeUrl,
@@ -56,6 +58,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 			// And non-js users will have this hidden with CSS
 			'style' => 'width: 256px; height: 256px;'
 		] );
+
+		$prefix = $this->getConfig()->get( 'OATHAuthAccountPrefix' );
 
 		return [
 			'app' => [
@@ -75,7 +79,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 				'label-message' => 'oathauth-step2alt',
 				'default' =>
 					'<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br/>'
-					. htmlspecialchars( $this->oathUser->getAccount() ) . '<br/><br/>'
+					. htmlspecialchars( $label ) . '<br/><br/>'
 					. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br/>'
 					. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd><br/>',
 				'raw' => true,
