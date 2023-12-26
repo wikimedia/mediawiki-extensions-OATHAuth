@@ -22,7 +22,7 @@
 	"oathauth-disabledoath": "Disabled two-factor authentication.",
 	"oathauth-prefs-label": "Two-factor authentication:",
 	"oathauth-step1": "Step 1: Download a two-factor authentication program",
-	"oathauth-step1-test": "Download a program for two-factor authentication. That can be a mobile application (such as Google Authenticator) or a desktop application.",
+	"oathauth-step1-test": "Download a program for two-factor authentication. That can be a mobile or desktop application, such as [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator] or [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator]. A browser extension. Or a password manager such as [https://1password.com/ 1Password].",
 	"oathauth-step2": "Step 2: Scan the QR code",
 	"oathauth-step2-qrcode": "Scan the QR code using the application or browser extension you downloaded in step 1 for two-factor authentication.",
 	"oathauth-step2alt": "If you are unable to scan the QR code, enter the secret key and account name manually:",
