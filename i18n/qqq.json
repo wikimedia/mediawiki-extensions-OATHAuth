@@ -39,7 +39,7 @@
 	"oathauth-step1": "Label for step 1 on Special:OATH form",
 	"oathauth-step1-test": "Text for step 1 on Special:OATH for. Check the name of \"Google Authenticator\" in your language in the Play Market—it may be translated.\n\nThis message is not parsed, so don't add formatting or links.",
 	"oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
-	"oathauth-step2alt": "Label for information on how to manually do step 2 on Special:OATH",
+	"oathauth-step2alt": "Label for information on how to manually (if you are unable to scan/use the QR code) do step 2 on Special:OATH",
 	"oathauth-step3": "Label for step 3 information on Special:OATH",
 	"oathauth-step4": "Label for step 4 information on Special:OATH",
 	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token",
