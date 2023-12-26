@@ -24,6 +24,7 @@
 	"oathauth-step1": "Step 1: Download a two-factor authentication program",
 	"oathauth-step1-test": "Download a program for two-factor authentication. That can be a mobile application (such as Google Authenticator) or a desktop application.",
 	"oathauth-step2": "Step 2: Scan the QR code",
+	"oathauth-step2-qrcode": "Scan the QR code using the application or browser extension you downloaded in step 1 for two-factor authentication.",
 	"oathauth-step2alt": "If you are unable to scan the QR code, enter the secret key and account name manually:",
 	"oathauth-step3": "Step 3: Write down the scratch codes",
 	"oathauth-step4": "Step 4: Verification",
