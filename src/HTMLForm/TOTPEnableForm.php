@@ -102,7 +102,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
-					$this->msg( 'oathauth-scratchtokens' )->parse()
+					'<strong>' . $this->msg( 'oathauth-scratchtokens-important' )->escaped() . '</strong><br/>'
+					. $this->msg( 'oathauth-scratchtokens' )->parse()
 					. $this->createResourceList( $this->getScratchTokensForDisplay( $key ) ),
 				'raw' => true,
 				'section' => 'step3',
