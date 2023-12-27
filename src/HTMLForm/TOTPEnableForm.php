@@ -47,13 +47,15 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		}
 
 		$secret = $key->getSecret();
-		$label = "{$this->oathUser->getIssuer()}:{$this->oathUser->getAccount()}";
+		$issuer = $this->oathUser->getIssuer();
+		$account = $this->oathUser->getAccount();
+		$label = "{$issuer}:{$account}";
 		$qrcodeUrl = "otpauth://totp/"
 			. rawurlencode( $label )
 			. "?secret="
 			. rawurlencode( $secret )
 			. "&issuer="
-			. rawurlencode( $this->oathUser->getIssuer() );
+			. rawurlencode( $issuer );
 
 		$qrCode = Builder::create()
 			->writer( new SvgWriter() )
@@ -65,6 +67,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->size( 256 )
 			->margin( 0 )
 			->build();
+
+		$prefix = $this->getConfig()->get( 'OATHAuthAccountPrefix' );
 
 		return [
 			'app' => [
@@ -89,7 +93,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 				'label-message' => 'oathauth-step2alt',
 				'default' =>
 					'<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br/>'
-					. htmlspecialchars( $this->oathUser->getAccount() ) . '<br/><br/>'
+					. htmlspecialchars( $label ) . '<br/><br/>'
 					. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br/>'
 					. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd><br/>',
 				'raw' => true,
