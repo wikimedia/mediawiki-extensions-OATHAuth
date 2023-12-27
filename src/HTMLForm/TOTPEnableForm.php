@@ -59,8 +59,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 			'style' => 'width: 256px; height: 256px;'
 		] );
 
-		$prefix = $this->getConfig()->get( 'OATHAuthAccountPrefix' );
-
 		return [
 			'app' => [
 				'type' => 'info',
