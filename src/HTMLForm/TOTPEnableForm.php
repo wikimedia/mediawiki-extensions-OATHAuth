@@ -130,7 +130,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	}
 
 	/**
-	 * Retrieve current scratch tokens for display purposes
+	 * Retrieve current recovery codes for display purposes
 	 *
 	 * The characters of the token are split in groups of 4
 	 *
@@ -142,7 +142,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 	}
 
 	/**
-	 * Formats a key or scratch token by creating groups of 4 separated by space characters
+	 * Formats a key or recovery code by creating groups of 4 separated by space characters
 	 *
 	 * @param string $token Token to format
 	 * @return string The token formatted for display
@@ -165,9 +165,9 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 		}
 
 		if ( $key->isScratchToken( $formData['token'] ) ) {
-			// A scratch token is not allowed for enrollment
+			// A scratch/recovery token is not allowed for enrollment
 			LoggerFactory::getInstance( 'authentication' )->info(
-				'OATHAuth {user} attempted to enable 2FA using a scratch token from {clientip}', [
+				'OATHAuth {user} attempted to enable 2FA using a recovery token from {clientip}', [
 					'user' => $this->getUser()->getName(),
 					'clientip' => $this->getRequest()->getIP(),
 				]
