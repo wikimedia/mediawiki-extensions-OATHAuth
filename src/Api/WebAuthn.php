@@ -100,32 +100,24 @@ class WebAuthn extends ApiBase {
 
 	/**
 	 * @param string $func
-	 * @return array
+	 * @throws ApiUsageException
 	 */
-	protected function getFunctionPermissions( $func ) {
+	protected function checkPermissions( string $func ): void {
 		$registered = $this->getRegisteredFunctions();
 		$functionConfig = $registered[$func];
 
-		return $functionConfig['permissions'];
-	}
-
-	/**
-	 * @param string $func
-	 * @throws ApiUsageException
-	 */
-	protected function checkPermissions( $func ) {
-		$funcPermissions = $this->getFunctionPermissions( $func );
-		if ( !$funcPermissions ) {
-			return;
-		}
-		$mustBeLoggedIn = $funcPermissions['mustBeLoggedIn'];
+		$mustBeLoggedIn = $functionConfig['mustBeLoggedIn'];
 		if ( $mustBeLoggedIn === true ) {
 			$user = $this->getUser();
 			if ( !$user->isRegistered() ) {
-				$this->dieWithError( 'apierror-mustbeloggedin' );
+				$this->dieWithError( [ 'apierror-mustbeloggedin', $this->msg( 'action-oathauth-enable' ) ] );
 			}
 		}
-		$this->checkUserRightsAny( $funcPermissions );
+
+		$funcPermissions = $functionConfig['permissions'];
+		if ( $funcPermissions ) {
+			$this->checkUserRightsAny( $funcPermissions );
+		}
 	}
 
 	/**
