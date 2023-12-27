@@ -41,7 +41,7 @@
 				dfd.resolve( this.formatCredential( assertion ) );
 			}.bind( this ) )
 			.catch( function () {
-				// This usually happens when process gets interrupted
+				// This usually happens when the process gets interrupted
 				// - show generic interrupt error
 				dfd.reject( 'webauthn-error-auth-generic' );
 			} );
@@ -90,10 +90,10 @@
 	};
 
 	mw.ext.webauthn.Authenticator.prototype.arrayToBase64String = function ( a ) {
-		let strigified = '';
+		let stringified = '';
 		for ( let i = 0; i < a.length; i++ ) {
-			strigified += String.fromCharCode( a[ i ] );
+			stringified += String.fromCharCode( a[ i ] );
 		}
-		return btoa( strigified );
+		return btoa( stringified );
 	};
 }() );
