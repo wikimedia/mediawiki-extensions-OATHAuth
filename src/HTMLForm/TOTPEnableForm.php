@@ -68,8 +68,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->margin( 0 )
 			->build();
 
-		$prefix = $this->getConfig()->get( 'OATHAuthAccountPrefix' );
-
 		return [
 			'app' => [
 				'type' => 'info',
