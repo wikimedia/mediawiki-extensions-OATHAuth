@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\Tests;
+namespace MediaWiki\Extension\WebAuthn\Tests\Integration;
 
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWikiIntegrationTestCase;
