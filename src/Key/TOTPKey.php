@@ -48,7 +48,7 @@ class TOTPKey implements IAuthKey {
 	private const MAIN_TOKEN = 1;
 
 	/**
-	 * Represents that a token corresponds to a scratch token
+	 * Represents that a token corresponds to a recovery code
 	 * @see verify
 	 */
 	private const SCRATCH_TOKEN = -1;
@@ -56,8 +56,8 @@ class TOTPKey implements IAuthKey {
 	/** @var array Two factor binary secret */
 	private $secret;
 
-	/** @var string[] List of scratch tokens */
-	private $scratchTokens = [];
+	/** @var string[] List of recovery codes */
+	private $recoveryCodes = [];
 
 	/**
 	 * @return TOTPKey
@@ -101,17 +101,17 @@ class TOTPKey implements IAuthKey {
 
 	/**
 	 * @param string $secret
-	 * @param array $scratchTokens
+	 * @param array $recoveryCodes
 	 */
-	public function __construct( $secret, array $scratchTokens ) {
-		// Currently hardcoded values; might be used in future
+	public function __construct( $secret, array $recoveryCodes ) {
+		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
 			'secret' => $secret,
 			'period' => 30,
 			'algorithm' => 'SHA1',
 		];
-		$this->scratchTokens = array_values( $scratchTokens );
+		$this->recoveryCodes = array_values( $recoveryCodes );
 	}
 
 	/**
@@ -125,7 +125,7 @@ class TOTPKey implements IAuthKey {
 	 * @return string[]
 	 */
 	public function getScratchTokens() {
-		return $this->scratchTokens;
+		return $this->recoveryCodes;
 	}
 
 	/**
@@ -198,7 +198,7 @@ class TOTPKey implements IAuthKey {
 					// This is saved below via OATHUserRepository::persist, TOTP::getDataFromUser.
 					array_splice( $this->scratchTokens, $i, 1 );
 
-					$logger->info( 'OATHAuth user {user} used a scratch token from {clientip}', [
+					$logger->info( 'OATHAuth user {user} used a recovery token from {clientip}', [
 						'user' => $user->getAccount(),
 						'clientip' => $clientIP,
 					] );
@@ -242,19 +242,19 @@ class TOTPKey implements IAuthKey {
 		for ( $i = 0; $i < 10; $i++ ) {
 			$scratchTokens[] = Base32::encode( random_bytes( 10 ) );
 		}
-		$this->scratchTokens = $scratchTokens;
+		$this->recoveryCodes = $scratchTokens;
 	}
 
 	/**
-	 * Check if a token is one of the scratch tokens for this two factor key.
+	 * Check if a token is one of the recovery codes for this two-factor key.
 	 *
 	 * @param string $token Token to verify
 	 *
-	 * @return bool true if this is a scratch token.
+	 * @return bool true if this is a recovery code.
 	 */
 	public function isScratchToken( $token ) {
 		$token = preg_replace( '/\s+/', '', $token );
-		return in_array( $token, $this->scratchTokens, true );
+		return in_array( $token, $this->recoveryCodes, true );
 	}
 
 	/**
