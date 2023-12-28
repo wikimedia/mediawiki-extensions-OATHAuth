@@ -88,17 +88,6 @@ class OATHUser {
 	}
 
 	/**
-	 * Useful for modules that operate on single-key premise,
-	 * as well as testing the key type, since the first key is(?)
-	 * necessarily the same type as others
-	 *
-	 * @return IAuthKey|null
-	 */
-	public function getFirstKey() {
-		return $this->keys[0] ?? null;
-	}
-
-	/**
 	 * Set the key associated with this user.
 	 *
 	 * @param IAuthKey[] $keys
