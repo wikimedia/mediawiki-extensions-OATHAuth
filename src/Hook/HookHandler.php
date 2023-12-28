@@ -139,7 +139,7 @@ class HookHandler implements
 
 		$dbGroups = $this->userGroupManager->getUserGroups( $user );
 		$disabledGroups = $this->getDisabledGroups( $user, $dbGroups );
-		if ( $module === null && $disabledGroups ) {
+		if ( !$oathUser->isTwoFactorAuthEnabled() && $disabledGroups ) {
 			$context = RequestContext::getMain();
 			$list = [];
 			foreach ( $disabledGroups as $disabledGroup ) {
