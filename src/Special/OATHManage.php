@@ -105,7 +105,7 @@ class OATHManage extends SpecialPage {
 		}
 
 		$this->addGeneralHelp();
-		if ( $this->hasEnabled() ) {
+		if ( $this->authUser->isTwoFactorAuthEnabled() ) {
 			$this->addEnabledHTML();
 			if ( $this->hasAlternativeModules() ) {
 				$this->addAlternativesHTML();
@@ -128,7 +128,7 @@ class OATHManage extends SpecialPage {
 			$this->displayRestrictionError();
 		}
 
-		if ( !$this->hasEnabled() && !$canEnable ) {
+		if ( !$this->authUser->isTwoFactorAuthEnabled() && !$canEnable ) {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
 		}
@@ -148,17 +148,9 @@ class OATHManage extends SpecialPage {
 		$this->requestedModule = $this->moduleRegistry->getModuleByKey( $moduleKey );
 	}
 
-	private function hasEnabled(): bool {
-		return $this->authUser->getModule() instanceof IModule;
-	}
-
-	private function getEnabled(): ?IModule {
-		return $this->hasEnabled() ? $this->authUser->getModule() : null;
-	}
-
 	private function addEnabledHTML(): void {
 		$this->addHeading( $this->msg( 'oathauth-ui-enabled-module' ) );
-		$this->addModuleHTML( $this->getEnabled() );
+		$this->addModuleHTML( $this->authUser->getModule() );
 	}
 
 	private function addAlternativesHTML(): void {
@@ -215,13 +207,13 @@ class OATHManage extends SpecialPage {
 			'label' => $module->getDisplayName()->text()
 		] );
 		if ( $this->shouldShowGenericButtons() ) {
+			$enabled = $module && $this->isModuleEnabled( $module );
 			$button = new ButtonWidget( [
-				'label' => $this->isModuleEnabled( $module ) ?
-					$this->msg( 'oathauth-disable-generic' )->text() :
-					$this->msg( 'oathauth-enable-generic' )->text(),
+				'label' => $this
+					->msg( $enabled ? 'oathauth-disable-generic' : 'oathauth-enable-generic' )
+					->text(),
 				'href' => $this->getOutput()->getTitle()->getLocalURL( [
-					'action' => $this->isModuleEnabled( $module ) ?
-						static::ACTION_DISABLE : static::ACTION_ENABLE,
+					'action' => $enabled ? static::ACTION_DISABLE : static::ACTION_ENABLE,
 					'module' => $module->getName(),
 					'warn' => 1
 				] )
@@ -271,13 +263,12 @@ class OATHManage extends SpecialPage {
 		);
 	}
 
-	private function isModuleEnabled( ?IModule $module ): bool {
-		$enabled = $this->getEnabled();
-		if ( $enabled instanceof IModule ) {
-			return $module instanceof IModule
-				&& $enabled->getName() === $module->getName();
+	private function isModuleEnabled( IModule $module ): bool {
+		$enabled = $this->authUser->getModule();
+		if ( !$enabled ) {
+			return false;
 		}
-		return false;
+		return $enabled->getName() === $module->getName();
 	}
 
 	/**
@@ -344,7 +335,7 @@ class OATHManage extends SpecialPage {
 	private function shouldShowDisableWarning(): bool {
 		return $this->getRequest()->getBool( 'warn' ) &&
 			$this->requestedModule instanceof IModule &&
-			$this->getEnabled() instanceof IModule;
+			$this->authUser->isTwoFactorAuthEnabled();
 	}
 
 	private function showDisableWarning(): void {
@@ -359,16 +350,16 @@ class OATHManage extends SpecialPage {
 		$genericMessage = $this->isSwitch() ?
 			$this->msg(
 				'oathauth-switch-method-warning',
-				$this->getEnabled()->getDisplayName(),
+				$this->authUser->getModule()->getDisplayName(),
 				$this->requestedModule->getDisplayName()
 			) :
-			$this->msg( 'oathauth-disable-method-warning', $this->getEnabled()->getDisplayName() );
+			$this->msg( 'oathauth-disable-method-warning', $this->authUser->getModule()->getDisplayName() );
 
 		$panel->appendContent( new HtmlSnippet(
 			$genericMessage->parseAsBlock()
 		) );
 
-		$customMessage = $this->getEnabled()->getDisableWarningMessage();
+		$customMessage = $this->authUser->getModule()->getDisableWarningMessage();
 		if ( $customMessage instanceof Message ) {
 			$panel->appendContent( new HtmlSnippet(
 				$customMessage->parseAsBlock()
@@ -392,7 +383,7 @@ class OATHManage extends SpecialPage {
 	private function isSwitch(): bool {
 		return $this->requestedModule instanceof IModule &&
 			$this->action === static::ACTION_ENABLE &&
-			$this->getEnabled() instanceof IModule;
+			$this->authUser->isTwoFactorAuthEnabled();
 	}
 
 }
