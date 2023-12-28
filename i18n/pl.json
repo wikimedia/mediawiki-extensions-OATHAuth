@@ -104,5 +104,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ma włączone uwierzytelnianie dwuskładnikowe.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nie ma włączonego uwierzytelniania dwuskładnikowego.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zawieszona grupa|Zawieszone grupy}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]].",
+	"oathauth-qrcode-alt": "Kod QR zawierający tajny klucz do zeskanowania."
 }

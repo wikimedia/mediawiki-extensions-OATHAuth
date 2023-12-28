@@ -21,7 +21,7 @@
 	"oathauth-account": "Benutzerkonto:",
 	"oathauth-secret": "Geheimer Schlüssel für die Zwei-Faktor-Authentifizierung:",
 	"oathauth-enable": "Zwei-Faktor-Authentifizierung aktivieren",
-	"oathauth-scratchtokens": "Die folgende Liste enthält einmalig verwendbare geheime Schlüssel. Diese geheimen Schlüssel können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen. Bitte notiere und verwahre sie an einem sicheren Ort. Sofern dir dein Mobiltelefon abhanden kommt, werden diese geheimen Schlüssel die einzige Möglichkeit sein, dein Konto zu retten.\n\n'''Diese geheimen Schlüssel werden dir niemals wieder angezeigt werden'''.",
+	"oathauth-scratchtokens": "Die folgende Liste enthält einmalig verwendbare geheime Schlüssel. Diese geheimen Schlüssel können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen, wenn du keinen Zugang zu deinem Gerät hast. Bitte notiere und verwahre sie an einem sicheren Ort. Es wird empfohlen, jeden Code als verwendet zu markieren, wenn du dich mit ihm angemeldet hast. Sofern dir dein Gerät abhanden kommt, werden diese geheimen Schlüssel die einzige Möglichkeit sein, dein Konto zu retten.\n\n'''Diese geheimen Schlüssel werden dir niemals wieder angezeigt werden'''.",
 	"oathauth-token": "Geheimer Schlüssel",
 	"oathauth-disable": "Die Zwei-Faktor-Authentifizierung deaktivieren",
 	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt angewendet.",
@@ -32,7 +32,7 @@
 	"oathauth-step1": "Schritt 1: Lade ein Programm zur Zwei-Faktor-Authentifizierung herunter",
 	"oathauth-step1-test": "Lade ein Programm zur Zwei-Faktor-Authentifizierung herunter. Das kann eine mobile Anwendung (wie Google Authenticator) oder eine Desktop-Anwendung sein.",
 	"oathauth-step2": "Schritt 2: Scanne den QR-Code",
-	"oathauth-step2alt": "Oder gib die geheimen Daten manuell ein:",
+	"oathauth-step2alt": "Wenn du den QR-Code nicht scannen kannst, gib den geheimen Schlüssel und den Kontonamen manuell ein:",
 	"oathauth-step3": "Schritt 3: Notiere die geheimen Schlüssel",
 	"oathauth-step4": "Schritt 4: Verifizierung",
 	"oathauth-entertoken": "Gib zur Verifizierung einen Code von deinem Authentifizierungsgerät ein:",
@@ -105,5 +105,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} hat die Zwei-Faktor-Authentifizierung aktiviert.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} hat die Zwei-Faktor-Authentifizierung nicht aktiviert.",
 	"oathauth-prefs-disabledgroups": "Deaktiverte {{PLURAL:$1|Gruppe|Gruppen}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Deine Mitgliedschaft}} in {{PLURAL:$1|der Gruppe|den Gruppen}} ist deaktiviert, bis du die [[Special:Manage Two-factor authentication|Zwei-Faktor-Authentifizierung]] aktivierst."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Deine Mitgliedschaft}} in {{PLURAL:$1|der Gruppe|den Gruppen}} ist deaktiviert, bis du die [[Special:Manage Two-factor authentication|Zwei-Faktor-Authentifizierung]] aktivierst.",
+	"oathauth-qrcode-alt": "Scanbarer QR-Code, der den geheimen Schlüssel darstellt."
 }

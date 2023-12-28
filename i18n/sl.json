@@ -15,7 +15,7 @@
 	"oathauth-account": "Ime računa:",
 	"oathauth-secret": "Skrivni ključ dvofaktorske avtentikacije:",
 	"oathauth-enable": "Vklop dvofaktorske avtentikacije",
-	"oathauth-scratchtokens": "Tu je prikazan seznam začasnih žetonov za enkratno uporabo. Namenjeni so samo za izredne primere. Dobro je, da si jih zapišete in jih shranite na varnem mestu. Če bi izgubili svoj telefon, je vaš račun mogoče odkleniti samo s temi žetoni. '''Žetoni vam ne bodo prikazani nikoli več'''.",
+	"oathauth-scratchtokens": "Tu je prikazan seznam začasnih žetonov za enkratno uporabo. Namenjeni so samo za izredne primere, kadar nimate dostopa do svoje naprave. Dobro je, da si jih zapišete in jih shranite na varnem mestu. Priporočljivo je, da vsako kodo po prijavi z njo označite kot uporabljeno. Če bi izgubili svojo napravo, je vaš račun mogoče odkleniti samo s temi žetoni. '''Žetoni vam ne bodo prikazani nikoli več'''.",
 	"oathauth-token": "Žeton",
 	"oathauth-disable": "Izklop dvofaktorske avtentikacije",
 	"oathauth-validatedoath": "Potrjene dvofaktorske poverilnice. Od zdaj secbo uporabljala dvofaktorska avtentikacija.",
@@ -26,7 +26,7 @@
 	"oathauth-step1": "1. korak: Namestite program za dvofaktorsko avtentikacijo",
 	"oathauth-step1-test": "Namestite program za dvofaktorsko avtentikacijo. To je lahko mobilna aplikacija (npr. Google Authenticator) ali namizni računalniški program.",
 	"oathauth-step2": "2. korak: Poskenirajte kodo QR",
-	"oathauth-step2alt": "Ali vpišite skrivni podatek ročno:",
+	"oathauth-step2alt": "Če kode QR ne morete skenirati, vnesite skrivni ključ in ime računa ročno:",
 	"oathauth-step3": "3. korak: Zapišite si praskalne kode",
 	"oathauth-step4": "4. korak: Potrditev",
 	"oathauth-entertoken": "Vnesite kodo iz svoje naprave za avtentikacijo.",
@@ -99,5 +99,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ima vklopljeno dvofaktorsko avtentikacijo.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nima vklopljene dvofaktorske avtentikacije.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Onemogočena skupina|Onemogočeni skupini|Onemogočene skupine}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Vaše članstvo}} v {{PLURAL:$1|tej skupini|teh skupinah}} je onemogočeno, dokler ne vklopite [[Special:Manage Two-factor authentication|dvofaktorske avtentikacije]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Vaše članstvo}} v {{PLURAL:$1|tej skupini|teh skupinah}} je onemogočeno, dokler ne vklopite [[Special:Manage Two-factor authentication|dvofaktorske avtentikacije]].",
+	"oathauth-qrcode-alt": "Skenirna koda QR, ki predstavlja skrivni ključ."
 }
