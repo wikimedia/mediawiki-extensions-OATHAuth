@@ -4,7 +4,8 @@
 			"Bjankuloski06"
 		]
 	},
-	"apihelp-webauthn-summary": "Извршничкиот модул кој посредува меѓу опслужувачот и клиентот при зачленувањето/заверката",
-	"apihelp-webauthn-param-func": "Назив на побараната функција што треба да се изврши",
-	"apihelp-webauthn-param-data": "Податоци за дадената функција кодирање во JSON"
+	"apihelp-webauthn-summary": "Извршничкиот модул кој посредува меѓу опслужувачот и клиентот при зачленувањето/заверката.",
+	"apihelp-webauthn-param-func": "Назив на побараната функција што треба да се изврши.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Информации за заверка.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Информации за зачленување."
 }
