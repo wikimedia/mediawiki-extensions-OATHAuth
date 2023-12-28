@@ -314,7 +314,12 @@ class Authenticator {
 
 				// If user has another module already activated, clear all keys for than module
 				if ( !$this->oathUser->getModule() instanceof WebAuthn ) {
-					$this->oathUser->clearAllKeys();
+					// TODO: find a way of doing this without using persist(), but
+					// without sending broken 'you have disabled two-factor authentication'
+					// notifications. (Or, just add support for multiple different types of
+					// authentication so we don't have to worry about this at all.)
+					$this->oathUser->disable();
+					$this->userRepo->persist( $this->oathUser, $this->request->getIP() );
 				}
 
 				$this->userRepo->createKey(
