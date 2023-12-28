@@ -58,9 +58,8 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function isEnabled( OATHUser $user ) {
-		if ( $user->getModule() instanceof WebAuthn ) {
-			$key = $user->getFirstKey();
-			if ( $key !== null && $key instanceof WebAuthnKey ) {
+		foreach ( $user->getKeys() as $key ) {
+			if ( $key instanceof WebAuthnKey ) {
 				return true;
 			}
 		}

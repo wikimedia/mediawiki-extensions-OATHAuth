@@ -162,13 +162,6 @@ class Authenticator {
 				$this->oathUser->getUser()->getName()
 			);
 		}
-		$firstKey = $this->oathUser->getFirstKey();
-		if ( !( $firstKey instanceof WebAuthnKey ) ) {
-			return Status::newFatal(
-				'webauthn-error-invalid-key',
-				$this->oathUser->getUser()->getName()
-			);
-		}
 
 		return Status::newGood();
 	}
@@ -423,32 +416,32 @@ class Authenticator {
 		$rpEntity = new PublicKeyCredentialRpEntity( $serverName, $this->serverId );
 
 		$mwUser = $this->context->getUser();
-		/** @var OATHUserRepository $userRepo */
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		/** @var OATHUser $oathUser */
-		$oathUser = $userRepo->findByUser( $mwUser );
-		$key = $oathUser->getFirstKey();
-		// If the user already has webauthn enabled, and is just registering another key,
-		// make sure userHandle remains the same across keys
-		if ( $key !== null && $key instanceof WebAuthnKey ) {
-			$userHandle = $key->getUserHandle();
-		} else {
-			$userHandle = random_bytes( 64 );
-		}
 
 		// Exclude all already registered keys for user
 		$excludedPublicKeyDescriptors = [];
+
+		// If the user already has webauthn enabled, and is just registering another key,
+		// make sure userHandle remains the same across keys
+		$userHandle = null;
+
 		foreach ( $this->oathUser->getKeys() as $key ) {
 			if ( !( $key instanceof WebAuthnKey ) ) {
 				continue;
 			}
+
+			$userHandle = $key->getUserHandle();
+
 			$excludedPublicKeyDescriptors[] = new PublicKeyCredentialDescriptor(
 				PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
 				$key->getAttestedCredentialData()->getCredentialId()
 			);
 		}
 
-		$realName = $mwUser->getRealName() ? : $mwUser->getName();
+		if ( !$userHandle ) {
+			$userHandle = random_bytes( 64 );
+		}
+
+		$realName = $mwUser->getRealName() ?: $mwUser->getName();
 		$userEntity = new PublicKeyCredentialUserEntity(
 			$mwUser->getName(),
 			$userHandle,

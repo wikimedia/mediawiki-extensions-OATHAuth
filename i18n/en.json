@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Registered keys",
 	"webuathn-ui-remove-key": "Remove",
 	"webauthn-error-module-not-enabled": "Module \"$1\" is not enabled for {{GENDER:$2|user \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|User \"$1\"}} has WebAuthn module enabled, but an invalid key is set",
 	"webauthn-error-verification-failed": "Verification failed",
 	"webauthn-error-cannot-register": "{{GENDER:$1|User \"$1\"}} cannot register a new credential",
 	"webauthn-error-invalid-new-key": "New key returned by the module is not of required type",
