@@ -26,7 +26,7 @@
 	"oathauth-step1": "Passo 1: scarica un programma per l'autenticazione a due fattori",
 	"oathauth-step1-test": "Scarica un programma per l'autenticazione a due fattori. Può essere un'applicazione mobile (come Google Authenticator) o per desktop.",
 	"oathauth-step2": "Passo 2: scansiona il codice QR",
-	"oathauth-step2alt": "O inserisci il codice segreto manualmente:",
+	"oathauth-step2alt": "Se non riesci a scansionare il codice QR, inserisci manualmente la chiave segreta e il nome utente:",
 	"oathauth-step3": "Passo 3: scrivi i codici usa e getta",
 	"oathauth-step4": "Passo 4: verifica",
 	"oathauth-entertoken": "Inserisci un codice dal tuo dispositivo di autenticazione per verificare:",
