@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\WebAuthn\Config;
 
-use GlobalVarConfig;
-use HashConfig;
-use MultiConfig;
+use MediaWiki\Config\GlobalVarConfig;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\MultiConfig;
 
 class WebAuthnConfig extends MultiConfig {
 	public function __construct() {

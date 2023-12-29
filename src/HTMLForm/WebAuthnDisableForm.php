@@ -2,15 +2,16 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
-use ConfigException;
 use IContextSource;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
 use MWException;
-use SpecialPage;
 
 class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 
@@ -40,7 +41,7 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param array|bool|\Status|string $submitResult
+	 * @param array|bool|Status|string $submitResult
 	 * @return string
 	 */
 	public function getHTML( $submitResult ) {

@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\WebAuthn;
 
 use GuzzleHttp\Psr7\ServerRequest;
-use WebRequest;
+use MediaWiki\Request\WebRequest;
 
 /**
  * The purpose of this class is to convert MW WebRequest to

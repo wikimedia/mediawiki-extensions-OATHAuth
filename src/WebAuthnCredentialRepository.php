@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\WebAuthn;
 
 use Base64Url\Base64Url;
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;

@@ -20,8 +20,8 @@ namespace MediaWiki\Extension\WebAuthn\Api;
 
 use ApiBase;
 use ApiUsageException;
-use ConfigException;
 use InvalidArgumentException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;

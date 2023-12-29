@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\WebAuthn\Tests\Integration;
 
 use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use User;
 
 /**
  * @covers \MediaWiki\Extension\WebAuthn\Authenticator
