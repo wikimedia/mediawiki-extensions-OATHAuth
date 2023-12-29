@@ -19,17 +19,17 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use BagOStuff;
-use ConfigException;
 use FormatJson;
 use InvalidArgumentException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
+use MediaWiki\User\User;
 use MWException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use RequestContext;
 use RuntimeException;
-use User;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {

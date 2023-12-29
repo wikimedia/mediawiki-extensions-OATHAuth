@@ -19,8 +19,8 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
+use MediaWiki\User\User;
 use ReflectionClass;
-use User;
 
 /**
  * Class representing a user from OATH's perspective

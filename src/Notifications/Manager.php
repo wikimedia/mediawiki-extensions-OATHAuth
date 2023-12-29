@@ -23,7 +23,7 @@ namespace MediaWiki\Extension\OATHAuth\Notifications;
 use ExtensionRegistry;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 /**
  * Manages logic for configuring and sending out notifications with Echo

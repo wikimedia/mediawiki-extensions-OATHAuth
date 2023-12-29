@@ -8,7 +8,7 @@ use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\User;
 
 class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 	/**
