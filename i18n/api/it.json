@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Informazioni di autenticazione.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Informazioni di registrazione."
+}

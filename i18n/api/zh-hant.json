@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"LowensteinYang"
+		]
+	},
+	"apihelp-webauthn-summary": "在註冊/驗證程序期間，用來溝通伺服器與客戶端兩方的API模組。",
+	"apihelp-webauthn-param-func": "要執行的請求功能名稱。",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "認證資訊。",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "註冊資訊。"
+}
