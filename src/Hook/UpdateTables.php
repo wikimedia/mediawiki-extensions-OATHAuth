@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\OATHAuth\Hook;
 
-use ConfigException;
 use DatabaseUpdater;
 use FormatJson;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;

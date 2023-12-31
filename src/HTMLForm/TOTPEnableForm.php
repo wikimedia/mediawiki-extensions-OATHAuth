@@ -2,17 +2,17 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use ConfigException;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
 use Endroid\QrCode\Writer\SvgWriter;
-use Html;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Status\Status;
 use MWException;
-use Status;
 
 class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	/**

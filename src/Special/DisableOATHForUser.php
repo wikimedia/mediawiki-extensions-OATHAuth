@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use ConfigException;
-use FormSpecialPage;
 use HTMLForm;
 use ManualLogEntry;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use Message;
 use MWException;
-use User;
 use UserBlockedError;
 use UserNotLoggedIn;
 
