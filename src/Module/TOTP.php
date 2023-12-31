@@ -54,18 +54,21 @@ class TOTP implements IModule {
 	/**
 	 * @param OATHUser $user
 	 * @param array $data
-	 * @return bool|int
+	 * @return bool
 	 * @throws MWException
 	 */
-	public function verify( OATHUser $user, array $data ) {
+	public function verify( OATHUser $user, array $data ): bool {
 		if ( !isset( $data['token'] ) ) {
 			return false;
 		}
-		$key = $user->getFirstKey();
-		if ( !( $key instanceof TOTPKey ) ) {
-			return false;
+
+		foreach ( $user->getKeys() as $key ) {
+			if ( $key instanceof TOTPKey && $key->verify( $data, $user ) ) {
+				return true;
+			}
 		}
-		return $key->verify( $data, $user );
+
+		return false;
 	}
 
 	/**
@@ -74,8 +77,14 @@ class TOTP implements IModule {
 	 * @param OATHUser $user
 	 * @return bool
 	 */
-	public function isEnabled( OATHUser $user ) {
-		return $user->getFirstKey() instanceof TOTPKey;
+	public function isEnabled( OATHUser $user ): bool {
+		foreach ( $user->getKeys() as $key ) {
+			if ( $key instanceof TOTPKey ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -90,12 +99,12 @@ class TOTP implements IModule {
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context
-	) {
-		$isEnabledForUser = $user->getModule() instanceof self;
-		if ( $action === OATHManage::ACTION_ENABLE && !$isEnabledForUser ) {
+	): ?IManageForm {
+		$hasTOTPKey = $this->isEnabled( $user );
+		if ( $action === OATHManage::ACTION_ENABLE && !$hasTOTPKey ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context );
 		}
-		if ( $action === OATHManage::ACTION_DISABLE && $isEnabledForUser ) {
+		if ( $action === OATHManage::ACTION_DISABLE && $hasTOTPKey ) {
 			return new TOTPDisableForm( $user, $repo, $this, $context );
 		}
 		return null;
