@@ -104,13 +104,6 @@ class TOTP implements IModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function getConfig() {
-		return null;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getDescriptionMessage() {
 		return wfMessage( 'oathauth-totp-description' );
 	}
