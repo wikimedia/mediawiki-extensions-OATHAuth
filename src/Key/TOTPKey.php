@@ -119,7 +119,7 @@ class TOTPKey implements IAuthKey {
 	/**
 	 * @param array $data
 	 * @param OATHUser $user
-	 * @return bool|int
+	 * @return bool
 	 * @throws MWException
 	 */
 	public function verify( $data, OATHUser $user ) {
