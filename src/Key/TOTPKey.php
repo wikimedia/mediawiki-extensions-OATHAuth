@@ -63,20 +63,6 @@ class TOTPKey implements IAuthKey {
 	}
 
 	/**
-	 * Create key from json encoded string
-	 *
-	 * @param string $data
-	 * @return TOTPKey|null on invalid data
-	 */
-	public static function newFromString( $data ) {
-		$data = json_decode( $data, true );
-		if ( json_last_error() !== JSON_ERROR_NONE ) {
-			return null;
-		}
-		return static::newFromArray( $data );
-	}
-
-	/**
 	 * @param array $data
 	 * @return TOTPKey|null on invalid data
 	 */
