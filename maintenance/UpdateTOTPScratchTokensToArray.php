@@ -23,7 +23,11 @@
  * @ingroup Maintenance
  */
 
-use MediaWiki\Extension\OATHAuth\Hook\UpdateTables;
+namespace MediaWiki\Extension\OATHAuth\Maintenance;
+
+use FormatJson;
+use LoggedUpdateMaintenance;
+use MediaWiki\MediaWikiServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
@@ -35,18 +39,58 @@ require_once "$IP/maintenance/Maintenance.php";
 /**
  * Merged December 2020; part of REL1_36
  */
-class UpdateTOTPScratchTokensToArray extends Maintenance {
+class UpdateTOTPScratchTokensToArray extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription( 'Script to update TOTP Scratch Tokens to an array' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 
-	public function execute() {
-		if ( !UpdateTables::switchTOTPScratchTokensToArray() ) {
-			$this->fatalError( "Failed to update TOTP Scratch Tokens.\n" );
+	protected function doDBUpdates() {
+		$dbw = MediaWikiServices::getInstance()
+			->getDBLoadBalancerFactory()
+			->getPrimaryDatabase( 'virtual-oathauth' );
+
+		$res = $dbw->newSelectQueryBuilder()
+			->select( [ 'id', 'data' ] )
+			->from( 'oathauth_users' )
+			->where( [ 'module' => 'totp' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
+		foreach ( $res as $row ) {
+			$data = FormatJson::decode( $row->data, true );
+
+			$updated = false;
+			foreach ( $data['keys'] as &$k ) {
+				if ( is_string( $k['scratch_tokens'] ) ) {
+					$k['scratch_tokens'] = explode( ',', $k['scratch_tokens'] );
+					$updated = true;
+				}
+			}
+			unset( $k );
+
+			if ( !$updated ) {
+				continue;
+			}
+
+			$dbw->newUpdateQueryBuilder()
+				->update( 'oathauth_users' )
+				->set( [ 'data' => FormatJson::encode( $data ) ] )
+				->where( [ 'id' => $row->id ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
+
 		$this->output( "Done.\n" );
+		return true;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getUpdateKey() {
+		return __CLASS__;
 	}
 }
 
