@@ -73,10 +73,9 @@ class OATHUserRepository implements LoggerAwareInterface {
 	public function findByUser( User $user ) {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
-			$oathUser = new OATHUser( $user, [] );
-
 			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
+			$oathUser = new OATHUser( $user, $uid );
 
 			$res = $this->dbProvider
 				->getReplicaDatabase( 'virtual-oathauth' )

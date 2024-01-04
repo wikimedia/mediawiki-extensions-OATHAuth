@@ -29,30 +29,34 @@ use ReflectionClass;
  */
 class OATHUser {
 	private User $user;
+	private int $centralId;
 
 	/** @var IAuthKey[] */
-	private $keys;
-
-	/**
-	 * @var ?IModule
-	 */
-	private $module;
+	private array $keys = [];
+	private ?IModule $module = null;
 
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 * @param User $user
-	 * @param IAuthKey[] $keys
+	 * @param int $centralId
 	 */
-	public function __construct( User $user, array $keys = [] ) {
+	public function __construct( User $user, int $centralId ) {
 		$this->user = $user;
-		$this->setKeys( $keys );
+		$this->centralId = $centralId;
 	}
 
 	/**
 	 * @return User
 	 */
-	public function getUser() {
+	public function getUser(): User {
 		return $this->user;
+	}
+
+	/**
+	 * @return int The central ID of this user
+	 */
+	public function getCentralId(): int {
+		return $this->centralId;
 	}
 
 	/**

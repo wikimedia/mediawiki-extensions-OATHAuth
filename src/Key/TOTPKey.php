@@ -139,12 +139,7 @@ class TOTPKey implements IAuthKey {
 			$store = ObjectCache::getLocalServerInstance( CACHE_ANYTHING );
 		}
 
-		$uid = MediaWikiServices::getInstance()
-			->getCentralIdLookupFactory()
-			->getLookup()
-			->centralIdFromLocalUser( $user->getUser() );
-
-		$key = $store->makeKey( 'oathauth-totp', 'usedtokens', $uid );
+		$key = $store->makeKey( 'oathauth-totp', 'usedtokens', $user->getCentralId() );
 		$lastWindow = (int)$store->get( $key );
 
 		$results = HOTP::generateByTimeWindow(
