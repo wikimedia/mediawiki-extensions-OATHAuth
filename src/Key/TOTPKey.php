@@ -25,8 +25,8 @@ use EmptyBagOStuff;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
@@ -189,11 +189,7 @@ class TOTPKey implements IAuthKey {
 					'clientip' => $clientIP,
 				] );
 
-				$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
-				$module = $moduleRegistry->getModuleByKey( 'totp' );
-
-				/** @var OATHUserRepository $userRepo */
-				$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+				$userRepo = OATHAuthServices::getInstance()->getUserRepository();
 				// TODO: support for multiple keys
 				$user->setKeys( [ $this ] );
 				$userRepo->persist( $user, $clientIP );
