@@ -31,6 +31,7 @@
 	"oathauth-step1": "Krok 1: Pobierz program do uwierzytelniania dwuskładnikowego",
 	"oathauth-step1-test": "Pobierz program do uwierzytelniania dwuskładnikowego. Może to być aplikacja mobilna (np. Google Authenticator) lub aplikacja komputerowa.",
 	"oathauth-step2": "Krok 2: Zeskanuj kod QR",
+	"oathauth-step2-qrcode": "Zeskanuj kod QR korzystając z aplikacji bądź rozszerzenia przeglądarki pobranego przez Ciebie w kroku 1, aby włączyć uwierzytelnianie dwuskładnikowe.",
 	"oathauth-step2alt": "Jeśli nie możesz zeskanować kodu QR, wprowadź tajny klucz i nazwę konta ręcznie:",
 	"oathauth-step3": "Krok 3: Zapisz kody zapasowe",
 	"oathauth-step4": "Krok 4: Weryfikacja",
