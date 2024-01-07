@@ -15,8 +15,10 @@ use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MWException;
 
 class TOTP implements IModule {
-	public static function factory() {
-		return new static();
+	private OATHUserRepository $userRepository;
+
+	public function __construct( OATHUserRepository $userRepository ) {
+		$this->userRepository = $userRepository;
 	}
 
 	/** @inheritDoc */
@@ -49,7 +51,8 @@ class TOTP implements IModule {
 	 */
 	public function getSecondaryAuthProvider() {
 		return new TOTPSecondaryAuthenticationProvider(
-			$this
+			$this,
+			$this->userRepository
 		);
 	}
 
