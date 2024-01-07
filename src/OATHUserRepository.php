@@ -242,6 +242,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
+		// TODO: figure this out from the key itself
+		// After calling ->disable(), getModule() will return null so this
+		// has to be done before.
+		$keyType = $user->getModule()->getName();
+
 		$user->disable();
 
 		$userName = $user->getUser()->getName();
@@ -250,7 +255,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->logger->info( 'OATHAuth disabled for {user} from {clientip}', [
 			'user' => $userName,
 			'clientip' => $clientInfo,
-			'oathtype' => $user->getModule()->getName(),
+			'oathtype' => $keyType,
 		] );
 
 		Manager::notifyDisabled( $user, $self );
