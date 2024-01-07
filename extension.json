@@ -17,7 +17,12 @@
 	"attributes": {
 		"OATHAuth": {
 			"Modules": {
-				"totp": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP::factory"
+				"totp": {
+					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP",
+					"services": [
+						"OATHUserRepository"
+					]
+				}
 			}
 		}
 	},

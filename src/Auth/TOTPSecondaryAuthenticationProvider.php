@@ -23,7 +23,7 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
 use MediaWiki\User\User;
 
@@ -38,12 +38,11 @@ use MediaWiki\User\User;
  */
 class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 	private TOTP $module;
+	private OATHUserRepository $userRepository;
 
-	/**
-	 * @param TOTP $module
-	 */
-	public function __construct( TOTP $module ) {
+	public function __construct( TOTP $module, OATHUserRepository $userRepository ) {
 		$this->module = $module;
+		$this->userRepository = $userRepository;
 	}
 
 	/**
@@ -66,6 +65,12 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	 * @return AuthenticationResponse
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
+		$authUser = $this->userRepository->findByUser( $user );
+
+		if ( !( $authUser->getModule() instanceof TOTP ) ) {
+			return AuthenticationResponse::newAbstain();
+		}
+
 		return AuthenticationResponse::newUI(
 			[ new TOTPAuthenticationRequest() ],
 			wfMessage( 'oathauth-auth-ui' ),
@@ -84,8 +89,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		$authUser = $userRepo->findByUser( $user );
+		$authUser = $this->userRepository->findByUser( $user );
 		$token = $request->OATHToken;
 
 		// Don't increase pingLimiter, just check for limit exceeded.

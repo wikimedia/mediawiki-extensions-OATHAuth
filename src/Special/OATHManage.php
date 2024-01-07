@@ -53,10 +53,7 @@ class OATHManage extends SpecialPage {
 	 */
 	protected $action;
 
-	/**
-	 * @var IModule|null
-	 */
-	protected $requestedModule;
+	protected ?IModule $requestedModule;
 
 	/**
 	 * Initializes a page to manage available 2FA modules
@@ -149,7 +146,9 @@ class OATHManage extends SpecialPage {
 
 	private function setModule(): void {
 		$moduleKey = $this->getRequest()->getVal( 'module', '' );
-		$this->requestedModule = $this->moduleRegistry->getModuleByKey( $moduleKey );
+		$this->requestedModule = ( $moduleKey && $this->moduleRegistry->moduleExists( $moduleKey ) )
+			? $this->moduleRegistry->getModuleByKey( $moduleKey )
+			: null;
 	}
 
 	private function addEnabledHTML(): void {
