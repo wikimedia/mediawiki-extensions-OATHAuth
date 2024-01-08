@@ -59,6 +59,6 @@ class OATHAuthServices {
 	 * @return OATHUserRepository
 	 */
 	public function getUserRepository(): OATHUserRepository {
-		return $this->services->getService( 'OATHAuthUserRepository' );
+		return $this->services->getService( 'OATHUserRepository' );
 	}
 }
