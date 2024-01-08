@@ -71,7 +71,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		return [
 			'app' => [
 				'type' => 'info',
-				'default' => $this->msg( 'oathauth-step1-test' )->escaped(),
+				'default' => $this->msg( 'oathauth-step1-test' )->parse(),
 				'raw' => true,
 				'section' => 'step1',
 			],
