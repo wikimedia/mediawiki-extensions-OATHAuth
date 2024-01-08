@@ -101,5 +101,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} has two-factor authentication enabled.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} does not have two-factor authentication enabled.",
 	"oathauth-prefs-disabledgroups": "Disabled {{PLURAL:$1|group|groups}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Your membership}} in {{PLURAL:$1|this group|these groups}} is disabled until you enable [[Special:Manage Two-factor authentication|two-factor authentication]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Your membership}} in {{PLURAL:$1|this group|these groups}} is disabled until you enable [[Special:Manage Two-factor authentication|two-factor authentication]].",
+	"oathauth-hint": "Don't have access to your device or application? You can enter recovery tokens (presented when you enabled 2FA) in this field."
 }
