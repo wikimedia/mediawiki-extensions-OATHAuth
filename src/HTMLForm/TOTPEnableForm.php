@@ -68,6 +68,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->margin( 0 )
 			->build();
 
+		$now = wfTimestampNow();
+
 		// messages used: oathauth-step1, oathauth-step2, oathauth-step3, oathauth-step4
 		return [
 			'app' => [
@@ -103,10 +105,19 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
-					'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><br/>'
-					. $this->msg( 'oathauth-recoverycodes' )->parse()
-					. $this->createResourceList( $this->getScratchTokensForDisplay( $key ) )
-					. $this->createDownloadLink( $this->getScratchTokensForDisplay( $key ) ),
+					'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><br/>' .
+					$this->msg( 'oathauth-recoverycodes' )->escaped() . '<br/><br/>' .
+					$this->msg( 'rawmessage' )->rawParams(
+						$this->msg(
+							'oathauth-recoverytokens-createdat',
+							$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
+						)->parse()
+						. $this->msg( 'word-separator' )->escaped()
+						. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
+					) . '<br/>' .
+					$this->createResourceList( $this->getScratchTokensForDisplay( $key ) ) . '<br/>' .
+					'<strong>' . $this->msg( 'oathauth-recoverycodes-neveragain' )->escaped() . '</strong><br/>' .
+					$this->createDownloadLink( $this->getScratchTokensForDisplay( $key ) ),
 				'raw' => true,
 				'section' => 'step3',
 			],
