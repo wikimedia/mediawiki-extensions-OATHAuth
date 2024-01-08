@@ -23,7 +23,7 @@
 	"oathauth-step1": "Passo 1: Discarga un programma pro authentication bifactorial",
 	"oathauth-step1-test": "Discarga un programma pro authentication bifactorial. Isto pote esser un application mobile (como Google Authenticator) o un application pro computator a scriptorio.",
 	"oathauth-step2": "Passo 2: Scanna le codice QR",
-	"oathauth-step2alt": "O entra le secreto manualmente:",
+	"oathauth-step2alt": "Si tu es incapace de scannar le codice QR, insere manualmente le clave secrete e le nomine del conto:",
 	"oathauth-step3": "Passo 3: Nota le codices a uso unic",
 	"oathauth-step4": "Passo 4: Verification",
 	"oathauth-entertoken": "Entra un codice ab tu apparato de authentication pro verificar:",
