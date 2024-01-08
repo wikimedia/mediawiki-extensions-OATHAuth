@@ -68,7 +68,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 			],
 			'qrcode' => [
 				'type' => 'info',
-				'default' => $qrcodeElement,
+				'default' => $this->msg( 'oathauth-step2-qrcode' )->escaped() . '<br/>' .
+					$qrcodeElement,
 				'raw' => true,
 				'section' => 'step2',
 			],
