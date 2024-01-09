@@ -24,7 +24,7 @@
 	"oathauth-disabledoath": "Онемогућена двофакторска потврда идентитета",
 	"oathauth-prefs-label": "Двофакторска потврда идентитета:",
 	"oathauth-step1": "1. корак: преузмите програм за двофакторску потврду идентитета",
-	"oathauth-step1-test": "Преузмите програм за двофакторску потврду идентитета. То може бити апликација за мобилне уређаје (као што је Google Authenticator) или апликација за рачунаре.",
+	"oathauth-step1-test": "Преузмите програм за двофакторску потврду идентитета. То може бити апликација за мобилни уређај или рачунар, као што су [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator] или [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator]. Проширење за веб-прегледач или менаџер лозинки као на пример [https://1password.com/ 1Password].",
 	"oathauth-step2": "2. корак: скенирајте QR код",
 	"oathauth-step2alt": "Ако нисте у могућности да скенирате QR код, унесите тајни кључ и име налога ручно:",
 	"oathauth-step3": "3. корак: запишите причувне кодове",

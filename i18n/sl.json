@@ -24,7 +24,7 @@
 	"oathauth-disabledoath": "Dvofaktorska avtentikacija je izklopljena.",
 	"oathauth-prefs-label": "Dvofaktorska avtentikacija:",
 	"oathauth-step1": "1. korak: Namestite program za dvofaktorsko avtentikacijo",
-	"oathauth-step1-test": "Namestite program za dvofaktorsko avtentikacijo. To je lahko mobilna aplikacija (npr. Google Authenticator) ali namizni računalniški program.",
+	"oathauth-step1-test": "Prenesite program za dvofaktorsko avtentikacijo. To je lahko mobilna ali namizna aplikacija,  kot so [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator] ali [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator], razširitev brskalnika ali upravljalnik gesel, npr. [https://1password.com/ 1Password].",
 	"oathauth-step2": "2. korak: Poskenirajte kodo QR",
 	"oathauth-step2-qrcode": "Skenirajte kodo QR z uporabo aplikacije ali razširitve brskalnika, ki ste jo prenesli v 1. koraku za dvostopenjsko avtentikacijo.",
 	"oathauth-step2alt": "Če kode QR ne morete skenirati, vnesite skrivni ključ in ime računa ročno:",
