@@ -26,6 +26,8 @@ class DisableOATHForUser extends FormSpecialPage {
 	 * @param UserFactory $userFactory
 	 */
 	public function __construct( $userRepo, $userFactory ) {
+		// messages used: disableoathforuser (display "name" on Special:SpecialPages),
+		// right-oathauth-disable-for-user, action-oathauth-disable-for-user
 		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
 
 		$this->userRepo = $userRepo;
@@ -142,7 +144,7 @@ class DisableOATHForUser extends FormSpecialPage {
 
 		$this->userRepo->remove( $oathUser, $this->getRequest()->getIP(), false );
 
-		// message used: logentry-oath-disable-other
+		// messages used: logentry-oath-disable-other, log-action-oath-disable-other
 		$logEntry = new ManualLogEntry( 'oath', 'disable-other' );
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $user->getUserPage() );

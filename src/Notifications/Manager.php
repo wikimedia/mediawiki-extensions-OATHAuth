@@ -71,7 +71,7 @@ class Manager {
 			return;
 		}
 		Event::create( [
-			// message used: notification-header-oathauthenable
+			// message used: notification-header-oathauth-enable
 			'type' => 'oathauth-enable',
 			'title' => SpecialPage::getTitleFor( 'Preferences' ),
 			'agent' => $oUser->getUser(),

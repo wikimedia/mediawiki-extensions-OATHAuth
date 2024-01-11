@@ -29,6 +29,8 @@ class VerifyOATHForUser extends FormSpecialPage {
 	 * @param UserFactory $userFactory
 	 */
 	public function __construct( $userRepo, $userFactory ) {
+		// messages used: verifyoathforuser (display "name" on Special:SpecialPages),
+		// right-oathauth-verify-user, action-oathauth-verify-user
 		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
 		$this->userRepo = $userRepo;
 		$this->userFactory = $userFactory;
@@ -122,7 +124,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 			? self::OATHAUTH_IS_ENABLED
 			: self::OATHAUTH_NOT_ENABLED;
 
-		// message used: logentry-oath-verify
+		// messages used: logentry-oath-verify, log-action-oath-verify
 		$logEntry = new ManualLogEntry( 'oath', 'verify' );
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $user->getUserPage() );

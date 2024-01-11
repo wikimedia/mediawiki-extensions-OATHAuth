@@ -35,6 +35,7 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiOATHValidate extends ApiBase {
 	public function execute() {
 		$this->requirePostedParameters( [ 'token', 'data' ] );
+		// messages used: right-oathauth-api-all, action-oathauth-api-all,
 		$this->checkUserRightsAny( 'oathauth-api-all' );
 
 		$params = $this->extractRequestParams();

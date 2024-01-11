@@ -54,6 +54,8 @@ class ApiQueryOATH extends ApiQueryBase {
 	}
 
 	public function execute() {
+		// messages used: right-oathauth-api-all, action-oathauth-api-all,
+		// right-oathauth-verify-user, action-oathauth-verify-user
 		$this->checkUserRightsAny( [ 'oathauth-api-all', 'oathauth-verify-user' ] );
 
 		$params = $this->extractRequestParams();
@@ -90,6 +92,7 @@ class ApiQueryOATH extends ApiQueryBase {
 			$data['enabled'] = $authUser && $authUser->isTwoFactorAuthEnabled();
 
 			// Log if the user doesn't have oathauth-api-all or if a reason is provided
+			// messages used: logentry-oath-verify, log-action-oath-verify
 			if ( !$hasOAthauthApiAll || $reasonProvided ) {
 				$logEntry = new ManualLogEntry( 'oath', 'verify' );
 				$logEntry->setPerformer( $this->getUser() );

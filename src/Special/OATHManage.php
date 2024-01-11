@@ -68,6 +68,8 @@ class OATHManage extends SpecialPage {
 	 * @throws MWException
 	 */
 	public function __construct( OATHUserRepository $userRepo, OATHAuthModuleRegistry $moduleRegistry ) {
+		// messages used: oathmanage (display "name" on Special:SpecialPages),
+		// right-oathauth-enable, action-oathauth-enable
 		parent::__construct( 'OATHManage', 'oathauth-enable' );
 
 		$this->userRepo = $userRepo;
