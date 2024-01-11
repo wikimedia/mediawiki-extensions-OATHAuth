@@ -166,9 +166,9 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm implements IManageForm {
 		}
 
 		if ( $key->isScratchToken( $formData['token'] ) ) {
-			// A scratch/recovery token is not allowed for enrollment
+			// A recovery code is not allowed for enrollment
 			LoggerFactory::getInstance( 'authentication' )->info(
-				'OATHAuth {user} attempted to enable 2FA using a recovery token from {clientip}', [
+				'OATHAuth {user} attempted to enable 2FA using a recovery code from {clientip}', [
 					'user' => $this->getUser()->getName(),
 					'clientip' => $this->getRequest()->getIP(),
 				]
