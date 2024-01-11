@@ -198,7 +198,7 @@ class TOTPKey implements IAuthKey {
 					// This is saved below via OATHUserRepository::persist, TOTP::getDataFromUser.
 					array_splice( $this->scratchTokens, $i, 1 );
 
-					$logger->info( 'OATHAuth user {user} used a recovery token code from {clientip}', [
+					$logger->info( 'OATHAuth user {user} used a recovery token from {clientip}', [
 						'user' => $user->getAccount(),
 						'clientip' => $clientIP,
 					] );
