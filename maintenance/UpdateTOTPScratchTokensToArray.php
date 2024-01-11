@@ -42,7 +42,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateTOTPScratchTokensToArray extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addDescription( 'Script to update TOTP Recovery Tokens to an array' );
+		$this->addDescription( 'Script to update TOTP Recovery Codes to an array' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 

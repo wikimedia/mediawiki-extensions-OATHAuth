@@ -112,7 +112,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		// Increase rate limit counter for failed request
 		$user->pingLimiter( 'badoath' );
 
-		$this->logger->info( 'OATHAuth user {user} failed OTP/recovery token from {clientip}', [
+		$this->logger->info( 'OATHAuth user {user} failed OTP token/recovery code from {clientip}', [
 			'user'     => $user->getName(),
 			'clientip' => $user->getRequest()->getIP(),
 		] );
