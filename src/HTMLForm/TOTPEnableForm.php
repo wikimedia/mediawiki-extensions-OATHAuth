@@ -20,7 +20,9 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 * @return string
 	 */
 	public function getHTML( $submitResult ) {
-		$this->getOutput()->addModuleStyles( 'ext.oath.totp.showqrcode.styles' );
+		$out = $this->getOutput();
+		$out->addModuleStyles( 'ext.oath.styles' );
+		$out->addModules( 'ext.oath' );
 
 		return parent::getHTML( $submitResult );
 	}
@@ -69,6 +71,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->build();
 
 		$now = wfTimestampNow();
+		$recoveryCodes = $this->getScratchTokensForDisplay( $key );
+		$this->getOutput()->addJsConfigVars( 'oathauth-recoverycodes', $this->createTextList( $recoveryCodes ) );
 
 		// messages used: oathauth-step1, oathauth-step2, oathauth-step3, oathauth-step4
 		return [
@@ -115,9 +119,10 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 						. $this->msg( 'word-separator' )->escaped()
 						. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
 					) . '<br/>' .
-					$this->createResourceList( $this->getScratchTokensForDisplay( $key ) ) . '<br/>' .
+					$this->createResourceList( $recoveryCodes ) . '<br/>' .
 					'<strong>' . $this->msg( 'oathauth-recoverycodes-neveragain' )->escaped() . '</strong><br/>' .
-					$this->createDownloadLink( $this->getScratchTokensForDisplay( $key ) ),
+					$this->createCopyButton() .
+					$this->createDownloadLink( $recoveryCodes ),
 				'raw' => true,
 				'section' => 'step3',
 			],
@@ -146,6 +151,15 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		return Html::rawElement( 'ul', [], $resourceList );
 	}
 
+	/**
+	 * @param array $items
+	 *
+	 * @return string
+	 */
+	private function createTextList( $items ) {
+		return "* " . implode( "\n* ", $items );
+	}
+
 	private function createDownloadLink( array $scratchTokensForDisplay ): string {
 		$icon = Html::element( 'span', [
 			'class' => [ 'mw-oathauth-recoverycodes-download-icon', 'cdx-button__icon' ],
@@ -164,6 +178,16 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 				],
 			],
 			$icon . $this->msg( 'oathauth-recoverycodes-download' )->escaped()
+		);
+	}
+
+	private function createCopyButton(): string {
+		return Html::rawElement( 'button', [
+			'class' => 'cdx-button mw-oathauth-recoverycodes-copy-button'
+		], Html::element( 'span', [
+			'class' => 'cdx-button__icon',
+			'aria-hidden' => 'true',
+		] ) . $this->msg( 'oathauth-recoverycodes-copy' )->escaped()
 		);
 	}
 
