@@ -68,6 +68,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->margin( 0 )
 			->build();
 
+		// messages used: oathauth-step1, oathauth-step2, oathauth-step3, oathauth-step4
 		return [
 			'app' => [
 				'type' => 'info',

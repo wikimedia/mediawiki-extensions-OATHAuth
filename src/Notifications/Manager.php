@@ -50,6 +50,7 @@ class Manager {
 			return;
 		}
 		Event::create( [
+			// message used: notification-header-oathauth-disable
 			'type' => 'oathauth-disable',
 			'title' => SpecialPage::getTitleFor( 'Preferences' ),
 			'agent' => $oUser->getUser(),
@@ -70,6 +71,7 @@ class Manager {
 			return;
 		}
 		Event::create( [
+			// message used: notification-header-oathauthenable
 			'type' => 'oathauth-enable',
 			'title' => SpecialPage::getTitleFor( 'Preferences' ),
 			'agent' => $oUser->getUser(),
