@@ -79,7 +79,7 @@ class ApiOATHValidate extends ApiBase {
 						$user->pingLimiter( 'badoath' );
 
 						LoggerFactory::getInstance( 'authentication' )->info(
-							'OATHAuth user {user} failed OTP/scratch token from {clientip}',
+							'OATHAuth user {user} failed OTP/recovery token from {clientip}',
 							[
 								'user'     => $user,
 								'clientip' => $user->getRequest()->getIP(),
