@@ -94,9 +94,6 @@
 		},
 		"OATHRequiredForGroups": {
 			"value": []
-		},
-		"OATHAuthMultipleDevicesMigrationStage": {
-			"value": 768
 		}
 	},
 	"ResourceModules": {
