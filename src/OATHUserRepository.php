@@ -169,6 +169,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				'oad_user' => $userId,
 				'oad_type' => $moduleId,
 				'oad_data' => FormatJson::encode( $keyData ),
+				'oad_created' => $dbw->timestamp(),
 			] )
 			->caller( __METHOD__ )
 			->execute();
