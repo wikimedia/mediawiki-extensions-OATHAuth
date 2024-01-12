@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Зарегистрированные ключи",
 	"webuathn-ui-remove-key": "Удалить",
 	"webauthn-error-module-not-enabled": "Модуль \"$1\" не включён для {{GENDER:$2|участника \"$2\"|участницы \"$2\"}}",
-	"webauthn-error-invalid-key": "У {{GENDER:$1|участника \"$ 1\"|участницы  \"$ 1\"}} включён модуль WebAuthn, но установлен неверный ключ",
 	"webauthn-error-verification-failed": "Проверка не удалась",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Участник \"$1\"|Участница \"$1\"}} не может зарегистрировать новые учетные данные",
 	"webauthn-error-invalid-new-key": "Новый ключ, возвращаемый модулем, не имеет требуемого типа",

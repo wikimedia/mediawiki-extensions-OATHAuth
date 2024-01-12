@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Claves registrate",
 	"webuathn-ui-remove-key": "Remover",
 	"webauthn-error-module-not-enabled": "Le modulo \"$1\" non es activate pro {{GENDER:$2|le usator \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Le usator \"$1\"}} ha le modulo WebAuthn activate, ma es configurate un clave non valide",
 	"webauthn-error-verification-failed": "Verification fallite",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Le usator \"$1\"}} non pote registrar un nove credential",
 	"webauthn-error-invalid-new-key": "Le nove clave retornate per le modulo non es del typo requirite",

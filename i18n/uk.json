@@ -19,7 +19,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Зареєстровані ключі",
 	"webuathn-ui-remove-key": "Вилучити",
 	"webauthn-error-module-not-enabled": "Модуль «$1» для {{GENDER:$2|користувача «$2»|користувачки «$2»}} не увімкнено",
-	"webauthn-error-invalid-key": "{{GENDER:$1|У користувача «$1»|У користувачки «$1»}} увімкнено модуль WebAuthn, але встановлено недійсний ключ",
 	"webauthn-error-verification-failed": "Верифікація зазнала невдачі",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Користувач «$1»|Користувачка «$1»}} не може зареєструвати нового посвідчення",
 	"webauthn-error-invalid-new-key": "Новий код, повернутий модулем, не є необхідного типу",

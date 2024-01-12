@@ -18,7 +18,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Geregistreerde sleutels",
 	"webuathn-ui-remove-key": "Verwijderen",
 	"webauthn-error-module-not-enabled": "Module \"$1\" is niet ingeschakeld voor {{GENDER:$2|gebruiker \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Gebruiker “$1”}} heeft de module WebAuthn ingeschakeld, maar er is een ongeldige sleutel ingesteld",
 	"webauthn-error-verification-failed": "Verificatie mislukt",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Gebruiker “$1”}} kan geen nieuwe aanmeldgegevens registreren",
 	"webauthn-error-invalid-new-key": "De nieuwe sleutel die door de module wordt geretourneerd, is niet van het vereiste type",

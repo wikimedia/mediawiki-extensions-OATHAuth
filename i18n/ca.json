@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Claus inscrites",
 	"webuathn-ui-remove-key": "Suprimeix",
 	"webauthn-error-module-not-enabled": "El mòdul \"$1\" no és habilitat per a {{GENDER:$2|user \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1| User \"$1\"}} té habilitat el mòdul WebAuthn, però s'ha introduït una clau no vàlida.",
 	"webauthn-error-verification-failed": "La verificació ha fallat",
 	"webauthn-error-cannot-register": "{{GENDER:$1| Usuari \"$1\"}} no pot registrar una nova credencial",
 	"webauthn-error-invalid-new-key": "La nova clau generada pel mòdul no és del tipus demanat",

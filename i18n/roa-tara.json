@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Chiave reggistrate",
 	"webuathn-ui-remove-key": "Live",
 	"webauthn-error-module-not-enabled": "'U module \"$1\" non g'è abbilitate pe {{GENDER:$2|l'utende \"$2\"}}",
-	"webauthn-error-invalid-key": "L'{{GENDER:$1|utende \"$1\"}} ave 'u module WebAuthn abbilitate, ma ave 'mbostate 'na chiave non valide",
 	"webauthn-error-verification-failed": "Verifiche fallite",
 	"webauthn-error-cannot-register": "L'{{GENDER:$1|utende \"$1\"}} non ge pò reggistrà 'na credenziale nove",
 	"webauthn-error-invalid-new-key": "'A chiave nove turnate da 'u module non g'è 'nu tipe cercate",

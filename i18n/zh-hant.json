@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "註冊密鑰",
 	"webuathn-ui-remove-key": "移除",
 	"webauthn-error-module-not-enabled": "模組「$1」未為{{GENDER:$2|使用者「$2」}}啟動",
-	"webauthn-error-invalid-key": "{{GENDER:$1|使用者「$1」}}已啟動 WebAuthn 模組，但有設定到無效的密鑰",
 	"webauthn-error-verification-failed": "驗證失敗",
 	"webauthn-error-cannot-register": "{{GENDER:$1|使用者「$1」}}無法註冊新的憑證",
 	"webauthn-error-invalid-new-key": "由模組回傳的新密鑰非請求類型",

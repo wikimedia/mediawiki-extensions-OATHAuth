@@ -19,7 +19,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Claves registradas",
 	"webuathn-ui-remove-key": "Eliminar",
 	"webauthn-error-module-not-enabled": "El módulo «$1» no está activado para {{GENDER:$2|el usuario|la usuaria}} «$2»",
-	"webauthn-error-invalid-key": "{{GENDER:$1|El usuario|La usuaria}} \"$1\" ha habilitado el módulo WebAuthn, pero tiene una clave inválida",
 	"webauthn-error-verification-failed": "Fallo en la verificación",
 	"webauthn-error-cannot-register": "{{GENDER:$1|El usuario|La usuaria}} \"$1\" no puede registrar una credencial nueva",
 	"webauthn-error-invalid-new-key": "La nueva clave devuelta por el módulo no es del tipo requerido",

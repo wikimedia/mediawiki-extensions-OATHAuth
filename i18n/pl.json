@@ -17,7 +17,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Zarejestrowane klucze",
 	"webuathn-ui-remove-key": "Usuń",
 	"webauthn-error-module-not-enabled": "Moduł „$1” nie jest włączony dla {{GENDER:$2|użytkownika|użytkowniczki}} „$2”",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Użytkownik $1 włączył|Użytkowniczka $1 włączyła}} moduł WebAuthn, jednak ustawiony jest niewłaściwy klucz",
 	"webauthn-error-verification-failed": "Weryfikacja nie powiodła się",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Użytkownik|Użytkowniczka}} „$1” nie może zarejestrować nowego poświadczenia",
 	"webauthn-error-invalid-new-key": "Nowy klucz zwrócony przed moduł nie jest wymaganego typu",

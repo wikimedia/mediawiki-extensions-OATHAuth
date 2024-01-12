@@ -17,7 +17,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Registrerade nycklar",
 	"webuathn-ui-remove-key": "Ta bort",
 	"webauthn-error-module-not-enabled": "Modul \"$1\" är inte påslagen för {{GENDER:$2|användare \"$2\"}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Användare \"$1\"}} har WebAuthn-modulen påslagen, fast en ogiltig nyckel är angiven",
 	"webauthn-error-verification-failed": "Verifiering misslyckades",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Användare \"$1\"}} kan inte registrera en ny legitimationsuppgift",
 	"webauthn-error-invalid-new-key": "Den nya nyckeln som återkommit av modulen är inte enligt efterfrågad typ",

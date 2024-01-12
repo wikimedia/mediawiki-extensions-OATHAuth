@@ -18,7 +18,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "已注册密钥",
 	"webuathn-ui-remove-key": "移除",
 	"webauthn-error-module-not-enabled": "未为{{GENDER:$2|用户“$2”}}启用模块“$1”",
-	"webauthn-error-invalid-key": "{{GENDER:$1|用户“$1”}}启用了WebAuthn模块，但设置了无效的密钥",
 	"webauthn-error-verification-failed": "验证失败",
 	"webauthn-error-cannot-register": "{{GENDER:$1|用户“$1”}}无法注册新凭据",
 	"webauthn-error-invalid-new-key": "模块返回的新密钥不是必需的类型",

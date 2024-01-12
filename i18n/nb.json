@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Registrerte nøkler",
 	"webuathn-ui-remove-key": "Fjern",
 	"webauthn-error-module-not-enabled": "Modulen «$1» er ikke slått på for {{GENDER:$2|brukeren}} «$2»",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Brukeren}} «$1» har WebAuthn-modulen slått på, men en ugyldig nøkkel er angitt",
 	"webauthn-error-verification-failed": "Bekreftelse mislyktes",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Brukeren}} «$1» kan ikke registrere nye referanser",
 	"webauthn-error-invalid-new-key": "Den nye nøkkelen returnert av modulen er ikke av den påkrevde typen",

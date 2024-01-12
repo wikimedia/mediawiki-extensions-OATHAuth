@@ -16,7 +16,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "Пријавени клучеви",
 	"webuathn-ui-remove-key": "Отстрани",
 	"webauthn-error-module-not-enabled": "Модулот „$1“ не е овозможен за {{GENDER:$2|корисникот „$2“}}",
-	"webauthn-error-invalid-key": "{{GENDER:$1|Корисникот „$1“}} го има овозможено модулот WebAuthn, но зададен е неважечки клуч",
 	"webauthn-error-verification-failed": "Проверката не успеа",
 	"webauthn-error-cannot-register": "{{GENDER:$1|Корисникот „$1“}} не може да пријави нови најавни податоци",
 	"webauthn-error-invalid-new-key": "Новиот клуч даден од модулот не е од бараниот вид",

@@ -20,7 +20,6 @@
 	"oathauth-webauthn-registered-keys-section-name": "登録済みのキー",
 	"webuathn-ui-remove-key": "除去",
 	"webauthn-error-module-not-enabled": "モジュール「$1」は{{GENDER:$2|利用者「$2」}}に対して有効化されていません",
-	"webauthn-error-invalid-key": "{{GENDER:$1|利用者「$1」}}は WebAuthn モジュールを有効化していますが、無効なキーを設定しています",
 	"webauthn-error-verification-failed": "検証に失敗しました",
 	"webauthn-error-cannot-register": "{{GENDER:$1|利用者「$1」}}は新しい証明書を登録することができません",
 	"webauthn-error-invalid-new-key": "モジュールが返した新しいキーは適切なタイプではありません",
