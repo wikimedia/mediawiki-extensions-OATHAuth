@@ -103,10 +103,6 @@
 		"ext.oath.totp.showqrcode.styles": {
 			"styles": [
 				"totp/ext.oath.showqrcode.styles.css"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		}
 	},
