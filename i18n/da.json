@@ -7,10 +7,8 @@
 		]
 	},
 	"disableoathforuser": "Deaktivere brugeres tofaktorgodkendelse",
-	"specialpages-group-oath": "Tofaktorgodkendelse",
 	"oathauth-account": "Kontonavn:",
 	"oathauth-enable": "Aktiver tofaktorgodkendelse",
-	"oathauth-token": "Nøgle",
 	"oathauth-disable": "Deaktiver tofaktorgodkendelse",
 	"oathauth-validatedoath": "Validerede oplysninger for login med tofaktorgodkendelse, der nu er slået til.",
 	"oathauth-failedtovalidateoath": "Det mislykkedes at validere koden for tofaktorgodkendelse",
