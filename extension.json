@@ -80,20 +80,24 @@
 	},
 	"config": {
 		"OATHAuthWindowRadius": {
-			"value": 4
+			"value": 4,
+			"description": "Number of token windows on either side of current time to be considered valid for authentication."
 		},
 		"OATHAuthDatabase": {
 			"value": false,
-			"description": "Deprecated, configure the virtual-oathauth virtual domain instead."
+			"description": "Deprecated; configure the virtual-oathauth virtual domain instead."
 		},
 		"OATHAuthAccountPrefix": {
-			"value": false
+			"value": false,
+			"description": "Prefix for user account shown during enrollment."
 		},
 		"OATHExclusiveRights": {
-			"value": []
+			"value": [],
+			"description": "List of permissions that are revoked from users who do not use two-factor authentication."
 		},
 		"OATHRequiredForGroups": {
-			"value": []
+			"value": [],
+			"description": "List of user groups that must use two-factor authentication."
 		}
 	},
 	"ResourceModules": {
