@@ -23,7 +23,7 @@
 	"oathauth-account": "Accountnaam:",
 	"oathauth-secret": "Geheime sleutel voor tweetrapsauthenticatie:",
 	"oathauth-enable": "Tweetrapsauthenticatie inschakelen",
-	"oathauth-recoverycodes": "In de onderstaande lijst staan herstelcodes voor eenmalig gebruik. Deze codes kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen waarin u geen toegang tot uw apparaat hebt. Noteer deze codes en bewaar ze op een veilige plaats. Het wordt aanbevolen om elke code als gebruikt te markeren wanneer u zich ermee hebt aangemeld. Als u uw apparaat kwijtraakt, kunt u alleen met deze codes uw gebruikersaccount nog redden. '''Deze codes worden na dit bericht nooit meer weergegeven.'''",
+	"oathauth-recoverycodes": "In de onderstaande lijst staan herstelcodes voor eenmalig gebruik. Deze codes kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen waarin u geen toegang tot uw apparaat hebt. Noteer deze codes en bewaar ze op een veilige plaats. Het wordt aanbevolen om elke code als gebruikt te markeren wanneer u zich ermee hebt aangemeld. Als u uw apparaat kwijtraakt, kunt u alleen met deze codes uw gebruikersaccount nog redden.\n\n'''Deze codes worden na dit bericht nooit meer weergegeven.'''",
 	"oathauth-disable": "Tweetrapsauthenticatie uitschakelen",
 	"oathauth-validatedoath": "De gebruikersgegevens voor tweetrapsauthenticatie zijn gevalideerd. Tweetrapsauthenticatie is nu verplicht.",
 	"oathauth-noscratchforvalidation": "U kunt geen herstelcode gebruiken om tweetrapsauthenticatie te bevestigen. Herstelcodes zijn alleen bedoeld voor reserve- en incidenteel gebruik. Gebruik een code van uw tweetrapsauthenticatie-toepassing (bv. Google Authenticator).",
