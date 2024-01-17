@@ -87,7 +87,7 @@ class ApiQueryOATH extends ApiQueryBase {
 			'enabled' => false,
 		];
 
-		if ( !$user->isAnon() ) {
+		if ( $user->isNamed() ) {
 			$authUser = $this->oathUserRepository->findByUser( $user );
 			$data['enabled'] = $authUser && $authUser->isTwoFactorAuthEnabled();
 

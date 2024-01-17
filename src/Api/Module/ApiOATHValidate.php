@@ -60,7 +60,7 @@ class ApiOATHValidate extends ApiBase {
 			'valid' => false,
 		];
 
-		if ( !$user->isAnon() ) {
+		if ( $user->isNamed() ) {
 			$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
 			$authUser = $userRepo->findByUser( $user );
 			if ( $authUser ) {
