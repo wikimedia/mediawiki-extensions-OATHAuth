@@ -164,6 +164,9 @@
 	"GrantPermissionGroups": {
 		"oath": "authentication"
 	},
+	"GrantRiskGroups": {
+		"oath": "internal"
+	},
 	"APIModules": {
 		"oathvalidate": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiOATHValidate"
 	},
