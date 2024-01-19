@@ -109,7 +109,7 @@ class WebAuthn extends ApiBase {
 		$mustBeLoggedIn = $functionConfig['mustBeLoggedIn'];
 		if ( $mustBeLoggedIn === true ) {
 			$user = $this->getUser();
-			if ( !$user->isRegistered() ) {
+			if ( !$user->isNamed() ) {
 				$this->dieWithError( [ 'apierror-mustbeloggedin', $this->msg( 'action-oathauth-enable' ) ] );
 			}
 		}
