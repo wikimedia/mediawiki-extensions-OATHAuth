@@ -26,9 +26,6 @@ use Wikimedia\Rdbms\IConnectionProvider;
  * @group Database
  */
 class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
-	/** @var string[] */
-	protected $tablesUsed = [ 'oathauth_types' ];
-
 	/**
 	 * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry::getModuleIds
 	 */
