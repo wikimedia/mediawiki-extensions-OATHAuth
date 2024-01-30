@@ -125,6 +125,6 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}未启用双重身份验证。",
 	"oathauth-prefs-disabledgroups": "已禁用{{PLURAL:$1|用户组}}：",
 	"oathauth-prefs-disabledgroups-help": "在您启用[[Special:Manage Two-factor authentication|双重身份验证]]之前，{{GENDER:$2|您的会员资格}}在{{PLURAL:$1|此用户组|这些用户组}}会处于禁用状态。",
-	"oathauth-qrcode-alt": "代表密钥的可扫描 QR 码。",
+	"oathauth-qrcode-alt": "代表密钥的可扫描二维码。",
 	"oathauth-hint": "无法访问您的设备或应用？您可以在此字段中输入恢复令牌（启用2FA时显示）。"
 }
