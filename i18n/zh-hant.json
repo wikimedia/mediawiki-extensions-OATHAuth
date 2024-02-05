@@ -97,6 +97,7 @@
 	"oathauth-totp-disable-warning": "您將無法使用以此帳號註冊的認證裝置。所有關聯此帳號的臨時權杖將會失效。",
 	"oathauth-invalidrequest": "無效請求",
 	"notification-header-oathauth-disable": "已在{{GENDER:$2|您的帳號}}上停用雙重認證。",
+	"notification-header-oathauth-remove-device": "已從{{GENDER:$2|您的帳號}}中移除一個雙重認證裝置。",
 	"notification-body-oathauth-disable": "如果{{GENDER:$2|您}}並沒有這樣做，{{GENDER:$2|您的帳號}}可能已被盜用。",
 	"notification-body-oathauth-disable-other": "如果{{GENDER:$2|您}}沒有請求這個，{{GENDER:$2|您}}應聯繫管理員。",
 	"oathauth-notifications-disable-help": "求助",
