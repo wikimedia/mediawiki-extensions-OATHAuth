@@ -30,7 +30,7 @@ class MWServicesHandler implements MediaWikiServicesHook {
 	public function onMediaWikiServices( $services ) {
 		global $wgOATHAuthDatabase, $wgVirtualDomainsMapping;
 
-		if ( !empty( $wgOATHAuthDatabase ) && !isset( $wgVirtualDomainsMapping['virtual-oathauth'] ) ) {
+		if ( $wgOATHAuthDatabase && !isset( $wgVirtualDomainsMapping['virtual-oathauth'] ) ) {
 			$wgVirtualDomainsMapping['virtual-oathauth'] = [ 'db' => $wgOATHAuthDatabase ];
 
 			wfDeprecatedMsg(
