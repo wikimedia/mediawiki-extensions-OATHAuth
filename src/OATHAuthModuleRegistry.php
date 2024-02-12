@@ -20,7 +20,7 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use Exception;
+use InvalidArgumentException;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHAuthModuleRegistry {
@@ -82,7 +82,7 @@ class OATHAuthModuleRegistry {
 			return $ids[$key];
 		}
 
-		throw new Exception( "Module $key does not seem to exist" );
+		throw new InvalidArgumentException( "Module $key does not seem to exist" );
 	}
 
 	/**
