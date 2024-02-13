@@ -51,14 +51,18 @@
 		const publicKey = this.authInfo;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			function ( c ) { return c.charCodeAt( 0 ); }
+			function ( c ) {
+				return c.charCodeAt( 0 );
+			}
 		);
 
 		publicKey.allowCredentials = publicKey.allowCredentials.map( function ( data ) {
 			return $.extend( data, {
 				id: Uint8Array.from(
 					atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-					function ( c ) { return c.charCodeAt( 0 ); }
+					function ( c ) {
+						return c.charCodeAt( 0 );
+					}
 				)
 			} );
 		} );
