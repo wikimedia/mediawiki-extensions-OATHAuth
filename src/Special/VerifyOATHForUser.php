@@ -59,7 +59,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 	 */
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
-		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-verify-for-user' ) );
+		$form->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-verify-for-user' ) );
 	}
 
 	/**

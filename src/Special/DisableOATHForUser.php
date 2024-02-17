@@ -61,7 +61,7 @@ class DisableOATHForUser extends FormSpecialPage {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->setWrapperLegendMsg( 'oathauth-disable-for-user' );
 		$form->setPreHtml( $this->msg( 'oathauth-disable-intro' )->parse() );
-		$form->getOutput()->setPageTitle( $this->msg( 'oathauth-disable-for-user' ) );
+		$form->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-disable-for-user' ) );
 	}
 
 	/**

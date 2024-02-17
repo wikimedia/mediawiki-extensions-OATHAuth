@@ -307,10 +307,10 @@ class OATHManage extends SpecialPage {
 	private function clearPage(): void {
 		if ( $this->isGenericAction() ) {
 			$displayName = $this->requestedModule->getDisplayName();
-			$pageTitle = $this->isModuleEnabled( $this->requestedModule ) ?
-				$this->msg( 'oathauth-disable-page-title', $displayName )->text() :
-				$this->msg( 'oathauth-enable-page-title', $displayName )->text();
-			$this->getOutput()->setPageTitle( $pageTitle );
+			$pageTitleMessage = $this->isModuleEnabled( $this->requestedModule ) ?
+				$this->msg( 'oathauth-disable-page-title', $displayName ) :
+				$this->msg( 'oathauth-enable-page-title', $displayName );
+			$this->getOutput()->setPageTitleMsg( $pageTitleMessage );
 		}
 
 		$this->getOutput()->clearHTML();
@@ -378,7 +378,7 @@ class OATHManage extends SpecialPage {
 		] );
 		$panel->appendContent( $button );
 
-		$this->getOutput()->setPageTitle( $headerMessage );
+		$this->getOutput()->setPageTitleMsg( $headerMessage );
 		$this->getOutput()->addHTML( $panel->toString() );
 	}
 
