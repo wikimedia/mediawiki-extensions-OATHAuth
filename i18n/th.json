@@ -25,10 +25,12 @@
 	"right-oathauth-disable-for-user": "ปิดใช้งานการยืนยันตัวตนสองขั้นตอนสำหรับผู้ใช้",
 	"action-oathauth-disable-for-user": "ปิดการใช้งานการยืนยันตัวตนสองขั้นตอนสำหรับผู้ใช้",
 	"oathauth-enteruser": "ชื่อผู้ใช้:",
+	"oathauth-enterdisablereason": "เหตุผลในการปิดการใช้งาน:",
+	"oathauth-enterverifyreason": "เหตุผลในการตรวจสอบ:",
 	"right-oathauth-enable": "เปิดใช้งานการยืนยันตัวตนสองขั้นตอน",
 	"action-oathauth-enable": "เปิดใช้งานการยืนยันตัวตนสองขั้นตอน",
 	"oathauth-auth-token-label": "รหัสยืนยันตัวตนสองขั้นตอนหรือรหัสกู้คืน",
-	"oathauth-auth-ui": "กรุณาป้อนรหัสยืนยันจากแอปพลิเคชันยืนยันตัวตนสองขั้นตอนของคุณ (เช่น Google Authenticator)",
+	"oathauth-auth-ui": "กรุณากรอกรหัสยืนยันจากแอปพลิเคชันยืนยันตัวตนสองขั้นตอนของคุณ (เช่น Google Authenticator)",
 	"oathauth-login-failed": "การตรวจสอบยืนยันล้มเหลว",
 	"oathauth-describe-provider": "การยืนยันตัวตนสองขั้นตอน (OATH)",
 	"action-oathauth-api-all": "ตรวจสอบสถานะการยืนยันตัวตนสองขั้นตอน (OATH)",
@@ -41,9 +43,11 @@
 	"oathauth-disable-page-title": "ปิดใช้งาน $1",
 	"oathauth-enable-page-title": "เปิดใช้งาน $1",
 	"oathauth-disable-method-warning-button-label": "ยืนยันและดำเนินการต่อ",
+	"notification-header-oathauth-disable": "การยืนยันตัวตนสองขั้นตอนปิดใช้งานแล้วใน{{GENDER:$2|บัญชีของคุณ}}",
 	"oathauth-notifications-disable-help": "ช่วยเหลือ",
 	"oathauth-notifications-disable-primary": "ตรวจสอบการตั้งค่าการยืนยันตัวตนสองขั้นตอนของคุณ",
 	"notification-header-oathauth-enable": "การยืนยันตัวตนสองขั้นตอนเปิดใช้งานแล้วใน{{GENDER:$2|บัญชีของคุณ}}",
 	"oathauth-notifications-enable-help": "ช่วยเหลือ",
-	"oathauth-notifications-enable-primary": "ตรวจสอบการตั้งค่าการยืนยันตัวตนสองขั้นตอนของคุณ"
+	"oathauth-notifications-enable-primary": "ตรวจสอบการตั้งค่าการยืนยันตัวตนสองขั้นตอนของคุณ",
+	"oathauth-prefs-disabledgroups": "ปิดใช้งาน {{PLURAL:$1|กลุ่ม}}:"
 }
