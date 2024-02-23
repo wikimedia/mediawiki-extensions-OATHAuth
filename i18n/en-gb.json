@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Drkirstyross"
-		]
-	},
-	"oathauth-recoverycodes": "The following list is a list of one-time use recovery codes. These codes may only be used once, and are for emergency use when you don't have access to your device. Please write these down and keep them in a secure location. It is recommended that you mark each code as used when you have used it to log in. If you lose your device, these codes are the only way to rescue your account. '''These codes will never be shown again'''."
-}
