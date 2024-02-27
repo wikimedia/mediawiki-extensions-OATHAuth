@@ -6,7 +6,8 @@
 			"ShockD",
 			"StanProg",
 			"Stoyan",
-			"Vlad5250"
+			"Vlad5250",
+			"Ted Masters"
 		]
 	},
 	"oathauth-desc": "Осигурява поддръжка на удостоверяването посредством HMAC на базата на еднократни пароли",
@@ -17,7 +18,7 @@
 	"oathauth-enable": "Включване на двуфакторно удостоверяване",
 	"oathauth-token": "Маркер",
 	"oathauth-disable": "Изключване на двуфакторно удостоверяване",
-	"oathauth-disabledoath": "Двуфакторното е изключено.",
+	"oathauth-disabledoath": "Двуфакторното удостоверяване е изключено.",
 	"oathauth-prefs-label": "Двуфакторно удостоверяване:",
 	"oathauth-step1": "Стъпка 1: Изтегляне на софтуера за двуфакторно удостоверяване",
 	"oathauth-step1-test": "Изтеглете програма за двуфакторно удостоверяване. Това може да е мобилно или настолно приложение, като [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator] или [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator]. Разширение за браузър. Или софтуер за управление на пароли като [https://1password.com/ 1Password].",
