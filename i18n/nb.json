@@ -88,6 +88,7 @@
 	"notification-header-oathauth-disable": "Tofaktorautentisering har blitt skrudd av på {{GENDER:$2|brukeren din}}.",
 	"notification-body-oathauth-disable": "Hvis {{GENDER:$2|du}} ikke gjorde dette, kan {{GENDER:$2|kontoen tin}} ha blitt kompromittert.",
 	"notification-body-oathauth-disable-other": "Hvis {{GENDER:$2|du}} ikke ba om dette, burde {{GENDER:$2|du}} ta kontakt med en administrator.",
+	"notification-body-oathauth-disable-remaining": "Det er fortsatt {{PLURAL:$3|én enhet|$3 enheter}} som er aktive på kontoen {{GENDER:$2|din}}.",
 	"oathauth-notifications-disable-help": "Hjelp",
 	"oathauth-notifications-disable-primary": "Sjekk innstillingene dine for tofaktorautentisering",
 	"notification-header-oathauth-enable": "Tofaktorautentisering har blitt aktivert på kontoen {{GENDER:$2|din}}",
@@ -97,5 +98,7 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} har slått på tofaktorautentisering.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} har ikke slått på tofaktorautentisering.",
 	"oathauth-prefs-disabledgroups": "Skrudd av for {{PLURAL:$1|gruppen|gruppene}}:",
-	"oathauth-prefs-disabledgroups-help": "Medlemskapet {{GENDER:$2|ditt}} i {{PLURAL:$1|denne gruppa|disse gruppene}} er deaktivert fram til du aktiverer [[Special:Manage Two-factor authentication|tofaktorautentisering]]."
+	"oathauth-prefs-disabledgroups-help": "Medlemskapet {{GENDER:$2|ditt}} i {{PLURAL:$1|denne gruppa|disse gruppene}} er deaktivert fram til du aktiverer [[Special:Manage Two-factor authentication|tofaktorautentisering]].",
+	"oathauth-qrcode-alt": "Skannbar QR-kode som representerer den hemmelige nøkkelen.",
+	"oathauth-hint": "Har du ikke tilgang til enheten eller applikasjonen? Du kan skrive inn gjenopprettingsnøkler (som du fikk da du slo på 2FA) i dette feltet."
 }
