@@ -41,7 +41,10 @@ use Psr\Log\LoggerInterface;
  * @ingroup Extensions
  */
 class TOTPKey implements IAuthKey {
-	/** @var array Two-factor binary secret */
+	/** @var int|null */
+	private ?int $id;
+
+	/** @var array Two factor binary secret */
 	private $secret;
 
 	/** @var string[] List of recovery codes */
@@ -53,6 +56,7 @@ class TOTPKey implements IAuthKey {
 	 */
 	public static function newFromRandom() {
 		$object = new self(
+			null,
 			Base32::encode( random_bytes( 10 ) ),
 			[]
 		);
@@ -70,14 +74,17 @@ class TOTPKey implements IAuthKey {
 		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
 			return null;
 		}
-		return new static( $data['secret'], $data['scratch_tokens'] );
+		return new static( $data['id'] ?? null, $data['secret'], $data['scratch_tokens'] );
 	}
 
 	/**
+	 * @param int|null $id the database id of this key
 	 * @param string $secret
 	 * @param array $recoveryCodes
 	 */
-	public function __construct( $secret, array $recoveryCodes ) {
+	public function __construct( ?int $id, $secret, array $recoveryCodes ) {
+		$this->id = $id;
+
 		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
@@ -86,6 +93,13 @@ class TOTPKey implements IAuthKey {
 			'algorithm' => 'SHA1',
 		];
 		$this->recoveryCodes = array_values( $recoveryCodes );
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getId(): ?int {
+		return $this->id;
 	}
 
 	/**

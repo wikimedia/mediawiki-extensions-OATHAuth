@@ -76,41 +76,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$uid = $this->centralIdLookupFactory->getLookup()
 				->centralIdFromLocalUser( $user );
 			$oathUser = new OATHUser( $user, $uid );
-
-			$res = $this->dbProvider
-				->getReplicaDatabase( 'virtual-oathauth' )
-				->newSelectQueryBuilder()
-				->select( [
-					'oad_data',
-					'oat_name',
-				] )
-				->from( 'oathauth_devices' )
-				->join( 'oathauth_types', null, [ 'oat_id = oad_type' ] )
-				->where( [ 'oad_user' => $uid ] )
-				->caller( __METHOD__ )
-				->fetchResultSet();
-
-			$module = null;
-
-			foreach ( $res as $row ) {
-				if ( $module && $row->oat_name !== $module->getName() ) {
-					// Not supported by current application-layer code.
-					throw new RuntimeException( "user {$uid} has multiple different oathauth modules defined" );
-				}
-
-				if ( !$module ) {
-					$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
-					$oathUser->setModule( $module );
-
-					if ( !$module ) {
-						throw new MWException( 'oathauth-module-invalid' );
-					}
-				}
-
-				$keyData = FormatJson::decode( $row->oad_data, true );
-				$oathUser->addKey( $module->newKey( $keyData ) );
-			}
-
+			$this->loadKeysFromDatabase( $oathUser );
 			$this->cache->set( $user->getName(), $oathUser );
 		}
 		return $oathUser;
@@ -128,7 +94,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		}
 		$prevUser = $this->findByUser( $user->getUser() );
 		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
-
 		$moduleId = $this->moduleRegistry->getModuleId( $user->getModule()->getName() );
 
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
@@ -141,19 +106,21 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		$insert = $dbw->newInsertQueryBuilder()
-			->insertInto( 'oathauth_devices' )
-			->caller( __METHOD__ );
 		foreach ( $user->getKeys() as $key ) {
-			$insert->row( [
-				'oad_user' => $userId,
-				'oad_type' => $moduleId,
-				'oad_data' => FormatJson::encode( $key->jsonSerialize() )
-			] );
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'oathauth_devices' )
+				->row( [
+					'oad_user' => $userId,
+					'oad_type' => $moduleId,
+					'oad_data' => FormatJson::encode( $key->jsonSerialize() )
+				] )
+				->caller( __METHOD__ )
+				->execute();
 		}
-		$insert->execute();
 
 		$dbw->endAtomic( __METHOD__ );
+
+		$this->loadKeysFromDatabase( $user );
 
 		$userName = $user->getUser()->getName();
 		$this->cache->set( $userName, $user );
@@ -209,7 +176,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 		$hasExistingKey = $user->isTwoFactorAuthEnabled();
 
-		$key = $module->newKey( $keyData );
+		$key = $module->newKey( $keyData + [ 'id' => $id ] );
 		$user->addKey( $key );
 
 		$this->logger->info( 'OATHAuth {oathtype} key {key} added for {user} from {clientip}', [
@@ -231,8 +198,19 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @param OATHUser $user
 	 * @param string $clientInfo
 	 * @param bool $self Whether the user disabled the 2FA themselves
+	 *
+	 * @deprecated since 1.41, use removeAll() instead
 	 */
 	public function remove( OATHUser $user, $clientInfo, bool $self ) {
+		$this->removeAll( $user, $clientInfo, $self );
+	}
+
+	/**
+	 * @param OATHUser $user
+	 * @param string $clientInfo
+	 * @param bool $self Whether they disabled it themselves
+	 */
+	public function removeAll( OATHUser $user, $clientInfo, bool $self ) {
 		$userId = $this->centralIdLookupFactory->getLookup()
 			->centralIdFromLocalUser( $user->getUser() );
 		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
@@ -259,5 +237,48 @@ class OATHUserRepository implements LoggerAwareInterface {
 		] );
 
 		Manager::notifyDisabled( $user, $self );
+	}
+
+	private function loadKeysFromDatabase( OATHUser $user ): void {
+		$uid = $this->centralIdLookupFactory->getLookup()
+			->centralIdFromLocalUser( $user->getUser() );
+
+		$res = $this->dbProvider
+			->getReplicaDatabase( 'virtual-oathauth' )
+			->newSelectQueryBuilder()
+			->select( [
+				'oad_id',
+				'oad_data',
+				'oat_name',
+			] )
+			->from( 'oathauth_devices' )
+			->join( 'oathauth_types', null, [ 'oat_id = oad_type' ] )
+			->where( [ 'oad_user' => $uid ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
+		$module = null;
+
+		// Clear stored key list before loading keys
+		$user->disable();
+
+		foreach ( $res as $row ) {
+			if ( $module && $row->oat_name !== $module->getName() ) {
+				// Not supported by current application-layer code.
+				throw new RuntimeException( "User {$uid} has multiple different two-factor modules defined" );
+			}
+
+			if ( !$module ) {
+				$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
+				$user->setModule( $module );
+
+				if ( !$module ) {
+					throw new MWException( 'oathauth-module-invalid' );
+				}
+			}
+
+			$keyData = FormatJson::decode( $row->oad_data, true );
+			$user->addKey( $module->newKey( $keyData + [ 'id' => (int)$row->oad_id ] ) );
+		}
 	}
 }

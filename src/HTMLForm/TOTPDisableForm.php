@@ -71,7 +71,7 @@ class TOTPDisableForm extends OATHAuthOOUIHTMLForm {
 		}
 
 		$this->oathUser->setKeys();
-		$this->oathRepo->remove( $this->oathUser, $this->getRequest()->getIP(), true );
+		$this->oathRepo->removeAll( $this->oathUser, $this->getRequest()->getIP(), true );
 
 		return true;
 	}

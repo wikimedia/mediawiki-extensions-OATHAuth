@@ -14,8 +14,8 @@ require_once "$IP/maintenance/Maintenance.php";
 class DisableOATHAuthForUser extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addDescription( 'Remove OATHAuth from a specific user' );
-		$this->addArg( 'user', 'The username to remove OATHAuth from.' );
+		$this->addDescription( 'Remove all two-factor authentication devices from a specific user' );
+		$this->addArg( 'user', 'The username to remove 2FA devices from.' );
 		$this->requireExtension( 'OATHAuth' );
 	}
 
@@ -31,17 +31,17 @@ class DisableOATHAuthForUser extends Maintenance {
 		$repo = OATHAuthServices::getInstance()->getUserRepository();
 		$oathUser = $repo->findByUser( $user );
 		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
-			$this->fatalError( "User $username doesn't have OATHAuth enabled!" );
+			$this->fatalError( "User $username does not have two-factor authentication enabled!" );
 		}
 
-		$repo->remove( $oathUser, 'Maintenance script', false );
+		$repo->removeAll( $oathUser, 'Maintenance script', false );
 		// Kill all existing sessions.
 		// If this request to disable 2FA was social-engineered by an attacker,
 		// the legitimate user will hopefully log in again to the wiki, and notice that the second factor
 		// is missing or different, and alert the operators.
 		SessionManager::singleton()->invalidateSessionsForUser( $user );
 
-		$this->output( "OATHAuth disabled for $username.\n" );
+		$this->output( "Two-factor authentication disabled for $username.\n" );
 	}
 }
 
