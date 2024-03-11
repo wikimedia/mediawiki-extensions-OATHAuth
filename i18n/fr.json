@@ -17,7 +17,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Yasten"
+			"Yasten",
+			"MacOS Weed"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -57,7 +58,7 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "L’utilisateur n’a pas activé l’authentification à deux facteurs, il n’y a donc rien à désactiver.",
 	"right-oathauth-enable": "Activer l’authentification à deux facteurs",
 	"action-oathauth-enable": "activer l’authentification à deux facteurs",
-	"oathauth-auth-token-label": "Jeton",
+	"oathauth-auth-token-label": "Jeton à deux facteurs ou code de secours",
 	"oathauth-auth-token-help": "Le mot de passe à usage unique utilisé comme le deuxième facteur d’authentification à deux facteurs.",
 	"oathauth-auth-ui": "Veuillez entrer un code de vérification à partir de votre appareil d’authentification.",
 	"oathauth-throttled": "Trop de tentatives de vérification ! Veuillez attendre au moins $1.",
