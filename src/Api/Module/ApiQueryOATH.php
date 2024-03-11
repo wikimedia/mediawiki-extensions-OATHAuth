@@ -113,6 +113,7 @@ class ApiQueryOATH extends ApiQueryBase {
 		return 'private';
 	}
 
+	/** @inheritDoc */
 	public function isInternal() {
 		return true;
 	}

@@ -94,10 +94,12 @@ class ApiOATHValidate extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
+	/** @inheritDoc */
 	public function isInternal() {
 		return true;
 	}
 
+	/** @inheritDoc */
 	public function needsToken() {
 		return 'csrf';
 	}
