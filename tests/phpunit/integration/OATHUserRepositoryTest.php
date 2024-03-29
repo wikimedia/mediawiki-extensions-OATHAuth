@@ -93,8 +93,9 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		// Test looking it up again from the database
 		$this->assertArrayEquals( [ $key ], $repository->findByUser( $user )->getKeys() );
 
-		$repository->remove(
+		$repository->removeKey(
 			$oathUser,
+			$key,
 			'127.0.0.1',
 			true
 		);
