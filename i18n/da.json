@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Saederup92",
+			"Sarrus",
 			"Tinamalmgren",
 			"Weblars"
 		]
@@ -18,6 +19,7 @@
 	"action-oathauth-disable-for-user": "deaktivere tofaktorgodkendelse for en bruger",
 	"oathauth-enteruser": "Brugernavn:",
 	"oathauth-enterdisablereason": "Begrundelse for deaktivering:",
+	"right-oathauth-enable": "Aktivere tofaktorgodkendelse",
 	"action-oathauth-enable": "aktivere tofaktorgodkendelse",
 	"oathauth-auth-token-label": "Nøgle",
 	"oathauth-auth-ui": "Angiv en bekræftelseskode fra din godkendelsesenhed.",
