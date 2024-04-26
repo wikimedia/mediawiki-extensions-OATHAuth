@@ -4,11 +4,10 @@ namespace MediaWiki\Extension\WebAuthn;
 
 use Base64Url\Base64Url;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
-use MediaWiki\MediaWikiServices;
 use MWException;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
@@ -153,13 +152,18 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		$this->load();
 
 		foreach ( $this->keys as $key ) {
-			if ( $key->getAttestedCredentialData()->getCredentialId() === $credentialId ) {
-				$key->setSignCounter( $newCounter );
+			if ( $key->getAttestedCredentialData()->getCredentialId() !== $credentialId ) {
+				continue;
 			}
+
+			$key->setSignCounter( $newCounter );
+
+			OATHAuthServices::getInstance()
+				->getUserRepository()
+				->updateKey(
+					$this->oauthUser,
+					$key
+				);
 		}
-		$this->oauthUser->setKeys( $this->keys );
-		/** @var OATHUserRepository $repo */
-		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		$repo->persist( $this->oauthUser );
 	}
 }
