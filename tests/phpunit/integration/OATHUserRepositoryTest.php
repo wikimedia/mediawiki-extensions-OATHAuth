@@ -29,6 +29,7 @@ use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWikiIntegrationTestCase;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
@@ -39,6 +40,7 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::findByUser
 	 * @covers ::createKey
+	 * @covers ::updateKey
 	 * @covers ::remove
 	 */
 	public function testLookupCreateRemoveKey(): void {
@@ -73,6 +75,7 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( [], $oathUser->getKeys() );
 		$this->assertNull( $oathUser->getModule() );
 
+		/** @var TOTPKey $key */
 		$key = $repository->createKey(
 			$oathUser,
 			$module,
@@ -92,6 +95,15 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 
 		// Test looking it up again from the database
 		$this->assertArrayEquals( [ $key ], $repository->findByUser( $user )->getKeys() );
+
+		// Use a scratch code, which causes the key to be updated.
+		TestingAccessWrapper::newFromObject( $key )->recoveryCodes = [ 'new scratch tokens' ];
+		$repository->updateKey( $oathUser, $key );
+
+		$this->assertEquals(
+			[ 'new scratch tokens' ],
+			$repository->findByUser( $user )->getKeys()[0]->getScratchTokens()
+		);
 
 		$repository->removeKey(
 			$oathUser,

@@ -189,11 +189,9 @@ class TOTPKey implements IAuthKey {
 					'clientip' => $clientIP,
 				] );
 
-				$userRepo = OATHAuthServices::getInstance()->getUserRepository();
-				// TODO: support for multiple keys
-				$user->setKeys( [ $this ] );
-				$userRepo->persist( $user, $clientIP );
-
+				OATHAuthServices::getInstance()
+					->getUserRepository()
+					->updateKey( $user, $this );
 				return true;
 			}
 		}
