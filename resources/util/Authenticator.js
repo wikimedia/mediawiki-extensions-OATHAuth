@@ -48,48 +48,34 @@ mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( df
 
 mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
 	const publicKey = this.authInfo;
-	publicKey.challenge = Uint8Array.from(
-		window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-		( c ) => c.charCodeAt( 0 )
-	);
+	publicKey.challenge = mw.ext.webauthn.util.base64ToByteArray( publicKey.challenge );
 
 	publicKey.allowCredentials = publicKey.allowCredentials.map( ( data ) => Object.assign( data, {
-		id: Uint8Array.from(
-			atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-			( c ) => c.charCodeAt( 0 )
-		)
+		id: mw.ext.webauthn.util.base64ToByteArray( data.id )
 	} ) );
-
 	return navigator.credentials.get( { publicKey: publicKey } );
 };
 
 mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion ) {
+	// encoding should match PublicKeyCredentialLoader::loadArray()
 	this.credential = {
-		id: assertion.id,
+		id: assertion.id, // base64url encoded
 		type: assertion.type,
-		rawId: this.arrayToBase64String( new Uint8Array( assertion.rawId ) ),
+		rawId: mw.ext.webauthn.util.byteArrayToBase64( new Uint8Array( assertion.rawId ),
+			'base64', 'padded' ),
 		response: {
-			authenticatorData: this.arrayToBase64String(
-				new Uint8Array( assertion.response.authenticatorData )
-			),
-			clientDataJSON: this.arrayToBase64String(
-				new Uint8Array( assertion.response.clientDataJSON )
-			),
-			signature: this.arrayToBase64String(
-				new Uint8Array( assertion.response.signature )
-			),
+			authenticatorData: mw.ext.webauthn.util.byteArrayToBase64(
+				new Uint8Array( assertion.response.authenticatorData ), 'base64url', 'unpadded' ),
+			// encoding should match CollectedClientData::createFormJson()
+			clientDataJSON: mw.ext.webauthn.util.byteArrayToBase64(
+				new Uint8Array( assertion.response.clientDataJSON ), 'base64url', 'unpadded' ),
+			signature: mw.ext.webauthn.util.byteArrayToBase64(
+				new Uint8Array( assertion.response.signature ), 'base64', 'padded' ),
 			userHandle: assertion.response.userHandle ?
-				this.arrayToBase64String( new Uint8Array( assertion.response.userHandle ) ) :
+				mw.ext.webauthn.util.byteArrayToBase64( new Uint8Array( assertion.response.userHandle ),
+					'base64', 'padded' ) :
 				null
 		}
 	};
 	return this.credential;
-};
-
-mw.ext.webauthn.Authenticator.prototype.arrayToBase64String = function ( a ) {
-	let stringified = '';
-	for ( let i = 0; i < a.length; i++ ) {
-		stringified += String.fromCharCode( a[ i ] );
-	}
-	return btoa( stringified );
 };

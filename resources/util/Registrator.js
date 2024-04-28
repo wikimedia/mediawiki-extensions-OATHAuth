@@ -39,6 +39,7 @@ mw.ext.webauthn.Registrator.prototype.getRegisterInfo = function () {
 mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd ) {
 	this.createCredential()
 		.then( ( assertion ) => {
+			// FIXME should handle null?
 			dfd.resolve( this.formatCredential( assertion ) );
 		} )
 		.catch( ( error ) => {
@@ -49,23 +50,17 @@ mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd 
 		} );
 };
 
+/**
+ * @return {Promise<Credential|null>}
+ */
 mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 	const publicKey = this.registerData;
-	publicKey.challenge = Uint8Array.from(
-		window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-		( c ) => c.charCodeAt( 0 )
-	);
-	publicKey.user.id = Uint8Array.from(
-		window.atob( publicKey.user.id ),
-		( c ) => c.charCodeAt( 0 )
-	);
+	publicKey.challenge = mw.ext.webauthn.util.base64ToByteArray( publicKey.challenge );
+	publicKey.user.id = mw.ext.webauthn.util.base64ToByteArray( publicKey.user.id );
 
 	if ( publicKey.excludeCredentials ) {
 		publicKey.excludeCredentials = publicKey.excludeCredentials.map( ( data ) => Object.assign( data, {
-			id: Uint8Array.from(
-				window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-				( c ) => c.charCodeAt( 0 )
-			)
+			id: mw.ext.webauthn.util.base64ToByteArray( data.id )
 		} ) );
 	}
 
@@ -73,29 +68,26 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 	return navigator.credentials.create( { publicKey: publicKey } );
 };
 
+/**
+ * @param {Credential} newCredential
+ */
 mw.ext.webauthn.Registrator.prototype.formatCredential = function ( newCredential ) {
+	// encoding should match PublicKeyCredentialLoader::loadArray()
 	this.credential = {
 		friendlyName: this.friendlyName,
-		id: newCredential.id,
+		id: newCredential.id, // base64url encoded
 		type: newCredential.type,
-		rawId: this.arrayToBase64String( new Uint8Array( newCredential.rawId ) ),
+		rawId: mw.ext.webauthn.util.byteArrayToBase64( new Uint8Array( newCredential.rawId ),
+			'base64', 'padded' ),
 		response: {
-			clientDataJSON: this.arrayToBase64String(
-				new Uint8Array( newCredential.response.clientDataJSON )
-			),
-			attestationObject: this.arrayToBase64String(
-				new Uint8Array( newCredential.response.attestationObject )
-			)
+			// encoding should match CollectedClientData::createFormJson()
+			clientDataJSON: mw.ext.webauthn.util.byteArrayToBase64(
+				new Uint8Array( newCredential.response.clientDataJSON ), 'base64url', 'unpadded' ),
+			// encoding should match AttestationObjectLoader::load()
+			attestationObject: mw.ext.webauthn.util.byteArrayToBase64(
+				new Uint8Array( newCredential.response.attestationObject ), 'base64', 'padded' )
 		}
 	};
 
 	return this.credential;
-};
-
-mw.ext.webauthn.Registrator.prototype.arrayToBase64String = function ( a ) {
-	let stringified = '';
-	for ( let i = 0; i < a.length; i++ ) {
-		stringified += String.fromCharCode( a[ i ] );
-	}
-	return btoa( stringified );
 };

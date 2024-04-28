@@ -38,8 +38,8 @@ use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
-use Ramsey\Uuid\Uuid;
 use RuntimeException;
+use Symfony\Component\Uid\Uuid;
 use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
@@ -188,11 +188,11 @@ class WebAuthnKey implements IAuthKey {
 	public function jsonSerialize(): array {
 		return [
 			"userHandle" => base64_encode( $this->userHandle ),
-			"publicKeyCredentialId" => base64_encode( $this->attestedCredentialData->getCredentialId() ),
+			"publicKeyCredentialId" => base64_encode( $this->attestedCredentialData->credentialId ),
 			"credentialPublicKey" => base64_encode(
-				(string)$this->attestedCredentialData->getCredentialPublicKey()
+				(string)$this->attestedCredentialData->credentialPublicKey
 			),
-			"aaguid" => $this->attestedCredentialData->getAaguid()->toString(),
+			"aaguid" => (string)$this->attestedCredentialData->getAaguid(),
 			"friendlyName" => $this->friendlyName,
 			"counter" => $this->signCounter,
 			"type" => $this->credentialType,
@@ -402,7 +402,7 @@ class WebAuthnKey implements IAuthKey {
 
 		try {
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
-			$response = $publicKeyCredential->getResponse();
+			$response = $publicKeyCredential->response;
 			if ( !$response instanceof AuthenticatorAttestationResponse ) {
 				throw new MWException( 'webauthn-invalid-response' );
 			}
@@ -421,12 +421,11 @@ class WebAuthnKey implements IAuthKey {
 			return false;
 		}
 
-		if ( $response->getAttestationObject()->getAuthData()->hasAttestedCredentialData() ) {
-			$this->userHandle = $registrationObject->getUser()->getId();
-			// @phan-suppress-next-line PhanPossiblyNullTypeMismatchProperty
-			$this->attestedCredentialData = $response->getAttestationObject()
-				->getAuthData()->getAttestedCredentialData();
-			$this->signCounter = $response->getAttestationObject()->getAuthData()->getSignCount();
+		if ( $response->attestationObject->authData->hasAttestedCredentialData() ) {
+			$this->userHandle = $registrationObject->user->id;
+			$this->attestedCredentialData = $response->attestationObject
+				->authData->attestedCredentialData;
+			$this->signCounter = $response->attestationObject->authData->signCount;
 
 			$this->logger->info(
 				"User {$user->getUser()->getName()} registered new WebAuthn key"
@@ -490,9 +489,9 @@ class WebAuthnKey implements IAuthKey {
 			$request = Request::newFromWebRequest( $this->context->getRequest() );
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
-				$publicKeyCredential->getRawId(),
+				$publicKeyCredential->rawId,
 				// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
-				$publicKeyCredential->getResponse(),
+				$publicKeyCredential->response,
 				$publicKeyCredentialRequestOptions,
 				$request,
 				$this->userHandle

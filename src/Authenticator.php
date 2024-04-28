@@ -39,9 +39,10 @@ use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
+use ParagonIE\ConstantTime\Base64;
+use ParagonIE\ConstantTime\Base64UrlSafe;
 use Psr\Log\LoggerInterface;
 use stdClass;
-use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 use Webauthn\AuthenticatorSelectionCriteria;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
@@ -358,11 +359,20 @@ class Authenticator {
 		}
 		if ( array_key_exists( static::SESSION_KEY, $authData ) ) {
 			$json = $authData[static::SESSION_KEY];
-			$factory = [ $returnClass, 'createFromString' ];
-			if ( !is_callable( $factory ) ) {
-				return null;
+			$data = json_decode( $json, associative: true, flags: JSON_THROW_ON_ERROR );
+			// FIXME webauthn-lib uses different encoding to serialize (base64url unpadded)
+			//   and unserialize (base64) the challenge and user.id and JSON fields :/
+			/** @var array $data */'@phan-var array{challenge:string} $data';
+			$data['challenge'] = Base64::encode( Base64UrlSafe::decode( $data['challenge'] ) );
+			if ( $returnClass === PublicKeyCredentialCreationOptions::class ) {
+				/** @var array $data */'@phan-var array{challenge:string,user:array{id:string}} $data';
+				$data['user']['id'] = Base64::encode( Base64UrlSafe::decode( $data['user']['id'] ) );
 			}
-			return $factory( $json );
+			$factory = match ( $returnClass ) {
+				PublicKeyCredentialRequestOptions::class => PublicKeyCredentialRequestOptions::createFromArray( ... ),
+				PublicKeyCredentialCreationOptions::class => PublicKeyCredentialCreationOptions::createFromArray( ... ),
+			};
+			return $factory( $data );
 		}
 		return null;
 	}
@@ -377,20 +387,19 @@ class Authenticator {
 		$keys = WebAuthn::getWebAuthnKeys( $this->oathUser );
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
-			$credentialDescriptors[$key->getFriendlyName()] = new PublicKeyCredentialDescriptor(
+			$credentialDescriptors[] = new PublicKeyCredentialDescriptor(
 				$key->getType(),
-				$key->getAttestedCredentialData()->getCredentialId(),
+				$key->getAttestedCredentialData()->credentialId,
 				$key->getTransports()
 			);
 		}
 
-		return new PublicKeyCredentialRequestOptions(
+		return PublicKeyCredentialRequestOptions::create(
 			random_bytes( 32 ),
-			static::CLIENT_ACTION_TIMEOUT,
 			$this->serverId,
 			$credentialDescriptors,
 			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_PREFERRED,
-			new AuthenticationExtensionsClientInputs()
+			static::CLIENT_ACTION_TIMEOUT
 		);
 	}
 
@@ -418,7 +427,7 @@ class Authenticator {
 
 			$excludedPublicKeyDescriptors[] = new PublicKeyCredentialDescriptor(
 				PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
-				$key->getAttestedCredentialData()->getCredentialId()
+				$key->getAttestedCredentialData()->credentialId
 			);
 		}
 
@@ -444,7 +453,7 @@ class Authenticator {
 			),
 			new PublicKeyCredentialParameters(
 				'public-key',
-				Algorithms::COSE_ALGORITHM_EdDSA
+				Algorithms::COSE_ALGORITHM_EDDSA
 			),
 			new PublicKeyCredentialParameters(
 				'public-key',
@@ -460,23 +469,24 @@ class Authenticator {
 			),
 		];
 
-		$authSelectorCriteria = $this->context->getConfig()->get( 'WebAuthnLimitPasskeysToRoaming' )
+		$authenticatorAttachment = $this->context->getConfig()->get( 'WebAuthnLimitPasskeysToRoaming' )
 			? AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM
-			: AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE;
+			: null;
+		$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
+			$authenticatorAttachment,
+		);
 
-		return new PublicKeyCredentialCreationOptions(
+		$pubKeyCredCreationOptions = PublicKeyCredentialCreationOptions::create(
 			$rpEntity,
 			$userEntity,
 			random_bytes( 32 ),
 			$publicKeyCredParametersList,
-			static::CLIENT_ACTION_TIMEOUT,
-			$excludedPublicKeyDescriptors,
-			new AuthenticatorSelectionCriteria(
-				$authSelectorCriteria,
-			),
+			$authSelectorCriteria,
 			PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE,
-			new AuthenticationExtensionsClientInputs()
+			$excludedPublicKeyDescriptors,
+			static::CLIENT_ACTION_TIMEOUT
 		);
+		return $pubKeyCredCreationOptions;
 	}
 
 	/**

@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\WebAuthn;
 
-use Base64Url\Base64Url;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
+use ParagonIE\ConstantTime\Base64UrlSafe;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
@@ -39,7 +39,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		string $publicKeyCredentialId
 	): ?PublicKeyCredentialSource {
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
-			if ( $key->getAttestedCredentialData()->getCredentialId() === $publicKeyCredentialId ) {
+			if ( $key->getAttestedCredentialData()->credentialId === $publicKeyCredentialId ) {
 				return $this->credentialSourceFromKey( $key );
 			}
 		}
@@ -56,7 +56,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	): array {
 		$res = [];
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
-			if ( $key->getUserHandle() === $publicKeyCredentialUserEntity->getId() ) {
+			if ( $key->getUserHandle() === $publicKeyCredentialUserEntity->id ) {
 				$res[] = $this->credentialSourceFromKey( $key );
 			}
 		}
@@ -72,8 +72,8 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		PublicKeyCredentialSource $publicKeyCredentialSource
 	): void {
 		$this->updateCounterFor(
-			$publicKeyCredentialSource->getPublicKeyCredentialId(),
-			$publicKeyCredentialSource->getCounter()
+			$publicKeyCredentialSource->publicKeyCredentialId,
+			$publicKeyCredentialSource->counter
 		);
 	}
 
@@ -83,14 +83,14 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 */
 	private function credentialSourceFromKey( WebAuthnKey $key ) {
 		return PublicKeyCredentialSource::createFromArray( [
-			'userHandle' => Base64Url::encode( $key->getUserHandle() ),
-			'aaguid' => $key->getAttestedCredentialData()->getAaguid()->toString(),
+			'userHandle' => Base64UrlSafe::encodeUnpadded( $key->getUserHandle() ),
+			'aaguid' => (string)$key->getAttestedCredentialData()->aaguid,
 			'friendlyName' => $key->getFriendlyName(),
-			'publicKeyCredentialId' => Base64Url::encode(
-				$key->getAttestedCredentialData()->getCredentialId()
+			'publicKeyCredentialId' => Base64UrlSafe::encodeUnpadded(
+				$key->getAttestedCredentialData()->credentialId
 			),
-			'credentialPublicKey' => Base64Url::encode(
-				(string)$key->getAttestedCredentialData()->getCredentialPublicKey()
+			'credentialPublicKey' => Base64UrlSafe::encodeUnpadded(
+				(string)$key->getAttestedCredentialData()->credentialPublicKey
 			),
 			'counter' => $key->getSignCounter(),
 			'userMWId' => $this->oauthUser->getUser()->getId(),
@@ -109,7 +109,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 */
 	private function updateCounterFor( string $credentialId, int $newCounter ): void {
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
-			if ( $key->getAttestedCredentialData()->getCredentialId() !== $credentialId ) {
+			if ( $key->getAttestedCredentialData()->credentialId !== $credentialId ) {
 				continue;
 			}
 
