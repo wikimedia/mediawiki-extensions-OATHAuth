@@ -16,6 +16,7 @@
 	"oathauth-account": "Kontonavn:",
 	"oathauth-secret": "Hemmelig nøkkel for tofaktorautentisering:",
 	"oathauth-enable": "Slå på tofaktorautentisering",
+	"oathauth-recoverycodes-important": "Dette steget er viktig! Ikke hopp over det!",
 	"oathauth-token": "Tegn",
 	"oathauth-disable": "Slå av tofaktorautentisering",
 	"oathauth-validatedoath": "Tofaktorautentisering legitimert. Det er nå tatt i bruk.",
