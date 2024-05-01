@@ -3,30 +3,33 @@
 namespace MediaWiki\Extension\WebAuthn;
 
 use Base64Url\Base64Url;
+use Generator;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
-use MWException;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
-
-	/** @var WebAuthnKey[] */
-	protected $keys = [];
-
-	/**
-	 * @var bool
-	 */
-	protected $loaded = false;
-
-	protected OATHUser $oauthUser;
+	private OATHUser $oauthUser;
 
 	public function __construct( OATHUser $user ) {
 		$this->oauthUser = $user;
+	}
+
+	/**
+	 * @return Generator<WebAuthnKey>
+	 */
+	private function getWebAuthnKeys(): Generator {
+		foreach ( $this->oauthUser->getKeys() as $key ) {
+			if ( !$key instanceof WebAuthnKey ) {
+				continue;
+			}
+
+			yield $key;
+		}
 	}
 
 	/**
@@ -34,9 +37,8 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	 * @return array
 	 */
 	public function getFriendlyNames( $lc = false ) {
-		$this->load();
 		$friendlyNames = [];
-		foreach ( $this->keys as $key ) {
+		foreach ( $this->getWebAuthnKeys() as $key ) {
 			$friendlyName = $key->getFriendlyName();
 			if ( $lc ) {
 				$friendlyName = strtolower( $friendlyName );
@@ -49,8 +51,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	public function findOneByCredentialId(
 		string $publicKeyCredentialId
 	): ?PublicKeyCredentialSource {
-		$this->load();
-		foreach ( $this->keys as $key ) {
+		foreach ( $this->getWebAuthnKeys() as $key ) {
 			if ( $key->getAttestedCredentialData()->getCredentialId() === $publicKeyCredentialId ) {
 				return $this->credentialSourceFromKey( $key );
 			}
@@ -67,7 +68,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
 	): array {
 		$res = [];
-		foreach ( $this->keys as $key ) {
+		foreach ( $this->getWebAuthnKeys() as $key ) {
 			if ( $key->getUserHandle() === $publicKeyCredentialUserEntity->getId() ) {
 				$res[] = $this->credentialSourceFromKey( $key );
 			}
@@ -78,7 +79,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 
 	/**
 	 * @param PublicKeyCredentialSource $publicKeyCredentialSource
-	 * @throws MWException
 	 * @throws ConfigException
 	 */
 	public function saveCredentialSource(
@@ -115,43 +115,13 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	/**
-	 * Loads keys for user
-	 */
-	private function load() {
-		if ( !$this->oauthUser->getModule() instanceof WebAuthn ) {
-			// User does not have WebAuthn enabled - for safety, as it should be checked
-			// long before it comes to this
-			return;
-		}
-
-		if ( $this->loaded ) {
-			return;
-		}
-		$keys = $this->oauthUser->getKeys();
-
-		/** @var WebAuthnKey $key */
-		foreach ( $keys as $key ) {
-			if ( !$key instanceof WebAuthnKey ) {
-				// Sense-check
-				continue;
-			}
-			$this->keys[] = $key;
-		}
-
-		$this->loaded = true;
-	}
-
-	/**
 	 * Set a new sign counter-value for the credential
 	 *
 	 * @param string $credentialId
 	 * @param int $newCounter
-	 * @throws MWException
 	 */
 	private function updateCounterFor( string $credentialId, int $newCounter ): void {
-		$this->load();
-
-		foreach ( $this->keys as $key ) {
+		foreach ( $this->getWebAuthnKeys() as $key ) {
 			if ( $key->getAttestedCredentialData()->getCredentialId() !== $credentialId ) {
 				continue;
 			}
