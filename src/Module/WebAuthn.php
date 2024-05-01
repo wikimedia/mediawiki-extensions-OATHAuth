@@ -99,7 +99,7 @@ class WebAuthn implements IModule {
 	) {
 		$module = $this;
 		$context = $context ?: RequestContext::getMain();
-		$enabledForUser = $user->getModule() instanceof self;
+		$enabledForUser = $this->isEnabled( $user );
 		if ( $action === OATHManage::ACTION_DISABLE && $enabledForUser ) {
 			return new WebAuthnDisableForm( $user, $repo, $module, $context );
 		}
