@@ -16,6 +16,7 @@
 	"oathauth-secret": "Hemmelig nøkkel for tofaktorautentisering:",
 	"oathauth-enable": "Slå på tofaktorautentisering",
 	"oathauth-recoverycodes": "Følgende liste er en liste over engangspassord. Disse kan kun brukes én gang, og bør kun brukes i nødstilfelle. Skriv dem ned og legg dem på et lurt sted. Om du mister telefonen din vil disse passordene være eneste måte å få tilbake kontoen din. '''Disse passordene vil aldri vises igjen.'''",
+	"oathauth-recoverycodes-important": "Dette steget er viktig! Ikke hopp over det!",
 	"oathauth-disable": "Slå av tofaktorautentisering",
 	"oathauth-validatedoath": "Tofaktorautentisering legitimert. Det er nå tatt i bruk.",
 	"oathauth-noscratchforvalidation": "Du kan ikke bruke en engangskode for å bekrefte tofaktorautentisering. Engangskoder er kun til backup og nødsbruk. Bruk en bekreftelseskode fra kodegeneratoren din.",
