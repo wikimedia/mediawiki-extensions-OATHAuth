@@ -48,7 +48,9 @@ class TOTP implements IModule {
 	 * @return TOTPSecondaryAuthenticationProvider
 	 */
 	public function getSecondaryAuthProvider() {
-		return new TOTPSecondaryAuthenticationProvider();
+		return new TOTPSecondaryAuthenticationProvider(
+			$this
+		);
 	}
 
 	/**
