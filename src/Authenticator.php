@@ -313,7 +313,8 @@ class Authenticator {
 				}
 
 				// If user has another module already activated, clear all keys for than module
-				if ( !$this->oathUser->getModule() instanceof WebAuthn ) {
+				$userModule = $this->oathUser->getModule();
+				if ( $userModule !== null && !$userModule instanceof WebAuthn ) {
 					// TODO: find a way of doing this without using persist(), but
 					// without sending broken 'you have disabled two-factor authentication'
 					// notifications. (Or, just add support for multiple different types of
