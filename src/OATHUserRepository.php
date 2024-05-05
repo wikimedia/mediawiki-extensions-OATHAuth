@@ -195,6 +195,35 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	/**
+	 * Saves an existing key in the database.
+	 *
+	 * @param OATHUser $user
+	 * @param IAuthKey $key
+	 * @return void
+	 */
+	public function updateKey( OATHUser $user, IAuthKey $key ): void {
+		$keyId = $key->getId();
+		if ( !$keyId ) {
+			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
+		}
+
+		$userId = $this->centralIdLookupFactory->getLookup()
+			->centralIdFromLocalUser( $user->getUser() );
+
+		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
+		$dbw->newUpdateQueryBuilder()
+			->table( 'oathauth_devices' )
+			->set( [ 'oad_data' => FormatJson::encode( $key->jsonSerialize() ) ] )
+			->where( [ 'oad_user' => $userId, 'oad_id' => $keyId ] )
+			->execute();
+
+		$this->logger->info( 'OATHAuth key {keyId} updated for {user}', [
+			'keyId' => $keyId,
+			'user' => $user->getUser()->getName(),
+		] );
+	}
+
+	/**
 	 * @param OATHUser $user
 	 * @param IAuthKey $key
 	 * @param string $clientInfo
