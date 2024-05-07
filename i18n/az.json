@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nemoralis"
+		]
+	},
+	"webauthn-desc": "WebAuthn protokolundan istifadə edərək autentifikasiya dəstəyini təmin edir",
+	"webauthn-module-label": "Veb Autentikasiya (WebAuthn)",
+	"webauthn-ui-login-prompt": "Doğrulama cihazınıza toxunun və ya brauzerin təlimatlarına əməl edin",
+	"webauthn-ui-add-key": "Açar əlavə et",
+	"webauthn-error-browser-unsupported": "Bu brauzer WebAuthentication-ı dəstəkləmir və ya bu veb-sayt üçün əlçatan deyil. Fərqli brauzerlə cəhd edin. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Ətraflı oxu]",
+	"webauthn-error-browser-unsupported-console": "Bu brauzer WebAuthentication-ı dəstəkləmir və ya bu veb-sayt üçün əlçatan deyil",
+	"webauthn-error-auth-generic": "Doğrulama prosesi dayandı. Zəhmət olmasa autentifikasiya prosesini yenidən başladın",
+	"webauthn-error-reg-generic": "Açarınızı doğrulamaq mümkün olmadı. Zəhmət olmasa qeydiyyat prosesini yenidən başladın",
+	"webauthn-key-type-missmatch": "İstifadəçinin qeydiyyatdan keçmiş bir neçə növ açarı var",
+	"oathauth-webauthn-registered-keys-section-name": "Qeydiyyatdan keçmiş açarlar",
+	"webuathn-ui-remove-key": "Sil",
+	"webauthn-error-module-not-enabled": "\"$1\" modulu {{GENDER:$2|\"$2\"}} üçün aktiv deyil",
+	"webauthn-error-verification-failed": "Doğrulama uğursuz oldu."
+}
