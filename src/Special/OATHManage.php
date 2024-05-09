@@ -167,7 +167,7 @@ class OATHManage extends SpecialPage {
 
 	private function addInactiveHTML(): void {
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
-			if ( $this->isModuleEnabled( $module ) ) {
+			if ( $this->isModuleEnabled( $module ) || !$this->isModuleAvailable( $module ) ) {
 				continue;
 			}
 			$this->addModuleHTML( $module );
@@ -274,6 +274,25 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
+	 * Verifies if the module is available to be enabled
+	 *
+	 * @param IModule $module
+	 * @return bool
+	 */
+	private function isModuleAvailable( IModule $module ): bool {
+		$form = $module->getManageForm(
+			static::ACTION_ENABLE,
+			$this->authUser,
+			$this->userRepo,
+			$this->getContext()
+		);
+		if ( $form === '' ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Verifies if the given form instance fulfills the required conditions
 	 *
 	 * @param mixed $form
@@ -327,7 +346,7 @@ class OATHManage extends SpecialPage {
 
 	private function hasAlternativeModules(): bool {
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
-			if ( !$this->isModuleEnabled( $module ) ) {
+			if ( !$this->isModuleEnabled( $module ) && $this->isModuleAvailable( $module ) ) {
 				return true;
 			}
 		}
