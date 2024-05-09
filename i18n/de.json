@@ -23,6 +23,7 @@
 	"oathauth-enable": "Zwei-Faktor-Authentifizierung aktivieren",
 	"oathauth-recoverycodes": "Die folgende Liste enthält einmalig verwendbare geheime Schlüssel. Diese geheimen Schlüssel können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen, wenn du keinen Zugang zu deinem Gerät hast. Bitte notiere und verwahre sie an einem sicheren Ort. Es wird empfohlen, jeden Code als verwendet zu markieren, wenn du dich mit ihm angemeldet hast. Sofern dir dein Gerät abhanden kommt, werden diese geheimen Schlüssel die einzige Möglichkeit sein, dein Konto zu retten.\n\n'''Diese geheimen Schlüssel werden dir niemals wieder angezeigt werden'''.",
 	"oathauth-recoverycodes-important": "Dieser Schritt ist wichtig! Überspringe diesen Schritt nicht!",
+	"oathauth-recoverycodes-download": "Wiederherstellungscodes herunterladen",
 	"oathauth-disable": "Die Zwei-Faktor-Authentifizierung deaktivieren",
 	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt angewendet.",
 	"oathauth-noscratchforvalidation": "Du kannst keinen Wiederherstellungscode zur Bestätigung der Zwei-Faktor-Authentifizierung verwenden. Wiederherstellungscodes dienen nur der Sicherung und gelegentlichen Verwendung. Bitte verwende einen Code aus deiner Zwei-Faktor-Authentifizierungsanwendung (z. B. Google Authenticator).",
