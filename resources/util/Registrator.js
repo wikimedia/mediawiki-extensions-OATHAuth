@@ -39,10 +39,11 @@
 
 	mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd ) {
 		this.createCredential()
-			.then( function(assertion) {
+			.then( function( assertion ) {
 				dfd.resolve( this.formatCredential( assertion ) );
-			}.bind(this) )
-			.catch( function() {
+			}.bind( this ) )
+			.catch( function ( error ) {
+				mw.log.error( error );
 				// This usually happens when the process gets interrupted
 				// - show generic interrupt error
 				dfd.reject( 'webauthn-error-reg-generic' );
