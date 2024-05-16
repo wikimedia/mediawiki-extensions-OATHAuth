@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Meno25",
 			"ديفيد"
 		]
@@ -9,7 +10,7 @@
 	"webauthn-module-label": "مصادقة الويب (WebAuthn)",
 	"webauthn-ui-login-prompt": "يُرجَى لمس جهاز التحقق الخاص بك أو اتباع الإرشادات من المتصفح",
 	"webauthn-ui-add-key": "إضافة مفتاح",
-	"webauthn-error-browser-unsupported": "لا يدعم هذا المتصفح مصادقة الويب أو أنه غير متوفر لموقع الويب هذا، تُرجَى المحاولة باستخدام متصفح مختلف.  [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support اقرأ المزيد]",
+	"webauthn-error-browser-unsupported": "لا يدعم هذا المتصفح مصادقة الويب أو أنه غير متوفر لموقع الويب هذا، تُرجَى المحاولة باستخدام متصفح مختلف. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support اقرأ المزيد]",
 	"webauthn-error-browser-unsupported-console": "لا يدعم هذا المتصفح مصادقة الويب أو أنه غير متاح لموقع الويب هذا",
 	"webauthn-error-auth-generic": "تمت مقاطعة عملية المصادقة، يُرجَى البدء في عملية المصادقة مرة أخرى",
 	"webauthn-error-reg-generic": "لا يمكن التحقق من مفتاحك، يُرجَى البدء في عملية التسجيل مرة أخرى",
@@ -18,7 +19,7 @@
 	"webuathn-ui-remove-key": "إزالة",
 	"webauthn-error-module-not-enabled": "الوحدة النمطية \"$1\" غير ممكنة {{GENDER:$1|للمستخدم \"$2\"|للمستخدمة \"$2\"}}",
 	"webauthn-error-verification-failed": "فشل التحقق",
-	"webauthn-error-cannot-register": "لا يمكن  {{GENDER:$1|للمستخدم \"$1\"|للمستخدمة \"$1\"}} تسجيل بيانات اعتماد جديدة",
+	"webauthn-error-cannot-register": "لا يمكن {{GENDER:$1|للمستخدم \"$1\"|للمستخدمة \"$1\"}} تسجيل بيانات اعتماد جديدة",
 	"webauthn-error-invalid-new-key": "المفتاح الجديد الذي تم إرجاعه بواسطة الوحدة ليس من النوع المطلوب",
 	"webauthn-error-registration-failed": "فشل تسجيل المفتاح الجديد",
 	"webauthn-ui-key-register-help": "اختر الاسم المستعار لمفتاحك",
