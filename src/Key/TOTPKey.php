@@ -30,7 +30,6 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
-use ObjectCache;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -132,11 +131,12 @@ class TOTPKey implements IAuthKey {
 		}
 
 		// Prevent replay attacks
-		$store = MediaWikiServices::getInstance()->getMainObjectStash();
+		$services = MediaWikiServices::getInstance();
+		$store = $services->getMainObjectStash();
 
 		if ( $store instanceof EmptyBagOStuff ) {
 			// Try and find some usable cache if the MainObjectStash isn't useful
-			$store = ObjectCache::getLocalServerInstance( CACHE_ANYTHING );
+			$store = $services->getObjectCacheFactory()->getLocalServerInstance( CACHE_ANYTHING );
 		}
 
 		$key = $store->makeKey( 'oathauth-totp', 'usedtokens', $user->getCentralId() );
