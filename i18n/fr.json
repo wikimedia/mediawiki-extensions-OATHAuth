@@ -18,7 +18,8 @@
 			"Verdy p",
 			"Wladek92",
 			"Yasten",
-			"MacOS Weed"
+			"MacOS Weed",
+			"Lofhi"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -29,6 +30,7 @@
 	"oathauth-account": "Nom du compte :",
 	"oathauth-secret": "Clé secrète d’authentification à deux facteurs :",
 	"oathauth-enable": "Activer l’authentification à deux facteurs",
+	"oathauth-recoverycodes-important": "Cette étape est importante ! Ne sautez pas cette étape !",
 	"oathauth-token": "Jeton",
 	"oathauth-disable": "Désactiver l’authentification à deux facteurs",
 	"oathauth-validatedoath": "Informations d’identification à deux facteurs validées. L’authentification à deux facteurs sera désormais appliquée.",

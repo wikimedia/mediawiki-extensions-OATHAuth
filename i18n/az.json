@@ -4,7 +4,8 @@
 			"NMW03",
 			"Toghrul Rahimli",
 			"Wertuose",
-			"Zpizza"
+			"Zpizza",
+			"Nemoralis"
 		]
 	},
 	"oathauth-desc": "HMAC əsaslı birdəfəlik şifrələrdən istifadə edərək autentifikasiya dəstəyi təmin edir",
@@ -17,6 +18,7 @@
 	"oathauth-enable": "İki faktorlu autentifikasiyanı aktivləşdir",
 	"oathauth-recoverycodes-important": "Bu addım vacibdir! Bu addımı atlamayın!",
 	"oathauth-token": "Şifrə",
+	"oathauth-recoverycodes-download": "Bərpa kodlarını yükləyin",
 	"oathauth-disable": "İki faktorlu autentifikasiyanı deaktiv et",
 	"oathauth-validatedoath": "İki faktor məlumatları doğrulandı. Artıq iki faktorlu autentifikasiya tətbiq ediləcək.",
 	"oathauth-noscratchforvalidation": "İki faktorlu autentifikasiyanı təsdiqləmək üçün bərpa kodundan istifadə edə bilməzsiniz. Bərpa kodları yalnız ehtiyat və təcili istifadə üçündür. Lütfən, iki faktorlu autentifikasiya tətbiqinizdəki (məsələn, Google Authenticator) koddan istifadə edin.",

@@ -15,7 +15,8 @@
 			"McDutchie",
 			"MuratTheTurkish",
 			"PoLuX124",
-			"No se"
+			"No se",
+			"Eulalio"
 		]
 	},
 	"oathauth-desc": "Proporciona compatibilidad con la autenticación mediante contraseñas en HMAC de un solo uso",
@@ -27,6 +28,7 @@
 	"oathauth-enable": "Activar la autenticación en dos pasos",
 	"oathauth-recoverycodes-important": "¡Este paso es importante! ¡No te saltes este paso!",
 	"oathauth-token": "Clave",
+	"oathauth-recoverycodes-download": "Descargar códigos de recuperación",
 	"oathauth-disable": "Desactivar la autenticación en dos pasos",
 	"oathauth-validatedoath": "Se han validado las credenciales en dos pasos. Ahora se aplicará la autenticación en dos pasos.",
 	"oathauth-noscratchforvalidation": "No puedes utilizar códigos predefinidos para confirmar la autenticación de dos pasos. Tales códigos solo sirven como respaldo y para uso ocasional accesorio. Utiliza un código de verificación proveniente de un generador de códigos.",

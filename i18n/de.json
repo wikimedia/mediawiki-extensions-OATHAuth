@@ -24,6 +24,7 @@
 	"oathauth-enable": "Zwei-Faktor-Authentifizierung aktivieren",
 	"oathauth-recoverycodes-important": "Dieser Schritt ist wichtig! Überspringe diesen Schritt nicht!",
 	"oathauth-token": "Geheimer Schlüssel",
+	"oathauth-recoverycodes-download": "Wiederherstellungscodes herunterladen",
 	"oathauth-disable": "Die Zwei-Faktor-Authentifizierung deaktivieren",
 	"oathauth-validatedoath": "Die Zwei-Faktor-Anmeldeinformationen wurden bestätigt. Die Zwei-Faktor-Authentifizierung wird jetzt angewendet.",
 	"oathauth-noscratchforvalidation": "Du kannst keinen Wiederherstellungscode zur Bestätigung der Zwei-Faktor-Authentifizierung verwenden. Wiederherstellungscodes dienen nur der Sicherung und gelegentlichen Verwendung. Bitte verwende einen Code aus deiner Zwei-Faktor-Authentifizierungsanwendung (z. B. Google Authenticator).",

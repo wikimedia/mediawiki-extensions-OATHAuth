@@ -17,6 +17,7 @@
 	"oathauth-secret": "Chiave segreta per l'autenticazione a due fattori:",
 	"oathauth-enable": "Abilita autenticazione a due fattori",
 	"oathauth-token": "Token",
+	"oathauth-recoverycodes-download": "Scarica codici di recupero",
 	"oathauth-disable": "Disabilita autenticazione a due fattori",
 	"oathauth-validatedoath": "Convalidate le credenziali a due fattori. D'ora in poi sarà applicata l'autenticazione a due fattori.",
 	"oathauth-failedtovalidateoath": "Impossibile convalidare le credenziali a due fattori",

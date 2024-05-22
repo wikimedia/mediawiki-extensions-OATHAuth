@@ -14,6 +14,7 @@
 	"oathauth-enable": "Activar authentication bifactorial",
 	"oathauth-recoverycodes-important": "Iste passo es importante! Non salta iste passo!",
 	"oathauth-token": "Token",
+	"oathauth-recoverycodes-download": "Discargar codices de recuperation",
 	"oathauth-disable": "Disactivar authentication bifactorial",
 	"oathauth-validatedoath": "Le credentiales bifactorial ha essite validate. Le authentication bifactorial essera applicate desde ora.",
 	"oathauth-noscratchforvalidation": "Tu non pote usar un codice de recuperation pro confirmar le authentication bifactorial. Le codices de recuperation se usa solmente como reserva pro incidentes. Per favor usa un codice de tu application de authentication bifactorial (p.ex. Google Authenticator).",
