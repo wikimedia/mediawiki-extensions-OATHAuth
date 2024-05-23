@@ -18,7 +18,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Yasten"
+			"Yasten",
+			"Lofhi"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -29,6 +30,7 @@
 	"oathauth-secret": "Clé secrète d’authentification à deux facteurs :",
 	"oathauth-enable": "Activer l’authentification à deux facteurs",
 	"oathauth-recoverycodes": "La liste suivante est une liste de jetons à gratter à utilisation unique. Ces jetons ne peuvent être utilisés qu’une seule fois et servent en cas d’urgence. Veuillez les écrire et les conserver dans un endroit sûr. Si vous perdez votre appareil, ces jetons sont le seul moyen de récupérer votre compte. '''Ces jetons ne seront jamais affichés de nouveau'''.",
+	"oathauth-recoverycodes-important": "Cette étape est importante ! Ne sautez pas cette étape !",
 	"oathauth-disable": "Désactiver l’authentification à deux facteurs",
 	"oathauth-validatedoath": "Informations d’identification à deux facteurs validées. L’authentification à deux facteurs sera désormais appliquée.",
 	"oathauth-noscratchforvalidation": "Vous ne pouvez pas utiliser un code de grattage pour confirmer une authentification à deux facteurs. Les codes prédéfinis sont utilisés uniquement pour la sauvegarde et les incidents. Veuillez utiliser un code de vérification de votre générateur de code.",
