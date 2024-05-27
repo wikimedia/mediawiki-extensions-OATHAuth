@@ -16,5 +16,14 @@
 	"oathauth-webauthn-registered-keys-section-name": "Qeydiyyatdan keçmiş açarlar",
 	"webuathn-ui-remove-key": "Sil",
 	"webauthn-error-module-not-enabled": "\"$1\" modulu {{GENDER:$2|\"$2\"}} üçün aktiv deyil",
-	"webauthn-error-verification-failed": "Doğrulama uğursuz oldu."
+	"webauthn-error-verification-failed": "Doğrulama uğursuz oldu.",
+	"webauthn-error-cannot-register": "{{GENDER:$1|İstifadəçi \"$1\"}} yeni etimadnaməsini qeydiyyatdan keçirə bilməz",
+	"webauthn-error-invalid-new-key": "Modul tərəfindən qaytarılan yeni açar tələb olunan tipdə deyil",
+	"webauthn-error-registration-failed": "Yeni açar qeydiyyatı uğursuz oldu",
+	"webauthn-ui-key-register-help": "Açarınız üçün ləqəb seçin",
+	"webauthn-error-cannot-remove-key": "Açarı silmək mümkün deyil",
+	"webauthn-error-get-authinfo-fail": "Doğrulama məlumatını əldə etmək mümkün olmadı.",
+	"oathauth-webauthn-add-key-section-name": "Yeni WebAuthn açarını qeydiyyatdan keçir",
+	"oathauth-webauthn-disable-section-name": "WebAuthn-i deaktivləşdir",
+	"webauthn-error-get-reginfo-fail": "Qeydiyyat məlumatını əldə etmək mümkün olmadı."
 }
