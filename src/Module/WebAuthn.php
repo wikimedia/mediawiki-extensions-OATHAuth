@@ -85,11 +85,16 @@ class WebAuthn implements IModule {
 	}
 
 	/**
+	 * Returns the appropriate form for the given action.
+	 * If the ability to add nenw credentials is disabled by configuration,
+	 * the empty string will be returned for any action other than ACTION_DISABLE.
+	 * The value null will be returned If no suitable form is found otherwise.
+	 *
 	 * @param string $action
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource|null $context optional for backwards compatibility
-	 * @return IManageForm|null if no form is available for given action
+	 * @return IManageForm|string|null
 	 */
 	public function getManageForm(
 		$action,
@@ -103,18 +108,21 @@ class WebAuthn implements IModule {
 		if ( $action === OATHManage::ACTION_DISABLE && $enabledForUser ) {
 			return new WebAuthnDisableForm( $user, $repo, $module, $context );
 		}
-		if ( $action === OATHManage::ACTION_ENABLE && !$enabledForUser ) {
-			return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
-		}
-		if ( $action === static::ACTION_ADD_KEY && $enabledForUser ) {
-			return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
-		}
 
-		if ( $enabledForUser ) {
-			return new WebAuthnManageForm( $user, $repo, $module, $context );
+		if ( $context->getConfig()->get( 'WebAuthnNewCredsDisabled' ) === false ) {
+			if ( $action === OATHManage::ACTION_ENABLE && !$enabledForUser ) {
+				return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
+			}
+			if ( $action === static::ACTION_ADD_KEY && $enabledForUser ) {
+				return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
+			}
+			if ( $enabledForUser ) {
+				return new WebAuthnManageForm( $user, $repo, $module, $context );
+			}
+			return null;
+		} else {
+			return '';
 		}
-
-		return null;
 	}
 
 	/**
