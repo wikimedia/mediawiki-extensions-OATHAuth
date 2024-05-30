@@ -221,6 +221,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->table( 'oathauth_devices' )
 			->set( [ 'oad_data' => FormatJson::encode( $key->jsonSerialize() ) ] )
 			->where( [ 'oad_user' => $userId, 'oad_id' => $keyId ] )
+			->caller( __METHOD__ )
 			->execute();
 
 		$this->logger->info( 'OATHAuth key {keyId} updated for {user}', [
