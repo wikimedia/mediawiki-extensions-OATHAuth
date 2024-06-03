@@ -40,6 +40,7 @@
 	"oathauth-enable": "启用双重身份验证",
 	"oathauth-recoverycodes": "以下的列表是可一次性使用的恢复代码列表。每个代码只能使用一次，供您在无法访问设备时紧急使用。请将它们记录并保存在一个安全的位置。建议您在使用每个代码登录时将其标记为已使用。如果您遗失了设备，唯一能够找回您的账户的方法就是这些代码。\n\n'''这些代码以后永远不会再显示'''。",
 	"oathauth-recoverycodes-important": "此步骤很重要！不要跳过此步骤！",
+	"oathauth-recoverycodes-download": "下载恢复代码",
 	"oathauth-disable": "禁用双重身份验证",
 	"oathauth-validatedoath": "双重身份验证已成功。双重身份验证现在起会强制实行。",
 	"oathauth-noscratchforvalidation": "您不能使用恢复代码来确认双重身份验证，恢复代码只作为后备措施和偶然用途。请使用您的双重身份验证应用（如Google Authenticator）提供的代码。",
