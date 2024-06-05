@@ -41,6 +41,7 @@
 	"oathauth-enable": "启用双重身份验证",
 	"oathauth-recoverycodes-important": "此步骤很重要！不要跳过此步骤！",
 	"oathauth-token": "令牌",
+	"oathauth-recoverycodes-download": "下载恢复代码",
 	"oathauth-disable": "禁用双重身份验证",
 	"oathauth-validatedoath": "双重身份验证已成功。双重身份验证现在起会强制实行。",
 	"oathauth-noscratchforvalidation": "您不能使用恢复代码来确认双重身份验证，恢复代码只作为后备措施和偶然用途。请使用您的双重身份验证应用（如Google Authenticator）提供的代码。",
