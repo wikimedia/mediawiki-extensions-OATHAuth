@@ -12,6 +12,12 @@
 		"mediawiki/msg-doc": "off",
 		"compat/compat": "warn",
 		"es-x/no-block-scoped-variables": "warn",
-		"es-x/no-typed-arrays": "warn"
+		"es-x/no-typed-arrays": "warn",
+		"es-x/no-arrow-functions": "warn",
+		"space-before-function-paren": "warn",
+		"space-in-parens": "warn",
+		"prefer-arrow-callback": "warn",
+		"arrow-body-style": "warn",
+		"no-jquery/no-extend": "warn"
 	}
 }

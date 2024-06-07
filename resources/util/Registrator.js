@@ -12,15 +12,15 @@
 		const dfd = $.Deferred();
 		if ( this.registerData === null ) {
 			this.getRegisterInfo().then(
-				function ( response ) {
+				function(response) {
 					if ( !response.webauthn.hasOwnProperty( 'register_info' ) ) {
 						dfd.reject( 'webauthn-error-get-reginfo-fail' );
 					}
 					this.registerData = response.webauthn.register_info;
 					this.registerData = JSON.parse( this.registerData );
 					this.registerWithRegisterInfo( dfd );
-				}.bind( this ),
-				function ( error ) {
+				}.bind(this),
+				function(error) {
 					dfd.reject( error );
 				}
 			);
@@ -39,10 +39,10 @@
 
 	mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd ) {
 		this.createCredential()
-			.then( function ( assertion ) {
+			.then( function(assertion) {
 				dfd.resolve( this.formatCredential( assertion ) );
-			}.bind( this ) )
-			.catch( function () {
+			}.bind(this) )
+			.catch( function() {
 				// This usually happens when the process gets interrupted
 				// - show generic interrupt error
 				dfd.reject( 'webauthn-error-reg-generic' );
@@ -53,23 +53,23 @@
 		const publicKey = this.registerData;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			function ( c ) {
+			function(c) {
 				return c.charCodeAt( 0 );
 			}
 		);
 		publicKey.user.id = Uint8Array.from(
 			window.atob( publicKey.user.id ),
-			function ( c ) {
+			function(c) {
 				return c.charCodeAt( 0 );
 			}
 		);
 
 		if ( publicKey.excludeCredentials ) {
-			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function ( data ) {
+			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function(data) {
 				return $.extend( data, {
 					id: Uint8Array.from(
 						window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-						function ( c ) {
+						(c) => {
 							return c.charCodeAt( 0 );
 						}
 					)
