@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\OATHAuth\Hook;
 
-use DatabaseUpdater;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateTOTPScratchTokensToArray;
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class UpdateTables implements LoadExtensionSchemaUpdatesHook {

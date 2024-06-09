@@ -24,8 +24,8 @@ use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\User\User;
-use Message;
 
 /**
  * AuthManager secondary authentication provider for TOTP second-factor authentication.

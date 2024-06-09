@@ -19,7 +19,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use HTMLForm;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -27,8 +26,9 @@ use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Html\Html;
+use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
-use Message;
 use MWException;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;

@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use HTMLForm;
 use ManualLogEntry;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\User\UserFactory;
