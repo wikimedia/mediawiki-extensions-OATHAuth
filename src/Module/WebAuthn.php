@@ -2,7 +2,8 @@
 
 namespace MediaWiki\Extension\WebAuthn\Module;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -15,8 +16,7 @@ use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnDisableForm;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
-use Message;
-use RequestContext;
+use MediaWiki\Message\Message;
 
 class WebAuthn implements IModule {
 	/**

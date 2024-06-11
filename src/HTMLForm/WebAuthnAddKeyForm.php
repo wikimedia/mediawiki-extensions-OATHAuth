@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
 use FormatJson;
-use IContextSource;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;

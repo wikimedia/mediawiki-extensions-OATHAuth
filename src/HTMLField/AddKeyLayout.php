@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLField;
 
-use HTMLFormField;
+use MediaWiki\HTMLForm\HTMLFormField;
 use OOUI\ActionFieldLayout;
 use OOUI\ButtonWidget;
 use OOUI\TextInputWidget;

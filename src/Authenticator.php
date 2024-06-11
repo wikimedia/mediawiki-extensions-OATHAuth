@@ -21,8 +21,9 @@ namespace MediaWiki\Extension\WebAuthn;
 
 use Cose\Algorithms;
 use FormatJson;
-use IContextSource;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -37,7 +38,6 @@ use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
 use MWException;
 use Psr\Log\LoggerInterface;
-use RequestContext;
 use stdClass;
 use Webauthn\AuthenticationExtensions\AuthenticationExtensionsClientInputs;
 use Webauthn\AuthenticatorSelectionCriteria;

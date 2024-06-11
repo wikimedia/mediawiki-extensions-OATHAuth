@@ -21,8 +21,8 @@ namespace MediaWiki\Extension\WebAuthn\Auth;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\WebAuthn\Authenticator;
-use RequestContext;
 
 class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
