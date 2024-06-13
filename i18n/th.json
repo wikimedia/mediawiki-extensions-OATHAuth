@@ -44,6 +44,7 @@
 	"action-oathauth-api-all": "ตรวจสอบสถานะการยืนยันตัวตนสองขั้นตอน (OATH)",
 	"oath-log-name": "ปูมการยืนยันตัวตนสองขั้นตอน",
 	"oathauth-ui-no-module": "ไม่มีการเปิดใช้งาน",
+	"oathauth-module-totp-label": "TOTP (โทเค็นแบบครั้งเดียว)",
 	"oathauth-ui-manage": "จัดการ",
 	"oathmanage": "จัดการการยืนยันตัวตนสองขั้นตอน",
 	"oathauth-enable-generic": "เปิดใช้งาน",
