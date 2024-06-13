@@ -19,7 +19,7 @@
 
 	mw.ext.webauthn.ManageFormWidget.prototype.setupRegisteredKeys = function () {
 		this.$form.find( '.webauthn-key-layout' )
-			.each( function ( k, keyLayout ) {
+			.each( function(k, keyLayout) {
 				const $keyLayout = $( keyLayout );
 				const removeButton = OO.ui.ButtonInputWidget.static.infuse(
 					$keyLayout.find( '.removeButton' )
@@ -28,17 +28,17 @@
 				removeButton.on( 'click', function () {
 					this.onRemoveClick( removeButton.getValue() );
 				}.bind( this ) );
-			}.bind( this ) );
+			}.bind(this) );
 	};
 
 	mw.ext.webauthn.ManageFormWidget.prototype.onRemoveClick = function ( friendlyName ) {
 		const authenticator = new mw.ext.webauthn.Authenticator();
 		authenticator.authenticate().done(
-			function ( credential ) {
+			function(credential) {
 				this.$form.find( 'input[name="remove_key"]' ).val( friendlyName );
 				this.setCredential( credential );
 				this.$form.trigger( 'submit' );
-			}.bind( this )
+			}.bind(this)
 		);
 	};
 }() );

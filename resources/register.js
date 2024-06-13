@@ -1,15 +1,15 @@
 ( function () {
-	$( function () {
+	$( function() {
 		const form = new mw.ext.webauthn.RegisterFormWidget();
 
-		form.on( 'addKey', function ( desiredName ) {
+		form.on( 'addKey', (desiredName) => {
 			const registrator = new mw.ext.webauthn.Registrator( desiredName );
 			registrator.register().then(
-				function ( credential ) {
+				(credential) => {
 					form.readyToSubmit = true;
 					form.submitWithCredential( credential );
 				},
-				function ( error ) {
+				(error) => {
 					form.dieWithError( error );
 				}
 			);
