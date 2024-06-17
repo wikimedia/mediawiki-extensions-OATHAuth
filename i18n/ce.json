@@ -5,5 +5,15 @@
 		]
 	},
 	"webauthn-desc": "WebAuthn протокол лелайеш аьтту бо аутентификаци лелайан.",
-	"webauthn-module-label": "Веб-аутентификаци (WebAuthn)"
+	"webauthn-module-label": "Веб-аутентификаци (WebAuthn)",
+	"webauthn-ui-add-key": "ТӀетоха догӀа",
+	"webauthn-error-reg-generic": "Хьан догӀа бакъдан ца делира. Дехар до, йуха йолайе регистрацин процесс",
+	"oathauth-webauthn-registered-keys-section-name": "ДӀайаздина догӀанаш",
+	"webuathn-ui-remove-key": "ДӀайаккха",
+	"webauthn-error-verification-failed": "Таллар кхочушдан цаделий",
+	"webauthn-ui-key-register-help": "ХӀайн догӀана харжа псевдоним",
+	"oathauth-webauthn-add-key-section-name": "Керла WebAuthn догӀа дӀайаздан",
+	"oathauth-webauthn-disable-section-name": "WebAuthn дӀайайъа",
+	"webauthn-error-get-reginfo-fail": "Регистрацех лаьцна информацин тӀекхочийла дац.",
+	"webauthn-ui-reload-page-label": "Карлайаккха агӀо"
 }
