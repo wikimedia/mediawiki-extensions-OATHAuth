@@ -17,6 +17,7 @@
 	"oathauth-enable": "Ativar a autenticação de dois fatores",
 	"oathauth-recoverycodes-important": "Este passo é importante! Não salte este passo!",
 	"oathauth-token": "Chave",
+	"oathauth-recoverycodes-download": "Descarregar códigos de recuperação",
 	"oathauth-disable": "Desativar a autenticação de dois fatores",
 	"oathauth-validatedoath": "As credenciais de dois fatores foram validadas. A autenticação de dois fatores será agora aplicada.",
 	"oathauth-noscratchforvalidation": "Não pode usar um código de recuperação para confirmar a autenticação de dois fatores. Os códigos de recuperação só servem como reserva para uso ocasional. Use um código da sua aplicação de autenticação de dois fatores (como o Google Authenticator), por favor.",
