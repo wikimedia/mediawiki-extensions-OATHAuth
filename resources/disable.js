@@ -6,10 +6,10 @@
 
 		const authenticator = new mw.ext.webauthn.Authenticator();
 		authenticator.authenticate().then(
-			(credential) => {
+			function(credential) {
 				form.submitWithCredential( credential );
 			},
-			(error) => {
+			function(error) {
 				form.dieWithError( error );
 			}
 		);

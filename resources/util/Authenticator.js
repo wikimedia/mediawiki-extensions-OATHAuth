@@ -57,10 +57,10 @@
 		);
 
 		publicKey.allowCredentials = publicKey.allowCredentials.map( function(data) {
-			return $.extend( data, {
+			return Object.assign( data, {
 				id: Uint8Array.from(
 					atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-					(c) => {
+					function(c) {
 						return c.charCodeAt( 0 );
 					}
 				)

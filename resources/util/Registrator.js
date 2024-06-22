@@ -66,10 +66,10 @@
 
 		if ( publicKey.excludeCredentials ) {
 			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function(data) {
-				return $.extend( data, {
+				return Object.assign( data, {
 					id: Uint8Array.from(
 						window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-						(c) => {
+						function(c) {
 							return c.charCodeAt( 0 );
 						}
 					)
