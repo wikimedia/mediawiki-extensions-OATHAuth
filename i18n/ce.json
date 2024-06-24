@@ -17,6 +17,7 @@
 	"webuathn-ui-remove-key": "ДӀайаккха",
 	"webauthn-error-module-not-enabled": "{{GENDER:$2|\"$2\" декъашхочун}} \"$1\" модуль латина йац",
 	"webauthn-error-verification-failed": "Таллар кхочушдан цаделий",
+	"webauthn-error-cannot-register": "{{GENDER:$1|\"$1\" декъашхочун}} керла регистрацеш йан магийна дац",
 	"webauthn-ui-key-register-help": "ХӀайн догӀана харжа псевдоним",
 	"oathauth-webauthn-add-key-section-name": "Керла WebAuthn догӀа дӀайаздан",
 	"oathauth-webauthn-disable-section-name": "WebAuthn дӀайайъа",
