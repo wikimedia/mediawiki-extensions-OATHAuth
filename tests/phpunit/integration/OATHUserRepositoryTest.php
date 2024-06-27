@@ -84,7 +84,7 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$this->assertNotEmpty(
-			$this->db->newSelectQueryBuilder()
+			$this->getDb()->newSelectQueryBuilder()
 				->select( '1' )
 				->from( 'oathauth_devices' )
 				->where( [ 'oad_user' => $oathUser->getCentralId() ] )
