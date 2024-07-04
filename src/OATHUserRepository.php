@@ -19,11 +19,11 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use BagOStuff;
-use FormatJson;
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\User;
 use MWException;
