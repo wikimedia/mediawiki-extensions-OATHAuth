@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"BadDog"
 		]
 	},
 	"oathauth-desc": "Omogućuje autentifikaciju korisnika pomoću HMAC-a na temelju jednokratnih lozinki",
@@ -11,7 +12,6 @@
 	"oathauth-account": "Ime računa:",
 	"oathauth-secret": "Tajni ključ za dvofaktorsku autentifikaciju:",
 	"oathauth-enable": "Omogućavanje dvofaktorske autentifikacije",
-	"oathauth-scratchtokens": "Ovo je spisak jednokratnih žetona. Mogu se koristiti samo jednom i poslužiti za nepredviđene slučajeve. Zapišite ih i čuvajte na sigurnom mjestu. Ako izgubite telefon, žetoni su jedini način za povratak računa. '''Ovi žetoni se više nikada neće prikazati.'''",
 	"oathauth-token": "Žeton",
 	"oathauth-disable": "Onemogućavanje dvofaktorske autentifikacije",
 	"oathauth-validatedoath": "Ovjereno je dvofaktorsko punomoćje. Sada stupa na snagu.",
@@ -55,7 +55,7 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|onemogućio je|onemogućila je}} dvofaktorsku autentifikaciju za $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|označio je|označila je}} ako $3 ima uključenu dvofaktorsku autentifikaciju",
 	"log-action-filter-oath": "Vrsta operacije dvofaktorske autentifikacije:",
-	"oathauth-ui-no-module": "Nijedan nije omogućen",
+	"oathauth-ui-no-module": "Nije uključena",
 	"oathauth-module-invalid": "Korisnik registrovao je nevažeći OATHAuth modul.",
 	"oathauth-module-totp-label": "TOTP (jednokratni žeton)",
 	"oathauth-ui-manage": "Upravljaj",
