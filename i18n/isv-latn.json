@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"oathauth-prefs-label": "Dvufaktorna avtentifikacija:",
+	"oathauth-ui-no-module": "Ne vključena",
+	"oathauth-ui-manage": "Upraviti",
+	"oathmanage": "Upravjenje dvufaktornoj avtentifikacije",
+	"oathauth-ui-not-enabled-modules": "Prěključiti na alternativnu metodu",
+	"oathauth-ui-enabled-module": "Vključena metoda avtentifikacije",
+	"oathauth-enable-generic": "Vključiti",
+	"oathauth-disable-generic": "Izključiti"
+}
