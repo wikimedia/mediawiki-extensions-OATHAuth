@@ -60,7 +60,7 @@
 	"oathauth-module-invalid": "Registrovany koristnikom OATHAuth-modul jest nepravilny.",
 	"oathauth-module-totp-label": "TOTP (jednokratny token)",
 	"oathauth-ui-manage": "Upraviti",
-	"oathmanage": "Upravjenje dvufaktornoj avtentifikacije",
+	"oathmanage": "Upravjenje dvufaktornoju avtentifikacijeju",
 	"oathauth-ui-not-enabled-modules": "Prěključiti na alternativnu metodu",
 	"oathauth-ui-enabled-module": "Vključena metoda avtentifikacije",
 	"oathauth-enable-generic": "Vključiti",

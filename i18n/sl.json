@@ -93,7 +93,7 @@
 	"notification-body-oathauth-disable-other": "Če tega {{GENDER:$2|niste}} zahtevali vi, se {{GENDER:$2|morate}} obrniti na administratorja.",
 	"oathauth-notifications-disable-help": "Pomoč",
 	"oathauth-notifications-disable-primary": "Preverite nastavitve dvostopenjske avtentikacije",
-	"notification-header-oathauth-enable": "Dvofaktorska avtentikacija je za {{GENDER:$2|vaš račun}} izklopljena.",
+	"notification-header-oathauth-enable": "Za {{GENDER:$2|vaš račun}} je bila vklopljena dvofaktorska avtentikacija.",
 	"notification-body-oathauth-enable": "Če tega {{GENDER:$2|niste}} storili vi, je {{GENDER:$2|vaš račun}} morda kompromitiran.",
 	"oathauth-notifications-enable-help": "Pomoč",
 	"oathauth-notifications-enable-primary": "Preverite nastavitve dvostopenjske avtentikacije",
