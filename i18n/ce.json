@@ -18,10 +18,20 @@
 	"webauthn-error-module-not-enabled": "{{GENDER:$2|\"$2\" декъашхочун}} \"$1\" модуль латина йац",
 	"webauthn-error-verification-failed": "Таллар кхочушдан цаделий",
 	"webauthn-error-cannot-register": "{{GENDER:$1|\"$1\" декъашхочун}} керла регистрацеш йан магийна дац",
+	"webauthn-error-invalid-new-key": "Модуло йухадерзош долу керла догӀа оьшуш долу тайпана дац",
+	"webauthn-error-registration-failed": "Керла догӀана регистраци йан аьтто ца хилира",
 	"webauthn-ui-key-register-help": "ХӀайн догӀана харжа псевдоним",
+	"webauthn-error-cannot-remove-key": "ДогӀа дӀадаккха йиш йац",
+	"webauthn-error-get-authinfo-fail": "Аутентификацин информаци схьаэца аьтто ца баьлла.",
 	"oathauth-webauthn-add-key-section-name": "Керла WebAuthn догӀа дӀайаздан",
 	"oathauth-webauthn-disable-section-name": "WebAuthn дӀайайъа",
 	"webauthn-error-get-reginfo-fail": "Регистрацех лаьцна информацин тӀекхочийла дац.",
+	"webauthn-ui-disable-prompt": "Дехар до, хьайн гӀирс тӀе хьажа таллархьама йа браузеран тӀехь инструкцешца хьажа, веб-аутентификаци дӀайайар тӀечӀагӀдан",
 	"webauthn-error-max-keys-reached": "ДӀайаздан мега максимум {{PLURAL:$1|$1 догӀа}}",
-	"webauthn-ui-reload-page-label": "Карлайаккха агӀо"
+	"webauthn-module-description": "WebAuthn (веб-аутентификаци) — дуьненайукъара веб-консорциумо (W3C) арахоьцу веб-стандарт. Проектан Ӏалашо йу веб-программашкахь а, сервисашкахь а лелончашна аутентификацин интерфейс стандартизаци йар, йукъара догӀанан криптографи лелош. [https://en.wikipedia.org/wiki/WebAuthn Кхин дӀа йеша]",
+	"webauthn-ui-reload-page-label": "Карлайаккха агӀо",
+	"webauthn-authentication-info-label": "Аутентификацин хаамаш",
+	"webauthn-authentication-info-help": "Аутентификацин хаамаш клиенте дӀакхачийна тешалла схьаэца",
+	"webauthn-credential-label": "Декъашхочун тешалла",
+	"webauthn-credential-help": "Декъашхочун тешалла аутентификацин хаамашна тӀехь"
 }
