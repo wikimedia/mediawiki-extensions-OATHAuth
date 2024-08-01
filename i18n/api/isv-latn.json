@@ -13,5 +13,5 @@
 	"apihelp-oathvalidate-param-user": "Koristnik, čij token trěba prověriti. Standardno nyněšnji koristnik.",
 	"apihelp-oathvalidate-example-1": "Prověriti JSON-dane za nyněšnjego koristnika",
 	"apihelp-oathvalidate-example-3": "Prověriti JSON-dane za koristnika <kbd>Example</kbd>",
-	"apihelp-oathvalidate-param-data": "Dane v JSON-formatu očekyvane nyně aktivovanym modulom za koristnika v tečenju avtenfikacije"
+	"apihelp-oathvalidate-param-data": "Dane v JSON-formatu očekyvane nyně aktivovanym modulom za koristnika v tečenju avtentifikacije"
 }

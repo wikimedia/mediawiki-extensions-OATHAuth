@@ -93,7 +93,7 @@
 	"notification-body-oathauth-disable-remaining": "Na {{GENDER:$2|vašem računu}} {{PLURAL:$3|one=je še vedno aktivna 1 dodatna naprava|two=sta še vedno aktivni 2 dodatni napravi|few=so še vedno aktivne $3 dodatne naprave|je še vedno aktivnih $3 dodatnih naprav}}.",
 	"oathauth-notifications-disable-help": "Pomoč",
 	"oathauth-notifications-disable-primary": "Preverite nastavitve dvostopenjske avtentikacije",
-	"notification-header-oathauth-enable": "Dvofaktorska avtentikacija je za {{GENDER:$2|vaš račun}} izklopljena.",
+	"notification-header-oathauth-enable": "Za {{GENDER:$2|vaš račun}} je bila vklopljena dvofaktorska avtentikacija.",
 	"notification-body-oathauth-enable": "Če tega {{GENDER:$2|niste}} storili vi, je {{GENDER:$2|vaš račun}} morda kompromitiran.",
 	"oathauth-notifications-enable-help": "Pomoč",
 	"oathauth-notifications-enable-primary": "Preverite nastavitve dvostopenjske avtentikacije",
