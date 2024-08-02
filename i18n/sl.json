@@ -50,7 +50,7 @@
 	"oathauth-auth-token-help": "Geslo za enkratno uporabo, ki se uporablja kot drugi faktor dvofaktorske avtentikacije.",
 	"oathauth-auth-ui": "Vnesite kodo iz aplikacije za dvofaktorsko avtentikacijo (npr. Google Authenticator).",
 	"oathauth-throttled": "Preveč poskusov potrditve! Počakaj $1.",
-	"oathauth-login-failed": "Potrditev je spodletela.",
+	"oathauth-login-failed": "Preverjanje je spodletelo.",
 	"oathauth-describe-provider": "Dvofaktorska avtentikacija (OATH).",
 	"grant-group-authentication": "Izvajanje dejanj avtentikacije sebe ali drugih",
 	"grant-oath": "Dostop do podatkov o dvofaktorski avtentikaciji (OATH) zase in za druge",
