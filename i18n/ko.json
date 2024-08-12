@@ -14,6 +14,7 @@
 	"webauthn-error-module-not-enabled": "\"$1\" 모듈은 {{GENDER:$2|사용자 \"$2\"}}에 대해 활성화되어 있지 않습니다",
 	"webauthn-error-verification-failed": "인증 실패",
 	"webauthn-error-registration-failed": "새로운 키 등록에 실패했습니다",
+	"webauthn-ui-key-register-help": "키의 별칭을 선택하세요",
 	"webauthn-error-cannot-remove-key": "키는 제거할 수 없습니다",
 	"oathauth-webauthn-add-key-section-name": "새 WebAuthn 키 등록",
 	"oathauth-webauthn-disable-section-name": "WebAuthn 비활성화",
