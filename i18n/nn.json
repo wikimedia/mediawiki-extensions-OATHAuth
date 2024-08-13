@@ -5,5 +5,8 @@
 		]
 	},
 	"oathauth-prefs-label": "Tofaktor-autentisering:",
-	"oathauth-ui-manage": "Handsam"
+	"oathauth-module-totp-label": "TOTP (eingongsnykel)",
+	"oathauth-ui-manage": "Handsam",
+	"oathmanage": "Handsam tofaktorautentisering",
+	"oathauth-ui-available-modules": "Tilgjengelege metodar"
 }
