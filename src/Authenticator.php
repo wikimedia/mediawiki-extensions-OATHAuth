@@ -110,24 +110,15 @@ class Authenticator {
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
 		/** @var OATHUserRepository $userRepo */
 		$userRepo = $services->getService( 'OATHUserRepository' );
-		/** @var WebAuthn $module */
-		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
-		$oathUser = $userRepo->findByUser( $user );
-		$context = RequestContext::getMain();
-		$logger = LoggerFactory::getInstance( 'authentication' );
-		if ( $request === null ) {
-			$request = RequestContext::getMain()->getRequest();
-		}
-		$urlUtils = $services->getUrlUtils();
 
 		return new static(
 			$userRepo,
-			$module,
-			$oathUser,
-			$context,
-			$logger,
-			$request,
-			$urlUtils
+			$moduleRegistry->getModuleByKey( 'webauthn' ),
+			$userRepo->findByUser( $user ),
+			RequestContext::getMain(),
+			LoggerFactory::getInstance( 'authentication' ),
+			$request ?? RequestContext::getMain()->getRequest(),
+			$services->getUrlUtils()
 		);
 	}
 
@@ -226,12 +217,9 @@ class Authenticator {
 			return $canAuthenticate;
 		}
 
-		if ( $authInfo === null ) {
-			$authInfo = $this->getSessionData(
-				PublicKeyCredentialRequestOptions::class
-			);
-		}
-		$verificationData['authInfo'] = $authInfo;
+		$verificationData['authInfo'] = $authInfo ?? $this->getSessionData(
+			PublicKeyCredentialRequestOptions::class
+		);
 		$this->clearSessionData();
 
 		if ( $this->module->verify( $this->oathUser, $verificationData ) ) {
