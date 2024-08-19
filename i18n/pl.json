@@ -21,6 +21,7 @@
 	"oathauth-account": "Nazwa konta:",
 	"oathauth-secret": "Tajny klucz uwierzytelniania dwuskładnikowego:",
 	"oathauth-enable": "Włączanie uwierzytelniania dwuskładnikowego",
+	"oathauth-recoverycodes-important": "Ten krok jest bardzo ważny! Nie pomijaj go!",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Wyłączanie uwierzytelniania dwuskładnikowego",
 	"oathauth-validatedoath": "Poświadczono urządzenie uwierzytelniające. Uwierzytelnianie dwuskładnikowe będzie teraz wymagane podczas logowania.",
@@ -105,5 +106,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ma włączone uwierzytelnianie dwuskładnikowe.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nie ma włączonego uwierzytelniania dwuskładnikowego.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zawieszona grupa|Zawieszone grupy}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]].",
+	"oathauth-hint": "Nie masz dostępu do urządzenia lub aplikacji do uwierzytelniania? W tym polu możesz wpisać któryś z kodów zapasowych (które zostały pokazane po aktywacji uwierzytelniania dwuskładnikowego)."
 }

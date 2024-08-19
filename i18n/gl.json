@@ -14,7 +14,6 @@
 	"oathauth-account": "Nome da conta:",
 	"oathauth-secret": "Clave secreta de autenticación de dous factoresː",
 	"oathauth-enable": "Activar a autenticación de dous factores",
-	"oathauth-scratchtokens": "A seguinte é unha lista de pases dun só uso. Estes pases unicamente se poden empregar unha vez, e son para casos de emerxencia. Escríbaos nun papel e gárdeos nun lugar seguro. Se perde o seu teléfono, estes pases son o único xeito de recuperar a súa conta. '''Esta é a única vez que poderá ver os pases.'''",
 	"oathauth-token": "Pase",
 	"oathauth-disable": "Desactivar a autenticación de dous factores",
 	"oathauth-validatedoath": "Validáronse as credenciais de dous factores. Agora hase aplicar a autenticación de dous factores.",
@@ -48,6 +47,7 @@
 	"action-oathauth-api-all": "verificar o estado de OATH",
 	"oathauth-user-not-found": "Non se atopou ningunha conta de usuario co nome especificado",
 	"oath-log-name": "Rexistro de autenticación de dous factores",
+	"oathauth-ui-no-module": "Ningunha activada",
 	"oathauth-module-totp-label": "TOTP (identificador de uso único)",
 	"oathauth-ui-manage": "Xestionar",
 	"oathmanage": "Xestionar autenticación de dous factores",
@@ -62,5 +62,7 @@
 	"oathauth-totp-description": "O algoritmo TOTP (Time-based One-Time Password) é unha extensión do algoritmo HOTP (HMAC-based One-time Password) xerando un contrasinal de uso único tomando como unicidade a hora actual.",
 	"oathauth-disable-method-warning-header": "Confirmar desactivación do método de autenticación",
 	"oathauth-disable-method-warning-button-label": "Confirmar e continuar",
-	"oathauth-invalidrequest": "Solicitude non válida"
+	"oathauth-invalidrequest": "Solicitude non válida",
+	"oathauth-notifications-disable-help": "Axuda",
+	"oathauth-notifications-enable-help": "Axuda"
 }
