@@ -12,7 +12,7 @@
 		const dfd = $.Deferred();
 		if ( this.registerData === null ) {
 			this.getRegisterInfo().then(
-				(response) => {
+				( response ) => {
 					if ( !response.webauthn.hasOwnProperty( 'register_info' ) ) {
 						dfd.reject( 'webauthn-error-get-reginfo-fail' );
 					}
@@ -20,7 +20,7 @@
 					this.registerData = JSON.parse( this.registerData );
 					this.registerWithRegisterInfo( dfd );
 				},
-				(error) => {
+				( error ) => {
 					dfd.reject( error );
 				}
 			);
@@ -54,23 +54,23 @@
 		const publicKey = this.registerData;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			function(c) {
+			function ( c ) {
 				return c.charCodeAt( 0 );
 			}
 		);
 		publicKey.user.id = Uint8Array.from(
 			window.atob( publicKey.user.id ),
-			function(c) {
+			function ( c ) {
 				return c.charCodeAt( 0 );
 			}
 		);
 
 		if ( publicKey.excludeCredentials ) {
-			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function(data) {
+			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function ( data ) {
 				return Object.assign( data, {
 					id: Uint8Array.from(
 						window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-						function(c) {
+						function ( c ) {
 							return c.charCodeAt( 0 );
 						}
 					)

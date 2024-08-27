@@ -29,9 +29,9 @@
 
 	mw.ext.webauthn.RegisterFormWidget.prototype.validateAndEmit = function () {
 		this.name.getValidity().then(
-			function() {
+			function () {
 				this.emit( 'addKey', this.name.getValue() );
-			}.bind(this)
+			}.bind( this )
 		);
 	};
 
