@@ -486,8 +486,8 @@ class Authenticator {
 		}
 
 		$server = $this->context->getConfig()->get( 'Server' );
-		$serverBits = wfParseUrl( $server );
-		if ( $serverBits !== false ) {
+		$serverBits = wfGetUrlUtils()->parse( $server );
+		if ( $serverBits !== null ) {
 			return $serverBits['host'];
 		}
 
