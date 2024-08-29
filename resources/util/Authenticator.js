@@ -10,14 +10,14 @@
 	mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
 		const dfd = $.Deferred();
 		if ( this.authInfo === null ) {
-			this.getAuthInfo().done( function(response) {
+			this.getAuthInfo().done( function ( response ) {
 				if ( !response.webauthn.hasOwnProperty( 'auth_info' ) ) {
 					dfd.reject( 'webauthn-error-get-authinfo-fail' );
 				}
 				this.authInfo = response.webauthn.auth_info;
 				this.authInfo = JSON.parse( this.authInfo );
 				this.authenticateWithAuthInfo( dfd );
-			}.bind(this) ).fail( function(error) {
+			}.bind( this ) ).fail( function ( error ) {
 				dfd.reject( error );
 			}
 			);
@@ -37,10 +37,10 @@
 	mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( dfd ) {
 		// At this point we assume authInfo is set
 		this.getCredentials()
-			.then( function(assertion) {
+			.then( function ( assertion ) {
 				dfd.resolve( this.formatCredential( assertion ) );
-			}.bind(this) )
-			.catch( function() {
+			}.bind( this ) )
+			.catch( function () {
 				// This usually happens when the process gets interrupted
 				// - show generic interrupt error
 				dfd.reject( 'webauthn-error-auth-generic' );
@@ -51,16 +51,16 @@
 		const publicKey = this.authInfo;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			function(c) {
+			function ( c ) {
 				return c.charCodeAt( 0 );
 			}
 		);
 
-		publicKey.allowCredentials = publicKey.allowCredentials.map( function(data) {
+		publicKey.allowCredentials = publicKey.allowCredentials.map( function ( data ) {
 			return Object.assign( data, {
 				id: Uint8Array.from(
 					atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-					function(c) {
+					function ( c ) {
 						return c.charCodeAt( 0 );
 					}
 				)

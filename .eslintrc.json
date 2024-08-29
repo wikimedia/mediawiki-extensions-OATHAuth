@@ -1,9 +1,8 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client",
 		"wikimedia/jquery",
-		"wikimedia/language/es6.json",
 		"wikimedia/mediawiki"
 	],
 	"rules": {
@@ -11,14 +10,7 @@
 		"no-jquery/no-global-selector": "off",
 		"mediawiki/msg-doc": "off",
 		"compat/compat": "warn",
-		"es-x/no-block-scoped-variables": "warn",
-		"es-x/no-typed-arrays": "warn",
-		"es-x/no-arrow-functions": "warn",
-		"space-before-function-paren": "warn",
-		"space-in-parens": "warn",
 		"prefer-arrow-callback": "warn",
-		"arrow-body-style": "warn",
-		"no-jquery/no-extend": "warn",
-		"es-x/no-object-assign": "warn"
+		"no-jquery/no-extend": "warn"
 	}
 }
