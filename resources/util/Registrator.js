@@ -12,15 +12,15 @@
 		const dfd = $.Deferred();
 		if ( this.registerData === null ) {
 			this.getRegisterInfo().then(
-				function(response) {
+				(response) => {
 					if ( !response.webauthn.hasOwnProperty( 'register_info' ) ) {
 						dfd.reject( 'webauthn-error-get-reginfo-fail' );
 					}
 					this.registerData = response.webauthn.register_info;
 					this.registerData = JSON.parse( this.registerData );
 					this.registerWithRegisterInfo( dfd );
-				}.bind(this),
-				function(error) {
+				},
+				(error) => {
 					dfd.reject( error );
 				}
 			);
@@ -39,10 +39,10 @@
 
 	mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd ) {
 		this.createCredential()
-			.then( function( assertion ) {
+			.then( ( assertion ) => {
 				dfd.resolve( this.formatCredential( assertion ) );
-			}.bind( this ) )
-			.catch( function ( error ) {
+			} )
+			.catch( ( error ) => {
 				mw.log.error( error );
 				// This usually happens when the process gets interrupted
 				// - show generic interrupt error
