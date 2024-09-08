@@ -35,6 +35,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
+use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use MWException;
 use Psr\Log\LoggerInterface;
@@ -94,6 +95,8 @@ class Authenticator {
 	 */
 	protected $context;
 
+	private UrlUtils $urlUtils;
+
 	/**
 	 * @param User $user
 	 * @param WebRequest|null $request
@@ -102,10 +105,11 @@ class Authenticator {
 	 * @throws MWException
 	 */
 	public static function factory( $user, $request = null ) {
+		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
-		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
+		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
 		/** @var OATHUserRepository $userRepo */
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$userRepo = $services->getService( 'OATHUserRepository' );
 		/** @var WebAuthn $module */
 		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
 		$oathUser = $userRepo->findByUser( $user );
@@ -114,6 +118,7 @@ class Authenticator {
 		if ( $request === null ) {
 			$request = RequestContext::getMain()->getRequest();
 		}
+		$urlUtils = $services->getUrlUtils();
 
 		return new static(
 			$userRepo,
@@ -121,7 +126,8 @@ class Authenticator {
 			$oathUser,
 			$context,
 			$logger,
-			$request
+			$request,
+			$urlUtils
 		);
 	}
 
@@ -132,15 +138,17 @@ class Authenticator {
 	 * @param IContextSource $context
 	 * @param LoggerInterface $logger
 	 * @param WebRequest $request
+	 * @param UrlUtils $urlUtils
 	 * @throws ConfigException
 	 */
-	protected function __construct( $userRepo, $module, $oathUser, $context, $logger, $request ) {
+	protected function __construct( $userRepo, $module, $oathUser, $context, $logger, $request, $urlUtils ) {
 		$this->userRepo = $userRepo;
 		$this->module = $module;
 		$this->oathUser = $oathUser;
 		$this->context = $context;
 		$this->logger = $logger;
 		$this->request = $request;
+		$this->urlUtils = $urlUtils;
 		$this->serverId = $this->getServerId();
 	}
 
@@ -486,7 +494,7 @@ class Authenticator {
 		}
 
 		$server = $this->context->getConfig()->get( 'Server' );
-		$serverBits = wfGetUrlUtils()->parse( $server );
+		$serverBits = $this->urlUtils->parse( $server );
 		if ( $serverBits !== null ) {
 			return $serverBits['host'];
 		}
