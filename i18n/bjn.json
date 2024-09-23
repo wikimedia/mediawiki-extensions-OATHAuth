@@ -4,5 +4,11 @@
 			"Ezagren"
 		]
 	},
+	"oathauth-secret": "Kunci rahasia oténtikasi dua faktor:",
+	"oathauth-recoverycodes-important": "Langkah ini panting! Jangan limpuaakan langkah ini!",
+	"oathauth-step1": "Langkah 1: Unduh aplikasi oténtikasi dua faktor",
+	"oathauth-step1-test": "Unduh program gasan auténtikasi dua faktor. Kawa barupa aplikasi sélulér atawa désktop, nangkaya [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator] atawa [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator]. Éksténsi paramban. Atawa pangalula kata sandi nangkaya [https://1password.com/ 1Password].",
+	"oathauth-step2-qrcode": "Pindai kode QR mamakai aplikasi atawa éksténsi paramban nang Pian unduh di langkah 1 gasan auténtikasi dua faktor.",
+	"oathauth-step2alt": "Amun Pian kada kawa mamindai kode QR, masukakan kunci rahasia wan ngaran akun sacara manual:",
 	"oathauth-ui-no-module": "Kada nyala"
 }
