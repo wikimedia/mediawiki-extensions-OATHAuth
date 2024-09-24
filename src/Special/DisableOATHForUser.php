@@ -86,9 +86,9 @@ class DisableOATHForUser extends FormSpecialPage {
 	 * @throws UserNotLoggedIn
 	 */
 	protected function checkExecutePermissions( User $user ) {
-		parent::checkExecutePermissions( $user );
+		$this->requireNamedUser();
 
-		$this->requireLogin();
+		parent::checkExecutePermissions( $user );
 	}
 
 	/**
