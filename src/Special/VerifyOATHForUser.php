@@ -10,8 +10,11 @@ use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MWException;
+use UserBlockedError;
+use UserNotLoggedIn;
 
 class VerifyOATHForUser extends FormSpecialPage {
 
@@ -76,6 +79,17 @@ class VerifyOATHForUser extends FormSpecialPage {
 	 */
 	public function requiresUnblock() {
 		return true;
+	}
+
+	/**
+	 * @param User $user
+	 * @throws UserBlockedError
+	 * @throws UserNotLoggedIn
+	 */
+	protected function checkExecutePermissions( User $user ) {
+		$this->requireNamedUser();
+
+		parent::checkExecutePermissions( $user );
 	}
 
 	/**

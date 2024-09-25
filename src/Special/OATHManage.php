@@ -122,7 +122,7 @@ class OATHManage extends SpecialPage {
 	 * @throws UserNotLoggedIn
 	 */
 	public function checkPermissions() {
-		$this->requireLogin();
+		$this->requireNamedUser();
 
 		$canEnable = $this->getUser()->isAllowed( 'oathauth-enable' );
 
