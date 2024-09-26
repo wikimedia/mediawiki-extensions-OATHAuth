@@ -86,7 +86,7 @@
 	"notification-header-oathauth-remove-device": "Aparat za dvufaktornu avtentifikaciju jest udaljeny iz {{GENDER:$2|vašego konta}}.",
 	"notification-body-oathauth-disable": "Ako {{GENDER:$2|vy}} ne jeste to sdělali, može byti, že někto vlomil se v {{GENDER:$2|vaše koristničsko konto}}.",
 	"notification-body-oathauth-disable-other": "Ako {{GENDER:$2|vy}} ne jeste sdělali tutoj zapyt, {{GENDER:$2|vy}} povinni jeste kontaktovati administratora.",
-	"notification-body-oathauth-disable-remaining": "Ješče {{PLURAL:$3|jest dodatočny aparat aktivny|sut $3 dodatočne aparaty aktivne}} na {{GENDER:$2|vašem kontu}}.",
+	"notification-body-oathauth-disable-remaining": "Ješče {{PLURAL:$3|jest dodatočny aparat aktivny|sut $3 dodatočne aparaty aktivne|jest $3 dodatočnyh aparatov aktivnyh}} na {{GENDER:$2|vašem kontu}}.",
 	"oathauth-notifications-disable-help": "Pomoč",
 	"oathauth-notifications-disable-primary": "Prověrite svoje nastavjenja dvufaktornoj avtentifikacije",
 	"notification-header-oathauth-enable": "Dvufaktorna avtentifikacija jest vključena na {{GENDER:$2|vašem kontu}}.",

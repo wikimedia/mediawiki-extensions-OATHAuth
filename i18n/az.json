@@ -50,7 +50,7 @@
 	"oathauth-auth-token-help": "İki faktorlu autentifikasiyanın ikinci faktoru kimi istifadə olunan birdəfəlik parol.",
 	"oathauth-auth-ui": "Lütfən, iki faktorlu autentifikasiya tətbiqinizdəki kodu daxil edin (məsələn, Google Authenticator).",
 	"oathauth-throttled": "Çox saylı doğrulama cəhdi! Zəhmət olmasa $1 gözləyin.",
-	"oathauth-login-failed": "Doğrulama uğursuz oldu.",
+	"oathauth-login-failed": "Təsdiqləmə uğursuz oldu.",
 	"oathauth-describe-provider": "İki faktorlu autentifikasiya (OATH).",
 	"grant-group-authentication": "Özünüz və başqaları üçün identifikasiyaları yerinə yetirin",
 	"grant-oath": "Özünüz və başqaları üçün iki faktorlu autentifikasiya (ON) məlumatlarına daxil olun",
