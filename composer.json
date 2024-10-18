@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"lint": "parallel-lint . --exclude vendor --exclude node_modules",
-		"phpcs": "phpcs -p -s",
+		"phpcs": "phpcs -p -s --cache",
 		"fix": [
 			"minus-x fix .",
 			"phpcbf"
