@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use ExtensionRegistry;
 use ManualLogEntry;
 use MediaWiki\CheckUser\Hooks as CheckUserHooks;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;

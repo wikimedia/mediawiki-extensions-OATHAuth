@@ -21,7 +21,6 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use DomainException;
-use EmptyBagOStuff;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
@@ -31,6 +30,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Psr\Log\LoggerInterface;
+use Wikimedia\ObjectCache\EmptyBagOStuff;
 
 /**
  * Class representing a two-factor key

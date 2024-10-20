@@ -18,7 +18,6 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use BagOStuff;
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\RequestContext;
@@ -30,6 +29,7 @@ use MWException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
+use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {
