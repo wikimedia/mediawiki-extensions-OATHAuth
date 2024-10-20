@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
-use FormatJson;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
@@ -11,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 
