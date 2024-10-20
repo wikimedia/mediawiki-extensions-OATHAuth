@@ -18,8 +18,8 @@
 
 namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
-use ApiBase;
-use ApiResult;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiResult;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
