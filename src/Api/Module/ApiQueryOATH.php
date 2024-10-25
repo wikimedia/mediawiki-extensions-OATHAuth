@@ -39,14 +39,9 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiQueryOATH extends ApiQueryBase {
 	private OATHUserRepository $oathUserRepository;
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 * @param OATHUserRepository $oathUserRepository
-	 */
 	public function __construct(
-		$query,
-		$moduleName,
+		ApiQuery $query,
+		string $moduleName,
 		OATHUserRepository $oathUserRepository
 	) {
 		parent::__construct( $query, $moduleName, 'oath' );
