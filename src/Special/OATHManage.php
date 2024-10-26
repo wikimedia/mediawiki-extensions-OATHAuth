@@ -231,7 +231,7 @@ class OATHManage extends SpecialPage {
 		return $modulePanel;
 	}
 
-	private function addCustomContent( IModule $module, PanelLayout $panel = null ): void {
+	private function addCustomContent( IModule $module, ?PanelLayout $panel = null ): void {
 		$form = $module->getManageForm(
 			$this->action,
 			$this->authUser,
