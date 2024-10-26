@@ -123,7 +123,7 @@ class OATHUser {
 	 *
 	 * @param IModule|null $module
 	 */
-	public function setModule( IModule $module = null ) {
+	public function setModule( ?IModule $module = null ) {
 		$this->module = $module;
 	}
 
