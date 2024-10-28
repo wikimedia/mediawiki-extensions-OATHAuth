@@ -100,7 +100,7 @@ class WebAuthn implements IModule {
 		$action,
 		OATHUser $user,
 		OATHUserRepository $repo,
-		IContextSource $context = null
+		?IContextSource $context = null
 	) {
 		$module = $this;
 		$context = $context ?: RequestContext::getMain();
