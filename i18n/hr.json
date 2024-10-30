@@ -16,7 +16,6 @@
 	"oathauth-account": "Suradnički račun:",
 	"oathauth-secret": "Tajni ključ za dvofaktorsku autentifikaciju:",
 	"oathauth-enable": "Omogućavanje dvofaktorske autentifikacije",
-	"oathauth-scratchtokens": "Sljedeći popis je popis jednokratnih kôdova. Mogu se uporabiti jednom, i to u nepredviđenim slučajevima. Zapišite ih i čuvajte na sigurnom mjestu. Ako izgubite telefon, ovi kôdovi su jedini način da spasite suradnički račun. '''Ovi kôdovi više nikada neće biti prikazani'''.",
 	"oathauth-token": "Kôd",
 	"oathauth-disable": "Onemogući dvofaktorsku autentifikaciju",
 	"oathauth-validatedoath": "Ovjereno je dvofaktorsko punomoćje. Dvofaktorska autentifikacija odsad će biti provođena.",

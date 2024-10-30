@@ -24,7 +24,6 @@
 	"oathauth-account": "Hesap adı:",
 	"oathauth-secret": "İki faktörlü kimlik doğrulama gizli anahtarı:",
 	"oathauth-enable": "İki faktörlü kimlik doğrulamayı etkinleştir",
-	"oathauth-scratchtokens": "Aşağıdaki liste tek kullanımlık kazı kazan simgelerinin listesidir. Bu anahtarlar yalnızca bir kez kullanılabilir ve acil kullanım içindir. Lütfen bunları not alın ve güvenli bir yerde saklayın. Telefonunuzu kaybederseniz, bu anahtar hesabınızı kurtarmanın tek yoludur. '''Bu anahtarlar bir daha asla gösterilmeyecek'''.",
 	"oathauth-token": "Anahtar",
 	"oathauth-disable": "İki faktörlü kimlik doğrulamayı devre dışı bırak",
 	"oathauth-validatedoath": "İki faktörlü kimlik bilgileri doğrulandı. Bundan sonra iki faktörlü kimlik doğrulama uygulanacak.",

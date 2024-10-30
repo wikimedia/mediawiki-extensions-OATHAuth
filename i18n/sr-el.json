@@ -14,7 +14,6 @@
 	"oathauth-account": "Ime naloga:",
 	"oathauth-secret": "Tajni ključ za dvofaktorsku potvrdu identiteta:",
 	"oathauth-enable": "Uključivanje dvofaktorske potvrde identiteta",
-	"oathauth-scratchtokens": "Ovo je spisak jednokratnih pričuvnih tokena. Oni se mogu koristiti samo jednom i služe za hitne slučajeve. Zapišite ih i čuvajte na bezbednoj lokaciji. Ako izgubite telefon, tokeni su jedini način da spasite nalog. '''Ovi tokeni se više nikada neće prikazati'''.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Onemogućavanje dvofaktorske potvrde identiteta",
 	"oathauth-validatedoath": "Valjanost dvofaktorskih akreditiva je proverena. Odsad će se sprovoditi dvofaktorska potvrda identiteta.",

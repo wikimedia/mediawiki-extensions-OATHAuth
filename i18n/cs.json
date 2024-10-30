@@ -17,7 +17,6 @@
 	"oathauth-account": "Název účtu:",
 	"oathauth-secret": "Tajný klíč pro dvoufaktorovou autentizaci:",
 	"oathauth-enable": "Zapnutí dvoufaktorové autentizace",
-	"oathauth-scratchtokens": "Následující seznam obsahuje jednorázové provizorní kódy. Tyto kódy lze použít pouze jednou a slouží pro případ nouze. Opište si je a uchovávejte je na bezpečném místě. Pokud ztratíte svůj telefon, budou tyto kódy jediným způsobem, jak zachránit váš účet. '''Tyto kódy se již nikdy znovu nezobrazí'''.",
 	"oathauth-token": "Kód",
 	"oathauth-disable": "Vypnutí dvoufaktorové autentizace",
 	"oathauth-validatedoath": "Údaje pro druhý faktor ověřeny. Odteď bude vynucována dvoufaktorová autentizace.",
