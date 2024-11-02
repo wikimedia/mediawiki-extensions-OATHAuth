@@ -46,6 +46,7 @@
 	"action-oathauth-enable": "enable two-factor authentication",
 	"oathauth-auth-token-label": "Two-factor token or recovery code",
 	"oathauth-auth-token-help": "The one-time password used as the second factor of two-factor authentication.",
+	"oathauth-auth-token-help-ui": "Enter either a code from your authentication device, or a recovery code",
 	"oathauth-auth-ui": "Please enter a code from your two-factor authentication application (such as Google Authenticator).",
 	"oathauth-throttled": "Too many verification attempts! Please wait $1.",
 	"oathauth-login-failed": "Verification failed.",
