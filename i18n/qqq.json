@@ -62,6 +62,7 @@
 	"action-oathauth-enable": "{{doc-action|oathauth-enable}}",
 	"oathauth-auth-token-label": "Label of the second-factor field on special pages and in the API\n{{Identical|Token}}",
 	"oathauth-auth-token-help": "Extended help message for the second factor field in the API.",
+	"oathauth-auth-token-help-ui": "Label for token field during login",
 	"oathauth-auth-ui": "Shown on top of the login form when second factor is required",
 	"oathauth-throttled": "Error message when throttling limit is hit.\n\nParameters:\n* $1 - throttle block duration",
 	"oathauth-login-failed": "Error message when verifying the second factor failed.",
