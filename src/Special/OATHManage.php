@@ -371,16 +371,18 @@ class OATHManage extends SpecialPage {
 			'framed' => true,
 			'expanded' => false
 		] );
-		$headerMessage = $this->isSwitch() ?
-			$this->msg( 'oathauth-switch-method-warning-header' ) :
-			$this->msg( 'oathauth-disable-method-warning-header' );
-		$genericMessage = $this->isSwitch() ?
+
+		$isSwitch = $this->isSwitch();
+		$currentDisplayName = $this->getEnabled()->getDisplayName();
+		$newDisplayName = $this->requestedModule->getDisplayName();
+
+		$genericMessage = $isSwitch ?
 			$this->msg(
 				'oathauth-switch-method-warning',
-				$this->getEnabled()->getDisplayName(),
-				$this->requestedModule->getDisplayName()
+				$currentDisplayName,
+				$newDisplayName
 			) :
-			$this->msg( 'oathauth-disable-method-warning', $this->getEnabled()->getDisplayName() );
+			$this->msg( 'oathauth-disable-method-warning', $currentDisplayName );
 
 		$panel->appendContent( new HtmlSnippet(
 			$genericMessage->parseAsBlock()
@@ -393,6 +395,14 @@ class OATHManage extends SpecialPage {
 			) );
 		}
 
+		$nextStepMessage = $isSwitch ?
+			$this->msg( 'oathauth-switch-method-next-step', $currentDisplayName ) :
+			$this->msg( 'oathauth-disable-method-next-step', $currentDisplayName, $newDisplayName );
+
+		$panel->appendContent( new HtmlSnippet(
+			$nextStepMessage->parseAsBlock()
+		) );
+
 		$button = new ButtonWidget( [
 			'label' => $this->msg( 'oathauth-disable-method-warning-button-label' )->plain(),
 			'href' => $this->getOutput()->getTitle()->getLocalURL( [
@@ -403,7 +413,11 @@ class OATHManage extends SpecialPage {
 		] );
 		$panel->appendContent( $button );
 
-		$this->getOutput()->setPageTitle( $headerMessage );
+		$headerMessage = $isSwitch ?
+			$this->msg( 'oathauth-switch-method-warning-header' ) :
+			$this->msg( 'oathauth-disable-method-warning-header' );
+
+		$this->getOutput()->setPageTitleMsg( $headerMessage );
 		$this->getOutput()->addHTML( $panel->toString() );
 	}
 
