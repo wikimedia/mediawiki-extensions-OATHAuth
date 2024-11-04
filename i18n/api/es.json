@@ -3,7 +3,8 @@
 		"authors": [
 			"Anarhistička Maca",
 			"Dgstranz",
-			"Jelou"
+			"Jelou",
+			"La Mantis"
 		]
 	},
 	"apihelp-query+oath-description": "Comprobar si la autenticación en dos pasos (OATH) de un usuario está habilitada.",

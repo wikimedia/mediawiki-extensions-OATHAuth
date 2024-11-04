@@ -11,7 +11,6 @@
 	"oathauth-account": "Namo akun:",
 	"oathauth-secret": "Kunci rasio otentikasi duo-faktor",
 	"oathauth-enable": "Aktipan otentikasi duo-faktor",
-	"oathauth-scratchtokens": "Daftar barikuik adolah daftar kode token sakali pakai. Kode token ko hanyo dapek digunoan sakali sajo untuak panggunoan daruraik. Tulihlah di karateh dan simpan di lokasi nan aman. Jikok Sanak kahilangan ponsel, token ko satu-satunyo caro mamuliahkan akun Sanak. '''Token ko indak akan ditampilkan lai'''.",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Nonaktipan otentikasi duo-faktor",
 	"oathauth-validatedoath": "Validasi kredensial duo-faktor. Otentikasi duo-faktor kini dibalakukan.",

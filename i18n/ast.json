@@ -12,7 +12,6 @@
 	"oathauth-account": "Nome de la cuenta:",
 	"oathauth-secret": "Clave secreta d'identificación en dos pasos:",
 	"oathauth-enable": "Activar la identificación de dos factores",
-	"oathauth-scratchtokens": "La siguiente ye una llista de pases d'un solu usu. Estos pases sólo pueen utilizase una vez, y son pa usu d'emerxencia. Por favor, apúntales y guárdales nun llugar seguru. Si pierdes el teléfonu, estos pases son la única manera de rescatar la cuenta. '''Estos pases nunca volverán a apaecer'''.",
 	"oathauth-token": "Pase",
 	"oathauth-disable": "Desactivar la identificación de dos factores",
 	"oathauth-validatedoath": "Validáronse les credenciales de dos factores. Agora sedrá obligatoria la identificación de dos factores.",

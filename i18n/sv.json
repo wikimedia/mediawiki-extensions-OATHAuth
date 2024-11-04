@@ -16,7 +16,6 @@
 	"oathauth-account": "Kontonamn:",
 	"oathauth-secret": "Hemlig nyckel för tvåfaktorsautentisering:",
 	"oathauth-enable": "Aktivera tvåfaktorsautentisering",
-	"oathauth-scratchtokens": "Följande lista är en förteckning över engångsnycklar. Dessa nycklar kan enbart användas en gång och är avsedda för användning i nödfall. Vänligen skriv ner dessa och förvara dem på en säker plats. Om du förlorar din telefon, är dessa nycklar det enda sättet att rädda ditt konto. '''Dessa nycklar kommer aldrig att visas igen'''.",
 	"oathauth-token": "Nyckel",
 	"oathauth-disable": "Inaktivera tvåfaktorsautentisering",
 	"oathauth-validatedoath": "Validerade uppgifterna för tvåfaktorsautentiseringen. Tvåfaktorsautentiseringen kommer nu att verkställas.",
