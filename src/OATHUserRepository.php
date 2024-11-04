@@ -77,6 +77,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				->centralIdFromLocalUser( $user );
 			$oathUser = new OATHUser( $user, $uid );
 			$this->loadKeysFromDatabase( $oathUser );
+
 			$this->cache->set( $user->getName(), $oathUser );
 		}
 		return $oathUser;
@@ -164,14 +165,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 			);
 		}
 
-		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
 		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
 
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'oathauth_devices' )
 			->row( [
-				'oad_user' => $userId,
+				'oad_user' => $user->getCentralId(),
 				'oad_type' => $moduleId,
 				'oad_data' => FormatJson::encode( $keyData ),
 				'oad_created' => $dbw->timestamp(),
