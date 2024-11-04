@@ -101,7 +101,7 @@
 	"oathauth-notifications-enable-help": "Help",
 	"oathauth-notifications-enable-helplink": "mw:Special:MyLanguage/Help:Two-factor authentication",
 	"oathauth-notifications-enable-primary": "Check your two-factor authentication settings",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "{{GENDER:$2|You}} have $3 {{PLURAL:$3|recovery code|recovery codes}} left. You may want to consider disabling your two-factor and re-enabling it to generate new recovery codes, which will give you $4 {{PLURAL:$4|recovery code|recovery codes}} to use in future.",
+	"notification-body-oathauth-oathauth-recoverycodesleft": "{{GENDER:$2|You}} have $3 recovery {{PLURAL:$3|code|codes}} left. You may want to consider disabling and re-enabling two-factor authentication to generate $4 new recovery {{PLURAL:$4|code|codes}} to use in future.",
 	"oathauth-notifications-recoverycodesleft-help": "Help",
 	"oathauth-notifications-recoverycodesleft-helplink": "mw:Special:MyLanguage/Help:Two-factor authentication",
 	"oathauth-notifications-recoverycodesleft-primary": "Check your two-factor authentication settings",
