@@ -89,7 +89,6 @@
 	"log-action-filter-oath-verify": "检查是否启用双重验证",
 	"log-action-filter-oath-disable-other": "禁用另一名用户的双重身份验证",
 	"oathauth-ui-no-module": "没有启用",
-	"oathauth-module-invalid": "用户已注册的OATHAuth模块无效。",
 	"oathauth-module-totp-label": "TOTP（基于时间的一次性密码）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理双重身份验证",

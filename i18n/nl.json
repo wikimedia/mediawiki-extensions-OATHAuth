@@ -77,7 +77,6 @@
 	"log-action-filter-oath-verify": "Controleren of tweetrapsauthenticatie is ingeschakeld",
 	"log-action-filter-oath-disable-other": "Tweetrapsauthenticatie voor een andere gebruiker uitschakelen",
 	"oathauth-ui-no-module": "Geen ingesteld",
-	"oathauth-module-invalid": "De OATHAuth-module die de gebruiker heeft geregistreerd, is ongeldig.",
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",

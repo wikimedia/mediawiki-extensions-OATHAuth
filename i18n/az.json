@@ -69,7 +69,6 @@
 	"log-action-filter-oath-verify": "İki faktorlu autentifikasiyanın aktiv olub olmadığının yoxlanması",
 	"log-action-filter-oath-disable-other": "Digər istifadəçinin iki faktorlu autentifikasiyasının deaktiv edilməsi",
 	"oathauth-ui-no-module": "Qoşulmayıb",
-	"oathauth-module-invalid": "İstifadəçinin qeydiyyatdan keçirdiyi OATHAuth modulu etibarsızdır.",
 	"oathauth-module-totp-label": "TOTP (birdəfəlik token)",
 	"oathauth-ui-manage": "İdarə et",
 	"oathmanage": "İki faktorlu autentifikasiyanı idarə et",

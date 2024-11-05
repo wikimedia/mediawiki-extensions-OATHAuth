@@ -78,7 +78,6 @@
 	"log-action-filter-oath-verify": "Vérifie si l’authentification à deux facteurs est activée",
 	"log-action-filter-oath-disable-other": "Désactivation de l’authentification à deux facteurs pour un autre utilisateur",
 	"oathauth-ui-no-module": "Aucune activée",
-	"oathauth-module-invalid": "Le module ''OATHAuth'' avec lequel l’utilisateur s’est inscrit n’est pas valide.",
 	"oathauth-module-totp-label": "TOTP (jeton à usage unique)",
 	"oathauth-ui-manage": "Gérer",
 	"oathmanage": "Gérer l’authentification à deux facteurs",

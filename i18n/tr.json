@@ -68,7 +68,6 @@
 	"logentry-oath-disable-other": "$1, $3 iki faktörlü kimlik doğrulama {{GENDER:$2|devre dışı bıraktı}}",
 	"logentry-oath-verify": "$1, $3 iki faktörlü kimlik doğrulamanın etkin olup olmadığını {{GENDER:$2|kontrol etti}}",
 	"oathauth-ui-no-module": "Hiçbiri etkin değil",
-	"oathauth-module-invalid": "Kullanıcının kaydettiği OATHAuth modülü geçersiz.",
 	"oathauth-module-totp-label": "TOTP (bir defalık anahtar)",
 	"oathauth-ui-manage": "Yönet",
 	"oathmanage": "İki faktörlü kimlik doğrulamayı yönet",

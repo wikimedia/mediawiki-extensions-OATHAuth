@@ -64,7 +64,6 @@
 	"logentry-oath-disable-other": "$1 تأیید اعتبار دومرحله‌ای برای $3 را {{GENDER:$2|غیرفعال کرد}}",
 	"logentry-oath-verify": "$1 فعال بودن تأیید اعتبار دومرحله‌ای برای $3 را {{GENDER:$2|بررسی کرد}}",
 	"oathauth-ui-no-module": "هیچ پودمانی فعال نیست",
-	"oathauth-module-invalid": "پودمان OATHAuth که کاربر ثبت کرده است نامعتبر است.",
 	"oathauth-module-totp-label": "تی‌اوتی‌پی (بلیط‌های یک‌بارمصرف)",
 	"oathauth-ui-manage": "مدیریت",
 	"oathmanage": "مدیریت اصالت‌سنجی دومرحله‌ای",

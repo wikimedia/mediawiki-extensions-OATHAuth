@@ -67,7 +67,6 @@
 	"log-action-filter-oath-verify": "Перевірки чи ввімкнено двофакторну автентифікацію",
 	"log-action-filter-oath-disable-other": "Вимкнення двофакторної автентифікації для інших користувачів",
 	"oathauth-ui-no-module": "Нічого не ввімкнено",
-	"oathauth-module-invalid": "Модуль OATHAuth, зареєстрований користувачем, недійсний.",
 	"oathauth-module-totp-label": "TOTP (одноразовий токен)",
 	"oathauth-ui-manage": "Керування",
 	"oathmanage": "Керування двофакторною автентифікацією",

@@ -71,7 +71,6 @@
 	"log-action-filter-oath-verify": "Sprawdzanie, czy uwierzytelnianie dwuskładnikowe jest włączone",
 	"log-action-filter-oath-disable-other": "Wyłączanie uwierzytelniania dwuskładnikowego innego użytkownika",
 	"oathauth-ui-no-module": "Nie włączono",
-	"oathauth-module-invalid": "Zarejestrowany przez użytkownika moduł OATHAuth jest nieprawidłowy.",
 	"oathauth-module-totp-label": "TOTP (ograniczone czasowo hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",
 	"oathmanage": "Zarządzanie uwierzytelnianiem dwuskładnikowym",

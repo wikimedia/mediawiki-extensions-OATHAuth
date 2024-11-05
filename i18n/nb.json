@@ -64,7 +64,6 @@
 	"log-action-filter-oath-verify": "Sjekker om tofaktorautentisering er skrudd på",
 	"log-action-filter-oath-disable-other": "Skrur av tofaktorautentisering for en annen bruker",
 	"oathauth-ui-no-module": "Ingen slått på",
-	"oathauth-module-invalid": "OATHAuth-modulen brukeren har registrert er ugyldig.",
 	"oathauth-module-totp-label": "TOTP (éngangsnøkkel)",
 	"oathauth-ui-manage": "Behandle",
 	"oathmanage": "Behandle tofaktorautentisering",

@@ -62,7 +62,6 @@
 	"log-action-filter-oath-verify": "Verificar si le authentication bifactorial es active",
 	"log-action-filter-oath-disable-other": "Disactivar le authentication bifactorial pro un altere usator",
 	"oathauth-ui-no-module": "Nihil activate",
-	"oathauth-module-invalid": "Le modulo OATHAuth que le usator ha registrate non es valide.",
 	"oathauth-module-totp-label": "TOTP (token a uso unic)",
 	"oathauth-ui-manage": "Gerer",
 	"oathmanage": "Gerer le authentication bifactorial",

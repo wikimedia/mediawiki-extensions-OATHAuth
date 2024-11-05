@@ -53,7 +53,6 @@
 	"oath-log-header": "Ovi događaji prate promene statusa dvofaktorske potvrde identiteta korisnika.",
 	"logentry-oath-disable-other": "$1 je {{GENDER:$2|onemogućio|onemogućila}} dvofaktorsku potvrdu identiteta za $3",
 	"oathauth-ui-no-module": "nije uključena",
-	"oathauth-module-invalid": "OATHAuth modul koji je korisnik registrovao nije važeći.",
 	"oathauth-module-totp-label": "TOTP (jednokratni token)",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvofaktorskom potvrdom identiteta",

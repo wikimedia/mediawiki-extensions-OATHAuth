@@ -54,7 +54,6 @@
 	"oath-log-header": "ХӀокху хиламаша тедам-бо декъашхочун шина-факторан аутентификацин статус хийцайелча.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|дӀайайина}} шина-факторан аутентификаци $3.",
 	"oathauth-ui-no-module": "Латина йац",
-	"oathauth-module-invalid": "Декъашхочо дӀайазйина OATHAuth модуль нийса йац.",
 	"oathauth-module-totp-label": "TOTP (цкъа мега пароль)",
 	"oathauth-ui-manage": "Урхалладар",
 	"oathmanage": "Шина-факторан аутентификацина урхалладар",

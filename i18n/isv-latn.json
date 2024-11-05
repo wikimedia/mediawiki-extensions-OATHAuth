@@ -61,7 +61,6 @@
 	"log-action-filter-oath-verify": "Prověrka, jest li vključena dvufaktorna avtentifikacija",
 	"log-action-filter-oath-disable-other": "Izključenje dvufaktornoj avtentifikacije za drugogo koristnika",
 	"oathauth-ui-no-module": "Ne vključena",
-	"oathauth-module-invalid": "Registrovany koristnikom OATHAuth-modul jest nepravilny.",
 	"oathauth-module-totp-label": "TOTP (jednokratny token)",
 	"oathauth-ui-manage": "Upraviti",
 	"oathmanage": "Upravjenje dvufaktornoju avtentifikacijeju",

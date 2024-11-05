@@ -63,7 +63,6 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|nonaktifkan}} otentikasi dua faktor dari $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|memeriksa}} apakah $3 menyalakan autentikasi dua faktor",
 	"oathauth-ui-no-module": "Tidak aktif",
-	"oathauth-module-invalid": "Modul OATHAuth yang pengguna daftarkan tidak valid.",
 	"oathauth-module-totp-label": "KSSW (token sekali-pakai)",
 	"oathauth-ui-manage": "Atur",
 	"oathmanage": "Atur otentikasi dua faktor",

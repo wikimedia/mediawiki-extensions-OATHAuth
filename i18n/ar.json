@@ -67,7 +67,6 @@
 	"log-action-filter-oath-verify": "التحقق من تمكين المصادقة ذات العاملين",
 	"log-action-filter-oath-disable-other": "تعطيل المصادقة ذات العاملين لمستخدم آخر",
 	"oathauth-ui-no-module": "لا شيء مُمكَّن",
-	"oathauth-module-invalid": "وحدة OATHAuth التي قام المستخدم بتسجيلها غير صالحة.",
 	"oathauth-module-totp-label": "TOTP (رمز مميز لمرة واحدة)",
 	"oathauth-ui-manage": "إدارة",
 	"oathmanage": "إدارة التوثيق ذي العاملين",
