@@ -19,11 +19,13 @@
 namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -33,6 +35,20 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @ingroup Extensions
  */
 class ApiOATHValidate extends ApiBase {
+	private OATHUserRepository $oathUserRepository;
+	private UserFactory $userFactory;
+
+	public function __construct(
+		ApiMain $mainModule,
+		string $moduleName,
+		OATHUserRepository $oathUserRepository,
+		UserFactory $userFactory
+	) {
+		parent::__construct( $mainModule, $moduleName );
+		$this->oathUserRepository = $oathUserRepository;
+		$this->userFactory = $userFactory;
+	}
+
 	public function execute() {
 		$this->requirePostedParameters( [ 'token', 'data' ] );
 		// messages used: right-oathauth-api-all, action-oathauth-api-all,
@@ -42,8 +58,7 @@ class ApiOATHValidate extends ApiBase {
 		if ( $params['user'] === null ) {
 			$user = $this->getUser();
 		} else {
-			$user = MediaWikiServices::getInstance()->getUserFactory()
-				->newFromName( $params['user'] );
+			$user = $this->userFactory->newFromName( $params['user'] );
 			if ( $user === null ) {
 				$this->dieWithError( 'noname' );
 			}
@@ -61,8 +76,7 @@ class ApiOATHValidate extends ApiBase {
 		];
 
 		if ( $user->isNamed() ) {
-			$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-			$authUser = $userRepo->findByUser( $user );
+			$authUser = $this->oathUserRepository->findByUser( $user );
 			if ( $authUser ) {
 				$module = $authUser->getModule();
 				if ( $module instanceof IModule ) {
