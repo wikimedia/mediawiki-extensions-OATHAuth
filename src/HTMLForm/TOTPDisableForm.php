@@ -41,7 +41,7 @@ class TOTPDisableForm extends OATHAuthOOUIHTMLForm {
 	 */
 	public function onSubmit( array $formData ) {
 		// Don't increase pingLimiter, instead check for the limit being exceeded.
-		if ( $this->oathUser->getUser()->pingLimiter( 'badoath', 0 ) ) {
+		if ( $this->getUser()->pingLimiter( 'badoath', 0 ) ) {
 			// Arbitrary duration given here
 			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} rate limited while disabling 2FA from {clientip}', [
