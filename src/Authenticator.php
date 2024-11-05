@@ -169,7 +169,7 @@ class Authenticator {
 	 * @return Status
 	 */
 	public function canRegister() {
-		if ( $this->oathUser->getUser()->isAllowed( 'oathauth-enable' ) ) {
+		if ( $this->context->getUser()->isAllowed( 'oathauth-enable' ) ) {
 			return Status::newGood();
 		}
 
