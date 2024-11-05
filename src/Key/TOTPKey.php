@@ -23,6 +23,7 @@ use Base32\Base32;
 use DomainException;
 use Exception;
 use jakobo\HOTP\HOTP;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
@@ -170,7 +171,7 @@ class TOTPKey implements IAuthKey {
 		// Remove any whitespace from the received token, which can be an intended group separator
 		$token = preg_replace( '/\s+/', '', $token );
 
-		$clientIP = $user->getUser()->getRequest()->getIP();
+		$clientIP = RequestContext::getMain()->getRequest()->getIP();
 
 		$logger = $this->getLogger();
 
