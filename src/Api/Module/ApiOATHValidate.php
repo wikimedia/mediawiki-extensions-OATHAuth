@@ -21,7 +21,6 @@ namespace MediaWiki\Extension\OATHAuth\Api\Module;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
@@ -77,30 +76,33 @@ class ApiOATHValidate extends ApiBase {
 
 		if ( $user->isNamed() ) {
 			$authUser = $this->oathUserRepository->findByUser( $user );
-			if ( $authUser ) {
-				$module = $authUser->getModule();
-				if ( $module instanceof IModule ) {
-					$data = [];
-					$decoded = FormatJson::decode( $params['data'], true );
-					if ( is_array( $decoded ) ) {
-						$data = $decoded;
+			if ( $authUser->isTwoFactorAuthEnabled() ) {
+				$result['enabled'] = true;
+
+				$data = [];
+				$decoded = FormatJson::decode( $params['data'], true );
+				if ( is_array( $decoded ) ) {
+					$data = $decoded;
+				}
+
+				foreach ( $authUser->getKeys() as $key ) {
+					if ( $key->verify( $data, $authUser ) !== false ) {
+						$result['valid'] = true;
+						break;
 					}
+				}
 
-					$result['enabled'] = $module->isEnabled( $authUser );
-					$result['valid'] = $module->verify( $authUser, $data ) !== false;
+				if ( !$result['valid'] ) {
+					// Increase rate limit counter for failed request
+					$user->pingLimiter( 'badoath' );
 
-					if ( !$result['valid'] ) {
-						// Increase rate limit counter for failed request
-						$user->pingLimiter( 'badoath' );
-
-						LoggerFactory::getInstance( 'authentication' )->info(
-							'OATHAuth user {user} failed OTP token/recovery code from {clientip}',
-							[
-								'user'     => $user,
-								'clientip' => $user->getRequest()->getIP(),
-							]
-						);
-					}
+					LoggerFactory::getInstance( 'authentication' )->info(
+						'OATHAuth user {user} failed OTP token/recovery code from {clientip}',
+						[
+							'user'     => $user,
+							'clientip' => $user->getRequest()->getIP(),
+						]
+					);
 				}
 			}
 		}
