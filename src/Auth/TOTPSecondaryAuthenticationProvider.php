@@ -67,7 +67,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$authUser = $this->userRepository->findByUser( $user );
 
-		if ( !( $authUser->getModule() instanceof TOTP ) ) {
+		if ( !$this->module->isEnabled( $authUser ) ) {
 			return AuthenticationResponse::newAbstain();
 		}
 
