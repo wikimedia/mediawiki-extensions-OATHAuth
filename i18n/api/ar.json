@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25"
+		]
+	},
+	"apihelp-webauthn-summary": "وحدة API للتواصل بين الخادم والعميل أثناء عملية التسجيل/المصادقة.",
+	"apihelp-webauthn-param-func": "اسم الوظيفة المطلوب تنفيذها."
+}
