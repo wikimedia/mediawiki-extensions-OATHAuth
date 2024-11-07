@@ -76,6 +76,7 @@
 	"notification-body-oathauth-enable": "যদি {{GENDER:$2|আপনি}} এটি না করে থাকেন, তাহলে {{GENDER:$2|আপনার অ্যাকাউন্টটি}} হয়ত বেহাত হয়েছে।",
 	"oathauth-notifications-enable-help": "সাহায্য",
 	"oathauth-notifications-enable-primary": "আপনার দুই ধাপের প্রমাণীকরণ সেটিং পরীক্ষা করুন",
+	"oathauth-notifications-recoverycodesleft-help": "সাহায্য",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} দুই-ধাপের প্রমাণীকরণ সক্রিয় করেছেন।",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}-এর দুই-ধাপের প্রমাণীকরণ সক্রিয় করা নেই।"
 }
