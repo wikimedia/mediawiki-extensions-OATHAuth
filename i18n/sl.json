@@ -16,6 +16,7 @@
 	"oathauth-enable": "Vklop dvofaktorske avtentikacije",
 	"oathauth-recoverycodes": "Tu je prikazan seznam obnovitvenih kod za enkratno uporabo. Te kode so namenjene za izredne primere, kadar nimate dostopa do svoje naprave. Zapišite si jih in jih shranite na varnem mestu. Priporočljivo je, da vsako kodo po prijavi z njo označite kot uporabljeno. Če bi izgubili svojo napravo, je vaš račun mogoče odkleniti samo s temi kodami. \n\n'''Te kode ne bodo prikazane nikoli več'''.",
 	"oathauth-recoverycodes-important": "Ta korak je pomemben! Ne preskočite tega koraka!",
+	"oathauth-recoverycodes-download": "Prenos obnovitvenih kod",
 	"oathauth-disable": "Izklop dvofaktorske avtentikacije",
 	"oathauth-validatedoath": "Potrjene dvofaktorske poverilnice. Od zdaj secbo uporabljala dvofaktorska avtentikacija.",
 	"oathauth-noscratchforvalidation": "Obnovitvene kode ni mogoče uporabiti za potrditev dvofaktorske avtentikacije. Obnovitvene kode zagotavljajo dostop do računa samo v izjemnem primeru. Uporabite avtentikacijsko kodo iz vašega generatorja kod (npr. Google Authenticator).",

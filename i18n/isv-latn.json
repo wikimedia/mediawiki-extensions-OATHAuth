@@ -12,6 +12,7 @@
 	"oathauth-enable": "Vključenje dvufaktornoj avtentifikacije",
 	"oathauth-recoverycodes": "Tuto jest spisok jednokratnyh kodov za odnovjenje. Te kody mogut byti upotrěbjene jednokratno i služet za nadobyčnu situaciju, kogda vy ne imajete dostup k svojemu aparatu. Prosimo, zapišite jih i shranite v bezpečnom městu. Prěporučajemo, že poslě prijavjenja se s pomočju jednogo koda, vsakokratno označite dany kod kako upotrěbjeny. Ako utratite svoj aparat, tute kody sut jediny sposob za izbavjenje vašego konta. \n\n'''Tute kody nikogda veče ne budut pokazane.'''",
 	"oathauth-recoverycodes-important": "Tutoj krok jest važny! Ne prěskočite go!",
+	"oathauth-recoverycodes-download": "Daunlodovati kody za odnovjenje",
 	"oathauth-disable": "Izključenje dvufaktornoj avtentifikacije",
 	"oathauth-validatedoath": "Identifikacijne dane za dvufaktornu avtentifikaciju sut prověrjene. Tutčas dvufaktorna avtentifikacija jest obvezna.",
 	"oathauth-noscratchforvalidation": "Nemožna jest upotrěba koda odnovjenja za potvrdženje dvufaktornoj avtentifikacije. Kody za odnovjenje sut prěznačene, da by v rědkyh slučajah služili kako zapas. Prosimo, upotrěbite kod iz svojej aplikacije za dvufaktornu avtentifikaciju (napr. Google Authenticator).",
