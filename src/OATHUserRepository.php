@@ -159,13 +159,18 @@ class OATHUserRepository implements LoggerAwareInterface {
 			);
 		}
 
+		$uid = $user->getCentralId();
+		if ( !$uid ) {
+			throw new InvalidArgumentException( "Can't persist a key for user with no central ID available" );
+		}
+
 		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
 
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'oathauth_devices' )
 			->row( [
-				'oad_user' => $user->getCentralId(),
+				'oad_user' => $uid,
 				'oad_type' => $moduleId,
 				'oad_data' => FormatJson::encode( $keyData ),
 				'oad_created' => $dbw->timestamp(),
@@ -207,14 +212,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
 		}
 
-		$userId = $this->centralIdLookupFactory->getLookup()
-			->centralIdFromLocalUser( $user->getUser() );
-
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->newUpdateQueryBuilder()
 			->table( 'oathauth_devices' )
 			->set( [ 'oad_data' => FormatJson::encode( $key->jsonSerialize() ) ] )
-			->where( [ 'oad_user' => $userId, 'oad_id' => $keyId ] )
+			->where( [ 'oad_user' => $user->getCentralId(), 'oad_id' => $keyId ] )
 			->caller( __METHOD__ )
 			->execute();
 
@@ -236,12 +238,10 @@ class OATHUserRepository implements LoggerAwareInterface {
 			throw new InvalidArgumentException( 'A non-persisted key cannot be removed' );
 		}
 
-		$userId = $this->centralIdLookupFactory->getLookup()
-			->centralIdFromLocalUser( $user->getUser() );
 		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
 			->newDeleteQueryBuilder()
 			->deleteFrom( 'oathauth_devices' )
-			->where( [ 'oad_user' => $userId, 'oad_id' => $keyId ] )
+			->where( [ 'oad_user' => $user->getCentralId(), 'oad_id' => $keyId ] )
 			->caller( __METHOD__ )
 			->execute();
 
@@ -291,12 +291,10 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @param bool $self Whether they disabled it themselves
 	 */
 	public function removeAll( OATHUser $user, $clientInfo, bool $self ) {
-		$userId = $this->centralIdLookupFactory->getLookup()
-			->centralIdFromLocalUser( $user->getUser() );
 		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
 			->newDeleteQueryBuilder()
 			->deleteFrom( 'oathauth_devices' )
-			->where( [ 'oad_user' => $userId ] )
+			->where( [ 'oad_user' => $user->getCentralId() ] )
 			->caller( __METHOD__ )
 			->execute();
 
@@ -320,8 +318,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	private function loadKeysFromDatabase( OATHUser $user ): void {
-		$uid = $this->centralIdLookupFactory->getLookup()
-			->centralIdFromLocalUser( $user->getUser() );
+		$uid = $user->getCentralId();
+		if ( !$uid ) {
+			// T379442
+			return;
+		}
 
 		$res = $this->dbProvider
 			->getReplicaDatabase( 'virtual-oathauth' )
