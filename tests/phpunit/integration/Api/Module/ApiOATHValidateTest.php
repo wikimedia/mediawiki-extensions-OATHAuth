@@ -24,6 +24,7 @@ use Base32\Base32;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
 use Wikimedia\TestingAccessWrapper;
@@ -33,6 +34,11 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  */
 class ApiOATHValidateTest extends ApiTestCase {
+	protected function setUp(): void {
+		parent::setUp();
+		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
+	}
+
 	/**
 	 * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate::execute
 	 */

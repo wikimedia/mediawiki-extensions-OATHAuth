@@ -22,6 +22,7 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
+use MediaWiki\MainConfigNames;
 use SpecialPageTestBase;
 
 /**
@@ -30,6 +31,11 @@ use SpecialPageTestBase;
  * @coversDefaultClass \MediaWiki\Extension\OATHAuth\Special\OATHManage
  */
 class OATHManageTest extends SpecialPageTestBase {
+	protected function setUp(): void {
+		parent::setUp();
+		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
+	}
+
 	protected function newSpecialPage() {
 		$services = OATHAuthServices::getInstance( $this->getServiceContainer() );
 		return new OATHManage(

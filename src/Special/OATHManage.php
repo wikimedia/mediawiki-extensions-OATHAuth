@@ -19,6 +19,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
+use ErrorPageError;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Exception\PermissionsError;
@@ -122,6 +123,14 @@ class OATHManage extends SpecialPage {
 	 */
 	public function checkPermissions() {
 		$this->requireNamedUser();
+
+		if ( !$this->authUser->getCentralId() ) {
+			throw new ErrorPageError(
+				'oathauth-enable',
+				'oathauth-must-be-central',
+				[ $this->getUser()->getName() ]
+			);
+		}
 
 		$canEnable = $this->getUser()->isAllowed( 'oathauth-enable' );
 
