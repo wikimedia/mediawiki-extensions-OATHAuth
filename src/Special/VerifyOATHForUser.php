@@ -111,6 +111,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 				'label-message' => 'oathauth-enteruser',
 				'name' => 'user',
 				'required' => true,
+				'excludetemp' => true,
 			],
 			'reason' => [
 				'type' => 'text',
