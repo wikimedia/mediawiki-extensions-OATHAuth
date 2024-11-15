@@ -98,6 +98,7 @@
 	"oathauth-notifications-enable-help": "도움말",
 	"oathauth-notifications-enable-primary": "2요소 인증 설정 확인하기",
 	"oathauth-notifications-recoverycodesleft-help": "도움말",
+	"oathauth-notifications-recoverycodesleft-primary": "2요소 인증 설정 확인하기",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다."
 }
