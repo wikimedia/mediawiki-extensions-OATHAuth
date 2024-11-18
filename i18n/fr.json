@@ -19,7 +19,8 @@
 			"Wladek92",
 			"Yasten",
 			"MacOS Weed",
-			"Lofhi"
+			"Lofhi",
+			"Mahabarata"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -60,8 +61,9 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "L’utilisateur n’a pas activé l’authentification à deux facteurs, il n’y a donc rien à désactiver.",
 	"right-oathauth-enable": "Activer l’authentification à deux facteurs",
 	"action-oathauth-enable": "activer l’authentification à deux facteurs",
-	"oathauth-auth-token-label": "Jeton à deux facteurs ou code de secours",
-	"oathauth-auth-token-help": "Le mot de passe à usage unique utilisé comme le deuxième facteur d’authentification à deux facteurs.",
+	"oathauth-auth-token-label": "Jeton d'authentification à deux facteurs ou code de récupération",
+	"oathauth-auth-token-help": "Un mot de passe à usage unique utilisé comme seconde étape d’une authentification à deux facteurs.",
+	"oathauth-auth-token-help-ui": "Entrez soit un code de votre appareil d'authentification, soit un code de récupération",
 	"oathauth-auth-ui": "Veuillez entrer un code de vérification à partir de votre appareil d’authentification.",
 	"oathauth-throttled": "Trop de tentatives de vérification ! Veuillez attendre au moins $1.",
 	"oathauth-login-failed": "Échec de la vérification.",
@@ -72,7 +74,7 @@
 	"action-oathauth-api-all": "vérifier l’état OATH",
 	"oathauth-user-not-found": "Aucun compte utilisateur trouvé avec ce nom",
 	"oath-log-name": "Journal d’authentification à deux facteurs",
-	"oath-log-header": "Ces événements tracent les modifications d’état de l’authentification à deux facteurs.",
+	"oath-log-header": "Ces événements tracent les modifications d’état de l’authentification à deux facteurs des utilisateurs.",
 	"logentry-oath-disable-other": "$1{{GENDER:$2|}} a désactivé l’authentification à deux facteurs de $3",
 	"logentry-oath-verify": "$1{{GENDER:$2|}} a vérifié si $3 avait l’authentification à deux facteurs activée",
 	"log-action-filter-oath": "Type d’opération d’authentification à deux facteurs :",
@@ -112,5 +114,6 @@
 	"oathauth-verify-enabled": "$1{{GENDER:$1|}} a l’authentification à deux facteurs activée.",
 	"oathauth-verify-disabled": "$1{{GENDER:$1|}} n’a pas l’authentification à deux facteurs activée.",
 	"oathauth-prefs-disabledgroups": "Groupe{{PLURAL:$1||s}} désactivé{{PLURAL:$1||s}} :",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|}}Votre statut de membre de ce{{PLURAL:$1||s}} groupe{{PLURAL:$1||s}} est désactivée tant que vous n’activez pas l’[[Special:Manage Two-factor authentication|authentification à deux facteurs]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|}}Votre statut de membre de ce{{PLURAL:$1||s}} groupe{{PLURAL:$1||s}} restera désactivé tant que vous n’aurez pas activé l’[[Special:Manage Two-factor authentication|authentification à deux facteurs]].",
+	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un jeton de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ."
 }

@@ -51,6 +51,7 @@
 	"action-oathauth-enable": "تفعيل ميزة التحقق بخطوتين",
 	"oathauth-auth-token-label": "رمز رمزي أو رمز استعادة مزدوج",
 	"oathauth-auth-token-help": "تُستخدَم كلمة المرور لمرة واحدة كعامل ثاني للمصادقة الثنائية.",
+	"oathauth-auth-token-help-ui": "أدخل رمزًا إما من جهاز المصادقة الخاص بك، أو رمز استرداد",
 	"oathauth-auth-ui": "رجاءً أدخل رمز التحقق من جهاز المصادقة الخاص بك.",
 	"oathauth-throttled": "هناك الكثير من محاولات التحقق! الرجاء انتظار $1.",
 	"oathauth-login-failed": "فشل التحقق.",
