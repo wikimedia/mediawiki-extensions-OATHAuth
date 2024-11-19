@@ -24,7 +24,7 @@
 	"oathauth-recoverycodes": "Die folgende Liste enthält einmalig verwendbare geheime Schlüssel. Diese geheimen Schlüssel können jeweils nur einmal verwendet werden und sind für Notfälle vorgesehen, wenn du keinen Zugang zu deinem Gerät hast. Bitte notiere und verwahre sie an einem sicheren Ort. Es wird empfohlen, jeden Code als verwendet zu markieren, wenn du dich mit ihm angemeldet hast. Sofern dir dein Gerät abhanden kommt, werden diese geheimen Schlüssel die einzige Möglichkeit sein, dein Konto zu retten.",
 	"oathauth-recoverycodes-important": "Dieser Schritt ist wichtig! Überspringe diesen Schritt nicht!",
 	"oathauth-recoverycodes-neveragain": "Diese Codes werden nie wieder angezeigt!",
-	"oathauth-recoverytokens-createdat": "Erstellte Wiederherstellungstoken: $1",
+	"oathauth-recoverytokens-createdat": "Erstellte Wiederherstellungscodes: $1",
 	"oathauth-recoverycodes-download": "Herunterladen",
 	"oathauth-recoverycodes-copy": "Kopieren",
 	"oathauth-recoverycodes-copy-success": "Wiederherstellungscodes wurden in deine Zwischenablage kopiert!",
@@ -119,5 +119,5 @@
 	"oathauth-prefs-disabledgroups": "Deaktiverte {{PLURAL:$1|Gruppe|Gruppen}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Deine Mitgliedschaft}} in {{PLURAL:$1|der Gruppe|den Gruppen}} ist deaktiviert, bis du die [[Special:Manage Two-factor authentication|Zwei-Faktor-Authentifizierung]] aktivierst.",
 	"oathauth-qrcode-alt": "Scanbarer QR-Code, der den geheimen Schlüssel darstellt.",
-	"oathauth-hint": "Du hast keinen Zugriff auf dein Gerät oder deine Anwendung? In diesem Feld kannst du Wiederherstellungstokens eingeben (die angezeigt werden, wenn du 2FA aktiviert hast)."
+	"oathauth-hint": "Du hast keinen Zugriff auf dein Gerät oder deine Anwendung? In diesem Feld kannst du Wiederherstellungscodes eingeben (die angezeigt werden, wenn du 2FA aktiviert hast)."
 }
