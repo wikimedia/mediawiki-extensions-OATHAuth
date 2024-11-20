@@ -17,6 +17,7 @@
 	"oathauth-enable": "Abilita autenticazione a due fattori",
 	"oathauth-recoverycodes": "Il seguente è un elenco di codici di ripristino monouso. Questi codici possono essere utilizzati solo una volta e sono per casi di emergenza quando non hai accesso al tuo dispositivo. Sei pregato di annotarteli e tenerli in un luogo sicuro. Si consiglia di contrassegnare ciascun codice come utilizzato una volta effettuato l'accesso utilizzandolo. Se perdi il tuo dispositivo, questi codici sono l'unico modo per recuperare l'accesso al tuo account.",
 	"oathauth-recoverycodes-neveragain": "Questi codici non saranno mostrati mai più!",
+	"oathauth-recoverytokens-createdat": "Codici di recupero creati: $1",
 	"oathauth-recoverycodes-download": "Scarica",
 	"oathauth-recoverycodes-copy": "Copia",
 	"oathauth-recoverycodes-copy-success": "I codici di recupero sono stati copiati negli appunti!",

@@ -26,7 +26,7 @@
 	"oathauth-recoverycodes": "In de onderstaande lijst staan herstelcodes voor eenmalig gebruik. Deze codes kunnen slechts één keer gebruikt worden en zijn bedoeld voor noodgevallen waarin u geen toegang tot uw apparaat hebt. Noteer deze codes en bewaar ze op een veilige plaats. Het wordt aanbevolen om elke code als gebruikt te markeren wanneer u zich ermee hebt aangemeld. Als u uw apparaat kwijtraakt, kunt u alleen met deze codes uw gebruikersaccount nog redden.",
 	"oathauth-recoverycodes-important": "Deze stap is belangrijk! Sla deze stap niet over!",
 	"oathauth-recoverycodes-neveragain": "Deze codes worden na dit bericht nooit meer weergegeven!",
-	"oathauth-recoverytokens-createdat": "Aangemaakte hersteltokens: $1",
+	"oathauth-recoverytokens-createdat": "Aangemaakte herstelcodes: $1",
 	"oathauth-recoverycodes-download": "Downloaden",
 	"oathauth-recoverycodes-copy": "Kopiëren",
 	"oathauth-recoverycodes-copy-success": "De herstelcodes zijn naar uw klembord gekopieerd!",
@@ -121,5 +121,5 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Groep|Groepen}} uitschakelen:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Uw lidmaatschap}} in {{PLURAL:$1|deze groep|deze groepen}} is uitgeschakeld totdat u [[Special:Manage Two-factor authentication|tweetrapsauthenticatie]] heeft ingeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
-	"oathauth-hint": "Gen toegang tot uw apparaat of applicatie? In dit veld kunt u hersteltokens invoeren (die u zijn gegeven toen u de tweetrapsauthenticatie inschakelde)."
+	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)"
 }

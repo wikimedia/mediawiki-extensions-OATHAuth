@@ -20,7 +20,7 @@
 	"oathauth-recoverycodes": "להלן רשימה של קודי שחזור חד־פעמיים. אפשר להשתמש בקודים האלה רק פעם אחת במצב חירום כשאין לך גישה למכשיר שלך. נא לרשום אותם ולשמור אותם במקום בטוח. מומלץ לסמן כל קוד שהשתמשת בו כדי להיכנס. אם המכשיר שלך ילך לאיבוד, הקודים האלה יהיו דרכך היחידה להציל את החשבון שלך.",
 	"oathauth-recoverycodes-important": "הצעד הזה חשוב! נא לא לדלג על הצעד הזה!",
 	"oathauth-recoverycodes-neveragain": "הקודים האלו לא יוצגו שוב לעולם!",
-	"oathauth-recoverytokens-createdat": "נוצרו אסימוני שחזור: $1",
+	"oathauth-recoverytokens-createdat": "נוצרו קודי שחזור: $1",
 	"oathauth-recoverycodes-download": "הורדה",
 	"oathauth-recoverycodes-copy": "העתקה",
 	"oathauth-recoverycodes-copy-success": "קודי השחזור הועתקו ללוח שלך!",
@@ -115,5 +115,5 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|קבוצה כבויה|קבוצות כבויות}}:",
 	"oathauth-prefs-disabledgroups-help": "החברות שלך {{PLURAL:$1|בקבוצה הזאת|בקבוצות האלו}} כבויה עד {{GENDER:$2|שתפעיל|שתפעילי}} [[Special:Manage Two-factor authentication|אימות דו־שלבי]].",
 	"oathauth-qrcode-alt": "קוד QR שאפשר לסרוק ושמייצג את המפתח הסודי.",
-	"oathauth-hint": "אין לך גישה למכשיר או ליישום שלך? באפשרותך להזין אסימוני שחזור (שהוצגו כאשר הפעלת את 2FA) בשדה הזה."
+	"oathauth-hint": "אין לך גישה למכשיר או ליישום שלך? באפשרותך להזין קודי שחזור (שהוצגו כאשר הפעלת את 2FA) בשדה הזה."
 }
