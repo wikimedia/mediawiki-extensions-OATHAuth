@@ -5,6 +5,7 @@
 		]
 	},
 	"webauthn-desc": "WebAuthn 프로토콜을 사용한 인증 지원을 제공합니다",
+	"webauthn-module-label": "웹 인증 (WebAuthn)",
 	"webauthn-ui-add-key": "키 추가",
 	"webauthn-error-browser-unsupported": "이 브라우저는 WebAuthentication을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
 	"webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오",
@@ -20,5 +21,6 @@
 	"oathauth-webauthn-disable-section-name": "WebAuthn 비활성화",
 	"webauthn-error-get-reginfo-fail": "등록 정보를 검색하지 못했습니다.",
 	"webauthn-error-max-keys-reached": "최대 {{PLURAL:$1|$1개의 키}}를 등록할 수 있습니다",
+	"webauthn-module-description": "웹 인증(WebAuthn)은 W3C(World Wide Web Consortium)에서 발표한 웹 표준입니다. WebAuthn은 FIDO 얼라이언스의 지도 하에 있는 FIDO2 프로젝트의 핵심 구성 요소입니다. 이 프로젝트의 목표는 공개 키 암호화를 사용하여 웹 기반 애플리케이션 및 서비스에 대한 사용자를 인증하기 위한 인터페이스를 표준화하는 것입니다. [https://en.wikipedia.org/wiki/WebAuthn 자세히 보기]",
 	"webauthn-ui-reload-page-label": "문서 새로 고침"
 }
