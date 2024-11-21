@@ -57,6 +57,7 @@
 	"action-oathauth-enable": "二要素認証の有効化",
 	"oathauth-auth-token-label": "二要素認証トークンまたは回復用コード",
 	"oathauth-auth-token-help": "二要素認証の2番目の要素として使用されるワンタイムパスワード。",
+	"oathauth-auth-token-help-ui": "お持ちの認証デバイスに表示されたコードか回復用コードを入力してください",
 	"oathauth-auth-ui": "あなたの認証アプリケーション (Google Authenticator など) に表示された二要素認証コードを入力してください。",
 	"oathauth-throttled": "検証の試行回数が多すぎます。$1お待ちください。",
 	"oathauth-login-failed": "検証に失敗しました。",
