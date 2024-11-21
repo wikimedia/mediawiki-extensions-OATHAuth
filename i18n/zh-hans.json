@@ -44,6 +44,8 @@
 	"oathauth-recoverycodes-neveragain": "'''这些代码之后将永远不再显示'''！",
 	"oathauth-recoverytokens-createdat": "恢复代码已创建：$1",
 	"oathauth-recoverycodes-download": "下载",
+	"oathauth-recoverycodes-copy": "复制",
+	"oathauth-recoverycodes-copy-success": "恢复代码已复制到剪贴板！",
 	"oathauth-disable": "禁用双重身份验证",
 	"oathauth-validatedoath": "双重身份验证已成功。双重身份验证现在起会强制实行。",
 	"oathauth-noscratchforvalidation": "您不能使用恢复代码来确认双重身份验证，恢复代码只作为后备措施和偶然用途。请使用您的双重身份验证应用（如[https://authy.com/ Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator]或[https://1password.com/ 1Password]）提供的代码。",
@@ -135,5 +137,5 @@
 	"oathauth-prefs-disabledgroups": "已禁用{{PLURAL:$1|用户组}}：",
 	"oathauth-prefs-disabledgroups-help": "在您启用[[Special:Manage Two-factor authentication|双重身份验证]]之前，{{GENDER:$2|您的会员资格}}在{{PLURAL:$1|此用户组|这些用户组}}会处于禁用状态。",
 	"oathauth-qrcode-alt": "代表密钥的可扫描二维码。",
-	"oathauth-hint": "无法访问您的设备或应用？您可以在此字段中输入恢复令牌（启用2FA时显示）。"
+	"oathauth-hint": "无法访问您的设备或应用？您可以在此字段中输入恢复代码（启用2FA时显示）。"
 }
