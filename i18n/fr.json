@@ -33,7 +33,7 @@
 	"oathauth-recoverycodes": "La liste suivante contient des codes de récupération à usage unique. Ces codes ne peuvent être utilisés qu’une seule fois et servent en cas d’urgence si vous n'avez pas accès à votre appareil. Veuillez les noter et les conserver dans un endroit sûr. N'oubliez pas de rayer les codes que vous utilisez au fur et à mesure pour éviter de tenter de les réutiliser. Si vous perdez votre appareil, ces codes sont le seul moyen de récupérer votre compte.",
 	"oathauth-recoverycodes-important": "Cette étape est importante ! Ne sautez pas cette étape !",
 	"oathauth-recoverycodes-neveragain": "Ces codes ne seront plus jamais affichés !",
-	"oathauth-recoverytokens-createdat": "Jetons de récupération créés : $1",
+	"oathauth-recoverytokens-createdat": "Codes de récupération créés : $1",
 	"oathauth-recoverycodes-download": "Télécharger",
 	"oathauth-recoverycodes-copy": "Copier",
 	"oathauth-recoverycodes-copy-success": "Les codes de récupération ont été copiés dans votre presse-papiers !",
@@ -129,5 +129,5 @@
 	"oathauth-prefs-disabledgroups": "Groupe{{PLURAL:$1||s}} désactivé{{PLURAL:$1||s}} :",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|}}Votre statut de membre de ce{{PLURAL:$1||s}} groupe{{PLURAL:$1||s}} restera désactivé tant que vous n’aurez pas activé l’[[Special:Manage Two-factor authentication|authentification à deux facteurs]].",
 	"oathauth-qrcode-alt": "Code QR à scanner représentant la clé secrète.",
-	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un jeton de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ."
+	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ."
 }
