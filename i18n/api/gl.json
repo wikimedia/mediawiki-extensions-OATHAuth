@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"apihelp-webauthn-summary": "Módulo API para comunicarse entre o servidor e o cliente durante o proceso de rexistro/autenticación.",
+	"apihelp-webauthn-param-func": "Nome da función solicitada que se vai executar.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Información de autenticación.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Información de rexistro."
+}
