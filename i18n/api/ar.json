@@ -5,5 +5,7 @@
 		]
 	},
 	"apihelp-webauthn-summary": "وحدة API للتواصل بين الخادم والعميل أثناء عملية التسجيل/المصادقة.",
-	"apihelp-webauthn-param-func": "اسم الوظيفة المطلوب تنفيذها."
+	"apihelp-webauthn-param-func": "اسم الوظيفة المطلوب تنفيذها.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "معلومات المصادقة.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "معلومات التسجيل."
 }
