@@ -5,7 +5,8 @@
 			"Nemoralis",
 			"Toghrul Rahimli",
 			"Wertuose",
-			"Zpizza"
+			"Zpizza",
+			"Əkrəm Cəfər"
 		]
 	},
 	"oathauth-desc": "HMAC əsaslı birdəfəlik şifrələrdən istifadə edərək autentifikasiya dəstəyi təmin edir",
@@ -20,7 +21,7 @@
 	"oathauth-recoverycodes-neveragain": "Bu kodlar bir daha heç vaxt göstərilməyəcək!",
 	"oathauth-recoverytokens-createdat": "Yaradılan bərpa kodları: $1",
 	"oathauth-recoverycodes-download": "Yüklə",
-	"oathauth-recoverycodes-copy": "Kopyala",
+	"oathauth-recoverycodes-copy": "Kopiyala",
 	"oathauth-recoverycodes-copy-success": "Bərpa kodları mübadilə buferinizə kopyalandı!",
 	"oathauth-disable": "İki faktorlu autentifikasiyanı deaktiv et",
 	"oathauth-validatedoath": "İki faktor məlumatları doğrulandı. Artıq iki faktorlu autentifikasiya tətbiq ediləcək.",
