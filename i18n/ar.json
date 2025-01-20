@@ -51,7 +51,7 @@
 	"oathauth-auth-token-label": "رمز رمزي أو رمز استعادة مزدوج",
 	"oathauth-auth-token-help": "تُستخدَم كلمة المرور لمرة واحدة كعامل ثاني للمصادقة الثنائية.",
 	"oathauth-auth-token-help-ui": "أدخل رمزًا إما من جهاز المصادقة الخاص بك، أو رمز استرداد",
-	"oathauth-auth-ui": "يرجى إدخال رمز من تطبيق المصادقة الثنائية الخاص بك (مثل [https://authy.com/ Authy]، أو [https://freeotp.github.io/ FreeOTP]، أو [https://support.google.com/accounts/answer/1066447 Google Authenticator]، أو [https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator] أو [https://1password.com/ 1Password]).",
+	"oathauth-auth-ui": "يرجى إدخال رمز من تطبيق المصادقة الثنائية الخاص بك (مثل [https://authy.com/ أوثي]، [https://freeotp.github.io/ فري أوه.تي.بي]، [https://support.google.com/accounts/answer/1066447 جوجل أوثنتيكاتور]، [https://www.microsoft.com/en/account/authenticator/ مايكروسوفت أوثنتيكاتور]، [https://1password.com/ باسورد1]).",
 	"oathauth-throttled": "هناك الكثير من محاولات التحقق! الرجاء انتظار $1.",
 	"oathauth-login-failed": "فشل التحقق.",
 	"oathauth-describe-provider": "توثيق ذو عاملين (OATH)",
