@@ -372,7 +372,7 @@ class Authenticator {
 			if ( !is_callable( $factory ) ) {
 				return null;
 			}
-			return call_user_func_array( $factory, [ $json ] );
+			return $factory( $json );
 		}
 		return null;
 	}
