@@ -30,6 +30,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Extension\WebAuthn\Request;
 use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
 use MediaWiki\Logger\LoggerFactory;
@@ -506,5 +507,10 @@ class WebAuthnKey implements IAuthKey {
 			);
 			return false;
 		}
+	}
+
+	/** @inheritDoc */
+	public function getModule(): string {
+		return WebAuthn::MODULE_ID;
 	}
 }

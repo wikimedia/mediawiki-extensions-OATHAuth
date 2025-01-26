@@ -24,13 +24,15 @@ class WebAuthn implements IModule {
 	 */
 	public const ACTION_ADD_KEY = 'addkey';
 
+	public const MODULE_ID = "webauthn";
+
 	public static function factory() {
 		return new static();
 	}
 
 	/** @inheritDoc */
 	public function getName() {
-		return 'webauthn';
+		return self::MODULE_ID;
 	}
 
 	/** @inheritDoc */
