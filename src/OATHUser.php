@@ -110,6 +110,7 @@ class OATHUser {
 	 * Gets the module instance associated with this user
 	 *
 	 * @return IModule|null
+	 * @deprecated Use {@link IAuthKey::getModule()} instead
 	 */
 	public function getModule() {
 		return $this->module;
@@ -119,6 +120,7 @@ class OATHUser {
 	 * Sets the module instance associated with this user
 	 *
 	 * @param IModule|null $module
+	 * @internal
 	 */
 	public function setModule( ?IModule $module = null ) {
 		$this->module = $module;
