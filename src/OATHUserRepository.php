@@ -95,7 +95,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		}
 		$prevUser = $this->findByUser( $user->getUser() );
 		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
-		$moduleId = null;
 
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->startAtomic( __METHOD__ );
@@ -107,17 +106,12 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		if ( $user->getKeys() ) {
-			// if we have keys, then it means we also have a module, lets fetch it
-			// TODO: get the moduleId from the key instead of user once we support multiple keys
-			$moduleId = $this->moduleRegistry->getModuleId( $user->getModule()->getName() );
-		}
 		foreach ( $user->getKeys() as $key ) {
 			$dbw->newInsertQueryBuilder()
 				->insertInto( 'oathauth_devices' )
 				->row( [
 					'oad_user' => $userId,
-					'oad_type' => $moduleId,
+					'oad_type' => $this->moduleRegistry->getModuleId( $key->getModule() ),
 					'oad_data' => FormatJson::encode( $key->jsonSerialize() )
 				] )
 				->caller( __METHOD__ )
@@ -251,11 +245,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		// TODO: figure this out from the key itself
-		// After calling ->disable(), getModule() will return null so this
-		// has to be done before.
-		$keyType = $user->getModule()->getName();
-
 		// Remove the key from the user object
 		$user->setKeys(
 			array_values(
@@ -279,7 +268,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'key' => $keyId,
 			'user' => $userName,
 			'clientip' => $clientInfo,
-			'oathtype' => $keyType,
+			'oathtype' => $key->getModule(),
 		] );
 
 		Manager::notifyDisabled( $user, $self );
@@ -311,10 +300,10 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		// TODO: figure this out from the key itself
-		// After calling ->disable(), getModule() will return null so this
-		// has to be done before.
-		$keyType = $user->getModule()->getName();
+		$keyTypes = array_map(
+			static fn ( IAuthKey $key ) => $key->getModule(),
+			$user->getKeys()
+		);
 
 		$user->disable();
 
@@ -324,7 +313,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->logger->info( 'OATHAuth disabled for {user} from {clientip}', [
 			'user' => $userName,
 			'clientip' => $clientInfo,
-			'oathtype' => $keyType,
+			'oathtype' => implode( ',', $keyTypes ),
 		] );
 
 		Manager::notifyDisabled( $user, $self );

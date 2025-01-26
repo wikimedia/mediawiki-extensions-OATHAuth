@@ -15,6 +15,8 @@ use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MWException;
 
 class TOTP implements IModule {
+	public const MODULE_NAME = "totp";
+
 	private OATHUserRepository $userRepository;
 
 	public function __construct( OATHUserRepository $userRepository ) {
@@ -23,7 +25,7 @@ class TOTP implements IModule {
 
 	/** @inheritDoc */
 	public function getName() {
-		return "totp";
+		return self::MODULE_NAME;
 	}
 
 	/** @inheritDoc */
