@@ -61,6 +61,7 @@
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\HookHandler",
 			"services": [
 				"OATHUserRepository",
+				"OATHAuthModuleRegistry",
 				"PermissionManager",
 				"MainConfig",
 				"UserGroupManager"
