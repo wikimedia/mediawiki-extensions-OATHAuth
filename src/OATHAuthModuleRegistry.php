@@ -55,8 +55,8 @@ class OATHAuthModuleRegistry {
 		}
 
 		$data = $this->getModules()[$key];
-		if ( is_string( $data ) ) {
-			$module = call_user_func_array( $this->getModules()[$key], [] );
+		if ( is_callable( $data ) ) {
+			$module = $data();
 		} else {
 			$module = $this->objectFactory->createObject(
 				$data,
