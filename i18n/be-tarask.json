@@ -81,7 +81,7 @@
 	"notification-body-oathauth-enable": "Калі {{GENDER:$2|вы}} гэтага не рабілі, то {{GENDER:$2|ваш уліковы запіс}} мог быць узламаны.",
 	"oathauth-notifications-enable-help": "Дапамога",
 	"oathauth-notifications-enable-primary": "Праверце налады сваёй двухфактарнай аўтэнтыфікацыі",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "У {{GENDER:$2|вас}} {{PLURAL:$3|застаўся $3 код|засталося $3 кады|засталося $3 кодаў}} аднаўленьня. Каб стварыць на будучыню $4 {{PLURAL:$4|новы код|новыя кады|новых кодаў}} аднаўленьня, раім вам адключыць і паўторна ўключыць двухфактарную аўтэнтыфікацыю.",
+	"notification-body-oathauth-recoverycodesleft": "У {{GENDER:$2|вас}} {{PLURAL:$3|застаўся $3 код|засталося $3 кады|засталося $3 кодаў}} аднаўленьня. Каб стварыць на будучыню $4 {{PLURAL:$4|новы код|новыя кады|новых кодаў}} аднаўленьня, раім вам адключыць і паўторна ўключыць двухфактарную аўтэнтыфікацыю.",
 	"oathauth-notifications-recoverycodesleft-help": "Дапамога",
 	"oathauth-notifications-recoverycodesleft-primary": "Праверце налады сваёй двухфактарнай аўтэнтыфікацыі",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} уключаная двухфактарная аўтэнтыфікацыя.",

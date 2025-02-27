@@ -110,7 +110,7 @@
 	"notification-body-oathauth-enable": "Якщо {{GENDER:$2|ви}} цього не робили, {{GENDER:$2|ваш обліковий запис}} може бути скомпрометованим.",
 	"oathauth-notifications-enable-help": "Довідка",
 	"oathauth-notifications-enable-primary": "Перевірте налаштування двофакторної автентифікації",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "У {{GENDER:$2|вас}} {{PLURAL:$3|залишився $3 код|залишилося $3 коди|залишилося $3 кодів}} відновлення. Ви можете вимкнути та знову ввімкнути двофакторну автентифікацію, щоб створити $4 {{PLURAL:$4|новий код|нові коди|нових кодів}} відновлення для використання в майбутньому.",
+	"notification-body-oathauth-recoverycodesleft": "У {{GENDER:$2|вас}} {{PLURAL:$3|залишився $3 код|залишилося $3 коди|залишилося $3 кодів}} відновлення. Ви можете вимкнути та знову ввімкнути двофакторну автентифікацію, щоб створити $4 {{PLURAL:$4|новий код|нові коди|нових кодів}} відновлення для використання в майбутньому.",
 	"oathauth-notifications-recoverycodesleft-help": "Довідка",
 	"oathauth-notifications-recoverycodesleft-primary": "Перевірте налаштування двофакторної автентифікації",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} двофакторна автентифікація ввімкнена.",
