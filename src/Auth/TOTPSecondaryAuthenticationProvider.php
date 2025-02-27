@@ -89,9 +89,6 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
-		$authUser = $this->userRepository->findByUser( $user );
-		$token = $request->OATHToken;
-
 		// Don't increase pingLimiter, just check for limit exceeded.
 		if ( $user->pingLimiter( 'badoath', 0 ) ) {
 			return AuthenticationResponse::newUI(
@@ -102,6 +99,9 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 					[ Message::durationParam( 60 ) ]
 				), 'error' );
 		}
+
+		$authUser = $this->userRepository->findByUser( $user );
+		$token = $request->OATHToken;
 
 		if ( $this->module->verify( $authUser, [ 'token' => $token ] ) ) {
 			return AuthenticationResponse::newPass();
