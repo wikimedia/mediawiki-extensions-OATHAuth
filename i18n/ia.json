@@ -102,7 +102,7 @@
 	"notification-body-oathauth-enable": "Si {{GENDER:$2|tu}} non ha facite isto, es possibile que tu conto ha essite compromittite.",
 	"oathauth-notifications-enable-help": "Adjuta",
 	"oathauth-notifications-enable-primary": "Controlar tu parametros de authentication bifactorial",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "{{GENDER:$2|Te}} resta $3 codice{{PLURAL:$3||s}} de recuperation. Considera disactivar e reactivar le authentication bifactorial pro generar $4 nove codice{{PLURAL:$4||s}} de recuperation pro uso futur.",
+	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Te}} resta $3 codice{{PLURAL:$3||s}} de recuperation. Considera disactivar e reactivar le authentication bifactorial pro generar $4 nove codice{{PLURAL:$4||s}} de recuperation pro uso futur.",
 	"oathauth-notifications-recoverycodesleft-help": "Adjuta",
 	"oathauth-notifications-recoverycodesleft-primary": "Controlar tu parametros de authentication bifactorial",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ha activate le authentication bifactorial.",

@@ -107,7 +107,7 @@
 	"notification-body-oathauth-enable": "Ha nem {{GENDER:$2|te}} csináltad, lehetséges, hogy valaki feltörte a fiókodat.",
 	"oathauth-notifications-enable-help": "Segítség",
 	"oathauth-notifications-enable-primary": "Ellenőrd a kétlépcsős hitelesítési beállításaidat",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "{{GENDER:$2|}}$3 helyreállítási {{PLURAL:$3|kódod}} maradt. Fontold meg a kétlépcsős azonosítás letiltását és újbóli engedélyezését, hogy $4 új helyreállítási kódot kapjál a jövőbeni használathoz.",
+	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|}}$3 helyreállítási {{PLURAL:$3|kódod}} maradt. Fontold meg a kétlépcsős azonosítás letiltását és újbóli engedélyezését, hogy $4 új helyreállítási kódot kapjál a jövőbeni használathoz.",
 	"oathauth-notifications-recoverycodesleft-help": "Segítség",
 	"oathauth-notifications-recoverycodesleft-primary": "Ellenőrizd a kétlépcsős azonosítási beállításaidat",
 	"oathauth-verify-enabled": "$1 engedélyezte a kétlépcsős azonosítást.",

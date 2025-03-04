@@ -91,7 +91,7 @@
 	"notification-body-oathauth-enable": "Ако {{GENDER:$2|Ви}} нисте ово урадили, {{GENDER:$2|Ваш налог}} је можда компромитован.",
 	"oathauth-notifications-enable-help": "Помоћ",
 	"oathauth-notifications-enable-primary": "Проверите своја подешавања двофакторске аутентификације",
-	"notification-body-oathauth-oathauth-recoverycodesleft": "{{GENDER:$2|Имате}} још само $3 {{PLURAL:$3|код|кода}} за опоравак. Ваљало би да онемогућите па омогућите двофакторску аутентификацију да генеришите $4 нових {{PLURAL:$4|кодова}} за опоравак.",
+	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Имате}} још само $3 {{PLURAL:$3|код|кода}} за опоравак. Ваљало би да онемогућите па омогућите двофакторску аутентификацију да генеришите $4 нових {{PLURAL:$4|кодова}} за опоравак.",
 	"oathauth-notifications-recoverycodesleft-help": "Помоћ",
 	"oathauth-notifications-recoverycodesleft-primary": "Проверите своја подешавања двофакторске аутентификације",
 	"oathauth-verify-enabled": "$1 је {{GENDER:$1|омогућио|омогућила}} двофакторску аутентификацију.",
