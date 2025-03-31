@@ -1,13 +1,14 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Key;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Key\TOTPKey
  */
-class TOTPKeyTest extends \MediaWikiIntegrationTestCase {
+class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	public function testDeserialization() {
 		$key = TOTPKey::newFromRandom();
 		$deserialized = TOTPKey::newFromArray( json_decode( json_encode( $key ), true ) );

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Auth;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Auth;
 
 use MediaWiki\Extension\OATHAuth\Auth\TOTPAuthenticationRequest;
 use MediaWiki\Tests\Auth\AuthenticationRequestTestCase;

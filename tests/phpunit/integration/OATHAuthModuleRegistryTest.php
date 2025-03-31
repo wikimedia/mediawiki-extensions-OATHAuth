@@ -18,7 +18,10 @@
  * @file
  */
 
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
+
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\ObjectFactory\ObjectFactory;
 use Wikimedia\Rdbms\IConnectionProvider;
 
