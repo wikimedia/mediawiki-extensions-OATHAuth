@@ -54,28 +54,20 @@
 		const publicKey = this.registerData;
 		publicKey.challenge = Uint8Array.from(
 			window.atob( mw.ext.webauthn.util.base64url2base64( publicKey.challenge ) ),
-			function ( c ) {
-				return c.charCodeAt( 0 );
-			}
+			( c ) => c.charCodeAt( 0 )
 		);
 		publicKey.user.id = Uint8Array.from(
 			window.atob( publicKey.user.id ),
-			function ( c ) {
-				return c.charCodeAt( 0 );
-			}
+			( c ) => c.charCodeAt( 0 )
 		);
 
 		if ( publicKey.excludeCredentials ) {
-			publicKey.excludeCredentials = publicKey.excludeCredentials.map( function ( data ) {
-				return Object.assign( data, {
-					id: Uint8Array.from(
-						window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
-						function ( c ) {
-							return c.charCodeAt( 0 );
-						}
-					)
-				} );
-			} );
+			publicKey.excludeCredentials = publicKey.excludeCredentials.map( ( data ) => Object.assign( data, {
+				id: Uint8Array.from(
+					window.atob( mw.ext.webauthn.util.base64url2base64( data.id ) ),
+					( c ) => c.charCodeAt( 0 )
+				)
+			} ) );
 		}
 
 		this.emit( 'userPrompt' );

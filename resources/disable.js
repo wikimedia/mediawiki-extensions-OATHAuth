@@ -1,15 +1,15 @@
 ( function () {
-	$( function () {
+	$( () => {
 		const form = new mw.ext.webauthn.CredentialForm( {
 			$form: $( '#disable-webauthn-form' )
 		} );
 
 		const authenticator = new mw.ext.webauthn.Authenticator();
 		authenticator.authenticate().then(
-			function ( credential ) {
+			( credential ) => {
 				form.submitWithCredential( credential );
 			},
-			function ( error ) {
+			( error ) => {
 				form.dieWithError( error );
 			}
 		);
