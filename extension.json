@@ -31,7 +31,7 @@
 		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/"
 	},
 	"TestAutoloadNamespaces": {
-		"MediaWiki\\Extension\\OATHAuth\\Tests\\": "tests/phpunit/"
+		"MediaWiki\\Extension\\OATHAuth\\Tests\\Integration\\": "tests/phpunit/integration"
 	},
 	"AuthManagerAutoConfig": {
 		"secondaryauth": {
