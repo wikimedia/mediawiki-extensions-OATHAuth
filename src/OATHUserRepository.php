@@ -20,7 +20,6 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
@@ -81,66 +80,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$this->cache->set( $user->getName(), $oathUser );
 		}
 		return $oathUser;
-	}
-
-	/**
-	 * @param OATHUser $user
-	 * @param string|null $clientInfo
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
-	public function persist( OATHUser $user, $clientInfo = null ) {
-		if ( !$clientInfo ) {
-			$clientInfo = RequestContext::getMain()->getRequest()->getIP();
-		}
-		$prevUser = $this->findByUser( $user->getUser() );
-		$userId = $this->centralIdLookupFactory->getLookup()->centralIdFromLocalUser( $user->getUser() );
-
-		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
-		$dbw->startAtomic( __METHOD__ );
-
-		// TODO: only update changed rows
-		$dbw->newDeleteQueryBuilder()
-			->deleteFrom( 'oathauth_devices' )
-			->where( [ 'oad_user' => $userId ] )
-			->caller( __METHOD__ )
-			->execute();
-
-		foreach ( $user->getKeys() as $key ) {
-			$dbw->newInsertQueryBuilder()
-				->insertInto( 'oathauth_devices' )
-				->row( [
-					'oad_user' => $userId,
-					'oad_type' => $this->moduleRegistry->getModuleId( $key->getModule() ),
-					'oad_data' => FormatJson::encode( $key->jsonSerialize() )
-				] )
-				->caller( __METHOD__ )
-				->execute();
-		}
-
-		$dbw->endAtomic( __METHOD__ );
-
-		$this->loadKeysFromDatabase( $user );
-
-		$userName = $user->getUser()->getName();
-		$this->cache->set( $userName, $user );
-
-		if ( $prevUser !== false ) {
-			$this->logger->info( 'OATHAuth updated for {user} from {clientip}', [
-				'user' => $userName,
-				'clientip' => $clientInfo,
-				'oldoathtype' => $prevUser->getModule() ? $prevUser->getModule()->getName() : 'disabled',
-				'newoathtype' => $user->getModule() ? $user->getModule()->getName() : 'disabled'
-			] );
-		} else {
-			// If findByUser() has returned false, there was no user row or cache entry
-			$this->logger->info( 'OATHAuth enabled for {user} from {clientip}', [
-				'user' => $userName,
-				'clientip' => $clientInfo,
-				'oathtype' => $user->getModule() ? $user->getModule()->getName() : 'disabled',
-			] );
-			Manager::notifyEnabled( $user );
-		}
 	}
 
 	/**
