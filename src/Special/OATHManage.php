@@ -21,6 +21,7 @@ namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -96,7 +97,7 @@ class OATHManage extends SpecialPage {
 			// Performing an action on a requested module
 			$this->clearPage();
 			if ( $this->shouldShowDisableWarning() ) {
-				$this->showDisableWarning();
+				$this->showDisableWarning( $this->requestedModule );
 				return;
 			}
 			$this->addModuleHTML( $this->requestedModule );
@@ -151,7 +152,17 @@ class OATHManage extends SpecialPage {
 
 	private function addEnabledHTML(): void {
 		$this->addHeading( $this->msg( 'oathauth-ui-enabled-module' ) );
-		$this->addModuleHTML( $this->authUser->getModule() );
+
+		$modules = array_unique(
+			array_map(
+				static fn ( IAuthKey $key ) => $key->getModule(),
+				$this->authUser->getKeys(),
+			)
+		);
+
+		foreach ( $modules as $module ) {
+			$this->addModuleHTML( $this->moduleRegistry->getModuleByKey( $module ) );
+		}
 	}
 
 	private function addAlternativesHTML(): void {
@@ -179,14 +190,14 @@ class OATHManage extends SpecialPage {
 		)->parseAsBlock() );
 	}
 
-	private function addModuleHTML( ?IModule $module ): void {
-		if ( $module instanceof IModule && $this->isModuleRequested( $module ) ) {
+	private function addModuleHTML( IModule $module ): void {
+		if ( $this->isModuleRequested( $module ) ) {
 			$this->addCustomContent( $module );
 			return;
 		}
 
 		$panel = $this->getGenericContent( $module );
-		if ( $module instanceof IModule && $this->isModuleEnabled( $module ) ) {
+		if ( $this->isModuleEnabled( $module ) ) {
 			$this->addCustomContent( $module, $panel );
 		}
 
@@ -196,7 +207,7 @@ class OATHManage extends SpecialPage {
 	/**
 	 * Get the panel with generic content for a module
 	 */
-	private function getGenericContent( ?IModule $module ): PanelLayout {
+	private function getGenericContent( IModule $module ): PanelLayout {
 		$modulePanel = new PanelLayout( [
 			'framed' => true,
 			'expanded' => false,
@@ -208,7 +219,7 @@ class OATHManage extends SpecialPage {
 			'label' => $module->getDisplayName()->text()
 		] );
 		if ( $this->shouldShowGenericButtons() ) {
-			$enabled = $module && $this->isModuleEnabled( $module );
+			$enabled = $this->isModuleEnabled( $module );
 			$button = new ButtonWidget( [
 				'label' => $this
 					->msg( $enabled ? 'oathauth-disable-generic' : 'oathauth-enable-generic' )
@@ -265,11 +276,12 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function isModuleEnabled( IModule $module ): bool {
-		$enabled = $this->authUser->getModule();
-		if ( !$enabled ) {
-			return false;
+		foreach ( $this->authUser->getKeys() as $key ) {
+			if ( $key->getModule() === $module->getName() ) {
+				return true;
+			}
 		}
-		return $enabled->getName() === $module->getName();
+		return false;
 	}
 
 	/**
@@ -358,7 +370,7 @@ class OATHManage extends SpecialPage {
 			$this->authUser->isTwoFactorAuthEnabled();
 	}
 
-	private function showDisableWarning(): void {
+	private function showDisableWarning( IModule $module ): void {
 		$panel = new PanelLayout( [
 			'padded' => true,
 			'framed' => true,
@@ -366,7 +378,7 @@ class OATHManage extends SpecialPage {
 		] );
 
 		$isSwitch = $this->isSwitch();
-		$currentDisplayName = $this->authUser->getModule()->getDisplayName();
+		$currentDisplayName = $module->getDisplayName();
 		$newDisplayName = $this->requestedModule->getDisplayName();
 
 		$genericMessage = $isSwitch ?
@@ -381,7 +393,7 @@ class OATHManage extends SpecialPage {
 			$genericMessage->parseAsBlock()
 		) );
 
-		$customMessage = $this->authUser->getModule()->getDisableWarningMessage();
+		$customMessage = $module->getDisableWarningMessage();
 		if ( $customMessage instanceof Message ) {
 			$panel->appendContent( new HtmlSnippet(
 				$customMessage->parseAsBlock()
