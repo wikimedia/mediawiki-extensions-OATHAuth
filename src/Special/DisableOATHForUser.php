@@ -43,6 +43,7 @@ class DisableOATHForUser extends FormSpecialPage {
 		return 'users';
 	}
 
+	/** @inheritDoc */
 	public function doesWrites() {
 		return true;
 	}
