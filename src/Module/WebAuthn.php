@@ -26,7 +26,7 @@ class WebAuthn implements IModule {
 
 	public const MODULE_ID = "webauthn";
 
-	public static function factory() {
+	public static function factory(): IModule {
 		return new static();
 	}
 
