@@ -50,7 +50,7 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "المستخدم لم يفعل التوثيق ذي العاملين، لذا فلا يوجد شيء لتعطيله",
 	"right-oathauth-enable": "تفعيل ميزة التحقق بخطوتين",
 	"action-oathauth-enable": "تفعيل ميزة التحقق بخطوتين",
-	"oathauth-auth-token-label": "رمز رمزي أو رمز استعادة مزدوج",
+	"oathauth-auth-token-label": "رمزٌ ذو عاملين أو رمز الاسترداد",
 	"oathauth-auth-token-help": "تُستخدَم كلمة المرور لمرة واحدة كعامل ثاني للمصادقة الثنائية.",
 	"oathauth-auth-token-help-ui": "أدخل رمزًا إما من جهاز المصادقة الخاص بك، أو رمز استرداد",
 	"oathauth-auth-ui": "رجاءً أدخل رمز التحقق من جهاز المصادقة الخاص بك.",
