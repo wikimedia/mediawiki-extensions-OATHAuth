@@ -183,7 +183,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 
 	private function createCopyButton(): string {
 		return Html::rawElement( 'button', [
-			'class' => 'cdx-button mw-oathauth-recoverycodes-copy-button'
+			'class' => 'cdx-button mw-oathauth-recoverycodes-copy-button',
+			'type' => 'button',
 		], Html::element( 'span', [
 			'class' => 'cdx-button__icon',
 			'aria-hidden' => 'true',
