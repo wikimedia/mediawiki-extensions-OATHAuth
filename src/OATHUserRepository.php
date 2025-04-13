@@ -20,6 +20,7 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
@@ -27,7 +28,6 @@ use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
-use RuntimeException;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
@@ -92,10 +92,16 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @return IAuthKey
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
-		if ( $user->getModule() && $user->getModule()->getName() !== $module->getName() ) {
-			throw new InvalidArgumentException(
-				"User already has a key from a different module enabled ({$user->getModule()->getName()})"
-			);
+		$otherEnabledModule = null;
+		foreach ( $user->getKeys() as $key ) {
+			if ( $key->getModule() !== $module->getName() ) {
+				$otherEnabledModule = $this->moduleRegistry->getModuleByKey( $key->getModule() );
+				break;
+			}
+		}
+		if ( $otherEnabledModule ) {
+			throw new ErrorPageError( 'errorpagetitle', 'oathauth-error-multiple-modules',
+				[ $module->getDisplayName(), $otherEnabledModule->getDisplayName() ] );
 		}
 
 		$uid = $user->getCentralId();
@@ -131,7 +137,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		] );
 
 		if ( !$hasExistingKey ) {
-			$user->setModule( $module );
 			Manager::notifyEnabled( $user );
 		}
 
@@ -184,22 +189,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		// Remove the key from the user object
-		$user->setKeys(
-			array_values(
-				array_filter(
-					$user->getKeys(),
-					static function ( IAuthKey $key ) use ( $keyId ) {
-						return $key->getId() !== $keyId;
-					}
-				)
-			)
-		);
-
-		if ( !$user->getKeys() ) {
-			$user->setModule( null );
-		}
-
+		$user->removeKey( $key );
 		$userName = $user->getUser()->getName();
 		$this->cache->delete( $userName );
 
@@ -237,10 +227,10 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->execute();
 
-		$keyTypes = array_map(
+		$keyTypes = array_unique( array_map(
 			static fn ( IAuthKey $key ) => $key->getModule(),
 			$user->getKeys()
-		);
+		) );
 
 		$user->disable();
 
@@ -277,26 +267,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		$module = null;
-
 		// Clear stored key list before loading keys
 		$user->disable();
 
 		foreach ( $res as $row ) {
-			if ( $module && $row->oat_name !== $module->getName() ) {
-				// Not supported by current application-layer code.
-				throw new RuntimeException( "User {$uid} has multiple different two-factor modules defined" );
-			}
-
-			if ( !$module ) {
-				$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
-				$user->setModule( $module );
-
-				if ( !$module ) {
-					throw new MWException( 'oathauth-module-invalid' );
-				}
-			}
-
+			$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
 			$keyData = FormatJson::decode( $row->oad_data, true );
 			$user->addKey( $module->newKey( $keyData + [ 'id' => (int)$row->oad_id ] ) );
 		}
