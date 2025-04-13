@@ -7,14 +7,13 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\WebAuthn\HTMLField\RegisteredKeyLayout;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\ButtonWidget;
 
@@ -65,7 +64,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 */
 	public function getButtons() {
 		$moduleConfig = $this->module->getConfig()->get( 'maxKeysPerUser' );
-		if ( count( $this->oathUser->getKeys() ) >= (int)$moduleConfig ) {
+		if ( count( WebAuthn::getWebAuthnKeys( $this->oathUser ) ) >= (int)$moduleConfig ) {
 			return '';
 		}
 		return new ButtonWidget( [
@@ -112,12 +111,9 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws MWException
 	 */
 	protected function getDescriptors() {
-		/** @var OATHUserRepository $userRepo */
-		$userRepo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		/** @var OATHUser $oathUser */
+		$userRepo = OATHAuthServices::getInstance()->getUserRepository();
 		$oathUser = $userRepo->findByUser( $this->getUser() );
-		/** @var WebAuthnKey[] $keys */
-		$keys = $oathUser->getKeys();
+		$keys = WebAuthn::getWebAuthnKeys( $oathUser );
 
 		$registeredKeys = [];
 		foreach ( $keys as $idx => $key ) {

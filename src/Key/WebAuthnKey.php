@@ -26,6 +26,7 @@ use Cose\Algorithm\Signature\EdDSA\EdDSA;
 use Cose\Algorithm\Signature\RSA\RS1;
 use Cose\Algorithm\Signature\RSA\RS256;
 use Cose\Algorithm\Signature\RSA\RS512;
+use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
@@ -283,15 +284,13 @@ class WebAuthnKey implements IAuthKey {
 	 * @param array $data
 	 * @param OATHUser $user
 	 * @return bool
-	 * @throws MWException
 	 */
 	public function verify( $data, OATHUser $user ) {
 		if ( $this->mode !== static::MODE_AUTHENTICATE ) {
-			$this->logger->error( sprintf(
-				"Authentication attempt by user %s while not in authenticate mode",
-				$user->getUser()->getName()
-			) );
-			throw new MWException( 'webauthn-mode-invalid' );
+			$this->logger->error( 'Authentication attempt by user {user} while not in authenticate mode', [
+				'user' => $user->getUser()->getName(),
+			] );
+			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
 		return $this->authenticationCeremony(
 			$data['credential'],
@@ -306,7 +305,6 @@ class WebAuthnKey implements IAuthKey {
 	 * @param PublicKeyCredentialCreationOptions $registrationObject
 	 * @param OATHUser $user
 	 * @return bool
-	 * @throws MWException
 	 */
 	public function verifyRegistration(
 		$friendlyName,
@@ -315,11 +313,10 @@ class WebAuthnKey implements IAuthKey {
 		OATHUser $user
 	) {
 		if ( $this->mode !== static::MODE_CREATE ) {
-			$this->logger->error( sprintf(
-				"Registration attempt by user %s while not in register mode",
-				$user->getUser()->getName()
-			) );
-			throw new MWException( 'webauthn-mode-invalid' );
+			$this->logger->error( 'Registration attempt by user {user} while not in register mode', [
+				'user' => $user->getUser()->getName(),
+			] );
+			throw new LogicException( 'WebAuthnKey::verifyRegistration(): invalid mode' );
 		}
 		$this->setFriendlyName( $friendlyName );
 		return $this->registrationCeremony( $data, $registrationObject, $user );

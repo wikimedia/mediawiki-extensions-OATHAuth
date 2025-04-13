@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
+use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 
@@ -113,7 +114,9 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 			'credential' => $credential
 		] );
 		if ( $authenticationResult->isGood() ) {
-			$this->oathRepo->removeAll( $this->oathUser, $this->getRequest()->getIP(), true );
+			foreach ( WebAuthn::getWebAuthnKeys( $this->oathUser ) as $key ) {
+				$this->oathRepo->removeKey( $this->oathUser, $key, $this->getRequest()->getIP(), true );
+			}
 			return true;
 		}
 		return false;

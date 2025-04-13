@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "This browser does not support WebAuthentication or it is not available for this website.",
 	"webauthn-error-auth-generic": "Authentication process was interrupted. Please start the authentication process again.",
 	"webauthn-error-reg-generic": "Could not verify your key. Please start the registration process again.",
-	"webauthn-key-type-missmatch": "User has keys of multiple types registered.",
 	"oathauth-webauthn-registered-keys-section-name": "Registered keys",
 	"webuathn-ui-remove-key": "Remove",
 	"webauthn-error-module-not-enabled": "Module \"$1\" is not enabled for {{GENDER:$2|user \"$2\"}}.",

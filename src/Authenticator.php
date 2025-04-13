@@ -23,6 +23,7 @@ use Cose\Algorithms;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -302,7 +303,7 @@ class Authenticator {
 			);
 			if ( $registered ) {
 				$maxKeysPerUser = $this->module->getConfig()->get( 'maxKeysPerUser' );
-				if ( count( $this->oathUser->getKeys() ) >= (int)$maxKeysPerUser ) {
+				if ( count( WebAuthn::getWebAuthnKeys( $this->oathUser ) ) >= (int)$maxKeysPerUser ) {
 					return Status::newFatal(
 						wfMessage( 'webauthn-error-max-keys-reached', $maxKeysPerUser )
 					);
@@ -318,8 +319,8 @@ class Authenticator {
 				$this->clearSessionData();
 				return Status::newGood();
 			}
-		} catch ( MWException $exception ) {
-			return Status::newFatal( $exception->getMessage() );
+		} catch ( ErrorPageError $error ) {
+			return Status::newFatal( $error->getMessageObject() );
 		}
 		return Status::newFatal( 'webauthn-error-registration-failed' );
 	}
@@ -373,12 +374,9 @@ class Authenticator {
 	 * @throws MWException
 	 */
 	protected function getAuthInfo() {
-		$keys = $this->oathUser->getKeys();
+		$keys = WebAuthn::getWebAuthnKeys( $this->oathUser );
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
-			if ( !$key instanceof WebAuthnKey ) {
-				throw new MWException( 'webauthn-key-type-missmatch' );
-			}
 			$credentialDescriptors[$key->getFriendlyName()] = new PublicKeyCredentialDescriptor(
 				$key->getType(),
 				$key->getAttestedCredentialData()->getCredentialId(),
@@ -415,11 +413,7 @@ class Authenticator {
 		// make sure userHandle remains the same across keys
 		$userHandle = null;
 
-		foreach ( $this->oathUser->getKeys() as $key ) {
-			if ( !( $key instanceof WebAuthnKey ) ) {
-				continue;
-			}
-
+		foreach ( WebAuthn::getWebAuthnKeys( $this->oathUser ) as $key ) {
 			$userHandle = $key->getUserHandle();
 
 			$excludedPublicKeyDescriptors[] = new PublicKeyCredentialDescriptor(

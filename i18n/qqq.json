@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "Error shown to users in the console if their device is unsupported",
 	"webauthn-error-auth-generic": "Generic error message for authentication process failing",
 	"webauthn-error-reg-generic": "Generic error message for registratration process failing",
-	"webauthn-key-type-missmatch": "Error message when user is attempting webauthn authentication but has at least one key of different type (module) set",
 	"oathauth-webauthn-registered-keys-section-name": "Label for the section for registered keys",
 	"webuathn-ui-remove-key": "Button label to remove a single WebAuthn key",
 	"webauthn-error-module-not-enabled": "Error message when authentication/registration is attemped with module not enabled for the user. \n$1 - module name\n$2 - user",

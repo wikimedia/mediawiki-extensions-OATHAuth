@@ -30,6 +30,14 @@ class WebAuthn implements IModule {
 		return new static();
 	}
 
+	/**
+	 * @return WebAuthnKey[]
+	 */
+	public static function getWebAuthnKeys( OATHUser $user ): array {
+		// @phan-suppress-next-line PhanTypeMismatchReturn
+		return $user->getKeysForModule( self::MODULE_ID );
+	}
+
 	/** @inheritDoc */
 	public function getName() {
 		return self::MODULE_ID;
@@ -60,12 +68,7 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function isEnabled( OATHUser $user ) {
-		foreach ( $user->getKeys() as $key ) {
-			if ( $key instanceof WebAuthnKey ) {
-				return true;
-			}
-		}
-		return false;
+		return (bool)self::getWebAuthnKeys( $user );
 	}
 
 	/**
@@ -76,7 +79,7 @@ class WebAuthn implements IModule {
 	 * @return bool
 	 */
 	public function verify( OATHUser $user, array $data ) {
-		$keys = $user->getKeys();
+		$keys = self::getWebAuthnKeys( $user );
 		foreach ( $keys as $key ) {
 			// Pass if any of the keys matches
 			if ( $key->verify( $data, $user ) === true ) {
@@ -133,10 +136,7 @@ class WebAuthn implements IModule {
 	 * @return IAuthKey|null
 	 */
 	public function findKeyByCredentialId( $id, $user ) {
-		foreach ( $user->getKeys() as $key ) {
-			if ( !( $key instanceof WebAuthnKey ) ) {
-				continue;
-			}
+		foreach ( self::getWebAuthnKeys( $user ) as $key ) {
 			if ( $key->getAttestedCredentialData()->getCredentialId() === $id ) {
 				return $key;
 			}
@@ -153,11 +153,7 @@ class WebAuthn implements IModule {
 	 * @return WebAuthnKey|null
 	 */
 	public function getKeyByFriendlyName( string $name, OATHUser $user ): ?WebAuthnKey {
-		foreach ( $user->getKeys() as $key ) {
-			if ( !( $key instanceof WebAuthnKey ) ) {
-				continue;
-			}
-
+		foreach ( self::getWebAuthnKeys( $user ) as $key ) {
 			if ( $key->getFriendlyName() === $name ) {
 				return $key;
 			}
