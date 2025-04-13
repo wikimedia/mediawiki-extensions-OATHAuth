@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MWException;
@@ -52,11 +52,7 @@ class TOTPDisableForm extends OATHAuthOOUIHTMLForm {
 			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
-		foreach ( $this->oathUser->getKeys() as $key ) {
-			if ( !( $key instanceof TOTPKey ) ) {
-				continue;
-			}
-
+		foreach ( TOTP::getTOTPKeys( $this->oathUser ) as $key ) {
 			if ( !$key->verify( [ 'token' => $formData['token'] ], $this->oathUser ) ) {
 				continue;
 			}

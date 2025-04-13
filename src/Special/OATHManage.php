@@ -288,12 +288,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function isModuleEnabled( IModule $module ): bool {
-		foreach ( $this->authUser->getKeys() as $key ) {
-			if ( $key->getModule() === $module->getName() ) {
-				return true;
-			}
-		}
-		return false;
+		return (bool)$this->authUser->getKeysForModule( $module->getName() );
 	}
 
 	/**
