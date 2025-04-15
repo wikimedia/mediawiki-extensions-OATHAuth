@@ -13,7 +13,7 @@
 	"oathauth-recoverycodes": "Tuto jest spisok jednokratnyh kodov za odnovjenje. Te kody mogut byti upotrěbjene jednokratno i služet za nadobyčnu situaciju, kogda vy ne imajete dostup k svojemu aparatu. Prosimo, zapišite jih i shranite v bezpečnom městu. Prěporučajemo, že poslě prijavjenja se s pomočju jednogo koda, vsakokratno označite dany kod kako upotrěbjeny. Ako utratite svoj aparat, tute kody sut jediny sposob za izbavjenje vašego konta.",
 	"oathauth-recoverycodes-important": "Tutoj krok jest važny! Ne prěskočite go!",
 	"oathauth-recoverycodes-neveragain": "Tute kody nikogda veče ne budut pokazane!",
-	"oathauth-recoverytokens-createdat": "Tokeny za odnovjenje sut stvorjene: $1",
+	"oathauth-recoverytokens-createdat": "Kody za odnovjenje sut stvorjene: $1",
 	"oathauth-recoverycodes-download": "Daunlodovati",
 	"oathauth-recoverycodes-copy": "Kopirovati",
 	"oathauth-recoverycodes-copy-success": "Kody za odnovjenje sut kopirovane v vaš bufor obměny!",
@@ -109,5 +109,5 @@
 	"oathauth-prefs-disabledgroups": "Izključen{{PLURAL:$1|a grupa|e grupy}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Vaše členstvo}} v {{PLURAL:$1|tutoj grupě|tutyh grupah}} jest unemožnjeno do momenta, že vključite [[Special:Manage Two-factor authentication|dvufaktornu avtentifikaciju]].",
 	"oathauth-qrcode-alt": "QR-kod s tajnym ključem za skanovanje.",
-	"oathauth-hint": "Ne imajete li dostup k svojemu aparatu ili aplikacije? Možete vvesti tokeny za odnovjenje (podane, ako imajete vključenu dvufaktornu avtentifikaciju) v tuto polje."
+	"oathauth-hint": "Ne imajete li dostup k svojemu aparatu ili aplikacije? Možete vvesti kody za odnovjenje (podane, ako imajete vključenu dvufaktornu avtentifikaciju) v tuto polje."
 }
