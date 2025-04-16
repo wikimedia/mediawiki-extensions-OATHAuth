@@ -64,5 +64,6 @@
 	"oathauth-disable-method-warning-button-label": "Confirmar e continuar",
 	"oathauth-invalidrequest": "Solicitude non válida",
 	"oathauth-notifications-disable-help": "Axuda",
-	"oathauth-notifications-enable-help": "Axuda"
+	"oathauth-notifications-enable-help": "Axuda",
+	"oathauth-notifications-recoverycodesleft-help": "Axuda"
 }
