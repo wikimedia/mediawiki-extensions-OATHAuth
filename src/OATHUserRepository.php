@@ -233,6 +233,23 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * @param OATHUser $user
+	 * @param array $where Conditions to pass to DeleteQueryBuilder::where().
+	 * @return void
+	 */
+	private function removeSomeKeys( OATHUser $user, array $where ): void {
+		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
+			->newDeleteQueryBuilder()
+			->deleteFrom( 'oathauth_devices' )
+			->where( [ 'oad_user' => $user->getCentralId() ] )
+			->where( $where )
+			->caller( __METHOD__ )
+			->execute();
+
+		$this->cache->delete( $user->getUser()->getName() );
+	}
+
+	/**
+	 * @param OATHUser $user
 	 * @param IAuthKey $key
 	 * @param string $clientInfo
 	 * @param bool $self Whether they disabled it themselves
@@ -243,22 +260,38 @@ class OATHUserRepository implements LoggerAwareInterface {
 			throw new InvalidArgumentException( 'A non-persisted key cannot be removed' );
 		}
 
-		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
-			->newDeleteQueryBuilder()
-			->deleteFrom( 'oathauth_devices' )
-			->where( [ 'oad_user' => $user->getCentralId(), 'oad_id' => $keyId ] )
-			->caller( __METHOD__ )
-			->execute();
-
+		$this->removeSomeKeys( $user, [ 'oad_id' => $keyId ] );
 		$user->removeKey( $key );
-		$userName = $user->getUser()->getName();
-		$this->cache->delete( $userName );
 
 		$this->logger->info( 'OATHAuth removed {oathtype} key {key} for {user} from {clientip}', [
 			'key' => $keyId,
-			'user' => $userName,
+			'user' => $user->getUser()->getName(),
 			'clientip' => $clientInfo,
 			'oathtype' => $key->getModule(),
+		] );
+
+		Manager::notifyDisabled( $user, $self );
+	}
+
+	/**
+	 * @param OATHUser $user
+	 * @param string $keyType As in IModule::getName()
+	 * @param string $clientInfo
+	 * @param bool $self Whether they disabled it themselves
+	 */
+	public function removeAllOfType( OATHUser $user, string $keyType, string $clientInfo, bool $self ) {
+		$moduleId = $this->moduleRegistry->getModuleId( $keyType );
+		if ( !$moduleId ) {
+			throw new InvalidArgumentException( 'Invalid key type: ' . $keyType );
+		}
+
+		$this->removeSomeKeys( $user, [ 'oad_type' => $moduleId ] );
+		$user->removeKeysForModule( $keyType );
+
+		$this->logger->info( 'OATHAuth removed {oathtype} keys for {user} from {clientip}', [
+			'user' => $user->getUser()->getName(),
+			'clientip' => $clientInfo,
+			'oathtype' => $keyType,
 		] );
 
 		Manager::notifyDisabled( $user, $self );
@@ -281,25 +314,16 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @param bool $self Whether they disabled it themselves
 	 */
 	public function removeAll( OATHUser $user, $clientInfo, bool $self ) {
-		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
-			->newDeleteQueryBuilder()
-			->deleteFrom( 'oathauth_devices' )
-			->where( [ 'oad_user' => $user->getCentralId() ] )
-			->caller( __METHOD__ )
-			->execute();
+		$this->removeSomeKeys( $user, [] );
 
 		$keyTypes = array_unique( array_map(
 			static fn ( IAuthKey $key ) => $key->getModule(),
 			$user->getKeys()
 		) );
-
 		$user->disable();
 
-		$userName = $user->getUser()->getName();
-		$this->cache->delete( $userName );
-
 		$this->logger->info( 'OATHAuth disabled for {user} from {clientip}', [
-			'user' => $userName,
+			'user' => $user->getUser()->getName(),
 			'clientip' => $clientInfo,
 			'oathtype' => implode( ',', $keyTypes ),
 		] );
