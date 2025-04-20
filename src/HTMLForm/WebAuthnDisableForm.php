@@ -114,9 +114,8 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 			'credential' => $credential
 		] );
 		if ( $authenticationResult->isGood() ) {
-			foreach ( WebAuthn::getWebAuthnKeys( $this->oathUser ) as $key ) {
-				$this->oathRepo->removeKey( $this->oathUser, $key, $this->getRequest()->getIP(), true );
-			}
+			$this->oathRepo->removeAllOfType( $this->oathUser, WebAuthn::MODULE_ID,
+				$this->getRequest()->getIP(), true );
 			return true;
 		}
 		return false;
