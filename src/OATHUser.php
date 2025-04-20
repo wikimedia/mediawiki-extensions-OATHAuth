@@ -105,6 +105,18 @@ class OATHUser {
 	}
 
 	/**
+	 * @param string $moduleName As in IModule::getName()
+	 */
+	public function removeKeysForModule( string $moduleName ): void {
+		$this->keys = array_values(
+			array_filter(
+				$this->keys,
+				static fn ( IAuthKey $key ) => $key->getModule() !== $moduleName
+			)
+		);
+	}
+
+	/**
 	 * Adds single key to the key array
 	 *
 	 * @param IAuthKey $key
