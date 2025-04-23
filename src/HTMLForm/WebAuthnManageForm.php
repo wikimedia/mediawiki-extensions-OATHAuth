@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -14,7 +15,6 @@ use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
-use MWException;
 use OOUI\ButtonWidget;
 
 class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {

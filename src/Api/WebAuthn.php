@@ -22,11 +22,11 @@ use InvalidArgumentException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\MediaWikiServices;
-use MWException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
