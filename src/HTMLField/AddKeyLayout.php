@@ -22,6 +22,7 @@ class AddKeyLayout extends HTMLFormField {
 			'required' => true,
 			'infusable' => true,
 			'disabled' => true,
+			'autofocus' => true,
 		] );
 		$button = new ButtonWidget( [
 			'flags' => [ 'primary', 'progressive' ],
