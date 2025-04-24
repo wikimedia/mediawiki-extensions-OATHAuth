@@ -24,6 +24,7 @@ use DomainException;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
@@ -31,7 +32,6 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MWException;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
 

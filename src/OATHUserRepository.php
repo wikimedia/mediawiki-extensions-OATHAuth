@@ -20,11 +20,11 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\UserIdentity;
-use MWException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use RuntimeException;

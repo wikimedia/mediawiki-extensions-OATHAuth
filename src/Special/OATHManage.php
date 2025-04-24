@@ -20,6 +20,9 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Exception\MWException;
+use MediaWiki\Exception\PermissionsError;
+use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -30,14 +33,11 @@ use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
-use MWException;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
 use OOUI\LabelWidget;
 use OOUI\PanelLayout;
-use PermissionsError;
-use UserNotLoggedIn;
 
 class OATHManage extends SpecialPage {
 	public const ACTION_ENABLE = 'enable';

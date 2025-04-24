@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
-use MWException;
 
 class TOTPDisableForm extends OATHAuthOOUIHTMLForm {
 	/**
