@@ -74,8 +74,6 @@
 	"oathauth-disable-method-warning-header": "Potvrda onemogućavanja metoda autentifikacije",
 	"oathauth-disable-method-warning-button-label": "Potvrdi i nastavi",
 	"oathauth-disable-method-warning": "Ako onemogućite dvofaktorsku autentifikaciju $1, više nećete biti u mogućnosti koristiti tu metodu pri prijavljivanju, a svi će podaci povezani sa njoj biti izbrisani.",
-	"oathauth-switch-method-warning-header": "Potvrda prebacivanja na drugi metod autentifikacije",
-	"oathauth-switch-method-warning": "Prelaskom na dvofaktorsku autentifikaciju $2, trenutni način ($1) bit će onemogućen, a svi će podaci povezani sa njim biti izbrisani",
 	"oathauth-totp-disable-warning": "Više nećete moći koristiti uređaj za autentifikaciju registrovan ovim računom. Svi pričuvni žetoni povezani sa njim biće proglašeni nevažećim.",
 	"oathauth-invalidrequest": "Nevažeći zahtjev",
 	"oathauth-notifications-disable-help": "Pomoć",

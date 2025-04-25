@@ -71,8 +71,6 @@
 	"oathauth-disable-method-warning-header": "Аутентификацин кеп дӀайайар тӀечӀагӀде",
 	"oathauth-disable-method-warning-button-label": "ТӀечӀагӀде, кхидӀа а",
 	"oathauth-disable-method-warning": "Нагахь санна ахьа шина-факторан аутентификацин кеп $1 дӀайайича, хьан кхин аьтто хир бац и кеп лело системин чугӀош, ткъа цу аутентификацин кепца боьзна болу массо а хаамаш дӀабохур бу.",
-	"oathauth-switch-method-warning-header": "Кхечу аутентификацин кепе хийцар тӀечӀагӀде",
-	"oathauth-switch-method-warning": "Шина-факторан аутентификацин метод тӀе $2 хийцича, карарчу хенахь йолу метод ($1) дӀайойура йу, карарчу хенахь йолу аутентификацин методца боьзна болу массо а хаамаш дӀабохур бу.",
 	"oathauth-invalidrequest": "Нийса доцу дехар",
 	"notification-header-oathauth-disable": "Шина-факторан аутентификаци дӀайайина {{GENDER:$2|хьан аккаунтана}}.",
 	"oathauth-notifications-disable-help": "ГӀо",

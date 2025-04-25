@@ -75,6 +75,5 @@
 	"oathauth-disable-method-warning-header": "Potvrđivanje onemogućavanja autentifikacijske metode",
 	"oathauth-disable-method-warning-button-label": "Potvrdi i nastavi",
 	"oathauth-disable-method-warning": "Ako onemogućite dvofaktorsku autentifikacijsku metodu naziva $1, više nećete biti u mogućnosti rabiti tu metodu pri prijavljivanju, a svi će podatci povezani s tom autentifikacijskom metodom biti izbrisani.",
-	"oathauth-switch-method-warning-header": "Potvrđivanje prijelaza na ostale autentifikacijske metode",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nema omogućenu dvofaktorsku autentifikaciju."
 }
