@@ -78,6 +78,7 @@
 	"notification-header-oathauth-disable": "Шина-факторан аутентификаци дӀайайина {{GENDER:$2|хьан аккаунтана}}.",
 	"oathauth-notifications-disable-help": "ГӀо",
 	"oathauth-notifications-enable-help": "ГӀо",
+	"oathauth-notifications-recoverycodesleft-help": "ГӀо",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} шина-факторан аутентификаци дӀахӀоттийна йу.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} шина-факторан аутентификаци дӀахӀоттийна йац.",
 	"oathauth-prefs-disabledgroups": "ДӀайайина {{PLURAL:$1|тоба}}:",
