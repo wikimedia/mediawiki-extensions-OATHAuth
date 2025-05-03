@@ -443,7 +443,27 @@ class Authenticator {
 			new PublicKeyCredentialParameters(
 				'public-key',
 				Algorithms::COSE_ALGORITHM_ES256
-			)
+			),
+			new PublicKeyCredentialParameters(
+				'public-key',
+				Algorithms::COSE_ALGORITHM_ES512
+			),
+			new PublicKeyCredentialParameters(
+				'public-key',
+				Algorithms::COSE_ALGORITHM_EdDSA
+			),
+			new PublicKeyCredentialParameters(
+				'public-key',
+				Algorithms::COSE_ALGORITHM_RS1
+			),
+			new PublicKeyCredentialParameters(
+				'public-key',
+				Algorithms::COSE_ALGORITHM_RS256
+			),
+			new PublicKeyCredentialParameters(
+				'public-key',
+				Algorithms::COSE_ALGORITHM_RS512
+			),
 		];
 
 		return new PublicKeyCredentialCreationOptions(
