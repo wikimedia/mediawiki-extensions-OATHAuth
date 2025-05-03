@@ -72,7 +72,6 @@ class OATHManage extends SpecialPage {
 
 		$this->userRepo = $userRepo;
 		$this->moduleRegistry = $moduleRegistry;
-		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
 	}
 
 	/**
@@ -86,6 +85,8 @@ class OATHManage extends SpecialPage {
 	 * @param null|string $subPage
 	 */
 	public function execute( $subPage ) {
+		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
+
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->disallowUserJs();
 		$this->setAction();
