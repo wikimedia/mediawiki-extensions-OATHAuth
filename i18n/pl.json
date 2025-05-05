@@ -107,6 +107,7 @@
 	"notification-body-oathauth-enable": "Jeśli to nie ty to {{GENDER:$2|zrobiłeś|zrobiłaś}}, twoje konto mogło zostać przejęte.",
 	"oathauth-notifications-enable-help": "Pomoc",
 	"oathauth-notifications-enable-primary": "Sprawdź swoje ustawienia uwierzytelniania dwuskładnikowego",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Powinieneś|Powinnaś}} ponownie aktywować uwierzytelnianie dwuskładnikowe dla {{GENDER:$2|swojego}} konta.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|}}{{PLURAL:$3|Pozostał Ci 1 kod|Pozostały Ci $3 kody|Pozostało Ci $3 kodów}} odzyskiwania. Zachęcamy do wyłączenia i ponownego aktywowania uwierzytelniania dwuskładnikowego, aby wygenerować $4 {{PLURAL:$4|nowy kod|nowe kody|nowych kodów}} do użycia w przyszłości.",
 	"oathauth-notifications-recoverycodesleft-help": "Pomoc",
 	"oathauth-notifications-recoverycodesleft-primary": "Sprawdź swoje ustawienia uwierzytelniania dwuskładnikowego",
@@ -115,5 +116,6 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zawieszona grupa|Zawieszone grupy}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]].",
 	"oathauth-qrcode-alt": "Kod QR zawierający tajny klucz do zeskanowania.",
-	"oathauth-hint": "Nie masz dostępu do urządzenia lub aplikacji do uwierzytelniania? W tym polu możesz wpisać któryś z kodów zapasowych (które zostały pokazane po aktywacji uwierzytelniania dwuskładnikowego)."
+	"oathauth-hint": "Nie masz dostępu do urządzenia lub aplikacji do uwierzytelniania? W tym polu możesz wpisać któryś z kodów zapasowych (które zostały pokazane po aktywacji uwierzytelniania dwuskładnikowego).",
+	"oathauth-must-be-central": "{{GENDER:$1|Twoje konto}} musi być połączone z centralnym systemem uwierzytelniania, aby móc używać uwierzytelniania dwuskładnikowego."
 }
