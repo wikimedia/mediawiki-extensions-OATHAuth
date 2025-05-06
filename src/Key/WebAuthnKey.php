@@ -502,9 +502,11 @@ class WebAuthnKey implements IAuthKey {
 			);
 			return true;
 		} catch ( Throwable $ex ) {
-			$this->logger->warning(
-				"WebAuthn authentication failed due to: {$ex->getMessage()}"
-			);
+			$this->logger->warning( 'WebAuthn authentication failed due to: {message}', [
+				'message' => $ex->getMessage(),
+				'exception' => $ex,
+				'user' => $user->getUser()->getName(),
+			] );
 			return false;
 		}
 	}
