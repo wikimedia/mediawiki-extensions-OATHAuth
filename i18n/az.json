@@ -113,5 +113,6 @@
 	"oathauth-prefs-disabledgroups": "Deaktiv edilən {{PLURAL:$1|qrup|qruplar}}:",
 	"oathauth-prefs-disabledgroups-help": "Bu {{PLURAL:$1|qrupdakı|qruplardakı}} {{GENDER:$2|üzvlüyünüz}} \n[[Special:Manage Two-factor authentication|iki faktorlu autentifikasiyanı]] aktivləşdirənə qədər dondurulub.",
 	"oathauth-qrcode-alt": "Gizli açarı təmsil edən skan edilə bilən QR kodu.",
-	"oathauth-hint": "Cihazınıza və ya tətbiqinizə girişiniz yoxdur? Bu hissəyə bərpa kodlarınızı (2FA-nı aktivləşdirdiyiniz zaman təqdim olunur) daxil edə bilərsiniz."
+	"oathauth-hint": "Cihazınıza və ya tətbiqinizə girişiniz yoxdur? Bu hissəyə bərpa kodlarınızı (2FA-nı aktivləşdirdiyiniz zaman təqdim olunur) daxil edə bilərsiniz.",
+	"oathauth-must-be-central": "İki faktorlu autentifikasiyadan istifadə etmək üçün {{GENDER:$1|hesabınız}} mərkəzi autentifikasiya sisteminə qoşulmalıdır."
 }
