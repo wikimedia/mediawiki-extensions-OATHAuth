@@ -107,6 +107,7 @@
 	"notification-body-oathauth-enable": "Jeśli to nie ty to {{GENDER:$2|zrobiłeś|zrobiłaś}}, twoje konto mogło zostać przejęte.",
 	"oathauth-notifications-enable-help": "Pomoc",
 	"oathauth-notifications-enable-primary": "Sprawdź swoje ustawienia uwierzytelniania dwuskładnikowego",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Powinieneś|Powinnaś}} ponownie aktywować uwierzytelnianie dwuskładnikowe dla {{GENDER:$2|swojego}} konta.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|}}{{PLURAL:$3|Pozostał Ci 1 kod|Pozostały Ci $3 kody|Pozostało Ci $3 kodów}} odzyskiwania. Zachęcamy do wyłączenia i ponownego aktywowania uwierzytelniania dwuskładnikowego, aby wygenerować $4 {{PLURAL:$4|nowy kod|nowe kody|nowych kodów}} do użycia w przyszłości.",
 	"oathauth-notifications-recoverycodesleft-help": "Pomoc",
 	"oathauth-notifications-recoverycodesleft-primary": "Sprawdź swoje ustawienia uwierzytelniania dwuskładnikowego",
