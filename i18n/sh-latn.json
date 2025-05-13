@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Winston Sung"
+			"Winston Sung",
+			"Aca"
 		]
 	},
 	"oathauth-desc": "Omogućuje autentifikaciju korisnika pomoću HMAC-a na temelju jednokratnih lozinki",
