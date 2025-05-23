@@ -15,6 +15,40 @@
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
 	"attributes": {
+		"Echo": {
+			"Notifications": {
+				"oathauth-disable": {
+					"category": "system",
+					"group": "negative",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\DisablePresentationModel",
+					"canNotifyAgent": true,
+					"user-locators": [
+						"MediaWiki\\Extension\\Notifications\\UserLocator::locateEventAgent"
+					]
+				},
+				"oathauth-enable": {
+					"category": "system",
+					"group": "positive",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\EnablePresentationModel",
+					"canNotifyAgent": true,
+					"user-locators": [
+						"MediaWiki\\Extension\\Notifications\\UserLocator::locateEventAgent"
+					]
+				},
+				"oathauth-recoverycodes-count": {
+					"category": "system",
+					"group": "negative",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\RecoveryCodeCountPresentationModel",
+					"canNotifyAgent": true,
+					"user-locators": [
+						"MediaWiki\\Extension\\Notifications\\UserLocator::locateEventAgent"
+					]
+				}
+			}
+		},
 		"OATHAuth": {
 			"Modules": {
 				"totp": {
@@ -53,8 +87,7 @@
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"UserEffectiveGroups": "main",
-		"UserGetRights": "main",
-		"BeforeCreateEchoEvent": "echo"
+		"UserGetRights": "main"
 	},
 	"HookHandlers": {
 		"main": {
@@ -69,9 +102,6 @@
 		},
 		"updater": {
 			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\UpdateTables"
-		},
-		"echo": {
-			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\EchoHandler"
 		}
 	},
 	"MessagesDirs": {
