@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Reedy",
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"oathauth-desc": "Ufre soporte d'identificación utilizando contraseñes pa una sola vez basaes en HMAC",
@@ -14,7 +15,7 @@
 	"oathauth-enable": "Activar la identificación de dos factores",
 	"oathauth-token": "Pase",
 	"oathauth-disable": "Desactivar la identificación de dos factores",
-	"oathauth-validatedoath": "Validáronse les credenciales de dos factores. Agora sedrá obligatoria la identificación de dos factores.",
+	"oathauth-validatedoath": "Validáronse les credenciales de dos factores. Agora ye obligatoria la identificación de dos factores.",
 	"oathauth-noscratchforvalidation": "Nun puedes utilizar un códigu predefiníu pa confirmar la identificación en dos pasos. Esos códigos solo sirven como respaldu y pa usu ocasional. Utiliza un códigu de comprobación del to xenerador de códigos.",
 	"oathauth-failedtovalidateoath": "Nun pudieron validase les credenciales de dos factores",
 	"oathauth-disabledoath": "Desactivada la identificación de dos factores.",
