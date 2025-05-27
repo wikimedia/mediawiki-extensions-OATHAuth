@@ -32,7 +32,7 @@
 	"oathauth-disabledoath": "Poista kaksivaiheinen tunnistautuminen käytöstä.",
 	"oathauth-prefs-label": "Kaksivaiheinen tunnistautuminen:",
 	"oathauth-step1": "Vaihe 1: Lataa kaksivaiheisen tunnistautumisen sovellus",
-	"oathauth-step1-test": "Lataa sovellus kaksivaiheista tunnistautumista varten. Tämä voi olla mobiili- tai tietokonesovellus, kuten [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator] tai [https://1password.com/ 1Password].",
+	"oathauth-step1-test": "Lataa sovellus kaksivaiheista tunnistautumista varten. Tämä voi olla mobiili- tai tietokonesovellus, kuten [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] tai [https://1password.com/ 1Password].",
 	"oathauth-step2": "Vaihe 2: Skannaa QR-koodi",
 	"oathauth-step2-qrcode": "Skannaa QR-koodi 1. vaiheessa lataamallasi sovelluksella tai selainlaajennuksella kaksivaiheista tunnistautumista varten.",
 	"oathauth-step2alt": "Jos et pysty skannaamaan QR-koodia, anna salausavain ja tunnuksen nimi manuaalisesti:",
