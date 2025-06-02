@@ -127,5 +127,6 @@
 	"oathauth-prefs-disabledgroups": "Groupe{{PLURAL:$1||s}} désactivé{{PLURAL:$1||s}} :",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|}}Votre statut de membre de ce{{PLURAL:$1||s}} groupe{{PLURAL:$1||s}} restera désactivé tant que vous n’aurez pas activé l’[[Special:Manage Two-factor authentication|authentification à deux facteurs]].",
 	"oathauth-qrcode-alt": "Code QR à scanner représentant la clé secrète.",
-	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ."
+	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ.",
+	"oathauth-must-be-central": "{{GENDER:$1|}}Votre compte doit être lié au système d’authentification central pour pouvoir utiliser l’authentification à deux facteurs."
 }
