@@ -25,7 +25,7 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 	consoleMsg = consoleMsg || message;
 
 	// Unrecoverable in this load - remove all content
-	this.$form.children().remove();
+	this.$form.children().hide();
 
 	const errorMessage = new OO.ui.MessageWidget( {
 		type: 'error',
