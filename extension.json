@@ -37,9 +37,6 @@
 				"util/util.js",
 				"ui/CredentialForm.js"
 			],
-			"styles": [
-				"stylesheets/widget.styles.less"
-			],
 			"dependencies": [
 				"oojs-ui",
 				"mediawiki.jqueryMsg"

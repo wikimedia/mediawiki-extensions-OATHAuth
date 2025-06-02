@@ -26,27 +26,25 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 
 	// Unrecoverable in this load - remove all content
 	this.$form.children().remove();
-	const icon = new OO.ui.IconWidget( {
-		icon: 'alert'
-	} );
-	const label = new OO.ui.LabelWidget();
-	label.$element.append( this.getErrorText( message || '' ) );
 
-	const reloadLink = new OO.ui.ButtonWidget( {
-		label: mw.message( 'webauthn-ui-reload-page-label' ).text(),
-		framed: false
+	const errorMessage = new OO.ui.MessageWidget( {
+		type: 'error',
+		label: new OO.ui.HtmlSnippet( this.getErrorText( message || '' ) )
 	} );
-	reloadLink.connect( this, {
+
+	const reloadButton = new OO.ui.ButtonWidget( {
+		label: mw.message( 'webauthn-ui-reload-page-label' ).text()
+	} );
+	reloadButton.connect( this, {
 		click: function () {
 			window.location.reload();
 		}
 	} );
-	this.$form.append( new OO.ui.HorizontalLayout( {
-		items: [
-			icon, label, reloadLink
-		],
-		classes: [ 'form-error-message' ]
-	} ).$element );
+
+	this.$form.append(
+		errorMessage.$element,
+		$( '<p>' ).append( reloadButton.$element )
+	);
 
 	throw new Error( this.getErrorText( consoleMsg || '' ) );
 };
