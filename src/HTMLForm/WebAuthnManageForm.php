@@ -10,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\WebAuthn\HTMLField\RegisteredKeyLayout;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
@@ -132,7 +133,12 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 			];
 		}
 
-		return $registeredKeys + [
+		return [
+			'nojs' => [
+				'class' => NoJsInfoField::class,
+				'section' => 'webauthn-registered-keys-section-name',
+			],
+		] + $registeredKeys + [
 			'edit_key' => [
 				'type' => 'hidden',
 				'name' => 'edit_key'

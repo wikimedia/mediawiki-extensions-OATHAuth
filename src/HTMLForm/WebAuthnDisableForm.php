@@ -10,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 
@@ -83,6 +84,10 @@ class WebAuthnDisableForm extends OATHAuthOOUIHTMLForm {
 	 */
 	protected function getDescriptors() {
 		return [
+			'nojs' => [
+				'class' => NoJsInfoField::class,
+				'section' => 'webauthn-disable-section-name',
+			],
 			'info' => [
 				'type' => 'info',
 				'default' => wfMessage( 'webauthn-ui-disable-prompt' )->plain(),
