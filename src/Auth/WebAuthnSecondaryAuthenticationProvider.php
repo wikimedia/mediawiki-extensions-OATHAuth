@@ -80,14 +80,23 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 			$request->setAuthInfo( $authenticator->startAuthentication()->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'webauthn-error-verification-failed' ), 'error' );
+				wfMessage( 'webauthn-error-credentials-missing' ), 'error' );
 		}
 
 		// Get credential retrieved from the client
 		$verificationData = $request->getSubmittedData();
+		if ( $verificationData['credential'] === '' ) {
+			return AuthenticationResponse::newUI( [ $request ],
+				wfMessage( 'webauthn-error-credentials-missing' ), 'error' );
+		}
+
 		$authResult = $authenticator->continueAuthentication( $verificationData );
 		if ( $authResult->isGood() ) {
 			return AuthenticationResponse::newPass( $authResult->getValue()->getUser()->getName() );
+		}
+		// Return the first error from the authenticator, if there is any
+		foreach ( $authResult->getMessages() as $msg ) {
+			return AuthenticationResponse::newFail( wfMessage( $msg ) );
 		}
 		return AuthenticationResponse::newFail( wfMessage( 'webauthn-error-verification-failed' ) );
 	}
