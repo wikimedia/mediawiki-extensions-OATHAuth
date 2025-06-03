@@ -80,7 +80,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 			$request->setAuthInfo( $authenticator->startAuthentication()->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'oathauth-login-failed' ), 'error' );
+				wfMessage( 'webauthn-error-verification-failed' ), 'error' );
 		}
 
 		// Get credential retrieved from the client
@@ -89,7 +89,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		if ( $authResult->isGood() ) {
 			return AuthenticationResponse::newPass( $authResult->getValue()->getUser()->getName() );
 		}
-		return AuthenticationResponse::newFail( wfMessage( 'oathauth-login-failed' ) );
+		return AuthenticationResponse::newFail( wfMessage( 'webauthn-error-verification-failed' ) );
 	}
 
 	protected function addModules() {
