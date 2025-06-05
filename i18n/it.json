@@ -7,7 +7,7 @@
 	},
 	"webauthn-ui-add-key": "Aggiungi chiave",
 	"oathauth-webauthn-registered-keys-section-name": "Chiavi registrate",
-	"webauthn-error-verification-failed": "Verifica non riuscita",
+	"webauthn-error-verification-failed": "Verifica WebAuthn non riuscita.",
 	"webauthn-ui-reload-page-label": "Ricarica la pagina",
 	"webauthn-authentication-info-label": "Dati di autenticazione",
 	"webauthn-credential-label": "Credenziali utente",
