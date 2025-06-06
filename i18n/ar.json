@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Meno25",
+			"Mohammed Qays",
 			"ديفيد"
 		]
 	},
@@ -17,7 +18,7 @@
 	"oathauth-webauthn-registered-keys-section-name": "مفاتيح مسجلة",
 	"webuathn-ui-remove-key": "إزالة",
 	"webauthn-error-module-not-enabled": "الوحدة النمطية \"$1\" غير ممكنة {{GENDER:$1|للمستخدم \"$2\"|للمستخدمة \"$2\"}}",
-	"webauthn-error-verification-failed": "فشل التحقق",
+	"webauthn-error-verification-failed": "فشل التحقق من WebAuthn.",
 	"webauthn-error-cannot-register": "لا يمكن {{GENDER:$1|للمستخدم \"$1\"|للمستخدمة \"$1\"}} تسجيل بيانات اعتماد جديدة",
 	"webauthn-error-invalid-new-key": "المفتاح الجديد الذي تم إرجاعه بواسطة الوحدة ليس من النوع المطلوب",
 	"webauthn-error-registration-failed": "فشل تسجيل المفتاح الجديد",
