@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\WebAuthn\HTMLField;
 
 use MediaWiki\HTMLForm\HTMLFormField;
 use OOUI\ButtonInputWidget;
-use OOUI\Exception;
 use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
 use OOUI\LabelWidget;
@@ -14,7 +13,6 @@ class RegisteredKeyLayout extends HTMLFormField {
 	/**
 	 * @param array $value
 	 * @return HorizontalLayout
-	 * @throws Exception
 	 */
 	public function getInputHTML( $value ) {
 		$nameValue = $value['name'];
