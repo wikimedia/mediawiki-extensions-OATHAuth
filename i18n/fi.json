@@ -59,7 +59,7 @@
 	"oathauth-auth-token-help-ui": "Syötä joko koodi tunnistautumislaitteestasi tai palautuskoodi",
 	"oathauth-auth-ui": "Syötä vahvistuskoodi tunnistautumissovelluksestasi (kuten [https://authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator] tai [https://1password.com/ 1Password]).",
 	"oathauth-throttled": "Liian monta todennusyritystä! Odota hetki $1.",
-	"oathauth-login-failed": "Todennus epäonnistui",
+	"oathauth-login-failed": "TOTP-todennus epäonnistui",
 	"oathauth-describe-provider": "Kaksivaiheinen tunnistautuminen (OATH).",
 	"action-oathauth-api-all": "tarkistaa OATH-tilaa",
 	"oathauth-user-not-found": "Tämän nimistä käyttäjätunnusta ei löytynyt",
