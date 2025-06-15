@@ -65,7 +65,8 @@ class TOTPKey implements IAuthKey {
 	 */
 	public static function newFromRandom() {
 		$object = new self(
-			Base32::encode( random_bytes( 10 ) ),
+			// 26 digits to give 128 bits - https://phabricator.wikimedia.org/T396951
+			Base32::encode( random_bytes( 26 ) ),
 			[]
 		);
 
