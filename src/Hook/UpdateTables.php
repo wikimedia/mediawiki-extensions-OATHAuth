@@ -48,7 +48,8 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			}
 
 			// 1.41
-			$updater->addExtensionUpdate( [
+			$updater->addExtensionUpdateOnVirtualDomain( [
+				'virtual-oathauth',
 				'runMaintenance',
 				UpdateForMultipleDevicesSupport::class,
 				"$baseDir/maintenance/UpdateForMultipleDevicesSupport.php"
