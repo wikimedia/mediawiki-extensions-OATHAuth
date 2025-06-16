@@ -31,6 +31,14 @@
 			"i18n/api"
 		]
 	},
+	"HookHandlers": {
+		"WebAuthnHooks": {
+			"class": "MediaWiki\\Extension\\WebAuthn\\Hooks"
+		}
+	},
+	"Hooks": {
+		"AuthChangeFormFields": "WebAuthnHooks"
+	},
 	"ResourceModules": {
 		"ext.webauthn.ui.base": {
 			"scripts": [
@@ -38,6 +46,7 @@
 				"ui/CredentialForm.js"
 			],
 			"dependencies": [
+				"ext.webauthn.ui.base.styles",
 				"oojs-ui",
 				"mediawiki.jqueryMsg"
 			],
@@ -45,6 +54,11 @@
 				"webauthn-error-browser-unsupported",
 				"webauthn-error-browser-unsupported-console",
 				"webauthn-ui-reload-page-label"
+			]
+		},
+		"ext.webauthn.ui.base.styles": {
+			"styles": [
+				"stylesheets/ui.base.styles.less"
 			]
 		},
 		"ext.webauthn.register": {

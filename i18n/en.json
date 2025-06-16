@@ -6,6 +6,7 @@
 	},
 	"webauthn-desc": "Provides authentication support using WebAuthn protocol",
 	"webauthn-module-label": "Web Authentication (WebAuthn)",
+	"webauthn-javascript-required": "JavaScript must be enabled in your browser to use WebAuthn.",
 	"webauthn-ui-login-prompt": "Please touch your verification device or follow the instructions from the browser.",
 	"webauthn-ui-add-key": "Add key",
 	"webauthn-error-browser-unsupported": "This browser does not support WebAuthentication or it is not available for this website. Please try with a different browser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Read more]",

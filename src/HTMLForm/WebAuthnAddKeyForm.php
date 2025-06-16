@@ -10,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
+use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
@@ -84,14 +85,12 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	 */
 	protected function getDescriptors() {
 		return [
-			'name-help' => [
-				'type' => 'info',
-				'default' => wfMessage( 'webauthn-ui-key-register-help' )->escaped(),
-				'raw' => true,
-				'section' => 'webauthn-add-key-section-name'
+			'nojs' => [
+				'class' => NoJsInfoField::class,
+				'section' => 'webauthn-add-key-section-name',
 			],
 			'name-layout' => [
-				'type' => 'null',
+				'label-message' => 'webauthn-ui-key-register-help',
 				'class' => AddKeyLayout::class,
 				'raw' => true,
 				'section' => 'webauthn-add-key-section-name'
