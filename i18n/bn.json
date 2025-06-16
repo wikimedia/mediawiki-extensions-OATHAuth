@@ -51,7 +51,7 @@
 	"oathauth-auth-token-help-ui": "আপনার প্রমাণীকরণ ডিভাইস থেকে একটি কোড লিখুন, বা একটি পুনরুদ্ধারের কোড লিখুন",
 	"oathauth-auth-ui": "দয়া করে আপনার দুই-ধাপের প্রমাণীকরণ অ্যাপ্লিকেশন থেকে একটি কোড লিখুন (যেমন [https://authy.com/ আথি], [https://freeotp.github.io/ ফ্রিওটিপি], [https://support.google.com/accounts/answer/1066447 গুগল অথেন্টিকেটর], [https://www.microsoft.com/en/account/authenticator/ মাইক্রোসফট অথেন্টিকেটর] বা [https://1password.com/ ১পাসওয়ার্ড])।",
 	"oathauth-throttled": "অনেকগুলি যাচাইয়ের প্রচেষ্টা! অনুগ্রহ করে $1 অপেক্ষা করুন।",
-	"oathauth-login-failed": "যাচাইকরণ ব্যর্থ হয়েছে।",
+	"oathauth-login-failed": "TOTP যাচাইকরণ ব্যর্থ হয়েছে।",
 	"oathauth-describe-provider": "দুই-ধাপের প্রমাণীকরণ (OATH)।",
 	"action-oathauth-api-all": "OATH অবস্থা পরীক্ষা করার",
 	"oathauth-user-not-found": "এই নামে কোনো ব্যবহারকারী অ্যাকাউন্ট পাওয়া যায়নি",
