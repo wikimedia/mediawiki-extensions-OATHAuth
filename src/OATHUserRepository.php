@@ -59,7 +59,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * @param LoggerInterface $logger
 	 */
-	public function setLogger( LoggerInterface $logger ) {
+	public function setLogger( LoggerInterface $logger ): void {
 		$this->logger = $logger;
 	}
 

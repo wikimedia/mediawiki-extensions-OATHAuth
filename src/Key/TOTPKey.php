@@ -258,7 +258,7 @@ class TOTPKey implements IAuthKey {
 	/**
 	 * @return LoggerInterface
 	 */
-	private function getLogger() {
+	private function getLogger(): LoggerInterface {
 		return LoggerFactory::getInstance( 'authentication' );
 	}
 
