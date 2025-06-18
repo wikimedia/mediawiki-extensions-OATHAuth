@@ -6,6 +6,7 @@
 	},
 	"webauthn-desc": "WebAuthn protokolundan istifadə edərək autentifikasiya dəstəyini təmin edir",
 	"webauthn-module-label": "Veb Autentikasiya (WebAuthn)",
+	"webauthn-javascript-required": "WebAuthn istifadə etmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
 	"webauthn-ui-login-prompt": "Zəhmət olmasa, doğrulama cihazınıza toxunun və ya brauzerin təlimatlarına əməl edin.",
 	"webauthn-ui-add-key": "Açar əlavə et",
 	"webauthn-error-browser-unsupported": "Bu brauzer WebAuthentication-ı dəstəkləmir və ya bu veb-sayt üçün əlçatan deyil. Fərqli brauzerlə cəhd edin. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Ətraflı oxu]",

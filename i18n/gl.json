@@ -7,6 +7,7 @@
 	},
 	"webauthn-desc": "Ofrece soporte de autenticación mediante o protocolo WebAuthn",
 	"webauthn-module-label": "Autenticación web (WebAuthn)",
+	"webauthn-javascript-required": "Cómpre activar o JavaScript no navegador para usar WebAuthn.",
 	"webauthn-ui-login-prompt": "Toca o teu dispositivo de verificación ou sigue as instrucións do navegador.",
 	"webauthn-ui-add-key": "Engadir unha chave",
 	"webauthn-error-browser-unsupported": "Este navegador non admite WebAuthentication ou non está dispoñible para este sitio web. Inténtao cun navegador diferente. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Máis información]",
