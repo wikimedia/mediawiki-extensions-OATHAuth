@@ -6,6 +6,7 @@
 	},
 	"webauthn-desc": "Forni supporto de authentication usante le protocollo WebAuthn",
 	"webauthn-module-label": "Authentication web (WebAuthn)",
+	"webauthn-javascript-required": "JavaScript debe esser activate in tu navigator pro usar WebAuthn.",
 	"webauthn-ui-login-prompt": "Per favor tocca tu apparato de verification o seque le instructiones del navigator.",
 	"webauthn-ui-add-key": "Adder clave",
 	"webauthn-error-browser-unsupported": "Iste navigator non supporta WebAuthentication o illo non es disponibile pro iste sito web. Per favor tenta lo con un altere navigator. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leger plus]",
