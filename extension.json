@@ -83,11 +83,13 @@
 	},
 	"Hooks": {
 		"AuthChangeFormFields": "main",
-		"LoadExtensionSchemaUpdates": "updater",
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
+		"LoadExtensionSchemaUpdates": "updater",
 		"UserEffectiveGroups": "main",
-		"UserGetRights": "main"
+		"UserGetRights": "main",
+		"UnitTestsAfterDatabaseSetup": "test",
+		"UnitTestsBeforeDatabaseTeardown": "test"
 	},
 	"HookHandlers": {
 		"main": {
@@ -102,6 +104,12 @@
 		},
 		"updater": {
 			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\UpdateTables"
+		},
+		"test": {
+			"class": "MediaWiki\\Extension\\OATHAuth\\Hook\\TestHandler",
+			"services": [
+				"DBLoadBalancer"
+			]
 		}
 	},
 	"MessagesDirs": {
