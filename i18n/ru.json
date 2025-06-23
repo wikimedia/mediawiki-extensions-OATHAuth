@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Diman Russkov"
+			"Diman Russkov",
+			"Okras"
 		]
 	},
 	"webauthn-desc": "Обеспечивает поддержку аутентификации с использованием протокола WebAuthn.",
@@ -16,8 +17,8 @@
 	"oathauth-webauthn-registered-keys-section-name": "Зарегистрированные ключи",
 	"webuathn-ui-remove-key": "Удалить",
 	"webauthn-error-module-not-enabled": "Модуль \"$1\" не включён для {{GENDER:$2|участника \"$2\"|участницы \"$2\"}}",
-	"webauthn-error-verification-failed": "Проверка не удалась",
-	"webauthn-error-cannot-register": "{{GENDER:$1|Участник \"$1\"|Участница \"$1\"}} не может зарегистрировать новые учетные данные",
+	"webauthn-error-verification-failed": "Проверка WebAuthn не удалась.",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Участник|Участница}} «$1» не может зарегистрировать новые учётные данные.",
 	"webauthn-error-invalid-new-key": "Новый ключ, возвращаемый модулем, не имеет требуемого типа",
 	"webauthn-error-registration-failed": "Регистрация нового ключа не удалась",
 	"webauthn-ui-key-register-help": "Выберите псевдоним для вашего ключа",

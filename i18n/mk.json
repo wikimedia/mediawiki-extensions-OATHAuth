@@ -6,6 +6,7 @@
 	},
 	"webauthn-desc": "Дава поддршка за заверка со протоколот WebAuthn",
 	"webauthn-module-label": "Семрежна заверка (WebAuthn)",
+	"webauthn-javascript-required": "Во вашиот прелистувач мора да е овозможен JavaScript за да го користите WebAuthn.",
 	"webauthn-ui-login-prompt": "Допрете на уредот за заверка или проследете ги напатствијата од прелистувачот.",
 	"webauthn-ui-add-key": "Додај клуч",
 	"webauthn-error-browser-unsupported": "Овој прелистувач не поддржува WebAuthentication или пак тој не е достапен за ова мрежно место. Пробајте со друг прелистувач. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Прочитајте повеќе]",

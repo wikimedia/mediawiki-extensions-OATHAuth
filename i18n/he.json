@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Guycn2"
 		]
 	},
 	"webauthn-desc": "מספק תמיכה באימות בפרוטוקול WebAuthn",
 	"webauthn-module-label": "אימות וב (WebAuthn)",
+	"webauthn-javascript-required": "יש לאפשר JavaScript בדפדפן שלך כדי להשתמש ב־WebAuthn.",
 	"webauthn-ui-login-prompt": "נא לגעת במכשיר האימות שלך או לעקוב אחר ההוראות בדפדפן.",
 	"webauthn-ui-add-key": "הוספת מפתח",
 	"webauthn-error-browser-unsupported": "הדפדפן הזה אינו תומך ב־WebAuthentication או שזה לא זמין עבור האתר הזה. נא לנסות עם דפדפן אחר. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support מידע נוסף]",
