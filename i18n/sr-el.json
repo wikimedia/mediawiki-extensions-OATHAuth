@@ -4,7 +4,8 @@
 			"Kizule",
 			"Milicevic01",
 			"Vlad5250",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Aca"
 		]
 	},
 	"oathauth-desc": "Obezbeđuje podršku za potvrdu identiteta pomoću jednokratnih lozinki zasnovanih na HMAC-u.",
@@ -45,7 +46,7 @@
 	"action-oathauth-enable": "uključite dvofaktorsku potvrdu identiteta",
 	"oathauth-auth-token-label": "Dvofaktorski token ili kod za oporavak",
 	"oathauth-auth-token-help": "Jednokratna lozinka koja služi kao drugi faktor u dvofaktorskoj potvrdi identiteta.",
-	"oathauth-auth-token-help-ui": "Unesite kod sa uređaja za autentifikaciju ili kod za oporavak",
+	"oathauth-auth-token-help-ui": "Unesite kod sa uređaja za potvrdu identiteta ili kod za oporavak",
 	"oathauth-auth-ui": "Unesite kod za verifikaciju sa vašeg uređaja za potvrdu identiteta.",
 	"oathauth-throttled": "Previše pokušaja verifikacije! Sačekajte $1.",
 	"oathauth-login-failed": "Verifikacija nije uspela.",

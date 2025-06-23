@@ -40,7 +40,7 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "Korisnik nije uključio dvofaktorsku autentifikaciju. Prema tome, ništa se ne može onemogućiti",
 	"right-oathauth-enable": "Omogućavanje dvofaktorske autentifikacije",
 	"action-oathauth-enable": "omogućavanje dvofaktorske autentifikacije",
-	"oathauth-auth-token-label": "Žeton",
+	"oathauth-auth-token-label": "Dvofaktorski žeton ili kod za oporavak",
 	"oathauth-auth-token-help": "Jednokratna lozinka koja služi kao drugi faktor u dvofaktorskoj autentifikaciji.",
 	"oathauth-auth-ui": "Upišite kôd za potvrdu s Vašeg uređaja potvrde.",
 	"oathauth-throttled": "Napravili ste previše pokušaja potvrde! Sačekajte $1.",
