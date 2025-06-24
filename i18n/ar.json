@@ -8,6 +8,7 @@
 	},
 	"webauthn-desc": "يوفر دعم المصادقة باستخدام بروتوكول WebAuthn",
 	"webauthn-module-label": "مصادقة الويب (WebAuthn)",
+	"webauthn-javascript-required": "يجب تمكين JavaScript في متصفحك لاستخدام WebAuthn.",
 	"webauthn-ui-login-prompt": "يرجى لمس جهاز التحقق الخاص بك أو اتباع الإرشادات من المتصفح.",
 	"webauthn-ui-add-key": "إضافة مفتاح",
 	"webauthn-error-browser-unsupported": "لا يدعم هذا المتصفح مصادقة الويب أو أنه غير متوفر لموقع الويب هذا، تُرجَى المحاولة باستخدام متصفح مختلف. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support اقرأ المزيد]",
