@@ -3,8 +3,29 @@
 		"authors": [
 			"Af420",
 			"Amjad Khan",
-			"Baloch Khan"
+			"Baloch Khan",
+			"شاه زمان پټان"
 		]
 	},
+	"oathauth-desc": "د HMAC پر بنسټ د یو‌ځلي پټنومونو په کارولو سره د تاييد ملاتړ چمتو کوي.",
+	"disableoathforuser": "د کارن دوه‌پړاويز تاييد ناچارنول",
+	"verifyoathforuser": "د دوه‌پړاويز تاييد دريځ باوري کول",
+	"oath": "اوات‌اوت",
+	"oathauth-account": "گڼون نوم:",
+	"oathauth-secret": "دوه‌پړاويز تاييد پټه کونجي",
+	"oathauth-enable": "دوه‌پړاويز تاييد چارنول",
+	"oathauth-recoverycodes": "لاندې لړليک د يوځلي بياترلاسنې کوډونو لړليک دی. دا کوډونه يوازې يو ځل کارېدلای شي او په بېړنيو وختونو کې هغه مهال چې خپلې وسيلې ته لاسرسی ونه لرئ، کارولی شئ. مهرباني وکړئ دا لاندې ولیکئ او په خوندي ځای کې يې وساتئ. سپارښتنه کېږي چې تاسو هر کوډ د کارولو پرمهال کارول شوي په توگه په نښه کړئ. که تاسو خپله وسيله له لاسه ورکړئ، دا کوډونه ستاسو د گڼون ژغورلو يوازینۍ لار ده.",
+	"oathauth-recoverycodes-important": "دا گام ارزښتمن دی! دا گام له پامه مه غورځوئ!",
+	"oathauth-recoverycodes-neveragain": "دا کوډونه به بيا هېڅکله ونښودل شي!",
+	"oathauth-recoverytokens-createdat": "بيارغونې کوډونه جوړ‌شول: $1",
+	"oathauth-recoverycodes-download": "راکښته‌کول",
+	"oathauth-recoverycodes-copy": "لمېسل",
+	"oathauth-recoverycodes-copy-success": "د بیارغونې کوډونه ستاسو ټينگدړې ته لمېسل شوي دي!",
+	"oathauth-disable": "دوه‌پړاويز تاييد ناچارنول",
+	"oathauth-validatedoath": "دوه‌پړاويز تاييد باوري شو. دوه‌پړاويز تاييد به اوس پلی شي.",
+	"oathauth-disabledoath": "دوه‌پړاويز تاييد ناچارن‌شوی.",
+	"oathauth-step2": "۲ گام: کيو‌ار کوډ سکن کول",
+	"oathauth-step4": "۴ گام: تاييد",
+	"oathauth-enteruser": "کارن‌نوم:",
 	"grant-oath": "دوه فکتور تصدیق ('''واته''') د ځان او نورو لپاره معلومات"
 }
