@@ -68,7 +68,7 @@
 	"oathauth-ui-no-module": "није укључена",
 	"oathauth-module-totp-label": "TOTP (једнократни токен)",
 	"oathauth-ui-manage": "Управљај",
-	"oathmanage": "Управљање двофакторском потврдом идентитета",
+	"oathmanage": "Управљање двофакторском аутентификацијом",
 	"oathauth-ui-not-enabled-modules": "Пребацивање на алтернативну методу",
 	"oathauth-ui-enabled-module": "Укључене методе потврде идентитета",
 	"oathauth-enable-generic": "Укључи",
