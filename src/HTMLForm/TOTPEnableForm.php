@@ -13,6 +13,9 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Status\Status;
+use OOUI\FieldLayout;
+use OOUI\HtmlSnippet;
+use OOUI\Widget;
 
 class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	/**
@@ -70,7 +73,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->margin( 0 )
 			->build();
 
-		$now = wfTimestampNow();
 		$recoveryCodes = $this->getScratchTokensForDisplay( $key );
 		$this->getOutput()->addJsConfigVars( 'oathauth-recoverycodes', $this->createTextList( $recoveryCodes ) );
 
@@ -98,33 +100,19 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			],
 			'manual' => [
 				'type' => 'info',
-				'label-message' => 'oathauth-step2alt',
-				'default' =>
-					'<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br/>'
-					. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd><br/>'
-					. '<strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br/>'
-					. htmlspecialchars( $label ) . '<br/><br/>',
+				'default' => $this->generateAltStep2Content( $key, $label ),
 				'raw' => true,
+				// We need to use a "rawrow" to prevent being wrapped by a label element.
+				'rawrow' => true,
 				'section' => 'step2',
 			],
 			'scratchtokens' => [
 				'type' => 'info',
 				'default' =>
-					'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><br/>' .
-					$this->msg( 'oathauth-recoverycodes' )->escaped() . '<br/><br/>' .
-					$this->msg( 'rawmessage' )->rawParams(
-						$this->msg(
-							'oathauth-recoverytokens-createdat',
-							$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
-						)->parse()
-						. $this->msg( 'word-separator' )->escaped()
-						. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
-					) . '<br/>' .
-					$this->createResourceList( $recoveryCodes ) . '<br/>' .
-					'<strong>' . $this->msg( 'oathauth-recoverycodes-neveragain' )->escaped() . '</strong><br/>' .
-					$this->createCopyButton() .
-					$this->createDownloadLink( $recoveryCodes ),
+					$this->generateRecoveryCodesContent( $recoveryCodes ),
 				'raw' => true,
+				// We need to use a "rawrow" to prevent being wrapped by a label element.
+				'rawrow' => true,
 				'section' => 'step3',
 			],
 			'token' => [
@@ -138,6 +126,39 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 				'spellcheck' => false,
 			]
 		];
+	}
+
+	private function generateAltStep2Content( TOTPKey $key, string $label ): FieldLayout {
+		$snippet = new HtmlSnippet( '<p>'
+			. $this->msg( 'oathauth-step2alt' )->escaped() . '</p>'
+			. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br>'
+			. '<kbd>' . $this->getSecretForDisplay( $key ) . '</kbd></p>'
+			. '<p><strong>' . $this->msg( 'oathauth-account' )->escaped() . '</strong><br>'
+			. htmlspecialchars( $label ) . '</p>' );
+		// rawrow only accepts fieldlayouts
+		return new FieldLayout( new Widget( [ 'content' => $snippet ] ) );
+	}
+
+	private function generateRecoveryCodesContent( array $recoveryCodes ): FieldLayout {
+		$now = wfTimestampNow();
+		$snippet = new HtmlSnippet(
+			'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><p>' .
+			$this->msg( 'oathauth-recoverycodes' )->escaped() . '</p><p>' .
+			$this->msg( 'rawmessage' )->rawParams(
+				$this->msg(
+					'oathauth-recoverytokens-createdat',
+					$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
+				)->parse()
+				. $this->msg( 'word-separator' )->escaped()
+				. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
+			) . '</p>' .
+			$this->createResourceList( $recoveryCodes ) .
+			'<p><strong>' . $this->msg( 'oathauth-recoverycodes-neveragain' )->escaped() . '</strong></p>' .
+			$this->createCopyButton() .
+			$this->createDownloadLink( $recoveryCodes )
+		);
+		// rawrow only accepts fieldlayouts
+		return new FieldLayout( new Widget( [ 'content' => $snippet ] ) );
 	}
 
 	/**
