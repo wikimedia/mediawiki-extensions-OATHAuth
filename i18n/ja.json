@@ -64,7 +64,7 @@
 	"oathauth-auth-token-label": "二要素認証トークンまたは回復用コード",
 	"oathauth-auth-token-help": "二要素認証の2番目の要素として使用されるワンタイムパスワード。",
 	"oathauth-auth-token-help-ui": "お持ちの認証デバイスに表示されたコードか回復用コードを入力してください",
-	"oathauth-auth-ui": "あなたの認証アプリケーションに表示された二要素認証コードを入力してください。（アプリケーションの例：[https://authy.com/ Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator]、[https://1password.com/ 1Password]）",
+	"oathauth-auth-ui": "あなたの認証アプリケーションに表示された二要素認証コードを入力してください。（アプリケーションの例：[https://www.authy.com Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator]、[https://1password.com/ 1Password]）",
 	"oathauth-throttled": "検証の試行回数が多すぎます。$1お待ちください。",
 	"oathauth-login-failed": "TOTP認証に失敗しました。",
 	"oathauth-describe-provider": "二要素認証 (OATH)。",
