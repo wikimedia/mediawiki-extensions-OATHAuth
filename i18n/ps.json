@@ -4,5 +4,7 @@
 			"شاه زمان پټان"
 		]
 	},
-	"webauthn-error-cannot-remove-key": "کونجي نشي لرې کېدای."
+	"webauthn-module-label": "وېب تاييد (WebAuthn)",
+	"webauthn-error-cannot-remove-key": "کونجي نشي لرې کېدای.",
+	"webauthn-module-description": "WebAuthn (وېب تاييد) يو وېب معيار دی چې د نړۍ‌واله وېب کنسورشيم (W3C) له خوا خپور شوی. WebAuthn د فيډو يووالي لاندې د FIDO2 پروژې يو ارزښتمنه برخه ده. د دې پروژې موخه د د ټوليزو پټنومونو په کارولو سره د وېب پر بنسټ غوښتنليکونو او چوپړتیاوو ته د کارن تاييدونې يو کره مخبڼه رامنځته کول دي.[https://en.wikipedia.org/wiki/WebAuthn نور ولولئ]"
 }
