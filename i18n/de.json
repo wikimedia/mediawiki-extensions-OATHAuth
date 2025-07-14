@@ -12,7 +12,8 @@
 			"Umherirrender",
 			"Wnme",
 			"Brettchenweber",
-			"Caro"
+			"Caro",
+			"IWL04"
 		]
 	},
 	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
@@ -43,7 +44,7 @@
 	"right-oathauth-disable-for-user": "Zwei-Faktor-Authentifizierung für einen Benutzer deaktivieren",
 	"action-oathauth-disable-for-user": "die Zwei-Faktor-Authentifizierung für einen Benutzer zu deaktivieren",
 	"right-oathauth-verify-user": "Überprüfen, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
-	"action-oathauth-verify-user": "überprüfen, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
+	"action-oathauth-verify-user": "zu überprüfen, ob ein Benutzer die Zwei-Faktor-Authentifizierung aktiviert hat",
 	"right-oathauth-view-log": "Auf das Logbuch der Änderungen zur Zwei-Faktor-Authentifizierung zugreifen",
 	"action-oathauth-view-log": "auf das Logbuch der Änderungen zur Zwei-Faktor-Authentifizierung zuzugreifen",
 	"oathauth-disable-intro": "Mit großer Macht kommt auch große Verantwortung",
