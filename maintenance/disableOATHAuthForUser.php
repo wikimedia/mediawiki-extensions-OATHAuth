@@ -5,12 +5,14 @@ use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
 
+// @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class DisableOATHAuthForUser extends Maintenance {
 	public function __construct() {
@@ -46,5 +48,7 @@ class DisableOATHAuthForUser extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = DisableOATHAuthForUser::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd
