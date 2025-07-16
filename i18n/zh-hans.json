@@ -78,7 +78,7 @@
 	"oathauth-auth-token-label": "双重身份验证令牌或恢复代码",
 	"oathauth-auth-token-help": "作为双重身份验证中第二个因素的一次性密码。",
 	"oathauth-auth-token-help-ui": "输入您的身份验证设备提供的代码，或者输入恢复代码",
-	"oathauth-auth-ui": "请输入由您的双重身份验证应用（如[https://authy.com/ Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en/account/authenticator/ Microsoft Authenticator]或[https://1password.com/ 1Password]）提供的代码。",
+	"oathauth-auth-ui": "请输入由您的双重身份验证应用（如[https://www.authy.com Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator]或[https://1password.com/ 1Password]）提供的代码。",
 	"oathauth-throttled": "已尝试太多次验证！请稍等$1。",
 	"oathauth-login-failed": "验证失败。",
 	"oathauth-describe-provider": "双重身份验证（OATH）。",
