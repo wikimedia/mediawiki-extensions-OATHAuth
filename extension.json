@@ -136,6 +136,10 @@
 		"WebAuthnNewCredsDisabled": {
 			"description": "If true, new credentials cannot be added, see T354701",
 			"value": false
+		},
+		"WebAuthnLimitPasskeysToRoaming": {
+			"description": "Temporary option to limit passkeys to roaming until better passkey support is added",
+			"value": false
 		}
 	},
 	"APIModules": {
