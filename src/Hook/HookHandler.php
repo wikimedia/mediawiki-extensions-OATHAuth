@@ -207,6 +207,18 @@ class HookHandler implements
 		if ( $disabledGroups ) {
 			$groups = array_diff( $groups, $disabledGroups );
 		}
+
+		// Enable 2FA for users in gradual rollout if MFARollout is enabled
+		// Exclude temp users and users without email addresses; check this first
+		// so that we don't try to look up central user IDs for non-named users.
+		if ( $user->isNamed() && $user->getEmail() ) {
+			$oathUser = $this->userRepo->findByUser( $user );
+			$centralID = $oathUser->getCentralId();
+			$MFARollout = $this->config->get( 'OATHRolloutPercent' );
+			if ( $centralID % 100 < $MFARollout ) {
+				$groups[] = "oathauth-twofactorauth";
+			}
+		}
 	}
 
 	/**

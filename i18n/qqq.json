@@ -131,5 +131,7 @@
 	"oathauth-qrcode-alt": "Accessibility label for the QR code image shown to users when enabling the TOTP on the [[Special:OATHManage]] page.",
 	"oathauth-hint": "Reminder that users can use recovery tokens if they don't have access to their device or application",
 	"oathauth-must-be-central": "Used as an error message when an account does not have a central ID available.",
-	"oathauth-error-multiple-modules": "Error message shown when the user tries to set up a second type of 2FA module."
+	"oathauth-error-multiple-modules": "Error message shown when the user tries to set up a second type of 2FA module.",
+	"group-oathauth-twofactorauth": "{{doc-group|oathauth-twofactorauth}}",
+	"group-oathauth-twofactorauth-member": "{{doc-group|oathauth-twofactorauth|member}}"
 }

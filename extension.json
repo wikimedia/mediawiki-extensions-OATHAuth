@@ -134,6 +134,10 @@
 		"OATHRequiredForGroups": {
 			"value": [],
 			"description": "List of user groups that must use two-factor authentication."
+		},
+		"OATHRolloutPercent": {
+			"value": 0,
+			"description": "Percentage of users to add to 2FA rollout"
 		}
 	},
 	"ResourceModules": {
@@ -205,6 +209,9 @@
 			"oathauth-disable-for-user": true,
 			"oathauth-verify-user": true,
 			"oathauth-view-log": true
+		},
+		"oathauth-twofactorauth": {
+			"oathauth-enable": true
 		}
 	},
 	"GrantPermissions": {
