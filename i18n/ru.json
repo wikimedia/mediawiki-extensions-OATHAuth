@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Этот браузер не поддерживает веб-аутентификацию или недоступен для этого сайта",
 	"webauthn-error-auth-generic": "Процесс аутентификации был прерван. Пожалуйста, начните процесс аутентификации снова",
 	"webauthn-error-reg-generic": "Не удалось подтвердить ваш ключ. Пожалуйста, начните процесс регистрации снова",
-	"webauthn-key-type-missmatch": "У пользователя зарегистрированы ключи нескольких типов",
 	"oathauth-webauthn-registered-keys-section-name": "Зарегистрированные ключи",
 	"webuathn-ui-remove-key": "Удалить",
 	"webauthn-error-module-not-enabled": "Модуль «$1» не включён для {{GENDER:$2|участника|участницы}} «$2».",

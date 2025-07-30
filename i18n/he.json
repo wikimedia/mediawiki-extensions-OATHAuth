@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "הדפדפן הזה אינו תומך ב־WebAuthentication או שזה לא זמין עבור האתר הזה.",
 	"webauthn-error-auth-generic": "תהליך האימות נקטע. נא להתחיל את תהליך האימות שוב.",
 	"webauthn-error-reg-generic": "לא היה אפשר לאמת את המפתח שלך. נא להתחיל את תהליך הרישום שוב.",
-	"webauthn-key-type-missmatch": "למשתמש יש מפתחות רשומים מכמה סוגים.",
 	"oathauth-webauthn-registered-keys-section-name": "מפתחות רשומים",
 	"webuathn-ui-remove-key": "הסרה",
 	"webauthn-error-module-not-enabled": "המודול \"$1\" לא מופעל עבור {{GENDER:$2|משתמש \"$2\"}}.",

@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Denna webbläsare stödjer inte WebAuthentication eller så är det inte tillgängligt för denna webbplats.",
 	"webauthn-error-auth-generic": "Autentiseringsprocessen avbröts. Vänligen starta autentiseringsprocessen på nytt.",
 	"webauthn-error-reg-generic": "Kunde inte verifiera din nyckel. Vänligen starta registreringsprocessen igen.",
-	"webauthn-key-type-missmatch": "Användaren har nycklar av flera olika typer registrerade",
 	"oathauth-webauthn-registered-keys-section-name": "Registrerade nycklar",
 	"webuathn-ui-remove-key": "Ta bort",
 	"webauthn-error-module-not-enabled": "Modul \"$1\" är inte påslagen för {{GENDER:$2|användare \"$2\"}}",

@@ -19,7 +19,6 @@
 	"webauthn-error-browser-unsupported-console": "Ce navigateur ne prend pas en charge WebAuthentication ou n’est pas disponible pour ce site web.",
 	"webauthn-error-auth-generic": "Le processus d’authentification a été interrompu. Veuillez redémarrer le processus d’authentification.",
 	"webauthn-error-reg-generic": "Impossible de vérifier votre clef. Veuillez redémarrer le processus d’inscription.",
-	"webauthn-key-type-missmatch": "L’utilisateur a des clefs de plusieurs types enregistrés",
 	"oathauth-webauthn-registered-keys-section-name": "Clefs enregistrées",
 	"webuathn-ui-remove-key": "Retirer",
 	"webauthn-error-module-not-enabled": "Le module « $1 » n’est pas activé pour l’utilisat{{GENDER:$2|eur|rice}} «  $2  »",

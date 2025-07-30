@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "Este navegador non admite WebAuthentication ou non está dispoñible para este sitio web.",
 	"webauthn-error-auth-generic": "Interrompeuse o proceso de autenticación. Inicia o proceso de autenticación de novo.",
 	"webauthn-error-reg-generic": "Non se puido verificar a túa chave. Inicia o proceso de rexistro de novo.",
-	"webauthn-key-type-missmatch": "O usuario ten rexistradas chaves de varios tipos.",
 	"oathauth-webauthn-registered-keys-section-name": "Chaves rexistradas",
 	"webuathn-ui-remove-key": "Eliminar",
 	"webauthn-error-module-not-enabled": "O módulo \"$1\" non está habilitado para {{GENDER:$2|o usuario|a usuaria}} \"$2\".",

@@ -15,7 +15,6 @@
 	"webauthn-error-browser-unsupported-console": "لا يدعم هذا المتصفح WebAuthentication أو أنه غير متوفر لهذا الموقع.",
 	"webauthn-error-auth-generic": "انقطعت عملية المصادقة. يُرجى إعادة بدء العملية.",
 	"webauthn-error-reg-generic": "تعذر التحقق من مفتاحك. يُرجى بدء عملية التسجيل مجددًا.",
-	"webauthn-key-type-missmatch": "المستخدم لديه مفاتيح من أنواع متعددة مسجلة",
 	"oathauth-webauthn-registered-keys-section-name": "مفاتيح مسجلة",
 	"webuathn-ui-remove-key": "إزالة",
 	"webauthn-error-module-not-enabled": "الوحدة \"$1\" غير فعالة {{GENDER:$2|للمستخدم \"$2\"}}.",

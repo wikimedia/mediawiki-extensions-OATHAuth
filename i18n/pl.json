@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "Ta przeglądarka nie wspiera protokołu WebAuthentication lub jest on niedostępny na tej stronie",
 	"webauthn-error-auth-generic": "Proces autoryzacji został przerwany. Prosimy rozpocząć proces ponownie",
 	"webauthn-error-reg-generic": "Nie udało się zweryfikować twojego klucza. Prosimy rozpocząć proces ponownie",
-	"webauthn-key-type-missmatch": "Użytkownik zarejestrował klucze wielu typów",
 	"oathauth-webauthn-registered-keys-section-name": "Zarejestrowane klucze",
 	"webuathn-ui-remove-key": "Usuń",
 	"webauthn-error-module-not-enabled": "Moduł „$1” nie jest włączony dla {{GENDER:$2|użytkownika|użytkowniczki}} „$2”",

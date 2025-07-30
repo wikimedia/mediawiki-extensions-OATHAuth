@@ -12,7 +12,6 @@
 	"webauthn-error-browser-unsupported-console": "ХӀокху браузерс ловш йац веб-аутентификаци йа иза кху сайт тӀехь болх беш йац",
 	"webauthn-error-auth-generic": "Аутентификацин процесс йукъахйаьккхина. Дехар до, аутентификацин процесс йухайолайе",
 	"webauthn-error-reg-generic": "Хьан догӀа бакъдан ца делира. Дехар до, йуха йолайе регистрацин процесс",
-	"webauthn-key-type-missmatch": "Декъашхочун дӀайаздина ду массийта догӀанийн тайпанаш",
 	"oathauth-webauthn-registered-keys-section-name": "ДӀайаздина догӀанаш",
 	"webuathn-ui-remove-key": "ДӀайаккха",
 	"webauthn-error-module-not-enabled": "{{GENDER:$2|\"$2\" декъашхочун}} \"$1\" модуль латина йац",

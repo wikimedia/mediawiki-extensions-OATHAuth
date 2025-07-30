@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Aquest navegador no és compatible amb WebAuthentication o no és disponible per a aquest lloc web",
 	"webauthn-error-auth-generic": "S'ha interromput el procés d'autenticació. Recomenceu el procés d'autenticació",
 	"webauthn-error-reg-generic": "No s'ha pogut verificar la teva clau. Recomença el procés d'inscripció",
-	"webauthn-key-type-missmatch": "L'usuari té claus de múltiples tipus inscrites",
 	"oathauth-webauthn-registered-keys-section-name": "Claus inscrites",
 	"webuathn-ui-remove-key": "Suprimeix",
 	"webauthn-error-module-not-enabled": "El mòdul \"$1\" no és habilitat per a {{GENDER:$2|user \"$2\"}}",

@@ -12,7 +12,6 @@
 	"webauthn-error-browser-unsupported-console": "此瀏覽器不支援 WebAuthentication 或是不適用於此網站",
 	"webauthn-error-auth-generic": "驗證程序被中斷，請重新開始驗證程序",
 	"webauthn-error-reg-generic": "無法核對您的密鑰，請重新開始註冊程序",
-	"webauthn-key-type-missmatch": "使用者註冊了多個類型鍵",
 	"oathauth-webauthn-registered-keys-section-name": "註冊密鑰",
 	"webuathn-ui-remove-key": "移除",
 	"webauthn-error-module-not-enabled": "模組「$1」未為{{GENDER:$2|使用者「$2」}}啟動",

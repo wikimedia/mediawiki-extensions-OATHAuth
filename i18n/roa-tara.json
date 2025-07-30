@@ -12,7 +12,6 @@
 	"webauthn-error-browser-unsupported-console": "Stu browser non ge supporte WebAuthentication o non g'è disponibbele pe stu site web",
 	"webauthn-error-auth-generic": "'U processe de autendicazione ha state inderrotte. Pe piacere accuminze 'u processe arrete",
 	"webauthn-error-reg-generic": "Non ge pozze verificà 'a chiava toje. Pe piacere accuminze 'u processe de reggistrazione arrete",
-	"webauthn-key-type-missmatch": "L'utende ave chiave de diverse tipe reggistrate",
 	"oathauth-webauthn-registered-keys-section-name": "Chiave reggistrate",
 	"webuathn-ui-remove-key": "Live",
 	"webauthn-error-module-not-enabled": "'U module \"$1\" non g'è abbilitate pe {{GENDER:$2|l'utende \"$2\"}}",

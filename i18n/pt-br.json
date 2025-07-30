@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Este navegador não suporta WebAuthentication ou não está disponível para este site",
 	"webauthn-error-auth-generic": "O processo de autenticação foi interrompido. Por favor, inicie o processo de autenticação novamente",
 	"webauthn-error-reg-generic": "Não foi possível verificar sua chave. Por favor, inicie o processo de registro novamente",
-	"webauthn-key-type-missmatch": "O usuário possui chaves de vários tipos registradas",
 	"oathauth-webauthn-registered-keys-section-name": "Chaves registradas",
 	"webuathn-ui-remove-key": "Remover",
 	"webauthn-error-module-not-enabled": "Módulo \"$1\" não está ativado para {{GENDER:$2|o usuário|a usuária}} \"$2\"",

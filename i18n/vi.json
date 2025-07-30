@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "Trình duyệt này không hỗ trợ Xác thực Web hoặc trang web này không hỗ trợ",
 	"webauthn-error-auth-generic": "Quá trình xác thực bị gián đoạn. Vui lòng bắt đầu lại quá trình xác thực",
 	"webauthn-error-reg-generic": "Không thể xác thực chìa khóa của bạn. Vui lòng bắt đầu lại quá trình đăng ký",
-	"webauthn-key-type-missmatch": "Người dùng đã đăng ký nhiều loại chìa khóa",
 	"oathauth-webauthn-registered-keys-section-name": "Chìa khóa đã đăng ký",
 	"webuathn-ui-remove-key": "Xóa",
 	"webauthn-error-module-not-enabled": "Mô đun “$1” chưa được bật cho thành viên “$2”",

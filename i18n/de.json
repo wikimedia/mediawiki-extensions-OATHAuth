@@ -15,7 +15,6 @@
 	"webauthn-error-browser-unsupported-console": "Dieser Browser unterstützt WebAuthentication nicht oder ist für diese Website nicht verfügbar.",
 	"webauthn-error-auth-generic": "Der Authentifizierungsprozess wurde unterbrochen. Bitte starte den Authentifizierungsprozess erneut.",
 	"webauthn-error-reg-generic": "Der Schlüssel konnte nicht überprüft werden. Bitte starte den Registrierungsprozess erneut.",
-	"webauthn-key-type-missmatch": "Der Benutzer hat mehrere Schlüsseltypen registriert.",
 	"oathauth-webauthn-registered-keys-section-name": "Registrierte Schlüssel",
 	"webuathn-ui-remove-key": "Entfernen",
 	"webauthn-error-module-not-enabled": "Das Modul „$1“ ist für {{GENDER:$2|Benutzer „$2“|Benutzerin „$2“}} nicht aktiviert.",

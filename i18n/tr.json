@@ -14,7 +14,6 @@
 	"webauthn-error-browser-unsupported-console": "Bu tarayıcı WebAuthentication'ı desteklemiyor veya bu web sitesi için mevcut değil",
 	"webauthn-error-auth-generic": "Kimlik doğrulama işlemi yarıda kesildi. Lütfen kimlik doğrulama işlemini tekrar başlatın",
 	"webauthn-error-reg-generic": "Anahtarınız doğrulanamadı. Lütfen kayıt işlemini tekrar başlatın",
-	"webauthn-key-type-missmatch": "Kullanıcının kayıtlı birden çok türde anahtarı var",
 	"oathauth-webauthn-registered-keys-section-name": "Kayıtlı anahtarlar",
 	"webuathn-ui-remove-key": "Kaldır",
 	"webauthn-error-module-not-enabled": "{{GENDER:$2|Kullanıcı \"$ \"}} için \"$1\" modülü etkin değil",

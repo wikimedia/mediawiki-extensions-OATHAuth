@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Iste navigator non supporta WebAuthentication o illo non es disponibile pro iste sito web.",
 	"webauthn-error-auth-generic": "Le processo de authentication ha essite interrumpite. Per favor recomencia le processo de authentication.",
 	"webauthn-error-reg-generic": "Non poteva verificar tu clave. Per favor recomencia le processo de authentication.",
-	"webauthn-key-type-missmatch": "Le usator ha claves de plure typos registrate.",
 	"oathauth-webauthn-registered-keys-section-name": "Claves registrate",
 	"webuathn-ui-remove-key": "Remover",
 	"webauthn-error-module-not-enabled": "Le modulo “$1” non es activate pro le usat{{GENDER:$2|or|rice}} “$2”.",

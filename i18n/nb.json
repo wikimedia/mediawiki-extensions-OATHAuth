@@ -12,7 +12,6 @@
 	"webauthn-error-browser-unsupported-console": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet",
 	"webauthn-error-auth-generic": "Autentiseringsprosessen ble avbrutt. Begynn på nytt",
 	"webauthn-error-reg-generic": "Kunne ikke bekrefte nøkkelen din. Begynn prosessen på nytt",
-	"webauthn-key-type-missmatch": "Brukeren har flere typer nøkler registrert",
 	"oathauth-webauthn-registered-keys-section-name": "Registrerte nøkler",
 	"webuathn-ui-remove-key": "Fjern",
 	"webauthn-error-module-not-enabled": "Modulen «$1» er ikke slått på for {{GENDER:$2|brukeren}} «$2»",

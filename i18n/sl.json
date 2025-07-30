@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Ta brskalnik ne podpira WebAuthentication ali ta ni na voljo za to spletno mesto.",
 	"webauthn-error-auth-generic": "Postopek avtentikacije je bil prekinjen. Začnite postopek avtentikacije znova.",
 	"webauthn-error-reg-generic": "Vašega ključa ni bilo mogoče preveriti. Začnite postopek registracije znova.",
-	"webauthn-key-type-missmatch": "Uporabnik ima registrirane ključe več vrst",
 	"oathauth-webauthn-registered-keys-section-name": "Registrirani ključi",
 	"webuathn-ui-remove-key": "Odstrani",
 	"webauthn-error-module-not-enabled": "Modul »$1« za {{GENDER:$2|uporabnika »$2«|uporabnico »$2«|uporabnika_co »$2«}} ni vklopljen",

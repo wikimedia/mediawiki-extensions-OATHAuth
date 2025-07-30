@@ -13,7 +13,6 @@
 	"webauthn-error-browser-unsupported-console": "Овој прелистувач не поддржува WebAuthentication или истиот не е достапен за ова мрежно место.",
 	"webauthn-error-auth-generic": "Заверката беше прекината. Почнете ја одново.",
 	"webauthn-error-reg-generic": "Не можев да ви го заверам клучот. Почнете го пријавувањето одново.",
-	"webauthn-key-type-missmatch": "Корисникот има пријавено клучеви од повеќе видови.",
 	"oathauth-webauthn-registered-keys-section-name": "Пријавени клучеви",
 	"webuathn-ui-remove-key": "Отстрани",
 	"webauthn-error-module-not-enabled": "Модулот „$1“ не е овозможен за {{GENDER:$2|корисникот „$2“}}.",

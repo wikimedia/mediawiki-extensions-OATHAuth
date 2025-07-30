@@ -16,7 +16,6 @@
 	"webauthn-error-browser-unsupported-console": "Deze browser ondersteunt geen WebAuthenticatie of is niet beschikbaar voor deze website.",
 	"webauthn-error-auth-generic": "Het authenticatieproces is onderbroken. Start het authenticatieproces opnieuw.",
 	"webauthn-error-reg-generic": "Kan uw sleutel niet verifiëren. Start het registratieproces opnieuw.",
-	"webauthn-key-type-missmatch": "Gebruiker heeft sleutels van meerdere typen geregistreerd.",
 	"oathauth-webauthn-registered-keys-section-name": "Geregistreerde sleutels",
 	"webuathn-ui-remove-key": "Verwijderen",
 	"webauthn-error-module-not-enabled": "Module \"$1\" is niet ingeschakeld voor {{GENDER:$2|gebruiker \"$2\"}}.",

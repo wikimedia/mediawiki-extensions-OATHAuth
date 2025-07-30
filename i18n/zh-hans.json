@@ -16,7 +16,6 @@
 	"webauthn-error-browser-unsupported-console": "该浏览器不支持WebAuthentication或不适用于此网站。",
 	"webauthn-error-auth-generic": "身份验证过程被中断。请重新开始身份验证过程。",
 	"webauthn-error-reg-generic": "无法验证您的密钥。请重新开始注册过程。",
-	"webauthn-key-type-missmatch": "用户已注册不同类型的密钥。",
 	"oathauth-webauthn-registered-keys-section-name": "已注册密钥",
 	"webuathn-ui-remove-key": "移除",
 	"webauthn-error-module-not-enabled": "未为{{GENDER:$2|用户“$2”}}启用模块“$1”。",
