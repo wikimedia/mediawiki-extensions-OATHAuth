@@ -119,5 +119,6 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Groep|Groepen}} uitschakelen:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Uw lidmaatschap}} in {{PLURAL:$1|deze groep|deze groepen}} is uitgeschakeld totdat u [[Special:Manage Two-factor authentication|tweetrapsauthenticatie]] heeft ingeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
-	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)"
+	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)",
+	"oathauth-must-be-central": "{{GENDER:$1|Uw account}} moet gekoppeld zijn aan het centrale authenticatiesysteem om tweetrapsauthenticatie te kunnen gebruiken."
 }
