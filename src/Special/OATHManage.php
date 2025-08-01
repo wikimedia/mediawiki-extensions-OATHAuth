@@ -112,9 +112,9 @@ class OATHManage extends SpecialPage {
 			if ( $this->hasAlternativeModules() ) {
 				$this->addAlternativesHTML();
 			}
-			return;
+		} else {
+			$this->nothingEnabled();
 		}
-		$this->nothingEnabled();
 	}
 
 	/**
@@ -161,17 +161,10 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function addEnabledHTML(): void {
-		$this->addHeading( $this->msg( 'oathauth-ui-enabled-module' ) );
-
-		$modules = array_unique(
-			array_map(
-				static fn ( IAuthKey $key ) => $key->getModule(),
-				$this->authUser->getKeys(),
-			)
-		);
-
-		foreach ( $modules as $module ) {
-			$this->addModuleHTML( $this->moduleRegistry->getModuleByKey( $module ) );
+		$enabledModules = $this->getEnabledModules();
+		$this->addHeading( $this->msg( 'oathauth-ui-enabled-module', count( $enabledModules ) ) );
+		foreach ( $enabledModules as $module ) {
+			$this->addModuleHTML( $module );
 		}
 	}
 
@@ -186,10 +179,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function addInactiveHTML(): void {
-		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
-			if ( $this->isModuleEnabled( $module ) || !$this->isModuleAvailable( $module ) ) {
-				continue;
-			}
+		foreach ( $this->getAvailableModules() as $module ) {
 			$this->addModuleHTML( $module );
 		}
 	}
@@ -363,13 +353,40 @@ class OATHManage extends SpecialPage {
 		return in_array( $this->action, [ static::ACTION_ENABLE, static::ACTION_DISABLE ] );
 	}
 
-	private function hasAlternativeModules(): bool {
+	/**
+	 * Returns modules currently enabled by the user.
+	 * @return IModule[]
+	 */
+	private function getEnabledModules(): array {
+		$modules = [];
+		$moduleNames = array_unique(
+			array_map(
+				static fn ( IAuthKey $key ) => $key->getModule(),
+				$this->authUser->getKeys(),
+			)
+		);
+		foreach ( $moduleNames as $moduleName ) {
+			$modules[] = $this->moduleRegistry->getModuleByKey( $moduleName );
+		}
+		return $modules;
+	}
+
+	/**
+	 * Returns modules which are not enabled by the user, but the user would be able to enable them.
+	 * @return IModule[]
+	 */
+	private function getAvailableModules(): array {
+		$modules = [];
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
 			if ( !$this->isModuleEnabled( $module ) && $this->isModuleAvailable( $module ) ) {
-				return true;
+				$modules[] = $module;
 			}
 		}
-		return false;
+		return $modules;
+	}
+
+	private function hasAlternativeModules(): bool {
+		return (bool)$this->getAvailableModules();
 	}
 
 	private function shouldShowDisableWarning(): bool {
