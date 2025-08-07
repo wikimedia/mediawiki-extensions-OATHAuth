@@ -417,7 +417,7 @@ class OATHManage extends SpecialPage {
 			$this->msg( 'oathauth-switch-method-warning-header' ) :
 			$this->msg( 'oathauth-disable-method-warning-header' );
 
-		$this->getOutput()->setPageTitleMsg( $headerMessage );
+		$this->getOutput()->setPageTitle( $headerMessage );
 		$this->getOutput()->addHTML( $panel->toString() );
 	}
 
