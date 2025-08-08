@@ -59,7 +59,7 @@
 	"oathauth-module-totp-label": "TOTP (token monouso)",
 	"oathauth-ui-manage": "Gestisci",
 	"oathmanage": "Gestisci autenticazione a due fattori",
-	"oathauth-ui-enabled-module": "Metodo di autenticazione attivo",
+	"oathauth-ui-enabled-module": "{{PLURAL:$1|Metodo di autenticazione attivo|Metodi di autenticazione attivi}}",
 	"oathauth-enable-generic": "Attiva",
 	"oathauth-disable-generic": "Disattiva",
 	"oathauth-disable-page-title": "Disattiva $1",
