@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"JeffreyKim"
+		]
+	},
+	"oathauth-ui-not-enabled-modules": "其他認證方法",
+	"oathauth-ui-enabled-module": "啟用咗認證{{PLURAL:$1|方法}}"
+}
