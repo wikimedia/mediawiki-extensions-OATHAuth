@@ -50,6 +50,7 @@
 	"oathauth-auth-token-label": "دوه‌پړاويز ټوکن يا بياترلاسنې کوډ",
 	"oathauth-auth-token-help": "يوځلي پټنوم د دوه‌پړاويز تاييد دوهم پړاو په توگه کارېږي.",
 	"oathauth-auth-token-help-ui": "له خپل تاييد وسيلې يا بياترلاسنې کوډ دننه کړئ",
+	"oathauth-auth-switch-module-keep": "(مه بدلوئ)",
 	"oathauth-throttled": "ډېرې زياتې تاييد هېڅ! مهرباني وکړئ $1 په تمه شئ.",
 	"oathauth-describe-provider": "دوه‌پړاويز تاييد (OATH)",
 	"grant-group-authentication": "د ځان او نورو لپاره تاييد چارې ترسره کول",
