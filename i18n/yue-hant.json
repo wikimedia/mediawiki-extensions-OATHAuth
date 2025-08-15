@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"JeffreyKim"
+		]
+	},
+	"webauthn-module-description": "WebAuthn處於實驗狀態。呢個方法而家冇任何關於遺失或者損壞嘅認證裝置嘅恢復選項。\n\n[https://en.wikipedia.org/wiki/WebAuthn 睇多啲有關WebAuthn嘅資訊]"
+}
