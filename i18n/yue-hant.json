@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"JeffreyKim",
+			"Yueman"
+		]
+	},
+	"oathauth-account": "戶口名：",
+	"oathauth-notifications-disable-help": "幫手",
+	"oathauth-notifications-enable-help": "幫手"
+}

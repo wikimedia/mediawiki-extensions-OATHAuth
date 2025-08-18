@@ -5,7 +5,8 @@
 			"NguoiDungKhongDinhDanh",
 			"NguyenHung",
 			"Vinhtantran",
-			"Tryvix1509"
+			"Tryvix1509",
+			"Nvdtn19"
 		]
 	},
 	"oathauth-desc": "Cho phép xác nhận dùng các mật khẩu một lần dựa trên mã xác thực thông điệp được băm (HMAC)",
@@ -49,6 +50,7 @@
 	"action-oathauth-enable": "xác thực dùng hai nhân tố",
 	"oathauth-auth-token-label": "Mã xác thực dùng hai nhân tố hoặc mã khôi phục",
 	"oathauth-auth-token-help": "Mật khẩu dùng một lần được sử dụng làm nhân tố thứ hai trong quá trình xác thực dùng hai nhân tố.",
+	"oathauth-auth-token-help-ui": "Nhập mã từ thiết bị xác thực của bạn hoặc mã khôi phục",
 	"oathauth-auth-ui": "Xin hãy nhập mã từ trình xác thực dùng hai nhân tố của bạn (ví dụ như Google Authenticator).",
 	"oathauth-throttled": "Đã cố xác nhận danh tính nhiều lần quá! Xin hãy chờ $1.",
 	"oathauth-login-failed": "Xác nhận thất bại.",
@@ -85,6 +87,7 @@
 	"oathauth-disable-method-warning-header": "Xác nhận tắt phương pháp xác thực",
 	"oathauth-disable-method-warning-button-label": "Xác nhận và tiếp tục",
 	"oathauth-disable-method-warning": "Nếu bạn tắt phương pháp xác thực dùng hai nhân tố $1, bạn sẽ không thể dùng phương pháp này khi đăng nhập nữa, và tất cả những dữ liệu liên quan đến phương pháp xác thực này sẽ bị xóa.",
+	"oathauth-disable-method-next-step": "Ở bước tiếp theo, bạn sẽ được yêu cầu xác minh danh tính bằng phương thức xác thực hai yếu tố hiện tại ($1) để có thể tắt phương thức này.",
 	"oathauth-switch-method-warning-header": "Xác nhận đổi sang phương pháp xác thực khác",
 	"oathauth-switch-method-warning": "Sau khi đổi sang phương pháp xác thực dùng hai nhân tố $2, phương pháp hiện tại ($1) sẽ bị tắt, và tất cả những dữ liệu liên quan đến phương pháp xác thực hiện tại sẽ bị xóa",
 	"oathauth-totp-disable-warning": "Bạn sẽ không thể sử dụng thiết bị xác thực đăng ký với tài khoản này nữa. Tất cả các mã khôi phục liên quan đến tài khoản sẽ được tắt.",
