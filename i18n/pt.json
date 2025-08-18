@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"ItsaMeSandy"
 		]
 	},
 	"webauthn-desc": "Fornece suporte de autenticação usando o protocolo WebAuthn",
@@ -27,7 +28,7 @@
 	"webauthn-error-get-reginfo-fail": "Não foi possível obter as informações de registo.",
 	"webauthn-ui-disable-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'' para confirmar a desativação de WebAuthentication",
 	"webauthn-error-max-keys-reached": "Pode ser registado um máximo de $1 {{PLURAL:$1|chave|chaves}}",
-	"webauthn-module-description": "O WebAuthn (Web Authentication, autenticação na internet) é um padrão da internet publicado pelo consórcio World Wide Web Consortium (W3C). O WebAuthn é um componente central do Projeto FIDO2, sob orientação da Aliança FIDO. O objetivo do projeto é padronizar uma interface para a autenticação de utilizadores em aplicações e serviços baseados na internet usando criptografia de chave pública. [https://en.wikipedia.org/wiki/WebAuthn Ler mais]",
+	"webauthn-module-description": "WebAuthn encontra-se num estado experimental. Actualmente não há opção de recuperação para dispositivos de autenticação perdidos ou danificados para este método.\n\n[https://em.wikipedia.org/wiki/WebAuthn Saiba mais sobre WebAuthn]",
 	"webauthn-ui-reload-page-label": "Recarregar a página",
 	"webauthn-authentication-info-label": "Dados de autenticação",
 	"webauthn-authentication-info-help": "Dados de autenticação passados ao cliente para obtenção de credenciais",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Peterxy12",
 			"Shizhao",
 			"Stang",
@@ -31,7 +32,7 @@
 	"webauthn-error-get-reginfo-fail": "无法检索注册信息。",
 	"webauthn-ui-disable-prompt": "请触摸您的验证设备或按照浏览器中的说明操作以确认禁用WebAuthentication",
 	"webauthn-error-max-keys-reached": "最多可以注册{{PLURAL:$1|$1个密钥}}。",
-	"webauthn-module-description": "WebAuthn（Web Authentication）是万维网联盟（W3C）发布的一个网络标准。WebAuthn是FIDO联盟领导下FIDO2项目的核心部件。该项目旨在使用公钥加密来标准化用户向基于网络的应用或服务验证身份时的界面。[https://zh.wikipedia.org/wiki/WebAuthn 了解更多]",
+	"webauthn-module-description": "WebAuthn处于实验阶段。此方法目前尚不支持恢复丢失或损坏的身份验证设备。\n\n[https://zh.wikipedia.org/wiki/WebAuthn 了解关于WebAuthn的更多信息]",
 	"webauthn-ui-reload-page-label": "重新加载页面",
 	"webauthn-authentication-info-label": "认证数据",
 	"webauthn-authentication-info-help": "身份验证数据传递给客户端以进行凭据检索",

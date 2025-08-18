@@ -30,7 +30,7 @@
 	"webauthn-error-get-reginfo-fail": "Non se puido recuperar a información de rexistro.",
 	"webauthn-ui-disable-prompt": "Toca o teu dispositivo de verificación ou sigue as instrucións do navegador para confirmar a desactivación de WebAuthentication.",
 	"webauthn-error-max-keys-reached": "Pódese rexistrar un máximo {{PLURAL:$1|dunha chave|de $1 chaves}}.",
-	"webauthn-module-description": "WebAuthn atópase nun estado experimental. Actualmente non hai ningunha opción de recuperación para dispositivos de autenticación perdidos ou danados para este método. \n\n[https://en.wikipedia.org/wiki/WebAuthn Máis información sobre WebAuthn]",
+	"webauthn-module-description": "WebAuthn atópase nun estado experimental. Actualmente non hai ningunha opción de recuperación para dispositivos de autenticación perdidos ou danados para este método.\n\n[https://en.wikipedia.org/wiki/WebAuthn Máis información sobre WebAuthn]",
 	"webauthn-ui-reload-page-label": "Recargar a páxina",
 	"webauthn-authentication-info-label": "Datos de autenticación",
 	"webauthn-authentication-info-help": "Os datos de autenticación pasaron ao cliente para a recuperación das credenciais",
