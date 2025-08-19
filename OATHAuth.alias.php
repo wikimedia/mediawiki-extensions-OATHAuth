@@ -11,8 +11,8 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
-	'OATHManage' => [ 'Manage_Two-factor_authentication', 'OATH_Manage', 'OATHManage',
-		'OATH', 'Two-factor_authentication', 'OATHAuth' ],
+	'OATHManage' => [ 'AccountSecurity', 'Manage_Two-factor_authentication', 'OATH_Manage',
+		'OATHManage', 'OATH', 'Two-factor_authentication', 'OATHAuth' ],
 	'VerifyOATHForUser' => [ 'VerifyOATHForUser' ],
 ];
 
@@ -113,7 +113,7 @@ $specialPageAliases['ur'] = [
 /** Chinese (中文) */
 $specialPageAliases['zh'] = [
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
-	'OATHManage' => [ 'Manage_Two-factor_authentication' ],
+	'OATHManage' => [ 'AccountSecurity', 'Manage_Two-factor_authentication' ],
 	'VerifyOATHForUser' => [ 'VerifyOATHForUser' ],
 ];
 
