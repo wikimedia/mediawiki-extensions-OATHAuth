@@ -24,6 +24,7 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
@@ -73,7 +74,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
 			$uid = $this->centralIdLookupFactory->getLookup()
-				->centralIdFromLocalUser( $user );
+				->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW );
 			$oathUser = new OATHUser( $user, $uid );
 			$this->loadKeysFromDatabase( $oathUser );
 
