@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
@@ -16,7 +17,9 @@ return [
 		);
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ): OATHUserRepository {
+		$options = new ServiceOptions( OATHUserRepository::CONSTRUCTOR_OPTIONS, $services->getMainConfig() );
 		return new OATHUserRepository(
+			$options,
 			$services->getDBLoadBalancerFactory(),
 			new HashBagOStuff( [
 				'maxKey' => 5

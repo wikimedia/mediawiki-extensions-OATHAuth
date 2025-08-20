@@ -138,6 +138,10 @@
 		"OATHRolloutPercent": {
 			"value": 0,
 			"description": "Percentage of users to add to 2FA rollout"
+		},
+		"OATHAllowMultipleModules": {
+			"value": false,
+			"description": "Temporary feature flag to allow users to have multiple 2FA modules active at the same time"
 		}
 	},
 	"ResourceModules": {

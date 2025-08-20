@@ -20,6 +20,7 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
@@ -33,6 +34,11 @@ use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {
+	public const CONSTRUCTOR_OPTIONS = [
+		'OATHAllowMultipleModules'
+	];
+
+	private ServiceOptions $options;
 	private IConnectionProvider $dbProvider;
 
 	private BagOStuff $cache;
@@ -44,12 +50,15 @@ class OATHUserRepository implements LoggerAwareInterface {
 	private LoggerInterface $logger;
 
 	public function __construct(
+		ServiceOptions $options,
 		IConnectionProvider $dbProvider,
 		BagOStuff $cache,
 		OATHAuthModuleRegistry $moduleRegistry,
 		CentralIdLookupFactory $centralIdLookupFactory,
 		LoggerInterface $logger
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		$this->options = $options;
 		$this->dbProvider = $dbProvider;
 		$this->cache = $cache;
 		$this->moduleRegistry = $moduleRegistry;
@@ -93,16 +102,18 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @return IAuthKey
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
-		$otherEnabledModule = null;
-		foreach ( $user->getKeys() as $key ) {
-			if ( $key->getModule() !== $module->getName() ) {
-				$otherEnabledModule = $this->moduleRegistry->getModuleByKey( $key->getModule() );
-				break;
+		if ( !$this->options->get( 'OATHAllowMultipleModules' ) ) {
+			$otherEnabledModule = null;
+			foreach ( $user->getKeys() as $key ) {
+				if ( $key->getModule() !== $module->getName() ) {
+					$otherEnabledModule = $this->moduleRegistry->getModuleByKey( $key->getModule() );
+					break;
+				}
 			}
-		}
-		if ( $otherEnabledModule ) {
-			throw new ErrorPageError( 'errorpagetitle', 'oathauth-error-multiple-modules',
-				[ $module->getDisplayName(), $otherEnabledModule->getDisplayName() ] );
+			if ( $otherEnabledModule ) {
+				throw new ErrorPageError( 'errorpagetitle', 'oathauth-error-multiple-modules',
+					[ $module->getDisplayName(), $otherEnabledModule->getDisplayName() ] );
+			}
 		}
 
 		$uid = $user->getCentralId();
