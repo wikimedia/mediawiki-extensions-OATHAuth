@@ -29,7 +29,7 @@
 	"webauthn-error-get-reginfo-fail": "Le information sur le inscription non poteva esser recuperate.",
 	"webauthn-ui-disable-prompt": "Per favor tocca tu apparato de verification o seque le instructiones del navigator pro confirmar le disactivation de WebAuthentication.",
 	"webauthn-error-max-keys-reached": "Un maximo de $1 clave{{PLURAL:$1||s}} pote esser registrate.",
-	"webauthn-module-description": "WebAuthn (Authentication Web) es un standard publicate per World Wide Web Consortium (W3C). WebAuthn es un componente central del projecto FIDO2 sub le direction del Allianita FIDO. Le objectivo del projecto es standardisar un interfacie pro authenticar usatores sur applicationes e servicios web usante le cryptographia de clave public. [https://en.wikipedia.org/wiki/WebAuthn Read more]",
+	"webauthn-module-description": "WebAuthn es in un stato experimental. Iste methodo non ha ancora alcun option de recuperation pro apparatos de authentication perdite o damnificate.\n\n[https://en.wikipedia.org/wiki/WebAuthn Lege plus sur WebAuthn].",
 	"webauthn-ui-reload-page-label": "Recargar pagina",
 	"webauthn-authentication-info-label": "Datos de authentication",
 	"webauthn-authentication-info-help": "Datos de authentication passate al cliente pro obtener credentiales",
