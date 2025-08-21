@@ -115,5 +115,7 @@
 	"oathauth-qrcode-alt": "Código QR escaneable que representa a clave secreta.",
 	"oathauth-hint": "Non tes acceso ao teu dispositivo ou á túa aplicación? Podes introducir neste campo un código de recuperación (presentados cando activaches a autenticación de dous factores).",
 	"oathauth-must-be-central": "{{GENDER:$1|A túa conta}} debe estar ligada ao sistema de autenticación central para usar a autenticación en dous pasos.",
-	"oathauth-error-multiple-modules": "Polo de agora non se admite o uso de múltiples métodos de autenticación de dous factores. Unicamente podes activar «$1» despois de desactivares «$2»."
+	"oathauth-error-multiple-modules": "Polo de agora non se admite o uso de múltiples métodos de autenticación de dous factores. Unicamente podes activar «$1» despois de desactivares «$2».",
+	"group-oathauth-twofactorauth": "Usuarios que poden usar a autenticación de dous factores",
+	"group-oathauth-twofactorauth-member": "Usuario que pode usar a autenticación de dous factores"
 }

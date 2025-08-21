@@ -112,5 +112,7 @@
 	"oathauth-qrcode-alt": "Codice QR scannabile que representa le clave secrete.",
 	"oathauth-hint": "Non ha accesso a tu apparato o application? Tu pote inserer in iste campo le codices de recuperation (presentate quando tu ha activate le authentication bifactorial).",
 	"oathauth-must-be-central": "{{GENDER:$1|Tu conto}} debe esser ligate al systema de authentication central pro usar le authentication bifactorial.",
-	"oathauth-error-multiple-modules": "Pro le momento, le uso de plure methodos de authentication bifactorial non es supportate. Tu pote solmente activar $1 post disactivar $2."
+	"oathauth-error-multiple-modules": "Pro le momento, le uso de plure methodos de authentication bifactorial non es supportate. Tu pote solmente activar $1 post disactivar $2.",
+	"group-oathauth-twofactorauth": "Usatores qui pote usar le authentication bifactorial",
+	"group-oathauth-twofactorauth-member": "Usator qui pote usar le authentication bifactorial"
 }

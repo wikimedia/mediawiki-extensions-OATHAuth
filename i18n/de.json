@@ -123,5 +123,7 @@
 	"oathauth-qrcode-alt": "Scanbarer QR-Code, der den geheimen Schlüssel darstellt.",
 	"oathauth-hint": "Du hast keinen Zugriff auf dein Gerät oder deine Anwendung? In diesem Feld kannst du Wiederherstellungscodes eingeben (die angezeigt werden, wenn du 2FA aktiviert hast).",
 	"oathauth-must-be-central": "{{GENDER:$1|Dein Konto}} muss mit dem zentralen Authentifizierungssystem verknüpft sein, um die Zwei-Faktor-Authentifizierung verwenden zu können.",
-	"oathauth-error-multiple-modules": "Derzeit wird die Verwendung mehrerer 2FA-Authentifizierungsmethoden nicht unterstützt. Du kannst $1 nur aktivieren, nachdem du $2 deaktiviert hast."
+	"oathauth-error-multiple-modules": "Derzeit wird die Verwendung mehrerer 2FA-Authentifizierungsmethoden nicht unterstützt. Du kannst $1 nur aktivieren, nachdem du $2 deaktiviert hast.",
+	"group-oathauth-twofactorauth": "Benutzer, die die Zwei-Faktor-Authentifizierung verwenden dürfen",
+	"group-oathauth-twofactorauth-member": "Benutzer, die die Zwei-Faktor-Authentifizierung verwenden dürfen"
 }
