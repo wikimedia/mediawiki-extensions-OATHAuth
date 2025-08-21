@@ -85,6 +85,13 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function getLoginSecurityLevel() {
+		return $this->getName();
+	}
+
+	/**
 	 * @param null|string $subPage
 	 */
 	public function execute( $subPage ) {
@@ -133,11 +140,6 @@ class OATHManage extends SpecialPage {
 		if ( !$this->authUser->isTwoFactorAuthEnabled() && !$canEnable ) {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
-		}
-
-		if ( $this->action === static::ACTION_ENABLE && !$this->getRequest()->wasPosted() ) {
-			// Trying to change the 2FA method (one is already enabled)
-			$this->checkLoginSecurityLevel( 'oathauth-enable' );
 		}
 	}
 
