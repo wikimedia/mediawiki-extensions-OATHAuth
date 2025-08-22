@@ -124,5 +124,7 @@
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
 	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)",
 	"oathauth-must-be-central": "{{GENDER:$1|Uw account}} moet gekoppeld zijn aan het centrale authenticatiesysteem om tweetrapsauthenticatie te kunnen gebruiken.",
-	"oathauth-error-multiple-modules": "Het gebruik van meerdere tweetrapsauthenticatie-methoden wordt momenteel niet ondersteund. U kunt $1 pas inschakelen nadat u $2 hebt uitgeschakeld."
+	"oathauth-error-multiple-modules": "Het gebruik van meerdere tweetrapsauthenticatie-methoden wordt momenteel niet ondersteund. U kunt $1 pas inschakelen nadat u $2 hebt uitgeschakeld.",
+	"group-oathauth-twofactorauth": "Gebruikers die tweetrapsauthenticatie mogen gebruiken",
+	"group-oathauth-twofactorauth-member": "Gebruiker die tweetrapsauthenticatie mag gebruiken"
 }
