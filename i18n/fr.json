@@ -132,5 +132,7 @@
 	"oathauth-qrcode-alt": "Code QR à scanner représentant la clé secrète.",
 	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ.",
 	"oathauth-must-be-central": "{{GENDER:$1|}}Votre compte doit être lié au système d’authentification central pour pouvoir utiliser l’authentification à deux facteurs.",
-	"oathauth-error-multiple-modules": "Pour l'instant, l'utilisation de plusieurs méthodes d'authentification 2FA n'est pas prise en charge. Vous ne pouvez activer $1 qu'après avoir désactivé $2 ."
+	"oathauth-error-multiple-modules": "Pour l'instant, l'utilisation de plusieurs méthodes d'authentification 2FA n'est pas prise en charge. Vous ne pouvez activer $1 qu'après avoir désactivé $2 .",
+	"group-oathauth-twofactorauth": "Utilisateurs pouvant utiliser l’authentification à deux facteurs",
+	"group-oathauth-twofactorauth-member": "Utilisateur pouvant utiliser l’authentification à deux facteurs"
 }
