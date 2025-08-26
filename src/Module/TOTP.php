@@ -6,7 +6,6 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
-use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPDisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
@@ -112,9 +111,6 @@ class TOTP implements IModule {
 		$canEnable = !$hasTOTPKey || $context->getConfig()->get( 'OATHAllowMultipleModules' );
 		if ( $action === OATHManage::ACTION_ENABLE && $canEnable ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context );
-		}
-		if ( $action === OATHManage::ACTION_DISABLE && $hasTOTPKey ) {
-			return new TOTPDisableForm( $user, $repo, $this, $context );
 		}
 		return null;
 	}

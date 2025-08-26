@@ -22,6 +22,7 @@ namespace MediaWiki\Extension\OATHAuth\Special;
 use ErrorPageError;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
@@ -93,10 +94,6 @@ class OATHManage extends SpecialPage {
 		if ( $this->requestedModule instanceof IModule ) {
 			// Performing an action on a requested module
 			$this->clearPage();
-			if ( $this->shouldShowDisableWarning() ) {
-				$this->showDisableWarning( $this->requestedModule );
-				return;
-			}
 			$this->addModuleHTML( $this->requestedModule );
 			return;
 		}
@@ -214,9 +211,6 @@ class OATHManage extends SpecialPage {
 				'action' => $enabled ? static::ACTION_DISABLE : static::ACTION_ENABLE,
 				'module' => $module->getName(),
 			];
-			if ( $enabled ) {
-				$urlParams['warn'] = 1;
-			}
 			$button = new ButtonWidget( [
 				'label' => $this
 					->msg( $enabled ? 'oathauth-disable-generic' : 'oathauth-enable-generic' )
@@ -235,12 +229,16 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function addCustomContent( IModule $module, ?PanelLayout $panel = null ): void {
-		$form = $module->getManageForm(
-			$this->action,
-			$this->authUser,
-			$this->userRepo,
-			$this->getContext()
-		);
+		if ( $this->action === self::ACTION_DISABLE ) {
+			$form = new DisableForm( $this->authUser, $this->userRepo, $module, $this->getContext() );
+		} else {
+			$form = $module->getManageForm(
+				$this->action,
+				$this->authUser,
+				$this->userRepo,
+				$this->getContext()
+			);
+		}
 		if ( $form === null || !$this->isValidFormType( $form ) ) {
 			return;
 		}
@@ -378,50 +376,4 @@ class OATHManage extends SpecialPage {
 	private function hasAlternativeModules(): bool {
 		return (bool)$this->getAvailableModules();
 	}
-
-	private function shouldShowDisableWarning(): bool {
-		return $this->getRequest()->getBool( 'warn' ) &&
-			$this->requestedModule instanceof IModule &&
-			$this->action === static::ACTION_DISABLE &&
-			$this->authUser->isTwoFactorAuthEnabled();
-	}
-
-	private function showDisableWarning( IModule $module ): void {
-		$panel = new PanelLayout( [
-			'padded' => true,
-			'framed' => true,
-			'expanded' => false
-		] );
-
-		$currentDisplayName = $module->getDisplayName();
-
-		$panel->appendContent( new HtmlSnippet(
-			$this->msg( 'oathauth-disable-method-warning', $currentDisplayName )->parseAsBlock()
-		) );
-
-		$customMessage = $module->getDisableWarningMessage();
-		if ( $customMessage instanceof Message ) {
-			$panel->appendContent( new HtmlSnippet(
-				$customMessage->parseAsBlock()
-			) );
-		}
-
-		$panel->appendContent( new HtmlSnippet(
-			$this->msg( 'oathauth-disable-method-next-step', $currentDisplayName )->parseAsBlock()
-		) );
-
-		$button = new ButtonWidget( [
-			'label' => $this->msg( 'oathauth-disable-method-warning-button-label' )->plain(),
-			'href' => $this->getOutput()->getTitle()->getLocalURL( [
-				'action' => $this->action,
-				'module' => $this->requestedModule->getName()
-			] ),
-			'flags' => [ 'primary', 'progressive' ]
-		] );
-		$panel->appendContent( $button );
-
-		$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-disable-method-warning-header' ) );
-		$this->getOutput()->addHTML( $panel->toString() );
-	}
-
 }
