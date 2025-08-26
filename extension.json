@@ -149,7 +149,7 @@
 		}
 	},
 	"ResourceModules": {
-		"ext.oath.styles": {
+		"ext.oath.totpenable.styles": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"styles": [
 				"totp/ext.oath.showqrcode.styles.less",
@@ -161,7 +161,7 @@
 				"CdxIcon"
 			]
 		},
-		"ext.oath": {
+		"ext.oath.totpenable": {
 			"packageFiles": [
 				"recovery/ext.oath.recovery.copy.js"
 			],

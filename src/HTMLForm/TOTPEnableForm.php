@@ -24,8 +24,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 */
 	public function getHTML( $submitResult ) {
 		$out = $this->getOutput();
-		$out->addModuleStyles( 'ext.oath.styles' );
-		$out->addModules( 'ext.oath' );
+		$out->addModuleStyles( 'ext.oath.totpenable.styles' );
+		$out->addModules( 'ext.oath.totpenable' );
 
 		return parent::getHTML( $submitResult );
 	}
