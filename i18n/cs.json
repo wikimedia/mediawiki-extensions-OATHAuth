@@ -77,5 +77,7 @@
 	"oathauth-switch-method-warning-header": "Potvrďte přepnutí na jinou ověřovací metodu",
 	"oathauth-switch-method-warning": "Přepnutím na metodu dvoufaktorového ověřování „$2“ vypnete současně zapnutou metodu ($1), a všechna data spojená se současnou metodou dvoufaktorového ověřování budou smazána.",
 	"oathauth-totp-disable-warning": "Již nebudete moci použít ověřovací zařízení registrované na tento účet. Všechny provizorní kódy přiřazené k tomuto účtu budou neplatné.",
-	"oathauth-invalidrequest": "Neplatný požadavek"
+	"oathauth-invalidrequest": "Neplatný požadavek",
+	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zablokovaná skupina|Zablokované skupiny}}:",
+	"oathauth-prefs-disabledgroups-help": "Vaše členství v {{PLURAL:$1|této skupině|těchto skupinách}} je zablokováno, dokud si {{GENDER:$2|nezapnete}} [[Special:Manage Two-factor authentication|dvoufaktorovou autentizaci]]."
 }
