@@ -73,6 +73,7 @@
 	"oathauth-module-totp-label": "TOTP (one-time token)",
 	"oathauth-ui-manage": "Manage",
 	"oathmanage": "Manage Two-factor authentication",
+	"accountsecurity": "Account security",
 	"oathauth-ui-not-enabled-modules": "Other authentication methods",
 	"oathauth-ui-enabled-module": "Enabled authentication {{PLURAL:$1|method|methods}}",
 	"oathauth-enable-generic": "Enable",
@@ -113,5 +114,16 @@
 	"oathauth-must-be-central": "{{GENDER:$1|Your account}} must linked to the central authentication system to use two-factor authentication.",
 	"oathauth-error-multiple-modules": "For now, using multiple 2FA authentication methods is not supported. You can only enable $1 after disabling $2.",
 	"group-oathauth-twofactorauth": "Users who may use two-factor authentication",
-	"group-oathauth-twofactorauth-member": "User who may use two-factor authentication"
+	"group-oathauth-twofactorauth-member": "User who may use two-factor authentication",
+	"oathauth-remove-nosuchkey": "Key not found.",
+	"oathauth-password-header": "Password",
+	"oathauth-password-label": "Set a strong password to protect your account.",
+	"oathauth-password-action": "Change password",
+	"oathauth-authenticator-header": "Two-factor authentication",
+	"oathauth-authenticator-placeholder": "Add an extra step when logging in to help secure your account.",
+	"oathauth-authenticator-delete": "Remove",
+	"oathauth-totp-add-key": "Add an authenticator app",
+	"oathauth-delete-warning-header": "Remove $1",
+	"oathauth-delete-warning": "You won't be able to use this authentication method to log in anymore.",
+	"oathauth-delete-success": "<strong>$1</strong> removed."
 }

@@ -12,6 +12,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
+use MediaWiki\Message\Message;
 
 class TOTP implements IModule {
 	public const MODULE_NAME = "totp";
@@ -123,5 +124,10 @@ class TOTP implements IModule {
 	/** @inheritDoc */
 	public function getDisableWarningMessage() {
 		return wfMessage( 'oathauth-totp-disable-warning' );
+	}
+
+	/** @inheritDoc */
+	public function getAddKeyMessage(): Message {
+		return wfMessage( 'oathauth-totp-add-key' );
 	}
 }

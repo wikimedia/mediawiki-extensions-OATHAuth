@@ -80,4 +80,11 @@ interface IModule {
 	 * @return Message|null if no additional text is needed
 	 */
 	public function getDisableWarningMessage();
+
+	/**
+	 * Module-specific text for the label of the button to add a new key in this module.
+	 *
+	 * @return ?Message Message object, or null if an add key button should not be shown
+	 */
+	public function getAddKeyMessage(): ?Message;
 }

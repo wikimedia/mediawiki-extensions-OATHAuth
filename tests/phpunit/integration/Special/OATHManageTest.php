@@ -41,6 +41,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		return new OATHManage(
 			$services->getUserRepository(),
 			$services->getModuleRegistry(),
+			$this->getServiceContainer()->getAuthManager()
 		);
 	}
 

@@ -94,6 +94,16 @@ class OATHUser {
 		);
 	}
 
+	public function getKeyById( int $id ): ?IAuthKey {
+		$matchingKeys = array_values(
+			array_filter(
+				$this->keys,
+				static fn ( IAuthKey $key ) => $key->getId() === $id
+			)
+		);
+		return $matchingKeys[0] ?? null;
+	}
+
 	public function removeKey( IAuthKey $key ) {
 		$keyId = $key->getId();
 		$this->keys = array_values(

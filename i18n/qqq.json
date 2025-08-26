@@ -88,6 +88,7 @@
 	"oathauth-module-totp-label": "User preference value when the TOTP module is enabled",
 	"oathauth-ui-manage": "Button on Special:Preferences, that leads to [[Special:OATHManage]]",
 	"oathmanage": "{{doc-special|OATHManage}}",
+	"accountsecurity": "{{doc-special|AccountSecurity}}",
 	"oathauth-ui-not-enabled-modules": "Header on Special:OATHManage under which 2FA modules that are not currently enabled are listed. This is used only if user already has 2FA enabled.",
 	"oathauth-ui-enabled-module": "Header on Special:OATHManage under which the 2FA modules currently enabled by the user are shown.\n\nParameters:\n* $1 - the number of enabled modules.",
 	"oathauth-enable-generic": "Button label that enables the module\n{{Identical|Enable}}",
@@ -128,5 +129,16 @@
 	"oathauth-must-be-central": "Used as an error message when an account does not have a central ID available.",
 	"oathauth-error-multiple-modules": "Error message shown when the user tries to set up a second type of 2FA module.",
 	"group-oathauth-twofactorauth": "{{doc-group|oathauth-twofactorauth}}\n\nNote: ''may'' means that the users are ''allowed'' to use two-factor authentication.",
-	"group-oathauth-twofactorauth-member": "{{doc-group|oathauth-twofactorauth|member}}\n\nNote: ''may'' means that the user is ''allowed'' to use two-factor authentication."
+	"group-oathauth-twofactorauth-member": "{{doc-group|oathauth-twofactorauth|member}}\n\nNote: ''may'' means that the user is ''allowed'' to use two-factor authentication.",
+	"oathauth-remove-nosuchkey": "Error message shown when the user tries to delete a key that doesn't exist.",
+	"oathauth-password-header": "Section header for the password management section on Special:AccountSecurity.",
+	"oathauth-password-label": "Subtitle for the password management section on Special:AccountSecurity.",
+	"oathauth-password-action": "Button label for the button that takes the user to a form to change their password.",
+	"oathauth-authenticator-header": "Section header for the 2FA section on Special:AccountSecurity.",
+	"oathauth-authenticator-placeholder": "Text shown in the 2FA section on Special:AccountSecurity when the user does not have any 2FA methods set up.",
+	"oathauth-authenticator-delete": "Button label for the button that deletes an authentication method.",
+	"oathauth-totp-add-key": "Button label adding a new TOTP key (authenticator app).",
+	"oathauth-delete-warning-header": "Page title for the warning page shown when deleting a 2FA method.",
+	"oathauth-delete-warning": "Warning message shown when deleting a 2FA method.\n\nParameters:\n* $1 - Name of the 2FA method being deleted",
+	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted"
 }
