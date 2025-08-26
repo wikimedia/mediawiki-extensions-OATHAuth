@@ -142,6 +142,10 @@
 		"OATHAllowMultipleModules": {
 			"value": false,
 			"description": "Temporary feature flag to allow users to have multiple 2FA modules active at the same time"
+		},
+		"OATHAuthNewUI": {
+			"value": false,
+			"description": "Temporary feature flag for the redesigned UI (T401774)"
 		}
 	},
 	"ResourceModules": {
