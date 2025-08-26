@@ -13,7 +13,6 @@ use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\Extension\WebAuthn\Auth\WebAuthnSecondaryAuthenticationProvider;
 use MediaWiki\Extension\WebAuthn\Config\WebAuthnConfig;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnDisableForm;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Message\Message;
@@ -110,9 +109,6 @@ class WebAuthn implements IModule {
 		$module = $this;
 		$context = $context ?: RequestContext::getMain();
 		$enabledForUser = $this->isEnabled( $user );
-		if ( $action === OATHManage::ACTION_DISABLE && $enabledForUser ) {
-			return new WebAuthnDisableForm( $user, $repo, $module, $context );
-		}
 
 		if ( $context->getConfig()->get( 'WebAuthnNewCredsDisabled' ) === false ) {
 			if ( $action === OATHManage::ACTION_ENABLE || $action === static::ACTION_ADD_KEY ) {

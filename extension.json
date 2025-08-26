@@ -107,19 +107,6 @@
 				"webauthn-error-get-authinfo-fail",
 				"webauthn-error-auth-generic"
 			]
-		},
-		"ext.webauthn.disable": {
-			"scripts": [
-				"util/Authenticator.js",
-				"disable.js"
-			],
-			"dependencies": [
-				"ext.webauthn.ui.base"
-			],
-			"messages": [
-				"webauthn-error-get-authinfo-fail",
-				"webauthn-error-auth-generic"
-			]
 		}
 	},
 	"ResourceFileModulePaths": {
