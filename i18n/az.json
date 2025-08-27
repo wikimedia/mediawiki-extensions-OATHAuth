@@ -29,7 +29,7 @@
 	"webauthn-error-get-reginfo-fail": "Qeydiyyat məlumatını əldə etmək mümkün olmadı.",
 	"webauthn-ui-disable-prompt": "WebAuthentication-ın söndürülməsini təsdiqləmək üçün doğrulama cihazınıza toxunun və ya brauzerin təlimatlarına əməl edin.",
 	"webauthn-error-max-keys-reached": "Maksimum {{PLURAL:$1|$1 açar}} əlavə edilə bilər.",
-	"webauthn-module-description": "WebAuthn (Web Authentication) World Wide Web Consortium (W3C) tərəfindən nəşr olunan veb standartıdır. WebAuthn FIDO Alyansının rəhbərliyi altındakı FIDO2 Layihəsinin əsas komponentidir. Layihənin məqsədi açıq açar kriptoqrafiyasından istifadə etməklə istifadəçilərin veb-əsaslı proqram və xidmətlərə autentifikasiyası üçün interfeysi standartlaşdırmaqdır. [https://en.wikipedia.org/wiki/WebAuthn Ətraflı məlumat]",
+	"webauthn-module-description": "WebAuthn eksperimental vəziyyətdədir. Hal-hazırda bu üsul üçün itirilmiş və ya zədələnmiş identifikasiya cihazları üçün bərpa variantı yoxdur. \n\n[https://en.wikipedia.org/wiki/WebAuthn WebAuthn haqqında ətraflı öyrənin]",
 	"webauthn-ui-reload-page-label": "Səhifəni yenidən yüklə",
 	"webauthn-authentication-info-label": "Autentifikasiya datası",
 	"webauthn-authentication-info-help": "Autentifikasiya məlumatları identifikasiyanın axtarışı üçün müştəriyə ötürülür",
