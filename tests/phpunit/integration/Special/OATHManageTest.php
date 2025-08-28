@@ -52,7 +52,18 @@ class OATHManageTest extends SpecialPageTestBase {
 			null,
 			$this->getTestUser()->getAuthority(),
 		);
+		$this->addToAssertionCount( 1 );
 
+		$this->setMwGlobals( [
+			'wgOATHAuthNewUI' => true,
+			'wgOATHAllowMultipleModules' => true
+		] );
+		$this->executeSpecialPage(
+			'',
+			null,
+			null,
+			$this->getTestUser()->getAuthority(),
+		);
 		$this->addToAssertionCount( 1 );
 	}
 }

@@ -63,7 +63,6 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	}
 
 	/**
-	 * Verify the second factor.
 	 * @inheritDoc
 	 */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {

@@ -50,6 +50,12 @@
 		},
 		"OATHAuth": {
 			"Modules": {
+				"recoverycodes": {
+					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\RecoveryCodes",
+					"services": [
+						"OATHUserRepository"
+					]
+				},
 				"totp": {
 					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP",
 					"services": [
@@ -155,22 +161,36 @@
 		"OATHPrioritizedModules": {
 			"value": [ "webauthn", "totp", "recoverycodes" ],
 			"description": "List of authentication methods in the order that they should be prioritized"
+		},
+		"OATHRecoveryCodesCount": {
+			"value": 1,
+			"description": "The default amount of recovery codes to generate for a given user. This is only used for module-based recovery codes, not deprecated, TOTP-attached scratch tokens."
 		}
 	},
 	"ResourceModules": {
 		"ext.oath.totpenable.styles": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"styles": [
-				"totp/ext.oath.showqrcode.styles.less",
-				"recovery/ext.oauth.recovery.less"
+				"totp/ext.oath.showqrcode.styles.less"
 			],
-			"codexStyleOnly": "true",
+			"codexStyleOnly": true,
 			"codexComponents": [
 				"CdxButton",
 				"CdxIcon"
 			]
 		},
-		"ext.oath.totpenable": {
+		"ext.oath.recovery.styles": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"styles": [
+				"recovery/ext.oath.recovery.less"
+			],
+			"codexStyleOnly": true,
+			"codexComponents": [
+				"CdxButton",
+				"CdxIcon"
+			]
+		},
+		"ext.oath.recovery": {
 			"packageFiles": [
 				"recovery/ext.oath.recovery.copy.js"
 			],

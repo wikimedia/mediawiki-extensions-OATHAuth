@@ -1,0 +1,156 @@
+<?php
+
+namespace MediaWiki\Extension\OATHAuth\HTMLForm;
+
+use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\Html\Html;
+use OOUI\FieldLayout;
+use OOUI\HtmlSnippet;
+use OOUI\Widget;
+use UnexpectedValueException;
+
+/**
+ * Helper trait to display and manage recovery codes within various contexts
+ */
+trait RecoveryCodesTrait {
+	/**
+	 * Retrieve current recovery codes for display purposes
+	 *
+	 * The characters of the token are split in groups of 4
+	 */
+	public function getRecoveryCodesForDisplay( IAuthKey $key ): array {
+		$tokens = [];
+		if ( $key->getModule() === RecoveryCodes::MODULE_NAME ) {
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$tokens = $key->getRecoveryCodeKeys();
+		} elseif ( $key->getModule() === TOTP::MODULE_NAME ) {
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			if ( $this->getConfig()->get( 'OATHAllowMultipleModules' )
+				&& $key instanceof RecoveryCodeKeys ) {
+				$tokens = $key->getRecoveryCodeKeys();
+			} else {
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				$tokens = $key->getScratchTokens();
+			}
+		}
+		return array_map( [ $this, 'tokenFormatterFunction' ], $tokens );
+	}
+
+	public function setOutputJsConfigVars( array $recoveryCodes ) {
+		// @phan-suppress-next-line PhanUndeclaredMethod
+		$this->getOutput()->addJsConfigVars( 'oathauth-recoverycodes', $this->createTextList( $recoveryCodes ) );
+	}
+
+	/**
+	 * Formats a key or recovery code by creating groups of 4 separated by space characters
+	 *
+	 * @param string $token Token to format
+	 * @return string The token formatted for display
+	 */
+	private function tokenFormatterFunction( $token ) {
+		return implode( ' ', str_split( $token, 4 ) );
+	}
+
+	/**
+	 * @suppress PhanUndeclaredMethod
+	 */
+	private function generateRecoveryCodesContent( array $recoveryCodes, bool $displayExisting = false ): FieldLayout {
+		$now = wfTimestampNow();
+
+		// @phan-suppress-next-line PhanUndeclaredProperty
+		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
+
+		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+			throw new UnexpectedValueException( $this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped() );
+		}
+
+		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+			$recoveryCodes = array_map(
+				[ $this, 'tokenFormatterFunction' ],
+				array_shift( $moduleDbKeys )->getRecoveryCodeKeys()
+			);
+			$snippet = new HtmlSnippet(
+				'<p>' . $this->msg( 'oathauth-recoverycodes-exist' )->escaped() . '</p>' .
+				$this->createResourceList( $recoveryCodes ) . '<br />' .
+				$this->createRecoveryCodesCopyButton() .
+				$this->createRecoveryCodesDownloadLink( $recoveryCodes )
+			);
+		} else {
+			$snippet = new HtmlSnippet(
+				'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><p>' .
+				$this->msg( 'oathauth-recoverycodes' )->escaped() . '</p><p>' .
+				$this->msg( 'rawmessage' )->rawParams(
+				$this->msg(
+					'oathauth-recoverytokens-createdat',
+					// @phan-suppress-next-line PhanUndeclaredProperty
+					$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
+					)->parse()
+					. $this->msg( 'word-separator' )->escaped()
+					. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
+				) . '</p>' .
+				$this->createResourceList( $recoveryCodes ) . '<br />' .
+				$this->createRecoveryCodesCopyButton() .
+				$this->createRecoveryCodesDownloadLink( $recoveryCodes )
+			);
+		}
+
+		$this->setOutputJsConfigVars( $recoveryCodes );
+
+		// rawrow only accepts fieldlayouts
+		return new FieldLayout( new Widget( [ 'content' => $snippet ] ) );
+	}
+
+	private function createTextList( array $items ): string {
+		if ( count( $items ) === 1 ) {
+			return array_shift( $items );
+		}
+
+		return "* " . implode( "\n* ", $items );
+	}
+
+	private function createResourceList( array $resources ): string {
+		$resourceList = '';
+		foreach ( $resources as $resource ) {
+			$resourceList .= Html::rawElement( 'li', [], Html::rawElement( 'kbd', [], $resource ) );
+		}
+		return Html::rawElement( 'ul', [], $resourceList );
+	}
+
+	public function createRecoveryCodesCopyButton(): string {
+		return Html::rawElement( 'button',
+			[
+				'class' => 'cdx-button mw-oathauth-recoverycodes-copy-button',
+				'type' => 'button',
+			], Html::element( 'span', [
+				'class' => 'cdx-button__icon',
+				'aria-hidden' => 'true',
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			] ) . $this->msg( 'oathauth-recoverycodes-copy' )->escaped()
+		);
+	}
+
+	public function createRecoveryCodesDownloadLink( array $scratchTokensForDisplay ): string {
+		$icon = Html::element( 'span', [
+			'class' => [ 'mw-oathauth-recoverycodes-download-icon', 'cdx-button__icon' ],
+			'aria-hidden' => 'true',
+		] );
+		return Html::rawElement(
+			'a',
+			[
+				'href' => 'data:text/plain;charset=utf-8,'
+				// https://bugzilla.mozilla.org/show_bug.cgi?id=1895687
+				. rawurlencode( implode( PHP_EOL, $scratchTokensForDisplay ) ),
+				'download' => 'recovery-codes.txt',
+				'class' => [
+					'mw-oathauth-recoverycodes-download',
+					'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled',
+				],
+			],
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$icon . $this->msg( 'oathauth-recoverycodes-download' )->escaped()
+		);
+	}
+}

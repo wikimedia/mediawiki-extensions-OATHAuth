@@ -19,10 +19,8 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Exception\ErrorPageError;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\CentralId\CentralIdLookup;
@@ -56,10 +54,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->logger = $logger;
 	}
 
-	/**
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
 	public function findByUser( UserIdentity $user ): OATHUser {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
@@ -75,6 +69,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * Persists the given OAuth key in the database.
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
 		if ( !$this->options->get( 'OATHAllowMultipleModules' ) ) {

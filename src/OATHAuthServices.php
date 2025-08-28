@@ -20,6 +20,7 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\MediaWikiServices;
 
@@ -48,5 +49,9 @@ class OATHAuthServices {
 
 	public function getEncryptionHelper(): EncryptionHelper {
 		return $this->services->getService( 'OATHAuth.EncryptionHelper' );
+	}
+
+	public function getConfig(): Config {
+		return $this->services->getMainConfig();
 	}
 }

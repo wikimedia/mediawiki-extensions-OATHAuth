@@ -107,6 +107,19 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 					},
 				],
 			],
+			'one module, recovery codes, success' => [
+				'enabledModules' => [ 'recoverycodes' ],
+				'steps' => [
+					static function ( self $test, AuthenticationResponse $response ) {
+						$test->assertUiResponse( $response, $message = '2fa-started', $moduleName = 'recoverycodes',
+							$hasSwitchRequest = false );
+						return [ new FakeModuleAuthenticationRequest( 'recoverycodes', true ) ];
+					},
+					static function ( self $test, AuthenticationResponse $response ) {
+						$test->assertEquals( AuthenticationResponse::newPass(), $response );
+					},
+				]
+			],
 			'one module, failure then success' => [
 				'enabledModules' => [ 'totp' ],
 				'steps' => [
@@ -245,7 +258,25 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 					},
 				],
 			],
-		];
+			'three modules, no switch' => [
+				'enabledModules' => [ 'recoverycodes', 'totp', 'webauthn' ],
+					'steps' => [
+						static function ( self $test, AuthenticationResponse $response ) {
+							$test->assertUiResponse( $response, $message = '2fa-started', $moduleName = 'recoverycodes',
+								$hasSwitchRequest = true );
+							$switchReq = $response->neededRequests[1];
+							$test->assertSame( 'recoverycodes', $switchReq->currentModule );
+							$test->assertSame(
+								[ 'recoverycodes', 'totp', 'webauthn' ], array_keys( $switchReq->allowedModules )
+							);
+							return [ new FakeModuleAuthenticationRequest( 'recoverycodes', true ) ];
+						},
+						static function ( self $test, AuthenticationResponse $response ) {
+							$test->assertEquals( AuthenticationResponse::newPass(), $response );
+						},
+					],
+				],
+			];
 	}
 
 	private function getFakeModule( string $name ): IModule&MockObject {

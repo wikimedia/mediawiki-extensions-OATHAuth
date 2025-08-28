@@ -3,16 +3,17 @@
 namespace MediaWiki\Extension\OATHAuth\Module;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\Message\Message;
+use UnexpectedValueException;
 
 class TOTP implements IModule {
 	public const MODULE_NAME = "totp";
@@ -42,14 +43,22 @@ class TOTP implements IModule {
 
 	/**
 	 * @inheritDoc
-	 * @throws MWException
+	 * @throws UnexpectedValueException
 	 */
 	public function newKey( array $data ) {
-		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
-			throw new MWException( 'oathauth-invalid-data-format' );
-		}
-		if ( is_string( $data['scratch_tokens' ] ) ) {
-			$data['scratch_tokens'] = explode( ',', $data['scratch_tokens'] );
+		$config = OATHAuthServices::getInstance()->getConfig();
+		if ( $config->get( 'OATHAllowMultipleModules' ) ) {
+			if ( !isset( $data['secret'] ) ) {
+				throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
+			}
+		} else {
+			if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
+				throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
+			}
+
+			if ( is_string( $data['scratch_tokens' ] ) ) {
+				$data['scratch_tokens'] = explode( ',', $data['scratch_tokens'] );
+			}
 		}
 
 		return TOTPKey::newFromArray( $data );
@@ -65,9 +74,7 @@ class TOTP implements IModule {
 		);
 	}
 
-	/**
-	 * @throws MWException
-	 */
+	/** @inheritDoc */
 	public function verify( OATHUser $user, array $data ): bool {
 		if ( !isset( $data['token'] ) ) {
 			return false;
@@ -89,13 +96,19 @@ class TOTP implements IModule {
 		return (bool)self::getTOTPKeys( $user );
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @param string $action
+	 * @param OATHUser $user
+	 * @param OATHUserRepository $repo
+	 * @param IContextSource $context
+	 * @return IManageForm|TOTPEnableForm|null
+	 */
 	public function getManageForm(
 		$action,
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context
-	): ?IManageForm {
+	) {
 		$hasTOTPKey = $this->isEnabled( $user );
 		$canEnable = !$hasTOTPKey || $context->getConfig()->get( 'OATHAllowMultipleModules' );
 		if ( $action === OATHManage::ACTION_ENABLE && $canEnable ) {

@@ -26,8 +26,11 @@ use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -47,11 +50,14 @@ use Wikimedia\Codex\Utility\Codex;
  * Initializes a page to manage available 2FA modules
  */
 class OATHManage extends SpecialPage {
+	use RecoveryCodesTrait;
+
 	public const ACTION_ENABLE = 'enable';
 	public const ACTION_DISABLE = 'disable';
 	public const ACTION_DELETE = 'delete';
 
 	protected OATHUser $authUser;
+	protected bool $nonSpecialEnabledKeys;
 
 	/**
 	 * @var string
@@ -93,6 +99,7 @@ class OATHManage extends SpecialPage {
 	/** @inheritDoc */
 	public function execute( $subPage ) {
 		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
+		$this->nonSpecialEnabledKeys = $this->authUser->userHasNonSpecialEnabledKeys();
 
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->disallowUserJs();
@@ -114,9 +121,11 @@ class OATHManage extends SpecialPage {
 				// Delete the key, then redirect to the main view with a success message
 				$deletedKey = $this->deleteKey();
 				$deletedKeyName = $this->getKeyNameAndDescription( $deletedKey )['name'];
+				$this->maybeDeleteRecoveryCodes();
 				$this->getOutput()->redirect( $this->getPageTitle()->getFullURL( [
 					'deletesuccess' => $deletedKeyName
 				] ) );
+				return;
 			} elseif ( $this->getRequest()->getBool( 'warn' ) ) {
 				$this->showDeleteWarning();
 				return;
@@ -132,6 +141,11 @@ class OATHManage extends SpecialPage {
 			$this->displayNewUI();
 		} else {
 			$this->displayLegacyUI();
+		}
+
+		// recovery codes
+		if ( $this->hasSpecialModules() ) {
+			$this->addSpecialModulesHTML();
 		}
 	}
 
@@ -428,6 +442,30 @@ class OATHManage extends SpecialPage {
 		return $modulePanel;
 	}
 
+	/**
+	 * Get the panel with special content for a module. This creates a very
+	 * basic layout, moreso even than getGenericContent, and assumes necessary
+	 * custom elements will be handled exclusively in addCustomContent() and
+	 * getManageForm().
+	 */
+	private function getSpecialContent( IModule $module ): PanelLayout {
+		$modulePanel = new PanelLayout( [
+			'framed' => true,
+			'expanded' => false,
+			'padded' => true
+		] );
+		$headerLayout = new HorizontalLayout();
+		$label = new LabelWidget( [
+			'label' => $module->getDisplayName()->text()
+		] );
+		$headerLayout->addItems( [ $label ] );
+		$modulePanel->appendContent( $headerLayout );
+		$modulePanel->appendContent( new HtmlSnippet(
+			$module->getDescriptionMessage()->parseAsBlock()
+		) );
+		return $modulePanel;
+	}
+
 	private function addCustomContent( IModule $module, ?PanelLayout $panel = null ): void {
 		if ( $this->action === self::ACTION_DISABLE ) {
 			$form = new DisableForm( $this->authUser, $this->userRepo, $module, $this->getContext() );
@@ -472,6 +510,27 @@ class OATHManage extends SpecialPage {
 		}
 		$this->userRepo->removeKey( $this->authUser, $keyToDelete, $this->getRequest()->getIP(), true );
 		return $keyToDelete;
+	}
+
+	/**
+	 * function to remove recovery codes as an auth factor if the user
+	 * has removed their final 2fa key. This functionality also exists
+	 * within the older DisableForm class)
+	 */
+	public function maybeDeleteRecoveryCodes(): bool {
+		// delete recovery codes if this is the last 2fa method for a user
+		if ( $this->authUser->userHasNonSpecialEnabledKeys() ) {
+			return false;
+		}
+
+		$this->userRepo->removeAllOfType(
+			$this->authUser,
+			RecoveryCodes::MODULE_NAME,
+			$this->getRequest()->getIP(),
+			true
+		);
+
+		return true;
 	}
 
 	private function addHeading( Message $message ): void {
@@ -559,7 +618,7 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * The enable and disable actions are generic, and all modules must
-	 * implement them, while all other actions are module-specific.
+	 * implement them (except special modules) while all other actions are module-specific.
 	 */
 	private function isGenericAction(): bool {
 		return in_array( $this->action, [ static::ACTION_ENABLE, static::ACTION_DISABLE ] );
@@ -578,7 +637,9 @@ class OATHManage extends SpecialPage {
 			)
 		);
 		foreach ( $moduleNames as $moduleName ) {
-			$modules[] = $this->moduleRegistry->getModuleByKey( $moduleName );
+			if ( !$this->moduleRegistry->getModuleByKey( $moduleName )->isSpecial() ) {
+				$modules[] = $this->moduleRegistry->getModuleByKey( $moduleName );
+			}
 		}
 		return $modules;
 	}
@@ -590,8 +651,26 @@ class OATHManage extends SpecialPage {
 	private function getAvailableModules(): array {
 		$modules = [];
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
-			if ( !$this->isModuleEnabled( $module ) && $this->isModuleAvailable( $module ) ) {
-				$modules[] = $module;
+			if (
+				!$this->isModuleEnabled( $module )
+				&& $this->isModuleAvailable( $module )
+				&& !$module->isSpecial()
+			) {
+					$modules[] = $module;
+			}
+		}
+		return $modules;
+	}
+
+	/**
+	 * Returns special modules, which do not follow the constraints of standard modules.
+	 * @return IModule[]
+	 */
+	private function getSpecialModules(): array {
+		$modules = [];
+		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
+			if ( $this->isModuleAvailable( $module ) && $module->isSpecial() ) {
+					$modules[] = $module;
 			}
 		}
 		return $modules;
@@ -652,4 +731,122 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
 	}
 
+	/**
+	 * Adds html for all available special modules
+	 *
+	 * @return void|null
+	 */
+	private function addSpecialModulesHTML(): void {
+		if ( !$this->authUser->getKeys() ) {
+			return;
+		}
+		foreach ( $this->getSpecialModules() as $module ) {
+			$this->addSpecialModuleHTML( $module );
+		}
+	}
+
+	/**
+	 * Adds special module html content
+	 *
+	 * Since special modules can vary in a number of ways from standard modules,
+	 * there isn't much benefit to further abstracting/genericizing display logic
+	 */
+	private function addSpecialModuleHTML( IModule $module ): void {
+		// only one special module type is currently supported
+		if ( $module->getName() === RecoveryCodes::MODULE_NAME ) {
+			$this->getRecoveryCodesHTML( $module );
+		}
+	}
+
+	/** @return void|null */
+	private function getRecoveryCodesHTML( IModule $module ): void {
+		$keys = $this->authUser->getKeysForModule( $module->getName() );
+		if ( count( $keys ) === 0 ) {
+			// This path should only be possible if a user had an existing TOTP or WebAuthn
+			// key, pre multi-module support.  So let's create an empty Recovery Code Keys
+			// for them, since they will otherwise not yet exist.
+			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->authUser );
+			$keys = $this->authUser->getKeysForModule( $module->getName() );
+		}
+
+		$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
+		$this->getOutput()->addModules( 'ext.oath.recovery' );
+		$codex = new Codex();
+		$keyAccordions = '';
+		$placeholderMessage = '';
+
+		foreach ( $keys as $key ) {
+			$this->setOutputJsConfigVars(
+				array_map(
+				[ $this, 'tokenFormatterFunction' ],
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				$key->getRecoveryCodeKeys() )
+			);
+			// TODO use outlined Accordions once these are available in Codex
+			$keyData = $this->getKeyNameAndDescription( $key );
+			$keyAccordion = $codex->accordion()
+				->setTitle( $keyData['name'] );
+			$keyAccordion->setDescription(
+				$this->msg( 'oathauth-recoverycodes' )->text()
+			);
+			$keyAccordion
+				->setContentHtml( $codex->htmlSnippet()->setContent(
+					// TODO fetch creation timestamp and add it (T403666)
+					Html::rawElement( 'form', [
+							'action' => wfScript(),
+							'class' => 'mw-special-OATHManage-authmethods__method-actions'
+						],
+						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+						Html::hidden( 'module', $key->getModule() ) .
+						Html::hidden( 'keyId', $key->getId() ) .
+
+						$this->createRecoveryCodesCopyButton() .
+						$this->createRecoveryCodesDownloadLink(
+							// @phan-suppress-next-line PhanUndeclaredMethod
+							$key->getRecoveryCodeKeys()
+						) .
+						$codex->button()
+							->setLabel( $this->msg(
+								'oathauth-recoverycodes-create-label',
+								$this->getConfig()->get( 'OATHRecoveryCodesCount' )
+							) )
+							->setAction( 'destructive' )
+							->setWeight( 'primary' )
+							->setType( 'submit' )
+							->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
+							->build()
+							->getHtml()
+					)
+				)->build() );
+			$keyAccordions .= $keyAccordion->build()->getHtml();
+		}
+
+		$authmethodsClasses = [
+			'mw-special-OATHManage-authmethods'
+		];
+		if ( !$this->authUser->getKeys() ) {
+			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
+		}
+
+		$this->getOutput()->addHTML(
+			Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
+				Html::element( 'h3', [], $this->msg( 'oathauth-' . $module->getName() . '-header' )->text() ) .
+				$keyAccordions .
+				Html::rawElement( 'form', [
+						'action' => wfScript(),
+						'class' => 'mw-special-OATHManage-authmethods__addform'
+					],
+					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+					Html::hidden( 'action', 'enable' ) .
+					$placeholderMessage
+				)
+			)
+		);
+	}
+
+	private function hasSpecialModules(): bool {
+		return $this->getConfig()->get( 'OATHAllowMultipleModules' )
+			&& $this->getConfig()->get( 'OATHAuthNewUI' )
+			&& $this->getSpecialModules();
+	}
 }

@@ -25,6 +25,7 @@ use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -50,7 +51,7 @@ class TOTPKey implements IAuthKey {
 	private $secret;
 
 	/** @var string[] List of recovery codes */
-	private $recoveryCodes = [];
+	public $recoveryCodes = [];
 
 	/**
 	 * The upper threshold number of recovery codes that if a user has less than, we'll try and notify them...
@@ -79,7 +80,9 @@ class TOTPKey implements IAuthKey {
 			[]
 		);
 
-		$object->regenerateScratchTokens();
+		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHAllowMultipleModules' ) ) {
+			$object->regenerateScratchTokens();
+		}
 
 		return $object;
 	}
@@ -90,13 +93,22 @@ class TOTPKey implements IAuthKey {
 	 * @throws UnexpectedValueException When encryption is not configured but db is encrypted
 	 */
 	public static function newFromArray( array $data ) {
-		if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
+		if ( !isset( $data['secret'] ) ) {
 			return null;
 		}
+
+		$config = OATHAuthServices::getInstance()->getConfig();
+		if ( !$config->get( 'OATHAllowMultipleModules' )
+			&& !isset( $data['scratch_tokens'] ) ) {
+			return null;
+		}
+
 		if ( isset( $data['nonce'] ) ) {
 			$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
 			if ( !$encryptionHelper->isEnabled() ) {
-				throw new UnexpectedValueException( 'Encryption is not configured but database has encrypted data' );
+				throw new UnexpectedValueException(
+					'Encryption is not configured but OATHAuth is attempting to use encryption'
+				);
 			}
 			$data['encrypted_secret'] = $data['secret'];
 			$data['secret'] = $encryptionHelper->decrypt( $data['secret'], $data['nonce'] );
@@ -104,11 +116,11 @@ class TOTPKey implements IAuthKey {
 			$data['encrypted_secret'] = '';
 			$data['nonce'] = '';
 		}
+
 		return new static(
 			$data['id'] ?? null,
-			/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
-			$data['secret'],
-			$data['scratch_tokens'],
+			$data['secret'] ?? '',
+			$data['scratch_tokens'] ?? [],
 			$data['encrypted_secret'],
 			$data['nonce']
 		);
@@ -163,6 +175,13 @@ class TOTPKey implements IAuthKey {
 	}
 
 	/**
+	 * @param array|null $data
+	 */
+	public function setScratchTokens( $data ): void {
+		$this->recoveryCodes = $data;
+	}
+
+	/**
 	 * @param array $data
 	 * @param OATHUser $user
 	 * @return bool
@@ -171,7 +190,7 @@ class TOTPKey implements IAuthKey {
 	public function verify( $data, OATHUser $user ) {
 		global $wgOATHAuthWindowRadius;
 
-		$token = $data['token'];
+		$token = $data['token'] ?? '';
 
 		if ( $this->secret['mode'] !== 'hotp' ) {
 			throw new DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
@@ -206,52 +225,108 @@ class TOTPKey implements IAuthKey {
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
-			if ( $window > $lastWindow && hash_equals( $result->toHOTP( 6 ), $token ) ) {
-				$lastWindow = $window;
-
-				$logger->info( 'OATHAuth user {user} entered a valid OTP from {clientip}', [
-					'user' => $user->getAccount(),
-					'clientip' => $clientIP,
-				] );
-
-				$store->set(
-					$key,
-					$lastWindow,
-					$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
-				);
-
-				return true;
+			if ( $window <= $lastWindow || !hash_equals( $result->toHOTP( 6 ), $token ) ) {
+				continue;
 			}
+
+			$lastWindow = $window;
+
+			$logger->info( 'OATHAuth user {user} entered a valid OTP from {clientip}', [
+				'user' => $user->getAccount(),
+				'clientip' => $clientIP,
+			] );
+
+			$store->set(
+				$key,
+				$lastWindow,
+				$this->secret['period'] * ( 1 + 2 * $wgOATHAuthWindowRadius )
+			);
+
+			return true;
 		}
 
-		// See if the user is using a recovery code
+		// services used below for scratch tokens and recovery codes
+		$config = OATHAuthServices::getInstance()->getConfig();
+		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
+
+		// See if the user is using a legacy TOTP scratch token (aka recovery code)
 		foreach ( $this->recoveryCodes as $i => $recoveryCode ) {
-			if ( hash_equals( $token, $recoveryCode ) ) {
-				// If we used a recovery code, remove it from the recovery code list.
-				// This is saved below via OATHUserRepository::persist
-				array_splice( $this->recoveryCodes, $i, 1 );
+			if ( !hash_equals( $token, $recoveryCode ) ) {
+				continue;
+			}
 
-				// TODO: Probably a better home for this...
-				// It could go in OATHUserRepository::persist(), but then we start having to hard code checks
-				// for Keys being TOTPKey...
-				// And eventually we want to do T232336 to split them to their own 2FA method...
-				if ( count( $this->recoveryCodes ) <= self::RECOVERY_CODES_NOTIFICATION_NUMBER ) {
-					Manager::notifyRecoveryTokensRemaining(
-						$user,
-						self::RECOVERY_CODES_NOTIFICATION_NUMBER,
-						self::RECOVERY_CODES_COUNT
+			// Remove used TOTP-attached recovery code
+			array_splice( $this->recoveryCodes, $i, 1 );
+
+			// UPDATE: With T232336 soon to be completed, nearly all of the TOTP scratch
+			// token related code will be able to be removed.  The current plan is to support
+			// older scratch tokens and let them simply run out, in which case a user's
+			// older TOTP factor will be migrated automatically or via a maintenance script
+			// to the separate Recovery Code module
+			if ( count( $this->recoveryCodes ) <= self::RECOVERY_CODES_NOTIFICATION_NUMBER ) {
+				Manager::notifyRecoveryTokensRemaining(
+					$user,
+					self::RECOVERY_CODES_NOTIFICATION_NUMBER,
+					self::RECOVERY_CODES_COUNT
+				);
+			}
+
+			if ( $config->get( 'OATHAllowMultipleModules' ) && count( $this->recoveryCodes ) === 0 ) {
+				// if the user has no more TOTP-attached scratch tokens,
+				// let's try to create recovery codes for them, if
+				// multiple module support is enabled.  For now, there is
+				// no convenient way to alert the user of the new code, but they will
+				// see a usable Recovery Code module under Special:OATHManage
+				RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $user );
+
+				$logger->info(
+					// phpcs:ignore
+					"OATHAuth {user} from {clientip} had recovery codes created for them after using their final TOTP scratch token.", [
+						'user' => $user->getUser()->getName(),
+						'clientip' => $clientIP
+					]
+				);
+			}
+
+			$logger->info( 'OATHAuth user {user} used a recovery token from {clientip}', [
+				'user' => $user->getAccount(),
+				'clientip' => $clientIP,
+			] );
+
+			OATHAuthServices::getInstance()
+				->getUserRepository()
+				->updateKey( $user, $this );
+			return true;
+		}
+
+		// See if the user is using a newer recovery code
+		// Both TOTP-attached scratch tokens and recovery codes will be accepted
+		if ( $config->get( 'OATHAllowMultipleModules' ) ) {
+			$moduleDbKeysRecCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
+
+			if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
+				$objRecoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				foreach ( $objRecoveryCodeKeys->getRecoveryCodeKeys() as $userRecoveryCode ) {
+					if ( !hash_equals(
+						$token,
+						$userRecoveryCode
+					) ) {
+						continue;
+					}
+
+					RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $user, $userRecoveryCode );
+
+					$logger->info(
+						// phpcs:ignore
+						"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
+							'user' => $user->getUser()->getName(),
+							'clientip' => $clientIP
+						]
 					);
+
+					return true;
 				}
-
-				$logger->info( 'OATHAuth user {user} used a recovery token from {clientip}', [
-					'user' => $user->getAccount(),
-					'clientip' => $clientIP,
-				] );
-
-				OATHAuthServices::getInstance()
-					->getUserRepository()
-					->updateKey( $user, $this );
-				return true;
 			}
 		}
 
