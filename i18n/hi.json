@@ -73,5 +73,7 @@
 	"oathauth-enable-page-title": "$1 सक्षम करें",
 	"oathauth-notifications-disable-help": "सहायता",
 	"oathauth-notifications-enable-help": "सहायता",
-	"oathauth-notifications-recoverycodesleft-help": "सहायता"
+	"oathauth-notifications-recoverycodesleft-help": "सहायता",
+	"group-oathauth-twofactorauth": "सदस्य जो दो-कारक प्रमाणीकरण का उपयोग कर सकते हैं",
+	"group-oathauth-twofactorauth-member": "सदस्य जो दो-कारक प्रमाणीकरण का उपयोग कर {{GENDER:$1|सकता|सकती}} है"
 }

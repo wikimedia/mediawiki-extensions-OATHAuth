@@ -8,6 +8,7 @@
 			"Hbseren",
 			"Hedda",
 			"Incelemeelemani",
+			"Leo",
 			"MuratTheTurkish",
 			"Sayginer",
 			"Sezgin İbiş",
@@ -102,5 +103,7 @@
 	"oathauth-totp-disable-warning": "Artık bu hesapta kayıtlı kimlik doğrulama cihazını kullanamayacaksınız. Bu hesapla ilişkili tüm karalama simgeleri geçersiz kılınacaktır.",
 	"oathauth-invalidrequest": "Geçersiz istek",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirdi.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi."
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi.",
+	"group-oathauth-twofactorauth": "İki faktörlü kimlik doğrulamayı kullanabilecek kullanıcılar",
+	"group-oathauth-twofactorauth-member": "iki faktörlü kimlik doğrulamayı kullanabilen kullanıcı"
 }
