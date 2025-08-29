@@ -124,6 +124,14 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	}
 
 	private function getDefaultModule( OATHUser $authUser ): ?string {
+		// HACK: If the request came from the clientlogin API, and the user has both
+		// TOTP and other modules enabled, only present TOTP. This is needed to avoid
+		// breaking the Wikipedia mobile apps until they can handle users with multiple
+		// modules enabled. (T399654)
+		if ( defined( 'MW_API' ) && $authUser->getKeysForModule( 'totp' ) ) {
+			return 'totp';
+		}
+
 		// TODO: come up with a way to prioritize some modules over others
 		//   e.g. a hypothetical split recovery code module should not be shown
 		//   by default if other modules are enabled
