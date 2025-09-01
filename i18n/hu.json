@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"BáthoryPéter"
-		]
-	},
-	"webauthn-module-description": "A WebAuthn (Web Authentication) a World Wide Web Konzorcium (W3C) által közzétett webes szabvány. A WebAuthn a FIDO szövetség irányítása alatt álló FIDO2 projekt központi eleme. A projekt célja egy olyan felület szabványosítása, amely lehetővé teszi a felhasználók azonosítását webes alkalmazásokban és szolgáltatásokban nyilvános kulcsú kriptográfiával. [https://en.wikipedia.org/wiki/WebAuthn További információ]"
-}

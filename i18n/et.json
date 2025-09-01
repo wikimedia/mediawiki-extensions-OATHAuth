@@ -17,6 +17,6 @@
 	"oathauth-webauthn-add-key-section-name": "Uue WebAuthni võtme registreerimine",
 	"oathauth-webauthn-disable-section-name": "WebAuthni keelamine",
 	"webauthn-ui-disable-prompt": "Palun puutu kinnitusseadet või järgi brauseris näidatud juhiseid, et kinnitada veebiautentimise keelamine.",
-	"webauthn-module-description": "WebAuthn (veebiautentimine) on veebistandard, mille avaldas World Wide Web Consortium (W3C). WebAuthn on FIDO Alliance'i hallatava projekti FIDO2 aluskomponent. Projekti eesmärk on luua standardne liides kasutajate autentimiseks veebipõhistes rakendustes ja teenustes, kasutades avaliku võtme krüptograafiat. [https://en.wikipedia.org/wiki/WebAuthn Loe veel]",
+	"webauthn-module-description": "WebAuthn on katsejärgus. Sellel meetodil puudub praegu taastevõimalus kadunud või kahjustatud seadmete jaoks.\n\n[https://en.wikipedia.org/wiki/WebAuthn Loe veel WebAuthni kohta].",
 	"webauthn-ui-reload-page-label": "Laadi lehekülg uuesti"
 }
