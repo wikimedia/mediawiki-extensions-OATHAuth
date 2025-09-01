@@ -67,8 +67,8 @@
 	"oathauth-module-totp-label": "TOTP (ühekordne luba)",
 	"oathauth-ui-manage": "Halda",
 	"oathmanage": "Kaheastmelise autentimise haldamine",
-	"oathauth-ui-not-enabled-modules": "Teisele meetodile üleminemine",
-	"oathauth-ui-enabled-module": "Lubatud autentimismeetodid",
+	"oathauth-ui-not-enabled-modules": "Teised autentimismeetodid",
+	"oathauth-ui-enabled-module": "Lubatud {{PLURAL:$1|autentimismeetod|autentimismeetodid}}",
 	"oathauth-enable-generic": "Luba",
 	"oathauth-disable-generic": "Keela",
 	"oathauth-disable-page-title": "Mooduli $1 keelamine",
@@ -97,5 +97,7 @@
 	"oathauth-verify-enabled": "Kasutajal {{GENDER:$1|$1}} on kaheastmeline autentimine lubatud.",
 	"oathauth-verify-disabled": "Kasutajal {{GENDER:$1|$1}} ei ole kaheastmeline autentimine lubatud.",
 	"oathauth-prefs-disabledgroups": "Keelatud {{PLURAL:$1|rühm|rühmad}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Sinu liikmesus}} {{PLURAL:$1|selles rühmas|neis rühmades}} on keelatud kuni oled lubanud [[Special:Manage Two-factor authentication|kaheastmelise autentimise]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Sinu liikmesus}} {{PLURAL:$1|selles rühmas|neis rühmades}} on keelatud kuni oled lubanud [[Special:Manage Two-factor authentication|kaheastmelise autentimise]].",
+	"group-oathauth-twofactorauth": "Kasutajad, kes saavad kasutada kaheastmelist autentimist",
+	"group-oathauth-twofactorauth-member": "kasutaja, kes saab kasutada kaheastmelist autentimist"
 }

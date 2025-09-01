@@ -53,7 +53,7 @@
 	"oathauth-auth-ui": "Дехар до, хьайн шина факторан аутентификацин программа чуьра код йазйе (масала, [https://www.authy.com Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator], йа [https://1password.com/ 1Password]).",
 	"oathauth-auth-switch-module-keep": "(ма хийца)",
 	"oathauth-throttled": "ТӀех дукха талла гӀертар! дехар ду собар де $1.",
-	"oathauth-login-failed": "Таллар кхочушдан цаделий.",
+	"oathauth-login-failed": "TOTP таллам бан аьтто ца баьлла.",
 	"oathauth-describe-provider": "Шина-факторан аутентификаци (OATH).",
 	"grant-group-authentication": "Хьайна а, кхечарна а аутентификацин ардамаш кхочушде",
 	"grant-oath": "Шина-факторан аутентификаци (OATH) тӀекхачар",
