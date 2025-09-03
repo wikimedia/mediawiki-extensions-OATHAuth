@@ -183,12 +183,6 @@ class WebAuthn implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getDeleteSuccessMessage( IAuthKey $key ): Message {
-		'@phan-var WebAuthnKey $key';
-		return wfMessage( 'webauthn-security-key-delete-success', $key->getFriendlyName() );
-	}
-
-	/** @inheritDoc */
 	public function isSpecial(): bool {
 		return false;
 	}
