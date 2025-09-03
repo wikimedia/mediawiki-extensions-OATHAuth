@@ -115,10 +115,7 @@ class WebAuthn implements IModule {
 		}
 
 		if ( $context->getConfig()->get( 'WebAuthnNewCredsDisabled' ) === false ) {
-			if ( $action === OATHManage::ACTION_ENABLE && !$enabledForUser ) {
-				return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
-			}
-			if ( $action === static::ACTION_ADD_KEY && $enabledForUser ) {
+			if ( $action === OATHManage::ACTION_ENABLE || $action === static::ACTION_ADD_KEY ) {
 				return new WebAuthnAddKeyForm( $user, $repo, $module, $context );
 			}
 			if ( $enabledForUser ) {
