@@ -110,7 +110,8 @@ class TOTP implements IModule {
 		IContextSource $context
 	): ?IManageForm {
 		$hasTOTPKey = $this->isEnabled( $user );
-		if ( $action === OATHManage::ACTION_ENABLE && !$hasTOTPKey ) {
+		$canEnable = $hasTOTPKey || $context->getConfig()->get( 'OATHAllowMultipleModules' );
+		if ( $action === OATHManage::ACTION_ENABLE && $canEnable ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context );
 		}
 		if ( $action === OATHManage::ACTION_DISABLE && $hasTOTPKey ) {
