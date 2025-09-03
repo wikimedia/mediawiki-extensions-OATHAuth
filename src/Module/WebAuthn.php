@@ -180,4 +180,15 @@ class WebAuthn implements IModule {
 	public function getDisableWarningMessage() {
 		return null;
 	}
+
+	/** @inheritDoc */
+	public function getAddKeyMessage(): Message {
+		return wfMessage( 'webauthn-add-security-key' );
+	}
+
+	/** @inheritDoc */
+	public function getDeleteSuccessMessage( IAuthKey $key ): Message {
+		'@phan-var WebAuthnKey $key';
+		return wfMessage( 'webauthn-security-key-delete-success', $key->getFriendlyName() );
+	}
 }

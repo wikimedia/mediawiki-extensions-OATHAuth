@@ -34,5 +34,7 @@
 	"webauthn-authentication-info-label": "Authentication data",
 	"webauthn-authentication-info-help": "Authentication data passed to the client for credential retrieval",
 	"webauthn-credential-label": "User credential",
-	"webauthn-credential-help": "User credential based on authentication data"
+	"webauthn-credential-help": "User credential based on authentication data",
+	"webauthn-add-security-key": "Add a security key",
+	"webauthn-security-key-delete-success": "Your security key '''$1''' has been removed from your account."
 }
