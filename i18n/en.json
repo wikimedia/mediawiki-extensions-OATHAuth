@@ -70,7 +70,7 @@
 	"log-action-filter-oath-verify": "Checking if two-factor authentication is enabled",
 	"log-action-filter-oath-disable-other": "Disabling two-factor authentication for another user",
 	"oathauth-ui-no-module": "None enabled",
-	"oathauth-module-totp-label": "TOTP (one-time token)",
+	"oathauth-module-totp-label": "Authenticator app",
 	"oathauth-ui-manage": "Manage",
 	"oathmanage": "Manage Two-factor authentication",
 	"accountsecurity": "Account security",
