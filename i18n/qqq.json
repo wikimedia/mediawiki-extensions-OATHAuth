@@ -6,7 +6,7 @@
 		]
 	},
 	"webauthn-desc": "{{desc|name=WebAuthn|url=https://www.mediawiki.org/wiki/Extension:WebAuthn}}",
-	"webauthn-module-label": "User preference value when WebAuthn module is enabled",
+	"webauthn-module-label": "Description for the 'security key' (WebAuthn) type of two-factor authentication method on Special:AccountSecurity",
 	"webauthn-javascript-required": "Warning message shown in various forms when JavaScript is not enabled.",
 	"webauthn-ui-login-prompt": "Message explaining user-required actions on login",
 	"webauthn-ui-add-key": "Button label for adding new webauthn keys",
