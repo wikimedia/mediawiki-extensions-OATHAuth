@@ -19,5 +19,7 @@
 	"action-oathauth-view-log": "mengakses log perubahan penyahihan dua-faktor",
 	"oathauth-auth-token-label": "Token dwifaktor atau kod pemulihan",
 	"oathauth-auth-token-help-ui": "Masukkan sama ada kod dari perisian pengesahihan ataupun kod pemulihan",
-	"oathauth-module-totp-label": "TOTP (token guna sekali)"
+	"oathauth-module-totp-label": "TOTP (token guna sekali)",
+	"group-oathauth-twofactorauth": "Pengguna yang mungkin menggunakan pengesahihan dwifaktor",
+	"group-oathauth-twofactorauth-member": "Pengguna yang mungkin menggunakan pengesahihan dwifaktor"
 }
