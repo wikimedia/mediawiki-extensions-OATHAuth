@@ -51,7 +51,7 @@
 	"oathauth-auth-token-help": "The one-time password used as the second factor of two-factor authentication.",
 	"oathauth-auth-token-help-ui": "Enter either a code from your authentication device, or a recovery code",
 	"oathauth-auth-ui": "Please enter a code from your two-factor authentication application (such as [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] or [https://1password.com/ 1Password]).",
-	"oathauth-auth-switch-module-label": "Switch to a different authentication method",
+	"oathauth-auth-switch-module-label": "Use authenticator app",
 	"oathauth-auth-switch-module-help": "Set <code>newModule</code> to the name of the new module to get a new challenge from a different 2FA module. Leave empty if you are answering the current challenge.",
 	"oathauth-auth-switch-module-keep": "(do not switch)",
 	"oathauth-throttled": "Too many verification attempts! Please wait $1.",

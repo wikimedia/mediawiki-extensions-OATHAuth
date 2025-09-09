@@ -55,21 +55,63 @@ class HookHandler implements
 	 * @return bool
 	 */
 	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
-		if ( !isset( $fieldInfo['OATHToken'] ) ) {
-			return true;
+		if ( isset( $fieldInfo['OATHToken'] ) ) {
+			$formDescriptor['OATHToken'] += [
+				'cssClass' => 'loginText',
+				'id' => 'wpOATHToken',
+				'size' => 20,
+				'dir' => 'ltr',
+				'autofocus' => true,
+				'persistent' => false,
+				'autocomplete' => 'one-time-code',
+				'spellcheck' => false,
+				'help-message' => 'oathauth-auth-token-help-ui',
+			];
 		}
 
-		$formDescriptor['OATHToken'] += [
-			'cssClass' => 'loginText',
-			'id' => 'wpOATHToken',
-			'size' => 20,
-			'dir' => 'ltr',
-			'autofocus' => true,
-			'persistent' => false,
-			'autocomplete' => 'one-time-code',
-			'spellcheck' => false,
-			'help-message' => 'oathauth-auth-token-help-ui',
-		];
+		if ( isset( $fieldInfo['newModule'] ) ) {
+			// HACK: Hide the newModule <select>, but keep it in form, otherwise HTMLForm won't
+			// understand the button weirdness below. There's no great way for us to inject CSS, so
+			// abuse a CSS class from core that has display: none; on it.
+			// TODO: Make this multi-button thing a real HTMLForm field (T404664)
+			$formDescriptor['newModule']['cssclass'] = 'emptyPortlet';
+			if ( isset( $formDescriptor['OATHToken'] ) ) {
+				// Don't make the TOTP token field required, otherwise the "Switch to XYZ" submit
+				// buttons can't be used without filling in this field
+				$formDescriptor['OATHToken']['required'] = false;
+			}
+			// Check the weight of the submit button to make sure other authentication
+			// options are placed below the submit buton
+			if ( isset( $formDescriptor['loginattempt']['weight'] ) ) {
+				$loginButtonWeight = $formDescriptor['loginattempt']['weight'];
+			} else {
+				$loginButtonWeight = 100;
+			}
+
+			$extraWeight = 1;
+			$availableModules = $fieldInfo['newModule']['options'];
+			foreach ( $availableModules as $moduleName => $ignored ) {
+				// $availableModules starts with an empty option for not switching; skip this
+				if ( $moduleName === '' ) {
+					continue;
+				}
+
+				// Add a switch button for each alternative module, all with name="newModule"
+				// Whichever button is clicked will submit the form, with newModule set to its value
+				$buttonMessage = $this->moduleRegistry->getModuleByKey( $moduleName )->getLoginSwitchButtonMessage();
+				$formDescriptor["newModule_$moduleName"] = [
+					'type' => 'submit',
+					'name' => 'newModule',
+					'default' => $moduleName,
+					'buttonlabel' => $buttonMessage->text(),
+					// Make sure these buttons appear after the loginattempt button
+					'weight' => $loginButtonWeight + $extraWeight,
+					'flags' => [],
+				];
+				$extraWeight++;
+			}
+		}
+
 		return true;
 	}
 

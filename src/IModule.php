@@ -87,4 +87,11 @@ interface IModule {
 	 * @return ?Message Message object, or null if an add key button should not be shown
 	 */
 	public function getAddKeyMessage(): ?Message;
+
+	/**
+	 * Return Message object for button text to be displayed on login page
+	 *
+	 * @return Message
+	 */
+	public function getLoginSwitchButtonMessage();
 }

@@ -130,4 +130,9 @@ class TOTP implements IModule {
 	public function getAddKeyMessage(): Message {
 		return wfMessage( 'oathauth-totp-add-key' );
 	}
+
+	/** @inheritDoc */
+	public function getLoginSwitchButtonMessage() {
+		return wfMessage( 'oathauth-auth-switch-module-label' );
+	}
 }
