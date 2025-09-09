@@ -20,8 +20,6 @@ class VerifyOATHForUser extends FormSpecialPage {
 
 	private const OATHAUTH_IS_ENABLED = 'enabled';
 	private const OATHAUTH_NOT_ENABLED = 'disabled';
-	private OATHUserRepository $userRepo;
-	private UserFactory $userFactory;
 
 	/** @var string */
 	private $enabledStatus;
@@ -29,16 +27,13 @@ class VerifyOATHForUser extends FormSpecialPage {
 	/** @var string */
 	private $targetUser;
 
-	/**
-	 * @param OATHUserRepository $userRepo
-	 * @param UserFactory $userFactory
-	 */
-	public function __construct( $userRepo, $userFactory ) {
+	public function __construct(
+		private readonly OATHUserRepository $userRepo,
+		private readonly UserFactory $userFactory,
+	) {
 		// messages used: verifyoathforuser (display "name" on Special:SpecialPages),
 		// right-oathauth-verify-user, action-oathauth-verify-user
 		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
-		$this->userRepo = $userRepo;
-		$this->userFactory = $userFactory;
 	}
 
 	/**

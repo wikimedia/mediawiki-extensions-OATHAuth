@@ -26,23 +26,14 @@ use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHAuthModuleRegistry {
 
-	private IConnectionProvider $dbProvider;
-	private ObjectFactory $objectFactory;
-
-	/** @var array */
-	private array $modules;
-
 	/** @var array|null */
 	private ?array $moduleIds = null;
 
 	public function __construct(
-		IConnectionProvider $dbProvider,
-		ObjectFactory $objectFactory,
-		array $modules
+		private readonly IConnectionProvider $dbProvider,
+		private readonly ObjectFactory $objectFactory,
+		private readonly array $modules,
 	) {
-		$this->dbProvider = $dbProvider;
-		$this->objectFactory = $objectFactory;
-		$this->modules = $modules;
 	}
 
 	public function moduleExists( string $moduleKey ): bool {

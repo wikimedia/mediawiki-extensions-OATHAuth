@@ -38,31 +38,17 @@ class OATHUserRepository implements LoggerAwareInterface {
 		'OATHAllowMultipleModules'
 	];
 
-	private ServiceOptions $options;
-	private IConnectionProvider $dbProvider;
-
-	private BagOStuff $cache;
-
-	private OATHAuthModuleRegistry $moduleRegistry;
-
-	private CentralIdLookupFactory $centralIdLookupFactory;
-
 	private LoggerInterface $logger;
 
 	public function __construct(
-		ServiceOptions $options,
-		IConnectionProvider $dbProvider,
-		BagOStuff $cache,
-		OATHAuthModuleRegistry $moduleRegistry,
-		CentralIdLookupFactory $centralIdLookupFactory,
-		LoggerInterface $logger
+		private readonly ServiceOptions $options,
+		private readonly IConnectionProvider $dbProvider,
+		private readonly BagOStuff $cache,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly CentralIdLookupFactory $centralIdLookupFactory,
+		LoggerInterface $logger,
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->dbProvider = $dbProvider;
-		$this->cache = $cache;
-		$this->moduleRegistry = $moduleRegistry;
-		$this->centralIdLookupFactory = $centralIdLookupFactory;
 		$this->setLogger( $logger );
 	}
 

@@ -20,8 +20,6 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use ErrorPageError;
-use MediaWiki\Config\ConfigException;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
@@ -40,13 +38,12 @@ use OOUI\HtmlSnippet;
 use OOUI\LabelWidget;
 use OOUI\PanelLayout;
 
+/**
+ * Initializes a page to manage available 2FA modules
+ */
 class OATHManage extends SpecialPage {
 	public const ACTION_ENABLE = 'enable';
 	public const ACTION_DISABLE = 'disable';
-
-	protected OATHAuthModuleRegistry $moduleRegistry;
-
-	protected OATHUserRepository $userRepo;
 
 	protected OATHUser $authUser;
 
@@ -57,22 +54,13 @@ class OATHManage extends SpecialPage {
 
 	protected ?IModule $requestedModule;
 
-	/**
-	 * Initializes a page to manage available 2FA modules
-	 *
-	 * @param OATHUserRepository $userRepo
-	 * @param OATHAuthModuleRegistry $moduleRegistry
-	 *
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
-	public function __construct( OATHUserRepository $userRepo, OATHAuthModuleRegistry $moduleRegistry ) {
+	public function __construct(
+		private readonly OATHUserRepository $userRepo,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+	) {
 		// messages used: oathmanage (display "name" on Special:SpecialPages),
 		// right-oathauth-enable, action-oathauth-enable
 		parent::__construct( 'OATHManage', 'oathauth-enable' );
-
-		$this->userRepo = $userRepo;
-		$this->moduleRegistry = $moduleRegistry;
 	}
 
 	/**

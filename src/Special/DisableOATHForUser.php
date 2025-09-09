@@ -20,25 +20,14 @@ use MediaWiki\User\UserFactory;
 
 class DisableOATHForUser extends FormSpecialPage {
 
-	private OATHUserRepository $userRepo;
-
-	private UserFactory $userFactory;
-
-	private CentralIdLookup $centralIdLookup;
-
-	/**
-	 * @param OATHUserRepository $userRepo
-	 * @param UserFactory $userFactory
-	 * @param CentralIdLookup $centralIdLookup
-	 */
-	public function __construct( $userRepo, $userFactory, $centralIdLookup ) {
+	public function __construct(
+		private readonly OATHUserRepository $userRepo,
+		private readonly UserFactory $userFactory,
+		private readonly CentralIdLookup $centralIdLookup,
+	) {
 		// messages used: disableoathforuser (display "name" on Special:SpecialPages),
 		// right-oathauth-disable-for-user, action-oathauth-disable-for-user
 		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
-
-		$this->userRepo = $userRepo;
-		$this->userFactory = $userFactory;
-		$this->centralIdLookup = $centralIdLookup;
 	}
 
 	/**

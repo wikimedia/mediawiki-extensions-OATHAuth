@@ -28,14 +28,7 @@ use MediaWiki\MediaWikiServices;
  * @author Taavi Väänänen <hi@taavi.wtf>
  */
 class OATHAuthServices {
-	/** @var MediaWikiServices */
-	private MediaWikiServices $services;
-
-	/**
-	 * @param MediaWikiServices $services
-	 */
-	public function __construct( MediaWikiServices $services ) {
-		$this->services = $services;
+	public function __construct( private readonly MediaWikiServices $services ) {
 	}
 
 	/**

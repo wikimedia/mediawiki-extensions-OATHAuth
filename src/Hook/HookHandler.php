@@ -37,12 +37,12 @@ class HookHandler implements
 	UserGetRightsHook
 {
 	public function __construct(
-		private OATHUserRepository $userRepo,
-		private OATHAuthModuleRegistry $moduleRegistry,
-		private PermissionManager $permissionManager,
-		private Config $config,
-		private UserGroupManager $userGroupManager,
-		private CentralIdLookupFactory $centralIdLookupFactory,
+		private readonly OATHUserRepository $userRepo,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly PermissionManager $permissionManager,
+		private readonly Config $config,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly CentralIdLookupFactory $centralIdLookupFactory,
 	) {
 	}
 

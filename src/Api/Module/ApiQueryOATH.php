@@ -37,15 +37,12 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @ingroup Extensions
  */
 class ApiQueryOATH extends ApiQueryBase {
-	private OATHUserRepository $oathUserRepository;
-
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		OATHUserRepository $oathUserRepository
+		private readonly OATHUserRepository $oathUserRepository,
 	) {
 		parent::__construct( $query, $moduleName, 'oath' );
-		$this->oathUserRepository = $oathUserRepository;
 	}
 
 	public function execute() {

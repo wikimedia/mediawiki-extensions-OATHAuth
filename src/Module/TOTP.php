@@ -17,8 +17,6 @@ use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 class TOTP implements IModule {
 	public const MODULE_NAME = "totp";
 
-	private OATHUserRepository $userRepository;
-
 	/**
 	 * @return TOTPKey[]
 	 */
@@ -27,8 +25,9 @@ class TOTP implements IModule {
 		return $user->getKeysForModule( self::MODULE_NAME );
 	}
 
-	public function __construct( OATHUserRepository $userRepository ) {
-		$this->userRepository = $userRepository;
+	public function __construct(
+		private readonly OATHUserRepository $userRepository,
+	) {
 	}
 
 	/** @inheritDoc */
