@@ -99,7 +99,8 @@
 				"OATHAuthModuleRegistry",
 				"PermissionManager",
 				"MainConfig",
-				"UserGroupManager"
+				"UserGroupManager",
+				"CentralIdLookupFactory"
 			]
 		},
 		"updater": {
