@@ -17,6 +17,8 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
+use MediaWiki\User\CentralId\CentralIdLookup;
+use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
 use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
@@ -34,24 +36,14 @@ class HookHandler implements
 	UserEffectiveGroupsHook,
 	UserGetRightsHook
 {
-	private OATHUserRepository $userRepo;
-	private OATHAuthModuleRegistry $moduleRegistry;
-	private PermissionManager $permissionManager;
-	private Config $config;
-	private UserGroupManager $userGroupManager;
-
 	public function __construct(
-		OATHUserRepository $userRepo,
-		OATHAuthModuleRegistry $moduleRegistry,
-		PermissionManager $permissionManager,
-		Config $config,
-		UserGroupManager $userGroupManager
+		private OATHUserRepository $userRepo,
+		private OATHAuthModuleRegistry $moduleRegistry,
+		private PermissionManager $permissionManager,
+		private Config $config,
+		private UserGroupManager $userGroupManager,
+		private CentralIdLookupFactory $centralIdLookupFactory,
 	) {
-		$this->userRepo = $userRepo;
-		$this->moduleRegistry = $moduleRegistry;
-		$this->permissionManager = $permissionManager;
-		$this->config = $config;
-		$this->userGroupManager = $userGroupManager;
 	}
 
 	/**
@@ -212,8 +204,8 @@ class HookHandler implements
 		// Exclude temp users and users without email addresses; check this first
 		// so that we don't try to look up central user IDs for non-named users.
 		if ( $user->isNamed() && $user->getEmail() ) {
-			$oathUser = $this->userRepo->findByUser( $user );
-			$centralID = $oathUser->getCentralId();
+			$centralID = $this->centralIdLookupFactory->getLookup()
+				->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW );
 			$MFARollout = $this->config->get( 'OATHRolloutPercent' );
 			if ( $centralID % 100 < $MFARollout ) {
 				$groups[] = "oathauth-twofactorauth";
