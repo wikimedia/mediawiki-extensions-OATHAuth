@@ -192,4 +192,9 @@ class WebAuthn implements IModule {
 	public function isSpecial(): bool {
 		return false;
 	}
+
+	/** @inheritDoc */
+	public function getLoginSwitchButtonMessage() {
+		return wfMessage( 'webauthn-auth-switch-module-label' );
+	}
 }

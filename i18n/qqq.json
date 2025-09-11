@@ -35,5 +35,6 @@
 	"webauthn-credential-label": "WebAuthn user credential label",
 	"webauthn-credential-help": "Help message for WebAuthn user credential",
 	"webauthn-add-security-key": "Button label for adding a new WebAuthn key",
-	"webauthn-security-key-delete-success": "Success message displayed when a WebAuthn key has been deleted.\n\nParameters:\n* $1 - User-given name for the key that was deleted"
+	"webauthn-security-key-delete-success": "Success message displayed when a WebAuthn key has been deleted.\n\nParameters:\n* $1 - User-given name for the key that was deleted",
+	"webauthn-auth-switch-module-label": "Label for the 2FA method switcher button on login"
 }
