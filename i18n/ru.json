@@ -24,9 +24,7 @@
 	"webauthn-error-cannot-remove-key": "Ключ не может быть удалён.",
 	"webauthn-error-get-authinfo-fail": "Информация об аутентификации не может быть получена.",
 	"oathauth-webauthn-add-key-section-name": "Зарегистрировать новый ключ WebAuthn",
-	"oathauth-webauthn-disable-section-name": "Отключить WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Информация о регистрации не может быть получена.",
-	"webauthn-ui-disable-prompt": "Пожалуйста, коснитесь устройства для проверки или следуйте инструкциям в браузере, чтобы подтвердить отключение веб-аутентификации",
 	"webauthn-error-max-keys-reached": "Можно зарегистрировать максимум $1 {{PLURAL:$1|ключ|ключа|ключей}}.",
 	"webauthn-module-description": "WebAuthn (веб-аутентификация) - веб-стандарт, опубликованный Консорциумом Всемирной паутины (W3C). Целью проекта является стандартизация интерфейса для аутентификации пользователей в веб-приложениях и сервисах с использованием криптографии с открытым ключом. [https://en.wikipedia.org/wiki/WebAuthn Подробнее]",
 	"webauthn-ui-reload-page-label": "Перезагрузить страницу"

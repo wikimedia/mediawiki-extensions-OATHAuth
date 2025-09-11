@@ -15,8 +15,6 @@
 	"webuathn-ui-remove-key": "Eemalda",
 	"webauthn-ui-key-register-help": "Vali võtmele lühinimi.",
 	"oathauth-webauthn-add-key-section-name": "Uue WebAuthni võtme registreerimine",
-	"oathauth-webauthn-disable-section-name": "WebAuthni keelamine",
-	"webauthn-ui-disable-prompt": "Palun puutu kinnitusseadet või järgi brauseris näidatud juhiseid, et kinnitada veebiautentimise keelamine.",
 	"webauthn-module-description": "WebAuthn on katsejärgus. Sellel meetodil puudub praegu taastevõimalus kadunud või kahjustatud seadmete jaoks.\n\n[https://en.wikipedia.org/wiki/WebAuthn Loe veel WebAuthni kohta].",
 	"webauthn-ui-reload-page-label": "Laadi lehekülg uuesti"
 }
