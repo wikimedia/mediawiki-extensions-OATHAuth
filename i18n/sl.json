@@ -24,7 +24,6 @@
 	"oathauth-disable": "Izklop dvofaktorske avtentikacije",
 	"oathauth-validatedoath": "Potrjene dvofaktorske poverilnice. Od zdaj secbo uporabljala dvofaktorska avtentikacija.",
 	"oathauth-noscratchforvalidation": "Obnovitvene kode ni mogoče uporabiti za potrditev dvofaktorske avtentikacije. Obnovitvene kode zagotavljajo dostop do računa samo v izjemnem primeru. Uporabite avtentikacijsko kodo iz vašega generatorja kod (npr. [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] ali [https://1password.com/ 1Password]).",
-	"oathauth-failedtovalidateoath": "Poverilnic dvofaktorske avtentikacije ni bilo mogoče potrditi.",
 	"oathauth-disabledoath": "Dvofaktorska avtentikacija je izklopljena.",
 	"oathauth-prefs-label": "Dvofaktorska avtentikacija:",
 	"oathauth-step1": "1. korak: Namestite program za dvofaktorsko avtentikacijo",
@@ -84,10 +83,7 @@
 	"oathauth-ui-available-modules": "Razpoložljivi načini",
 	"oathauth-ui-general-help": "'''Večfaktorska avtentikacija''' ('''MFA''') je metoda avtentikacije, pri kateri ima uporabnik računalnika dostop šele po uspešni predstavitvi dveh ali več dokazov (ali faktorjev) avtentikacijskemu mehanizmu: znanje (nekaj, kar ve uporabnik in samo uporabnik), posest (nekaj, kar ima uporabnik in samo uporabnik) in inherentnost (nekaj, kar je uporabnik in samo uporabnik). [https://sl.wikipedia.org/wiki/Večfaktorska_avtentikacija Preberi več]",
 	"oathauth-totp-description": "Algoritem za enkratno geslo (TOTP) na osnovi časa je razširitev algoritma za enkratno geslo (HOTP), ki temelji na HMAC, in ustvari enkratno geslo tako, da za edinstvenost uporabi trenutni čas.",
-	"oathauth-disable-method-warning-header": "Potrdite izklop metode avtentikacije",
-	"oathauth-disable-method-warning-button-label": "Potrdi in nadaljuj",
 	"oathauth-disable-method-warning": "Če boste metodo dvofaktorske avtentikacije $1 izklopili, te metode ne boste mogli več uporabljati pri prijavi in bodo vsi podatki, povezani s to metodo avtentikacije, izbrisani.",
-	"oathauth-disable-method-next-step": "V naslednjem koraku se boste morali avtenticirati s svojo trenutno metodo dvofaktorske avtentikacije ($1), da jo boste lahko onemogočili.",
 	"oathauth-totp-disable-warning": "Naprave za avtwntikacijo, registrirane s tem računom, ne boste mogli več uporabljati. Vse obovitvene kode, povezane s tem računom, bodo razveljavljene.",
 	"oathauth-invalidrequest": "Neveljavna zahteva",
 	"notification-header-oathauth-disable": "Dvofaktorska avtentikacija je za {{GENDER:$2|vaš račun}} izklopljena.",
@@ -108,6 +104,5 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nima vklopljene dvofaktorske avtentikacije.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Onemogočena skupina|Onemogočeni skupini|Onemogočene skupine}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Vaše članstvo}} v {{PLURAL:$1|tej skupini|teh skupinah}} je onemogočeno, dokler ne vklopite [[Special:Manage Two-factor authentication|dvofaktorske avtentikacije]].",
-	"oathauth-qrcode-alt": "Skenirna koda QR, ki predstavlja skrivni ključ.",
-	"oathauth-hint": "Nimate dostopa do svoje naprave ali aplikacije? V to polje lahko vnesete obnovitvene kode (prikazane, ko ste omogočili 2FA)."
+	"oathauth-qrcode-alt": "Skenirna koda QR, ki predstavlja skrivni ključ."
 }

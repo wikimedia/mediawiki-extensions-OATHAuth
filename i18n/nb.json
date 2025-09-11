@@ -20,7 +20,6 @@
 	"oathauth-disable": "Slå av tofaktorautentisering",
 	"oathauth-validatedoath": "Tofaktorautentisering legitimert. Det er nå tatt i bruk.",
 	"oathauth-noscratchforvalidation": "Du kan ikke bruke en engangskode for å bekrefte tofaktorautentisering. Engangskoder er kun til backup og nødsbruk. Bruk en bekreftelseskode fra kodegeneratoren din.",
-	"oathauth-failedtovalidateoath": "Kunne ikke validere akkeriditiver for tofaktorautentisering",
 	"oathauth-disabledoath": "Tofaktorautentisering er nå slått av.",
 	"oathauth-prefs-label": "Tofaktorautentisering:",
 	"oathauth-step1": "Steg 1: Last ned et program for tofaktorautentisering",
@@ -78,8 +77,6 @@
 	"oathauth-ui-available-modules": "Tilgjengelige metoder",
 	"oathauth-ui-general-help": "'''Flertrinns pålogging''' ('''MFA''' etter engelsk ''multi-factor authentication'') er en autentiseringsmetode der en databruker får tilgang kun etter å ha presentert to eller flere beviser (eller faktorer) til en autentiseringsmekanisme: kunnskap (noe brukeren og bare brukeren vet), besittelse (noe brukeren og bare brukeren har), og inherens (noe brukeren og bare brukeren er). [https://no.wikipedia.org/wiki/Flerfaktor-autentisering Les mer (engelsk)]",
 	"oathauth-totp-description": "TOTP-algoritmen (fra engelsk ''Time-based One-Time Password'') er en utvidelse av den HMAC-baserte One-time Password-algoritmen som genererer et engangspassord ved å hente unikhet fra det nåværende tidspunktet.",
-	"oathauth-disable-method-warning-header": "Bekreft at du vil slå av metoden",
-	"oathauth-disable-method-warning-button-label": "Bekreft og fortsett",
 	"oathauth-disable-method-warning": "Hvis du slår av metode $1 for tofaktorautentisering vil du ikke lenger kunne bruke denne metoden for å logge inn, og dataene som er tilknyttet denne metoden blir slettet.",
 	"oathauth-totp-disable-warning": "Du vil ikke lenger kunne bruke autentiseringsenheten som er registrert med denne kontoen. Alle engangsnøkler knyttet til denne kontoen vil deaktiveres.",
 	"oathauth-invalidrequest": "Ugyldig forespørsel",
@@ -98,6 +95,5 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} har ikke slått på tofaktorautentisering.",
 	"oathauth-prefs-disabledgroups": "Skrudd av for {{PLURAL:$1|gruppen|gruppene}}:",
 	"oathauth-prefs-disabledgroups-help": "Medlemskapet {{GENDER:$2|ditt}} i {{PLURAL:$1|denne gruppa|disse gruppene}} er deaktivert fram til du aktiverer [[Special:Manage Two-factor authentication|tofaktorautentisering]].",
-	"oathauth-qrcode-alt": "Skannbar QR-kode som representerer den hemmelige nøkkelen.",
-	"oathauth-hint": "Har du ikke tilgang til enheten eller applikasjonen? Du kan skrive inn gjenopprettingsnøkler (som du fikk da du slo på 2FA) i dette feltet."
+	"oathauth-qrcode-alt": "Skannbar QR-kode som representerer den hemmelige nøkkelen."
 }

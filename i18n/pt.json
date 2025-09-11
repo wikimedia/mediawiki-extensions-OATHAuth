@@ -21,7 +21,6 @@
 	"oathauth-disable": "Desativar a autenticação de dois fatores",
 	"oathauth-validatedoath": "As credenciais de dois fatores foram validadas. A autenticação de dois fatores será agora aplicada.",
 	"oathauth-noscratchforvalidation": "Não pode usar um código de recuperação para confirmar a autenticação de dois fatores. Os códigos de recuperação só servem como reserva para uso ocasional. Use um código da sua aplicação de autenticação de dois fatores (como o Google Authenticator), por favor.",
-	"oathauth-failedtovalidateoath": "A validação das credenciais de dois fatores falhou",
 	"oathauth-disabledoath": "A autenticação de dois fatores foi desativada.",
 	"oathauth-prefs-label": "Autenticação de dois fatores:",
 	"oathauth-step1": "Passo 1: Descarregue um programa de autenticação de dois fatores",
@@ -80,8 +79,6 @@
 	"oathauth-ui-available-modules": "Métodos disponíveis",
 	"oathauth-ui-general-help": "A '''autenticação de vários fatores''' ('''MFA''') é um método de autenticação no qual o acesso é permitido ao utilizador de um computador apenas após este apresentar com êxito duas ou mais provas (ou fatores) a um mecanismo de autenticação: conhecimento (algo que o utilizador, e só ele, sabe), posse (algo que o utilizador, e sé ele, possui) e inerência (algo de que o utilizador, e só ele, está investido). [https://en.wikipedia.org/wiki/Multi-factor_authentication Ler mais]",
 	"oathauth-totp-description": "O algoritmo TOTP (Palavra-Passe de Uso Único com Base no Tempo) é uma extensão do algoritmo HOTP (Palavra-Passe de Uso Único com Base no HMAC), que gera uma palavra-passe de uso único adquirindo a sua unicidade na hora atual.",
-	"oathauth-disable-method-warning-header": "Confirmar a desativação de um método de autenticação",
-	"oathauth-disable-method-warning-button-label": "Confirmar e continuar",
 	"oathauth-disable-method-warning": "Se desativar o método de autenticação de dois fatores $1, deixará de poder usá-lo ao entrar e todos os dados associados a este método de autenticação serão eliminados.",
 	"oathauth-totp-disable-warning": "Deixará de poder usar o dispositivo de autenticação registado nesta conta. Todas os códigos de recuperação associados à conta serão invalidados.",
 	"oathauth-invalidrequest": "Pedido inválido",
@@ -100,6 +97,5 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} não tem a autenticação de dois fatores ativada.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desativado|Grupos desativados}}:",
 	"oathauth-prefs-disabledgroups-help": "A sua inclusão {{PLURAL:$1|neste grupo|nestes grupos}} está desativada até ter ativado a [[Special:Manage Two-factor authentication|autenticação de dois fatores]].{{GENDER:$2|}}",
-	"oathauth-qrcode-alt": "Código QR que representa a chave secreta.",
-	"oathauth-hint": "Não tem acesso ao seu dispositivo ou aplicação? Pode introduzir neste campo chaves de recuperação (apresentadas quando ativou a A2F)."
+	"oathauth-qrcode-alt": "Código QR que representa a chave secreta."
 }

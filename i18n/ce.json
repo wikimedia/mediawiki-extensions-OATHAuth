@@ -21,7 +21,6 @@
 	"oathauth-disable": "шина-факторан аутентификаци дӀайайъа",
 	"oathauth-validatedoath": "Шинафакторан хаамаш теллина. ХӀинца лелор йу шинафакторан аутентификацин.",
 	"oathauth-noscratchforvalidation": "Шина факторан аутентификаци тӀечӀагӀйан меттахӀотторан код лело йиш йац. МеттахӀотторан кодаш резерв йан а, наггахь лело а бен йац. Дехар до, лелайе хьайн шина факторан аутентификацин программин чуьра код (масала, [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator], йа [https://1password.com/ 1Password]).",
-	"oathauth-failedtovalidateoath": "Шина-факторан аутентификацин хаамаш хьажа цаделий",
 	"oathauth-disabledoath": "шина-факторан аутентификаци дӀайайина",
 	"oathauth-prefs-label": "Шина-факторан аутентификаци:",
 	"oathauth-step1": "Ког 1: Шина-факторан аутентификацин программа чуйаккха",
@@ -82,10 +81,7 @@
 	"oathauth-ui-available-modules": "ТӀекхочу методаш",
 	"oathauth-ui-general-help": "'''Дуккха факторан аутентификаци''' ('''ДФА''') — шорйина аутентификаци, компьютеран тӀекхачаран тергонан хьесап ду, лелочунна хаамашна тӀекхача оьшу цхьаннал сов «аутентификацин механизман тешалла». [https://ru.wikipedia.org/wiki/Многофакторная_аутентификация Мадарра]",
 	"oathauth-totp-description": "TOTP (Time-based One-Time Password Algorithm) — ларйина аутентификацин цкъа мега паролаш кхуллу OATH-алгоритм, иза дика лардалар  HOTP (HMAC-Based One-Time Password Algorithm).",
-	"oathauth-disable-method-warning-header": "Аутентификацин кеп дӀайайар тӀечӀагӀде",
-	"oathauth-disable-method-warning-button-label": "ТӀечӀагӀде, кхидӀа а",
 	"oathauth-disable-method-warning": "Нагахь санна ахьа шина-факторан аутентификацин кеп $1 дӀайайича, хьан кхин аьтто хир бац и кеп лело системин чугӀош, ткъа цу аутентификацин кепца боьзна болу массо а хаамаш дӀабохур бу.",
-	"oathauth-disable-method-next-step": "РогӀерчу гӀулчахь, хьайн карарчу хенахь йолчу шина факторан аутентификацин кепца ($1) хьайна аутентификаци йан йеза, иза дӀайаккха аьтто хилийта.",
 	"oathauth-totp-disable-warning": "Кхин лело аьтто хир бац хьан оцу аккаунтца дӀайазбина аутентификацин гӀирс. Оцу аккаунтца йоьзна йолу йерриге а меттахӀотторан кодаш дӀайаьхна хир йу.",
 	"oathauth-invalidrequest": "Нийса доцу дехар",
 	"notification-header-oathauth-disable": "Шина-факторан аутентификаци дӀайайина {{GENDER:$2|хьан аккаунтана}}.",
@@ -108,6 +104,5 @@
 	"oathauth-prefs-disabledgroups": "ДӀайайина {{PLURAL:$1|тоба}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Хьо декъашхо хилар}} {{PLURAL:$1|хӀокху тобанехь|хӀокху тобанашна чохь}} дӀадайина ду, ахьа [[Special:Manage Two-factor authentication|шина-факторан аутентификаци]] дӀахӀотталц.",
 	"oathauth-qrcode-alt": "Сканирйан йиш йолу QR-код гойтуш йу къайлаха догӀа.",
-	"oathauth-hint": "Хьайн аппаратан йа программмин тӀе кхача йиш йац хьан? Ахь йазйан мегар ду меттахӀотторан кодаш (2FA дӀахӀоттийча гойтуш йолу) оцу меттигехь.",
 	"oathauth-must-be-central": "{{GENDER:$1|Хьан аккаунт}} йуккъера аутентификацин системица уьйр йолуш хила йеза, шина факторан аутентификаци лело."
 }

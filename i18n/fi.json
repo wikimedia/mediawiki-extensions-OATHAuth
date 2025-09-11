@@ -83,7 +83,6 @@
 	"oathauth-enable-page-title": "Ota moduuli $1 käyttöön",
 	"oathauth-action-exclusive-to-2fa": "Tämän toiminnon voivat suorittaa vain käyttäjät, jotka ovat ottaneet käyttöön kaksivaiheisen tunnistautumisen.",
 	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
-	"oathauth-disable-method-warning-button-label": "Vahvista ja jatka",
 	"oathauth-invalidrequest": "Virheellinen pyyntö",
 	"oathauth-notifications-disable-help": "Ohje",
 	"oathauth-notifications-enable-help": "Ohje",

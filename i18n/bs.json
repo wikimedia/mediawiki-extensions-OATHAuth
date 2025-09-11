@@ -12,7 +12,6 @@
 	"oathauth-recoverycodes": "Sljedeći spisak sadrži žetone za jednokratnu upotrebu. Mogu se koristiti samo jednom i to u hitnim slučajevima. Zapišite i čuvajte ih na sigurnom mjestu. Ako izgubite telefon, jedino će oni moći spasiti Vaš račun. '''Ovi žetoni više se nikad neće prikazati'''.",
 	"oathauth-disable": "Isključi potvrdu u 2 koraka",
 	"oathauth-validatedoath": "Podaci potvrđeni. Odsad će se provoditi potvrda u 2 koraka.",
-	"oathauth-failedtovalidateoath": "Ne mogu potvrditi dvofaktorske podatke",
 	"oathauth-disabledoath": "Potvrda u 2 koraka isključena.",
 	"oathauth-prefs-label": "Potvrda u dva koraka:",
 	"oathauth-step1": "1. korak: Preuzmite program za potvrdu u 2 koraka",

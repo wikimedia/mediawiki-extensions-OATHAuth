@@ -33,7 +33,6 @@
 	"oathauth-disable": "Desactivar la autenticación en dos pasos",
 	"oathauth-validatedoath": "Se han validado las credenciales en dos pasos. Ahora se aplicará la autenticación en dos pasos.",
 	"oathauth-noscratchforvalidation": "No puedes utilizar códigos predefinidos para confirmar la autenticación de dos pasos. Tales códigos solo sirven como respaldo y para uso ocasional accesorio. Utiliza un código de verificación proveniente de un generador de códigos.",
-	"oathauth-failedtovalidateoath": "Error al validar las credenciales en dos pasos",
 	"oathauth-disabledoath": "Se ha deshabilitado la autenticación en dos pasos.",
 	"oathauth-prefs-label": "Autenticación en dos pasos:",
 	"oathauth-step1": "Paso 1: descarga un programa de autenticación en dos pasos",
@@ -91,8 +90,6 @@
 	"oathauth-ui-available-modules": "Métodos disponibles",
 	"oathauth-ui-general-help": "La '''autenticación  de múltiples factores''' ('''AMF''') es un método de autenticación por el que a un usuario se le concede acceso al sistema solo después de que presente con éxito dos o más pruebas (o factores) a un mecanismo de autenticación: conocimiento (algo que solo el usuario conoce), posesión (algo que solo el usuario tiene), e inherencia (algo que solo el usuario es). [https://es.wikipedia.org/wiki/Autenticación_de_múltiples_factores Más información]",
 	"oathauth-totp-description": "El algoritmo de contraseña de un solo uso basada en tiempo (TOTP) es una extensión del algoritmo de contraseña de un solo uso basada en HMAC (HOTP), que genera una contraseña de un solo uso al tomar la unicidad del tiempo actual.",
-	"oathauth-disable-method-warning-header": "Confirmar la desactivación de un método de autenticación",
-	"oathauth-disable-method-warning-button-label": "Confirma y continúa",
 	"oathauth-disable-method-warning": "Si desactivas el método de autenticación de dos factores $1 ya no podrás utilizarlo para iniciar sesión y se eliminarán todos los datos asociados con dicho método.",
 	"oathauth-totp-disable-warning": "Ya no podrás usar el dispositivo de autenticación registrado para esta cuenta. Todos los códigos de respaldo asociados con aquella han sido desactivados.",
 	"oathauth-invalidrequest": "Solicitud no válida",
@@ -107,7 +104,6 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} no tiene activada la autenticación en dos pasos.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desactivado|Grupos desactivados}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Tu}} pertenencia {{PLURAL:$1|al siguiente grupo|a los siguientes grupos}} de usuario están desactivados hasta que actives la [[Special:Manage Two-factor authentication|autenticación en dos pasos]].",
-	"oathauth-hint": "¿No tienes acceso a tu dispositivo o aplicación? Puede ingresar tokens de recuperación (presentados cuando habilitó 2FA) en este campo.",
 	"group-oathauth-twofactorauth": "Usuarios que pueden utilizar la autenticación de dos factores",
 	"group-oathauth-twofactorauth-member": "Usuario que puede utilizar la autenticación de dos factores"
 }

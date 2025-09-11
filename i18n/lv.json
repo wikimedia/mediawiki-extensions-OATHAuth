@@ -20,7 +20,6 @@
 	"oathauth-ui-manage": "Pārvaldīt",
 	"oathauth-ui-not-enabled-modules": "Citas autentifikācijas metodes",
 	"oathauth-ui-available-modules": "Pieejamās metodes",
-	"oathauth-disable-method-warning-button-label": "Apstiprināt un turpināt",
 	"oathauth-invalidrequest": "Nederīgs pieprasījums",
 	"oathauth-notifications-disable-help": "Palīdzība",
 	"oathauth-notifications-enable-help": "Palīdzība",
