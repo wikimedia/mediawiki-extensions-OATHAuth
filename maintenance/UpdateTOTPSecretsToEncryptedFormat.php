@@ -23,8 +23,8 @@ declare( strict_types = 1 );
 
 namespace MediaWiki\Extension\OATHAuth\Maintenance;
 
-use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
 use MediaWiki\MediaWikiServices;
@@ -60,12 +60,14 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 			$this->fatalError( "libsodium is not installed with php in this environment!" );
 		}
 
-		if ( !EncryptionHelper::isEnabled() ) {
+		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )
+			->getEncryptionHelper();
+
+		if ( !$encryptionHelper->isEnabled() ) {
 			// phpcs:disable Generic.Files.LineLength.TooLong
 			$this->fatalError( "\$wgOATHSecretKey is not set correctly! It should be set to an immutable, 64-character hexadecimal value!" );
 		}
 
-		$OATHSecretKey = $this->getConfig()->get( 'OATHSecretKey' );
 		$startTime = time();
 		$updatedCount = 0;
 		$totalRows = 0;

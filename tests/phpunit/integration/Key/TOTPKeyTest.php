@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
-use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWikiIntegrationTestCase;
 use UnexpectedValueException;
 
@@ -16,7 +16,12 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 			$this->markTestSkipped( 'sodium extension not installed, skipping' );
 		}
 		$this->setMwGlobals( 'wgOATHSecretKey', 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a' );
-		$this->assertTrue( EncryptionHelper::isEnabled() );
+		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
+		$this->assertTrue(
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getEncryptionHelper()
+				->isEnabled(),
+		);
 	}
 
 	public function testDeserialization() {
@@ -59,7 +64,12 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 			'nonce' => $data['nonce'],
 		] );
 
-		$this->assertEquals( EncryptionHelper::decrypt( $data['secret'], $data['nonce'] ), $key->getSecret() );
+		$this->assertEquals(
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getEncryptionHelper()
+				->decrypt( $data['secret'], $data['nonce'] ),
+			$key->getSecret(),
+		);
 	}
 
 	public function testJsonSerializerWithEncryption() {

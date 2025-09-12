@@ -94,11 +94,12 @@ class TOTPKey implements IAuthKey {
 			return null;
 		}
 		if ( isset( $data['nonce'] ) ) {
-			if ( !EncryptionHelper::isEnabled() ) {
+			$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
+			if ( !$encryptionHelper->isEnabled() ) {
 				throw new UnexpectedValueException( 'Encryption is not configured but database has encrypted data' );
 			}
 			$data['encrypted_secret'] = $data['secret'];
-			$data['secret'] = EncryptionHelper::decrypt( $data['secret'], $data['nonce'] );
+			$data['secret'] = $encryptionHelper->decrypt( $data['secret'], $data['nonce'] );
 		} else {
 			$data['encrypted_secret'] = '';
 			$data['nonce'] = '';
@@ -304,10 +305,11 @@ class TOTPKey implements IAuthKey {
 
 	public function jsonSerialize(): array {
 		$encryptedData = $this->getEncryptedSecretAndNonce();
-		if ( EncryptionHelper::isEnabled() && in_array( '', $encryptedData ) ) {
-			$data = EncryptionHelper::encrypt( $this->getSecret() );
+		$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
+		if ( $encryptionHelper->isEnabled() && in_array( '', $encryptedData ) ) {
+			$data = $encryptionHelper->encrypt( $this->getSecret() );
 			$this->setEncryptedSecretAndNonce( $data['secret'], $data['nonce'] );
-		} elseif ( EncryptionHelper::isEnabled() ) {
+		} elseif ( $encryptionHelper->isEnabled() ) {
 			$data = [
 				'secret' => $encryptedData[0],
 				'nonce' => $encryptedData[1]

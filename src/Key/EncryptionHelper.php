@@ -21,23 +21,34 @@
 namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
+use MediaWiki\Config\ServiceOptions;
 use UnexpectedValueException;
 
 /**
  * Wrapper around sodium's cryptobox to encrypt and decrypt the OTP secret
  */
 class EncryptionHelper {
+	/** @internal */
+	public const CONSTRUCTOR_OPTIONS = [
+		'OATHSecretKey',
+	];
+
+	public function __construct(
+		private readonly ServiceOptions $options,
+	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+	}
 
 	/**
 	 * Whether encryption is configured/enabled
 	 *
 	 * @return bool
 	 */
-	public static function isEnabled(): bool {
-		global $wgOATHSecretKey;
+	public function isEnabled(): bool {
+		$key = $this->options->get( 'OATHSecretKey' );
 		return extension_loaded( 'sodium' )
-			&& strlen( $wgOATHSecretKey ) === ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 )
-			&& ctype_xdigit( $wgOATHSecretKey );
+			&& strlen( $key ) === ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 )
+			&& ctype_xdigit( $key );
 	}
 
 	/**
@@ -45,9 +56,8 @@ class EncryptionHelper {
 	 *
 	 * @return string
 	 */
-	private static function getKey() {
-		global $wgOATHSecretKey;
-		return hex2bin( $wgOATHSecretKey );
+	private function getKey() {
+		return hex2bin( $this->options->get( 'OATHSecretKey' ) );
 	}
 
 	/**
@@ -58,11 +68,11 @@ class EncryptionHelper {
 	 * @return string
 	 * @throws UnexpectedValueException When decryption fails
 	 */
-	public static function decrypt( string $ciphertext, string $nonce ) {
+	public function decrypt( string $ciphertext, string $nonce ) {
 		$plaintext = sodium_crypto_secretbox_open(
 			Base32::decode( $ciphertext ),
 			Base32::decode( $nonce ),
-			self::getKey()
+			$this->getKey(),
 		);
 		if ( $plaintext === false ) {
 			throw new UnexpectedValueException( 'Unable to decrypt ciphertext' );
@@ -76,10 +86,10 @@ class EncryptionHelper {
 	 * @param string $plaintext What to encrypt
 	 * @return string[] Array with 'secret' and 'nonce' keys, both base32 encoded
 	 */
-	public static function encrypt( string $plaintext ) {
+	public function encrypt( string $plaintext ) {
 		// Generate a unique nonce
 		$nonce = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
-		$ciphertext = sodium_crypto_secretbox( $plaintext, $nonce, self::getKey() );
+		$ciphertext = sodium_crypto_secretbox( $plaintext, $nonce, $this->getKey() );
 		return [
 			'secret' => Base32::encode( $ciphertext ),
 			'nonce' => Base32::encode( $nonce ),
