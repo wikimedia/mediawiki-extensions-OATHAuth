@@ -27,8 +27,6 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
-use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\RawSQLExpression;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -72,22 +70,16 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 		$updatedCount = 0;
 		$totalRows = 0;
 
-		$dbw = MediaWikiServices::getInstance()
+		$dbw = $this->getServiceContainer()
 			->getDBLoadBalancerFactory()
 			->getPrimaryDatabase( 'virtual-oathauth' );
-
-		$OATHTypeQuery = $dbw->newSelectQueryBuilder()
-			->select( 'oat_id' )
-			->from( 'oathauth_types' )
-			->where( [ 'oat_name' => 'totp' ] );
-
-		$OATHDevicesQuery = $dbw->newSelectQueryBuilder()
+		$res = $dbw->newSelectQueryBuilder()
 			->select( [ 'oad_id', 'oad_data' ] )
 			->from( 'oathauth_devices' )
-			->where( new RawSQLExpression( 'oad_type IN ( ' . $OATHTypeQuery->getSQL() . ')' ) )
-			->caller( __METHOD__ );
-
-		$res = $OATHDevicesQuery->fetchResultSet();
+			->join( 'oathauth_types', null, 'oat_id = oad_type' )
+			->where( [ 'oat_name' => 'totp' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		foreach ( $res as $row ) {
 			$totalRows++;
