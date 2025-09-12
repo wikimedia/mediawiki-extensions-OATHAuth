@@ -10,6 +10,7 @@
 			"Ostrzyciel",
 			"Rail",
 			"Railfail536",
+			"Rzuwig",
 			"WTM",
 			"WaldiSt"
 		]
@@ -116,5 +117,7 @@
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]].",
 	"oathauth-qrcode-alt": "Kod QR zawierający tajny klucz do zeskanowania.",
 	"oathauth-must-be-central": "{{GENDER:$1|Twoje konto}} musi być połączone z centralnym systemem uwierzytelniania, aby móc używać uwierzytelniania dwuskładnikowego.",
-	"oathauth-error-multiple-modules": "W chwili obecnej używanie wielu metod uwierzytelniania dwuskładnikowego nie jest wspierane. Możesz włączyć $1 dopiero po wyłączeniu $2."
+	"oathauth-error-multiple-modules": "W chwili obecnej używanie wielu metod uwierzytelniania dwuskładnikowego nie jest wspierane. Możesz włączyć $1 dopiero po wyłączeniu $2.",
+	"group-oathauth-twofactorauth": "Użytkownicy uprawnieni do korzystania z uwierzytelniania dwuskładnikowego",
+	"group-oathauth-twofactorauth-member": "uprawniony do korzystania z uwierzytelniania dwuskładnikowego"
 }

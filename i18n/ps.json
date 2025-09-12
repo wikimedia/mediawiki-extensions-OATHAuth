@@ -84,5 +84,6 @@
 	"notification-header-oathauth-disable": "{{GENDER:$2|ستاسو گڼون}} باندې دوه‌پړاويز تاييد ناچارن‌شوی.",
 	"notification-header-oathauth-remove-device": "د دوه‌پړاويز تاييد وسيله {{GENDER:$2|ستاسې گڼون}} نه لرې شوه.",
 	"oathauth-notifications-disable-help": "لارښود",
-	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل"
+	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"group-oathauth-twofactorauth": "هغه کارنان چې ښايي له دوه‌پړاويزه تاييد نه کار واخلي"
 }
