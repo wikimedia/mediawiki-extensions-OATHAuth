@@ -32,5 +32,7 @@
 	"webauthn-authentication-info-label": "Autentifikasiya datası",
 	"webauthn-authentication-info-help": "Autentifikasiya məlumatları identifikasiyanın axtarışı üçün müştəriyə ötürülür",
 	"webauthn-credential-label": "İstifadəçi identifikasiyası",
-	"webauthn-credential-help": "Doğrulama məlumatlarına əsaslanan istifadəçi identifikasiyası"
+	"webauthn-credential-help": "Doğrulama məlumatlarına əsaslanan istifadəçi identifikasiyası",
+	"webauthn-add-security-key": "Təhlükəsizlik açarı əlavə et",
+	"webauthn-security-key-delete-success": "'''$1''' təhlükəsizlik açarınız hesabınızdan silindi."
 }

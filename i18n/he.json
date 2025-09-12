@@ -33,5 +33,7 @@
 	"webauthn-authentication-info-label": "נתוני האימות",
 	"webauthn-authentication-info-help": "נתוני האימות הועברו ללקוח לשם אחזור נתוני הזדהות",
 	"webauthn-credential-label": "נתוני הזדהות משתמש",
-	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות"
+	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות",
+	"webauthn-add-security-key": "הוספת מפתח אבטחה",
+	"webauthn-security-key-delete-success": "מפתח האבטחה שלך '''$1''' הוסר מהחשבון שלך."
 }

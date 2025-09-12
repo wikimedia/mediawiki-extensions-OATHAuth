@@ -11,5 +11,7 @@
 	"webauthn-ui-reload-page-label": "Ricarica la pagina",
 	"webauthn-authentication-info-label": "Dati di autenticazione",
 	"webauthn-credential-label": "Credenziali utente",
-	"webauthn-credential-help": "Credenziali dell'utente basate sui dati di autenticazione"
+	"webauthn-credential-help": "Credenziali dell'utente basate sui dati di autenticazione",
+	"webauthn-add-security-key": "Aggiungi una chiave di sicurezza",
+	"webauthn-security-key-delete-success": "La chiave di sicurezza '''$1''' è stata rimossa dalla tua utenza."
 }

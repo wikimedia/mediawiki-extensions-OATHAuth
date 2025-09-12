@@ -34,5 +34,7 @@
 	"webauthn-authentication-info-label": "Authentifizierungsdaten",
 	"webauthn-authentication-info-help": "Authentifizierungsdaten, die an den Client zum Abrufen von Anmeldeinformationen übergeben werden",
 	"webauthn-credential-label": "Anmeldedaten des Benutzers",
-	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten"
+	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten",
+	"webauthn-add-security-key": "Einen Sicherheitsschlüssel hinzufügen",
+	"webauthn-security-key-delete-success": "Dein Sicherheitsschlüssel '''$1''' wurde von deinem Konto entfernt."
 }
