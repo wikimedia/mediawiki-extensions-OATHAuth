@@ -48,4 +48,35 @@ class EncryptionHelperTest extends MediaWikiUnitTestCase {
 		$this->expectException( UnexpectedValueException::class );
 		$decrypted = $helper->decrypt( $invalidMagicPhrase, $encrypted['nonce'] );
 	}
+
+	/**
+	 * @dataProvider provideInvalidKeys
+	 */
+	public function testIsEnabledInvalidKey( string $key ) {
+		$helper = new EncryptionHelper(
+			new ServiceOptions(
+				EncryptionHelper::CONSTRUCTOR_OPTIONS,
+				[ 'OATHSecretKey' => $key ],
+			),
+		);
+
+		$this->expectException( UnexpectedValueException::class );
+		$this->assertNull( $helper->isEnabled() );
+	}
+
+	public static function provideInvalidKeys() {
+		yield 'invalid length' => [ 'aaaaaaaaaaaaa' ];
+		yield 'not hexadecimal' => [ 'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' ];
+	}
+
+	public function testIsEnabledDisabled() {
+		$helper = new EncryptionHelper(
+			new ServiceOptions(
+				EncryptionHelper::CONSTRUCTOR_OPTIONS,
+				[ 'OATHSecretKey' => null ],
+			),
+		);
+
+		$this->assertFalse( $helper->isEnabled() );
+	}
 }

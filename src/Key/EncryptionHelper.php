@@ -22,6 +22,7 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use MediaWiki\Config\ServiceOptions;
+use RuntimeException;
 use UnexpectedValueException;
 
 /**
@@ -39,16 +40,28 @@ class EncryptionHelper {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
 
-	/**
-	 * Whether encryption is configured/enabled
-	 *
-	 * @return bool
-	 */
+	/** @return bool Whether encryption is enabled. */
 	public function isEnabled(): bool {
 		$key = $this->options->get( 'OATHSecretKey' );
-		return extension_loaded( 'sodium' )
-			&& strlen( $key ) === ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 )
-			&& ctype_xdigit( $key );
+		if ( !$key ) {
+			return false;
+		}
+
+		if ( !extension_loaded( 'sodium' ) ) {
+			// @codeCoverageIgnoreStart
+			throw new RuntimeException( 'OATHAuth encryption requires ext-sodium' );
+			// @codeCoverageIgnoreEnd
+		}
+
+		if ( strlen( $key ) !== ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 ) ) {
+			throw new UnexpectedValueException( 'OATHAuth encryption key has invalid length' );
+		}
+
+		if ( !ctype_xdigit( $key ) ) {
+			throw new UnexpectedValueException( 'OATHAuth encryption key must be in hexadecimal' );
+		}
+
+		return true;
 	}
 
 	/**
