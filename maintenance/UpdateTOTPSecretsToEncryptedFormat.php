@@ -1,9 +1,5 @@
 <?php
 /**
- * Updates TOTP secret to an encrypted format in the database
- *
- * Usage: php UpdateTOTPSecretsToEncryptedFormat.php
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -41,8 +37,13 @@ if ( $IP === false ) {
 }
 
 require_once "$IP/maintenance/Maintenance.php";
-
 // @codeCoverageIgnoreEnd
+
+/**
+ * Updates TOTP secret to an encrypted format in the database
+ *
+ * Usage: php UpdateTOTPSecretsToEncryptedFormat.php
+ */
 class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 	public function __construct() {
