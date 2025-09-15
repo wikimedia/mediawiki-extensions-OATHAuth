@@ -32,26 +32,16 @@ class OATHAuthServices {
 	public function __construct( private readonly MediaWikiServices $services ) {
 	}
 
-	/**
-	 * @param MediaWikiServices|null $services
-	 * @return OATHAuthServices
-	 */
-	public static function getInstance( ?MediaWikiServices $services = null ): OATHAuthServices {
+	public static function getInstance( ?MediaWikiServices $services = null ): self {
 		return new self(
 			$services ?? MediaWikiServices::getInstance(),
 		);
 	}
 
-	/**
-	 * @return OATHAuthModuleRegistry
-	 */
 	public function getModuleRegistry(): OATHAuthModuleRegistry {
 		return $this->services->getService( 'OATHAuthModuleRegistry' );
 	}
 
-	/**
-	 * @return OATHUserRepository
-	 */
 	public function getUserRepository(): OATHUserRepository {
 		return $this->services->getService( 'OATHUserRepository' );
 	}
