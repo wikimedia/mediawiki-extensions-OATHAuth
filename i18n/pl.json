@@ -11,7 +11,8 @@
 			"WTM",
 			"WaldiSt",
 			"Nux",
-			"Msz2001"
+			"Msz2001",
+			"Rzuwig"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC",
