@@ -33,5 +33,7 @@
 	"webauthn-authentication-info-label": "Datos de autenticación",
 	"webauthn-authentication-info-help": "Os datos de autenticación pasaron ao cliente para a recuperación das credenciais",
 	"webauthn-credential-label": "Credencial do usuario",
-	"webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación"
+	"webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación",
+	"webauthn-add-security-key": "Engadir unha chave de seguranza",
+	"webauthn-security-key-delete-success": "Eliminouse da túa conta a túa chave de seguranza «'''$1'''»."
 }

@@ -32,5 +32,7 @@
 	"webauthn-authentication-info-label": "Datos de authentication",
 	"webauthn-authentication-info-help": "Datos de authentication passate al cliente pro obtener credentiales",
 	"webauthn-credential-label": "Credential del usator",
-	"webauthn-credential-help": "Credential del usator basate sur le datos de authentication"
+	"webauthn-credential-help": "Credential del usator basate sur le datos de authentication",
+	"webauthn-add-security-key": "Adder un clave de securitate",
+	"webauthn-security-key-delete-success": "Tu clave de securitate '''$1''' ha essite removite de tu conto."
 }

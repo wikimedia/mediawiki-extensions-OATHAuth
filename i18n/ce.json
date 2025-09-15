@@ -32,5 +32,7 @@
 	"webauthn-authentication-info-label": "Аутентификацин хаамаш",
 	"webauthn-authentication-info-help": "Аутентификацин хаамаш клиенте дӀакхачийна тешалла схьаэца",
 	"webauthn-credential-label": "Декъашхочун тешалла",
-	"webauthn-credential-help": "Декъашхочун тешалла аутентификацин хаамашна тӀехь"
+	"webauthn-credential-help": "Декъашхочун тешалла аутентификацин хаамашна тӀехь",
+	"webauthn-add-security-key": "Кхерамзаллин догӀа тӀетоха",
+	"webauthn-security-key-delete-success": "Хьан кхерамзаллин догӀа '''$1''' дӀайаьккхина хьан аккаунтан тӀера."
 }
