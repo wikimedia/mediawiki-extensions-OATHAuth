@@ -36,9 +36,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'users';
 	}

@@ -30,9 +30,7 @@ class DisableOATHForUser extends FormSpecialPage {
 		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'users';
 	}

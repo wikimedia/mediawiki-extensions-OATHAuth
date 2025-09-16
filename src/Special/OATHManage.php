@@ -64,16 +64,12 @@ class OATHManage extends SpecialPage {
 		parent::__construct( 'OATHManage', 'oathauth-enable' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'login';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getLoginSecurityLevel() {
 		return $this->getName();
 	}

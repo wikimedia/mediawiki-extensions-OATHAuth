@@ -6,16 +6,12 @@ use MediaWiki\Message\Message;
 
 class DisableForm extends OATHAuthOOUIHTMLForm {
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'oathauth-disabledoath' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getDescriptors() {
 		$this->setSubmitTextMsg( 'oathauth-disable-generic' );
 		$this->setSubmitDestructive();
@@ -38,9 +34,7 @@ class DisableForm extends OATHAuthOOUIHTMLForm {
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onSubmit( array $formData ) {
 		$this->oathRepo->removeAllOfType(
 			$this->oathUser,

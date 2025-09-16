@@ -73,17 +73,13 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 		parent::__construct( $this->getDescriptors(), $context, "oathauth" );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function show( $layout = null ) {
 		$this->layoutContainer = $layout;
 		return parent::show();
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function displayForm( $submitResult ) {
 		if ( !$this->layoutContainer instanceof Layout ) {
 			parent::displayForm( $submitResult );
@@ -106,9 +102,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 		return LoggerFactory::getInstance( 'authentication' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function wrapFieldSetSection( $legend, $section, $attributes, $isRoot ) {
 		// to get a user visible effect, wrap the fieldset into a framed panel layout
 		$layout = new PanelLayout( [

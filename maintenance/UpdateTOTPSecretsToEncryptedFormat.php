@@ -50,9 +50,7 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 		$this->addDescription( 'Update TOTP secrets to use encypted format within database' );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function doDBUpdates() {
 		if ( !extension_loaded( 'sodium' ) ) {
 			$this->fatalError( "libsodium is not installed with php in this environment!" );
