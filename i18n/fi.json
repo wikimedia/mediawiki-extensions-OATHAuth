@@ -11,7 +11,8 @@
 			"Stryn",
 			"Veikk0.ma",
 			"Samoasambia",
-			"Minilammas"
+			"Minilammas",
+			"Taavi"
 		]
 	},
 	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen avulla",

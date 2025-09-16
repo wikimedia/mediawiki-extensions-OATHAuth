@@ -11,7 +11,8 @@
 			"Rail",
 			"Railfail536",
 			"WTM",
-			"WaldiSt"
+			"WaldiSt",
+			"Rzuwig"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC",
