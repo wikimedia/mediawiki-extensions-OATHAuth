@@ -1,6 +1,5 @@
 {
 	"name": "WebAuthn",
-	"version": "1.0.0",
 	"author": [
 		"Robert Vogel <vogel@hallowelt.com>",
 		"Dejan Savuljesku <savuljesku@hallowelt.com>"
@@ -18,7 +17,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.45",
 		"extensions": {
-			"OATHAuth": ">= 0.4.4"
+			"OATHAuth": "*"
 		}
 	},
 	"license-name": "GPL-2.0-or-later AND GPL-3.0-or-later",
