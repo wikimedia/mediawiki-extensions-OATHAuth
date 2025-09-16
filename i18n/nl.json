@@ -35,5 +35,7 @@
 	"webauthn-authentication-info-label": "Authenticatiegegevens",
 	"webauthn-authentication-info-help": "Authenticatiegegevens worden doorgegeven aan de cliënt voor het ophalen van referenties",
 	"webauthn-credential-label": "Aanmeldgegevens gebruiker",
-	"webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens"
+	"webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens",
+	"webauthn-add-security-key": "Een beveiligingssleutel toevoegen",
+	"webauthn-security-key-delete-success": "Uw beveiligingssleutel '''$1''' is uit uw account verwijderd."
 }
