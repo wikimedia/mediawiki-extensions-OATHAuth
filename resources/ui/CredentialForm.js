@@ -25,7 +25,13 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 	consoleMsg = consoleMsg || message;
 
 	// Unrecoverable in this load - remove all content
-	this.$form.children().hide();
+	// TODO: We should really have a "try again" button instead of a reload button here (T404773)
+	// eslint-disable-next-line no-jquery/no-sizzle
+	this.$form
+		.children()
+		// HACK: Don't remove the "switch to" buttons for other auth methods on the login page
+		.not( 'div:has(button[name="newModule"])' )
+		.hide();
 
 	const errorMessage = new OO.ui.MessageWidget( {
 		type: 'error',
@@ -41,7 +47,7 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 		}
 	} );
 
-	this.$form.append(
+	this.$form.prepend(
 		errorMessage.$element,
 		$( '<p>' ).append( reloadButton.$element )
 	);
