@@ -88,14 +88,23 @@ class HookHandler implements
 				$loginButtonWeight = 100;
 			}
 
-			$extraWeight = 1;
 			$availableModules = $fieldInfo['newModule']['options'];
-			foreach ( $availableModules as $moduleName => $ignored ) {
-				// $availableModules starts with an empty option for not switching; skip this
-				if ( $moduleName === '' ) {
-					continue;
-				}
+			// Remove the empty option for not switching first
+			unset( $availableModules[''] );
 
+			// Reorder according to OATHPrioritizedModules
+			$orderedModules = [];
+			foreach ( $this->config->get( 'OATHPrioritizedModules' ) as $moduleName ) {
+				if ( isset( $availableModules[$moduleName] ) ) {
+					$orderedModules[$moduleName] = $availableModules[$moduleName];
+					unset( $availableModules[$moduleName] );
+				}
+			}
+			// Append any remaining modules that weren’t in the priority list
+			$availableModules = $orderedModules + $availableModules;
+
+			$extraWeight = 1;
+			foreach ( $availableModules as $moduleName => $ignored ) {
 				// Add a switch button for each alternative module, all with name="newModule"
 				// Whichever button is clicked will submit the form, with newModule set to its value
 				$buttonMessage = $this->moduleRegistry->getModuleByKey( $moduleName )->getLoginSwitchButtonMessage();

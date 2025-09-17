@@ -6,7 +6,7 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\TwoFactorModuleSelectAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
@@ -72,7 +72,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 			new NullLogger(),
 			$this->createNoOpMock( AuthManager::class ),
 			$this->createNoOpMock( HookContainer::class ),
-			$this->createNoOpAbstractMock( Config::class ),
+			new HashConfig( [ 'OATHPrioritizedModules' => [] ] ),
 			$this->createNoOpMock( UserNameUtils::class )
 		);
 		$response = $provider->beginSecondaryAuthentication( $user, [] );

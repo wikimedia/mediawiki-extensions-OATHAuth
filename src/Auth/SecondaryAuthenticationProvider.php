@@ -132,9 +132,14 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			return 'totp';
 		}
 
-		// TODO: come up with a way to prioritize some modules over others
-		//   e.g. a hypothetical split recovery code module should not be shown
-		//   by default if other modules are enabled
+		// Use the highest-priority module the user has
+		foreach ( $this->config->get( 'OATHPrioritizedModules' ) as $module ) {
+			if ( $authUser->getKeysForModule( $module ) ) {
+				return $module;
+			}
+		}
+
+		// Return the first key from the db if the user doesn't have any of the prioritized modules
 		return $authUser->getKeys() ? $authUser->getKeys()[0]->getModule() : null;
 	}
 
