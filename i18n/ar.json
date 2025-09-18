@@ -36,5 +36,5 @@
 	"webauthn-credential-label": "بيانات اعتماد المستخدم",
 	"webauthn-credential-help": "اعتماد المستخدم على أساس بيانات المصادقة",
 	"webauthn-add-security-key": "إضافة مفتاح أمان",
-	"webauthn-security-key-delete-success": "لقد تمت إزالة مفتاح الأمان الخاص بك ''' $1 ''' من حسابك."
+	"webauthn-auth-switch-module-label": "استخدم مفتاح الأمان"
 }

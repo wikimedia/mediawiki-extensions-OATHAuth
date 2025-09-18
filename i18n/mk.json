@@ -34,5 +34,5 @@
 	"webauthn-credential-label": "Корисничко овластување",
 	"webauthn-credential-help": "Корисничко овластување според податоците за заверка",
 	"webauthn-add-security-key": "Додај безбедносен клуч",
-	"webauthn-security-key-delete-success": "Вашиот безбедносен клуч '''$1''' е отстранет од вашата сметка."
+	"webauthn-auth-switch-module-label": "Користи безбедносен клуч"
 }

@@ -5,6 +5,7 @@
 			"Volvox"
 		]
 	},
+	"webauthn-module-label": "Sécherheetsschlëssel",
 	"webauthn-error-auth-generic": "Den Authentifikatiounsprozess gouf ënnerbrach. Fänkt den Authentifikatiounsprozess wgl. nach eng Kéier un.",
 	"webuathn-ui-remove-key": "Ewechhuelen",
 	"webauthn-error-module-not-enabled": "D'Modul „$1“ ass net aktivéiert fir {{GENDER:$2|de Benotzer|d'Benotzerin}} „$2“.",

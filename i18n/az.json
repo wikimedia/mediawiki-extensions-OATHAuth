@@ -5,7 +5,7 @@
 		]
 	},
 	"webauthn-desc": "WebAuthn protokolundan istifadə edərək autentifikasiya dəstəyini təmin edir",
-	"webauthn-module-label": "Veb Autentikasiya (WebAuthn)",
+	"webauthn-module-label": "Təhlükəsizlik açarı",
 	"webauthn-javascript-required": "WebAuthn istifadə etmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
 	"webauthn-ui-login-prompt": "Zəhmət olmasa, doğrulama cihazınıza toxunun və ya brauzerin təlimatlarına əməl edin.",
 	"webauthn-ui-add-key": "Açar əlavə et",
@@ -34,5 +34,5 @@
 	"webauthn-credential-label": "İstifadəçi identifikasiyası",
 	"webauthn-credential-help": "Doğrulama məlumatlarına əsaslanan istifadəçi identifikasiyası",
 	"webauthn-add-security-key": "Təhlükəsizlik açarı əlavə et",
-	"webauthn-security-key-delete-success": "'''$1''' təhlükəsizlik açarınız hesabınızdan silindi."
+	"webauthn-auth-switch-module-label": "Təhlükəsizlik açarından istifadə et"
 }

@@ -6,7 +6,7 @@
 		]
 	},
 	"webauthn-desc": "Ofrece soporte de autenticación mediante o protocolo WebAuthn",
-	"webauthn-module-label": "Autenticación web (WebAuthn)",
+	"webauthn-module-label": "Chave de seguranza",
 	"webauthn-javascript-required": "Cómpre activar o JavaScript no navegador para usar WebAuthn.",
 	"webauthn-ui-login-prompt": "Toca o teu dispositivo de verificación ou sigue as instrucións do navegador.",
 	"webauthn-ui-add-key": "Engadir unha chave",
@@ -35,5 +35,5 @@
 	"webauthn-credential-label": "Credencial do usuario",
 	"webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación",
 	"webauthn-add-security-key": "Engadir unha chave de seguranza",
-	"webauthn-security-key-delete-success": "Eliminouse da túa conta a túa chave de seguranza «'''$1'''»."
+	"webauthn-auth-switch-module-label": "Usar a chave de seguranza"
 }

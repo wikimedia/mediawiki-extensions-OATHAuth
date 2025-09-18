@@ -42,5 +42,5 @@
 	"webauthn-credential-label": "Références de l’utilisateur",
 	"webauthn-credential-help": "Références de l’utilisateur basées sur les données d’authentification",
 	"webauthn-add-security-key": "Ajouter une clé de sécurité",
-	"webauthn-security-key-delete-success": "Votre clé de sécurité '''$1''' a été supprimée de votre compte."
+	"webauthn-auth-switch-module-label": "Utiliser la clé de sécurité"
 }

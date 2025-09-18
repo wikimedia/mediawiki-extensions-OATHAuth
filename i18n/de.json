@@ -7,7 +7,7 @@
 		]
 	},
 	"webauthn-desc": "Bietet Unterstützung bei der Authentifizierung mit dem WebAuthn-Protokoll",
-	"webauthn-module-label": "Web-Authentifizierung (WebAuthn)",
+	"webauthn-module-label": "Sicherheitsschlüssel",
 	"webauthn-javascript-required": "JavaScript muss in deinem Browser aktiviert sein, um WebAuthn nutzen zu können.",
 	"webauthn-ui-login-prompt": "Bitte berühre dein Verifizierungsgerät oder folge den Anweisungen des Browsers.",
 	"webauthn-ui-add-key": "Schlüssel hinzufügen",
@@ -36,5 +36,5 @@
 	"webauthn-credential-label": "Anmeldedaten des Benutzers",
 	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten",
 	"webauthn-add-security-key": "Einen Sicherheitsschlüssel hinzufügen",
-	"webauthn-security-key-delete-success": "Dein Sicherheitsschlüssel '''$1''' wurde von deinem Konto entfernt."
+	"webauthn-auth-switch-module-label": "Sicherheitsschlüssel verwenden"
 }

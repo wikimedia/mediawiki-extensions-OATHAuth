@@ -8,7 +8,7 @@
 		]
 	},
 	"webauthn-desc": "Biedt ondersteuning voor authenticatie met behulp van het protocol WebAuthn",
-	"webauthn-module-label": "Webauthenticatie (WebAuthn)",
+	"webauthn-module-label": "Beveiligingssleutel",
 	"webauthn-javascript-required": "Om WebAuthn te kunnen gebruiken, moet JavaScript in uw browser ingeschakeld zijn.",
 	"webauthn-ui-login-prompt": "Raak uw verificatieapparaat aan of volg de instructies van de browser.",
 	"webauthn-ui-add-key": "Sleutel toevoegen",
@@ -37,5 +37,5 @@
 	"webauthn-credential-label": "Aanmeldgegevens gebruiker",
 	"webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens",
 	"webauthn-add-security-key": "Een beveiligingssleutel toevoegen",
-	"webauthn-security-key-delete-success": "Uw beveiligingssleutel '''$1''' is uit uw account verwijderd."
+	"webauthn-auth-switch-module-label": "Beveiligingssleutel gebruiken"
 }

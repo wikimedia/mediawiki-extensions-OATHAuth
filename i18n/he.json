@@ -6,7 +6,7 @@
 		]
 	},
 	"webauthn-desc": "מספק תמיכה באימות בפרוטוקול WebAuthn",
-	"webauthn-module-label": "אימות וב (WebAuthn)",
+	"webauthn-module-label": "מפתח אבטחה",
 	"webauthn-javascript-required": "יש להפעיל JavaScript בדפדפן שלך כדי להשתמש ב־WebAuthn.",
 	"webauthn-ui-login-prompt": "נא לגעת במכשיר האימות שלך או לעקוב אחר ההוראות בדפדפן.",
 	"webauthn-ui-add-key": "הוספת מפתח",
@@ -35,5 +35,5 @@
 	"webauthn-credential-label": "נתוני הזדהות משתמש",
 	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות",
 	"webauthn-add-security-key": "הוספת מפתח אבטחה",
-	"webauthn-security-key-delete-success": "מפתח האבטחה שלך '''$1''' הוסר מהחשבון שלך."
+	"webauthn-auth-switch-module-label": "להשתמש במפתח אבטחה"
 }
