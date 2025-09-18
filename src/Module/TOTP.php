@@ -135,4 +135,9 @@ class TOTP implements IModule {
 	public function getLoginSwitchButtonMessage() {
 		return wfMessage( 'oathauth-auth-switch-module-label' );
 	}
+
+	/** @inheritDoc */
+	public function isSpecial(): bool {
+		return false;
+	}
 }

@@ -94,4 +94,14 @@ interface IModule {
 	 * @return Message
 	 */
 	public function getLoginSwitchButtonMessage();
+
+	/**
+	 * ext:OATHAuth makes a lot of assumptions in different portions of its
+	 * code about standard modules - things like totp and webauthn. Certain
+	 * basic actions (enable, disable) and user workflows fit neatly into this
+	 * paradigm.  But there will exist modules (such as recovery codes) which
+	 * will need to accommodate display logic, workflows and use cases.  This
+	 * method provides a conditional divide for these special modules.
+	 */
+	public function isSpecial(): bool;
 }

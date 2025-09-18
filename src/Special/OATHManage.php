@@ -244,6 +244,10 @@ class OATHManage extends SpecialPage {
 		$keyAccordions = '';
 		$placeholderMessage = '';
 		foreach ( $this->authUser->getKeys() as $key ) {
+			if ( $this->moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial() ) {
+				continue;
+			}
+
 			// TODO use outlined Accordions once these are available in Codex
 			$keyData = $this->getKeyNameAndDescription( $key );
 			$keyAccordion = $codex->accordion()
