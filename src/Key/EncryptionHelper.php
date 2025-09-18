@@ -66,11 +66,9 @@ class EncryptionHelper {
 
 	/**
 	 * Get the encryption secret key as bytes
-	 *
-	 * @return string
 	 */
-	private function getKey() {
-		return hex2bin( $this->options->get( 'OATHSecretKey' ) );
+	private function getKey(): string {
+		return sodium_hex2bin( $this->options->get( 'OATHSecretKey' ) );
 	}
 
 	/**
