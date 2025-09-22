@@ -11,7 +11,7 @@
 		]
 	},
 	"webauthn-desc": "WebAuthn を用いた認証サポートを提供する",
-	"webauthn-module-label": "Web 認証 (WebAuthn)",
+	"webauthn-module-label": "セキュリティキー",
 	"webauthn-javascript-required": "WebAuthn を使用するには、ブラウザで JavaScript を有効化する必要があります。",
 	"webauthn-ui-login-prompt": "ご使用の認証用デバイスをタッチするか、ブラウザーの指示に従ってください。",
 	"webauthn-ui-add-key": "キーを追加",
@@ -33,10 +33,12 @@
 	"oathauth-webauthn-add-key-section-name": "新しい WebAuthn キーを登録する",
 	"webauthn-error-get-reginfo-fail": "登録情報を取得できませんでした。",
 	"webauthn-error-max-keys-reached": "登録できるキーは最大で {{PLURAL:$1|$1 本}}です。",
-	"webauthn-module-description": "WebAuth (Web Authentication, WEB認証) は World Wide Web Consortium (W3C) によって公開された Web 標準の仕様です。WebAuth は FIDO Alliance が支援する FIDO2 プロジェクトのコアコンポーネントです。プロジェクトの目標は、公開鍵暗号を使用して、Web ベースのアプリケーションとサービスの認証インターフェースを標準化することです。[https://ja.wikipedia.org/wiki/WebAuthn 詳細情報]",
+	"webauthn-module-description": "WebAuthnは実験段階です。現時点ではこの認証方法において、認証デバイスを紛失、または破損した場合、復旧する方法は提供されていません。\n\n[https://ja.wikipedia.org/wiki/WebAuthn WebAuthnの詳細はこちら]",
 	"webauthn-ui-reload-page-label": "ページを再読み込み",
 	"webauthn-authentication-info-label": "認証データ",
 	"webauthn-authentication-info-help": "資格情報取得のためにクライアントに渡される認証データ",
 	"webauthn-credential-label": "利用者認証情報",
-	"webauthn-credential-help": "認証データに基づく利用者認証情報"
+	"webauthn-credential-help": "認証データに基づく利用者認証情報",
+	"webauthn-add-security-key": "セキュリティキーを追加",
+	"webauthn-auth-switch-module-label": "セキュリティキーを使用"
 }

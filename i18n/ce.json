@@ -5,7 +5,7 @@
 		]
 	},
 	"webauthn-desc": "WebAuthn протокол лелайеш аьтту бо аутентификаци лелайан.",
-	"webauthn-module-label": "Веб-аутентификаци (WebAuthn)",
+	"webauthn-module-label": "Кхерамазаллин догӀа",
 	"webauthn-javascript-required": "WebAuthn лело хьайн браузерехь JavaScript дӀахӀоттийна хила йеза.",
 	"webauthn-ui-login-prompt": "Дехар до, таллархьама Ӏоттало аппаратах  йа браузер чуьра инструкцино бохург де",
 	"webauthn-ui-add-key": "ТӀетоха догӀа",
@@ -33,5 +33,6 @@
 	"webauthn-authentication-info-help": "Аутентификацин хаамаш клиенте дӀакхачийна тешалла схьаэца",
 	"webauthn-credential-label": "Декъашхочун тешалла",
 	"webauthn-credential-help": "Декъашхочун тешалла аутентификацин хаамашна тӀехь",
-	"webauthn-add-security-key": "Кхерамзаллин догӀа тӀетоха"
+	"webauthn-add-security-key": "Кхерамазаллин догӀа тӀетоха",
+	"webauthn-auth-switch-module-label": "Кхерамазаллин догӀа леладе"
 }

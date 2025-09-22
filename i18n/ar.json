@@ -7,7 +7,7 @@
 		]
 	},
 	"webauthn-desc": "يوفر دعم المصادقة باستخدام بروتوكول WebAuthn",
-	"webauthn-module-label": "مصادقة الويب (WebAuthn)",
+	"webauthn-module-label": "مفتاح الأمان",
 	"webauthn-javascript-required": "يجب تمكين JavaScript في متصفحك لاستخدام WebAuthn.",
 	"webauthn-ui-login-prompt": "يرجى لمس جهاز التحقق الخاص بك أو اتباع الإرشادات من المتصفح.",
 	"webauthn-ui-add-key": "إضافة مفتاح",

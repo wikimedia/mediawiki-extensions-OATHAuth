@@ -4,7 +4,8 @@
 			"شاه زمان پټان"
 		]
 	},
-	"webauthn-module-label": "وېب تاييد (WebAuthn)",
+	"webauthn-module-label": "خونديتوب کونجي",
 	"webauthn-error-cannot-remove-key": "کونجي نشي لرې کېدای.",
-	"webauthn-module-description": "WebAuthn يو ازمېښتي ونگ‌ډول دی. په دې ونگ‌ډول کې وسمهال د ورک شوو او مات شوو وسيلو د تاييد بياترلاسنې هېڅ چلندلار نشته.\n[https://en.wikipedia.org/wiki/WebAuthn د  WebAuthn په اړه نور ولولئ]"
+	"webauthn-module-description": "WebAuthn يو ازمېښتي ونگ‌ډول دی. په دې ونگ‌ډول کې وسمهال د ورک شوو او مات شوو وسيلو د تاييد بياترلاسنې هېڅ چلندلار نشته.\n[https://en.wikipedia.org/wiki/WebAuthn د  WebAuthn په اړه نور ولولئ]",
+	"webauthn-add-security-key": "خونديتوب کونجي ورگډول"
 }

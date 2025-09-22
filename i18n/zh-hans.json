@@ -10,7 +10,8 @@
 		]
 	},
 	"webauthn-desc": "使用WebAuthn协议提供身份验证支持",
-	"webauthn-module-label": "Web Authentication（WebAuthn）",
+	"webauthn-module-label": "安全密钥",
+	"webauthn-javascript-required": "您的浏览器必须启用JavaScript才能使用WebAuthn。",
 	"webauthn-ui-login-prompt": "请触摸您的验证设备或按照浏览器中的说明进行操作。",
 	"webauthn-ui-add-key": "添加密钥",
 	"webauthn-error-browser-unsupported": "该浏览器不支持WebAuthentication或不适用于本网站。请尝试使用其他浏览器。 [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 阅读更多]",
@@ -20,7 +21,8 @@
 	"oathauth-webauthn-registered-keys-section-name": "已注册密钥",
 	"webuathn-ui-remove-key": "移除",
 	"webauthn-error-module-not-enabled": "未为{{GENDER:$2|用户“$2”}}启用模块“$1”。",
-	"webauthn-error-verification-failed": "验证失败",
+	"webauthn-error-verification-failed": "WebAuthn验证失败。",
+	"webauthn-error-credentials-missing": "WebAuthn凭据未发送。",
 	"webauthn-error-cannot-register": "{{GENDER:$1|用户“$1”}}无法注册新凭据。",
 	"webauthn-error-invalid-new-key": "模块返回的新密钥不是必需的类型。",
 	"webauthn-error-registration-failed": "新密钥注册失败。",
@@ -35,5 +37,7 @@
 	"webauthn-authentication-info-label": "认证数据",
 	"webauthn-authentication-info-help": "身份验证数据传递给客户端以进行凭据检索",
 	"webauthn-credential-label": "用户凭证",
-	"webauthn-credential-help": "基于身份验证数据的用户凭证"
+	"webauthn-credential-help": "基于身份验证数据的用户凭证",
+	"webauthn-add-security-key": "添加安全密钥",
+	"webauthn-auth-switch-module-label": "使用安全密钥"
 }

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"LowensteinYang"
 		]
 	},
 	"webauthn-desc": "提供使用 WebAuthn 協定的驗證支援",
-	"webauthn-module-label": "Web Authentication（WebAuthn）",
+	"webauthn-module-label": "安全金鑰",
 	"webauthn-ui-login-prompt": "請輕觸您的驗證裝置或依照瀏覽器的指示說明",
 	"webauthn-ui-add-key": "添加密鑰",
 	"webauthn-error-browser-unsupported": "此瀏覽器不支援 WebAuthentication 或是不適用於此網站。請使用別種瀏覽器嘗試。[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 了解更多]",
