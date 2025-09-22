@@ -75,7 +75,7 @@
 	"log-action-filter-oath-verify": "檢查是否啟用雙重認證",
 	"log-action-filter-oath-disable-other": "停用其他使用者的雙重認證",
 	"oathauth-ui-no-module": "全部停用",
-	"oathauth-module-totp-label": "TOTP（一次性權杖）",
+	"oathauth-module-totp-label": "驗證器應用程式",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理雙重認證",
 	"oathauth-ui-not-enabled-modules": "切換到替代方法",

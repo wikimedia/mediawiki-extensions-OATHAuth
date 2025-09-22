@@ -68,6 +68,7 @@
 	"oathauth-module-totp-label": "TOTP (једнократни токен)",
 	"oathauth-ui-manage": "Управљај",
 	"oathmanage": "Управљање двофакторском аутентификацијом",
+	"accountsecurity": "Безбедност налога",
 	"oathauth-ui-not-enabled-modules": "Други методе аутентификације",
 	"oathauth-ui-enabled-module": "Укључене {{PLURAL:$1|методе}} потврде идентитета",
 	"oathauth-enable-generic": "Укључи",
@@ -92,5 +93,11 @@
 	"oathauth-notifications-recoverycodesleft-primary": "Проверите своја подешавања двофакторске аутентификације",
 	"oathauth-verify-enabled": "$1 је {{GENDER:$1|омогућио|омогућила}} двофакторску аутентификацију.",
 	"oathauth-verify-disabled": "$1 није {{GENDER:$1|омогућио|омогућила}} двофакторску аутентификацију.",
-	"oathauth-prefs-disabledgroups": "Онемогући {{PLURAL:$1|групу|групе}}:"
+	"oathauth-prefs-disabledgroups": "Онемогући {{PLURAL:$1|групу|групе}}:",
+	"oathauth-remove-nosuchkey": "Кључ није пронађен.",
+	"oathauth-password-header": "Лозинка",
+	"oathauth-password-label": "Поставите јаку лозинку да заштитите свој налог.",
+	"oathauth-password-action": "Промени лозинку",
+	"oathauth-authenticator-header": "Двофакторска потврда идентитета",
+	"oathauth-authenticator-delete": "Уклони"
 }

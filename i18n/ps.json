@@ -49,6 +49,7 @@
 	"oathauth-auth-token-label": "دوه‌پړاويز ټوکن يا بياترلاسنې کوډ",
 	"oathauth-auth-token-help": "يوځلي پټنوم د دوه‌پړاويز تاييد دوهم پړاو په توگه کارېږي.",
 	"oathauth-auth-token-help-ui": "له خپل تاييد وسيلې يا بياترلاسنې کوډ دننه کړئ",
+	"oathauth-auth-switch-module-label": "تاييدونکی کاريال کارول",
 	"oathauth-auth-switch-module-keep": "(مه بدلوئ)",
 	"oathauth-throttled": "ډېرې زياتې تاييد هېڅ! مهرباني وکړئ $1 په تمه شئ.",
 	"oathauth-login-failed": "TOTP تاييد نابريالی شو.",
@@ -66,9 +67,10 @@
 	"log-action-filter-oath-verify": "د دوه‌پړاويز تاييد د چارنېدلو پلټل",
 	"log-action-filter-oath-disable-other": "نورو کارنانو لپاره دوه‌پړاويز تاييد ناچارنول",
 	"oathauth-ui-no-module": "هېڅ چارن نه دي",
-	"oathauth-module-totp-label": "ټي‌او‌ټي‌پي (یوځلي ټوکن)",
+	"oathauth-module-totp-label": "تاييدونکی کاريال",
 	"oathauth-ui-manage": "مهارول",
 	"oathmanage": "دوه‌پړاويز تاييد مهارول",
+	"accountsecurity": "د گڼون خونديتوب",
 	"oathauth-ui-not-enabled-modules": "د تاييد نورې چلندلارې",
 	"oathauth-ui-enabled-module": "چارن‌شوي تاييد {{PLURAL:$1|چلندلار|چلندلارې}}",
 	"oathauth-enable-generic": "چارنول",
@@ -85,5 +87,12 @@
 	"notification-header-oathauth-remove-device": "د دوه‌پړاويز تاييد وسيله {{GENDER:$2|ستاسې گڼون}} نه لرې شوه.",
 	"oathauth-notifications-disable-help": "لارښود",
 	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
-	"group-oathauth-twofactorauth": "هغه کارنان چې ښايي له دوه‌پړاويزه تاييد نه کار واخلي"
+	"group-oathauth-twofactorauth": "هغه کارنان چې ښايي له دوه‌پړاويزه تاييد نه کار واخلي",
+	"oathauth-remove-nosuchkey": "کونجي ونه موندل شوه.",
+	"oathauth-password-header": "پټنوم",
+	"oathauth-password-label": "د خپل گڼون ساتنې لپاره يو ځواکمن پټنوم و اوڼئ.",
+	"oathauth-password-action": "پټنوم بدلول",
+	"oathauth-authenticator-header": "دوه‌پړاويز تاييد",
+	"oathauth-authenticator-delete": "لرې‌کول",
+	"oathauth-totp-add-key": "تاييدونکی کاريال ورگډول"
 }
