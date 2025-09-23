@@ -52,7 +52,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when operation was successful
+	 * Add content to output when the operation was successful
 	 */
 	public function onSuccess() {
 		$this->getOutput()->redirect(
@@ -61,7 +61,6 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param array $formData
 	 * @return array|bool
 	 * @throws ConfigException
 	 */
@@ -80,9 +79,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		return [ $registrationResult->getMessage() ];
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getDescriptors() {
 		return [
 			'nojs' => [

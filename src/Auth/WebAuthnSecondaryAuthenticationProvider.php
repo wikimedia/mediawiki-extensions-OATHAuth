@@ -26,19 +26,12 @@ use MediaWiki\Extension\WebAuthn\Authenticator;
 
 class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
-	/**
-	 * @param string $action
-	 * @param array $options
-	 *
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
 		return [];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$authenticator = Authenticator::factory( $user, $this->manager->getRequest() );
 		if ( !$authenticator->isEnabled() ) {
@@ -59,9 +52,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		return AuthenticationResponse::newFail( $startAuthResult->getMessage() );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
 		$authenticator = Authenticator::factory( $user, $this->manager->getRequest() );
 		$canAuthenticate = $authenticator->canAuthenticate();
@@ -108,9 +99,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		$out->addModules( "ext.webauthn.login" );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function beginSecondaryAccountCreation( $user, $creator, array $reqs ) {
 		return AuthenticationResponse::newAbstain();
 	}

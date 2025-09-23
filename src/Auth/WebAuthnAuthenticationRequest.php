@@ -22,19 +22,11 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Language\RawMessage;
 
 class WebAuthnAuthenticationRequest extends AuthenticationRequest {
-	/**
-	 * @var string
-	 */
-	protected $authInfo;
+	protected string $authInfo;
 
-	/**
-	 * @var string
-	 */
-	protected $credential;
+	protected string $credential;
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function describeCredentials() {
 		return [
 			'provider' => wfMessage( 'oathauth-describe-provider' ),
@@ -45,16 +37,12 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	/**
 	 * Set the authentication data to be passed
 	 * to the client for credential retrieval
-	 *
-	 * @param string $info
 	 */
-	public function setAuthInfo( $info ) {
+	public function setAuthInfo( string $info ) {
 		$this->authInfo = $info;
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getFieldInfo() {
 		return [
 			'auth_info' => [
@@ -72,12 +60,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		];
 	}
 
-	/**
-	 * Loads the credential retrieved from the client
-	 *
-	 * @param array $data
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function loadFromSubmission( array $data ) {
 		if ( !isset( $data['credential'] ) ) {
 			return false;
@@ -87,9 +70,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		return true;
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getSubmittedData() {
 		return [
 			'credential' => $this->credential

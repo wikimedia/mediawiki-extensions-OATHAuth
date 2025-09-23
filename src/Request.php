@@ -14,7 +14,7 @@ use MediaWiki\Request\WebRequest;
  */
 class Request extends ServerRequest {
 
-	public static function newFromWebRequest( WebRequest $request ): Request {
+	public static function newFromWebRequest( WebRequest $request ): self {
 		return new static(
 			$request->getMethod(),
 			$request->getFullRequestURL()

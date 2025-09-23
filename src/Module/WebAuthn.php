@@ -47,11 +47,7 @@ class WebAuthn implements IModule {
 		return wfMessage( 'webauthn-module-label' );
 	}
 
-	/**
-	 * @param array $data
-	 * @return WebAuthnKey
-	 */
-	public function newKey( array $data = [] ) {
+	public function newKey( array $data = [] ): WebAuthnKey {
 		if ( !$data ) {
 			return WebAuthnKey::newKey();
 		}
@@ -90,7 +86,7 @@ class WebAuthn implements IModule {
 
 	/**
 	 * Returns the appropriate form for the given action.
-	 * If the ability to add nenw credentials is disabled by configuration,
+	 * If the ability to add new credentials is disabled by configuration,
 	 * the empty string will be returned for any action other than ACTION_DISABLE.
 	 * The value null will be returned If no suitable form is found otherwise.
 	 *
@@ -139,11 +135,6 @@ class WebAuthn implements IModule {
 
 	/**
 	 * Get a single key by its name.
-	 *
-	 * @param string $name
-	 * @param OATHUser $user
-	 *
-	 * @return WebAuthnKey|null
 	 */
 	public function getKeyByFriendlyName( string $name, OATHUser $user ): ?WebAuthnKey {
 		foreach ( self::getWebAuthnKeys( $user ) as $key ) {
@@ -155,10 +146,7 @@ class WebAuthn implements IModule {
 		return null;
 	}
 
-	/**
-	 * @return WebAuthnConfig
-	 */
-	public function getConfig() {
+	public function getConfig(): WebAuthnConfig {
 		return new WebAuthnConfig();
 	}
 

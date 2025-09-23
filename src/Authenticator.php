@@ -25,11 +25,9 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
@@ -59,54 +57,18 @@ use Webauthn\PublicKeyCredentialUserEntity;
 class Authenticator {
 	private const SESSION_KEY = 'webauthn_session_data';
 
-	// 60 sec
+	/**
+	 * 60 seconds
+	 */
 	private const CLIENT_ACTION_TIMEOUT = 60000;
 
-	/**
-	 * @var string
-	 */
-	protected $serverId = '';
+	protected ?string $serverId;
 
 	/**
-	 * @var OATHUserRepository
-	 */
-	protected $userRepo;
-
-	/**
-	 * @var WebAuthn
-	 */
-	protected $module;
-
-	/**
-	 * @var OATHUser
-	 */
-	protected $oathUser;
-
-	/**
-	 * @var LoggerInterface
-	 */
-	protected $logger;
-
-	/**
-	 * @var WebRequest
-	 */
-	protected $request;
-
-	/**
-	 * @var IContextSource
-	 */
-	protected $context;
-
-	private UrlUtils $urlUtils;
-
-	/**
-	 * @param User $user
-	 * @param WebRequest|null $request
-	 * @return Authenticator
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	public static function factory( $user, $request = null ) {
+	public static function factory( User $user, ?WebRequest $request = null ): self {
 		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
@@ -124,38 +86,23 @@ class Authenticator {
 		);
 	}
 
-	/**
-	 * @param OATHUserRepository $userRepo
-	 * @param IModule $module
-	 * @param OATHUser|null $oathUser
-	 * @param IContextSource $context
-	 * @param LoggerInterface $logger
-	 * @param WebRequest $request
-	 * @param UrlUtils $urlUtils
-	 * @throws ConfigException
-	 */
-	protected function __construct( $userRepo, $module, $oathUser, $context, $logger, $request, $urlUtils ) {
-		$this->userRepo = $userRepo;
-		$this->module = $module;
-		$this->oathUser = $oathUser;
-		$this->context = $context;
-		$this->logger = $logger;
-		$this->request = $request;
-		$this->urlUtils = $urlUtils;
+	protected function __construct(
+		protected OATHUserRepository $userRepo,
+		protected WebAuthn $module,
+		protected OATHUser $oathUser,
+		protected IContextSource $context,
+		protected LoggerInterface $logger,
+		protected WebRequest $request,
+		private readonly UrlUtils $urlUtils
+	) {
 		$this->serverId = $this->getServerId();
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isEnabled() {
+	public function isEnabled(): bool {
 		return $this->module->isEnabled( $this->oathUser );
 	}
 
-	/**
-	 * @return Status
-	 */
-	public function canAuthenticate() {
+	public function canAuthenticate(): Status {
 		if ( !$this->isEnabled() ) {
 			return Status::newFatal(
 				'webauthn-error-module-not-enabled',
@@ -167,10 +114,7 @@ class Authenticator {
 		return Status::newGood();
 	}
 
-	/**
-	 * @return Status
-	 */
-	public function canRegister() {
+	public function canRegister(): Status {
 		if ( $this->context->getUser()->isAllowed( 'oathauth-enable' ) ) {
 			return Status::newGood();
 		}
@@ -182,10 +126,9 @@ class Authenticator {
 	}
 
 	/**
-	 * @return Status
 	 * @throws MWException
 	 */
-	public function startAuthentication() {
+	public function startAuthentication(): Status {
 		$canAuthenticate = $this->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->error(
@@ -205,12 +148,10 @@ class Authenticator {
 		] );
 	}
 
-	/**
-	 * @param array $verificationData
-	 * @param PublicKeyCredentialRequestOptions|null $authInfo
-	 * @return Status
-	 */
-	public function continueAuthentication( array $verificationData, $authInfo = null ) {
+	public function continueAuthentication(
+		array $verificationData,
+		?PublicKeyCredentialRequestOptions $authInfo = null
+	): Status {
 		$canAuthenticate = $this->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->error(
@@ -237,10 +178,9 @@ class Authenticator {
 	}
 
 	/**
-	 * @return Status
 	 * @throws ConfigException
 	 */
-	public function startRegistration() {
+	public function startRegistration(): Status {
 		$canRegister = $this->canRegister();
 		if ( !$canRegister->isGood() ) {
 			$this->logger->error(
@@ -266,7 +206,7 @@ class Authenticator {
 	 * @return Status
 	 * @throws ConfigException
 	 */
-	public function continueRegistration( $credential, $registerInfo = null ) {
+	public function continueRegistration( $credential, $registerInfo = null ): Status {
 		$canRegister = $this->canRegister();
 		if ( !$canRegister->isGood() ) {
 			$username = $this->oathUser->getUser()->getName();
@@ -286,13 +226,6 @@ class Authenticator {
 		}
 
 		$key = $this->module->newKey();
-		if ( !( $key instanceof WebAuthnKey ) ) {
-			$this->logger->error(
-				'New Webauthn key registration failed due to invalid key instance'
-			);
-			return Status::newFatal( 'webauthn-error-invalid-new-key' );
-		}
-
 		$friendlyName = $credential->friendlyName;
 		$data = FormatJson::encode( $credential );
 		try {
@@ -326,10 +259,7 @@ class Authenticator {
 		return Status::newFatal( 'webauthn-error-registration-failed' );
 	}
 
-	/**
-	 * @param PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data
-	 */
-	private function setSessionData( $data ) {
+	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
 		$session = $this->request->getSession();
 		$authData = $session->getSecret( 'authData' );
 		if ( !is_array( $authData ) ) {
@@ -348,11 +278,9 @@ class Authenticator {
 		}
 	}
 
-	/**
-	 * @param string $returnClass
-	 * @return PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null
-	 */
-	private function getSessionData( $returnClass ) {
+	private function getSessionData(
+		string $returnClass
+	): PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null {
 		$authData = $this->request->getSession()->getSecret( 'authData' );
 		if ( !is_array( $authData ) ) {
 			return null;
@@ -379,11 +307,9 @@ class Authenticator {
 
 	/**
 	 * Information to be sent to the client to start the authentication process
-	 *
-	 * @return PublicKeyCredentialRequestOptions
 	 * @throws MWException
 	 */
-	protected function getAuthInfo() {
+	protected function getAuthInfo(): PublicKeyCredentialRequestOptions {
 		$keys = WebAuthn::getWebAuthnKeys( $this->oathUser );
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
@@ -405,11 +331,9 @@ class Authenticator {
 
 	/**
 	 * Information to be sent to the client to start the registration process
-	 *
-	 * @return PublicKeyCredentialCreationOptions
 	 * @throws ConfigException
 	 */
-	protected function getRegisterInfo() {
+	protected function getRegisterInfo(): PublicKeyCredentialCreationOptions {
 		$serverName = $this->getServerName();
 		$rpEntity = new PublicKeyCredentialRpEntity( $serverName, $this->serverId );
 
@@ -476,7 +400,7 @@ class Authenticator {
 			$authenticatorAttachment,
 		);
 
-		$pubKeyCredCreationOptions = PublicKeyCredentialCreationOptions::create(
+		return PublicKeyCredentialCreationOptions::create(
 			$rpEntity,
 			$userEntity,
 			random_bytes( 32 ),
@@ -486,15 +410,12 @@ class Authenticator {
 			$excludedPublicKeyDescriptors,
 			static::CLIENT_ACTION_TIMEOUT
 		);
-		return $pubKeyCredCreationOptions;
 	}
 
 	/**
 	 * Get identifier for this server
-	 *
-	 * @return string|null
 	 */
-	private function getServerId() {
+	private function getServerId(): ?string {
 		$rpId = $this->context->getConfig()->get( 'WebAuthnRelyingPartyID' );
 		if ( $rpId && is_string( $rpId ) ) {
 			return $rpId;
@@ -510,11 +431,9 @@ class Authenticator {
 	}
 
 	/**
-	 * Get name for this server
-	 *
-	 * @return string
+	 * Get the name for this server
 	 */
-	private function getServerName() {
+	private function getServerName(): string {
 		$serverName = $this->context->getConfig()->get( 'WebAuthnRelyingPartyName' );
 		if ( $serverName && is_string( $serverName ) ) {
 			return $serverName;

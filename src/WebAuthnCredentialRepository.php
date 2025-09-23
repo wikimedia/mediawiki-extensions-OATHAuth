@@ -13,17 +13,13 @@ use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
-	private OATHUser $oauthUser;
-
-	public function __construct( OATHUser $user ) {
-		$this->oauthUser = $user;
+	public function __construct( private OATHUser $oauthUser ) {
 	}
 
 	/**
 	 * @param bool $lc Whether to return the names in lowercase form
-	 * @return array
 	 */
-	public function getFriendlyNames( $lc = false ) {
+	public function getFriendlyNames( bool $lc = false ): array {
 		$friendlyNames = [];
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
 			$friendlyName = $key->getFriendlyName();
@@ -48,7 +44,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	/**
-	 * @param PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
 	 * @return PublicKeyCredentialSource[]
 	 */
 	public function findAllForUserEntity(
@@ -65,7 +60,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	/**
-	 * @param PublicKeyCredentialSource $publicKeyCredentialSource
 	 * @throws ConfigException
 	 */
 	public function saveCredentialSource(
@@ -77,11 +71,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		);
 	}
 
-	/**
-	 * @param WebAuthnKey $key
-	 * @return PublicKeyCredentialSource
-	 */
-	private function credentialSourceFromKey( WebAuthnKey $key ) {
+	private function credentialSourceFromKey( WebAuthnKey $key ): PublicKeyCredentialSource {
 		return PublicKeyCredentialSource::createFromArray( [
 			'userHandle' => Base64UrlSafe::encodeUnpadded( $key->getUserHandle() ),
 			'aaguid' => (string)$key->getAttestedCredentialData()->aaguid,
@@ -103,9 +93,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 
 	/**
 	 * Set a new sign counter-value for the credential
-	 *
-	 * @param string $credentialId
-	 * @param int $newCounter
 	 */
 	private function updateCounterFor( string $credentialId, int $newCounter ): void {
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {

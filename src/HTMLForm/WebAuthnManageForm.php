@@ -34,9 +34,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 */
 	protected $module;
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function __construct(
 		OATHUser $oathUser,
 		OATHUserRepository $oathRepo,
@@ -49,9 +47,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		$this->suppressDefaultSubmit();
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getHTML( $submitResult ) {
 		$this->getOutput()->addModules( 'ext.webauthn.manage' );
 		return parent::getHTML( $submitResult );
@@ -81,7 +77,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when operation was successful
+	 * Add content to output when the operation was successful
 	 */
 	public function onSuccess() {
 		$this->getOutput()->redirect(
@@ -151,12 +147,10 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param string $key Friendly name
-	 * @return array|bool
 	 * @throws MWException
 	 * @throws ConfigException
 	 */
-	private function removeKey( $key ) {
+	private function removeKey( string $key ): array|bool {
 		$key = $this->module->getKeyByFriendlyName( $key, $this->oathUser );
 		if ( !$key ) {
 			return [ 'webauthn-error-cannot-remove-key' ];
@@ -167,11 +161,9 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param string $credential
-	 * @return bool
 	 * @throws ConfigException
 	 */
-	private function authenticate( $credential ) {
+	private function authenticate( string $credential ): bool {
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
 		if ( !$authenticator->isEnabled() ) {
 			return false;

@@ -18,7 +18,6 @@
 
 namespace MediaWiki\Extension\WebAuthn\Api;
 
-use InvalidArgumentException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Config\ConfigException;
@@ -46,25 +45,15 @@ class WebAuthn extends ApiBase {
 		$this->checkPermissions( $func );
 		$this->checkModule();
 
-		switch ( $func ) {
-			case self::ACTION_GET_REGISTER_INFO:
-				$result = $this->getRegisterInfo();
-				break;
-
-			case self::ACTION_GET_AUTH_INFO:
-				$result = $this->getAuthInfo();
-				break;
-
-			default:
-				throw new InvalidArgumentException();
-		}
+		$result = match ( $func ) {
+			self::ACTION_GET_REGISTER_INFO => $this->getRegisterInfo(),
+			self::ACTION_GET_AUTH_INFO => $this->getAuthInfo(),
+		};
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'func' => [
@@ -82,10 +71,8 @@ class WebAuthn extends ApiBase {
 	 * Array of all functions that are allowed to be called.
 	 * Each key must have the appropriate configuration that
 	 * defines user requirements for the action.
-	 *
-	 * @return array
 	 */
-	protected function getRegisteredFunctions() {
+	protected function getRegisteredFunctions(): array {
 		return [
 			static::ACTION_GET_AUTH_INFO => [
 				'permissions' => [],
@@ -99,7 +86,6 @@ class WebAuthn extends ApiBase {
 	}
 
 	/**
-	 * @param string $func
 	 * @throws ApiUsageException
 	 */
 	protected function checkPermissions( string $func ): void {
@@ -133,12 +119,11 @@ class WebAuthn extends ApiBase {
 	}
 
 	/**
-	 * @return array
 	 * @throws ApiUsageException
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	protected function getAuthInfo() {
+	protected function getAuthInfo(): array {
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
 		$canAuthenticate = $authenticator->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
@@ -154,12 +139,11 @@ class WebAuthn extends ApiBase {
 	}
 
 	/**
-	 * @return array
 	 * @throws ApiUsageException
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	protected function getRegisterInfo() {
+	protected function getRegisterInfo(): array {
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
 		$canRegister = $authenticator->canRegister();
 		if ( !$canRegister->isGood() ) {
