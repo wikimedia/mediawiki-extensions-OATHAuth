@@ -66,9 +66,6 @@ class TOTP implements IModule {
 	}
 
 	/**
-	 * @param OATHUser $user
-	 * @param array $data
-	 * @return bool
 	 * @throws MWException
 	 */
 	public function verify( OATHUser $user, array $data ): bool {
@@ -87,21 +84,12 @@ class TOTP implements IModule {
 
 	/**
 	 * Is this module currently enabled for the given user?
-	 *
-	 * @param OATHUser $user
-	 * @return bool
 	 */
 	public function isEnabled( OATHUser $user ): bool {
 		return (bool)self::getTOTPKeys( $user );
 	}
 
-	/**
-	 * @param string $action
-	 * @param OATHUser $user
-	 * @param OATHUserRepository $repo
-	 * @param IContextSource $context
-	 * @return IManageForm|null
-	 */
+	/** @inheritDoc */
 	public function getManageForm(
 		$action,
 		OATHUser $user,

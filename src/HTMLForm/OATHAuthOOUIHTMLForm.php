@@ -17,19 +17,6 @@ use Psr\Log\LoggerInterface;
 
 abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm {
 	/**
-	 * @var OATHUser
-	 */
-	protected $oathUser;
-	/**
-	 * @var OATHUserRepository
-	 */
-	protected $oathRepo;
-	/**
-	 * @var IModule
-	 */
-	protected $module;
-
-	/**
 	 * @var LoggerInterface
 	 */
 	protected $logger;
@@ -51,23 +38,12 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	 */
 	protected $panelFramed = true;
 
-	/**
-	 * Initialize the form
-	 *
-	 * @param OATHUser $oathUser
-	 * @param OATHUserRepository $oathRepo
-	 * @param IModule $module
-	 * @param IContextSource $context
-	 */
 	public function __construct(
-		OATHUser $oathUser,
-		OATHUserRepository $oathRepo,
-		IModule $module,
+		protected readonly OATHUser $oathUser,
+		protected readonly OATHUserRepository $oathRepo,
+		protected readonly IModule $module,
 		IContextSource $context
 	) {
-		$this->oathUser = $oathUser;
-		$this->oathRepo = $oathRepo;
-		$this->module = $module;
 		$this->logger = $this->getLogger();
 
 		parent::__construct( $this->getDescriptors(), $context, "oathauth" );

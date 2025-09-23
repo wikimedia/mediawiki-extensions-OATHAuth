@@ -90,9 +90,7 @@ class OATHManage extends SpecialPage {
 		return parent::getDescription();
 	}
 
-	/**
-	 * @param null|string $subPage
-	 */
+	/** @inheritDoc */
 	public function execute( $subPage ) {
 		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
 

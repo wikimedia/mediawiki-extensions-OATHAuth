@@ -73,9 +73,6 @@ class OATHAuthModuleRegistry {
 
 	/**
 	 * Returns the numerical ID for the module with the specified key.
-	 *
-	 * @param string $key
-	 * @return int
 	 */
 	public function getModuleId( string $key ): int {
 		$ids = $this->getModuleIds();
@@ -86,9 +83,6 @@ class OATHAuthModuleRegistry {
 		throw new InvalidArgumentException( "Module $key does not seem to exist" );
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getModuleIds(): array {
 		if ( $this->moduleIds === null ) {
 			$this->moduleIds = $this->getModuleIdsFromDatabase( false );

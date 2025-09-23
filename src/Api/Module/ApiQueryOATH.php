@@ -81,7 +81,7 @@ class ApiQueryOATH extends ApiQueryBase {
 
 		if ( $user->isNamed() ) {
 			$authUser = $this->oathUserRepository->findByUser( $user );
-			$data['enabled'] = $authUser && $authUser->isTwoFactorAuthEnabled();
+			$data['enabled'] = $authUser->isTwoFactorAuthEnabled();
 
 			// Log if the user doesn't have oathauth-api-all or if a reason is provided
 			// messages used: logentry-oath-verify, log-action-oath-verify

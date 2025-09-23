@@ -114,13 +114,6 @@ class TOTPKey implements IAuthKey {
 		);
 	}
 
-	/**
-	 * @param int|null $id the database id of this key
-	 * @param string $secret
-	 * @param array $recoveryCodes
-	 * @param string $encryptedSecret
-	 * @param string $nonce
-	 */
 	public function __construct(
 		?int $id,
 		string $secret,
@@ -142,17 +135,11 @@ class TOTPKey implements IAuthKey {
 		$this->recoveryCodes = array_values( $recoveryCodes );
 	}
 
-	/**
-	 * @return int|null
-	 */
 	public function getId(): ?int {
 		return $this->id;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getSecret() {
+	public function getSecret(): string {
 		return $this->secret['secret'];
 	}
 

@@ -46,37 +46,28 @@ class VerifyOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
-	/**
-	 * @return string
-	 */
+	/** @inheritDoc */
 	protected function getLoginSecurityLevel() {
 		return $this->getName();
 	}
 
-	/**
-	 * @param HTMLForm $form
-	 */
+	/** @inheritDoc */
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );
 		$form->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-verify-for-user' ) );
 	}
 
-	/**
-	 * @return string
-	 */
+	/** @inheritDoc */
 	protected function getDisplayFormat() {
 		return 'ooui';
 	}
 
-	/**
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function requiresUnblock() {
 		return true;
 	}
 
 	/**
-	 * @param User $user
 	 * @throws UserBlockedError
 	 * @throws UserNotLoggedIn
 	 */
@@ -86,17 +77,13 @@ class VerifyOATHForUser extends FormSpecialPage {
 		parent::checkExecutePermissions( $user );
 	}
 
-	/**
-	 * @param string $par
-	 */
+	/** @inheritDoc */
 	public function execute( $par ) {
 		$this->getOutput()->disallowUserJs();
 		parent::execute( $par );
 	}
 
-	/**
-	 * @return array[]
-	 */
+	/** @inheritDoc */
 	protected function getFormFields() {
 		return [
 			'user' => [
@@ -161,18 +148,13 @@ class VerifyOATHForUser extends FormSpecialPage {
 	 * @throws MWException
 	 */
 	public function onSuccess() {
-		switch ( $this->enabledStatus ) {
-			case self::OATHAUTH_IS_ENABLED:
-				$msg = 'oathauth-verify-enabled';
-				break;
-			case self::OATHAUTH_NOT_ENABLED:
-				$msg = 'oathauth-verify-disabled';
-				break;
-			default:
-				throw new MWException(
-					'Verification was successful but status is unknown'
-				);
-		}
+		$msg = match ( $this->enabledStatus ) {
+			self::OATHAUTH_IS_ENABLED => 'oathauth-verify-enabled',
+			self::OATHAUTH_NOT_ENABLED => 'oathauth-verify-disabled',
+			default => throw new MWException(
+				'Verification was successful but status is unknown'
+			),
+		};
 
 		$out = $this->getOutput();
 		$out->addBacklinkSubtitle( $this->getPageTitle() );

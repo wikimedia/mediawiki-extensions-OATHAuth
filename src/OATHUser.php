@@ -26,20 +26,13 @@ use MediaWiki\User\UserIdentity;
  * @ingroup Extensions
  */
 class OATHUser {
-	private UserIdentity $user;
-	private int $centralId;
-
 	/** @var IAuthKey[] */
 	private array $keys = [];
 
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
-	 * @param UserIdentity $user
-	 * @param int $centralId
 	 */
-	public function __construct( UserIdentity $user, int $centralId ) {
-		$this->user = $user;
-		$this->centralId = $centralId;
+	public function __construct( private UserIdentity $user, private int $centralId ) {
 	}
 
 	public function getUser(): UserIdentity {
@@ -53,10 +46,7 @@ class OATHUser {
 		return $this->centralId;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getIssuer() {
+	public function getIssuer(): string {
 		global $wgSitename, $wgOATHAuthAccountPrefix;
 
 		if ( $wgOATHAuthAccountPrefix !== false ) {
@@ -65,10 +55,7 @@ class OATHUser {
 		return $wgSitename;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getAccount() {
+	public function getAccount(): string {
 		return $this->user->getName();
 	}
 
@@ -127,9 +114,7 @@ class OATHUser {
 	}
 
 	/**
-	 * Adds single key to the key array
-	 *
-	 * @param IAuthKey $key
+	 * Adds a single key to the key array
 	 */
 	public function addKey( IAuthKey $key ) {
 		$this->keys[] = $key;

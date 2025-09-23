@@ -52,20 +52,15 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->setLogger( $logger );
 	}
 
-	/**
-	 * @param LoggerInterface $logger
-	 */
 	public function setLogger( LoggerInterface $logger ): void {
 		$this->logger = $logger;
 	}
 
 	/**
-	 * @param UserIdentity $user
-	 * @return OATHUser
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	public function findByUser( UserIdentity $user ) {
+	public function findByUser( UserIdentity $user ): OATHUser {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
 			$uid = $this->centralIdLookupFactory->getLookup()
@@ -80,12 +75,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * Persists the given OAuth key in the database.
-	 *
-	 * @param OATHUser $user
-	 * @param IModule $module
-	 * @param array $keyData
-	 * @param string $clientInfo
-	 * @return IAuthKey
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
 		if ( !$this->options->get( 'OATHAllowMultipleModules' ) ) {
@@ -143,10 +132,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * Saves an existing key in the database.
-	 *
-	 * @param OATHUser $user
-	 * @param IAuthKey $key
-	 * @return void
 	 */
 	public function updateKey( OATHUser $user, IAuthKey $key ): void {
 		$keyId = $key->getId();
@@ -168,11 +153,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		] );
 	}
 
-	/**
-	 * @param OATHUser $user
-	 * @param array $where Conditions to pass to DeleteQueryBuilder::where().
-	 * @return void
-	 */
 	private function removeSomeKeys( OATHUser $user, array $where ): void {
 		$this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' )
 			->newDeleteQueryBuilder()
@@ -185,12 +165,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->cache->delete( $user->getUser()->getName() );
 	}
 
-	/**
-	 * @param OATHUser $user
-	 * @param IAuthKey $key
-	 * @param string $clientInfo
-	 * @param bool $self Whether they disabled it themselves
-	 */
 	public function removeKey( OATHUser $user, IAuthKey $key, string $clientInfo, bool $self ) {
 		$keyId = $key->getId();
 		if ( !$keyId ) {
@@ -289,7 +263,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		// Clear stored key list before loading keys
+		// Clear the stored key list before loading keys
 		$user->disable();
 
 		foreach ( $res as $row ) {

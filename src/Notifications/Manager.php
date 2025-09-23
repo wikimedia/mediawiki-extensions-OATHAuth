@@ -32,8 +32,6 @@ class Manager {
 
 	/**
 	 * Whether Echo is installed and can be used
-	 *
-	 * @return bool
 	 */
 	private static function isEnabled(): bool {
 		return ExtensionRegistry::getInstance()->isLoaded( 'Echo' );
@@ -63,8 +61,6 @@ class Manager {
 
 	/**
 	 * Send a notification that 2FA has been enabled
-	 *
-	 * @param OATHUser $oUser
 	 */
 	public static function notifyEnabled( OATHUser $oUser ) {
 		if ( !self::isEnabled() ) {
@@ -83,10 +79,6 @@ class Manager {
 
 	/**
 	 * Send a notification that the user has $tokenCount recovery tokens left
-	 *
-	 * @param OATHUser $oUser
-	 * @param int $tokenCount
-	 * @param int $generatedCount
 	 */
 	public static function notifyRecoveryTokensRemaining( OATHUser $oUser, int $tokenCount, int $generatedCount ) {
 		if ( !self::isEnabled() ) {
