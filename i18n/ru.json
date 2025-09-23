@@ -6,7 +6,7 @@
 		]
 	},
 	"webauthn-desc": "Обеспечивает поддержку аутентификации с использованием протокола WebAuthn.",
-	"webauthn-module-label": "Веб-аутентификация (WebAuthn)",
+	"webauthn-module-label": "Ключ безопасности",
 	"webauthn-ui-login-prompt": "Пожалуйста, коснитесь устройства для проверки или следуйте инструкциям из браузера.",
 	"webauthn-ui-add-key": "Добавить ключ",
 	"webauthn-error-browser-unsupported": "Этот браузер не поддерживает веб-аутентификацию или он недоступен для этого сайта. Пожалуйста, попробуйте другой браузер. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Подробнее]",
