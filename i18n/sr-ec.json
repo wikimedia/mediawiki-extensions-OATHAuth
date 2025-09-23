@@ -99,5 +99,7 @@
 	"oathauth-password-label": "Поставите јаку лозинку да заштитите свој налог.",
 	"oathauth-password-action": "Промени лозинку",
 	"oathauth-authenticator-header": "Двофакторска потврда идентитета",
-	"oathauth-authenticator-delete": "Уклони"
+	"oathauth-authenticator-delete": "Уклони",
+	"oathauth-delete-warning-header": "Уклони $1",
+	"oathauth-delete-success": "<strong>$1</strong> уклоњен."
 }

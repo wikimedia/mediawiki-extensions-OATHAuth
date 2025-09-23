@@ -81,7 +81,7 @@
 	"oath-log-header": "Эти события отслеживают, когда изменился статус двухфакторной аутентификации участника.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|отключил|отключила}} двухфакторную аутентификацию для $3",
 	"oathauth-ui-no-module": "Не включена",
-	"oathauth-module-totp-label": "TOTP (одноразовый пароль)",
+	"oathauth-module-totp-label": "Приложение-аутентификатор",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление двухфакторной аутентификацией",
 	"oathauth-ui-not-enabled-modules": "Другие методы аутентификации",
