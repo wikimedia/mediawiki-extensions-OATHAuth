@@ -72,6 +72,7 @@
 	"oathauth-module-totp-label": "App de authentication",
 	"oathauth-ui-manage": "Gerer",
 	"oathmanage": "Gerer le authentication bifactorial",
+	"accountsecurity": "Securitate del conto",
 	"oathauth-ui-not-enabled-modules": "Altere methodos de authentication",
 	"oathauth-ui-enabled-module": "Methodo{{PLURAL:$1||s}} de authentication active",
 	"oathauth-enable-generic": "Activar",
@@ -109,5 +110,16 @@
 	"oathauth-must-be-central": "{{GENDER:$1|Tu conto}} debe esser ligate al systema de authentication central pro usar le authentication bifactorial.",
 	"oathauth-error-multiple-modules": "Pro le momento, le uso de plure methodos de authentication bifactorial non es supportate. Tu pote solmente activar $1 post disactivar $2.",
 	"group-oathauth-twofactorauth": "Usatores qui pote usar le authentication bifactorial",
-	"group-oathauth-twofactorauth-member": "Usator qui pote usar le authentication bifactorial"
+	"group-oathauth-twofactorauth-member": "Usator qui pote usar le authentication bifactorial",
+	"oathauth-remove-nosuchkey": "Clave non trovate.",
+	"oathauth-password-header": "Contrasigno",
+	"oathauth-password-label": "Defini un contrasigno forte pro proteger tu conto.",
+	"oathauth-password-action": "Cambiar contrasigno",
+	"oathauth-authenticator-header": "Authentication bifactorial",
+	"oathauth-authenticator-placeholder": "Adde un passo extra al apertura de session pro adjutar a securisar tu conto.",
+	"oathauth-authenticator-delete": "Remover",
+	"oathauth-totp-add-key": "Adder un app de authentication",
+	"oathauth-delete-warning-header": "Remover $1",
+	"oathauth-delete-warning": "Tu non potera plus usar iste methodo de authentication pro aperir session.",
+	"oathauth-delete-success": "<strong>$1</strong> removite."
 }
