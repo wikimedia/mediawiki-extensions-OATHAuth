@@ -7,6 +7,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -19,14 +20,10 @@ use OOUI\ButtonWidget;
 
 class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	protected $panelPadded = false;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	protected $panelFramed = false;
 
 	/**
@@ -96,7 +93,19 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
 		if ( isset( $formData['remove_key'] ) ) {
-			return $this->removeKey( $formData['remove_key'] );
+			$removedKey = $this->removeKey( $formData['remove_key'] );
+
+			// also remove recovery codes if there are no more factors
+			if ( $removedKey === true && !$this->oathUser->userHasNonSpecialEnabledKeys() ) {
+				$this->oathRepo->removeAllOfType(
+					$this->oathUser,
+					RecoveryCodes::MODULE_NAME,
+					$this->getRequest()->getIP(),
+					true
+				);
+			}
+
+			return $removedKey;
 		}
 		return true;
 	}
