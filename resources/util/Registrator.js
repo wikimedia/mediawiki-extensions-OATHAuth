@@ -64,6 +64,10 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 		} ) );
 	}
 
+	if ( mw.config.get( 'wgWebAuthnLimitPasskeysToRoaming' ) ) {
+		publicKey.hints = [ 'security-key' ];
+	}
+
 	this.emit( 'userPrompt' );
 	return navigator.credentials.create( { publicKey: publicKey } );
 };

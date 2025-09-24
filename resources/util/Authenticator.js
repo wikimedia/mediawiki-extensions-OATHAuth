@@ -53,6 +53,11 @@ mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
 	publicKey.allowCredentials = publicKey.allowCredentials.map( ( data ) => Object.assign( data, {
 		id: mw.ext.webauthn.util.base64ToByteArray( data.id )
 	} ) );
+
+	if ( mw.config.get( 'wgWebAuthnLimitPasskeysToRoaming' ) ) {
+		publicKey.hints = [ 'security-key' ];
+	}
+
 	return navigator.credentials.get( { publicKey: publicKey } );
 };
 

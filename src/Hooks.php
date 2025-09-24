@@ -3,12 +3,15 @@
 namespace MediaWiki\Extension\WebAuthn;
 
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\WebAuthn\Auth\WebAuthnAuthenticationRequest;
 use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 
 class Hooks implements
-	AuthChangeFormFieldsHook
+	AuthChangeFormFieldsHook,
+	ResourceLoaderGetConfigVarsHook
 {
 
 	/** @inheritDoc */
@@ -22,4 +25,8 @@ class Hooks implements
 		}
 	}
 
+	/** @inheritDoc */
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
+		$vars['wgWebAuthnLimitPasskeysToRoaming'] = $config->get( 'WebAuthnLimitPasskeysToRoaming' );
+	}
 }
