@@ -17,15 +17,8 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 
 class VerifyOATHForUser extends FormSpecialPage {
-
-	private const OATHAUTH_IS_ENABLED = 'enabled';
-	private const OATHAUTH_NOT_ENABLED = 'disabled';
-
-	/** @var string */
-	private $enabledStatus;
-
-	/** @var string */
-	private $targetUser;
+	private bool $enabledStatus;
+	private string $targetUser;
 
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
@@ -118,9 +111,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 		}
 		$oathUser = $this->userRepo->findByUser( $user );
 
-		$this->enabledStatus = $oathUser->isTwoFactorAuthEnabled()
-			? self::OATHAUTH_IS_ENABLED
-			: self::OATHAUTH_NOT_ENABLED;
+		$this->enabledStatus = $oathUser->isTwoFactorAuthEnabled();
 
 		// messages used: logentry-oath-verify, log-action-oath-verify
 		$logEntry = new ManualLogEntry( 'oath', 'verify' );
@@ -144,17 +135,8 @@ class VerifyOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
-	/**
-	 * @throws MWException
-	 */
 	public function onSuccess() {
-		$msg = match ( $this->enabledStatus ) {
-			self::OATHAUTH_IS_ENABLED => 'oathauth-verify-enabled',
-			self::OATHAUTH_NOT_ENABLED => 'oathauth-verify-disabled',
-			default => throw new MWException(
-				'Verification was successful but status is unknown'
-			),
-		};
+		$msg = $this->enabledStatus ? 'oathauth-verify-enabled' : 'oathauth-verify-disabled';
 
 		$out = $this->getOutput();
 		$out->addBacklinkSubtitle( $this->getPageTitle() );
