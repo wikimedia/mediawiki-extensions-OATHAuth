@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Hook;
 
+use MediaWiki\Extension\OATHAuth\Maintenance\MoveRecoveryCodesFromTOTP;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
@@ -31,6 +32,8 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			] );
 			$updater->addExtensionUpdateOnVirtualDomain( [ 'virtual-oathauth', 'dropTable', 'oathauth_users' ] );
 		}
+
+		$updater->addPostDatabaseUpdateMaintenance( MoveRecoveryCodesFromTOTP::class );
 
 		// add new updates here
 	}
