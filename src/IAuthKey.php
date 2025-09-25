@@ -18,6 +18,12 @@ interface IAuthKey extends JsonSerializable {
 	public function getId(): ?int;
 
 	/**
+	 * @return string|null the timestamp of this key in the oathauth_devices table, or null if this key was created
+	 * before timestamp data was saved in the database
+	 */
+	public function getCreatedTimestamp(): ?string;
+
+	/**
 	 * @param array|stdClass $data
 	 * @param OATHUser $user
 	 * @return bool

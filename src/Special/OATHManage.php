@@ -204,27 +204,38 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Get the name and description to display for a given key.
+	 * Get the name, description, and timestamp to display for a given key.
 	 * @param IAuthKey $key
-	 * @return array{name:string, description?:string}
+	 * @return array{name:string, description?:string, timestamp: ?string}
 	 */
 	private function getKeyNameAndDescription( IAuthKey $key ): array {
 		// TODO make display name part of IAuthKey, and make TOTP keys nameable (T401772)
 		// @phan-suppress-next-line PhanUndeclaredMethod
 		$keyName = method_exists( $key, 'getFriendlyName' ) ? $key->getFriendlyName() : '';
-		$moduleName = $this->moduleRegistry->getModuleByKey( $key->getModule() )->getDisplayName();
+		$moduleName = $this->moduleRegistry->getModuleByKey( $key->getModule() )->getDisplayName()->text();
+		$createdTimestamp = null;
+		$timestamp = $key->getCreatedTimestamp();
+
+		if ( $timestamp !== null ) {
+			$createdTimestamp = $this->msg(
+				'oathauth-created-at',
+				Message::dateParam( $timestamp )
+			)->text();
+		}
 
 		// If the key has a non-empty name, use that, and set the description to the module name
 		if ( trim( $keyName ) !== '' ) {
 			return [
 				'name' => $keyName,
-				'description' => $moduleName
+				'description' => $moduleName,
+				'timestamp' => $createdTimestamp
 			];
 		}
-		// If the key has no name, use the module name as the name
+
+		// If the key has no name, use the module name as the name and send the timestamp
 		return [
-			'name' => $moduleName
-			// TODO set a description based on the timestamp, once we can retrieve the timestamp (T403666)
+			'name' => $moduleName,
+			'timestamp' => $createdTimestamp
 		];
 	}
 
@@ -288,15 +299,17 @@ class OATHManage extends SpecialPage {
 
 			// TODO use outlined Accordions once these are available in Codex
 			$keyData = $this->getKeyNameAndDescription( $key );
-			$keyAccordion = $codex->accordion()
-				->setTitle( $keyData['name'] );
-			if ( isset( $keyData['description'] ) ) {
-				$keyAccordion->setDescription( $keyData['description'] );
+			$keyAccordion = $codex->accordion();
+
+			$keyAccordion->setTitle( $keyData['name'] );
+
+			$accordionDescription = $keyData['timestamp'] ?? $keyData['description'] ?? null;
+			if ( $accordionDescription !== null ) {
+				$keyAccordion->setDescription( $accordionDescription );
 			}
 
 			$keyAccordion
 				->setContentHtml( $codex->htmlSnippet()->setContent(
-					// TODO fetch creation timestamp and add it (T403666)
 					Html::rawElement( 'form', [
 							'action' => wfScript(),
 							'class' => 'mw-special-OATHManage-authmethods__method-actions'
@@ -705,6 +718,7 @@ class OATHManage extends SpecialPage {
 				'oathauth-remove-nosuchkey'
 			);
 		}
+
 		$keyName = $this->getKeyNameAndDescription( $keyToDelete )['name'];
 		$remainingKeys = array_filter(
 			$this->oathUser->getNonSpecialKeys(),
@@ -722,7 +736,6 @@ class OATHManage extends SpecialPage {
 		$deleteWarningHTML =
 			( $lastKey ? Html::warningBox( $warningMessage ) : '' ) .
 			Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
-			// TODO display creation timestamp here (T403666)
 			Html::rawElement( 'form', [ 'action' => wfScript(), 'method' => 'POST' ],
 				( $lastKey ? $codex->Field()
 					->setLabel( $codex->Label()
@@ -830,7 +843,6 @@ class OATHManage extends SpecialPage {
 			);
 			$keyAccordion
 				->setContentHtml( $codex->htmlSnippet()->setContent(
-					// TODO fetch creation timestamp and add it (T403666)
 					Html::rawElement( 'form', [
 							'action' => wfScript(),
 							'class' => 'mw-special-OATHManage-authmethods__method-actions'
@@ -838,7 +850,6 @@ class OATHManage extends SpecialPage {
 						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
 						Html::hidden( 'module', $key->getModule() ) .
 						Html::hidden( 'keyId', $key->getId() ) .
-
 						$this->createRecoveryCodesCopyButton() .
 						$this->createRecoveryCodesDownloadLink(
 							// @phan-suppress-next-line PhanUndeclaredMethod

@@ -147,5 +147,6 @@
 	"oathauth-delete-warning-final": "Removing this method will disable two-factor authentication entirely.",
 	"oathauth-delete-wrong-confirm-message": "Wrong input for final key removal. Please type \"{{int:oathauth-authenticator-delete-text}}\" to continue",
 	"oathauth-delete-success": "<strong>$1</strong> removed.",
+	"oathauth-created-at": "Added on $1",
 	"oathauth-enable-success": "<strong>$1</strong> added."
 }

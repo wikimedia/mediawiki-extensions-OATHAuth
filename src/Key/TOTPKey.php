@@ -53,6 +53,9 @@ class TOTPKey implements IAuthKey {
 	/** @var string[] List of recovery codes */
 	public $recoveryCodes = [];
 
+	/** @var string|null timestamp created for TOTP key */
+	private ?string $createdTimestamp;
+
 	/**
 	 * The upper threshold number of recovery codes that if a user has less than, we'll try and notify them...
 	 */
@@ -74,6 +77,7 @@ class TOTPKey implements IAuthKey {
 	 */
 	public static function newFromRandom() {
 		$object = new self(
+			null,
 			null,
 			// 26 digits to give 128 bits - https://phabricator.wikimedia.org/T396951
 			self::removeBase32Padding( Base32::encode( random_bytes( 26 ) ) ),
@@ -128,6 +132,7 @@ class TOTPKey implements IAuthKey {
 
 		return new static(
 			$data['id'] ?? null,
+			$data['created_timestamp'] ?? null,
 			$data['secret'] ?? '',
 			$data['scratch_tokens'] ?? [],
 			$data['encrypted_secret'],
@@ -137,13 +142,14 @@ class TOTPKey implements IAuthKey {
 
 	public function __construct(
 		?int $id,
+		?string $createdTimestamp,
 		string $secret,
 		array $recoveryCodes,
 		string $encryptedSecret = '',
 		string $nonce = ''
 	) {
 		$this->id = $id;
-
+		$this->createdTimestamp = $createdTimestamp;
 		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
@@ -162,6 +168,10 @@ class TOTPKey implements IAuthKey {
 
 	public function getSecret(): string {
 		return $this->secret['secret'];
+	}
+
+	public function getCreatedTimestamp(): ?string {
+		return $this->createdTimestamp;
 	}
 
 	public function setEncryptedSecretAndNonce( string $encryptedSecret, string $nonce ) {
@@ -393,6 +403,7 @@ class TOTPKey implements IAuthKey {
 		if ( count( $tokens ) ) {
 			$data['scratch_tokens'] = $tokens;
 		}
+
 		return $data;
 	}
 }

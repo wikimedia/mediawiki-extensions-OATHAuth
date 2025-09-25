@@ -93,15 +93,15 @@ class OATHUserRepository implements LoggerAwareInterface {
 		}
 
 		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
-
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
+		$createdTimestamp = $dbw->timestamp();
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'oathauth_devices' )
 			->row( [
 				'oad_user' => $uid,
 				'oad_type' => $moduleId,
 				'oad_data' => FormatJson::encode( $keyData ),
-				'oad_created' => $dbw->timestamp(),
+				'oad_created' => $createdTimestamp,
 			] )
 			->caller( __METHOD__ )
 			->execute();
@@ -109,7 +109,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 		$hasExistingKey = $user->isTwoFactorAuthEnabled();
 
-		$key = $module->newKey( $keyData + [ 'id' => $id ] );
+		$key = $module->newKey( $keyData + [ 'id' => $id, 'created_timestamp' => $createdTimestamp ] );
 		$user->addKey( $key );
 
 		$this->logger->info( 'OATHAuth {oathtype} key {key} added for {user} from {clientip}', [
@@ -256,6 +256,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				'oad_id',
 				'oad_data',
 				'oat_name',
+				'oad_created',
 			] )
 			->from( 'oathauth_devices' )
 			->join( 'oathauth_types', null, [ 'oat_id = oad_type' ] )
@@ -269,7 +270,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 		foreach ( $res as $row ) {
 			$module = $this->moduleRegistry->getModuleByKey( $row->oat_name );
 			$keyData = FormatJson::decode( $row->oad_data, true );
-			$user->addKey( $module->newKey( $keyData + [ 'id' => (int)$row->oad_id ] ) );
+
+			$user->addKey(
+				$module->newKey( $keyData + [
+					'id' => (int)$row->oad_id,
+					'created_timestamp' => $row->oad_created
+				] )
+			);
 		}
 	}
 }
