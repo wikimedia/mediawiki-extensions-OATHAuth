@@ -32,7 +32,7 @@ use SpecialPageTestBase;
 /**
  * @author Taavi Väänänen
  * @group Database
- * @coversDefaultClass \MediaWiki\Extension\OATHAuth\Special\VerifyOATHForUser
+ * @covers \MediaWiki\Extension\OATHAuth\Special\VerifyOATHForUser
  */
 class VerifyOATHForUserTest extends SpecialPageTestBase {
 	use MockAuthorityTrait;
@@ -57,9 +57,6 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testFormLoads() {
 		$user = $this->getTestSysop()->getUser();
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
@@ -74,9 +71,6 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathauth-enteruser)', $html );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testChecksPermissions() {
 		$this->expectException( PermissionsError::class );
 		$this->executeSpecialPage(
@@ -87,9 +81,6 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testFailsForNonexistentUser() {
 		$user = $this->getTestSysop()->getUser();
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
@@ -110,10 +101,7 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathauth-user-not-found)', $html );
 	}
 
-	/**
-	 * @covers ::execute
-	 * @dataProvider provideStatusUsers
-	 */
+	/** @dataProvider provideStatusUsers */
 	public function testVerifiesStatus( bool $hasDevice, string $expectedMessage ) {
 		$otherUser = $this->getTestUser()->getUser();
 

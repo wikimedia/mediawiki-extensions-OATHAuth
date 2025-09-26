@@ -28,7 +28,7 @@ use SpecialPageTestBase;
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
  * @group Database
- * @coversDefaultClass \MediaWiki\Extension\OATHAuth\Special\OATHManage
+ * @covers \MediaWiki\Extension\OATHAuth\Special\OATHManage
  */
 class OATHManageTest extends SpecialPageTestBase {
 	protected function setUp(): void {
@@ -45,9 +45,6 @@ class OATHManageTest extends SpecialPageTestBase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testPageLoads() {
 		$this->executeSpecialPage(
 			'',
