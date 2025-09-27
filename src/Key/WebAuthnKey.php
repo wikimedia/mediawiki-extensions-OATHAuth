@@ -42,11 +42,12 @@ use RuntimeException;
 use Symfony\Component\Uid\Uuid;
 use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
+use Webauthn\AttestationStatement\AppleAttestationStatementSupport;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
 use Webauthn\AttestationStatement\FidoU2FAttestationStatementSupport;
-use Webauthn\AttestationStatement\NoneAttestationStatementSupport;
 use Webauthn\AttestationStatement\PackedAttestationStatementSupport;
+use Webauthn\AttestationStatement\TPMAttestationStatementSupport;
 use Webauthn\AttestedCredentialData;
 use Webauthn\AuthenticationExtensions\ExtensionOutputCheckerHandler;
 use Webauthn\AuthenticatorAssertionResponse;
@@ -60,6 +61,7 @@ use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\TokenBinding\TokenBindingNotSupportedHandler;
 use Webauthn\TrustPath\EmptyTrustPath;
 use Webauthn\TrustPath\TrustPath;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * This holds the information on user's private key
@@ -287,12 +289,7 @@ class WebAuthnKey implements IAuthKey {
 		OATHUser $user
 	): bool {
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
-		$attestationStatementSupportManager = new AttestationStatementSupportManager();
-		$attestationStatementSupportManager->add( new NoneAttestationStatementSupport() );
-		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport() );
-		$attestationStatementSupportManager->add( new PackedAttestationStatementSupport(
-			new Manager()
-		) );
+		$attestationStatementSupportManager = $this->getAttestationSupportManager();
 		$attestationObjectLoader = new AttestationObjectLoader(
 			$attestationStatementSupportManager
 		);
@@ -351,13 +348,8 @@ class WebAuthnKey implements IAuthKey {
 		PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions,
 		OATHUser $user
 	): bool {
-		$attestationStatementSupportManager = new AttestationStatementSupportManager();
-		$attestationStatementSupportManager->add( new NoneAttestationStatementSupport() );
-		$attestationStatementSupportManager->add( new FidoU2FAttestationStatementSupport() );
-		$attestationStatementSupportManager->add( new AndroidKeyAttestationStatementSupport() );
-
 		$attestationObjectLoader = new AttestationObjectLoader(
-			$attestationStatementSupportManager
+			$this->getAttestationSupportManager()
 		);
 		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
 			$attestationObjectLoader
@@ -407,6 +399,18 @@ class WebAuthnKey implements IAuthKey {
 			] );
 			return false;
 		}
+	}
+
+	private function getAttestationSupportManager(): AttestationStatementSupportManager {
+		return new AttestationStatementSupportManager( [
+			// FIXME supporting all these formats probably doesn't do much good as long as we
+			//   set the attestation conveyance preference to 'none' in Authenticator::getRegisterInfo()
+			new FidoU2FAttestationStatementSupport(),
+			new PackedAttestationStatementSupport( new Manager() ),
+			new AndroidKeyAttestationStatementSupport(),
+			new AppleAttestationStatementSupport(),
+			new TPMAttestationStatementSupport( ConvertibleTimestamp::getClock() ),
+		] );
 	}
 
 	/** @inheritDoc */
