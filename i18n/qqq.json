@@ -140,5 +140,6 @@
 	"oathauth-totp-add-key": "Button label adding a new TOTP key (authenticator app).",
 	"oathauth-delete-warning-header": "Page title for the warning page shown when deleting a 2FA method.",
 	"oathauth-delete-warning": "Warning message shown when deleting a 2FA method.\n\nParameters:\n* $1 - Name of the 2FA method being deleted",
-	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted"
+	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted",
+	"oathauth-enable-success": "Success message shown when a 2FA method has been added.\n\nParameters:\n* $1 - Name of the 2FA method that was enabled"
 }

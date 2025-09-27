@@ -211,6 +211,16 @@ class OATHManage extends SpecialPage {
 			) );
 		}
 
+		// Add success message for newly enabled key
+		$addedKeyName = $this->getRequest()->getVal( 'addsuccess' );
+		if ( $addedKeyName !== null ) {
+			$this->getOutput()->addHTML(
+				Html::successBox(
+					$this->msg( 'oathauth-enable-success', $addedKeyName )->parse()
+				)
+			);
+		}
+
 		// Password section
 		if ( $this->authManager->allowsAuthenticationDataChange(
 			new PasswordAuthenticationRequest(), false )->isGood()
@@ -437,6 +447,18 @@ class OATHManage extends SpecialPage {
 		$form->setSubmitCallback( [ $form, 'onSubmit' ] );
 		if ( $form->show( $panel ) ) {
 			$form->onSuccess();
+
+			// Only redirect for enabling a new key
+			if ( $this->action === self::ACTION_ENABLE ) {
+				$addedKeyName = $module->getDisplayName()->text();
+				$this->getOutput()->redirect(
+					SpecialPage::getTitleFor( 'AccountSecurity' )->getLocalURL( [
+						'addsuccess' => $addedKeyName
+					] )
+				);
+				// Stop further rendering
+				return;
+			}
 		}
 	}
 
