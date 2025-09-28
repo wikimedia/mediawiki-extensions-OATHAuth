@@ -69,7 +69,11 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 	}
 
 	this.emit( 'userPrompt' );
-	return navigator.credentials.create( { publicKey: publicKey } );
+	mw.log( 'PublicKeyCredentialCreationOptions: ', publicKey );
+	return navigator.credentials.create( { publicKey: publicKey } ).then( ( credential ) => {
+		mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
+		return credential;
+	} );
 };
 
 /**

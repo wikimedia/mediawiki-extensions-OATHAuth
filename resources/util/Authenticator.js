@@ -58,7 +58,11 @@ mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
 		publicKey.hints = [ 'security-key' ];
 	}
 
-	return navigator.credentials.get( { publicKey: publicKey } );
+	mw.log( 'PublicKeyCredentialRequestOptions: ', publicKey );
+	return navigator.credentials.get( { publicKey: publicKey } ).then( ( credential ) => {
+		mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
+		return credential;
+	} );
 };
 
 mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion ) {
