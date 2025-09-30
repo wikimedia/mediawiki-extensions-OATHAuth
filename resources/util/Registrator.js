@@ -88,6 +88,11 @@ mw.ext.webauthn.Registrator.prototype.formatCredential = function ( newCredentia
 		rawId: mw.ext.webauthn.util.byteArrayToBase64( new Uint8Array( newCredential.rawId ),
 			'base64', 'padded' ),
 		response: {
+			transports: newCredential.response.getTransports ?
+				newCredential.response.getTransports() :
+				// This omits AUTHENTICATOR_TRANSPORT_CABLE ('cable') for compatibility with iOS Safari
+				// (tested on iOS 15, may not be needed for newer versions). (T358771)
+				[ 'usb', 'nfc', 'ble', 'internal' ],
 			// encoding should match CollectedClientData::createFormJson()
 			clientDataJSON: mw.ext.webauthn.util.byteArrayToBase64(
 				new Uint8Array( newCredential.response.clientDataJSON ), 'base64url', 'unpadded' ),
