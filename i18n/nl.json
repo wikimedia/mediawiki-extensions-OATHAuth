@@ -79,7 +79,6 @@
 	"log-action-filter-oath-verify": "Controleren of tweetrapsauthenticatie is ingeschakeld",
 	"log-action-filter-oath-disable-other": "Tweetrapsauthenticatie voor een andere gebruiker uitschakelen",
 	"oathauth-ui-no-module": "Geen ingesteld",
-	"oathauth-module-invalid": "De OATHAuth-module die de gebruiker heeft geregistreerd, is ongeldig.",
 	"oathauth-module-totp-label": "TOTP (eenmalig token)",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",
@@ -123,5 +122,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Groep|Groepen}} uitschakelen:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Uw lidmaatschap}} in {{PLURAL:$1|deze groep|deze groepen}} is uitgeschakeld totdat u [[Special:Manage Two-factor authentication|tweetrapsauthenticatie]] heeft ingeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
-	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)"
+	"oathauth-hint": "Geen toegang tot uw apparaat of applicatie? In dit veld kunt u herstelcodes invoeren. (Die hebt u gekregen toen u de tweetrapsauthenticatie inschakelde.)",
+	"oathauth-must-be-central": "{{GENDER:$1|Uw account}} moet gekoppeld zijn aan het centrale authenticatiesysteem om tweetrapsauthenticatie te kunnen gebruiken.",
+	"oathauth-error-multiple-modules": "Het gebruik van meerdere tweetrapsauthenticatie-methoden wordt momenteel niet ondersteund. U kunt $1 pas inschakelen nadat u $2 hebt uitgeschakeld."
 }

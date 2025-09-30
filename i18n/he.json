@@ -73,7 +73,6 @@
 	"log-action-filter-oath-verify": "בדיקה האם האימות הדו־שלבי מופעל",
 	"log-action-filter-oath-disable-other": "כיבוי אימות דו־שלבי בעבור משתמש אחר",
 	"oathauth-ui-no-module": "לא מופעל אף אחד",
-	"oathauth-module-invalid": "מודול ה־OATHAuth שהמשתמש רשם אינו תקין.",
 	"oathauth-module-totp-label": "TOTP (אסימון חד־פעמי)",
 	"oathauth-ui-manage": "ניהול",
 	"oathmanage": "ניהול אימות דו־שלבי",
@@ -117,5 +116,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|קבוצה כבויה|קבוצות כבויות}}:",
 	"oathauth-prefs-disabledgroups-help": "החברות שלך {{PLURAL:$1|בקבוצה הזאת|בקבוצות האלו}} כבויה עד {{GENDER:$2|שתפעיל|שתפעילי}} [[Special:Manage Two-factor authentication|אימות דו־שלבי]].",
 	"oathauth-qrcode-alt": "קוד QR שאפשר לסרוק ושמייצג את המפתח הסודי.",
-	"oathauth-hint": "אין לך גישה למכשיר או ליישום שלך? באפשרותך להזין קודי שחזור (שהוצגו כאשר הפעלת את 2FA) בשדה הזה."
+	"oathauth-hint": "אין לך גישה למכשיר או ליישום שלך? באפשרותך להזין קודי שחזור (שהוצגו כאשר הפעלת את 2FA) בשדה הזה.",
+	"oathauth-must-be-central": "{{GENDER:$1|החשבון שלך}} חייב להיות מקושר למערכת האימות המרכזית כדי להשתמש באימות דו־שלבי.",
+	"oathauth-error-multiple-modules": "נכון לעכשיו, שימוש בכמה שיטות אימות 2FA אינו נתמך. ניתן להפעיל $1 רק לאחר השבתת $2."
 }

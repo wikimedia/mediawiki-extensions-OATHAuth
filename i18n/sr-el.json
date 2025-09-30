@@ -65,7 +65,6 @@
 	"logentry-oath-disable-other": "$1 je {{GENDER:$2|onemogućio|onemogućila}} dvofaktorsku potvrdu identiteta za $3",
 	"logentry-oath-verify": "$1 je {{GENDER:$2|proverio|proverila}} da li je $3 omogućio dvofaktorsku autentifikaciju",
 	"oathauth-ui-no-module": "nije uključena",
-	"oathauth-module-invalid": "OATHAuth modul koji je korisnik registrovao nije važeći.",
 	"oathauth-module-totp-label": "TOTP (jednokratni token)",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvofaktorskom potvrdom identiteta",

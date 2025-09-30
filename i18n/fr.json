@@ -87,7 +87,6 @@
 	"log-action-filter-oath-verify": "Vérifie si l’authentification à deux facteurs est activée",
 	"log-action-filter-oath-disable-other": "Désactivation de l’authentification à deux facteurs pour un autre utilisateur",
 	"oathauth-ui-no-module": "Aucune activée",
-	"oathauth-module-invalid": "Le module ''OATHAuth'' avec lequel l’utilisateur s’est inscrit n’est pas valide.",
 	"oathauth-module-totp-label": "TOTP (jeton à usage unique)",
 	"oathauth-ui-manage": "Gérer",
 	"oathmanage": "Gérer l’authentification à deux facteurs",
@@ -131,5 +130,7 @@
 	"oathauth-prefs-disabledgroups": "Groupe{{PLURAL:$1||s}} désactivé{{PLURAL:$1||s}} :",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|}}Votre statut de membre de ce{{PLURAL:$1||s}} groupe{{PLURAL:$1||s}} restera désactivé tant que vous n’aurez pas activé l’[[Special:Manage Two-factor authentication|authentification à deux facteurs]].",
 	"oathauth-qrcode-alt": "Code QR à scanner représentant la clé secrète.",
-	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ."
+	"oathauth-hint": "Vous n'avez pas accès à votre appareil ou à votre application ? Vous pouvez saisir un code de récupération (qui vous ont été fournis lorsque vous avez activé l'authentification à deux facteurs) dans ce champ.",
+	"oathauth-must-be-central": "{{GENDER:$1|}}Votre compte doit être lié au système d’authentification central pour pouvoir utiliser l’authentification à deux facteurs.",
+	"oathauth-error-multiple-modules": "Pour l'instant, l'utilisation de plusieurs méthodes d'authentification 2FA n'est pas prise en charge. Vous ne pouvez activer $1 qu'après avoir désactivé $2 ."
 }

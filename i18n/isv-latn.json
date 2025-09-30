@@ -66,7 +66,6 @@
 	"log-action-filter-oath-verify": "Prověrka, jest li vključena dvufaktorna avtentifikacija",
 	"log-action-filter-oath-disable-other": "Izključenje dvufaktornoj avtentifikacije za drugogo koristnika",
 	"oathauth-ui-no-module": "Ne vključena",
-	"oathauth-module-invalid": "Registrovany koristnikom OATHAuth-modul jest nepravilny.",
 	"oathauth-module-totp-label": "TOTP (jednokratny token)",
 	"oathauth-ui-manage": "Upraviti",
 	"oathmanage": "Upravjenje dvufaktornoju avtentifikacijeju",
@@ -110,5 +109,6 @@
 	"oathauth-prefs-disabledgroups": "Izključen{{PLURAL:$1|a grupa|e grupy}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Vaše členstvo}} v {{PLURAL:$1|tutoj grupě|tutyh grupah}} jest unemožnjeno do momenta, že vključite [[Special:Manage Two-factor authentication|dvufaktornu avtentifikaciju]].",
 	"oathauth-qrcode-alt": "QR-kod s tajnym ključem za skanovanje.",
-	"oathauth-hint": "Ne imajete li dostup k svojemu aparatu ili aplikacije? Možete vvesti kody za odnovjenje (podane, ako imajete vključenu dvufaktornu avtentifikaciju) v tuto polje."
+	"oathauth-hint": "Ne imajete li dostup k svojemu aparatu ili aplikacije? Možete vvesti kody za odnovjenje (podane, ako imajete vključenu dvufaktornu avtentifikaciju) v tuto polje.",
+	"oathauth-must-be-central": "Da byste mogli korstistati dvufaktornu avtentifikaciju, trěba, že {{GENDER:$1|Vaše konto}} jest slučeno s centralnoji sistemoju za avtentifikaciju."
 }

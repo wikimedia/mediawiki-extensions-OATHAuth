@@ -75,5 +75,6 @@
 	"oathauth-notifications-enable-help": "Aiuto",
 	"oathauth-notifications-enable-primary": "Controlla le impostazioni di autenticazione a due fattori",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ha l'autenticazione a due fattori abilitata.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} non ha l'autenticazione a due fattori abilitata."
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} non ha l'autenticazione a due fattori abilitata.",
+	"oathauth-error-multiple-modules": "Per il momento, l'utilizzo di più metodi di autenticazione 2FA non è supportato. Puoi attivare $1 solo dopo aver disabilitato $2."
 }

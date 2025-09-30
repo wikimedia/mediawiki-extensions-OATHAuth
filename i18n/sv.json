@@ -61,7 +61,6 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|avaktiverade}} tvåfaktorautenting för $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|kontrollerade}} om $3 har aktiverat tvåfaktorsautentisering",
 	"oathauth-ui-no-module": "Ingen aktiverad",
-	"oathauth-module-invalid": "OATHAuth-modulen som användaren har registrerat är ogiltig.",
 	"oathauth-module-totp-label": "TOTP (engångsnyckel)",
 	"oathauth-ui-manage": "Hantera",
 	"oathmanage": "Hantera tvåfaktorsautentisering",

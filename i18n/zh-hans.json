@@ -96,7 +96,6 @@
 	"log-action-filter-oath-verify": "检查是否启用双重验证",
 	"log-action-filter-oath-disable-other": "禁用另一名用户的双重身份验证",
 	"oathauth-ui-no-module": "没有启用",
-	"oathauth-module-invalid": "用户已注册的OATHAuth模块无效。",
 	"oathauth-module-totp-label": "TOTP（基于时间的一次性密码）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理双重身份验证",
@@ -140,5 +139,7 @@
 	"oathauth-prefs-disabledgroups": "已禁用{{PLURAL:$1|用户组}}：",
 	"oathauth-prefs-disabledgroups-help": "在您启用[[Special:Manage Two-factor authentication|双重身份验证]]之前，{{GENDER:$2|您}}于{{PLURAL:$1|此用户组|这些用户组}}的成员资格会处于禁用状态。",
 	"oathauth-qrcode-alt": "代表密钥的可扫描二维码。",
-	"oathauth-hint": "无法访问您的设备或应用？您可以在此字段中输入恢复代码（启用2FA时显示）。"
+	"oathauth-hint": "无法访问您的设备或应用？您可以在此字段中输入恢复代码（启用2FA时显示）。",
+	"oathauth-must-be-central": "{{GENDER:$1|您的账号}}必须链接到中央身份验证系统，才能使用双重身份验证。",
+	"oathauth-error-multiple-modules": "目前不支持使用多种2FA身份验证方法。您只能在禁用$2后启用$1 。"
 }

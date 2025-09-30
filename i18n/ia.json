@@ -67,7 +67,6 @@
 	"log-action-filter-oath-verify": "Verificar si le authentication bifactorial es active",
 	"log-action-filter-oath-disable-other": "Disactivar le authentication bifactorial pro un altere usator",
 	"oathauth-ui-no-module": "Nihil activate",
-	"oathauth-module-invalid": "Le modulo OATHAuth que le usator ha registrate non es valide.",
 	"oathauth-module-totp-label": "TOTP (token a uso unic)",
 	"oathauth-ui-manage": "Gerer",
 	"oathmanage": "Gerer le authentication bifactorial",
@@ -111,5 +110,7 @@
 	"oathauth-prefs-disabledgroups": "Gruppo{{PLURAL:$1||s}} disactivate:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Tu membrato}} de iste gruppo{{PLURAL:$1||s}} es disactivate usque tu activa le [[Special:Manage Two-factor authentication|authentication bifactorial]].",
 	"oathauth-qrcode-alt": "Codice QR scannabile que representa le clave secrete.",
-	"oathauth-hint": "Non ha accesso a tu apparato o application? Tu pote inserer in iste campo le codices de recuperation (presentate quando tu ha activate le authentication bifactorial)."
+	"oathauth-hint": "Non ha accesso a tu apparato o application? Tu pote inserer in iste campo le codices de recuperation (presentate quando tu ha activate le authentication bifactorial).",
+	"oathauth-must-be-central": "{{GENDER:$1|Tu conto}} debe esser ligate al systema de authentication central pro usar le authentication bifactorial.",
+	"oathauth-error-multiple-modules": "Pro le momento, le uso de plure methodos de authentication bifactorial non es supportate. Tu pote solmente activar $1 post disactivar $2."
 }

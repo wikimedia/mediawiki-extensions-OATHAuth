@@ -72,7 +72,6 @@
 	"log-action-filter-oath-verify": "Kiểm tra chế độ xác thực dùng hai nhân tố có được bật hay tắt",
 	"log-action-filter-oath-disable-other": "Tắt xác thực dùng hai nhân tố của thành viên khác",
 	"oathauth-ui-no-module": "Không kích hoạt",
-	"oathauth-module-invalid": "Người dùng đã đăng ký mô-đun OATHAuth không hợp lệ.",
 	"oathauth-module-totp-label": "Mã một lần theo thời điểm",
 	"oathauth-ui-manage": "Quản lý",
 	"oathmanage": "Quản lý Xác thực dùng hai nhân tố",
@@ -115,5 +114,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Nhóm|Các nhóm}} bị tắt:",
 	"oathauth-prefs-disabledgroups-help": "Tư cách thành viên của {{GENDER:$2}}bạn trong {{PLURAL:$1|nhóm|các nhóm}} này bị tắt cho đến khi bạn bật chế độ [[Special:Manage Two-factor authentication|xác thực dùng hai nhân tố]].",
 	"oathauth-qrcode-alt": "Mã QR quét được đại diện cho khóa mật mã.",
-	"oathauth-hint": "Bạn không thể truy cập thiết bị hoặc ứng dụng xác thực hai yếu tố của mình? Bạn có thể nhập mã khôi phục (được hiển thị khi bạn bật 2FA) vào trường này."
+	"oathauth-hint": "Bạn không thể truy cập thiết bị hoặc ứng dụng xác thực hai yếu tố của mình? Bạn có thể nhập mã khôi phục (được hiển thị khi bạn bật 2FA) vào trường này.",
+	"oathauth-must-be-central": "{{GENDER:$1|}}Tài khoản của bạn phải được liên kết với hệ thống xác thực chung để sử dụng phương pháp xác thực hai yếu tố.",
+	"oathauth-error-multiple-modules": "Hiện tại chưa hỗ trợ việc sử dụng nhiều phương thức xác thực hai yếu tố. Bạn chỉ có thể bật $1 sau khi tắt $2."
 }

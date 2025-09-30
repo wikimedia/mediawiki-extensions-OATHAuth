@@ -78,7 +78,6 @@
 	"log-action-filter-oath-verify": "Prüfen, ob die Zwei-Faktor-Authentifizierung aktiviert ist",
 	"log-action-filter-oath-disable-other": "Deaktivieren der Zwei-Faktor-Authentifizierung für einen anderen Benutzer",
 	"oathauth-ui-no-module": "nicht aktiviert",
-	"oathauth-module-invalid": "Das vom Benutzer registrierte OATHAuth-Modul ist ungültig.",
 	"oathauth-module-totp-label": "TOTP (Einmal-Token)",
 	"oathauth-ui-manage": "Verwalten",
 	"oathmanage": "Zwei-Faktor-Authentifizierung verwalten",
@@ -122,5 +121,7 @@
 	"oathauth-prefs-disabledgroups": "Deaktiverte {{PLURAL:$1|Gruppe|Gruppen}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Deine Mitgliedschaft}} in {{PLURAL:$1|der Gruppe|den Gruppen}} ist deaktiviert, bis du die [[Special:Manage Two-factor authentication|Zwei-Faktor-Authentifizierung]] aktivierst.",
 	"oathauth-qrcode-alt": "Scanbarer QR-Code, der den geheimen Schlüssel darstellt.",
-	"oathauth-hint": "Du hast keinen Zugriff auf dein Gerät oder deine Anwendung? In diesem Feld kannst du Wiederherstellungscodes eingeben (die angezeigt werden, wenn du 2FA aktiviert hast)."
+	"oathauth-hint": "Du hast keinen Zugriff auf dein Gerät oder deine Anwendung? In diesem Feld kannst du Wiederherstellungscodes eingeben (die angezeigt werden, wenn du 2FA aktiviert hast).",
+	"oathauth-must-be-central": "{{GENDER:$1|Dein Konto}} muss mit dem zentralen Authentifizierungssystem verknüpft sein, um die Zwei-Faktor-Authentifizierung verwenden zu können.",
+	"oathauth-error-multiple-modules": "Derzeit wird die Verwendung mehrerer 2FA-Authentifizierungsmethoden nicht unterstützt. Du kannst $1 nur aktivieren, nachdem du $2 deaktiviert hast."
 }

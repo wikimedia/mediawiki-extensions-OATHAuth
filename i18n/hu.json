@@ -72,7 +72,6 @@
 	"log-action-filter-oath-verify": "Kétlépcsős azonosítás bekapcsoltságának ellenőrzése",
 	"log-action-filter-oath-disable-other": "Más felhasználó kétlépcsős azonosításának kikapcsolása",
 	"oathauth-ui-no-module": "Nincs engedélyezve",
-	"oathauth-module-invalid": "A felhasználó által regisztrált OATHAuth-modul érvénytelen.",
 	"oathauth-module-totp-label": "TOTP (egyszeri token)",
 	"oathauth-ui-manage": "Kezelés",
 	"oathmanage": "Kétlépcsős azonosítás kezelése",

@@ -82,7 +82,6 @@
 	"log-action-filter-oath-verify": "İki faktörlü kimlik doğrulamanın etkin olup olmadığı kontrol ediliyor",
 	"log-action-filter-oath-disable-other": "Başka bir kullanıcı için iki faktörlü kimlik doğrulamayı devre dışı bırakma",
 	"oathauth-ui-no-module": "Hiçbiri etkin değil",
-	"oathauth-module-invalid": "Kullanıcının kaydettiği OATHAuth modülü geçersiz.",
 	"oathauth-module-totp-label": "TOTP (bir defalık anahtar)",
 	"oathauth-ui-manage": "Yönet",
 	"oathmanage": "İki faktörlü kimlik doğrulamayı yönet",

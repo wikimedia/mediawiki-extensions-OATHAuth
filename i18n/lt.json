@@ -56,7 +56,6 @@
 	"log-action-filter-oath-verify": "Tikrinama ar įjungtas dviejų veiksnių autentifikavimas",
 	"log-action-filter-oath-disable-other": "Dviejų veiksnių autentifikavimo išjungimas kitam naudotojui",
 	"oathauth-ui-no-module": "Nėra įjungtų",
-	"oathauth-module-invalid": "OATHAuth modulis, kurį naudotojas užregistravo, yra negalimas.",
 	"oathauth-ui-manage": "Tvarkyti",
 	"oathmanage": "Tvarkyti dviejų veiksnių autentifikavimą",
 	"oathauth-ui-not-enabled-modules": "Pakeisti į alternatyvų metodą",

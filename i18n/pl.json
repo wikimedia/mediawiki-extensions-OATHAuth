@@ -77,7 +77,6 @@
 	"log-action-filter-oath-verify": "Sprawdzanie, czy uwierzytelnianie dwuskładnikowe jest włączone",
 	"log-action-filter-oath-disable-other": "Wyłączanie uwierzytelniania dwuskładnikowego innego użytkownika",
 	"oathauth-ui-no-module": "Nie włączono",
-	"oathauth-module-invalid": "Zarejestrowany przez użytkownika moduł OATHAuth jest nieprawidłowy.",
 	"oathauth-module-totp-label": "TOTP (ograniczone czasowo hasło jednorazowe)",
 	"oathauth-ui-manage": "Zarządzaj",
 	"oathmanage": "Zarządzanie uwierzytelnianiem dwuskładnikowym",
@@ -121,5 +120,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zawieszona grupa|Zawieszone grupy}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Twoja przynależność}} do {{PLURAL:$1|tej grupy|tych grup}} została zawieszona do czasu, aż włączysz [[Special:Manage Two-factor authentication|uwierzytelnianie dwuskładnikowe]].",
 	"oathauth-qrcode-alt": "Kod QR zawierający tajny klucz do zeskanowania.",
-	"oathauth-hint": "Nie masz dostępu do urządzenia lub aplikacji do uwierzytelniania? W tym polu możesz wpisać któryś z kodów zapasowych (które zostały pokazane po aktywacji uwierzytelniania dwuskładnikowego)."
+	"oathauth-hint": "Nie masz dostępu do urządzenia lub aplikacji do uwierzytelniania? W tym polu możesz wpisać któryś z kodów zapasowych (które zostały pokazane po aktywacji uwierzytelniania dwuskładnikowego).",
+	"oathauth-must-be-central": "{{GENDER:$1|Twoje konto}} musi być połączone z centralnym systemem uwierzytelniania, aby móc używać uwierzytelniania dwuskładnikowego.",
+	"oathauth-error-multiple-modules": "W chwili obecnej używanie wielu metod uwierzytelniania dwuskładnikowego nie jest wspierane. Możesz włączyć $1 dopiero po wyłączeniu $2."
 }

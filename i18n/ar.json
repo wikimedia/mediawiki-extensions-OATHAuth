@@ -76,7 +76,6 @@
 	"log-action-filter-oath-verify": "التحقق من تمكين المصادقة ذات العاملين",
 	"log-action-filter-oath-disable-other": "تعطيل المصادقة ذات العاملين لمستخدم آخر",
 	"oathauth-ui-no-module": "لا شيء مُمكَّن",
-	"oathauth-module-invalid": "وحدة OATHAuth التي قام المستخدم بتسجيلها غير صالحة.",
 	"oathauth-module-totp-label": "TOTP (رمز مميز لمرة واحدة)",
 	"oathauth-ui-manage": "إدارة",
 	"oathmanage": "إدارة التوثيق ذي العاملين",
@@ -120,5 +119,7 @@
 	"oathauth-prefs-disabledgroups": "معطل {{PLURAL:$1| مجموعة | مجموعات}}:",
 	"oathauth-prefs-disabledgroups-help": "سيتم تعطيل {{GENDER:$2|عضويتك}} في {{PLURAL:$1| هذه المجموعة|هذه المجموعات}} حتى تقوم بتمكين [[Special:Manage Two-factor authentication|المصادقة الثنائية]].",
 	"oathauth-qrcode-alt": "رمز الاستجابة السريعة القابل للمسح يمثل المفتاح السري.",
-	"oathauth-hint": "ليس لديك إمكانية الوصول إلى جهازك أو تطبيقك؟ يمكنك إدخال رموز الاسترداد (التي تظهر عند تمكين 2FA) في هذا الحقل."
+	"oathauth-hint": "ليس لديك إمكانية الوصول إلى جهازك أو تطبيقك؟ يمكنك إدخال رموز الاسترداد (التي تظهر عند تمكين 2FA) في هذا الحقل.",
+	"oathauth-must-be-central": "يجب ربط {{GENDER:$1|حسابك}} بنظام المصادقة المركزي لاستخدام المصادقة الثنائية.",
+	"oathauth-error-multiple-modules": "حاليًا، لا يُدعم استخدام طرق مصادقة ثنائية متعددة. يمكنك تفعيل $1 فقط بعد تعطيل $2 ."
 }

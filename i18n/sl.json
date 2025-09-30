@@ -70,7 +70,6 @@
 	"log-action-filter-oath-verify": "Preverjanje, ali je vklopljena dvofaktorska avtentikacija",
 	"log-action-filter-oath-disable-other": "Izključitev dvofaktorske avtentikacije za drugega uporabnika",
 	"oathauth-ui-no-module": "Ni vklopljeno",
-	"oathauth-module-invalid": "Modul OATHAuth, ki ga je uporabnik registriral, je neveljaven.",
 	"oathauth-module-totp-label": "TOTP (enkratni žeton)",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvofaktorske avtentikacije",

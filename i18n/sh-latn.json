@@ -58,7 +58,6 @@
 	"logentry-oath-verify": "$1 {{GENDER:$2|označio je|označila je}} ako $3 ima uključenu dvofaktorsku autentifikaciju",
 	"log-action-filter-oath": "Vrsta operacije dvofaktorske autentifikacije:",
 	"oathauth-ui-no-module": "Nije uključena",
-	"oathauth-module-invalid": "Korisnik registrovao je nevažeći OATHAuth modul.",
 	"oathauth-module-totp-label": "TOTP (jednokratni žeton)",
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvofaktorskom autentifikacijom",

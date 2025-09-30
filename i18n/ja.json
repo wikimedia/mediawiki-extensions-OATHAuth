@@ -81,7 +81,6 @@
 	"log-action-filter-oath-verify": "二要素認証が有効になっているかどうかを確認する",
 	"log-action-filter-oath-disable-other": "別の利用者の二要素認証の無効化",
 	"oathauth-ui-no-module": "有効になっていません",
-	"oathauth-module-invalid": "利用者が登録した OATHAuth モジュールが無効です。",
 	"oathauth-module-totp-label": "TOTP（ワンタイムトークン）",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "二要素認証の管理",
@@ -125,5 +124,7 @@
 	"oathauth-prefs-disabledgroups": "無効な{{PLURAL:$1|グループ}}",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|あなたの権限}}は、{{PLURAL:$1|このグループ|これらのグループ}}では、[[Special:Manage Two-factor authentication|二要素認証]] を有効にするまで無効になります。",
 	"oathauth-qrcode-alt": "秘密鍵を表すスキャン可能な QR コード。",
-	"oathauth-hint": "デバイスまたはアプリケーションにアクセスできない場合は、このフィールドに回復用コード (二要素認証を有効にしたときに提示されるもの) を入力できます。"
+	"oathauth-hint": "デバイスまたはアプリケーションにアクセスできない場合は、このフィールドに回復用コード (二要素認証を有効にしたときに提示されるもの) を入力できます。",
+	"oathauth-must-be-central": "二要素認証を使用するには、{{GENDER:$1|あなたのアカウント}}が中央認証システムにリンクされていなければなりません。",
+	"oathauth-error-multiple-modules": "現在のところ、複数の2FA認証方法の使用はサポートされていません。 $2 を無効化した後にのみ、 $1 を有効化できます。"
 }
