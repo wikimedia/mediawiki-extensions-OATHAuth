@@ -132,5 +132,6 @@
 	"oathauth-totp-add-key": "Füge eine Authentifizierungs-App hinzu",
 	"oathauth-delete-warning-header": "$1 entfernen",
 	"oathauth-delete-warning": "Du kannst diese Authentifizierungsmethode nicht mehr zum Anmelden verwenden.",
-	"oathauth-delete-success": "<strong>$1</strong> entfernt."
+	"oathauth-delete-success": "<strong>$1</strong> entfernt.",
+	"oathauth-enable-success": "<strong>$1</strong> hinzugefügt."
 }
