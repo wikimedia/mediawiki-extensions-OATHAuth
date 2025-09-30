@@ -452,7 +452,7 @@ class OATHManage extends SpecialPage {
 			if ( $this->action === self::ACTION_ENABLE ) {
 				$addedKeyName = $module->getDisplayName()->text();
 				$this->getOutput()->redirect(
-					SpecialPage::getTitleFor( 'AccountSecurity' )->getLocalURL( [
+					$this->getPageTitle()->getLocalURL( [
 						'addsuccess' => $addedKeyName
 					] )
 				);
