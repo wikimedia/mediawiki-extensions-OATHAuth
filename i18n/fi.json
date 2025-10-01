@@ -97,5 +97,6 @@
 	"oathauth-authenticator-delete": "Poista",
 	"oathauth-totp-add-key": "Lisää todennussovellus",
 	"oathauth-delete-warning-header": "Poista $1",
-	"oathauth-delete-success": "<strong>$1</strong> poistettu."
+	"oathauth-delete-success": "<strong>$1</strong> poistettu.",
+	"oathauth-enable-success": "<strong>$1</strong> lisätty."
 }

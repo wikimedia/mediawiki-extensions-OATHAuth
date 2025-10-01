@@ -14,7 +14,7 @@
 	"verifyoathforuser": "Xác minh tình trạng xác thực dùng hai nhân tố",
 	"oath": "Xác thực OATH",
 	"oathauth-account": "Tên tài khoản:",
-	"oathauth-secret": "Chìa khóa bí mật của xác thực hai nhân tố:",
+	"oathauth-secret": "Mã bảo mật của xác thực hai yếu tố:",
 	"oathauth-enable": "Xác thực dùng hai nhân tố",
 	"oathauth-recoverycodes": "Danh sách sau đây là danh sách các mã khôi phục dùng một lần. Những mã này chỉ có thể được sử dụng một lần và dùng trong trường hợp khẩn cấp khi bạn không thể truy cập thiết bị. Vui lòng ghi lại những mã này và giữ chúng ở nơi an toàn. Bạn nên đánh dấu mỗi mã là đã sử dụng khi đăng nhập bằng mã đó. Nếu bạn mất thiết bị, những mã này là cách duy nhất để khôi phục tài khoản của bạn.",
 	"oathauth-recoverycodes-important": "Bước này rất quan trọng! Đừng bỏ qua nó!",
@@ -126,5 +126,6 @@
 	"oathauth-totp-add-key": "Thêm ứng dụng xác thực",
 	"oathauth-delete-warning-header": "Xóa $1",
 	"oathauth-delete-warning": "Bạn sẽ không thể sử dụng phương thức xác thực này để đăng nhập nữa.",
-	"oathauth-delete-success": "Đã xóa <strong>$1</strong>."
+	"oathauth-delete-success": "Đã xóa <strong>$1</strong>.",
+	"oathauth-enable-success": "Đã thêm <strong>$1</strong>."
 }

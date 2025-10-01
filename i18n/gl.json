@@ -124,5 +124,6 @@
 	"oathauth-totp-add-key": "Engadir unha aplicación de autenticación",
 	"oathauth-delete-warning-header": "Quitar «$1»",
 	"oathauth-delete-warning": "Xa non poderás usar este método de autenticación para iniciar sesión.",
-	"oathauth-delete-success": "Eliminouse «<strong>$1</strong>»."
+	"oathauth-delete-success": "Eliminouse «<strong>$1</strong>».",
+	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>»."
 }

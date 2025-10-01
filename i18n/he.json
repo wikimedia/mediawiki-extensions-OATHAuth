@@ -127,5 +127,6 @@
 	"oathauth-totp-add-key": "הוספת יישום אימות",
 	"oathauth-delete-warning-header": "הסרת $1",
 	"oathauth-delete-warning": "לא תהיה לך עוד אפשרות להשתמש בשיטת האימות הזאת כדי להיכנס לחשבון.",
-	"oathauth-delete-success": "<strong>$1</strong> הוסרה."
+	"oathauth-delete-success": "<strong>$1</strong> הוסרה.",
+	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>."
 }

@@ -127,5 +127,6 @@
 	"oathauth-totp-add-key": "Autentifikator tətbiqi əlavə et",
 	"oathauth-delete-warning-header": "$1 silmək",
 	"oathauth-delete-warning": "Bundan sonra daxil olmaq üçün bu doğrulama metodundan istifadə edə bilməyəcəksiniz.",
-	"oathauth-delete-success": "<strong>$1</strong> silindi."
+	"oathauth-delete-success": "<strong>$1</strong> silindi.",
+	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi."
 }
