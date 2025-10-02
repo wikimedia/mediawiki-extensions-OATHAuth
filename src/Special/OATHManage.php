@@ -635,7 +635,8 @@ class OATHManage extends SpecialPage {
 						->build()
 						->getHtml()
 				) .
-				Html::rawElement( 'form', [ 'action' => $this->getPageTitle()->getLinkURL() ],
+				Html::rawElement( 'form', [ 'action' => wfScript() ],
+					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
 					$codex->button()
 						->setLabel( $this->msg( 'cancel' )->text() )
 						->setType( 'submit' )
