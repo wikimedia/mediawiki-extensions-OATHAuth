@@ -185,6 +185,7 @@
 			],
 			"codexStyleOnly": true,
 			"codexComponents": [
+				"CdxMessage",
 				"CdxButton",
 				"CdxAccordion"
 			]
