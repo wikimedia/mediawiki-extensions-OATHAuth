@@ -138,9 +138,13 @@
 	"oathauth-authenticator-header": "Two-factor authentication",
 	"oathauth-authenticator-placeholder": "Add an extra step when logging in to help secure your account.",
 	"oathauth-authenticator-delete": "Remove",
+	"oathauth-authenticator-delete-text": "remove",
 	"oathauth-totp-add-key": "Add an authenticator app",
 	"oathauth-delete-warning-header": "Remove $1",
 	"oathauth-delete-warning": "You won't be able to use this authentication method to log in anymore.",
+	"oathauth-delete-confirm-box": "Enter \"{{int:oathauth-authenticator-delete-text}}\" to continue",
+	"oathauth-delete-warning-final": "Removing this method will disable two-factor authentication entirely.",
+	"oathauth-delete-wrong-confirm-message": "Wrong input for final key removal. Please type \"{{int:oathauth-authenticator-delete-text}}\" to continue",
 	"oathauth-delete-success": "<strong>$1</strong> removed.",
 	"oathauth-enable-success": "<strong>$1</strong> added."
 }

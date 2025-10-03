@@ -118,6 +118,10 @@ class OATHManage extends SpecialPage {
 				$this->getRequest()->wasPosted() &&
 				$this->getContext()->getCsrfTokenSet()->matchTokenField()
 			) {
+				if ( !$this->isValidFinalKeyDeletion() ) {
+					$this->showDeleteWarning( true );
+					return;
+				}
 				// Delete the key, then redirect to the main view with a success message
 				$deletedKey = $this->deleteKey();
 				$deletedKeyName = $this->getKeyNameAndDescription( $deletedKey )['name'];
@@ -127,7 +131,7 @@ class OATHManage extends SpecialPage {
 				] ) );
 				return;
 			} elseif ( $this->getRequest()->getBool( 'warn' ) ) {
-				$this->showDeleteWarning();
+				$this->showDeleteWarning( false );
 				return;
 			}
 		} elseif ( $this->requestedModule instanceof IModule ) {
@@ -174,6 +178,18 @@ class OATHManage extends SpecialPage {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
 		}
+	}
+
+	private function isValidFinalKeyDeletion(): bool {
+		$isNormalDelete = $this->getRequest()->getBool( 'normalDelete' );
+		if ( $isNormalDelete ) {
+			return true;
+		}
+
+		$expectedText = $this->msg( 'oathauth-authenticator-delete-text' )->text();
+		$actualText = $this->getRequest()->getText( 'remove-confirm-box' );
+
+		return $actualText === $expectedText;
 	}
 
 	private function setAction(): void {
@@ -680,7 +696,7 @@ class OATHManage extends SpecialPage {
 		return (bool)$this->getAvailableModules();
 	}
 
-	private function showDeleteWarning() {
+	private function showDeleteWarning( bool $showWrongConfirmMessage ) {
 		$keyId = $this->getRequest()->getInt( 'keyId' );
 		$keyToDelete = $this->authUser->getKeyById( $keyId );
 		if ( !$keyToDelete ) {
@@ -690,40 +706,79 @@ class OATHManage extends SpecialPage {
 			);
 		}
 		$keyName = $this->getKeyNameAndDescription( $keyToDelete )['name'];
-
+		$remainingKeys = array_filter(
+			$this->authUser->getNonSpecialKeys(),
+			static fn ( $key ) => $key->getId() !== $keyId
+		);
 		$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-delete-warning-header', $keyName ) );
 		$codex = new Codex();
-		$deleteWarningHTML =
-			Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
-			// TODO display creation timestamp here (T403666)
-			Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-delete-warning__actions' ],
+		if ( !$remainingKeys ) {
+			$displayMessage = $showWrongConfirmMessage ?
+				$this->msg( 'oathauth-delete-wrong-confirm-message' )->escaped()
+				: $this->msg( 'oathauth-delete-warning-final' )->escaped();
+			$deleteWarningHTML =
+				Html::warningBox( $displayMessage ) .
+				Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
+				Html::element( 'p', [], $this->msg( 'oathauth-delete-confirm-box' )->text() ) .
+				// TODO display creation timestamp here (T403666)
 				Html::rawElement( 'form', [ 'action' => wfScript(), 'method' => 'POST' ],
-					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-					Html::hidden( 'module', $keyToDelete->getModule() ) .
-					Html::hidden( 'keyId', $keyId ) .
-					Html::hidden(
-						CsrfTokenSet::DEFAULT_FIELD_NAME,
-						$this->getContext()->getCsrfTokenSet()->getToken()
+					Html::input( 'remove-confirm-box' ) .
+					Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-delete-warning__actions' ],
+						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+						Html::hidden( 'module', $keyToDelete->getModule() ) .
+						Html::hidden( 'keyId', $keyId ) .
+						Html::hidden(
+							CsrfTokenSet::DEFAULT_FIELD_NAME,
+							$this->getContext()->getCsrfTokenSet()->getToken()
+						) .
+						$codex->button()
+							->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
+							->setAction( 'destructive' )
+							->setWeight( 'primary' )
+							->setType( 'submit' )
+							->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
+							->build()
+							->getHtml() .
+					Html::linkButton( $this->msg( 'cancel' )->text(), [
+						'href' => $this->getPageTitle()->getLinkURL(),
+						'class' => 'cdx-button cdx-button--fake-button',
+						'role' => 'button'
+					] )
+					)
+				);
+		} else {
+			$deleteWarningHTML =
+				Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
+				// TODO display creation timestamp here (T403666)
+				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-delete-warning__actions' ],
+					Html::rawElement( 'form', [ 'action' => wfScript(), 'method' => 'POST' ],
+						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+						Html::hidden( 'module', $keyToDelete->getModule() ) .
+						Html::hidden( 'keyId', $keyId ) .
+						Html::hidden( 'normalDelete', true ) .
+						Html::hidden(
+							CsrfTokenSet::DEFAULT_FIELD_NAME,
+							$this->getContext()->getCsrfTokenSet()->getToken()
+						) .
+						$codex->button()
+							->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
+							->setAction( 'destructive' )
+							->setWeight( 'primary' )
+							->setType( 'submit' )
+							->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
+							->build()
+							->getHtml()
 					) .
-					$codex->button()
-						->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
-						->setAction( 'destructive' )
-						->setWeight( 'primary' )
-						->setType( 'submit' )
-						->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
-						->build()
-						->getHtml()
-				) .
-				Html::rawElement( 'form', [ 'action' => wfScript() ],
-					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-					$codex->button()
-						->setLabel( $this->msg( 'cancel' )->text() )
-						->setType( 'submit' )
-						->build()
-						->getHtml()
-				)
-			);
-
+					Html::rawElement( 'form', [ 'action' => wfScript() ],
+						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+						$codex->button()
+							->setLabel( $this->msg( 'cancel' )->text() )
+							->setType( 'submit' )
+							->build()
+							->getHtml()
+					)
+				);
+		}
 		$this->getOutput()->addHTML( Html::rawElement( 'div',
 			[ 'class' => 'mw-special-OATHManage-delete-warning' ],
 			$deleteWarningHTML

@@ -154,9 +154,13 @@
 	"oathauth-authenticator-header": "Section header for the 2FA section on Special:AccountSecurity.",
 	"oathauth-authenticator-placeholder": "Text shown in the 2FA section on Special:AccountSecurity when the user does not have any 2FA methods set up.",
 	"oathauth-authenticator-delete": "Button label for the button that deletes an authentication method.",
+	"oathauth-authenticator-delete-text": "Text to type in when removing final authentication method.",
 	"oathauth-totp-add-key": "Button label adding a new TOTP key (authenticator app).",
 	"oathauth-delete-warning-header": "Page title for the warning page shown when deleting a 2FA method.",
 	"oathauth-delete-warning": "Warning message shown when deleting a 2FA method.\n\nParameters:\n* $1 - Name of the 2FA method being deleted",
+	"oathauth-delete-confirm-box": "Message for input confirmation box shown when removing last 2FA method",
+	"oathauth-delete-warning-final": "Warning message shown when deleting the last 2FA method",
+	"oathauth-delete-wrong-confirm-message": "Warning message shown when deleting the last 2FA method and the confirmation message is incorrect",
 	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted",
 	"oathauth-enable-success": "Success message shown when a 2FA method has been added.\n\nParameters:\n* $1 - Name of the 2FA method that was enabled"
 }
