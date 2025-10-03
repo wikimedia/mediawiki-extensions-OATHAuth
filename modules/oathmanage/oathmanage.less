@@ -35,8 +35,10 @@
 			margin-top: @spacing-75;
 		}
 
-		&__placeholder {
+		// Higher specificity needed to override margins set on .mw-body p
+		& &__placeholder {
 			color: @color-subtle;
+			margin-top: 0;
 		}
 
 		&--no-keys &__addform {
