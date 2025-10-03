@@ -177,7 +177,9 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'oathtype' => $key->getModule(),
 		] );
 
-		Manager::notifyDisabled( $user, $self );
+		if ( !$this->moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial() ) {
+			Manager::notifyDisabled( $user, $self );
+		}
 	}
 
 	/**
@@ -201,7 +203,9 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'oathtype' => $keyType,
 		] );
 
-		Manager::notifyDisabled( $user, $self );
+		if ( !$this->moduleRegistry->getModuleByKey( $keyType )->isSpecial() ) {
+			Manager::notifyDisabled( $user, $self );
+		}
 	}
 
 	/**

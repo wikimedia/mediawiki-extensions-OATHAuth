@@ -54,7 +54,7 @@ class Manager {
 			'agent' => $oUser->getUser(),
 			'extra' => [
 				'self' => $self,
-				'activeDevices' => count( $oUser->getKeys() ),
+				'activeDevices' => count( $oUser->getNonSpecialKeys() ),
 			]
 		] );
 	}
@@ -72,7 +72,7 @@ class Manager {
 			'title' => SpecialPage::getTitleFor( 'Preferences' ),
 			'agent' => $oUser->getUser(),
 			'extra' => [
-				'activeDevices' => count( $oUser->getKeys() ),
+				'activeDevices' => count( $oUser->getNonSpecialKeys() ),
 			],
 		] );
 	}

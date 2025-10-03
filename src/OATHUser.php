@@ -157,20 +157,24 @@ class OATHUser {
 	}
 
 	/**
+	 * Get all of the user's keys, but exclude special keys
+	 * @return IAuthKey[]
+	 */
+	public function getNonSpecialKeys(): array {
+		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		return array_values(
+			array_filter(
+				$this->keys,
+				static fn ( IAuthKey $key ) => !$moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial()
+			)
+		);
+	}
+
+	/**
 	 * Returns a bool indicating whether a user has _any_ 2fa modules enabled
 	 * which are not considered "special" modules, as defined via IModule::isSpecial()
 	 */
 	public function userHasNonSpecialEnabledKeys(): bool {
-		if ( count( $this->getKeys() ) === 0 ) {
-			return false;
-		}
-
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-		foreach ( $this->getKeys() as $key ) {
-			if ( $key && !$moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial() ) {
-				return true;
-			}
-		}
-		return false;
+		return count( $this->getNonSpecialKeys() ) > 0;
 	}
 }
