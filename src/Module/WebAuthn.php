@@ -166,8 +166,10 @@ class WebAuthn implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getAddKeyMessage(): Message {
-		return wfMessage( 'webauthn-add-security-key' );
+	public function getAddKeyMessage(): ?Message {
+		return RequestContext::getMain()->getConfig()->get( 'WebAuthnNewCredsDisabled' ) ?
+			null :
+			wfMessage( 'webauthn-add-security-key' );
 	}
 
 	/** @inheritDoc */
