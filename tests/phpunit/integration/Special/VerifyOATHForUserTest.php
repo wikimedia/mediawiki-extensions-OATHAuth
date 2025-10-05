@@ -18,7 +18,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
@@ -26,7 +25,6 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\VerifyOATHForUser;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
-use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use SpecialPageTestBase;
 
 /**
@@ -35,19 +33,13 @@ use SpecialPageTestBase;
  * @covers \MediaWiki\Extension\OATHAuth\Special\VerifyOATHForUser
  */
 class VerifyOATHForUserTest extends SpecialPageTestBase {
-	use MockAuthorityTrait;
+	use BypassReauthTrait;
 
 	protected function setUp(): void {
 		parent::setUp();
 
 		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
-		$this->setTemporaryHook(
-			'SecuritySensitiveOperationStatus',
-			static function ( &$status, $operation, $session, $timeSinceAuth ) {
-				// Bypass re-authentication prompts
-				$status = AuthManager::SEC_OK;
-			},
-		);
+		$this->bypassReauthentication();
 	}
 
 	protected function newSpecialPage(): VerifyOATHForUser {

@@ -20,6 +20,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\MainConfigNames;
@@ -31,9 +32,13 @@ use SpecialPageTestBase;
  * @covers \MediaWiki\Extension\OATHAuth\Special\OATHManage
  */
 class OATHManageTest extends SpecialPageTestBase {
+	use BypassReauthTrait;
+
 	protected function setUp(): void {
 		parent::setUp();
+
 		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
+		$this->bypassReauthentication();
 	}
 
 	protected function newSpecialPage() {
@@ -41,29 +46,38 @@ class OATHManageTest extends SpecialPageTestBase {
 		return new OATHManage(
 			$services->getUserRepository(),
 			$services->getModuleRegistry(),
-			$this->getServiceContainer()->getAuthManager()
+			$this->getServiceContainer()->getAuthManager(),
 		);
 	}
 
 	public function testPageLoads() {
-		$this->executeSpecialPage(
+		$user = $this->getTestUser()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		[ $html ] = $this->executeSpecialPage(
 			'',
 			null,
 			null,
-			$this->getTestUser()->getAuthority(),
+			$user,
 		);
-		$this->addToAssertionCount( 1 );
+		$this->assertStringContainsString( '(oathmanage-summary)', $html );
+	}
 
+	public function testNewUIPageLoads() {
 		$this->setMwGlobals( [
 			'wgOATHAuthNewUI' => true,
 			'wgOATHAllowMultipleModules' => true
 		] );
-		$this->executeSpecialPage(
+
+		$user = $this->getTestUser()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		[ $html ] = $this->executeSpecialPage(
 			'',
 			null,
 			null,
-			$this->getTestUser()->getAuthority(),
+			$user,
 		);
-		$this->addToAssertionCount( 1 );
+		$this->assertStringContainsString( '(oathauth-password-header)', $html );
 	}
 }
