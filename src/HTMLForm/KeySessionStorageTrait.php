@@ -24,7 +24,7 @@ trait KeySessionStorageTrait {
 
 		if ( count( $keyData ) === 0 ) {
 			// @phan-suppress-next-line PhanUndeclaredMethod
-			$keyData = $this->getRequest()->getSessionData( $sessionKey ) ?? [];
+			$keyData = $this->getRequest()->getSession()->getSecret( $sessionKey, [] );
 		}
 
 		// TODO: Ideally determine key type via instanceof or ::class instead of strings
@@ -48,14 +48,14 @@ trait KeySessionStorageTrait {
 
 		if ( $key instanceof IAuthKey ) {
 			// @phan-suppress-next-line PhanUndeclaredMethod
-			$this->getRequest()->setSessionData(
+			$this->getRequest()->getSession()->setSecret(
 				$sessionKey,
 				$key->jsonSerialize()
 			);
 		} else {
 			// set session key to empty
 			// @phan-suppress-next-line PhanUndeclaredMethod
-			$this->getRequest()->setSessionData(
+			$this->getRequest()->getSession()->setSecret(
 				$sessionKey,
 				[]
 			);
@@ -69,12 +69,12 @@ trait KeySessionStorageTrait {
 	 */
 	public function getKeyDataInSession( string $keyType ) {
 		// @phan-suppress-next-line PhanUndeclaredMethod
-		return $this->getRequest()->getSessionData( $this->getSessionKeyName( $keyType ) );
+		return $this->getRequest()->getSession()->getSecret( $this->getSessionKeyName( $keyType ) );
 	}
 
 	public function setKeyDataInSessionToNull( string $keyType ): void {
 		// @phan-suppress-next-line PhanUndeclaredMethod
-		$this->getRequest()->setSessionData( $this->getSessionKeyName( $keyType ), null );
+		$this->getRequest()->getSession()->setSecret( $this->getSessionKeyName( $keyType ), null );
 	}
 
 	private function getSessionKeyName( string $keyType ): string {

@@ -6,6 +6,8 @@ use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Request\WebRequest;
+use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 use UnexpectedValueException;
@@ -139,7 +141,17 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testVerify(): void {
+		$mockUserIdentity = $this->createMock( UserIdentity::class );
+		$mockWebRequest = $this->createMock( WebRequest::class, [ 'getSecurityLogContext' ] );
 		$mockOATHUser = $this->createMock( OATHUser::class );
+		$this->setTemporaryHook(
+			'GetSecurityLogContext',
+			static function ( array $info, array &$context ) use ( $mockWebRequest, $mockUserIdentity ) {
+				$context['foo'] = 'bar';
+			}
+		);
+		$mockWebRequest->method( 'getSecurityLogContext' )
+			->willReturn( [ 'clientIp' => '1.1.1.1' ] );
 
 		$testData1 = [];
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );

@@ -146,7 +146,7 @@ class RecoveryCodeKeys implements IAuthKey {
 
 		$config = OATHAuthServices::getInstance()->getConfig();
 		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
-		$clientIP = RequestContext::getMain()->getRequest()->getIP();
+		$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 		$logger = $this->getLogger();
 
 		// lets see if they still have TOTP-attached scratch tokens
@@ -165,7 +165,7 @@ class RecoveryCodeKeys implements IAuthKey {
 
 					$logger->info( 'OATHAuth user {user} used a TOTP-attached scratch token from {clientip}', [
 						'user' => $user->getAccount(),
-						'clientip' => $clientIP,
+						'clientip' => $clientData['clientIp'],
 					] );
 
 					$oathRepo->updateKey( $user, $objTOTPKey );
@@ -189,7 +189,7 @@ class RecoveryCodeKeys implements IAuthKey {
 						// phpcs:ignore
 						"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
 							'user' => $user->getUser()->getName(),
-							'clientip' => $clientIP
+							'clientip' => $clientData['clientIp']
 						]
 					);
 
