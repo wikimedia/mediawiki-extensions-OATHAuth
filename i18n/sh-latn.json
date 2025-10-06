@@ -13,6 +13,7 @@
 	"oathauth-secret": "Tajni ključ za dvofaktorsku autentifikaciju:",
 	"oathauth-enable": "Omogućavanje dvofaktorske autentifikacije",
 	"oathauth-recoverycodes": "Ovo je spisak jednokratnih žetona. Mogu se koristiti samo jednom i poslužiti za nepredviđene slučajeve. Zapišite ih i čuvajte na sigurnom mjestu. Ako izgubite telefon, žetoni su jedini način za povratak računa. '''Ovi žetoni se više nikada neće prikazati.'''",
+	"oathauth-failedtovalidateoath": "Nisam uspio potvrditi dvofaktorske akreditive",
 	"oathauth-disable": "Onemogućavanje dvofaktorske autentifikacije",
 	"oathauth-validatedoath": "Ovjereno je dvofaktorsko punomoćje. Sada stupa na snagu.",
 	"oathauth-noscratchforvalidation": "Ne možete koristiti pričuvni kod za potvrđivanje dvofaktorske autentifikacije. Ovi kodovi su slobodni i imaju isključivo namjensku upotrebu. Poslužite s kodom iz Vašeg generatora koda.",

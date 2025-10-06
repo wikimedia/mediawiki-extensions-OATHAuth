@@ -17,6 +17,7 @@
 	"oathauth-secret": "Tajný klíč pro dvoufaktorovou autentizaci:",
 	"oathauth-enable": "Zapnutí dvoufaktorové autentizace",
 	"oathauth-recoverycodes": "Následující seznam obsahuje jednorázové provizorní kódy. Tyto kódy lze použít pouze jednou a slouží pro případ nouze. Opište si je a uchovávejte je na bezpečném místě. Pokud ztratíte svůj telefon, budou tyto kódy jediným způsobem, jak zachránit váš účet. '''Tyto kódy se již nikdy znovu nezobrazí'''.",
+	"oathauth-failedtovalidateoath": "Nepodařilo se ověřit údaje pro druhý faktor",
 	"oathauth-disable": "Vypnutí dvoufaktorové autentizace",
 	"oathauth-validatedoath": "Údaje pro druhý faktor ověřeny. Odteď bude vynucována dvoufaktorová autentizace.",
 	"oathauth-noscratchforvalidation": "Pro potvrzení dvoufaktorové autentizace nemůžete použít provizorní kódy. Provizorní kódy slouží jen jako záloha a pro výjimečné účely. Použijte prosím ověřovací kód z vašeho generátoru kódů.",

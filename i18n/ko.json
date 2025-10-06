@@ -27,6 +27,7 @@
 	"oathauth-recoverycodes-download": "다운로드",
 	"oathauth-recoverycodes-copy": "복사",
 	"oathauth-recoverycodes-copy-success": "복구 코드가 클립보드에 복사되었습니다!",
+	"oathauth-failedtovalidateoath": "2요소 자격정보를 검증하는 데 실패했습니다",
 	"oathauth-disable": "2요소 인증 비활성화하기",
 	"oathauth-validatedoath": "2요소 자격 정보를 검증했습니다. 이제부터 2요소 인증을 실행합니다.",
 	"oathauth-noscratchforvalidation": "2요소 인증을 확인하기 위해 스크래치 코드를 사용할 수 없습니다. 스크래치 코드는 백업용 및 부수적인 용도 전용입니다. 코드 생성기의 인증 코드를 사용해 주십시오.",

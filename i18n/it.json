@@ -21,6 +21,7 @@
 	"oathauth-recoverycodes-download": "Scarica",
 	"oathauth-recoverycodes-copy": "Copia",
 	"oathauth-recoverycodes-copy-success": "I codici di recupero sono stati copiati negli appunti!",
+	"oathauth-failedtovalidateoath": "Impossibile convalidare le credenziali a due fattori",
 	"oathauth-disable": "Disabilita autenticazione a due fattori",
 	"oathauth-validatedoath": "Convalidate le credenziali a due fattori. D'ora in poi sarà applicata l'autenticazione a due fattori.",
 	"oathauth-disabledoath": "Autenticazione a due fattori disabilitata.",

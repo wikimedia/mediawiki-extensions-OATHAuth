@@ -27,6 +27,7 @@
 	"oathauth-recoverycodes-download": "تنزيل",
 	"oathauth-recoverycodes-copy": "نسخ",
 	"oathauth-recoverycodes-copy-success": "لقد تم نسخ رموز الاسترداد إلى الحافظة الخاصة بك!",
+	"oathauth-failedtovalidateoath": "فشل التحقق من صحة بيانات الاعتماد الثنائية",
 	"oathauth-disable": "تعطيل التوثيق ذي العاملين",
 	"oathauth-validatedoath": "شهادات التوثيق ذو العاملين مُعتمدة. سينفذ التوثيق ذو العاملين منذ الآن.",
 	"oathauth-noscratchforvalidation": "لا يمكنك استخدام رمز الاسترداد لتأكيد المصادقة الثنائية. رموز الاسترداد مخصصة للاستخدام الاحتياطي والعرضي فقط. يرجى استخدام رمز من تطبيق المصادقة الثنائية الخاص بك (مثل [https://www.authy.com/ Authy] أو [https://freeotp.github.io/ FreeOTP] أو [https://support.google.com/accounts/answer/1066447 Google Authenticator] أو [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] أو [https://1password.com/ 1Password]).",
@@ -116,6 +117,7 @@
 	"oathauth-prefs-disabledgroups": "معطل {{PLURAL:$1| مجموعة | مجموعات}}:",
 	"oathauth-prefs-disabledgroups-help": "سيتم تعطيل {{GENDER:$2|عضويتك}} في {{PLURAL:$1| هذه المجموعة|هذه المجموعات}} حتى تقوم بتمكين [[Special:Manage Two-factor authentication|المصادقة الثنائية]].",
 	"oathauth-qrcode-alt": "رمز الاستجابة السريعة القابل للمسح يمثل المفتاح السري.",
+	"oathauth-hint": "ليس لديك إمكانية الوصول إلى جهازك أو تطبيقك؟ يمكنك إدخال رموز الاسترداد (التي تظهر عند تمكين 2FA) في هذا الحقل.",
 	"oathauth-must-be-central": "يجب ربط {{GENDER:$1|حسابك}} بنظام المصادقة المركزي لاستخدام المصادقة الثنائية.",
 	"oathauth-error-multiple-modules": "حاليًا، لا يُدعم استخدام طرق مصادقة ثنائية متعددة. يمكنك تفعيل $1 فقط بعد تعطيل $2 .",
 	"group-oathauth-twofactorauth": "المستخدمون الذين يمكنهم استخدام المصادقة الثنائية",
@@ -130,5 +132,6 @@
 	"oathauth-totp-add-key": "إضافة تطبيق مصادقة",
 	"oathauth-delete-warning-header": "إزالة $1",
 	"oathauth-delete-warning": "لن تتمكن من استخدام طريقة المصادقة هذه لتسجيل الدخول بعد الآن.",
-	"oathauth-delete-success": "<strong>$1</strong> حذف."
+	"oathauth-delete-success": "<strong>$1</strong> حذف.",
+	"oathauth-enable-success": "تمت إضافة <strong>$1</strong> ."
 }

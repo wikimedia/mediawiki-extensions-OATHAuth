@@ -23,6 +23,7 @@
 	"oathauth-recoverycodes-download": "Letöltés",
 	"oathauth-recoverycodes-copy": "Másolás",
 	"oathauth-recoverycodes-copy-success": "A helyreállítási kódokat a vágólapra másoltuk!",
+	"oathauth-failedtovalidateoath": "A kétlépcsős azonosítási adatok ellenőrzése sikertelen",
 	"oathauth-disable": "Kétlépcsős azonosítás letiltása",
 	"oathauth-validatedoath": "Kétlépcsős azonosítás engedélyezve. Mostantól csak két lépésben tudod azonosítani magad.",
 	"oathauth-noscratchforvalidation": "Helyreállítási kód nem használható a kétlépcsős hitelesítés megerősítésére. A helyreállítási kódok csak biztonsági mentésre és véletlenszerű használatra szolgálnak. Használd a kétlépcsős hitelesítési alkalmazás (pl. [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Hitelesítő], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] vagy [https://1password.com/ 1Password]).",
@@ -106,5 +107,6 @@
 	"oathauth-verify-disabled": "$1 nem engedélyezte a kétlépcsős azonosítást.",
 	"oathauth-prefs-disabledgroups": "Letiltott {{PLURAL:$1|csoport|csoportok}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|A tagságod}} {{PLURAL:$1|ebben a csoportban|ezekben a csoportokban}} nem aktív, amíg nem kapcsolod be a [[Special:Manage Two-factor authentication|kétlépcsős azonosítást]].",
-	"oathauth-qrcode-alt": "A titkos kulcsot jelképező beolvasható QR-kód."
+	"oathauth-qrcode-alt": "A titkos kulcsot jelképező beolvasható QR-kód.",
+	"oathauth-hint": "Nincs hozzáférésed az eszközödhöz vagy alkalmazásodhoz? Ebben a mezőben helyreállítási kódot is megadhatsz (ezek akkor jelentek meg, amikor engedélyezted a 2FA-t)."
 }

@@ -34,6 +34,7 @@
 	"oathauth-recoverycodes-download": "下載",
 	"oathauth-recoverycodes-copy": "複製",
 	"oathauth-recoverycodes-copy-success": "恢復密碼已複製到您的剪貼簿！",
+	"oathauth-failedtovalidateoath": "無法驗證雙重認證",
 	"oathauth-disable": "停用雙重認證",
 	"oathauth-validatedoath": "已驗證雙重認證。現在起將強制執行雙重認證。",
 	"oathauth-noscratchforvalidation": "您不能使用恢復密碼來確認雙重認證。恢復密碼僅用於備援和意外時使用。請使用來自您雙重認證應用程式所建立的驗證碼。(例如[https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] or [https://1password.com/ 1Password])",
@@ -137,5 +138,6 @@
 	"oathauth-totp-add-key": "新增一個驗證器應用程式",
 	"oathauth-delete-warning-header": "移除$1",
 	"oathauth-delete-warning": "您再也無法使用此驗證方式登入。",
-	"oathauth-delete-success": "已移除<strong>$1</strong>。"
+	"oathauth-delete-success": "已移除<strong>$1</strong>。",
+	"oathauth-enable-success": "已新增<strong>$1</strong>。"
 }

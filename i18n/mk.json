@@ -18,6 +18,8 @@
 	"oathauth-recoverycodes-download": "Преземи",
 	"oathauth-recoverycodes-copy": "Копирај",
 	"oathauth-recoverycodes-copy-success": "Кодовите за повраток се прекопирани во меѓускладот!",
+	"oathauth-recoverycodes-create-label": "Создај {{PLURAL:$1|нов повратен код|нови повратни кодови}}",
+	"oathauth-failedtovalidateoath": "Не успеав да го заверам двочинителското полномоштво",
 	"oathauth-disable": "Оневозможување на двочинителска заверка на веродостојноста",
 	"oathauth-validatedoath": "Двочинителското полномоштво е заверено. Сега стапува на сила.",
 	"oathauth-noscratchforvalidation": "Не можете да користите код за повраток за да ја потврдите двочинителската заверка. Овие кодови се резервни, и имаат исклучиво наменска употреба. Користете код од вашиот прилог за двочинителска заверка (како на пр. [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] или [https://1password.com/ 1Password]).",
@@ -107,6 +109,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Оневозможена група|Оневозможени групи}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Вашето членство}} во {{PLURAL:$1|оваа група|овие групи}} е оневозможено додека не овозможите [[Special:Manage Two-factor authentication|двочинителска заверка]].",
 	"oathauth-qrcode-alt": "Отчитлив QR-код што го претставува тајниот клуч.",
+	"oathauth-hint": "Немате пристап до вашиот уред или прилог? Можете да внесувате кодови за повраток (претставени кога го овозможивте 2FA) во ова поле.",
 	"oathauth-must-be-central": "{{GENDER:$1|Вашата сметка}} мора да биде поврзана со централниот систем за заверка за да користи двочинителска заверка.",
 	"oathauth-error-multiple-modules": "Засега не е поддржано користење на повеќе начини на двочинителска заверка. Можете да го овозможите $1 само откако ќе го оневозможите $2.",
 	"group-oathauth-twofactorauth": "Корисници кои можат да користат двочинителска заверка",
@@ -121,5 +124,6 @@
 	"oathauth-totp-add-key": "Додај прилог за заверка",
 	"oathauth-delete-warning-header": "Отстрани $1",
 	"oathauth-delete-warning": "Повеќе нема да можете да го користите овој метод на заверка за да се најавувате.",
-	"oathauth-delete-success": "Отстранет <strong>$1</strong>."
+	"oathauth-delete-success": "Отстранет <strong>$1</strong>.",
+	"oathauth-enable-success": "Додаден <strong>$1</strong>."
 }

@@ -22,6 +22,7 @@
 	"oathauth-secret": "Chave secreta de autenticação de dois fatores:",
 	"oathauth-enable": "Ativar autenticação de dois fatores",
 	"oathauth-recoverycodes": "A lista a seguir é uma lista de chaves de uso único. Essas chaves só podem ser usadas uma vez, e são para uso de emergência. Por favor, anote-as e mantenha-as em um local seguro. Se você perder seu telefone, '''essas chaves são a única maneira de recuperar sua conta. Essas chaves nunca serão mostradas novamente'''.",
+	"oathauth-failedtovalidateoath": "Falha ao validar credenciais de dois fatores",
 	"oathauth-disable": "Desativar autenticação de dois fatores",
 	"oathauth-validatedoath": "Credenciais de dois fatores validadas. A autenticação de dois fatores agora será aplicada.",
 	"oathauth-noscratchforvalidation": "Você não pode usar um código de rascunho para confirmar a autenticação de dois fatores. Os códigos Scratch são para backup e uso incidental apenas. Use um código de verificação do seu gerador de código.",

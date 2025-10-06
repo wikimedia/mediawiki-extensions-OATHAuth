@@ -21,6 +21,7 @@
 	"oathauth-recoverycodes-download": "راکښته‌کول",
 	"oathauth-recoverycodes-copy": "لمېسل",
 	"oathauth-recoverycodes-copy-success": "د بیارغونې کوډونه ستاسو ټينگدړې ته لمېسل شوي دي!",
+	"oathauth-failedtovalidateoath": "د دوه‌پړاويز تاييد باورليک تاييدولو کې پاتې راغی",
 	"oathauth-disable": "دوه‌پړاويز تاييد ناچارنول",
 	"oathauth-validatedoath": "دوه‌پړاويز تاييد باوري شو. دوه‌پړاويز تاييد به اوس پلی شي.",
 	"oathauth-disabledoath": "دوه‌پړاويز تاييد ناچارن‌شوی.",

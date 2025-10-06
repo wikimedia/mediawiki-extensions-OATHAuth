@@ -79,6 +79,7 @@
 	"oathauth-notifications-recoverycodesleft-help": "Skoazell",
 	"oathauth-notifications-recoverycodesleft-primary": "Gwiriit ho arventennoù dilesañ div-elfenn",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Strollad|Strolladoù}} diweredekaet ː",
+	"oathauth-hint": "Ne c’hallit ket ober gant hoc’h ardivink pe arload? Gallout a rit ober gant kodoù restaoler (diskouezet pa'z oc'h eus gweredekaet 2FA) er vaezienn-mañ.",
 	"group-oathauth-twofactorauth": "Implijerien aotreet da ober gant an dilesadur div-elfenn",
 	"group-oathauth-twofactorauth-member": "Implijer aotreet da ober gant an dilesadur div-elfenn",
 	"oathauth-remove-nosuchkey": "N'eo ket bet kavet an alc'hwez.",

@@ -23,6 +23,7 @@
 	"oathauth-recoverycodes-download": "Преузми",
 	"oathauth-recoverycodes-copy": "Копирај",
 	"oathauth-recoverycodes-copy-success": "Кодови за опоравак су копирани у ваш међуспремник!",
+	"oathauth-failedtovalidateoath": "Провера ваљаности двофакторских акредитива није успела",
 	"oathauth-disable": "Онемогућавање двофакторске потврде идентитета",
 	"oathauth-validatedoath": "Ваљаност двофакторских акредитива је проверена. Одсад ће се спроводити двофакторска потврда идентитета.",
 	"oathauth-noscratchforvalidation": "Не можете да користите код за опоравак за потврђивање двофакторске провере идентитета. Кодови за опоравак служе само за прављење резервне копије и случајну употребу. Молимо користите код за верификацију из апликације за двофакторску аутентификацију (као нпр. [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] или [https://1password.com/ 1Password]).",
@@ -103,5 +104,6 @@
 	"oathauth-authenticator-header": "Двофакторска потврда идентитета",
 	"oathauth-authenticator-delete": "Уклони",
 	"oathauth-delete-warning-header": "Уклони $1",
-	"oathauth-delete-success": "<strong>$1</strong> уклоњен."
+	"oathauth-delete-success": "<strong>$1</strong> уклоњен.",
+	"oathauth-enable-success": "Додата <strong>$1</strong>."
 }
