@@ -31,14 +31,18 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 	}
 
 	// mock function for trait
-	public function getRequest() {
+	public function getRequest(): WebRequest {
 		return $this->request;
+	}
+
+	public function getSession(): Session {
+		return $this->session;
 	}
 
 	public function provideSessionKeyNameAndDataData(): array {
 		return [
-			[ 'TOTPKey', [], false, IAuthKey::class ],
-			[ 'RecoveryCodeKeys', [], true, null ],
+			[ 'TOTPKey', [ '' ], false, IAuthKey::class ],
+			[ 'RecoveryCodeKeys', [ '' ], true, null ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==' ], true, IAuthKey::class ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==', 'scratch_tokens' => [] ], false, IAuthKey::class ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==', 'scratch_tokens' => [ "ABCD" ] ], true, IAuthKey::class ]
@@ -58,8 +62,8 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 		if ( count( $keyData ) > 0 && $interfaceType ) {
 			$this->assertInstanceOf( $interfaceType, $authKey2 );
 		}
-		$this->getRequest()->expects( $this->once() )
-			->method( 'getSessionData' )
+		$this->getSession()->expects( $this->once() )
+			->method( 'getSecret' )
 			->with( $this->getSessionKeyName( $keyType ) )
 			->willReturn( $authKey2 );
 		if ( $assertEquals ) {
@@ -69,8 +73,8 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 		}
 
 		// assert setting keys in session to null
-		$this->getRequest()->expects( $this->once() )
-			->method( 'setSessionData' )
+		$this->getSession()->expects( $this->once() )
+			->method( 'setSecret' )
 			->with( $this->getSessionKeyName( $keyType ) )
 			->willReturn( null );
 		$this->assertNull( $this->setKeyDataInSessionToNull( $keyType ) );
@@ -78,7 +82,7 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 
 	public function provideSessionKeyNameAndDataLegacyData(): array {
 		return [
-			[ 'TOTPKey', [], false, IAuthKey::class, false ],
+			[ 'TOTPKey', [ '' ], false, IAuthKey::class, false ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==' ], false, IAuthKey::class, false ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==', 'scratch_tokens' => [] ], false, IAuthKey::class, false ],
 			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==', 'scratch_tokens' => [ "ABCD" ] ], true, IAuthKey::class, false ],
@@ -110,8 +114,8 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 			$this->assertInstanceOf( $interfaceType, $authKey2 );
 		}
 
-		$this->getRequest()->expects( $this->once() )
-			->method( 'getSessionData' )
+		$this->getSession()->expects( $this->once() )
+			->method( 'getSecret' )
 			->with( $this->getSessionKeyName( $keyType ) )
 			->willReturn( $authKey2 );
 		if ( $assertEquals ) {
