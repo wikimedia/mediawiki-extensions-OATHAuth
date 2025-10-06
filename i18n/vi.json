@@ -15,7 +15,7 @@
 	"oath": "Xác thực OATH",
 	"specialpages-group-oath": "Xác thực dùng hai nhân tố",
 	"oathauth-account": "Tên tài khoản:",
-	"oathauth-secret": "Chìa khóa bí mật của xác thực hai nhân tố:",
+	"oathauth-secret": "Mã bảo mật của xác thực hai yếu tố:",
 	"oathauth-enable": "Xác thực dùng hai nhân tố",
 	"oathauth-recoverycodes-important": "Bước này rất quan trọng! Đừng bỏ qua nó!",
 	"oathauth-token": "Token",
