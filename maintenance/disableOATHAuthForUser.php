@@ -2,8 +2,6 @@
 
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Session\SessionManager;
 
 // @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
@@ -24,9 +22,9 @@ class DisableOATHAuthForUser extends Maintenance {
 
 	public function execute() {
 		$username = $this->getArg( 0 );
+		$services = $this->getServiceContainer();
 
-		$user = MediaWikiServices::getInstance()->getUserFactory()
-			->newFromName( $username );
+		$user = $services->getUserFactory()->newFromName( $username );
 		if ( $user === null || $user->getId() === 0 ) {
 			$this->fatalError( "User $username doesn't exist!" );
 		}
@@ -42,7 +40,7 @@ class DisableOATHAuthForUser extends Maintenance {
 		// If this request to disable 2FA was social-engineered by an attacker,
 		// the legitimate user will hopefully log in again to the wiki, and notice that the second factor
 		// is missing or different, and alert the operators.
-		SessionManager::singleton()->invalidateSessionsForUser( $user );
+		$services->getSessionManager()->invalidateSessionsForUser( $user );
 
 		$this->output( "Two-factor authentication disabled for $username.\n" );
 	}
