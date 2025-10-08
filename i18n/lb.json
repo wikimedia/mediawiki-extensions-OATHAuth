@@ -58,6 +58,7 @@
 	"oathmanage": "D'Zwee-Faktor-Authentifizéierung geréieren",
 	"oathauth-ui-not-enabled-modules": "Aner Authentifizéierungsmethoden",
 	"oathauth-ui-enabled-module": "Aktivéiert {{PLURAL:$1|Authentifizéierungsmethod|Authentifizéierungsmethoden}}",
+	"oathauth-ui-special-modules": "Speziell Authentifizéierungsmethoden",
 	"oathauth-enable-generic": "Aschalten",
 	"oathauth-disable-generic": "Ausschalten",
 	"oathauth-disable-page-title": "$1 desaktivéieren",
