@@ -21,10 +21,9 @@ trait KeySessionStorageTrait {
 		// RecoveryCodeKeys or TOTPKey
 		$key = null;
 		$sessionKey = $this->getSessionKeyName( $keyType );
-
 		if ( count( $keyData ) === 0 ) {
 			// @phan-suppress-next-line PhanUndeclaredMethod
-			$keyData = $this->getRequest()->getSession()->getSecret( $sessionKey, [] );
+			$keyData = $this->getRequest()->getSession()->getSecret( $sessionKey, [] ) ?? [];
 		}
 
 		// TODO: Ideally determine key type via instanceof or ::class instead of strings
