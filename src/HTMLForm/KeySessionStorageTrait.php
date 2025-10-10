@@ -5,11 +5,16 @@ namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Request\WebRequest;
 
 /**
  * Helper class to display and manage recovery codes within various contexts
  */
 trait KeySessionStorageTrait {
+
+	/** @return WebRequest */
+	abstract public function getRequest();
+
 	/**
 	 * Helper function to generically track IAuthKeys in the user session
 	 *
@@ -22,7 +27,6 @@ trait KeySessionStorageTrait {
 		$key = null;
 		$sessionKey = $this->getSessionKeyName( $keyType );
 		if ( count( $keyData ) === 0 ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$keyData = $this->getRequest()->getSession()->getSecret( $sessionKey, [] ) ?? [];
 		}
 
@@ -46,14 +50,12 @@ trait KeySessionStorageTrait {
 		}
 
 		if ( $key instanceof IAuthKey ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$this->getRequest()->getSession()->setSecret(
 				$sessionKey,
 				$key->jsonSerialize()
 			);
 		} else {
 			// set session key to empty
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$this->getRequest()->getSession()->setSecret(
 				$sessionKey,
 				[]
@@ -67,12 +69,10 @@ trait KeySessionStorageTrait {
 	 * @return array|null
 	 */
 	public function getKeyDataInSession( string $keyType ) {
-		// @phan-suppress-next-line PhanUndeclaredMethod
 		return $this->getRequest()->getSession()->getSecret( $this->getSessionKeyName( $keyType ) );
 	}
 
 	public function setKeyDataInSessionToNull( string $keyType ): void {
-		// @phan-suppress-next-line PhanUndeclaredMethod
 		$this->getRequest()->getSession()->setSecret( $this->getSessionKeyName( $keyType ), null );
 	}
 

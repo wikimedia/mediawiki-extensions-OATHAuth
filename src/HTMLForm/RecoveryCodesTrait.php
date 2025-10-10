@@ -2,11 +2,15 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Html\Html;
+use MediaWiki\Language\Language;
+use MediaWiki\Message\Message;
+use MediaWiki\Output\OutputPage;
 use OOUI\FieldLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
@@ -16,6 +20,23 @@ use UnexpectedValueException;
  * Helper trait to display and manage recovery codes within various contexts
  */
 trait RecoveryCodesTrait {
+
+	/** @return OutputPage */
+	abstract public function getOutput();
+
+	/** @return Config */
+	abstract public function getConfig();
+
+	/** @return Language */
+	abstract public function getLanguage();
+
+	/**
+	 * @param string $key
+	 * @param string ...$params
+	 * @return Message
+	 */
+	abstract public function msg( $key, ...$params );
+
 	/**
 	 * Retrieve current recovery codes for display purposes
 	 *
@@ -27,7 +48,6 @@ trait RecoveryCodesTrait {
 			// @phan-suppress-next-line PhanUndeclaredMethod
 			$tokens = $key->getRecoveryCodeKeys();
 		} elseif ( $key->getModule() === TOTP::MODULE_NAME ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			if ( $this->getConfig()->get( 'OATHAllowMultipleModules' )
 				&& $key instanceof RecoveryCodeKeys ) {
 				$tokens = $key->getRecoveryCodeKeys();
@@ -40,7 +60,6 @@ trait RecoveryCodesTrait {
 	}
 
 	public function setOutputJsConfigVars( array $recoveryCodes ) {
-		// @phan-suppress-next-line PhanUndeclaredMethod
 		$this->getOutput()->addJsConfigVars( 'oathauth-recoverycodes', $this->createTextList( $recoveryCodes ) );
 	}
 
@@ -54,9 +73,6 @@ trait RecoveryCodesTrait {
 		return implode( ' ', str_split( $token, 4 ) );
 	}
 
-	/**
-	 * @suppress PhanUndeclaredMethod
-	 */
 	private function generateRecoveryCodesContent( array $recoveryCodes, bool $displayExisting = false ): FieldLayout {
 		$now = wfTimestampNow();
 
@@ -127,7 +143,6 @@ trait RecoveryCodesTrait {
 			], Html::element( 'span', [
 				'class' => 'cdx-button__icon',
 				'aria-hidden' => 'true',
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			] ) . $this->msg( 'oathauth-recoverycodes-copy' )->escaped()
 		);
 	}
@@ -149,7 +164,6 @@ trait RecoveryCodesTrait {
 					'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled',
 				],
 			],
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$icon . $this->msg( 'oathauth-recoverycodes-download' )->escaped()
 		);
 	}

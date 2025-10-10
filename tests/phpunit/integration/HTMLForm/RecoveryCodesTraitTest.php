@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
+use LogicException;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
@@ -14,6 +15,18 @@ use MediaWikiIntegrationTestCase;
  */
 class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 	use RecoveryCodesTrait;
+
+	public function getOutput() {
+		throw new LogicException( 'Should not be called' );
+	}
+
+	public function getLanguage() {
+		throw new LogicException( 'Should not be called' );
+	}
+
+	public function msg( $key, ...$params ) {
+		throw new LogicException( 'Should not be called' );
+	}
 
 	public function getConfig(): MultiConfig {
 		return OATHAuthServices::getInstance(
