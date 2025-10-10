@@ -154,13 +154,18 @@ trait RecoveryCodesTrait {
 			'class' => [ 'mw-oathauth-recoverycodes-download-icon', 'cdx-button__icon' ],
 			'aria-hidden' => 'true',
 		] );
+		// Use site name as a prefix, so that users know which site the codes belong to.
+		$issuer = $this->oathUser->getIssuer();
+		$msg = $this->msg( 'oathauth-recoverycodes-filename' )->text();
+		// Remove most special characters to ensure the filename is valid.
+		$filename = preg_replace( '/[^\p{L} ,.()\'_-]/u', '_', "$issuer - $msg.txt" );
 		return Html::rawElement(
 			'a',
 			[
 				'href' => 'data:text/plain;charset=utf-8,'
 				// https://bugzilla.mozilla.org/show_bug.cgi?id=1895687
 				. rawurlencode( implode( PHP_EOL, $scratchTokensForDisplay ) ),
-				'download' => 'recovery-codes.txt',
+				'download' => $filename,
 				'class' => [
 					'mw-oathauth-recoverycodes-download',
 					'cdx-button', 'cdx-button--fake-button', 'cdx-button--fake-button--enabled',

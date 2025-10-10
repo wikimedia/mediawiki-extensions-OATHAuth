@@ -34,6 +34,7 @@
 	"oathauth-recoverycodes-neveragain": "Plain text, found on Special:OATH while enabling OATH.",
 	"oathauth-recoverytokens-createdat": "Plain text, found on Special:OATH while enabling OATH.",
 	"oathauth-recoverycodes-download": "Plain text, text of the download link on Special:OATH while enabling OATH.",
+	"oathauth-recoverycodes-filename": "Used as part of the filename when downloading recovery codes. The full filename will start with the name of the wiki family, e.g. <code>Wikimedia - recovery codes.txt</code>; the other parts are not translateable.",
 	"oathauth-recoverycodes-copy": "Plain text, label of the button on Special:OATH to copy the recovery codes.",
 	"oathauth-recoverycodes-copy-success": "Notification bubble presented on Special:OATH after copying recovery codes.",
 	"oathauth-recoverycodes-create-label": "Button label for user to create and view recovery codes.\n\nParameters: $1 - the number of recovery codes",

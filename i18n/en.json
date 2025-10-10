@@ -17,6 +17,7 @@
 	"oathauth-recoverycodes-neveragain": "These codes will never be shown again!",
 	"oathauth-recoverytokens-createdat": "Recovery codes created: $1",
 	"oathauth-recoverycodes-download": "Download",
+	"oathauth-recoverycodes-filename": "recovery codes",
 	"oathauth-recoverycodes-copy": "Copy",
 	"oathauth-recoverycodes-copy-success": "Recovery codes were copied to your clipboard!",
 	"oathauth-recoverycodes-create-label": "Create {{PLURAL:$1|a new recovery code|new recovery codes}}",
