@@ -380,7 +380,10 @@ class TOTPKey implements IAuthKey {
 			$data = [ 'secret' => $this->getSecret() ];
 		}
 
-		$data['scratch_tokens'] = $this->getScratchTokens();
+		$tokens = $this->getScratchTokens();
+		if ( count( $tokens ) ) {
+			$data['scratch_tokens'] = $tokens;
+		}
 		return $data;
 	}
 }
