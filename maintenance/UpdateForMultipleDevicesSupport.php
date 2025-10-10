@@ -23,7 +23,6 @@ namespace MediaWiki\Extension\OATHAuth\Maintenance;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
-use MediaWiki\MediaWikiServices;
 
 // @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
@@ -46,7 +45,8 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 
 	/** @inheritDoc */
 	protected function doDBUpdates() {
-		$dbw = MediaWikiServices::getInstance()
+		$services = $this->getServiceContainer();
+		$dbw = $services
 			->getDBLoadBalancerFactory()
 			->getPrimaryDatabase( 'virtual-oathauth' );
 
@@ -56,7 +56,8 @@ class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
 			->caller( __METHOD__ )
 			->fetchField();
 
-		$typeIds = OATHAuthServices::getInstance()->getModuleRegistry()->getModuleIds();
+		$typeIds = OATHAuthServices::getInstance( $services )
+			->getModuleRegistry()->getModuleIds();
 
 		$updated = 0;
 
