@@ -147,11 +147,11 @@
 			"description": "Percentage of users to add to 2FA rollout"
 		},
 		"OATHAllowMultipleModules": {
-			"value": false,
+			"value": true,
 			"description": "Temporary feature flag to allow users to have multiple 2FA modules active at the same time"
 		},
 		"OATHAuthNewUI": {
-			"value": false,
+			"value": true,
 			"description": "Temporary feature flag for the redesigned UI (T401774)"
 		},
 		"OATHSecretKey": {

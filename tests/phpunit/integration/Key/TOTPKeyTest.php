@@ -70,7 +70,6 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 
 		$key = TOTPKey::newFromArray( [
 			'secret' => $data['secret'],
-			'scratch_tokens' => $data['scratch_tokens'],
 			'nonce' => $data['nonce'],
 		] );
 
