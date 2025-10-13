@@ -16,5 +16,7 @@
 	"webauthn-ui-key-register-help": "Vali võtmele lühinimi.",
 	"oathauth-webauthn-add-key-section-name": "Uue WebAuthni võtme registreerimine",
 	"webauthn-module-description": "WebAuthn on katsejärgus. Sellel meetodil puudub praegu taastevõimalus kadunud või kahjustatud seadmete jaoks.\n\n[https://en.wikipedia.org/wiki/WebAuthn Loe veel WebAuthni kohta].",
-	"webauthn-ui-reload-page-label": "Laadi lehekülg uuesti"
+	"webauthn-ui-reload-page-label": "Laadi lehekülg uuesti",
+	"webauthn-add-security-key": "Lisa turbevõti",
+	"webauthn-auth-switch-module-label": "Kasuta turbevõtit"
 }
