@@ -33,6 +33,7 @@
 	"action-oathauth-disable-for-user": "کارن لپاره دوه‌پړاويز تاييد ناچارنول",
 	"right-oathauth-verify-user": "تاييد کړئ که يو کارن دوه‌پړاويز تاييد چارن‌کړی وي",
 	"action-oathauth-verify-user": "تاييد کړئ که يو کارن دوه‌پړاويز تاييد چارن‌کړی وي",
+	"oathauth-disable-intro": "لوی ځواک سره، لوی مسؤليت هم وي",
 	"oathauth-enteruser": "کارن‌نوم:",
 	"oathauth-enterdisablereason": "د ناچارنولو لامل:",
 	"oathauth-enterverifyreason": "پلټنې لامل:",
@@ -76,5 +77,10 @@
 	"oathauth-invalidrequest": "ناسمه غوښتنه",
 	"notification-header-oathauth-disable": "{{GENDER:$2|ستاسو گڼون}} باندې دوه‌پړاويز تاييد ناچارن‌شوی.",
 	"oathauth-notifications-disable-help": "لارښود",
-	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل"
+	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"oathauth-notifications-enable-help": "لارښود",
+	"oathauth-notifications-enable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"oathauth-verify-enabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی دی.",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی نه دی.",
+	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:"
 }
