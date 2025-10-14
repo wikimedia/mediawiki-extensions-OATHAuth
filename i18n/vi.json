@@ -4,6 +4,7 @@
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
 			"Nvdtn19",
+			"Phungminh141",
 			"Vinhtantran"
 		]
 	},
@@ -29,5 +30,7 @@
 	"webauthn-error-get-reginfo-fail": "Không thể truy xuất thông tin đăng ký.",
 	"webauthn-error-max-keys-reached": "Được đăng ký tối đa {{PLURAL:$1|$1 khóa}}",
 	"webauthn-module-description": "WebAuthn (Xác thực Web) là một tiêu chuẩn trên web do World Wide Web Consortium (W3C) xuất bản. WebAuthn là thành phần trọng tâm của Dự án FIDO2 do Liên minh FIDO điều hành. Mục tiêu của dự án là nhằm chuẩn hóa giao diện xác minh người dùng dành cho các ứng dụng web và các dịch vụ sử dụng công cụ mã hóa theo khóa công cộng. [https://en.wikipedia.org/wiki/WebAuthn Xem thêm (tiếng Anh)]",
-	"webauthn-ui-reload-page-label": "Tải lại trang"
+	"webauthn-ui-reload-page-label": "Tải lại trang",
+	"webauthn-add-security-key": "Thêm khóa bảo mật",
+	"webauthn-auth-switch-module-label": "Sử dụng khóa bảo mật"
 }

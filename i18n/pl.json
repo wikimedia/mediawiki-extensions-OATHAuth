@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Msz2001",
 			"Odder",
 			"Rail"
@@ -8,7 +9,7 @@
 	},
 	"webauthn-desc": "Dodaje wsparcie dla uwierzytelniania protokołem WebAuthn",
 	"webauthn-module-label": "Web Authentication (WebAuthn)",
-	"webauthn-ui-login-prompt": "Dotknij swojego urządzenia uwierzytelniającego lub wykonaj instrukcje podane przez przeglądarkę",
+	"webauthn-ui-login-prompt": "Dotknij swojego urządzenia uwierzytelniającego lub wykonaj instrukcje podane przez przeglądarkę.",
 	"webauthn-ui-add-key": "Dodaj klucz",
 	"webauthn-error-browser-unsupported": "Ta przeglądarka nie wspiera protokołu WebAuthentication lub jest on niedostępny na tej stronie. Spróbuj ponownie, korzystając z innej przeglądarki. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Więcej]",
 	"webauthn-error-browser-unsupported-console": "Ta przeglądarka nie wspiera protokołu WebAuthentication lub jest on niedostępny na tej stronie",
