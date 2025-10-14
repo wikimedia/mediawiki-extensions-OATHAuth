@@ -107,6 +107,7 @@ class WebAuthnKey implements IAuthKey {
 	public static function newKey(): self {
 		return new static(
 			null,
+			null,
 			static::MODE_CREATE,
 			RequestContext::getMain()
 		);
@@ -120,6 +121,7 @@ class WebAuthnKey implements IAuthKey {
 	public static function newFromData( array $data ): self {
 		$key = new static(
 			$data['id'] ?? null,
+			$data['created_timestamp'] ?? null,
 			static::MODE_AUTHENTICATE,
 			RequestContext::getMain()
 		);
@@ -129,13 +131,13 @@ class WebAuthnKey implements IAuthKey {
 
 	protected function __construct(
 		protected ?int $id,
+		protected ?string $createdTimestamp,
 		protected string $mode,
 		protected RequestContext $context
 	) {
 		// There is no documentation on what this trust path is
 		// and how it should be used
 		$this->credentialTrustPath = new EmptyTrustPath();
-
 		$this->logger = LoggerFactory::getInstance( 'authentication' );
 	}
 
@@ -178,6 +180,11 @@ class WebAuthnKey implements IAuthKey {
 
 	public function getFriendlyName(): string {
 		return $this->friendlyName;
+	}
+
+	/** @inheritDoc */
+	public function getCreatedTimestamp(): ?string {
+		return $this->createdTimestamp;
 	}
 
 	/**
