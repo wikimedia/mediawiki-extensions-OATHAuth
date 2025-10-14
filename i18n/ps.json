@@ -41,6 +41,7 @@
 	"action-oathauth-verify-user": "تاييد کړئ که يو کارن دوه‌پړاويز تاييد چارن‌کړی وي",
 	"right-oathauth-view-log": "د دوه‌پړاويز تاييد بدلونونو يادښت ته لاسرسی",
 	"action-oathauth-view-log": "د دوه‌پړاويز تاييد بدلونونو يادښت ته لاسرسی",
+	"oathauth-disable-intro": "لوی ځواک سره، لوی مسؤليت هم وي",
 	"oathauth-enteruser": "کارن‌نوم:",
 	"oathauth-enterdisablereason": "د ناچارنولو لامل:",
 	"oathauth-enterverifyreason": "پلټنې لامل:",
@@ -85,5 +86,12 @@
 	"notification-header-oathauth-disable": "{{GENDER:$2|ستاسو گڼون}} باندې دوه‌پړاويز تاييد ناچارن‌شوی.",
 	"notification-header-oathauth-remove-device": "د دوه‌پړاويز تاييد وسيله {{GENDER:$2|ستاسې گڼون}} نه لرې شوه.",
 	"oathauth-notifications-disable-help": "لارښود",
-	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل"
+	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"oathauth-notifications-enable-help": "لارښود",
+	"oathauth-notifications-enable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"oathauth-notifications-recoverycodesleft-help": "لارښود",
+	"oathauth-notifications-recoverycodesleft-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"oathauth-verify-enabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی دی.",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی نه دی.",
+	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:"
 }
