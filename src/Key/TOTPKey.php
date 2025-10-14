@@ -47,6 +47,9 @@ class TOTPKey implements IAuthKey {
 	/** @var int|null */
 	private ?int $id;
 
+	/** @var string|null */
+	private ?string $friendlyName = null;
+
 	/** @var array Two factor binary secret */
 	private $secret;
 
@@ -77,6 +80,7 @@ class TOTPKey implements IAuthKey {
 	 */
 	public static function newFromRandom() {
 		$object = new self(
+			null,
 			null,
 			null,
 			// 26 digits to give 128 bits - https://phabricator.wikimedia.org/T396951
@@ -132,6 +136,7 @@ class TOTPKey implements IAuthKey {
 
 		return new static(
 			$data['id'] ?? null,
+			$data['friendly_name'] ?? null,
 			$data['created_timestamp'] ?? null,
 			$data['secret'] ?? '',
 			$data['scratch_tokens'] ?? [],
@@ -142,6 +147,7 @@ class TOTPKey implements IAuthKey {
 
 	public function __construct(
 		?int $id,
+		?string $friendlyName,
 		?string $createdTimestamp,
 		string $secret,
 		array $recoveryCodes,
@@ -149,6 +155,7 @@ class TOTPKey implements IAuthKey {
 		string $nonce = ''
 	) {
 		$this->id = $id;
+		$this->friendlyName = $friendlyName;
 		$this->createdTimestamp = $createdTimestamp;
 		// Currently hardcoded values; might be used in the future
 		$this->secret = [
@@ -164,6 +171,10 @@ class TOTPKey implements IAuthKey {
 
 	public function getId(): ?int {
 		return $this->id;
+	}
+
+	public function getFriendlyName(): ?string {
+		return $this->friendlyName;
 	}
 
 	public function getSecret(): string {
@@ -403,6 +414,7 @@ class TOTPKey implements IAuthKey {
 		if ( count( $tokens ) ) {
 			$data['scratch_tokens'] = $tokens;
 		}
+		$data["friendly_name"] = $this->friendlyName;
 
 		return $data;
 	}

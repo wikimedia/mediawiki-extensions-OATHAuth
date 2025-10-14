@@ -211,9 +211,7 @@ class OATHManage extends SpecialPage {
 	 * @return array{name:string, description?:string, timestamp: ?string}
 	 */
 	private function getKeyNameAndDescription( IAuthKey $key ): array {
-		// TODO make display name part of IAuthKey, and make TOTP keys nameable (T401772)
-		// @phan-suppress-next-line PhanUndeclaredMethod
-		$keyName = method_exists( $key, 'getFriendlyName' ) ? $key->getFriendlyName() : '';
+		$keyName = $key->getFriendlyName();
 		$moduleName = $this->moduleRegistry->getModuleByKey( $key->getModule() )->getDisplayName()->text();
 		$createdTimestamp = null;
 		$timestamp = $key->getCreatedTimestamp();
@@ -226,7 +224,7 @@ class OATHManage extends SpecialPage {
 		}
 
 		// If the key has a non-empty name, use that, and set the description to the module name
-		if ( trim( $keyName ) !== '' ) {
+		if ( $keyName !== null && trim( $keyName ) !== '' ) {
 			return [
 				'name' => $keyName,
 				'description' => $moduleName,
