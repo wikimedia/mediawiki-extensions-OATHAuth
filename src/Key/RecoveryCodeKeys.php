@@ -123,6 +123,10 @@ class RecoveryCodeKeys implements IAuthKey {
 		return $this->id;
 	}
 
+	public function getFriendlyName(): ?string {
+		return null;
+	}
+
 	public function getCreatedTimestamp(): ?string {
 		return $this->createdTimestamp;
 	}

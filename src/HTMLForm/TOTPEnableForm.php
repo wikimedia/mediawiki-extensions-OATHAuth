@@ -89,13 +89,20 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			$recoveryCodes = $this->getRecoveryCodesForDisplay( $key );
 		}
 
-		// messages used: oathauth-step1, oathauth-step2, oathauth-step3, oathauth-step4
+		// messages used: oathauth-step1, oathauth-step-friendly-name oathauth-step2, oathauth-step3, oathauth-step4
 		return [
 			'app' => [
 				'type' => 'info',
 				'default' => $this->msg( 'oathauth-step1-test' )->parse(),
 				'raw' => true,
 				'section' => 'step1',
+			],
+			'friendly_name' => [
+				'type' => 'text',
+				'default' => '',
+				'label-message' => 'oathauth-step-friendly-name-text',
+				'name' => 'friendly-name',
+				'section' => 'step-friendly-name',
 			],
 			'qrcode' => [
 				'type' => 'info',
@@ -173,6 +180,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 */
 	public function onSubmit( array $formData ) {
 		$keyData = $this->getKeyDataInSession( 'TOTPKey' );
+		$keyData['friendly_name'] = $formData["friendly_name"];
 		$TOTPkey = TOTPKey::newFromArray( $keyData );
 		if ( !$TOTPkey instanceof TOTPKey ) {
 			return [ 'oathauth-invalidrequest' ];
