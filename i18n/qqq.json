@@ -3,6 +3,7 @@
 		"authors": [
 			"A2093064",
 			"Amire80",
+			"Jon Harald Søby",
 			"Liuxinyu970226",
 			"MarcoAurelio",
 			"Purodha",
@@ -131,7 +132,7 @@
 	"oathauth-notifications-enable-helplink": "{{notranslate}}",
 	"oathauth-notifications-enable-primary": "Link text pointing a user where to check their 2FA settings",
 	"notification-header-oathauth-recoverycodes-count": "Notification header for when the user is getting low on the number of recovery tokens left on their account.\n$2 - Name of user for GENDER",
-	"notification-body-oathauth-recoverycodesleft": "Notification body text for when the user is getting low on the number of recovery tokens left on their account.\n$2 - Name of user for GENDER\n$3 - Number of recovery codes that the user has left \n$4 - Number of recovery codes the user would have if they were regenerated",
+	"notification-body-oathauth-recoverycodesleft": "Notification body text for when the user is getting low on the number of recovery tokens left on their account.\n\nParameters:\n* $2 - Name of user for GENDER\n* $3 - Number of recovery codes that the user has left \n* $4 - Number of recovery codes the user would have if they were regenerated",
 	"oathauth-notifications-recoverycodesleft-help": "Link text for the help link in the notification\n{{identical|Help}}",
 	"oathauth-notifications-recoverycodesleft-helplink": "{{notranslate}}",
 	"oathauth-notifications-recoverycodesleft-primary": "Link text pointing a user where to check their 2FA settings",

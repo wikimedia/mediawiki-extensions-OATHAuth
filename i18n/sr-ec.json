@@ -68,6 +68,7 @@
 	"logentry-oath-verify": "$1 је {{GENDER:$2|проверио|проверила}} да ли је $3 омогућио двофакторску аутентификацију",
 	"oathauth-ui-no-module": "није укључена",
 	"oathauth-module-totp-label": "TOTP (једнократни токен)",
+	"oathauth-module-recoverycodes-label": "Кодови за опоравак",
 	"oathauth-ui-manage": "Управљај",
 	"oathmanage": "Управљање двофакторском аутентификацијом",
 	"accountsecurity": "Безбедност налога",
