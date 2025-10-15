@@ -82,6 +82,7 @@
 	"oathauth-disable-method-next-step": "Järgmises sammus nõutakse, et autendid ennast praeguse kaheastmelise autentimise meetodi $1 abil, et see keelata.",
 	"oathauth-totp-disable-warning": "Sa ei saa enam kasutada selle kontoga seotud autentimisseadet. Kõik selle kontoga seotud taastekoodid tunnistatakse kehtetuks.",
 	"notification-header-oathauth-disable": "{{GENDER:$2|Sinu konto}} kaheastmeline autentimine on keelatud.",
+	"notification-header-oathauth-remove-device": "{{GENDER:$2|Sinu kontoga}} seotud kaheastmelise autentimise seade on eemaldatud.",
 	"notification-body-oathauth-disable": "Kui {{GENDER:$2|sa}} ei teinud seda ise, siis võib {{GENDER:$2|sinu konto}} turvalisus ohus olla.",
 	"notification-body-oathauth-disable-other": "Kui {{GENDER:$2|sa}} ei taotlenud seda, siis peaksid võtma ühendust administraatoriga.",
 	"oathauth-notifications-disable-help": "Abi",
