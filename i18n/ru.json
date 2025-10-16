@@ -10,6 +10,7 @@
 			"Kareyac",
 			"Katunchik",
 			"Megakott",
+			"Megitsune-chan",
 			"MirandaBlack",
 			"Mouse21",
 			"Movses",
@@ -106,5 +107,6 @@
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} включена двухфакторная аутентификация.",
 	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация.",
 	"oathauth-prefs-disabledgroups": "Отключенн{{PLURAL:$1|ая группа|ые группы}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} в {{PLURAL:$1|этой группе|этих группах}} отключено, пока вы не включите [[Special:Manage Two-factor authentication|двухфакторную аутентификацию]]."
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} в {{PLURAL:$1|этой группе|этих группах}} отключено, пока вы не включите [[Special:Manage Two-factor authentication|двухфакторную аутентификацию]].",
+	"group-oathauth-twofactorauth-member": "Участни{{GENDER:$1|к|ца}}, котор{{GENDER:$1|ый|ая}} может использовать двухфакторную аутентификацию"
 }
