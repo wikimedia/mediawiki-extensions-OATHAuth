@@ -13,7 +13,7 @@
 		]
 	},
 	"webauthn-desc": "Fournit la prise en charge de l’authentification selon le protocole WebAuthn",
-	"webauthn-module-label": "Authentification web (WebAuthn)",
+	"webauthn-module-label": "Clé de sécurité",
 	"webauthn-javascript-required": "JavaScript doit être activé dans votre navigateur pour utiliser WebAuthn.",
 	"webauthn-ui-login-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur",
 	"webauthn-ui-add-key": "Ajouter une clef",

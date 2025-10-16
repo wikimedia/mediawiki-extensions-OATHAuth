@@ -4,5 +4,6 @@
 			"Milicevic01"
 		]
 	},
-	"webauthn-module-label": "Сигурносни кључ"
+	"webauthn-module-label": "Сигурносни кључ",
+	"webauthn-add-security-key": "Додај сигурносни кључ"
 }
