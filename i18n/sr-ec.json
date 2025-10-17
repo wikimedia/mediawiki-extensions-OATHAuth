@@ -100,7 +100,7 @@
 	"oathauth-verify-disabled": "$1 није {{GENDER:$1|омогућио|омогућила}} двофакторску аутентификацију.",
 	"oathauth-prefs-disabledgroups": "Онемогући {{PLURAL:$1|групу|групе}}:",
 	"group-oathauth-twofactorauth": "Корисници којима је омогућена двофакторска аутентификација",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|Корисник којем|Корисница којој}} је омогућена двофакторска аутентификација",
+	"group-oathauth-twofactorauth-member": "Корисник којем је омогућена двофакторска аутентификација",
 	"oathauth-remove-nosuchkey": "Кључ није пронађен.",
 	"oathauth-password-header": "Лозинка",
 	"oathauth-password-label": "Поставите јаку лозинку да заштитите свој налог.",
