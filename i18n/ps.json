@@ -5,7 +5,10 @@
 		]
 	},
 	"webauthn-module-label": "خونديتوب کونجي",
+	"webauthn-ui-add-key": "کونجي ورگډول",
+	"webauthn-ui-key-register-help": "د خپلې کونجۍ لپاره بلن‌نوم خوښ کړئ:",
 	"webauthn-error-cannot-remove-key": "کونجي نشي لرې کېدای.",
+	"oathauth-webauthn-add-key-section-name": "د نوې وېب‌تاييد کونجي نوم‌ليکنه",
 	"webauthn-module-description": "WebAuthn يو ازمېښتي ونگ‌ډول دی. په دې ونگ‌ډول کې وسمهال د ورک شوو او مات شوو وسيلو د تاييد بياترلاسنې هېڅ چلندلار نشته.\n[https://en.wikipedia.org/wiki/WebAuthn د  WebAuthn په اړه نور ولولئ]",
 	"webauthn-add-security-key": "خونديتوب کونجي ورگډول"
 }
