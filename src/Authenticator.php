@@ -236,13 +236,6 @@ class Authenticator {
 				$this->oathUser
 			);
 			if ( $registered ) {
-				$maxKeysPerUser = $this->module->getConfig()->get( 'maxKeysPerUser' );
-				if ( count( WebAuthn::getWebAuthnKeys( $this->oathUser ) ) >= (int)$maxKeysPerUser ) {
-					return Status::newFatal(
-						wfMessage( 'webauthn-error-max-keys-reached', $maxKeysPerUser )
-					);
-				}
-
 				$this->userRepo->createKey(
 					$this->oathUser,
 					$this->module,

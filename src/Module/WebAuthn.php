@@ -11,7 +11,6 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\Extension\WebAuthn\Auth\WebAuthnSecondaryAuthenticationProvider;
-use MediaWiki\Extension\WebAuthn\Config\WebAuthnConfig;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
@@ -144,10 +143,6 @@ class WebAuthn implements IModule {
 		}
 
 		return null;
-	}
-
-	public function getConfig(): WebAuthnConfig {
-		return new WebAuthnConfig();
 	}
 
 	/** @inheritDoc */

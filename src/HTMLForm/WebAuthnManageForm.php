@@ -56,10 +56,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws MWException
 	 */
 	public function getButtons() {
-		$moduleConfig = $this->module->getConfig()->get( 'maxKeysPerUser' );
-		if ( count( WebAuthn::getWebAuthnKeys( $this->oathUser ) ) >= (int)$moduleConfig ) {
-			return '';
-		}
 		return new ButtonWidget( [
 			'id' => 'button_add_key',
 			'flags' => [ 'progressive', 'primary' ],
