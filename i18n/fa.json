@@ -10,6 +10,7 @@
 			"Huji",
 			"Jeeputer",
 			"Ladsgroup",
+			"LordProfo",
 			"Reza1615",
 			"درفش کاویانی"
 		]
@@ -121,5 +122,6 @@
 	"oathauth-must-be-central": "برای استفاده از احراز هویت دومرحله‌ای، {{GENDER:$1|حساب شما}} باید به سامانهٔ مرکزی احراز هویت متصل باشد.",
 	"oathauth-error-multiple-modules": "در حال حاضر استفاده از چندین روش احراز هویت دومرحله‌ای پشتیبانی نمی‌شود. شما فقط می‌توانید $1 را پس از غیرفعال کردن $2 فعال کنید.",
 	"group-oathauth-twofactorauth": "کاربرانی که ممکن است از احراز هویت دومرحله‌ای استفاده کنند",
-	"group-oathauth-twofactorauth-member": "کاربرانی که ممکن است از احراز هویت دومرحله‌ای استفاده کنند"
+	"group-oathauth-twofactorauth-member": "کاربرانی که ممکن است از احراز هویت دومرحله‌ای استفاده کنند",
+	"oathauth-password-header": "گذرواژه"
 }
