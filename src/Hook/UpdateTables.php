@@ -33,6 +33,7 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 			$updater->addExtensionUpdateOnVirtualDomain( [ 'virtual-oathauth', 'dropTable', 'oathauth_users' ] );
 		}
 
+		// 1.45
 		$updater->addPostDatabaseUpdateMaintenance( MoveRecoveryCodesFromTOTP::class );
 
 		// add new updates here
