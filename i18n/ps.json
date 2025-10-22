@@ -27,6 +27,7 @@
 	"oathauth-disabledoath": "دوه‌پړاويز تاييد ناچارن‌شوی.",
 	"oathauth-prefs-label": "دوه‌پړاويز تاييد:",
 	"oathauth-step1": "۱ گام: دوه‌پړاويز تاييد پروگرام راکښته‌کول",
+	"oathauth-step1-test": "د دوه پړاويز تاييد لپاره يو پروگرام راکښته‌کول. دا د موبايل يا ډېسکټاپ کاريال کېدای شي، لکه [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] يا [https://1password.com/ 1Password].",
 	"oathauth-step2": "۲ گام: کيو‌ار کوډ سکن کول",
 	"oathauth-step2-qrcode": "د دوه‌پړاويز تاييد لپاره د کاريال يا ښوونگر شاتړي په کارولو سره کيو‌ار کوډ سکن کړئ چې په ۱ گام کې مو راکښته کړی و.",
 	"oathauth-step2alt": "که کيو‌ار کوډ نشئ سکن کولی؛ نو په لاسي ډول مو پټه کونجي او گڼون نوم دننه کړئ:",
@@ -51,6 +52,7 @@
 	"oathauth-auth-token-label": "دوه‌پړاويز ټوکن يا بياترلاسنې کوډ",
 	"oathauth-auth-token-help": "يوځلي پټنوم د دوه‌پړاويز تاييد دوهم پړاو په توگه کارېږي.",
 	"oathauth-auth-token-help-ui": "له خپل تاييد وسيلې يا بياترلاسنې کوډ دننه کړئ",
+	"oathauth-auth-switch-module-help": "د نوي چلنوال نوم ته <code>newModule</code> وټاکئ؛ ترڅو د چلنوال څخه يوه نوې دوه پړاويزه ننگونه ترلاسه کړئ. که تاسو اوسنۍ ننگونې ته ځواب ورکوئ؛ نو خالي يې پرېږدئ.",
 	"oathauth-auth-switch-module-keep": "(مه بدلوئ)",
 	"oathauth-throttled": "ډېرې زياتې تاييد هېڅ! مهرباني وکړئ $1 په تمه شئ.",
 	"oathauth-describe-provider": "دوه‌پړاويز تاييد (OATH)",
@@ -88,11 +90,13 @@
 	"notification-header-oathauth-remove-device": "د دوه‌پړاويز تاييد وسيله {{GENDER:$2|ستاسې گڼون}} نه لرې شوه.",
 	"oathauth-notifications-disable-help": "لارښود",
 	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"notification-header-oathauth-enable": "{{GENDER:$2|ستاسو گڼون}} کې دوه پړاويز تاييد چارن شوی دی",
 	"oathauth-notifications-enable-help": "لارښود",
 	"oathauth-notifications-enable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
 	"oathauth-notifications-recoverycodesleft-help": "لارښود",
 	"oathauth-notifications-recoverycodesleft-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی دی.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی نه دی.",
-	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:"
+	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:",
+	"oathauth-prefs-disabledgroups-help": "{{PLURAL:$1|دې ډلگي|دې ډلگيو}} کې {{GENDER:$2|ستاسو غړيتوب}} ناچارن دی، تر هغې چې تاسو [[Special:Manage Two-factor authentication|دوه پړاويز تاييد]] چارن کړئ."
 }
