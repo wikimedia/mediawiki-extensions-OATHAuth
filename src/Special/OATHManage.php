@@ -722,10 +722,22 @@ class OATHManage extends SpecialPage {
 		$deleteWarningHTML =
 			( $lastKey ? Html::warningBox( $warningMessage ) : '' ) .
 			Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
-			( $lastKey ? Html::element( 'p', [], $this->msg( 'oathauth-delete-confirm-box' )->text() ) : '' ) .
 			// TODO display creation timestamp here (T403666)
 			Html::rawElement( 'form', [ 'action' => wfScript(), 'method' => 'POST' ],
-				( $lastKey ? Html::input( 'remove-confirm-box' ) : '' ) .
+				( $lastKey ? $codex->Field()
+					->setLabel( $codex->Label()
+						->setLabelText( $this->msg( 'oathauth-delete-confirm-box' )->escaped() )
+						->build()
+					)
+					->setFields( [
+						$codex->TextInput()
+							->setName( 'remove-confirm-box' )
+							->build()
+							->getHtml()
+					] )
+					->build()
+					->getHtml()
+				: '' ) .
 				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-delete-warning__actions' ],
 					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
 					Html::hidden( 'module', $keyToDelete->getModule() ) .
