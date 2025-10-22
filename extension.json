@@ -163,7 +163,7 @@
 			"description": "List of authentication methods in the order that they should be prioritized"
 		},
 		"OATHRecoveryCodesCount": {
-			"value": 1,
+			"value": 10,
 			"description": "The default amount of recovery codes to generate for a given user. This is only used for module-based recovery codes, not deprecated, TOTP-attached scratch tokens."
 		}
 	},
