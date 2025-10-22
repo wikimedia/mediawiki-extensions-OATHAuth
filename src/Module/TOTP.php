@@ -8,7 +8,6 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -46,19 +45,8 @@ class TOTP implements IModule {
 	 * @throws UnexpectedValueException
 	 */
 	public function newKey( array $data ) {
-		$config = OATHAuthServices::getInstance()->getConfig();
-		if ( $config->get( 'OATHAllowMultipleModules' ) ) {
-			if ( !isset( $data['secret'] ) ) {
-				throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
-			}
-		} else {
-			if ( !isset( $data['secret'] ) || !isset( $data['scratch_tokens'] ) ) {
-				throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
-			}
-
-			if ( is_string( $data['scratch_tokens' ] ) ) {
-				$data['scratch_tokens'] = explode( ',', $data['scratch_tokens'] );
-			}
+		if ( !isset( $data['secret'] ) ) {
+			throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
 		}
 
 		return TOTPKey::newFromArray( $data );
@@ -109,9 +97,7 @@ class TOTP implements IModule {
 		OATHUserRepository $repo,
 		IContextSource $context
 	) {
-		$hasTOTPKey = $this->isEnabled( $user );
-		$canEnable = !$hasTOTPKey || $context->getConfig()->get( 'OATHAllowMultipleModules' );
-		if ( $action === OATHManage::ACTION_ENABLE && $canEnable ) {
+		if ( $action === OATHManage::ACTION_ENABLE ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context );
 		}
 		return null;

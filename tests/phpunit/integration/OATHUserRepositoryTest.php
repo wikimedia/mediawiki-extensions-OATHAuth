@@ -20,7 +20,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -30,7 +29,6 @@ use MediaWikiIntegrationTestCase;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
@@ -40,10 +38,6 @@ use Wikimedia\TestingAccessWrapper;
 class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 	public function testLookupCreateRemoveKey(): void {
 		$user = $this->getTestUser()->getUser();
-
-		$serviceOptions = new ServiceOptions( OATHUserRepository::CONSTRUCTOR_OPTIONS, [
-			'OATHAllowMultipleModules' => false
-		] );
 
 		$dbProvider = $this->createMock( IConnectionProvider::class );
 		$dbProvider->method( 'getPrimaryDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->getDb() );
@@ -62,7 +56,6 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$logger = $this->createMock( LoggerInterface::class );
 
 		$repository = new OATHUserRepository(
-			$serviceOptions,
 			$dbProvider,
 			new EmptyBagOStuff(),
 			$moduleRegistry,
@@ -98,14 +91,7 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		// Test looking it up again from the database
 		$this->assertArrayEquals( [ $key ], $repository->findByUser( $user )->getKeys() );
 
-		// Use a scratch code, which causes the key to be updated.
-		TestingAccessWrapper::newFromObject( $key )->recoveryCodes = [ 'new scratch tokens' ];
 		$repository->updateKey( $oathUser, $key );
-
-		$this->assertEquals(
-			[ 'new scratch tokens' ],
-			$repository->findByUser( $user )->getKeys()[0]->getScratchTokens()
-		);
 
 		$repository->removeKey(
 			$oathUser,
@@ -123,9 +109,6 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 	public function testUserWithNoCentralId() {
 		$user = $this->getTestUser()->getUser();
 
-		$serviceOptions = new ServiceOptions( OATHUserRepository::CONSTRUCTOR_OPTIONS, [
-			'OATHAllowMultipleModules' => false
-		] );
 		$lookup = $this->createMock( CentralIdLookup::class );
 		$lookup->method( 'centralIdFromLocalUser' )
 			->with( $user )
@@ -134,7 +117,6 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$lookupFactory->method( 'getLookup' )->willReturn( $lookup );
 
 		$repository = new OATHUserRepository(
-			$serviceOptions,
 			$this->createNoOpMock( IConnectionProvider::class ),
 			new EmptyBagOStuff(),
 			OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry(),

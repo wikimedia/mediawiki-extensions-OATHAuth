@@ -34,8 +34,6 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDeserializationUnencrypted() {
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', true );
-
 		$this->assertNull( RecoveryCodeKeys::newFromArray( [] ) );
 
 		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
@@ -101,8 +99,6 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 
 	public function testJsonSerializerWithEncryption() {
 		$this->encryptionTestSetup();
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', false );
-
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
 		$keys->regenerateRecoveryCodeKeys();
@@ -160,5 +156,14 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$keys->regenerateRecoveryCodeKeys();
 		$testData2 = [ 'recoverycode' => 'bad_token' ];
 		$this->assertSame( false, $keys->verify( $testData2, $mockOATHUser ) );
+	}
+
+	public function testIsValidRecoveryCode(): void {
+		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
+		$this->assertTrue( $key->isValidRecoveryCode( '64SZLJTTPRI5XBUE' ) );
+		// Whitespace is stripped
+		$this->assertTrue( $key->isValidRecoveryCode( ' 64SZLJTTPRI5XBUE ' ) );
+		// Wrong token
+		$this->assertFalse( $key->isValidRecoveryCode( 'WIQGC24UJUFXQDW4' ) );
 	}
 }

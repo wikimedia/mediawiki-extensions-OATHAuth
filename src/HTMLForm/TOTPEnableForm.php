@@ -49,8 +49,9 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 * @return array
 	 */
 	protected function getDescriptors() {
+		/** @var TOTPKey $key */
 		$key = $this->setKeyDataInSession( 'TOTPKey' );
-		// @phan-suppress-next-line PhanUndeclaredMethod
+		'@phan-var TOTPKey $key';
 		$secret = $key->getSecret();
 		$issuer = $this->oathUser->getIssuer();
 		$account = $this->oathUser->getAccount();
@@ -72,22 +73,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			->size( 256 )
 			->margin( 0 )
 			->build();
-
-		if ( $this->getConfig()->get( 'OATHAllowMultipleModules' ) ) {
-			$keyDataRecCodes = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
-			if ( $keyDataRecCodes ) {
-				$recCodeKeys = RecoveryCodeKeys::newFromArray( $keyDataRecCodes );
-			} else {
-				$recCodeKeys = $this->setKeyDataInSession(
-					'RecoveryCodeKeys',
-					[ 'recoverycodekeys' => [] ]
-				);
-			}
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-			$recoveryCodes = $this->getRecoveryCodesForDisplay( $recCodeKeys );
-		} else {
-			$recoveryCodes = $this->getRecoveryCodesForDisplay( $key );
-		}
 
 		// messages used: oathauth-step1, oathauth-step-friendly-name oathauth-step2, oathauth-step3, oathauth-step4
 		return [
@@ -126,10 +111,13 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 				'rawrow' => true,
 				'section' => 'step2',
 			],
-			'scratchtokens' => [
+			'recoverycodes' => [
 				'type' => 'info',
 				'default' =>
-					$this->generateRecoveryCodesContent( $recoveryCodes, true ),
+					$this->generateRecoveryCodesContent(
+						$this->getRecoveryCodesForDisplay( $this->getRecoveryKeysFromSessionOrDefault() ),
+						true
+					),
 				'raw' => true,
 				// We need to use a "rawrow" to prevent being wrapped by a label element.
 				'rawrow' => true,
@@ -146,6 +134,19 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 				'spellcheck' => false,
 			]
 		];
+	}
+
+	private function getRecoveryKeysFromSessionOrDefault(): RecoveryCodeKeys {
+		$keyDataRecCodes = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
+		if ( $keyDataRecCodes ) {
+			return RecoveryCodeKeys::newFromArray( $keyDataRecCodes );
+		}
+
+		$keyDataRecCodes = [ 'recoverycodekeys' => [] ];
+		return $this->setKeyDataInSession(
+			'RecoveryCodeKeys',
+			$keyDataRecCodes
+		);
 	}
 
 	private function generateAltStep2Content( IAuthKey $key, string $label ): FieldLayout {
@@ -168,7 +169,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 * @return string
 	 */
 	protected function getSecretForDisplay( IAuthKey $key ) {
-		// @phan-suppress-next-line PhanUndeclaredMethod
+		/** @var TOTPKey $key */
+		'@phan-var TOTPKey $key';
 		return $this->tokenFormatterFunction( $key->getSecret() );
 	}
 
@@ -186,9 +188,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			return [ 'oathauth-invalidrequest' ];
 		}
 
-		// TODO: this validation is necessary and can exist here for now,
-		// but should be eventually migrated to Key/RecoveryCodeKeys
-		if ( $TOTPkey->isScratchToken( $formData['token'] ) ) {
+		if ( $this->getRecoveryKeysFromSessionOrDefault()->isValidRecoveryCode( $formData['token'] ) ) {
 			// A recovery code is not allowed for enrollment
 			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} attempted to enable 2FA using a recovery code from {clientip}', [
@@ -208,29 +208,26 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
 
-		if ( $this->getConfig()->get( 'OATHAllowMultipleModules' ) ) {
-			$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
+		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
 
-			// only create recovery code module entry if this is the first 2fa key a user is creating
-			if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-				throw new UnexpectedValueException(
-					$this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped()
-				);
-			} elseif ( count( $moduleDbKeys ) < RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-				$keyData = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
-				$recCodeKeys = RecoveryCodeKeys::newFromArray( $keyData );
-				$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
-				$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-				$this->oathRepo->createKey(
-					$this->oathUser,
-					$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
-					$recCodeKeys->jsonSerialize(),
-					$this->getRequest()->getIP()
-				);
-			}
+		// only create the recovery code module entry if this is the first 2FA key a user is creating
+		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+			throw new UnexpectedValueException(
+				$this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped()
+			);
+		}
 
-			// set scratch tokens to an empty array for TOTPKey
-			$TOTPkey->setScratchTokens( [] );
+		if ( count( $moduleDbKeys ) < RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+			$keyData = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
+			$recCodeKeys = RecoveryCodeKeys::newFromArray( $keyData );
+			$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
+			$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+			$this->oathRepo->createKey(
+				$this->oathUser,
+				$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
+				$recCodeKeys->jsonSerialize(),
+				$this->getRequest()->getIP()
+			);
 		}
 
 		$this->setKeyDataInSessionToNull( 'TOTPKey' );

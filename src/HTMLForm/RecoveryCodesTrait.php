@@ -6,7 +6,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
@@ -46,20 +45,9 @@ trait RecoveryCodesTrait {
 	 * The characters of the token are split in groups of 4
 	 */
 	public function getRecoveryCodesForDisplay( IAuthKey $key ): array {
-		$tokens = [];
-		if ( $key->getModule() === RecoveryCodes::MODULE_NAME ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$tokens = $key->getRecoveryCodeKeys();
-		} elseif ( $key->getModule() === TOTP::MODULE_NAME ) {
-			if ( $this->getConfig()->get( 'OATHAllowMultipleModules' )
-				&& $key instanceof RecoveryCodeKeys ) {
-				$tokens = $key->getRecoveryCodeKeys();
-			} else {
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$tokens = $key->getScratchTokens();
-			}
-		}
-		return array_map( [ $this, 'tokenFormatterFunction' ], $tokens );
+		/** @var RecoveryCodeKeys $key */
+		'@phan-var RecoveryCodeKeys $key';
+		return array_map( [ $this, 'tokenFormatterFunction' ], $key->getRecoveryCodeKeys() );
 	}
 
 	public function setOutputJsConfigVars( array $recoveryCodes ) {
@@ -144,7 +132,7 @@ trait RecoveryCodesTrait {
 		);
 	}
 
-	public function createRecoveryCodesDownloadLink( array $scratchTokensForDisplay ): string {
+	public function createRecoveryCodesDownloadLink( array $tokens ): string {
 		$icon = Html::element( 'span', [
 			'class' => [ 'mw-oathauth-recoverycodes-download-icon', 'cdx-button__icon' ],
 			'aria-hidden' => 'true',
@@ -159,7 +147,7 @@ trait RecoveryCodesTrait {
 			[
 				'href' => 'data:text/plain;charset=utf-8,'
 				// https://bugzilla.mozilla.org/show_bug.cgi?id=1895687
-				. rawurlencode( implode( PHP_EOL, $scratchTokensForDisplay ) ),
+				. rawurlencode( implode( PHP_EOL, $tokens ) ),
 				'download' => $filename,
 				'class' => [
 					'mw-oathauth-recoverycodes-download',

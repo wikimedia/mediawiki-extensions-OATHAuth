@@ -18,9 +18,7 @@ return [
 		);
 	},
 	'OATHUserRepository' => static function ( MediaWikiServices $services ): OATHUserRepository {
-		$options = new ServiceOptions( OATHUserRepository::CONSTRUCTOR_OPTIONS, $services->getMainConfig() );
 		return new OATHUserRepository(
-			$options,
 			$services->getDBLoadBalancerFactory(),
 			new HashBagOStuff( [
 				'maxKey' => 5

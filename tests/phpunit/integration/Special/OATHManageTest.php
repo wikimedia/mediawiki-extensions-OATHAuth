@@ -64,21 +64,4 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathmanage-summary)', $html );
 	}
 
-	public function testNewUIPageLoads() {
-		$this->setMwGlobals( [
-			'wgOATHAuthNewUI' => true,
-			'wgOATHAllowMultipleModules' => true
-		] );
-
-		$user = $this->getTestUser()->getUser();
-		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
-
-		[ $html ] = $this->executeSpecialPage(
-			'',
-			null,
-			null,
-			$user,
-		);
-		$this->assertStringContainsString( '(oathauth-password-header)', $html );
-	}
 }

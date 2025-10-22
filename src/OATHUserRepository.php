@@ -19,8 +19,6 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\User\CentralId\CentralIdLookup;
@@ -32,21 +30,15 @@ use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {
-	public const CONSTRUCTOR_OPTIONS = [
-		'OATHAllowMultipleModules'
-	];
-
 	private LoggerInterface $logger;
 
 	public function __construct(
-		private readonly ServiceOptions $options,
 		private readonly IConnectionProvider $dbProvider,
 		private readonly BagOStuff $cache,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly CentralIdLookupFactory $centralIdLookupFactory,
 		LoggerInterface $logger,
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->setLogger( $logger );
 	}
 
@@ -73,20 +65,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * @throws InvalidArgumentException
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
-		if ( !$this->options->get( 'OATHAllowMultipleModules' ) ) {
-			$otherEnabledModule = null;
-			foreach ( $user->getKeys() as $key ) {
-				if ( $key->getModule() !== $module->getName() ) {
-					$otherEnabledModule = $this->moduleRegistry->getModuleByKey( $key->getModule() );
-					break;
-				}
-			}
-			if ( $otherEnabledModule ) {
-				throw new ErrorPageError( 'errorpagetitle', 'oathauth-error-multiple-modules',
-					[ $module->getDisplayName(), $otherEnabledModule->getDisplayName() ] );
-			}
-		}
-
 		$uid = $user->getCentralId();
 		if ( !$uid ) {
 			throw new InvalidArgumentException( "Can't persist a key for user with no central ID available" );

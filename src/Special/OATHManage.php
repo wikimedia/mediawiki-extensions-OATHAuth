@@ -90,12 +90,7 @@ class OATHManage extends SpecialPage {
 
 	/** @inheritDoc */
 	public function getDescription() {
-		if ( $this->getConfig()->get( 'OATHAuthNewUI' ) ) {
-			// In the future we'll rename this special page to 'AccountSecurity'
-			return $this->msg( 'accountsecurity' );
-		}
-		// Uses the 'oathmanage' message
-		return parent::getDescription();
+		return $this->msg( 'accountsecurity' );
 	}
 
 	/** @inheritDoc */
@@ -110,12 +105,7 @@ class OATHManage extends SpecialPage {
 
 		parent::execute( $subPage );
 
-		$newUI = $this->getConfig()->get( 'OATHAuthNewUI' ) &&
-			// The new UI doesn't support single-module mode, so only display it if
-			// multiple modules are allowed
-			$this->getConfig()->get( 'OATHAllowMultipleModules' );
-
-		if ( $newUI && $this->action === self::ACTION_DELETE ) {
+		if ( $this->action === self::ACTION_DELETE ) {
 			if (
 				$this->getRequest()->wasPosted() &&
 				$this->getContext()->getCsrfTokenSet()->matchTokenField()
@@ -143,11 +133,7 @@ class OATHManage extends SpecialPage {
 			return;
 		}
 
-		if ( $newUI ) {
-			$this->displayNewUI();
-		} else {
-			$this->displayLegacyUI();
-		}
+		$this->displayNewUI();
 
 		// recovery codes
 		if ( $this->hasSpecialModules() ) {
@@ -376,18 +362,6 @@ class OATHManage extends SpecialPage {
 				)
 			)
 		);
-	}
-
-	private function displayLegacyUI(): void {
-		$this->addGeneralHelp();
-		if ( $this->oathUser->isTwoFactorAuthEnabled() ) {
-			$this->addEnabledHTML();
-			if ( $this->hasAlternativeModules() ) {
-				$this->addAlternativesHTML();
-			}
-		} else {
-			$this->nothingEnabled();
-		}
 	}
 
 	private function addEnabledHTML(): void {
@@ -834,7 +808,7 @@ class OATHManage extends SpecialPage {
 		$keys = $this->oathUser->getKeysForModule( $module->getName() );
 		if ( count( $keys ) === 0 ) {
 			// This path should only be possible if a user had an existing TOTP or WebAuthn
-			// key, pre multi-module support.  So let's create an empty Recovery Code Keys
+			// key, pre multi-module support. So let's create an empty Recovery Code Keys
 			// for them, since they will otherwise not yet exist.
 			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );
 			$keys = $this->oathUser->getKeysForModule( $module->getName() );
@@ -847,13 +821,16 @@ class OATHManage extends SpecialPage {
 		$placeholderMessage = '';
 
 		foreach ( $keys as $key ) {
+			/** @var RecoveryCodeKeys $key */
+			'@phan-var RecoveryCodeKeys $key';
 			$this->setOutputJsConfigVars(
 				array_map(
-				[ $this, 'tokenFormatterFunction' ],
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$key->getRecoveryCodeKeys() )
+					[ $this, 'tokenFormatterFunction' ],
+					$key->getRecoveryCodeKeys()
+				)
 			);
-			// TODO use outlined Accordions once these are available in Codex
+
+			// TODO: use outlined Accordions once these are available in Codex
 			$keyData = $this->getKeyNameAndDescription( $key );
 			$keyAccordion = $codex->accordion()
 				->setTitle( $keyData['name'] );
@@ -871,7 +848,6 @@ class OATHManage extends SpecialPage {
 						Html::hidden( 'keyId', $key->getId() ) .
 						$this->createRecoveryCodesCopyButton() .
 						$this->createRecoveryCodesDownloadLink(
-							// @phan-suppress-next-line PhanUndeclaredMethod
 							$key->getRecoveryCodeKeys()
 						) .
 						$codex->button()
@@ -912,8 +888,6 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function hasSpecialModules(): bool {
-		return $this->getConfig()->get( 'OATHAllowMultipleModules' )
-			&& $this->getConfig()->get( 'OATHAuthNewUI' )
-			&& $this->getSpecialModules();
+		return $this->getSpecialModules() !== [];
 	}
 }

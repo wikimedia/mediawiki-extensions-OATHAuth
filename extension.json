@@ -144,15 +144,7 @@
 		},
 		"OATHRolloutPercent": {
 			"value": 0,
-			"description": "Percentage of users to add to 2FA rollout"
-		},
-		"OATHAllowMultipleModules": {
-			"value": true,
-			"description": "Temporary feature flag to allow users to have multiple 2FA modules active at the same time"
-		},
-		"OATHAuthNewUI": {
-			"value": true,
-			"description": "Temporary feature flag for the redesigned UI (T401774)"
+			"description": "Percentage of users to add to 2FA rollout."
 		},
 		"OATHSecretKey": {
 			"value": false,
@@ -160,11 +152,11 @@
 		},
 		"OATHPrioritizedModules": {
 			"value": [ "webauthn", "totp", "recoverycodes" ],
-			"description": "List of authentication methods in the order that they should be prioritized"
+			"description": "List of authentication methods in the order that they should be prioritized."
 		},
 		"OATHRecoveryCodesCount": {
 			"value": 10,
-			"description": "The default amount of recovery codes to generate for a given user. This is only used for module-based recovery codes, not deprecated, TOTP-attached scratch tokens."
+			"description": "The default amount of recovery codes to generate for a given user."
 		}
 	},
 	"ResourceModules": {

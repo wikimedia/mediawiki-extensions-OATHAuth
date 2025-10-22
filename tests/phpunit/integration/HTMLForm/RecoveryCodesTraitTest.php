@@ -6,7 +6,6 @@ use LogicException;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
-use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWikiIntegrationTestCase;
 
@@ -35,7 +34,6 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetRecoveryCodesForDisplay(): void {
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', true );
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 1 );
 
 		$recCodeKeys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
@@ -43,11 +41,6 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 
 		$formatted1 = array_map( [ $this, 'tokenFormatterFunction' ], $recCodeKeys->getRecoveryCodeKeys() );
 		$formatted2 = $this->getRecoveryCodesForDisplay( $recCodeKeys );
-		$this->assertSame( $formatted1, $formatted2 );
-
-		$TOTPKey = TOTPKey::newFromRandom();
-		$formatted1 = array_map( [ $this, 'tokenFormatterFunction' ], $TOTPKey->getScratchTokens() );
-		$formatted2 = $this->getRecoveryCodesForDisplay( $TOTPKey );
 		$this->assertSame( $formatted1, $formatted2 );
 	}
 
