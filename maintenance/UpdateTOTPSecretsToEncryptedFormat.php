@@ -24,6 +24,7 @@ declare( strict_types = 1 );
 namespace MediaWiki\Extension\OATHAuth\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
@@ -68,14 +69,18 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 		$updatedCount = 0;
 		$totalRows = 0;
 
-		$dbw = $this->getServiceContainer()
+		$services = $this->getServiceContainer();
+
+		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		$totpModuleId = $moduleRegistry->getModuleId( TOTP::MODULE_NAME );
+
+		$dbw = $services
 			->getDBLoadBalancerFactory()
 			->getPrimaryDatabase( 'virtual-oathauth' );
 		$res = $dbw->newSelectQueryBuilder()
 			->select( [ 'oad_id', 'oad_data' ] )
 			->from( 'oathauth_devices' )
-			->join( 'oathauth_types', null, 'oat_id = oad_type' )
-			->where( [ 'oat_name' => 'totp' ] )
+			->where( [ 'oad_type' => $totpModuleId ] )
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
