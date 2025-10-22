@@ -48,8 +48,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 	}
 
 	/**
-	 * If the user has enabled a recovery codes module enabled, request a second factor.
-	 * For now, this will also accept scratch tokens from existing TOTP keys.
+	 * If the user has a recovery code module enabled, request a second factor.
 	 *
 	 * @inheritDoc
 	 */

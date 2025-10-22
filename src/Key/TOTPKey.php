@@ -27,7 +27,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
-use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
@@ -44,55 +43,21 @@ use Wikimedia\ObjectCache\EmptyBagOStuff;
  * @ingroup Extensions
  */
 class TOTPKey implements IAuthKey {
-	/** @var int|null */
-	private ?int $id;
-
-	/** @var string|null */
-	private ?string $friendlyName = null;
-
-	/** @var array Two factor binary secret */
+	/** @var array TOTP binary secret */
 	private $secret;
-
-	/** @var string[] List of recovery codes */
-	public $recoveryCodes = [];
-
-	/** @var string|null timestamp created for TOTP key */
-	private ?string $createdTimestamp;
-
-	/**
-	 * The upper threshold number of recovery codes that if a user has less than, we'll try and notify them...
-	 */
-	private const RECOVERY_CODES_NOTIFICATION_NUMBER = 2;
-
-	/**
-	 * Number of recovery codes to be generated
-	 */
-	public const RECOVERY_CODES_COUNT = 10;
-
-	/**
-	 * Length (in bytes) that recovery codes should be
-	 */
-	private const RECOVERY_CODE_LENGTH = 10;
 
 	/**
 	 * @return TOTPKey
 	 * @throws Exception
 	 */
 	public static function newFromRandom() {
-		$object = new self(
+		return new self(
 			null,
 			null,
 			null,
 			// 26 digits to give 128 bits - https://phabricator.wikimedia.org/T396951
 			self::removeBase32Padding( Base32::encode( random_bytes( 26 ) ) ),
-			[]
 		);
-
-		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHAllowMultipleModules' ) ) {
-			$object->regenerateScratchTokens();
-		}
-
-		return $object;
 	}
 
 	/**
@@ -111,12 +76,6 @@ class TOTPKey implements IAuthKey {
 	 */
 	public static function newFromArray( array $data ) {
 		if ( !isset( $data['secret'] ) ) {
-			return null;
-		}
-
-		$config = OATHAuthServices::getInstance()->getConfig();
-		if ( !$config->get( 'OATHAllowMultipleModules' )
-			&& !isset( $data['scratch_tokens'] ) ) {
 			return null;
 		}
 
@@ -139,24 +98,19 @@ class TOTPKey implements IAuthKey {
 			$data['friendly_name'] ?? null,
 			$data['created_timestamp'] ?? null,
 			$data['secret'] ?? '',
-			$data['scratch_tokens'] ?? [],
 			$data['encrypted_secret'],
 			$data['nonce']
 		);
 	}
 
 	public function __construct(
-		?int $id,
-		?string $friendlyName,
-		?string $createdTimestamp,
+		private readonly ?int $id,
+		private readonly ?string $friendlyName,
+		private readonly ?string $createdTimestamp,
 		string $secret,
-		array $recoveryCodes,
 		string $encryptedSecret = '',
 		string $nonce = ''
 	) {
-		$this->id = $id;
-		$this->friendlyName = $friendlyName;
-		$this->createdTimestamp = $createdTimestamp;
 		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
@@ -166,7 +120,6 @@ class TOTPKey implements IAuthKey {
 			'encrypted_secret' => $encryptedSecret,
 			'nonce' => $nonce
 		];
-		$this->recoveryCodes = array_values( $recoveryCodes );
 	}
 
 	public function getId(): ?int {
@@ -195,20 +148,6 @@ class TOTPKey implements IAuthKey {
 			$this->secret['encrypted_secret'],
 			$this->secret['nonce'],
 		];
-	}
-
-	/**
-	 * @return string[]
-	 */
-	public function getScratchTokens() {
-		return $this->recoveryCodes;
-	}
-
-	/**
-	 * @param array|null $data
-	 */
-	public function setScratchTokens( $data ): void {
-		$this->recoveryCodes = $data;
 	}
 
 	/**
@@ -275,112 +214,29 @@ class TOTPKey implements IAuthKey {
 			return true;
 		}
 
-		// services used below for scratch tokens and recovery codes
-		$config = OATHAuthServices::getInstance()->getConfig();
-		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
+		// TODO: We should deprecate (T408043) logging in on the TOTP form using recovery codes, and eventually
+		// remove this ability (T408044).
+		$moduleDbKeysRecCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
 
-		// See if the user is using a legacy TOTP scratch token (aka recovery code)
-		foreach ( $this->recoveryCodes as $i => $recoveryCode ) {
-			if ( !hash_equals( $token, $recoveryCode ) ) {
-				continue;
-			}
-
-			// Remove used TOTP-attached recovery code
-			array_splice( $this->recoveryCodes, $i, 1 );
-
-			// UPDATE: With T232336 soon to be completed, nearly all of the TOTP scratch
-			// token related code will be able to be removed.  The current plan is to support
-			// older scratch tokens and let them simply run out, in which case a user's
-			// older TOTP factor will be migrated automatically or via a maintenance script
-			// to the separate Recovery Code module
-			if ( count( $this->recoveryCodes ) <= self::RECOVERY_CODES_NOTIFICATION_NUMBER ) {
-				Manager::notifyRecoveryTokensRemaining(
-					$user,
-					self::RECOVERY_CODES_NOTIFICATION_NUMBER,
-					self::RECOVERY_CODES_COUNT
-				);
-			}
-
-			if ( $config->get( 'OATHAllowMultipleModules' ) && count( $this->recoveryCodes ) === 0 ) {
-				// if the user has no more TOTP-attached scratch tokens,
-				// let's try to create recovery codes for them, if
-				// multiple module support is enabled.  For now, there is
-				// no convenient way to alert the user of the new code, but they will
-				// see a usable Recovery Code module under Special:OATHManage
-				RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $user );
-
+		if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
+			/** @var RecoveryCodeKeys $recoveryCodeKeys */
+			$recoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
+			'@phan-var RecoveryCodeKeys $recoveryCodeKeys';
+			$res = $recoveryCodeKeys->verify( [ 'recoverycode' => $token ], $user );
+			if ( $res ) {
 				$logger->info(
 					// phpcs:ignore
-					"OATHAuth {user} from {clientip} had recovery codes created for them after using their final TOTP scratch token.", [
+					"OATHAuth {user} used a recovery code from {clientip} on TOTP form.", [
 						'user' => $user->getUser()->getName(),
 						'clientip' => $clientIP
 					]
 				);
 			}
 
-			$logger->info( 'OATHAuth user {user} used a recovery token from {clientip}', [
-				'user' => $user->getAccount(),
-				'clientip' => $clientIP,
-			] );
-
-			OATHAuthServices::getInstance()
-				->getUserRepository()
-				->updateKey( $user, $this );
-			return true;
-		}
-
-		// See if the user is using a newer recovery code
-		// Both TOTP-attached scratch tokens and recovery codes will be accepted
-		if ( $config->get( 'OATHAllowMultipleModules' ) ) {
-			$moduleDbKeysRecCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
-
-			if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
-				$objRecoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				foreach ( $objRecoveryCodeKeys->getRecoveryCodeKeys() as $userRecoveryCode ) {
-					if ( !hash_equals(
-						$token,
-						$userRecoveryCode
-					) ) {
-						continue;
-					}
-
-					RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $user, $userRecoveryCode );
-
-					$logger->info(
-						// phpcs:ignore
-						"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
-							'user' => $user->getUser()->getName(),
-							'clientip' => $clientIP
-						]
-					);
-
-					return true;
-				}
-			}
+			return $res;
 		}
 
 		return false;
-	}
-
-	public function regenerateScratchTokens() {
-		$codes = [];
-		for ( $i = 0; $i < self::RECOVERY_CODES_COUNT; $i++ ) {
-			$codes[] = Base32::encode( random_bytes( self::RECOVERY_CODE_LENGTH ) );
-		}
-		$this->recoveryCodes = $codes;
-	}
-
-	/**
-	 * Check if a token is one of the recovery codes for this two-factor key.
-	 *
-	 * @param string $token Token to verify
-	 *
-	 * @return bool true if this is a recovery code.
-	 */
-	public function isScratchToken( $token ) {
-		$token = preg_replace( '/\s+/', '', $token );
-		return in_array( $token, $this->recoveryCodes, true );
 	}
 
 	/** @inheritDoc */
@@ -410,12 +266,7 @@ class TOTPKey implements IAuthKey {
 			$data = [ 'secret' => $this->getSecret() ];
 		}
 
-		$tokens = $this->getScratchTokens();
-		if ( count( $tokens ) ) {
-			$data['scratch_tokens'] = $tokens;
-		}
-		$data["friendly_name"] = $this->friendlyName;
-
+		$data['friendly_name'] = $this->friendlyName;
 		return $data;
 	}
 }

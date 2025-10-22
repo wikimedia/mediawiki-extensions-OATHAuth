@@ -24,7 +24,7 @@ use MediaWiki\Language\RawMessage;
 /**
  * AuthManager value object for the Recovery Codes second factor of authentication:
  * a pre-generated recovery code (aka scratch token) that is created whenever an OATH
- * user enables at least one form of 2fa (TOTP, WebAuthn, etc.) and is regenerated upon
+ * user enables at least one form of 2FA (TOTP, WebAuthn, etc.) and is regenerated upon
  * each successful usage of a recovery code.
  */
 class RecoveryCodesAuthenticationRequest extends AuthenticationRequest {

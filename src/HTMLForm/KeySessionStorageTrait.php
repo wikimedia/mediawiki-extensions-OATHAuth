@@ -19,8 +19,7 @@ trait KeySessionStorageTrait {
 	 * Helper function to generically track IAuthKeys in the user session
 	 *
 	 * @param string $keyType accepts current key names (TOTPKey, RecoveryCodeKeys)
-	 *                        which may relate to any type of scratch token or recovery code
-	 * @return IAuthKey|null
+	 * @return RecoveryCodeKeys|TOTPKey|null
 	 */
 	public function setKeyDataInSession( string $keyType, array $keyData = [] ) {
 		// RecoveryCodeKeys or TOTPKey
@@ -36,12 +35,6 @@ trait KeySessionStorageTrait {
 			if ( !$key instanceof TOTPKey ) {
 				$key = TOTPKey::newFromRandom();
 			}
-			if ( array_key_exists( 'scratch_tokens', $keyData )
-				&& count( $keyData['scratch_tokens'] ) === 0
-				&& count( $key->getScratchTokens() ) === 0
-			) {
-				$key->regenerateScratchTokens();
-			}
 		} elseif ( $keyType === 'RecoveryCodeKeys' ) {
 			$key = RecoveryCodeKeys::newFromArray( $keyData );
 			if ( array_key_exists( 'recoverycodekeys', $keyData ) && count( $keyData['recoverycodekeys'] ) === 0 ) {
@@ -55,7 +48,7 @@ trait KeySessionStorageTrait {
 				$key->jsonSerialize()
 			);
 		} else {
-			// set session key to empty
+			// set the session key to empty
 			$this->getRequest()->getSession()->setSecret(
 				$sessionKey,
 				[]

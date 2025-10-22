@@ -57,11 +57,6 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 
 	/** @inheritDoc */
 	protected function doDBUpdates() {
-		if ( !$this->getConfig()->get( 'OATHAllowMultipleModules' ) ) {
-			$this->output( "Can only migrate TOTP scratch_tokens if \$wgOATHAllowMultipleModules = true\n" );
-			return false;
-		}
-
 		$startTime = time();
 		$updatedCount = 0;
 		$totalRows = 0;

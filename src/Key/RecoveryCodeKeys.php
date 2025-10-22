@@ -23,7 +23,6 @@ use Base32\Base32;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
@@ -160,39 +159,13 @@ class RecoveryCodeKeys implements IAuthKey {
 			throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' )->text() );
 		}
 
-		$config = OATHAuthServices::getInstance()->getConfig();
-		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
 		$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 		$logger = $this->getLogger();
 
-		// lets see if they still have TOTP-attached scratch tokens
-		// they are trying to use
-		$moduleDbKeysTOTP = $user->getKeysForModule( TOTP::MODULE_NAME );
-
-		// should be safe to assume only one TOTP with attached
-		// scratch tokens prior to multiple module migration
-		if ( array_key_exists( 0, $moduleDbKeysTOTP ) ) {
-			$objTOTPKey = array_shift( $moduleDbKeysTOTP );
-			// @phan-suppress-next-line PhanUndeclaredProperty
-			foreach ( $objTOTPKey->recoveryCodes as $i => $userScratchToken ) {
-				if ( hash_equals( preg_replace( '/\s+/', '', $data['recoverycode'] ), $userScratchToken ) ) {
-					// @phan-suppress-next-line PhanUndeclaredProperty
-					array_splice( $objTOTPKey->recoveryCodes, $i, 1 );
-
-					$logger->info( 'OATHAuth user {user} used a TOTP-attached scratch token from {clientip}', [
-						'user' => $user->getAccount(),
-						'clientip' => $clientData['clientIp'],
-					] );
-
-					$oathRepo->updateKey( $user, $objTOTPKey );
-					return true;
-				}
-			}
-		}
-
 		if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
+			/** @var RecoveryCodeKeys $objRecoveryCodeKeys */
 			$objRecoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
-			// @phan-suppress-next-line PhanUndeclaredProperty
+			'@phan-var RecoveryCodeKeys $objRecoveryCodeKeys';
 			foreach ( $objRecoveryCodeKeys->recoveryCodeKeys as $userRecoveryCode ) {
 				if ( hash_equals(
 						preg_replace( '/\s+/', '', $data['recoverycode'] ),
@@ -274,7 +247,7 @@ class RecoveryCodeKeys implements IAuthKey {
 	/**
 	 * @throws UnexpectedValueException
 	 */
-	public static function maybeCreateOrUpdateRecoveryCodeKeys( OATHUser $user, string $usedRecoveryCode = '' ): bool {
+	public static function maybeCreateOrUpdateRecoveryCodeKeys( OATHUser $user, string $usedRecoveryCode = '' ): void {
 		$uid = $user->getCentralId();
 		if ( !$uid ) {
 			throw new UnexpectedValueException( wfMessage( 'oathauth-invalidrequest' )->escaped() );
@@ -302,7 +275,7 @@ class RecoveryCodeKeys implements IAuthKey {
 			}
 		}
 
-		// only regenerate if there are no tokens left or these are brand new recovery codes
+		// only regenerate if there are no tokens left or these are brand-new recovery codes
 		if ( count( $objRecCodeKeys->recoveryCodeKeys ) === 0 ) {
 			$objRecCodeKeys->regenerateRecoveryCodeKeys();
 		}
@@ -326,7 +299,22 @@ class RecoveryCodeKeys implements IAuthKey {
 				);
 			}
 		}
+	}
 
-		return true;
+	/**
+	 * Check if a token is valid for this key.
+	 *
+	 * @param string $token Token to verify
+	 *
+	 * @return bool true if this is a recovery code for this key.
+	 */
+	public function isValidRecoveryCode( string $token ): bool {
+		$token = preg_replace( '/\s+/', '', $token );
+		foreach ( $this->recoveryCodeKeys as $key ) {
+			if ( hash_equals( $key, $token ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

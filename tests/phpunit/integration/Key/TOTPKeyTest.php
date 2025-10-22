@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
-use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -31,23 +30,9 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDeserialization(): void {
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', false );
 		$key = TOTPKey::newFromRandom();
 		$deserialized = TOTPKey::newFromArray( json_decode( json_encode( $key ), true ) );
 		$this->assertSame( $key->getSecret(), $deserialized->getSecret() );
-		$this->assertSame( $key->getScratchTokens(), $deserialized->getScratchTokens() );
-	}
-
-	public function testIsScratchToken(): void {
-		$key = TOTPKey::newFromArray( [
-			'secret' => '123456',
-			'scratch_tokens' => [ '64SZLJTTPRI5XBUE' ],
-		] );
-		$this->assertTrue( $key->isScratchToken( '64SZLJTTPRI5XBUE' ) );
-		// Whitespace is stripped
-		$this->assertTrue( $key->isScratchToken( ' 64SZLJTTPRI5XBUE ' ) );
-		// Wrong token
-		$this->assertFalse( $key->isScratchToken( 'WIQGC24UJUFXQDW4' ) );
 	}
 
 	public function testNewFromRandomNoBase32Padding(): void {
@@ -61,9 +46,8 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$this->encryptionTestSetup();
 
 		$this->expectException( SodiumException::class );
-		$key = TOTPKey::newFromArray( [
+		TOTPKey::newFromArray( [
 			'secret' => '123456',
-			'scratch_tokens' => [ '64SZLJTTPRI5XBUE' ],
 			'nonce' => '789101112',
 		] );
 	}
@@ -87,26 +71,17 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function testNewFromFunctionsMultiModules(): void {
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', true );
-		$key = TOTPKey::newFromArray( [ 'scratch_tokens' => [ 'ABCDEFGHI=' ] ] );
-		$this->assertSame( null, $key );
-
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', false );
-		$key = TOTPKey::newFromArray( [ 'secret' => 'ABCDEFGHI=' ] );
-		$this->assertSame( null, $key );
+	public function testNewFromArrayWithoutSecret(): void {
+		// We aren't setting secret, so this will return null
+		$this->assertSame( null, TOTPKey::newFromArray( [] ) );
 	}
 
 	public function testJsonSerializerWithEncryption(): void {
 		$this->encryptionTestSetup();
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', false );
-
 		$key = TOTPKey::newFromRandom();
 		$data = $key->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
 		$this->assertArrayHasKey( 'secret', $data );
-		$this->assertArrayHasKey( 'scratch_tokens', $data );
-		$this->assertCount( TOTPKey::RECOVERY_CODES_COUNT, $data['scratch_tokens'] );
 		$this->assertNotEquals( $data['secret'], $key->getSecret() );
 	}
 
@@ -131,14 +106,6 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsString( $key->getSecret() );
 		$this->assertEquals( $totpKeyLength, strlen( $key->getSecret() ) );
 
-		$testTokens = [ 'ABCDEFGHIJKLMNO1', 'ABCDEFGHIJKLMNO1', 'ABCDEFGHIJKLMNO1' ];
-		$key->setScratchTokens( $testTokens );
-		$this->assertSame( $testTokens, $key->getScratchTokens() );
-
-		$currentTokens = $key->getScratchTokens();
-		$key->regenerateScratchTokens();
-		$this->assertNotSame( $currentTokens, $key->getScratchTokens() );
-
 		$this->assertSame( TOTP::MODULE_NAME, $key->getModule() );
 	}
 
@@ -148,16 +115,5 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$testData1 = [];
 		$key = TOTPKey::newFromRandom();
 		$this->assertSame( false, $key->verify( $testData1, $mockOATHUser ) );
-
-		$key->regenerateScratchTokens();
-		$testData2 = [ 'token' => 'bad_token' ];
-		$this->assertSame( false, $key->verify( $testData2, $mockOATHUser ) );
-
-		// oathUser without actual keys
-		$this->setMwGlobals( 'wgOATHAllowMultipleModules', false );
-		$this->expectException( InvalidArgumentException::class );
-		$scratchTokens = $key->getScratchTokens();
-		$testData3 = [ 'token' => array_shift( $scratchTokens ) ];
-		$this->assertSame( true, $key->verify( $testData3, $mockOATHUser ) );
 	}
 }
