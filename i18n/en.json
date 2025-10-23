@@ -130,7 +130,7 @@
 	"oathauth-must-be-central": "{{GENDER:$1|Your account}} must linked to the central authentication system to use two-factor authentication.",
 	"oathauth-error-multiple-modules": "For now, using multiple 2FA authentication methods is not supported. You can only enable $1 after disabling $2.",
 	"group-oathauth-twofactorauth": "Users who may use two-factor authentication",
-	"group-oathauth-twofactorauth-member": "User who may use two-factor authentication",
+	"group-oathauth-twofactorauth-member": "user who may use two-factor authentication",
 	"oathauth-remove-nosuchkey": "Key not found.",
 	"oathauth-password-header": "Password",
 	"oathauth-password-label": "Set a strong password to protect your account.",
