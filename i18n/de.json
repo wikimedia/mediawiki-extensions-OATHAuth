@@ -145,9 +145,13 @@
 	"oathauth-authenticator-header": "Zwei-Faktor-Authentifizierung",
 	"oathauth-authenticator-placeholder": "Füge beim Anmelden einen zusätzlichen Schritt hinzu, um dein Konto zu schützen.",
 	"oathauth-authenticator-delete": "Entfernen",
+	"oathauth-authenticator-delete-text": "entfernen",
 	"oathauth-totp-add-key": "Füge eine Authentifizierungs-App hinzu",
 	"oathauth-delete-warning-header": "$1 entfernen",
 	"oathauth-delete-warning": "Du kannst diese Authentifizierungsmethode nicht mehr zum Anmelden verwenden.",
+	"oathauth-delete-confirm-box": "Gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
+	"oathauth-delete-warning-final": "Durch das Entfernen dieser Methode wird die Zwei-Faktor-Authentifizierung vollständig deaktiviert.",
+	"oathauth-delete-wrong-confirm-message": "Falsche Eingabe für die endgültige Schlüsselentfernung. Bitte gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
 	"oathauth-delete-success": "<strong>$1</strong> entfernt.",
 	"oathauth-enable-success": "<strong>$1</strong> hinzugefügt."
 }

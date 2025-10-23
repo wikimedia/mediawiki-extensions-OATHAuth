@@ -59,6 +59,7 @@
 	"oathauth-auth-token-label": "2요소 토큰 또는 복구 코드",
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-token-help-ui": "인증 장치의 코드나 복구 코드를 입력하세요",
+	"oathauth-auth-use-recovery-code": "복구 코드 사용",
 	"oathauth-auth-ui": "2요소 인증 애플리케이션(Google Authenticator 등)의 코드를 입력해 주십시오.",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "TOTP 인증 실패.",
