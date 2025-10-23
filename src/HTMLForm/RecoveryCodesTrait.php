@@ -7,6 +7,7 @@ use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
@@ -18,6 +19,8 @@ use UnexpectedValueException;
 
 /**
  * Helper trait to display and manage recovery codes within various contexts
+ *
+ * @property OATHUser $oathUser
  */
 trait RecoveryCodesTrait {
 
@@ -76,7 +79,6 @@ trait RecoveryCodesTrait {
 	private function generateRecoveryCodesContent( array $recoveryCodes, bool $displayExisting = false ): FieldLayout {
 		$now = wfTimestampNow();
 
-		// @phan-suppress-next-line PhanUndeclaredProperty
 		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
 
 		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
@@ -86,6 +88,7 @@ trait RecoveryCodesTrait {
 		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
 			$recoveryCodes = array_map(
 				[ $this, 'tokenFormatterFunction' ],
+				// @phan-suppress-next-line PhanUndeclaredMethod
 				array_shift( $moduleDbKeys )->getRecoveryCodeKeys()
 			);
 			$snippet = new HtmlSnippet(
@@ -101,7 +104,6 @@ trait RecoveryCodesTrait {
 				$this->msg( 'rawmessage' )->rawParams(
 				$this->msg(
 					'oathauth-recoverytokens-createdat',
-					// @phan-suppress-next-line PhanUndeclaredProperty
 					$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
 					)->parse()
 					. $this->msg( 'word-separator' )->escaped()
