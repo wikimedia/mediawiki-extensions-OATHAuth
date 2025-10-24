@@ -39,6 +39,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Message\Message;
 use MediaWiki\Session\CsrfTokenSet;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\UserGroupManager;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
@@ -70,6 +71,7 @@ class OATHManage extends SpecialPage {
 		private readonly OATHUserRepository $userRepo,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly AuthManager $authManager,
+		private readonly UserGroupManager $userGroupManager,
 	) {
 		// messages used: oathmanage (display "name" on Special:SpecialPages),
 		// right-oathauth-enable, action-oathauth-enable
@@ -709,6 +711,21 @@ class OATHManage extends SpecialPage {
 		return (bool)$this->getAvailableModules();
 	}
 
+	/**
+	 * Checks local groups to see what groups a user is in
+	 * If any of the local groups are required, then the user is privileged
+	 * @return bool
+	 */
+	private function isPrivilegedUser(): bool {
+		$requiredGroups = $this->getConfig()->get( 'OATHRequiredForGroups' );
+		if ( count( $requiredGroups ) === 0 ) {
+			return false;
+		}
+		$userGroups = $this->userGroupManager->getUserGroups( $this->oathUser->getUser() );
+		$a = array_intersect( $userGroups, $requiredGroups );
+		return count( $a ) > 0;
+	}
+
 	private function showDeleteWarning( bool $showWrongConfirmMessage ) {
 		$keyId = $this->getRequest()->getInt( 'keyId' );
 		$keyToDelete = $this->oathUser->getKeyById( $keyId );
@@ -729,13 +746,17 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-delete-warning-header', $keyName ) );
 		$codex = new Codex();
 
-		$warningMessage = $showWrongConfirmMessage ?
-				$this->msg( 'oathauth-delete-wrong-confirm-message' )->escaped() :
-				$this->msg( 'oathauth-delete-warning-final' )->escaped();
+		$finalWarningMessage = $showWrongConfirmMessage ?
+			$this->msg( 'oathauth-delete-wrong-confirm-message' )->escaped() :
+			$this->msg( 'oathauth-delete-warning-final' )->escaped();
+
+		$warningMessage = ( $lastKey && $this->isPrivilegedUser() ?
+			Html::rawElement( 'p', [], $this->msg( 'oathauth-delete-warning-final-privileged-user' )->parse() ) :
+			Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) );
 
 		$deleteWarningHTML =
-			( $lastKey ? Html::warningBox( $warningMessage ) : '' ) .
-			Html::element( 'p', [], $this->msg( 'oathauth-delete-warning' )->text() ) .
+			( $lastKey ? Html::warningBox( $finalWarningMessage ) : '' ) .
+			$warningMessage .
 			Html::rawElement( 'form', [ 'action' => wfScript(), 'method' => 'POST' ],
 				( $lastKey ? $codex->Field()
 					->setLabel( $codex->Label()

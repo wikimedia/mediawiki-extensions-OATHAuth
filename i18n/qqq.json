@@ -162,6 +162,7 @@
 	"oathauth-delete-warning": "Warning message shown when deleting a 2FA method.\n\nParameters:\n* $1 - Name of the 2FA method being deleted",
 	"oathauth-delete-confirm-box": "Message for input confirmation box shown when removing last 2FA method.\n\nSee also:\n{{msg-mw|oathauth-authenticator-delete-text}}",
 	"oathauth-delete-warning-final": "Warning message shown when deleting the last 2FA method",
+	"oathauth-delete-warning-final-privileged-user": "Additional Warning message shown to users with extended rights when deleting the last 2FA method",
 	"oathauth-delete-wrong-confirm-message": "Warning message shown when deleting the last 2FA method and the confirmation message is incorrect",
 	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted",
 	"oathauth-created-at": "Timestamp label for key\n\nParameters:\n* $1 - Date from createdTimestamp for key",

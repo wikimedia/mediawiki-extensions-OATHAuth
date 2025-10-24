@@ -229,7 +229,8 @@
 			"services": [
 				"OATHUserRepository",
 				"OATHAuthModuleRegistry",
-				"AuthManager"
+				"AuthManager",
+				"UserGroupManager"
 			]
 		},
 		"VerifyOATHForUser": {
