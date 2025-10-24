@@ -26,4 +26,10 @@ class TOTPKeyTest extends \MediaWikiIntegrationTestCase {
 		// Wrong token
 		$this->assertFalse( $key->isScratchToken( 'WIQGC24UJUFXQDW4' ) );
 	}
+
+	public function testNewFromRandomNoBase32Padding(): void {
+		$base32PaddingElement = '=';
+		$key = TOTPKey::newFromRandom();
+		$this->assertNotEquals( $base32PaddingElement, substr( $key->getSecret(), -1 ) );
+	}
 }
