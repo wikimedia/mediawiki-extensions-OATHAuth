@@ -134,9 +134,13 @@
 	"oathauth-authenticator-header": "Authentication bifactorial",
 	"oathauth-authenticator-placeholder": "Adde un passo extra al apertura de session pro adjutar a securisar tu conto.",
 	"oathauth-authenticator-delete": "Remover",
+	"oathauth-authenticator-delete-text": "remover",
 	"oathauth-totp-add-key": "Adder un app de authentication",
 	"oathauth-delete-warning-header": "Remover $1",
 	"oathauth-delete-warning": "Tu non potera plus usar iste methodo de authentication pro aperir session.",
+	"oathauth-delete-confirm-box": "Scribe “{{int:oathauth-authenticator-delete-text}}” pro continuar",
+	"oathauth-delete-warning-final": "Le remotion de iste methodo disactivara completemente le authentication bifactorial.",
+	"oathauth-delete-wrong-confirm-message": "Mal entrata pro le remotion del clave final. Per favor scribe “{{int:oathauth-authenticator-delete-text}}” pro continuar",
 	"oathauth-delete-success": "<strong>$1</strong> removite.",
 	"oathauth-enable-success": "<strong>$1</strong> addite."
 }

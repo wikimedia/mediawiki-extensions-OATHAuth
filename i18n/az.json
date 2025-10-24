@@ -140,9 +140,13 @@
 	"oathauth-authenticator-header": "İki faktorlu autentifikasiya",
 	"oathauth-authenticator-placeholder": "Hesabınızın təhlükəsizliyini təmin etmək üçün daxil olarkən əlavə addım əlavə edin.",
 	"oathauth-authenticator-delete": "Sil",
+	"oathauth-authenticator-delete-text": "sil",
 	"oathauth-totp-add-key": "Autentifikator tətbiqi əlavə et",
 	"oathauth-delete-warning-header": "$1 silmək",
 	"oathauth-delete-warning": "Bundan sonra daxil olmaq üçün bu doğrulama metodundan istifadə edə bilməyəcəksiniz.",
+	"oathauth-delete-confirm-box": "Davam etmək üçün \"{{int:oathauth-authenticator-delete-text}}\" sözünü daxil edin",
+	"oathauth-delete-warning-final": "Bu metodun silinməsi iki faktorlu autentifikasiyanı tamamilə söndürəcək.",
+	"oathauth-delete-wrong-confirm-message": "Son açarın silinməsi üçün yanlış söz. Davam etmək üçün \"{{int:oathauth-authenticator-delete-text}}\" yazın",
 	"oathauth-delete-success": "<strong>$1</strong> silindi.",
 	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi."
 }

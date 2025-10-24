@@ -137,9 +137,13 @@
 	"oathauth-authenticator-header": "Autenticación de dous factores",
 	"oathauth-authenticator-placeholder": "Engade un paso adicional ao iniciar sesión para axudar a protexer a túa conta.",
 	"oathauth-authenticator-delete": "Quitar",
+	"oathauth-authenticator-delete-text": "quitar",
 	"oathauth-totp-add-key": "Engadir unha aplicación de autenticación",
 	"oathauth-delete-warning-header": "Quitar «$1»",
 	"oathauth-delete-warning": "Xa non poderás usar este método de autenticación para iniciar sesión.",
+	"oathauth-delete-confirm-box": "Escribe «{{int:oathauth-authenticator-delete-text}}» para continuar",
+	"oathauth-delete-warning-final": "Ao eliminar este método, desactivarase por completo a autenticación de dous factores.",
+	"oathauth-delete-wrong-confirm-message": "Entrada incorrecta para a eliminación final da chave. Escribe «{{int:oathauth-authenticator-delete-text}}» para continuar.",
 	"oathauth-delete-success": "Eliminouse «<strong>$1</strong>».",
 	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>»."
 }

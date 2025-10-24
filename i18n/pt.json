@@ -99,5 +99,8 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desativado|Grupos desativados}}:",
 	"oathauth-prefs-disabledgroups-help": "A sua inclusão {{PLURAL:$1|neste grupo|nestes grupos}} está desativada até ter ativado a [[Special:Manage Two-factor authentication|autenticação de dois fatores]].{{GENDER:$2|}}",
 	"oathauth-qrcode-alt": "Código QR que representa a chave secreta.",
-	"oathauth-hint": "Não tem acesso ao seu dispositivo ou aplicação? Pode introduzir neste campo chaves de recuperação (apresentadas quando ativou a A2F)."
+	"oathauth-hint": "Não tem acesso ao seu dispositivo ou aplicação? Pode introduzir neste campo chaves de recuperação (apresentadas quando ativou a A2F).",
+	"oathauth-authenticator-delete-text": "remover",
+	"oathauth-delete-confirm-box": "Digite \"{{int:oathauth-authenticator-delete-text}}\" para continuar",
+	"oathauth-delete-warning-final": "Se remover este método irá desativar completamente a autenticação de dois fatores."
 }
