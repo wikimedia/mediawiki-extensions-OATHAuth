@@ -50,6 +50,12 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $key->isScratchToken( 'WIQGC24UJUFXQDW4' ) );
 	}
 
+	public function testNewFromRandomNoBase32Padding(): void {
+		$base32PaddingElement = '=';
+		$key = TOTPKey::newFromRandom();
+		$this->assertNotEquals( $base32PaddingElement, substr( $key->getSecret(), -1 ) );
+	}
+
 	public function testNewFromArrayWithNonceNoEncryption(): void {
 		// bad nonce value will throw a sodium exception
 		$this->encryptionTestSetup();
@@ -119,10 +125,11 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetSetFunctions(): void {
+		$totpKeyLength = 42;
 		$key = TOTPKey::newFromRandom();
 		$this->assertNull( $key->getId() );
 		$this->assertIsString( $key->getSecret() );
-		$this->assertEquals( 48, strlen( $key->getSecret() ) );
+		$this->assertEquals( $totpKeyLength, strlen( $key->getSecret() ) );
 
 		$testTokens = [ 'ABCDEFGHIJKLMNO1', 'ABCDEFGHIJKLMNO1', 'ABCDEFGHIJKLMNO1' ];
 		$key->setScratchTokens( $testTokens );

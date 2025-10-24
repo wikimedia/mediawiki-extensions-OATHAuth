@@ -76,7 +76,7 @@ class TOTPKey implements IAuthKey {
 		$object = new self(
 			null,
 			// 26 digits to give 128 bits - https://phabricator.wikimedia.org/T396951
-			Base32::encode( random_bytes( 26 ) ),
+			self::removeBase32Padding( Base32::encode( random_bytes( 26 ) ) ),
 			[]
 		);
 
@@ -85,6 +85,15 @@ class TOTPKey implements IAuthKey {
 		}
 
 		return $object;
+	}
+
+	/**
+	 * @param string $paddedBase32String
+	 * @return string
+	 * @see T408225, T401393
+	 */
+	public static function removeBase32Padding( string $paddedBase32String ) {
+		return rtrim( $paddedBase32String, '=' );
 	}
 
 	/**
