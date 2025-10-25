@@ -91,34 +91,29 @@ trait RecoveryCodesTrait {
 				// @phan-suppress-next-line PhanUndeclaredMethod
 				array_shift( $moduleDbKeys )->getRecoveryCodeKeys()
 			);
-			$snippet = new HtmlSnippet(
-				'<p>' . $this->msg( 'oathauth-recoverycodes-exist' )->escaped() . '</p>' .
-				$this->createResourceList( $recoveryCodes ) . '<br />' .
-				$this->createRecoveryCodesCopyButton() .
-				$this->createRecoveryCodesDownloadLink( $recoveryCodes )
-			);
+			$snippet = '<p>' . $this->msg( 'oathauth-recoverycodes-exist' )->escaped() . '</p>';
 		} else {
-			$snippet = new HtmlSnippet(
+			$snippet =
 				'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><p>' .
 				$this->msg( 'oathauth-recoverycodes' )->escaped() . '</p><p>' .
 				$this->msg( 'rawmessage' )->rawParams(
-				$this->msg(
-					'oathauth-recoverytokens-createdat',
-					$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
+					$this->msg(
+						'oathauth-recoverytokens-createdat',
+						$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
 					)->parse()
 					. $this->msg( 'word-separator' )->escaped()
 					. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
-				) . '</p>' .
-				$this->createResourceList( $recoveryCodes ) . '<br />' .
-				$this->createRecoveryCodesCopyButton() .
-				$this->createRecoveryCodesDownloadLink( $recoveryCodes )
-			);
+				) . '</p>';
 		}
+
+		$snippet .= $this->createResourceList( $recoveryCodes ) . '<br />' .
+			$this->createRecoveryCodesCopyButton() .
+			$this->createRecoveryCodesDownloadLink( $recoveryCodes );
 
 		$this->setOutputJsConfigVars( $recoveryCodes );
 
 		// rawrow only accepts fieldlayouts
-		return new FieldLayout( new Widget( [ 'content' => $snippet ] ) );
+		return new FieldLayout( new Widget( [ 'content' => new HtmlSnippet( $snippet ) ] ) );
 	}
 
 	private function createTextList( array $items ): string {
