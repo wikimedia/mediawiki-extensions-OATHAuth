@@ -62,20 +62,18 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 	 * @return array|bool
 	 */
 	public function onSubmit( array $formData ) {
-		// use an existing recovery code, if one exists for a user, to regenerate them
-		$oldRecoveryCodeKey = false;
 		$keys = $this->oathUser->getKeysForModule( $this->module->getName() );
 		if ( $keys ) {
-			$objRecCodeKeys = array_shift( $keys );
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$oldRecoveryCodeKeys = $objRecCodeKeys->getRecoveryCodeKeys();
-			$oldRecoveryCodeKey = array_shift( $oldRecoveryCodeKeys );
+			/** @var RecoveryCodeKeys $objRecoveryCodeKeys */
+			$objRecoveryCodeKeys = array_shift( $keys );
+			'@phan-var RecoveryCodeKeys $objRecoveryCodeKeys';
+			$objRecoveryCodeKeys->regenerateRecoveryCodeKeys();
 		}
 
-		RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser, $oldRecoveryCodeKey );
+		RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );
 
 		LoggerFactory::getInstance( 'authentication' )->info(
-			"OATHAuth {user} regenerated and viewed their recovery codes from {clientip}", [
+			"OATHAuth {user} generated new recovery codes from {clientip}", [
 				'user' => $this->getUser()->getName(),
 				'clientip' => $this->getRequest()->getIP(),
 			]
