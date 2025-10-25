@@ -23,7 +23,9 @@ declare( strict_types = 1 );
 
 namespace MediaWiki\Extension\OATHAuth\Maintenance;
 
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
@@ -41,14 +43,14 @@ require_once "$IP/maintenance/Maintenance.php";
 /**
  * Updates TOTP secret to an encrypted format in the database
  *
- * Usage: php UpdateTOTPSecretsToEncryptedFormat.php
+ * Usage: php UpdateSecretsToEncryptedFormat.php
  */
-class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
+class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'OATHAuth' );
-		$this->addDescription( 'Update TOTP secrets to use encypted format within database' );
+		$this->addDescription( 'Update TOTP secrets and recovery codes to use encypted format within database' );
 	}
 
 	/** @inheritDoc */
@@ -73,14 +75,15 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
 		$totpModuleId = $moduleRegistry->getModuleId( TOTP::MODULE_NAME );
+		$recoveryModuleId = $moduleRegistry->getModuleId( RecoveryCodes::MODULE_NAME );
 
 		$dbw = $services
 			->getDBLoadBalancerFactory()
 			->getPrimaryDatabase( 'virtual-oathauth' );
 		$res = $dbw->newSelectQueryBuilder()
-			->select( [ 'oad_id', 'oad_data' ] )
+			->select( [ 'oad_id', 'oad_data', 'oad_type' ] )
 			->from( 'oathauth_devices' )
-			->where( [ 'oad_type' => $totpModuleId ] )
+			->where( [ 'oad_type' => [ $totpModuleId, $recoveryModuleId ] ] )
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
@@ -88,21 +91,29 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 			$totalRows++;
 			$data = FormatJson::decode( $row->oad_data, true );
 
-			if ( !array_key_exists( 'nonce', $data ) ) {
-				$key = TOTPKey::newFromArray( [
-					'secret' => $data['secret'],
-				] );
-				$dataWithEncryptedSecret = $key->jsonSerialize();
-
-				$dbw->newUpdateQueryBuilder()
-					->update( 'oathauth_devices' )
-					->set( [ 'oad_data' => FormatJson::encode( $dataWithEncryptedSecret ) ] )
-					->where( [ 'oad_id' => $row->oad_id ] )
-					->caller( __METHOD__ )
-					->execute();
-
-				$updatedCount++;
+			if ( array_key_exists( 'nonce', $data ) ) {
+				// Already encrypted
+				continue;
 			}
+
+			$key = null;
+			if ( (int)$row->oad_type === $totpModuleId ) {
+				$key = TOTPKey::newFromArray( $data );
+			} elseif ( (int)$row->oad_type === $recoveryModuleId ) {
+				$key = RecoveryCodeKeys::newFromArray( $data );
+			} else {
+				// Impossible
+				continue;
+			}
+
+			$dbw->newUpdateQueryBuilder()
+				->update( 'oathauth_devices' )
+				->set( [ 'oad_data' => FormatJson::encode( $key->jsonSerialize() ) ] )
+				->where( [ 'oad_id' => $row->oad_id ] )
+				->caller( __METHOD__ )
+				->execute();
+
+			$updatedCount++;
 		}
 
 		$totalTimeInSeconds = time() - $startTime;
@@ -119,6 +130,6 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 }
 
 // @codeCoverageIgnoreStart
-$maintClass = UpdateTOTPSecretsToEncryptedFormat::class;
+$maintClass = UpdateSecretsToEncryptedFormat::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
 // @codeCoverageIgnoreEnd
