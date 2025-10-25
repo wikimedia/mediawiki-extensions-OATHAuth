@@ -56,7 +56,7 @@ class OATHManage extends SpecialPage {
 	public const ACTION_DISABLE = 'disable';
 	public const ACTION_DELETE = 'delete';
 
-	protected OATHUser $authUser;
+	protected OATHUser $oathUser;
 	protected bool $nonSpecialEnabledKeys;
 
 	/**
@@ -98,8 +98,8 @@ class OATHManage extends SpecialPage {
 
 	/** @inheritDoc */
 	public function execute( $subPage ) {
-		$this->authUser = $this->userRepo->findByUser( $this->getUser() );
-		$this->nonSpecialEnabledKeys = $this->authUser->userHasNonSpecialEnabledKeys();
+		$this->oathUser = $this->userRepo->findByUser( $this->getUser() );
+		$this->nonSpecialEnabledKeys = $this->oathUser->userHasNonSpecialEnabledKeys();
 
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->disallowUserJs();
@@ -160,7 +160,7 @@ class OATHManage extends SpecialPage {
 	public function checkPermissions() {
 		$this->requireNamedUser();
 
-		if ( !$this->authUser->getCentralId() ) {
+		if ( !$this->oathUser->getCentralId() ) {
 			throw new ErrorPageError(
 				'oathauth-enable',
 				'oathauth-must-be-central',
@@ -174,7 +174,7 @@ class OATHManage extends SpecialPage {
 			$this->displayRestrictionError();
 		}
 
-		if ( !$this->authUser->isTwoFactorAuthEnabled() && !$canEnable ) {
+		if ( !$this->oathUser->isTwoFactorAuthEnabled() && !$canEnable ) {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
 		}
@@ -281,7 +281,7 @@ class OATHManage extends SpecialPage {
 		// 2FA section
 		$keyAccordions = '';
 		$placeholderMessage = '';
-		foreach ( $this->authUser->getKeys() as $key ) {
+		foreach ( $this->oathUser->getKeys() as $key ) {
 			if ( $this->moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial() ) {
 				continue;
 			}
@@ -318,7 +318,7 @@ class OATHManage extends SpecialPage {
 				)->build() );
 			$keyAccordions .= $keyAccordion->build()->getHtml();
 		}
-		if ( !$this->authUser->getKeys() ) {
+		if ( !$this->oathUser->getKeys() ) {
 			// User has no keys, display the placeholder message instead
 			$placeholderMessage = Html::element( 'p',
 				[ 'class' => 'mw-special-OATHManage-authmethods__placeholder' ],
@@ -344,7 +344,7 @@ class OATHManage extends SpecialPage {
 		$authmethodsClasses = [
 			'mw-special-OATHManage-authmethods'
 		];
-		if ( !$this->authUser->getKeys() ) {
+		if ( !$this->oathUser->getKeys() ) {
 			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
 		}
 
@@ -367,7 +367,7 @@ class OATHManage extends SpecialPage {
 
 	private function displayLegacyUI(): void {
 		$this->addGeneralHelp();
-		if ( $this->authUser->isTwoFactorAuthEnabled() ) {
+		if ( $this->oathUser->isTwoFactorAuthEnabled() ) {
 			$this->addEnabledHTML();
 			if ( $this->hasAlternativeModules() ) {
 				$this->addAlternativesHTML();
@@ -484,11 +484,11 @@ class OATHManage extends SpecialPage {
 
 	private function addCustomContent( IModule $module, ?PanelLayout $panel = null ): void {
 		if ( $this->action === self::ACTION_DISABLE ) {
-			$form = new DisableForm( $this->authUser, $this->userRepo, $module, $this->getContext() );
+			$form = new DisableForm( $this->oathUser, $this->userRepo, $module, $this->getContext() );
 		} else {
 			$form = $module->getManageForm(
 				$this->action,
-				$this->authUser,
+				$this->oathUser,
 				$this->userRepo,
 				$this->getContext()
 			);
@@ -517,14 +517,14 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function deleteKey(): IAuthKey {
-		$keyToDelete = $this->authUser->getKeyById( $this->getRequest()->getInt( 'keyId' ) );
+		$keyToDelete = $this->oathUser->getKeyById( $this->getRequest()->getInt( 'keyId' ) );
 		if ( !$keyToDelete ) {
 			throw new ErrorPageError(
 				'oathauth-disable',
 				'oathauth-remove-nosuchkey'
 			);
 		}
-		$this->userRepo->removeKey( $this->authUser, $keyToDelete, $this->getRequest()->getIP(), true );
+		$this->userRepo->removeKey( $this->oathUser, $keyToDelete, $this->getRequest()->getIP(), true );
 		return $keyToDelete;
 	}
 
@@ -535,12 +535,12 @@ class OATHManage extends SpecialPage {
 	 */
 	public function maybeDeleteRecoveryCodes(): bool {
 		// delete recovery codes if this is the last 2fa method for a user
-		if ( $this->authUser->userHasNonSpecialEnabledKeys() ) {
+		if ( $this->oathUser->userHasNonSpecialEnabledKeys() ) {
 			return false;
 		}
 
 		$this->userRepo->removeAllOfType(
-			$this->authUser,
+			$this->oathUser,
 			RecoveryCodes::MODULE_NAME,
 			$this->getRequest()->getIP(),
 			true
@@ -566,7 +566,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function isModuleEnabled( IModule $module ): bool {
-		return (bool)$this->authUser->getKeysForModule( $module->getName() );
+		return (bool)$this->oathUser->getKeysForModule( $module->getName() );
 	}
 
 	/**
@@ -578,7 +578,7 @@ class OATHManage extends SpecialPage {
 	private function isModuleAvailable( IModule $module ): bool {
 		$form = $module->getManageForm(
 			static::ACTION_ENABLE,
-			$this->authUser,
+			$this->oathUser,
 			$this->userRepo,
 			$this->getContext()
 		);
@@ -649,7 +649,7 @@ class OATHManage extends SpecialPage {
 		$moduleNames = array_unique(
 			array_map(
 				static fn ( IAuthKey $key ) => $key->getModule(),
-				$this->authUser->getKeys(),
+				$this->oathUser->getKeys(),
 			)
 		);
 		foreach ( $moduleNames as $moduleName ) {
@@ -698,7 +698,7 @@ class OATHManage extends SpecialPage {
 
 	private function showDeleteWarning( bool $showWrongConfirmMessage ) {
 		$keyId = $this->getRequest()->getInt( 'keyId' );
-		$keyToDelete = $this->authUser->getKeyById( $keyId );
+		$keyToDelete = $this->oathUser->getKeyById( $keyId );
 		if ( !$keyToDelete ) {
 			throw new ErrorPageError(
 				'oathauth-disable',
@@ -707,7 +707,7 @@ class OATHManage extends SpecialPage {
 		}
 		$keyName = $this->getKeyNameAndDescription( $keyToDelete )['name'];
 		$remainingKeys = array_filter(
-			$this->authUser->getNonSpecialKeys(),
+			$this->oathUser->getNonSpecialKeys(),
 			static fn ( $key ) => $key->getId() !== $keyId
 		);
 		$lastKey = count( $remainingKeys ) === 0;
@@ -776,7 +776,7 @@ class OATHManage extends SpecialPage {
 	 * @return void|null
 	 */
 	private function addSpecialModulesHTML(): void {
-		if ( !$this->authUser->getKeys() ) {
+		if ( !$this->oathUser->getKeys() ) {
 			return;
 		}
 		foreach ( $this->getSpecialModules() as $module ) {
@@ -799,13 +799,13 @@ class OATHManage extends SpecialPage {
 
 	/** @return void|null */
 	private function getRecoveryCodesHTML( IModule $module ): void {
-		$keys = $this->authUser->getKeysForModule( $module->getName() );
+		$keys = $this->oathUser->getKeysForModule( $module->getName() );
 		if ( count( $keys ) === 0 ) {
 			// This path should only be possible if a user had an existing TOTP or WebAuthn
 			// key, pre multi-module support.  So let's create an empty Recovery Code Keys
 			// for them, since they will otherwise not yet exist.
-			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->authUser );
-			$keys = $this->authUser->getKeysForModule( $module->getName() );
+			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );
+			$keys = $this->oathUser->getKeysForModule( $module->getName() );
 		}
 
 		$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
@@ -863,7 +863,7 @@ class OATHManage extends SpecialPage {
 		$authmethodsClasses = [
 			'mw-special-OATHManage-authmethods'
 		];
-		if ( !$this->authUser->getKeys() ) {
+		if ( !$this->oathUser->getKeys() ) {
 			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
 		}
 
