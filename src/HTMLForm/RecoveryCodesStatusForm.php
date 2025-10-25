@@ -48,10 +48,10 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 
 		if ( array_key_exists( 0, $moduleDbKeys ) ) {
 			$recoveryCodes = $this->getRecoveryCodesForDisplay( array_shift( $moduleDbKeys ) );
-			$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
-			$this->getOutput()->addModules( 'ext.oath.recovery' );
-			$this->setOutputJsConfigVars( $recoveryCodes );
-			$this->getOutput()->addHtml(
+			$output = $this->getOutput();
+			$output->addModuleStyles( 'ext.oath.recovery.styles' );
+			$output->addModules( 'ext.oath.recovery' );
+			$output->addHtml(
 				$this->generateRecoveryCodesContent( $recoveryCodes )
 			);
 		}
