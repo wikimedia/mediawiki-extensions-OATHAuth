@@ -91,7 +91,6 @@ class UpdateTOTPSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 			if ( !array_key_exists( 'nonce', $data ) ) {
 				$key = TOTPKey::newFromArray( [
 					'secret' => $data['secret'],
-					'scratch_tokens' => $data['scratch_tokens'],
 				] );
 				$dataWithEncryptedSecret = $key->jsonSerialize();
 
