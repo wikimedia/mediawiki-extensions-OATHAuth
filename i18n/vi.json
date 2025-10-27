@@ -30,7 +30,7 @@
 	"oathauth-step2": "Bước 2: Quét mã QR",
 	"oathauth-step2-qrcode": "Quét mã QR dùng ứng dụng hoặc tiện ích mở rộng trình duyệt mà bạn đã tải về ở bước 1 để xác thực dùng hai nhân tố.",
 	"oathauth-step2alt": "Nếu bạn không thể quét mã QR, hãy nhập mật mã và tên tài khoản thủ công:",
-	"oathauth-step3": "Bước 3: Ghi xuống các mã khôi phục",
+	"oathauth-step3": "Bước 3: Ghi lại mã phục hồi",
 	"oathauth-step4": "Bước 4: Xác nhận",
 	"oathauth-entertoken": "Nhập một mã từ thiết bị xác thực của bạn để xác nhận:",
 	"oathauth-disable-for-user": "Tắt xác thực dùng hai nhân tố của thành viên",

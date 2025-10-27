@@ -21,7 +21,8 @@
 			"MacOS Weed",
 			"Lofhi",
 			"Mahabarata",
-			"JLTRY"
+			"JLTRY",
+			"SleaY"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",

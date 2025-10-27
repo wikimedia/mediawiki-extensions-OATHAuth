@@ -78,9 +78,11 @@
 	"notification-header-oathauth-disable": "{{GENDER:$2|ستاسو گڼون}} باندې دوه‌پړاويز تاييد ناچارن‌شوی.",
 	"oathauth-notifications-disable-help": "لارښود",
 	"oathauth-notifications-disable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
+	"notification-header-oathauth-enable": "{{GENDER:$2|ستاسو گڼون}} کې دوه پړاويز تاييد چارن شوی دی",
 	"oathauth-notifications-enable-help": "لارښود",
 	"oathauth-notifications-enable-primary": "د خپل دوه‌پړاويز تاييد اوڼنې کتل",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی دی.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی نه دی.",
-	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:"
+	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:",
+	"oathauth-prefs-disabledgroups-help": "{{PLURAL:$1|دې ډلگي|دې ډلگيو}} کې {{GENDER:$2|ستاسو غړيتوب}} ناچارن دی، تر هغې چې تاسو [[Special:Manage Two-factor authentication|دوه پړاويز تاييد]] چارن کړئ."
 }
