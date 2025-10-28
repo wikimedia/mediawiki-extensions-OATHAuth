@@ -153,38 +153,28 @@ class RecoveryCodeKeys implements IAuthKey {
 			return false;
 		}
 
-		// See if the user is using a recovery code
-		$moduleDbKeysRecCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
-		if ( count( $moduleDbKeysRecCodes ) > self::RECOVERY_CODE_MODULE_COUNT ) {
-			throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' )->text() );
-		}
-
 		$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 		$logger = $this->getLogger();
 
-		if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
-			/** @var RecoveryCodeKeys $objRecoveryCodeKeys */
-			$objRecoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
-			'@phan-var RecoveryCodeKeys $objRecoveryCodeKeys';
-			foreach ( $objRecoveryCodeKeys->recoveryCodeKeys as $userRecoveryCode ) {
-				if ( hash_equals(
-						preg_replace( '/\s+/', '', $data['recoverycode'] ),
-						$userRecoveryCode
-					) ) {
-
-					self::maybeCreateOrUpdateRecoveryCodeKeys( $user, $userRecoveryCode );
-
-					$logger->info(
-						// phpcs:ignore
-						"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
-							'user' => $user->getUser()->getName(),
-							'clientip' => $clientData['clientIp']
-						]
-					);
-
-					return true;
-				}
+		foreach ( $this->recoveryCodeKeys as $userRecoveryCode ) {
+			if ( !hash_equals(
+				$this->normaliseRecoveryCode( $data['recoverycode'] ),
+				$userRecoveryCode
+			) ) {
+				continue;
 			}
+
+			self::maybeCreateOrUpdateRecoveryCodeKeys( $user, $this, $userRecoveryCode );
+
+			$logger->info(
+				// phpcs:ignore
+				"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
+					'user' => $user->getUser()->getName(),
+					'clientip' => $clientData['clientIp']
+				]
+			);
+
+			return true;
 		}
 
 		return false;
@@ -247,58 +237,68 @@ class RecoveryCodeKeys implements IAuthKey {
 	/**
 	 * @throws UnexpectedValueException
 	 */
-	public static function maybeCreateOrUpdateRecoveryCodeKeys( OATHUser $user, string $usedRecoveryCode = '' ): void {
+	public static function maybeCreateOrUpdateRecoveryCodeKeys(
+		OATHUser $user,
+		?RecoveryCodeKeys $recoveryKeys = null,
+		string $usedRecoveryCode = ''
+	): void {
 		$uid = $user->getCentralId();
 		if ( !$uid ) {
 			throw new UnexpectedValueException( wfMessage( 'oathauth-invalidrequest' )->escaped() );
 		}
 
-		// see if recovery codes module exists for user
-		$moduleDbKeys = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
+		if ( $recoveryKeys === null ) {
+			// see if recovery codes module exists for user
+			$moduleDbKeys = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
 
-		if ( count( $moduleDbKeys ) > self::RECOVERY_CODE_MODULE_COUNT ) {
-			throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' ) );
+			if ( count( $moduleDbKeys ) > self::RECOVERY_CODE_MODULE_COUNT ) {
+				throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' ) );
+			}
+
+			if ( array_key_exists( 0, $moduleDbKeys ) && $moduleDbKeys[0] instanceof self ) {
+				$recoveryKeys = $moduleDbKeys[0];
+			} else {
+				$recoveryKeys = self::newFromArray( [ 'recoverycodekeys' => [] ] );
+			}
 		}
 
-		if ( array_key_exists( 0, $moduleDbKeys )
-			&& $moduleDbKeys[0] instanceof self ) {
-			$objRecCodeKeys = $moduleDbKeys[0];
-		} else {
-			$objRecCodeKeys = self::newFromArray( [ 'recoverycodekeys' => [] ] );
-		}
-
-		// remove used recovery code
+		// attempt to remove used recovery code
 		if ( $usedRecoveryCode ) {
-			$key = array_search( $usedRecoveryCode, $objRecCodeKeys->recoveryCodeKeys );
-			if ( is_int( $key ) && $key <= count( $objRecCodeKeys->recoveryCodeKeys ) ) {
-				unset( $objRecCodeKeys->recoveryCodeKeys[$key] );
+			$key = array_search( $usedRecoveryCode, $recoveryKeys->recoveryCodeKeys );
+			if ( $key !== false ) {
+				unset( $recoveryKeys->recoveryCodeKeys[$key] );
 			}
 		}
 
 		// only regenerate if there are no tokens left or these are brand-new recovery codes
-		if ( count( $objRecCodeKeys->recoveryCodeKeys ) === 0 ) {
-			$objRecCodeKeys->regenerateRecoveryCodeKeys();
+		if ( count( $recoveryKeys->recoveryCodeKeys ) === 0 ) {
+			$recoveryKeys->regenerateRecoveryCodeKeys();
 		}
 
-		$recoveryCodeKeys = $objRecCodeKeys->getRecoveryCodeKeys();
+		$recoveryCodeKeys = $recoveryKeys->getRecoveryCodeKeys();
 		if ( count( $recoveryCodeKeys ) > 0 && !in_array( '', $recoveryCodeKeys ) ) {
 			$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
 			$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-			if ( $moduleRegistry->getModuleByKey( $objRecCodeKeys->getModule() )->isEnabled( $user ) ) {
+			$module = $moduleRegistry->getModuleByKey( $recoveryKeys->getModule() );
+			if ( $module->isEnabled( $user ) ) {
 				$oathRepo->updateKey(
 					$user,
 					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-					$objRecCodeKeys
+					$recoveryKeys
 				);
 			} else {
 				$oathRepo->createKey(
 					$user,
-					$moduleRegistry->getModuleByKey( $objRecCodeKeys->getModule() ),
-					$objRecCodeKeys->jsonSerialize(),
+					$module,
+					$recoveryKeys->jsonSerialize(),
 					RequestContext::getMain()->getRequest()->getIP()
 				);
 			}
 		}
+	}
+
+	private function normaliseRecoveryCode( string $token ): string {
+		return (string)preg_replace( '/\s+/', '', $token );
 	}
 
 	/**
@@ -309,7 +309,7 @@ class RecoveryCodeKeys implements IAuthKey {
 	 * @return bool true if this is a recovery code for this key.
 	 */
 	public function isValidRecoveryCode( string $token ): bool {
-		$token = preg_replace( '/\s+/', '', $token );
+		$token = $this->normaliseRecoveryCode( $token );
 		foreach ( $this->recoveryCodeKeys as $key ) {
 			if ( hash_equals( $key, $token ) ) {
 				return true;
