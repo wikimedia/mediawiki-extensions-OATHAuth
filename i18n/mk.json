@@ -126,7 +126,7 @@
 	"oathauth-must-be-central": "{{GENDER:$1|Вашата сметка}} мора да биде поврзана со централниот систем за заверка за да користи двочинителска заверка.",
 	"oathauth-error-multiple-modules": "Засега не е поддржано користење на повеќе начини на двочинителска заверка. Можете да го овозможите $1 само откако ќе го оневозможите $2.",
 	"group-oathauth-twofactorauth": "Корисници кои можат да користат двочинителска заверка",
-	"group-oathauth-twofactorauth-member": "Корисници кои можат да користат двочинителска заверка",
+	"group-oathauth-twofactorauth-member": "корисник кој може да користи двочинителска заверка",
 	"oathauth-remove-nosuchkey": "Клучот не е пронајден",
 	"oathauth-password-header": "Лозинка",
 	"oathauth-password-label": "Задајте силна лозинка за да си ја заштитите сметката.",
@@ -134,9 +134,13 @@
 	"oathauth-authenticator-header": "Двочинителска заверка",
 	"oathauth-authenticator-placeholder": "Додајте дополнителен чекор при најава за да си ја обезбедите сметката.",
 	"oathauth-authenticator-delete": "Отстрани",
+	"oathauth-authenticator-delete-text": "отстрани",
 	"oathauth-totp-add-key": "Додај прилог за заверка",
 	"oathauth-delete-warning-header": "Отстрани $1",
 	"oathauth-delete-warning": "Повеќе нема да можете да го користите овој метод на заверка за да се најавувате.",
+	"oathauth-delete-confirm-box": "Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
+	"oathauth-delete-warning-final": "Отстранувањето на овој начин целосно ќе ја оневозможи двочинителската заверка.",
+	"oathauth-delete-wrong-confirm-message": "Погрешен внос за конечно остранување на клучот. Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
 	"oathauth-delete-success": "Отстранет <strong>$1</strong>.",
 	"oathauth-enable-success": "Додаден <strong>$1</strong>."
 }

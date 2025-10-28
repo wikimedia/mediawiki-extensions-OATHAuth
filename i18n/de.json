@@ -27,6 +27,7 @@
 	"oathauth-recoverycodes-neveragain": "Diese Codes werden nie wieder angezeigt!",
 	"oathauth-recoverytokens-createdat": "Erstellte Wiederherstellungscodes: $1",
 	"oathauth-recoverycodes-download": "Herunterladen",
+	"oathauth-recoverycodes-filename": "Wiederherstellungscodes",
 	"oathauth-recoverycodes-copy": "Kopieren",
 	"oathauth-recoverycodes-copy-success": "Wiederherstellungscodes wurden in deine Zwischenablage kopiert!",
 	"oathauth-recoverycodes-create-label": "Erstelle {{PLURAL:$1|einen neuen Wiederherstellungscode|neue Wiederherstellungscodes}}",
@@ -137,7 +138,7 @@
 	"oathauth-must-be-central": "{{GENDER:$1|Dein Konto}} muss mit dem zentralen Authentifizierungssystem verknüpft sein, um die Zwei-Faktor-Authentifizierung verwenden zu können.",
 	"oathauth-error-multiple-modules": "Derzeit wird die Verwendung mehrerer 2FA-Authentifizierungsmethoden nicht unterstützt. Du kannst $1 nur aktivieren, nachdem du $2 deaktiviert hast.",
 	"group-oathauth-twofactorauth": "Benutzer, die die Zwei-Faktor-Authentifizierung verwenden dürfen",
-	"group-oathauth-twofactorauth-member": "Benutzer, die die Zwei-Faktor-Authentifizierung verwenden dürfen",
+	"group-oathauth-twofactorauth-member": "{{GENDER:$1|Benutzer, der|Benutzerin, die}} die Zwei-Faktor-Authentifizierung verwenden darf",
 	"oathauth-remove-nosuchkey": "Schlüssel nicht gefunden.",
 	"oathauth-password-header": "Passwort",
 	"oathauth-password-label": "Lege zum Schutz deines Kontos ein sicheres Passwort fest.",
@@ -153,5 +154,6 @@
 	"oathauth-delete-warning-final": "Durch das Entfernen dieser Methode wird die Zwei-Faktor-Authentifizierung vollständig deaktiviert.",
 	"oathauth-delete-wrong-confirm-message": "Falsche Eingabe für die endgültige Schlüsselentfernung. Bitte gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
 	"oathauth-delete-success": "<strong>$1</strong> entfernt.",
+	"oathauth-created-at": "Hinzugefügt am $1",
 	"oathauth-enable-success": "<strong>$1</strong> hinzugefügt."
 }

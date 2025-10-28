@@ -155,7 +155,7 @@
 	"oathauth-must-be-central": "{{GENDER:$1|您的账号}}必须链接到中央身份验证系统，才能使用双重身份验证。",
 	"oathauth-error-multiple-modules": "目前不支持使用多种2FA身份验证方法。您只能在禁用$2后启用$1 。",
 	"group-oathauth-twofactorauth": "可使用双重身份验证的用户",
-	"group-oathauth-twofactorauth-member": "可使用双重身份验证的用户",
+	"group-oathauth-twofactorauth-member": "可使用双重身份验证的{{GENDER:$1|用户}}",
 	"oathauth-remove-nosuchkey": "未找到密钥。",
 	"oathauth-password-header": "密码",
 	"oathauth-password-label": "设置强密码以保护您的账号。",

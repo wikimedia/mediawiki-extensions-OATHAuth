@@ -19,6 +19,7 @@
 	"oathauth-recoverycodes-neveragain": "Questi codici non saranno mostrati mai più!",
 	"oathauth-recoverytokens-createdat": "Codici di recupero creati: $1",
 	"oathauth-recoverycodes-download": "Scarica",
+	"oathauth-recoverycodes-filename": "codici di recupero",
 	"oathauth-recoverycodes-copy": "Copia",
 	"oathauth-recoverycodes-copy-success": "I codici di recupero sono stati copiati negli appunti!",
 	"oathauth-recoverycodes-create-label": "Crea {{PLURAL:$1|un nuovo codice di recupero|nuovi codici di recupero}}",
@@ -91,5 +92,5 @@
 	"oathauth-recovery-code-hint": "Hai perso il codice di recupero? Contatta un [[{{MediaWiki:Grouppage-sysop}}|amministratore]].",
 	"oathauth-error-multiple-modules": "Per il momento, l'utilizzo di più metodi di autenticazione 2FA non è supportato. Puoi attivare $1 solo dopo aver disabilitato $2.",
 	"group-oathauth-twofactorauth": "Utenti che possono utilizzare l'autenticazione a due fattori",
-	"group-oathauth-twofactorauth-member": "utente che può utilizzare l'autenticazione a due fattori"
+	"group-oathauth-twofactorauth-member": "{{GENDER:$1|utente}} che può utilizzare l'autenticazione a due fattori"
 }
