@@ -207,7 +207,10 @@
 			"codexComponents": [
 				"CdxMessage",
 				"CdxButton",
-				"CdxAccordion"
+				"CdxAccordion",
+				"CdxField",
+				"CdxLabel",
+				"CdxTextInput"
 			]
 		}
 	},
