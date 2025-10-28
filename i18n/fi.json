@@ -90,7 +90,14 @@
 	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
 	"oathauth-disable-method-warning-button-label": "Vahvista ja jatka",
 	"oathauth-invalidrequest": "Virheellinen pyyntö",
+	"notification-header-oathauth-disable": "Kaksivaiheinen tunnistautuminen on poistettu käytöstä {{GENDER:$2|tunnuksellasi}}.",
+	"notification-header-oathauth-remove-device": "Kaksivaiheisen tunnistautumisen laite on poistettu {{GENDER:$2|tunnukseltasi}}.",
 	"oathauth-notifications-disable-help": "Ohje",
+	"oathauth-notifications-disable-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
+	"notification-header-oathauth-enable": "Kaksivaiheinen tunnistautuminen on otettu käyttöön {{GENDER:$2|tunnuksellasi}}.",
 	"oathauth-notifications-enable-help": "Ohje",
-	"oathauth-notifications-recoverycodesleft-help": "Ohje"
+	"oathauth-notifications-enable-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
+	"oathauth-notifications-recoverycodesleft-help": "Ohje",
+	"oathauth-verify-enabled": "Käyttäjällä {{GENDER:$1|$1}} on kaksivaiheinen tunnistautuminen käytössä.",
+	"oathauth-verify-disabled": "Käyttäjällä {{GENDER:$1|$1}} ei ole kaksivaiheista tunnistautumista käytössä."
 }
