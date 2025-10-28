@@ -52,10 +52,16 @@ class RecoveryCodes implements IModule {
 			return false;
 		}
 
-		$recoveryCode = RecoveryCodeKeys::newFromArray( [
-			'recoverycodekeys' => [ $data['recoverycode'] ]
-		] );
-		if ( $recoveryCode->verify( $data, $user ) ) {
+		$recoveryCodeKeys = $user->getRecoveryCodes();
+
+		if ( $recoveryCodeKeys === [] ) {
+			return false;
+		}
+
+		/** @var RecoveryCodeKeys $recoveryCodeKey */
+		$recoveryCodeKey = $recoveryCodeKeys[0];
+
+		if ( $recoveryCodeKey->verify( $data, $user ) ) {
 			return true;
 		}
 

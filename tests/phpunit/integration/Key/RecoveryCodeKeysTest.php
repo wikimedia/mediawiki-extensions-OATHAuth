@@ -18,6 +18,7 @@ use UnexpectedValueException;
  * @covers \MediaWiki\Extension\OATHAuth\Module\TOTP
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  * @covers \MediaWiki\Extension\OATHAuth\OATHUser
+ * @group Database
  */
 class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public function encryptionTestSetup() {
@@ -140,6 +141,10 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$mockUserIdentity = $this->createMock( UserIdentity::class );
 		$mockWebRequest = $this->createMock( WebRequest::class, [ 'getSecurityLogContext' ] );
 		$mockOATHUser = $this->createMock( OATHUser::class );
+		$mockOATHUser->method( 'getCentralId' )
+			->willReturn( 12345 );
+		$mockOATHUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
 		$this->setTemporaryHook(
 			'GetSecurityLogContext',
 			static function ( array $info, array &$context ) use ( $mockWebRequest, $mockUserIdentity ) {
@@ -149,13 +154,26 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$mockWebRequest->method( 'getSecurityLogContext' )
 			->willReturn( [ 'clientIp' => '1.1.1.1' ] );
 
-		$testData1 = [];
+		$testData = [];
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
-		$this->assertSame( false, $keys->verify( $testData1, $mockOATHUser ) );
+		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
 
 		$keys->regenerateRecoveryCodeKeys();
-		$testData2 = [ 'recoverycode' => 'bad_token' ];
-		$this->assertSame( false, $keys->verify( $testData2, $mockOATHUser ) );
+
+		$testData = [ 'recoverycode' => 'bad_token' ];
+		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
+
+		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
+		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $keys->getRecoveryCodeKeys() );
+
+		// Test that verify works with a generated key
+		$testData = [ 'recoverycode' => $keys->getRecoveryCodeKeys()[0] ];
+		$this->assertSame( true, $keys->verify( $testData, $mockOATHUser ) );
+
+		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ) - 1, $keys->getRecoveryCodeKeys() );
+
+		// Test that you can't verify twice (in a row) with the same recovery code
+		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
 	}
 
 	public function testIsValidRecoveryCode(): void {
