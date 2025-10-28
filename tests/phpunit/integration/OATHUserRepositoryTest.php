@@ -35,16 +35,9 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
  * @group Database
- * @coversDefaultClass \MediaWiki\Extension\OATHAuth\OATHUserRepository
+ * @covers \MediaWiki\Extension\OATHAuth\OATHUserRepository
  */
 class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
-	/**
-	 * @covers ::findByUser
-	 * @covers ::loadKeysFromDatabase
-	 * @covers ::createKey
-	 * @covers ::updateKey
-	 * @covers ::remove
-	 */
 	public function testLookupCreateRemoveKey(): void {
 		$user = $this->getTestUser()->getUser();
 
@@ -127,10 +120,6 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( [], $repository->findByUser( $user )->getKeys() );
 	}
 
-	/**
-	 * @covers ::findByUser
-	 * @covers ::loadKeysFromDatabase
-	 */
 	public function testUserWithNoCentralId() {
 		$user = $this->getTestUser()->getUser();
 
