@@ -860,8 +860,6 @@ class OATHManage extends SpecialPage {
 								'oathauth-recoverycodes-create-label',
 								$this->getConfig()->get( 'OATHRecoveryCodesCount' )
 							) )
-							->setAction( 'destructive' )
-							->setWeight( 'primary' )
 							->setType( 'submit' )
 							->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
 							->build()

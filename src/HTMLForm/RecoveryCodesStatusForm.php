@@ -30,10 +30,20 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 				$this->getConfig()->get( 'OATHRecoveryCodesCount' )
 			);
 			$this->setSubmitTextMsg( $submitMsg );
+			$this->setSubmitDestructive();
+			$this->showCancel();
+			$this->setCancelTarget( $this->getTitle() );
+			$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-recoverycodes-header-create' ) );
 		} else {
 			$this->suppressDefaultSubmit();
 		}
-		return [];
+		return [
+			'warning' => [
+				'type' => 'info',
+				'default' => $this->msg( 'oathauth-recoverycodes-regenerate-warning',
+					$this->getConfig()->get( 'OATHRecoveryCodesCount' ) )->parse(),
+				'raw' => true,
+			] ];
 	}
 
 	/**
