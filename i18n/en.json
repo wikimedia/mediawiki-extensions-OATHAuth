@@ -24,6 +24,8 @@
 	"oathauth-recoverycodes-too-many-instances": "More than one recovery codes instance was found in the database for this user.",
 	"oathauth-recoverycodes-exist": "You have existing recovery codes. Here they are again for you to copy or download to a safe location.",
 	"oathauth-recoverycodes-header": "Recovery options",
+	"oathauth-recoverycodes-header-create": "Create new recovery codes",
+	"oathauth-recoverycodes-regenerate-warning": "If you create {{PLURAL:$1|a new recovery code|new recovery codes}} <strong>your original {{PLURAL:$1|recovery code|recovery codes}} will no longer work.</strong>",
 	"oathauth-failedtovalidateoath": "An error occurred when attempting to validate the code from your authentication application. Please try again.",
 	"oathauth-disable": "Disable two-factor authentication",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",

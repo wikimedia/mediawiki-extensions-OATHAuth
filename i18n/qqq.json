@@ -41,6 +41,8 @@
 	"oathauth-recoverycodes-too-many-instances": "Error message stating that too many recovery device instances were found for a given user within the database.",
 	"oathauth-recoverycodes-exist": "Reminder that the user has existing recovery codes (which were created when they added an initial 2fa factor) and a prompt to copy or donwload them again.",
 	"oathauth-recoverycodes-header": "Section header for the recovery codes section on Special:AccountSecurity",
+	"oathauth-recoverycodes-header-create": "Section header for the create new recovery codes workflow",
+	"oathauth-recoverycodes-regenerate-warning": "Warning that creating a new backup code will disable original backup codes. \n\nParameters: $1 - the number of recovery codes",
 	"oathauth-failedtovalidateoath": "Error message for when OATH is unable to validate a TOTP code provided by a user.",
 	"oathauth-disable": "Page title on Special:OATH while disabling OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-validatedoath": "Plain text found on Special:OATH after a token has been validated.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
