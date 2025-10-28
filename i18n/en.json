@@ -142,7 +142,7 @@
 	"oathauth-authenticator-delete-text": "remove",
 	"oathauth-totp-add-key": "Add an authenticator app",
 	"oathauth-delete-warning-header": "Remove $1",
-	"oathauth-delete-warning": "You won't be able to use this authentication method to log in anymore.",
+	"oathauth-delete-warning": "You won't be able to use this authentication method to log in anymore and your recovery codes will no longer work.",
 	"oathauth-delete-confirm-box": "Enter \"{{int:oathauth-authenticator-delete-text}}\" to continue",
 	"oathauth-delete-warning-final": "Removing this method will disable two-factor authentication entirely.",
 	"oathauth-delete-warning-final-privileged-user": "You have privileges on {{SITENAME}} that require two-factor authentication.\n<strong>You may lose these privileges and may need to request them again manually.</strong>\n\nTip: Add a new method before removing this one.",
