@@ -57,18 +57,16 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public function testNewFromArrayWithNonce() {
 		$this->setMwGlobals( 'wgOATHSecretKey', false );
 		$this->expectException( UnexpectedValueException::class );
-		$key = RecoveryCodeKeys::newFromArray( [
+		$keyArray = [
 			'recoverycodekeys' => [ '88asdyf09sadf' ],
 			'nonce' => 'bad_value',
-		] );
+		];
+		$key = RecoveryCodeKeys::newFromArray( $keyArray );
 
 		$this->encryptionTestSetup();
 
 		$this->expectException( SodiumException::class );
-		$key = RecoveryCodeKeys::newFromArray( [
-			'recoverycodekeys' => [ '88asdyf09sadf' ],
-			'nonce' => 'bad_value',
-		] );
+		$key = RecoveryCodeKeys::newFromArray( $keyArray );
 
 		$key = RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ '88as3hh433jj2o22' ],
