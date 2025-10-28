@@ -238,14 +238,21 @@ class RecoveryCodeKeys implements IAuthKey {
 		$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
 		if ( !$encryptionHelper->isEnabled() ) {
 			// fallback to unencrypted recovery codes
-			return [ 'recoverycodekeys' => $this->getRecoveryCodeKeys() ];
+			return [
+				// T408299 - array_values() to renumber array keys
+				'recoverycodekeys' => array_values( $this->getRecoveryCodeKeys() )
+			];
 		}
 
 		$encryptedData = $this->getRecoveryCodeKeysEncryptedAndNonce();
 		if ( $encryptedData[0] === [] ) {
 			// brand new set of recovery codes or reduced set + same nonce
 			$nonce = $encryptedData[1] ?? '';
-			$encData = $encryptionHelper->encryptStringArrayValues( $this->getRecoveryCodeKeys(), $nonce );
+			$encData = $encryptionHelper->encryptStringArrayValues(
+				// T408299 - array_values() to renumber array keys
+				array_values( $this->getRecoveryCodeKeys() ),
+				$nonce
+			);
 			$this->setRecoveryCodeKeysEncryptedAndNonce( $encData['encrypted_array'], $encData['nonce'] );
 			return [
 				'recoverycodekeys' => $encData['encrypted_array'],
