@@ -211,26 +211,27 @@ class RecoveryCodeKeys implements IAuthKey {
 			];
 		}
 
-		$encryptedData = $this->getRecoveryCodeKeysEncryptedAndNonce();
-		if ( $encryptedData[0] === [] ) {
-			// brand new set of recovery codes or reduced set + same nonce
-			$nonce = $encryptedData[1] ?? '';
-			$encData = $encryptionHelper->encryptStringArrayValues(
-				// T408299 - array_values() to renumber array keys
-				array_values( $this->getRecoveryCodeKeys() ),
-				$nonce
-			);
-			$this->setRecoveryCodeKeysEncryptedAndNonce( $encData['encrypted_array'], $encData['nonce'] );
+		[ $keys, $nonce ] = $this->getRecoveryCodeKeysEncryptedAndNonce();
+		if ( $keys !== [] ) {
+			// do not re - encrypt existing recovery codes
 			return [
-				'recoverycodekeys' => $encData['encrypted_array'],
-				'nonce' => $encData['nonce']
+				// T408299 - array_values() to renumber array keys
+				'recoverycodekeys' => array_values( $keys ),
+				'nonce' => $nonce,
 			];
 		}
 
-		// do not reencrypt existing, unchanged recovery codes
+		// brand new set of recovery codes
+		$nonce ??= '';
+		$encData = $encryptionHelper->encryptStringArrayValues(
+			// T408299 - array_values() to renumber array keys
+			array_values( $this->getRecoveryCodeKeys() ),
+			$nonce
+		);
+		$this->setRecoveryCodeKeysEncryptedAndNonce( $encData['encrypted_array'], $encData['nonce'] );
 		return [
-			'recoverycodekeys' => $encryptedData[0],
-			'nonce' => $encryptedData[1]
+			'recoverycodekeys' => $encData['encrypted_array'],
+			'nonce' => $encData['nonce']
 		];
 	}
 
@@ -267,6 +268,9 @@ class RecoveryCodeKeys implements IAuthKey {
 			$key = array_search( $usedRecoveryCode, $recoveryKeys->recoveryCodeKeys );
 			if ( $key !== false ) {
 				unset( $recoveryKeys->recoveryCodeKeys[$key] );
+				// T408297 - Unset the key for the same encrypted token.
+				// Can we assume the array key is the same?
+				unset( $recoveryKeys->recoveryCodeKeysEncrypted[$key] );
 			}
 		}
 
