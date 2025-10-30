@@ -141,10 +141,14 @@
 	"oathauth-authenticator-header": "אימות דו־שלבי",
 	"oathauth-authenticator-placeholder": "הוספת שלב נוסף בעת הכניסה כדי לסייע באבטחת החשבון שלך.",
 	"oathauth-authenticator-delete": "הסרה",
-	"oathauth-authenticator-delete-text": "הסרה",
+	"oathauth-authenticator-delete-text": "להסיר",
 	"oathauth-totp-add-key": "הוספת יישום אימות",
 	"oathauth-delete-warning-header": "הסרת $1",
 	"oathauth-delete-warning": "לא תהיה לך עוד אפשרות להשתמש בשיטת האימות הזאת כדי להיכנס לחשבון.",
+	"oathauth-delete-confirm-box": "יש להזין \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
+	"oathauth-delete-warning-final": "הסרת השיטה הזאת תכבה את האימות הדו־שלבי לגמרי.",
+	"oathauth-delete-wrong-confirm-message": "קלט שגוי להסרת מפתח אחרון. נא להקליד \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
 	"oathauth-delete-success": "<strong>$1</strong> הוסרה.",
+	"oathauth-created-at": "נוסף ב־$1",
 	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>."
 }

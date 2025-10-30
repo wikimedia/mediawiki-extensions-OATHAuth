@@ -92,5 +92,6 @@
 	"oathauth-recovery-code-hint": "Hai perso il codice di recupero? Contatta un [[{{MediaWiki:Grouppage-sysop}}|amministratore]].",
 	"oathauth-error-multiple-modules": "Per il momento, l'utilizzo di più metodi di autenticazione 2FA non è supportato. Puoi attivare $1 solo dopo aver disabilitato $2.",
 	"group-oathauth-twofactorauth": "Utenti che possono utilizzare l'autenticazione a due fattori",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|utente}} che può utilizzare l'autenticazione a due fattori"
+	"group-oathauth-twofactorauth-member": "{{GENDER:$1|utente}} che può utilizzare l'autenticazione a due fattori",
+	"oathauth-created-at": "Aggiunto il $1"
 }

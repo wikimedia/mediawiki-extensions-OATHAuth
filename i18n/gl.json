@@ -26,6 +26,8 @@
 	"oathauth-recoverycodes-too-many-instances": "Atopouse máis dunha instancia de códigos de recuperación na base de datos para este usuario.",
 	"oathauth-recoverycodes-exist": "Xa tes códigos de recuperación. Aquí están de novo para que os copies ou os descargues a un lugar seguro.",
 	"oathauth-recoverycodes-header": "Opcións de recuperación",
+	"oathauth-recoverycodes-header-create": "Crear novos códigos de recuperación",
+	"oathauth-recoverycodes-regenerate-warning": "Se creas {{PLURAL:$1|un novo código de recuperación|novos códigos de recuperación}}, <strong>{{PLURAL:$1|o teu código de recuperación orixinal deixará|os teus códigos de recuperación orixinais deixarán}} de funcionar.</strong>",
 	"oathauth-failedtovalidateoath": "Produciuse un erro ao tentar validar o código desde a aplicación de autenticación. Inténtao de novo.",
 	"oathauth-disable": "Desactivar a autenticación de dous factores",
 	"oathauth-validatedoath": "Validáronse as credenciais de dous factores. Agora aplicarase a autenticación de dous factores.",
@@ -141,10 +143,12 @@
 	"oathauth-authenticator-delete-text": "quitar",
 	"oathauth-totp-add-key": "Engadir unha aplicación de autenticación",
 	"oathauth-delete-warning-header": "Quitar «$1»",
-	"oathauth-delete-warning": "Xa non poderás usar este método de autenticación para iniciar sesión.",
+	"oathauth-delete-warning": "Xa non poderás usar este método de autenticación para iniciar sesión e os teus códigos de recuperación deixarán de funcionar.",
 	"oathauth-delete-confirm-box": "Escribe «{{int:oathauth-authenticator-delete-text}}» para continuar",
 	"oathauth-delete-warning-final": "Ao eliminar este método, desactivarase por completo a autenticación de dous factores.",
+	"oathauth-delete-warning-final-privileged-user": "Tes privilexios en {{SITENAME}} que requiren autenticación de dous factores.\n<strong>Podes perder estes privilexios e poida que teñas que solicitalos de novo manualmente.</strong>\n\nConsello: Engade un método novo antes de eliminar este.",
 	"oathauth-delete-wrong-confirm-message": "Entrada incorrecta para a eliminación final da chave. Escribe «{{int:oathauth-authenticator-delete-text}}» para continuar.",
 	"oathauth-delete-success": "Eliminouse «<strong>$1</strong>».",
+	"oathauth-created-at": "Engadido o $1",
 	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>»."
 }

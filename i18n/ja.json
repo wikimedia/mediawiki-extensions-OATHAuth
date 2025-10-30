@@ -30,6 +30,7 @@
 	"oathauth-recoverycodes-neveragain": "これらのコードは二度と表示されません。",
 	"oathauth-recoverytokens-createdat": "回復用コード作成日: $1",
 	"oathauth-recoverycodes-download": "ダウンロード",
+	"oathauth-recoverycodes-filename": "回復コード",
 	"oathauth-recoverycodes-copy": "コピー",
 	"oathauth-recoverycodes-copy-success": "回復用コードがクリップボードにコピーされました。",
 	"oathauth-recoverycodes-create-label": "{{PLURAL:$1|新しい回復コード}}を作成",

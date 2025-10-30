@@ -18,7 +18,8 @@
 	"oathauth-recoverycodes-important": "Ta korak je pomemben! Ne preskočite tega koraka!",
 	"oathauth-recoverycodes-neveragain": "Te kode ne bodo nikoli več prikazane!",
 	"oathauth-recoverytokens-createdat": "Ustvarjene obnovitvene kode: $1",
-	"oathauth-recoverycodes-download": "Prenos",
+	"oathauth-recoverycodes-download": "Prenesi",
+	"oathauth-recoverycodes-filename": "obnovitvene kode",
 	"oathauth-recoverycodes-copy": "Kopiraj",
 	"oathauth-recoverycodes-copy-success": "Obnovitvene kode so kopirane v vaše odložišče!",
 	"oathauth-recoverycodes-create-label": "Ustvari {{PLURAL:$1|novo obnovitveno kodo|nove obnovitvene kode}}",
@@ -129,7 +130,7 @@
 	"oathauth-must-be-central": "{{GENDER:$1| Vaš račun}} mora biti povezan s centralnim avtentikacijskim sistemom, da lahko uporabljate dvofaktorsko avtentikacijo.",
 	"oathauth-error-multiple-modules": "Za zdaj uporaba več metod 2FA-avtentikacije ni podprta. $1 lahko omogočite šele po onemogočenju $2.",
 	"group-oathauth-twofactorauth": "Uporabniki, ki lahko uporabljajo dvofaktorsko avtentikacijo",
-	"group-oathauth-twofactorauth-member": "uporabnik, ki lahko uporablja dvofaktorsko avtentikacijo",
+	"group-oathauth-twofactorauth-member": "{{GENDER:$1|uporabnik}}, ki lahko uporablja dvofaktorsko avtentikacijo",
 	"oathauth-remove-nosuchkey": "Ključ ni bil najden.",
 	"oathauth-password-header": "Geslo",
 	"oathauth-password-label": "Za zaščito svojega računa nastavite močno geslo.",
@@ -145,5 +146,6 @@
 	"oathauth-delete-warning-final": "Če boste odstranili to metodo, boste dvofaktorsko avtentikacijo popolnoma onemogočili.",
 	"oathauth-delete-wrong-confirm-message": "Napačen vnos za končno odstranitev ključa. Za nadaljevanje vnesite »{{int:oathauth-authenticator-delete-text}}«.",
 	"oathauth-delete-success": "<strong>$1</strong> odstranjeno.",
+	"oathauth-created-at": "Dodano dne $1",
 	"oathauth-enable-success": "<strong>$1</strong> dodano."
 }

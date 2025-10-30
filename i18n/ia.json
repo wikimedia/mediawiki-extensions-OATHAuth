@@ -143,5 +143,6 @@
 	"oathauth-delete-warning-final": "Le remotion de iste methodo disactivara completemente le authentication bifactorial.",
 	"oathauth-delete-wrong-confirm-message": "Mal entrata pro le remotion del clave final. Per favor scribe “{{int:oathauth-authenticator-delete-text}}” pro continuar",
 	"oathauth-delete-success": "<strong>$1</strong> removite.",
+	"oathauth-created-at": "Addite le $1",
 	"oathauth-enable-success": "<strong>$1</strong> addite."
 }

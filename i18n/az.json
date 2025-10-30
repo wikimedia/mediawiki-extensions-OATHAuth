@@ -29,6 +29,8 @@
 	"oathauth-recoverycodes-too-many-instances": "Bu istifadəçi üçün verilənlər bazasında birdən çox bərpa kodu nümunəsi tapıldı.",
 	"oathauth-recoverycodes-exist": "Mövcud bərpa kodunuz var. Təhlükəsiz yerə köçürmək və ya yükləmək üçün aşağıda yerləşdirilib.",
 	"oathauth-recoverycodes-header": "Bərpa variantları",
+	"oathauth-recoverycodes-header-create": "Yeni bərpa kodları yarat",
+	"oathauth-recoverycodes-regenerate-warning": "Yeni bərpa {{PLURAL:$1|kodu|kodları}} yaratsanız, <strong>orijinal {{PLURAL:$1|bərpa kodlarınız}} artıq işləməyəcək.</strong>",
 	"oathauth-failedtovalidateoath": "Doğrulama tətbiqinizdən kodu doğrulamağa cəhd edərkən xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
 	"oathauth-disable": "İki faktorlu autentifikasiyanı deaktiv et",
 	"oathauth-validatedoath": "İki faktor məlumatları doğrulandı. Artıq iki faktorlu autentifikasiya tətbiq ediləcək.",
@@ -144,10 +146,12 @@
 	"oathauth-authenticator-delete-text": "sil",
 	"oathauth-totp-add-key": "Autentifikator tətbiqi əlavə et",
 	"oathauth-delete-warning-header": "$1 silmək",
-	"oathauth-delete-warning": "Bundan sonra daxil olmaq üçün bu doğrulama metodundan istifadə edə bilməyəcəksiniz.",
+	"oathauth-delete-warning": "Siz artıq daxil olmaq üçün bu autentifikasiya metodundan istifadə edə bilməyəcəksiniz və bərpa kodlarınız artıq işləməyəcək.",
 	"oathauth-delete-confirm-box": "Davam etmək üçün \"{{int:oathauth-authenticator-delete-text}}\" sözünü daxil edin",
 	"oathauth-delete-warning-final": "Bu metodun silinməsi iki faktorlu autentifikasiyanı tamamilə söndürəcək.",
+	"oathauth-delete-warning-final-privileged-user": "{{SITENAME}} saytında iki faktorlu autentifikasiya tələb edən hüquqlarınız var.\n<strong>Siz bu hüquqları itirə bilə və onları yenidən manual tələb edə bilərsiniz.</strong> \n\nİpucu: Bunu silməzdən əvvəl yeni üsul əlavə edin.",
 	"oathauth-delete-wrong-confirm-message": "Son açarın silinməsi üçün yanlış söz. Davam etmək üçün \"{{int:oathauth-authenticator-delete-text}}\" yazın",
 	"oathauth-delete-success": "<strong>$1</strong> silindi.",
+	"oathauth-created-at": "$1 tarixində əlavə edilib",
 	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi."
 }
