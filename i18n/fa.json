@@ -60,7 +60,7 @@
 	"oathauth-auth-ui": "لطفاً یک کد تأیید را از دستگاه تأیید اعتبار خودتان وارد کنید.",
 	"oathauth-throttled": "تعداد تلاش‌ها برای تأیید بیش از حد مجاز بود! لطفاً $1 صبر کنید.",
 	"oathauth-login-failed": "تأیید شکست خورد.",
-	"oathauth-describe-provider": "اصالت‌سنجی دومرحله‌ای (OATH).",
+	"oathauth-describe-provider": "اصالت‌سنجی دوعاملی (OATH).",
 	"grant-group-authentication": "اجرای عمل اصالت‌سنجی برای خودتان و دیگران",
 	"grant-oath": "دسترسی به اطلاعات تأیید اعتبار دومرحله‌ای (OATH) برای خودتان و دیگران",
 	"right-oathauth-api-all": "پرسمان و تأیید اطلاعات OATH برای خودتان و دیگران",
