@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +25,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 
 /**
@@ -51,17 +53,48 @@ class OATHManageTest extends SpecialPageTestBase {
 		);
 	}
 
-	public function testPageLoads() {
+	public function testPageLoadsWithSummary() {
 		$user = $this->getTestUser()->getUser();
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
 
-		[ $html ] = $this->executeSpecialPage(
-			'',
-			null,
-			null,
-			$user,
-		);
-		$this->assertStringContainsString( '(oathmanage-summary)', $html );
+		[ $output ] = $this->executeSpecialPage( '', null, null, $user );
+		$this->assertStringContainsString( '(oathmanage-summary)', $output );
 	}
 
+	public function testTOTPEnableCreationForm() {
+		$user = $this->getTestUser()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+		$request = new FauxRequest(
+			[ 'action' => 'enable', 'module' => 'totp' ],
+		);
+
+		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
+		$this->assertStringContainsString( 'oathauth-step1', $output );
+	}
+
+	public function testTOTPDisableForm() {
+		$user = $this->getTestUser()->getUser();
+		$context = RequestContext::getMain();
+		$context->getRequest()->getSession()->setUser( $user );
+		$context->setLanguage( 'qqx' );
+		$request = new FauxRequest(
+			[ 'action' => 'disable', 'module' => 'totp' ]
+		 );
+
+		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
+		$this->assertStringContainsString( 'oathauth-disable-method-warning', $output );
+	}
+
+	public function testRecoveryCodeFormRenders() {
+		$user = $this->getTestUser()->getUser();
+		$context = RequestContext::getMain();
+		$context->getRequest()->getSession()->setUser( $user );
+		$context->setLanguage( 'qqx' );
+		$request = new FauxRequest(
+			[ 'module' => 'recoverycodes' ]
+		);
+
+		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
+		$this->assertStringContainsString( 'oathauth-recoverycodes-regenerate-warning', $output );
+	}
 }
