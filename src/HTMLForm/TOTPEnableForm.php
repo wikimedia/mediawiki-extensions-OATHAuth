@@ -8,14 +8,12 @@ use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\SvgWriter;
 use MediaWiki\Config\ConfigException;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Status\Status;
 use OOUI\FieldLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
@@ -26,10 +24,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	use KeySessionStorageTrait;
 	use RecoveryCodesTrait;
 
-	/**
-	 * @param array|bool|Status|string $submitResult
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getHTML( $submitResult ) {
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.oath.totpenable.styles' );
@@ -39,7 +34,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when operation was successful
+	 * Add content to output when the operation was successful
 	 */
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'oathauth-validatedoath' );
@@ -51,7 +46,6 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	protected function getDescriptors() {
 		/** @var TOTPKey $key */
 		$key = $this->setKeyDataInSession( 'TOTPKey' );
-		'@phan-var TOTPKey $key';
 		$secret = $key->getSecret();
 		$issuer = $this->oathUser->getIssuer();
 		$account = $this->oathUser->getAccount();
@@ -149,7 +143,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		);
 	}
 
-	private function generateAltStep2Content( IAuthKey $key, string $label ): FieldLayout {
+	private function generateAltStep2Content( TOTPKey $key, string $label ): FieldLayout {
 		$snippet = new HtmlSnippet( '<p>'
 			. $this->msg( 'oathauth-step2alt' )->escaped() . '</p>'
 			. '<strong>' . $this->msg( 'oathauth-secret' )->escaped() . '</strong><br>'
@@ -164,13 +158,8 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	 * Retrieve the current secret for display purposes
 	 *
 	 * The characters of the token are split in groups of 4
-	 *
-	 * @param IAuthKey $key
-	 * @return string
 	 */
-	protected function getSecretForDisplay( IAuthKey $key ) {
-		/** @var TOTPKey $key */
-		'@phan-var TOTPKey $key';
+	protected function getSecretForDisplay( TOTPKey $key ): string {
 		return $this->tokenFormatterFunction( $key->getSecret() );
 	}
 

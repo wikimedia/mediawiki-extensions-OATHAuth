@@ -38,17 +38,13 @@ class DisableOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
-	/**
-	 * @return string
-	 */
+	/** @inheritDoc */
 	protected function getLoginSecurityLevel() {
 		return $this->getName();
 	}
 
 	/**
 	 * Set the page title and add JavaScript RL modules
-	 *
-	 * @param HTMLForm $form
 	 */
 	public function alterForm( HTMLForm $form ) {
 		$form->setMessagePrefix( 'oathauth' );

@@ -157,7 +157,7 @@ class OATHUser {
 	}
 
 	/**
-	 * Get all of the user's keys, but exclude special keys
+	 * Get all the user's keys but exclude special keys
 	 * @return IAuthKey[]
 	 */
 	public function getNonSpecialKeys(): array {

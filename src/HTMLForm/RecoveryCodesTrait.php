@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -44,9 +43,7 @@ trait RecoveryCodesTrait {
 	 *
 	 * The characters of the token are split in groups of 4
 	 */
-	public function getRecoveryCodesForDisplay( IAuthKey $key ): array {
-		/** @var RecoveryCodeKeys $key */
-		'@phan-var RecoveryCodeKeys $key';
+	public function getRecoveryCodesForDisplay( RecoveryCodeKeys $key ): array {
 		return array_map( [ $this, 'tokenFormatterFunction' ], $key->getRecoveryCodeKeys() );
 	}
 
@@ -60,7 +57,7 @@ trait RecoveryCodesTrait {
 	 * @param string $token Token to format
 	 * @return string The token formatted for display
 	 */
-	private function tokenFormatterFunction( $token ) {
+	private function tokenFormatterFunction( string $token ): string {
 		return implode( ' ', str_split( $token, 4 ) );
 	}
 

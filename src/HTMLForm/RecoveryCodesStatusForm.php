@@ -4,17 +4,13 @@ namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Status\Status;
 use UnexpectedValueException;
 
 class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 	use KeySessionStorageTrait;
 	use RecoveryCodesTrait;
 
-	/**
-	 * @param array|bool|Status|string $submitResult
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getHTML( $submitResult ) {
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.oath.recovery.styles' );
@@ -47,7 +43,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when operation was successful
+	 * Add content to output when the operation was successful
 	 */
 	public function onSuccess() {
 		$moduleDbKeys = $this->oathUser->getKeysForModule( $this->module->getName() );
@@ -57,7 +53,10 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		}
 
 		if ( array_key_exists( 0, $moduleDbKeys ) ) {
-			$recoveryCodes = $this->getRecoveryCodesForDisplay( array_shift( $moduleDbKeys ) );
+			/** @var RecoveryCodeKeys $recCodeKeys */
+			$recCodeKeys = array_shift( $moduleDbKeys );
+			'@phan-var RecoveryCodeKeys $recCodeKeys';
+			$recoveryCodes = $this->getRecoveryCodesForDisplay( $recCodeKeys );
 			$output = $this->getOutput();
 			$output->addModuleStyles( 'ext.oath.recovery.styles' );
 			$output->addModules( 'ext.oath.recovery' );
@@ -67,17 +66,14 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		}
 	}
 
-	/**
-	 * @param array $formData
-	 * @return array|bool
-	 */
+	/** @inheritDoc */
 	public function onSubmit( array $formData ) {
 		$keys = $this->oathUser->getKeysForModule( $this->module->getName() );
 		if ( $keys ) {
-			/** @var RecoveryCodeKeys $objRecoveryCodeKeys */
-			$objRecoveryCodeKeys = array_shift( $keys );
-			'@phan-var RecoveryCodeKeys $objRecoveryCodeKeys';
-			$objRecoveryCodeKeys->regenerateRecoveryCodeKeys();
+			/** @var RecoveryCodeKeys $recCodeKeys */
+			$recCodeKeys = array_shift( $keys );
+			'@phan-var RecoveryCodeKeys $recCodeKeys';
+			$recCodeKeys->regenerateRecoveryCodeKeys();
 		}
 
 		RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );

@@ -59,7 +59,7 @@ class RecoveryCodeKeys implements IAuthKey {
 	private const RECOVERY_CODE_LENGTH = 10;
 
 	/**
-	 * Amount of recovery code module instances allowed per user in oathauth_devices
+	 * Number of recovery code module instances allowed per user in oathauth_devices
 	 */
 	public const RECOVERY_CODE_MODULE_COUNT = 1;
 

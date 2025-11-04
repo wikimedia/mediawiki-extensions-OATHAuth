@@ -221,7 +221,6 @@ class TOTPKey implements IAuthKey {
 		if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
 			/** @var RecoveryCodeKeys $recoveryCodeKeys */
 			$recoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
-			'@phan-var RecoveryCodeKeys $recoveryCodeKeys';
 			$res = $recoveryCodeKeys->verify( [ 'recoverycode' => $token ], $user );
 			if ( $res ) {
 				$logger->info(

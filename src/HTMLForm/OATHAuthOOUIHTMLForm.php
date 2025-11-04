@@ -16,15 +16,8 @@ use OOUI\Widget;
 use Psr\Log\LoggerInterface;
 
 abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm {
-	/**
-	 * @var IModule
-	 */
-	protected $module;
 
-	/**
-	 * @var LoggerInterface
-	 */
-	protected $logger;
+	protected LoggerInterface $logger;
 
 	/**
 	 * @var Layout|null
@@ -46,10 +39,9 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	public function __construct(
 		protected readonly OATHUser $oathUser,
 		protected readonly OATHUserRepository $oathRepo,
-		IModule $module,
+		protected readonly IModule $module,
 		IContextSource $context
 	) {
-		$this->module = $module;
 		$this->logger = $this->getLogger();
 
 		parent::__construct( $this->getDescriptors(), $context, "oathauth" );
@@ -86,7 +78,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 
 	/** @inheritDoc */
 	protected function wrapFieldSetSection( $legend, $section, $attributes, $isRoot ) {
-		// to get a user visible effect, wrap the fieldset into a framed panel layout
+		// to get a user-visible effect, wrap the fieldset into a framed panel layout
 		$layout = new PanelLayout( [
 			'expanded' => false,
 			'infusable' => false,
