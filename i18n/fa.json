@@ -64,7 +64,7 @@
 	"oathauth-auth-ui": "لطفاً یک کد تأیید را از دستگاه اصالت‌سنجی دومرحله‌ای خودتان وارد کنید (نظیر [https://www.authy.com Authy]، [https://freeotp.github.io/ FreeOTP]، [https://support.google.com/accounts/answer/1066447 Google Authenticator]، [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] یا [https://1password.com/ 1Password]).",
 	"oathauth-throttled": "تعداد تلاش‌ها برای تأیید بیش از حد مجاز بود! لطفاً $1 صبر کنید.",
 	"oathauth-login-failed": "تأیید شکست خورد.",
-	"oathauth-describe-provider": "اصالت‌سنجی دومرحله‌ای (OATH).",
+	"oathauth-describe-provider": "اصالت‌سنجی دوعاملی (OATH).",
 	"grant-group-authentication": "اجرای عمل اصالت‌سنجی برای خودتان و دیگران",
 	"grant-oath": "دسترسی به اطلاعات تأیید اعتبار دومرحله‌ای (OATH) برای خودتان و دیگران",
 	"right-oathauth-api-all": "پرسمان و تأیید اطلاعات OATH برای خودتان و دیگران",
@@ -121,6 +121,6 @@
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|عضویت شما}} در {{PLURAL:$1|این گروه|این گروه‌ها}} غیرفعال است تا زمانی که [[Special:Manage Two-factor authentication|احراز هویت دومرحله‌ای]] را فعال کنید.",
 	"oathauth-qrcode-alt": "کد QR قابل اسکن که نمایانگر کلید مخفی است.",
 	"oathauth-hint": "به دستگاه یا برنامهٔ خود دسترسی ندارید؟ می‌توانید کدهای بازیابی (که هنگام فعال‌سازی احراز هویت دومرحله‌ای ارائه شدند) را در این فیلد وارد کنید.",
-	"oathauth-must-be-central": "برای استفاده از احراز هویت دومرحله‌ای، {{GENDER:$1|حساب شما}} باید به سامانهٔ مرکزی احراز هویت متصل باشد.",
-	"oathauth-error-multiple-modules": "در حال حاضر استفاده از چندین روش احراز هویت دومرحله‌ای پشتیبانی نمی‌شود. شما فقط می‌توانید $1 را پس از غیرفعال کردن $2 فعال کنید."
+	"oathauth-must-be-central": "برای استفاده از اصالت‌سنجی دوعاملی، {{GENDER:$1|حساب شما}} باید به سامانهٔ مرکزی احراز هویت متصل باشد.",
+	"oathauth-error-multiple-modules": "در حال حاضر استفاده از چندین روش اصالت‌سنجی دوعاملی پشتیبانی نمی‌شود. شما فقط می‌توانید $1 را پس از غیرفعال کردن $2 فعال کنید."
 }
