@@ -18,7 +18,8 @@
 			"Verdy p",
 			"Xiplus",
 			"Zoranzoki21",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Nemoralis"
 		]
 	},
 	"oathauth-desc": "{{desc|name=OATH Auth|url=https://www.mediawiki.org/wiki/Extension:OATHAuth}}",
@@ -41,11 +42,11 @@
 	"oathauth-failedtovalidateoath": "Plain text found on Special:OATH when validation of a token has failed.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-disabledoath": "Plain text found on Special:OATH when disabling OATH has been successful.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-prefs-label": "Plain text label seen on Special:Preferences\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]\n{{Identical|Two factor authentication}}",
-	"oathauth-step1": "Label for step 1 on Special:OATH form",
+	"oathauth-step1": "Label for step 1 on Special:OATH form\n\nAll the steps should read coherently:\n# {{msg-mw|Oathauth-step1}}\n# {{msg-mw|Oathauth-step-friendly-name}}\n# {{msg-mw|Oathauth-step2}}\n# {{msg-mw|Oathauth-step3}}\n# {{msg-mw|Oathauth-step4}}",
 	"oathauth-step1-test": "Text for step 1 on Special:OATH form. Check the name of \"Google Authenticator\" in your language in the Play Market—it may be translated.",
 	"oathauth-step2": "Label for step 2, the QR code, on Special:OATH",
-	"oathauth-step2-qrcode": "Instruction to scan the QR code using the application downloaded in step 1",
-	"oathauth-step2alt": "Label for information on how to manually (if you are unable to scan/use the QR code) do step 2 on Special:OATH",
+	"oathauth-step2-qrcode": "Instruction to scan the QR code using the application downloaded in step 1.\n\nNote: Step numbers are out of sync with message title due to adding a new step",
+	"oathauth-step2alt": "Label for information on how to manually (if you are unable to scan/use the QR code) do step 2 on Special:OATH.\n\nNote: Step numbers are out of sync with message title due to adding a new step",
 	"oathauth-step3": "Label for step 3 information on Special:OATH",
 	"oathauth-step4": "Label for step 4 information on Special:OATH",
 	"oathauth-entertoken": "Label on input field on Special:OATH asking user to enter token",

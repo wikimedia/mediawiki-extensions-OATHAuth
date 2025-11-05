@@ -93,12 +93,20 @@
 	"oathauth-invalidrequest": "Virheellinen pyyntö",
 	"notification-header-oathauth-disable": "Kaksivaiheinen tunnistautuminen on poistettu käytöstä {{GENDER:$2|tunnuksellasi}}.",
 	"notification-header-oathauth-remove-device": "Kaksivaiheisen tunnistautumisen laite on poistettu {{GENDER:$2|tunnukseltasi}}.",
+	"notification-body-oathauth-disable-other": "Jos {{GENDER:$2|et}} pyytänyt tätä, {{GENDER:$2|sinun}} kannattaa ottaa yhteyttä ylläpitäjään.",
+	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|Tunnuksellasi}} on edelleen {{PLURAL:$3|yksi muu aktiivinen laite|$3 muuta aktiivista laitetta}}.",
 	"oathauth-notifications-disable-help": "Ohje",
 	"oathauth-notifications-disable-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
 	"notification-header-oathauth-enable": "Kaksivaiheinen tunnistautuminen on otettu käyttöön {{GENDER:$2|tunnuksellasi}}.",
 	"oathauth-notifications-enable-help": "Ohje",
 	"oathauth-notifications-enable-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
+	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Sinulla}} on $3 {{PLURAL:$3|palautuskoodi|palautuskoodia}} jäljellä. Harkitse kaksivaiheisen tunnistautumisen käytöstä poistamista ja uudelleen käyttöön ottamista luodaksesi $4 {{PLURAL:$4|uuden palautuskoodin|uutta palautuskoodia}} tulevaisuutta varten.",
 	"oathauth-notifications-recoverycodesleft-help": "Ohje",
+	"oathauth-notifications-recoverycodesleft-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
 	"oathauth-verify-enabled": "Käyttäjällä {{GENDER:$1|$1}} on kaksivaiheinen tunnistautuminen käytössä.",
-	"oathauth-verify-disabled": "Käyttäjällä {{GENDER:$1|$1}} ei ole kaksivaiheista tunnistautumista käytössä."
+	"oathauth-verify-disabled": "Käyttäjällä {{GENDER:$1|$1}} ei ole kaksivaiheista tunnistautumista käytössä.",
+	"oathauth-prefs-disabledgroups": "Käytöstä {{PLURAL:$1|poistettu ryhmä|poistetut ryhmät}}:",
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Jäsenyytesi}} {{PLURAL:$1|tässä ryhmässä|näissä ryhmissä}} on kytketty pois päältä, kunnes  otat käyttöön [[Special:Manage Two-factor authentication|kaksivaiheisen tunnistautumisen]].",
+	"oathauth-qrcode-alt": "Skannattava QR-koodi, joka edustaa salaista avainta.",
+	"oathauth-error-multiple-modules": "Tällä hetkellä useiden kaksivaiheisten tunnustautumistapojen käyttöä ei tueta. Voit ottaa käyttöön tavan $1 vasta poistettuasi käytöstä tavan $2."
 }

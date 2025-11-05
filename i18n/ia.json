@@ -24,7 +24,7 @@
 	"oathauth-failedtovalidateoath": "Impossibile validar credentiales bifactorial",
 	"oathauth-disabledoath": "Le authentication bifactorial ha essite disactivate.",
 	"oathauth-prefs-label": "Authentication bifactorial:",
-	"oathauth-step1": "Passo 1: Discarga un programma pro authentication bifactorial",
+	"oathauth-step1": "Passo 1: Discarga un programma de authentication bifactorial",
 	"oathauth-step1-test": "Discarga un programma pro authentication bifactorial. Isto pote esser un application mobile o de scriptorio, como [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] o [https://1password.com/ 1Password].",
 	"oathauth-step2": "Passo 2: Scanna le codice QR",
 	"oathauth-step2-qrcode": "Scanna le codice QR usante le application o extension del navigator que tu ha discargate in le passo 1 pro le authentication bifactorial.",

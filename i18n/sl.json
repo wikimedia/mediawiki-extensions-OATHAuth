@@ -18,7 +18,7 @@
 	"oathauth-recoverycodes-important": "Ta korak je pomemben! Ne preskočite tega koraka!",
 	"oathauth-recoverycodes-neveragain": "Te kode ne bodo nikoli več prikazane!",
 	"oathauth-recoverytokens-createdat": "Ustvarjene obnovitvene kode: $1",
-	"oathauth-recoverycodes-download": "Prenos",
+	"oathauth-recoverycodes-download": "Prenesi",
 	"oathauth-recoverycodes-copy": "Kopiraj",
 	"oathauth-recoverycodes-copy-success": "Obnovitvene kode so kopirane v vaše odložišče!",
 	"oathauth-disable": "Izklop dvofaktorske avtentikacije",
