@@ -114,6 +114,9 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 				->execute();
 
 			$updatedCount++;
+			if ( $updatedCount % 50 === 0 ) {
+				$this->output( "{$updatedCount}\n" );
+			}
 		}
 
 		$totalTimeInSeconds = time() - $startTime;
