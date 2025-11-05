@@ -122,7 +122,9 @@ class OATHManage extends SpecialPage {
 					'deletesuccess' => $deletedKeyName
 				] ) );
 				return;
-			} elseif ( $this->getRequest()->getBool( 'warn' ) ) {
+			}
+
+			if ( $this->getRequest()->getBool( 'warn' ) ) {
 				$this->showDeleteWarning( false );
 				return;
 			}
@@ -162,7 +164,7 @@ class OATHManage extends SpecialPage {
 			$this->displayRestrictionError();
 		}
 
-		if ( !$this->oathUser->isTwoFactorAuthEnabled() && !$canEnable ) {
+		if ( !$canEnable && !$this->oathUser->isTwoFactorAuthEnabled() ) {
 			// No enabled module and cannot enable - nothing to do
 			$this->displayRestrictionError();
 		}
@@ -209,7 +211,7 @@ class OATHManage extends SpecialPage {
 			)->text();
 		}
 
-		// If the key has a non-empty name, use that, and set the description to the module name
+		// Use the key if it has a non-empty name and set the description to the module name
 		if ( $keyName !== null && trim( $keyName ) !== '' ) {
 			return [
 				'name' => $keyName,
@@ -230,7 +232,7 @@ class OATHManage extends SpecialPage {
 		// TODO JS enhancement for rename and delete buttons
 		$codex = new Codex();
 
-		// Delete success message, if applicable
+		// Show the delete success message, if applicable
 		$deletedKeyName = $this->getRequest()->getVal( 'deletesuccess' );
 		if ( $deletedKeyName !== null ) {
 			$this->getOutput()->addHTML( Html::successBox(
@@ -238,7 +240,7 @@ class OATHManage extends SpecialPage {
 			) );
 		}
 
-		// Add success message for newly enabled key
+		// Add the success message for newly enabled key
 		$addedKeyName = $this->getRequest()->getVal( 'addsuccess' );
 		if ( $addedKeyName !== null ) {
 			$this->getOutput()->addHTML(
@@ -447,7 +449,7 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * Get the panel with special content for a module. This creates a very
-	 * basic layout, moreso even than getGenericContent, and assumes necessary
+	 * basic layout, even more than getGenericContent, and assumes the necessary
 	 * custom elements will be handled exclusively in addCustomContent() and
 	 * getManageForm().
 	 */
@@ -532,9 +534,9 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * function to remove recovery codes as an auth factor if the user
-	 * has removed their final 2fa key. This functionality also exists
-	 * within the older DisableForm class)
+	 * Function to remove recovery codes as an auth factor if the user
+	 * has removed their final 2FA key. This functionality also exists
+	 * within the older DisableForm class.
 	 */
 	public function maybeDeleteRecoveryCodes(): bool {
 		// delete recovery codes if this is the last 2fa method for a user
@@ -573,10 +575,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Verifies if the module is available to be enabled
-	 *
-	 * @param IModule $module
-	 * @return bool
+	 * Verifies if the module can be enabled
 	 */
 	private function isModuleAvailable( IModule $module ): bool {
 		$form = $module->getManageForm(
@@ -585,10 +584,8 @@ class OATHManage extends SpecialPage {
 			$this->userRepo,
 			$this->getContext()
 		);
-		if ( $form === '' ) {
-			return false;
-		}
-		return true;
+
+		return $form !== '';
 	}
 
 	/**
@@ -620,7 +617,7 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * When performing an action on a module (like enable/disable),
-	 * page should contain only the form for that action.
+	 * the page should contain only the form for that action.
 	 */
 	private function clearPage(): void {
 		if ( $this->isGenericAction() ) {
@@ -675,7 +672,7 @@ class OATHManage extends SpecialPage {
 				&& $this->isModuleAvailable( $module )
 				&& !$module->isSpecial()
 			) {
-					$modules[] = $module;
+				$modules[] = $module;
 			}
 		}
 		return $modules;
@@ -689,7 +686,7 @@ class OATHManage extends SpecialPage {
 		$modules = [];
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
 			if ( $this->isModuleAvailable( $module ) && $module->isSpecial() ) {
-					$modules[] = $module;
+				$modules[] = $module;
 			}
 		}
 		return $modules;
@@ -702,7 +699,6 @@ class OATHManage extends SpecialPage {
 	/**
 	 * Checks local groups to see what groups a user is in
 	 * If any of the local groups are required, then the user is privileged
-	 * @return bool
 	 */
 	private function isPrivilegedUser(): bool {
 		$requiredGroups = $this->getConfig()->get( 'OATHRequiredForGroups' );
@@ -793,9 +789,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Adds html for all available special modules
-	 *
-	 * @return void|null
+	 * Adds HTML for all available special modules
 	 */
 	private function addSpecialModulesHTML(): void {
 		if ( !$this->oathUser->getKeys() ) {
@@ -807,7 +801,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Adds special module html content
+	 * Adds special module HTML content
 	 *
 	 * Since special modules can vary in a number of ways from standard modules,
 	 * there isn't much benefit to further abstracting/genericizing display logic
@@ -819,12 +813,11 @@ class OATHManage extends SpecialPage {
 		}
 	}
 
-	/** @return void|null */
 	private function getRecoveryCodesHTML( IModule $module ): void {
 		$keys = $this->oathUser->getKeysForModule( $module->getName() );
 		if ( count( $keys ) === 0 ) {
 			// This path should only be possible if a user had an existing TOTP or WebAuthn
-			// key, pre multi-module support. So let's create an empty Recovery Code Keys
+			// key, pre-multi-module support. So let's create an empty Recovery Code Keys
 			// for them, since they will otherwise not yet exist.
 			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );
 			$keys = $this->oathUser->getKeysForModule( $module->getName() );
