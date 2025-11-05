@@ -62,8 +62,6 @@ trait RecoveryCodesTrait {
 	}
 
 	private function generateRecoveryCodesContent( array $recoveryCodes, bool $displayExisting = false ): FieldLayout {
-		$now = wfTimestampNow();
-
 		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
 
 		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
@@ -71,27 +69,35 @@ trait RecoveryCodesTrait {
 		}
 
 		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+			/** @var RecoveryCodeKeys $key */
+			$key = array_shift( $moduleDbKeys );
+			'@phan-var RecoveryCodeKeys $key';
 			$recoveryCodes = array_map(
 				[ $this, 'tokenFormatterFunction' ],
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				array_shift( $moduleDbKeys )->getRecoveryCodeKeys()
+				$key->getRecoveryCodeKeys()
 			);
+
+			$timestamp = $key->getCreatedTimestamp();
 			$snippet = '<p>' . $this->msg( 'oathauth-recoverycodes-exist' )->escaped() . '</p>';
 		} else {
+			$timestamp = wfTimestampNow();
 			$snippet =
 				'<strong>' . $this->msg( 'oathauth-recoverycodes-important' )->escaped() . '</strong><p>' .
-				$this->msg( 'oathauth-recoverycodes' )->escaped() . '</p><p>' .
-				$this->msg( 'rawmessage' )->rawParams(
-					$this->msg(
-						'oathauth-recoverytokens-createdat',
-						$this->getLanguage()->userTimeAndDate( $now, $this->oathUser->getUser() )
-					)->parse()
-					. $this->msg( 'word-separator' )->escaped()
-					. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $now ) )->escaped()
-				) . '</p>';
+				$this->msg( 'oathauth-recoverycodes' )->escaped() . '</p>';
 		}
 
-		$snippet .= $this->createResourceList( $recoveryCodes ) . '<br />' .
+		$snippet .= '<p>' .
+			$this->msg( 'rawmessage' )->rawParams(
+				$this->msg(
+					'oathauth-recoverytokens-createdat',
+					$this->getLanguage()->userTimeAndDate( $timestamp, $this->oathUser->getUser() )
+				)->parse()
+				. $this->msg( 'word-separator' )->escaped()
+				. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $timestamp ) )->escaped()
+			) .
+			'</p>' .
+			$this->createResourceList( $recoveryCodes ) .
+			'<br />' .
 			$this->createRecoveryCodesCopyButton() .
 			$this->createRecoveryCodesDownloadLink( $recoveryCodes );
 
