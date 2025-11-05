@@ -147,6 +147,9 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 
 			$this->commitTransactionRound( __METHOD__ );
 			$updatedCount++;
+			if ( $updatedCount % 50 === 0 ) {
+				$this->output( "{$updatedCount}\n" );
+			}
 		}
 
 		$totalTimeInSeconds = time() - $startTime;
