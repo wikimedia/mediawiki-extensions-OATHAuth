@@ -22,6 +22,8 @@
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\ErrorPageError;
+use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\MainConfigNames;
@@ -96,5 +98,36 @@ class OATHManageTest extends SpecialPageTestBase {
 
 		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
 		$this->assertStringContainsString( 'oathauth-recoverycodes-regenerate-warning', $output );
+	}
+
+	public function testMaxKeysPerUser() {
+		$user = $this->getTestUser();
+		$maxTestKeys = 5;
+		$this->setMwGlobals( 'wgOATHMaxKeysPerUser', $maxTestKeys );
+		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+		for ( $i = 0; $i < 6; $i++ ) {
+			$key = TOTPKey::newFromRandom();
+			$userRepository->createKey(
+				$userRepository->findByUser( $user->getUserIdentity() ),
+				OATHAuthServices::getInstance( $this->getServiceContainer() )
+					->getModuleRegistry()
+					->getModuleByKey( 'totp' ),
+				$key->jsonSerialize(),
+				'127.0.0.1'
+			);
+		}
+
+		$oathUser = $userRepository->findByUser( $user->getUser() );
+		$this->assertCount( 6, $oathUser->getKeys() );
+
+		$context = RequestContext::getMain();
+		$context->getRequest()->getSession()->setUser( $user->getUser() );
+		$request = new FauxRequest(
+			[ 'action' => 'enable', 'module' => 'totp' ]
+		 );
+
+		$this->expectException( ErrorPageError::class );
+		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys ) );
+		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
 }

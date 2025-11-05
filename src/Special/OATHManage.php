@@ -469,7 +469,23 @@ class OATHManage extends SpecialPage {
 		return $modulePanel;
 	}
 
+	/**
+	 * Check max keys for a user and return true if max is exceeded
+	 * @return bool
+	 */
+	private function exceedsKeyLimit(): bool {
+		return count( $this->oathUser->getNonSpecialKeys() ) >= $this->getConfig()->get( 'OATHMaxKeysPerUser' );
+	}
+
 	private function addCustomContent( IModule $module, ?PanelLayout $panel = null ): void {
+		if ( $this->action === self::ACTION_ENABLE && $this->exceedsKeyLimit() ) {
+			throw new ErrorPageError(
+				'oathauth-max-keys-exceeded',
+				'oathauth-max-keys-exceeded-message',
+				[ Message::numParam( $this->getConfig()->get( 'OATHMaxKeysPerUser' ) ) ]
+			);
+		}
+
 		if ( $this->action === self::ACTION_DISABLE ) {
 			$form = new DisableForm( $this->oathUser, $this->userRepo, $module, $this->getContext() );
 		} else {

@@ -170,5 +170,7 @@
 	"oathauth-delete-wrong-confirm-message": "Warning message shown when deleting the last 2FA method and the confirmation message is incorrect",
 	"oathauth-delete-success": "Success message shown when a 2FA method has been deleted.\n\nParameters:\n* $1 - Name of the 2FA method that was deleted",
 	"oathauth-created-at": "Timestamp label for key\n\nParameters:\n* $1 - Date from createdTimestamp for key",
-	"oathauth-enable-success": "Success message shown when a 2FA method has been added.\n\nParameters:\n* $1 - Name of the 2FA method that was enabled"
+	"oathauth-enable-success": "Success message shown when a 2FA method has been added.\n\nParameters:\n* $1 - Name of the 2FA method that was enabled",
+	"oathauth-max-keys-exceeded": "Error message title shown when a user has exceeded the max amount of keys.",
+	"oathauth-max-keys-exceeded-message": "Error message title shown when a user has exceeded the max amount of keys.\n\nParameters:\n* $1 - Number of max keys allowed per user."
 }
