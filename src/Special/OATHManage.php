@@ -366,36 +366,6 @@ class OATHManage extends SpecialPage {
 		);
 	}
 
-	private function addEnabledHTML(): void {
-		$enabledModules = $this->getEnabledModules();
-		$this->addHeading( $this->msg( 'oathauth-ui-enabled-module', count( $enabledModules ) ) );
-		foreach ( $enabledModules as $module ) {
-			$this->addModuleHTML( $module );
-		}
-	}
-
-	private function addAlternativesHTML(): void {
-		$this->addHeading( $this->msg( 'oathauth-ui-not-enabled-modules' ) );
-		$this->addInactiveHTML();
-	}
-
-	private function nothingEnabled(): void {
-		$this->addHeading( $this->msg( 'oathauth-ui-available-modules' ) );
-		$this->addInactiveHTML();
-	}
-
-	private function addInactiveHTML(): void {
-		foreach ( $this->getAvailableModules() as $module ) {
-			$this->addModuleHTML( $module );
-		}
-	}
-
-	private function addGeneralHelp(): void {
-		$this->getOutput()->addHTML( $this->msg(
-			'oathauth-ui-general-help'
-		)->parseAsBlock() );
-	}
-
 	private function addModuleHTML( IModule $module ): void {
 		if ( $this->isModuleRequested( $module ) ) {
 			$this->addCustomContent( $module );
@@ -440,30 +410,6 @@ class OATHManage extends SpecialPage {
 		}
 		$headerLayout->addItems( [ $label ] );
 
-		$modulePanel->appendContent( $headerLayout );
-		$modulePanel->appendContent( new HtmlSnippet(
-			$module->getDescriptionMessage()->parseAsBlock()
-		) );
-		return $modulePanel;
-	}
-
-	/**
-	 * Get the panel with special content for a module. This creates a very
-	 * basic layout, even more than getGenericContent, and assumes the necessary
-	 * custom elements will be handled exclusively in addCustomContent() and
-	 * getManageForm().
-	 */
-	private function getSpecialContent( IModule $module ): PanelLayout {
-		$modulePanel = new PanelLayout( [
-			'framed' => true,
-			'expanded' => false,
-			'padded' => true
-		] );
-		$headerLayout = new HorizontalLayout();
-		$label = new LabelWidget( [
-			'label' => $module->getDisplayName()->text()
-		] );
-		$headerLayout->addItems( [ $label ] );
 		$modulePanel->appendContent( $headerLayout );
 		$modulePanel->appendContent( new HtmlSnippet(
 			$module->getDescriptionMessage()->parseAsBlock()
@@ -641,44 +587,6 @@ class OATHManage extends SpecialPage {
 	}
 
 	/**
-	 * Returns modules currently enabled by the user.
-	 * @return IModule[]
-	 */
-	private function getEnabledModules(): array {
-		$modules = [];
-		$moduleNames = array_unique(
-			array_map(
-				static fn ( IAuthKey $key ) => $key->getModule(),
-				$this->oathUser->getKeys(),
-			)
-		);
-		foreach ( $moduleNames as $moduleName ) {
-			if ( !$this->moduleRegistry->getModuleByKey( $moduleName )->isSpecial() ) {
-				$modules[] = $this->moduleRegistry->getModuleByKey( $moduleName );
-			}
-		}
-		return $modules;
-	}
-
-	/**
-	 * Returns modules which are not enabled by the user, but the user would be able to enable them.
-	 * @return IModule[]
-	 */
-	private function getAvailableModules(): array {
-		$modules = [];
-		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
-			if (
-				!$this->isModuleEnabled( $module )
-				&& $this->isModuleAvailable( $module )
-				&& !$module->isSpecial()
-			) {
-				$modules[] = $module;
-			}
-		}
-		return $modules;
-	}
-
-	/**
 	 * Returns special modules, which do not follow the constraints of standard modules.
 	 * @return IModule[]
 	 */
@@ -690,10 +598,6 @@ class OATHManage extends SpecialPage {
 			}
 		}
 		return $modules;
-	}
-
-	private function hasAlternativeModules(): bool {
-		return (bool)$this->getAvailableModules();
 	}
 
 	/**
