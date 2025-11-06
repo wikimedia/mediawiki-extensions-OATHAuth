@@ -6,6 +6,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\Tests\Key\EncryptionHelperTest;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 
@@ -20,7 +21,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		if ( !extension_loaded( 'sodium' ) ) {
 			$this->markTestSkipped( 'sodium extension not installed, skipping' );
 		}
-		$this->setMwGlobals( 'wgOATHSecretKey', 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a' );
+		$this->setMwGlobals( 'wgOATHSecretKey', EncryptionHelperTest::SECRET_KEY );
 		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
 		$this->assertTrue(
 			OATHAuthServices::getInstance( $this->getServiceContainer() )

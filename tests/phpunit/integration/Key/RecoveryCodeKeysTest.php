@@ -6,8 +6,8 @@ use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\Tests\Key\EncryptionHelperTest;
 use MediaWiki\Request\WebRequest;
-use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 use UnexpectedValueException;
@@ -21,11 +21,16 @@ use UnexpectedValueException;
  * @group Database
  */
 class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
+
+	private const NONCE = '7LRMXBX2AKPYWDBUBDHCN2WCFJXFX4XR2GZRV7Q=';
+	private const VALID_RECOVERY_KEY = [ '88as3hh433jj2o22' ];
+	private const INVALID_RECOVERY_KEY = [ '88asdyf09sadf' ];
+
 	public function encryptionTestSetup() {
 		if ( !extension_loaded( 'sodium' ) ) {
 			$this->markTestSkipped( 'sodium extension not installed, skipping' );
 		}
-		$this->setMwGlobals( 'wgOATHSecretKey', 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a' );
+		$this->setMwGlobals( 'wgOATHSecretKey', EncryptionHelperTest::SECRET_KEY );
 		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
 		$this->assertTrue(
 			OATHAuthServices::getInstance( $this->getServiceContainer() )
@@ -58,19 +63,19 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->setMwGlobals( 'wgOATHSecretKey', false );
 		$this->expectException( UnexpectedValueException::class );
 		$keyArray = [
-			'recoverycodekeys' => [ '88asdyf09sadf' ],
+			'recoverycodekeys' => self::INVALID_RECOVERY_KEY,
 			'nonce' => 'bad_value',
 		];
-		$key = RecoveryCodeKeys::newFromArray( $keyArray );
+		RecoveryCodeKeys::newFromArray( $keyArray );
 
 		$this->encryptionTestSetup();
 
 		$this->expectException( SodiumException::class );
-		$key = RecoveryCodeKeys::newFromArray( $keyArray );
+		RecoveryCodeKeys::newFromArray( $keyArray );
 
 		$key = RecoveryCodeKeys::newFromArray( [
-			'recoverycodekeys' => [ '88as3hh433jj2o22' ],
-			'nonce' => '7LRMXBX2AKPYWDBUBDHCN2WCFJXFX4XR2GZRV7Q=',
+			'recoverycodekeys' => self::VALID_RECOVERY_KEY,
+			'nonce' => self::NONCE,
 		] );
 		$this->assertInstanceOf( RecoveryCodeKeys::class, $key );
 	}
@@ -113,10 +118,9 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->encryptionTestSetup();
 
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
-		$data = $keys->jsonSerialize();
-		$encryptedData = $keys->getRecoveryCodeKeysEncryptedAndNonce();
-		$oldEncryptedRecoveryCodes = $encryptedData[0];
-		$oldNonce = $encryptedData[1];
+		$keys->jsonSerialize();
+
+		[ $oldEncryptedRecoveryCodes, $oldNonce ] = $keys->getRecoveryCodeKeysEncryptedAndNonce();
 
 		$newData = $keys->jsonSerialize();
 		$this->assertEquals( $oldEncryptedRecoveryCodes, $newData['recoverycodekeys'] );
@@ -136,8 +140,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testVerify(): void {
-		$mockUserIdentity = $this->createMock( UserIdentity::class );
-		$mockWebRequest = $this->createMock( WebRequest::class, [ 'getSecurityLogContext' ] );
+		$mockWebRequest = $this->createMock( WebRequest::class );
 		$mockOATHUser = $this->createMock( OATHUser::class );
 		$mockOATHUser->method( 'getCentralId' )
 			->willReturn( 12345 );
@@ -145,7 +148,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $this->getTestUser()->getUser() );
 		$this->setTemporaryHook(
 			'GetSecurityLogContext',
-			static function ( array $info, array &$context ) use ( $mockWebRequest, $mockUserIdentity ) {
+			static function ( array $info, array &$context ) {
 				$context['foo'] = 'bar';
 			}
 		);
@@ -154,24 +157,24 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 
 		$testData = [];
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
-		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertFalse( $keys->verify( $testData, $mockOATHUser ) );
 
 		$keys->regenerateRecoveryCodeKeys();
 
 		$testData = [ 'recoverycode' => 'bad_token' ];
-		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertFalse( $keys->verify( $testData, $mockOATHUser ) );
 
 		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $keys->getRecoveryCodeKeys() );
 
 		// Test that verify works with a generated key
 		$testData = [ 'recoverycode' => $keys->getRecoveryCodeKeys()[0] ];
-		$this->assertSame( true, $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertTrue( $keys->verify( $testData, $mockOATHUser ) );
 
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ) - 1, $keys->getRecoveryCodeKeys() );
 
 		// Test that you can't verify twice (in a row) with the same recovery code
-		$this->assertSame( false, $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertFalse( $keys->verify( $testData, $mockOATHUser ) );
 	}
 
 	public function testIsValidRecoveryCode(): void {
