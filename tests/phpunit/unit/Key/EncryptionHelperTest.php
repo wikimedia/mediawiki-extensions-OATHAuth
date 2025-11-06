@@ -48,7 +48,7 @@ class EncryptionHelperTest extends MediaWikiUnitTestCase {
 		$invalidMagicPhrase = 'a different phrase that isn\'t encrypted';
 		$encrypted = $helper->encrypt( $magicPhrase );
 		$this->expectException( UnexpectedValueException::class );
-		$decrypted = $helper->decrypt( $invalidMagicPhrase, $encrypted['nonce'] );
+		$helper->decrypt( $invalidMagicPhrase, $encrypted['nonce'] );
 	}
 
 	/**

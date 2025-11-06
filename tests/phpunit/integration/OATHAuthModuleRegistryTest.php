@@ -27,6 +27,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
+ * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry
  * @group Database
  */
 class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
@@ -52,18 +53,12 @@ class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry::moduleExists
-	 */
 	public function testModuleExists() {
 		$registry = $this->makeTestRegistry();
 		$this->assertTrue( $registry->moduleExists( 'first' ) );
 		$this->assertFalse( $registry->moduleExists( 'nonexistent' ) );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry::getModuleIds
-	 */
 	public function testGetModuleIds() {
 		$registry = $this->makeTestRegistry();
 

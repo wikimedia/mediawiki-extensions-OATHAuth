@@ -31,6 +31,7 @@ use Wikimedia\TestingAccessWrapper;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
+ * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate
  * @group Database
  */
 class ApiOATHValidateTest extends ApiTestCase {
@@ -39,9 +40,6 @@ class ApiOATHValidateTest extends ApiTestCase {
 		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate::execute
-	 */
 	public function testNonexistentUser() {
 		[ $result, ] = $this->doApiRequestWithToken(
 			[
@@ -64,9 +62,6 @@ class ApiOATHValidateTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate::execute
-	 */
 	public function testDisabled() {
 		$testUser = $this->getTestUser();
 
@@ -91,9 +86,6 @@ class ApiOATHValidateTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate::execute
-	 */
 	public function testCorrectToken() {
 		$testUser = $this->getTestUser();
 
@@ -135,9 +127,6 @@ class ApiOATHValidateTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OATHAuth\Api\Module\ApiOATHValidate::execute
-	 */
 	public function testWrongToken() {
 		$testUser = $this->getTestUser();
 
