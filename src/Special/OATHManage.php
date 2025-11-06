@@ -712,11 +712,13 @@ class OATHManage extends SpecialPage {
 				( $lastKey ? $codex->Field()
 					->setLabel( $codex->Label()
 						->setLabelText( $this->msg( 'oathauth-delete-confirm-box' )->escaped() )
+						->setInputId( 'remove-confirm-box' )
 						->build()
 					)
 					->setFields( [
 						$codex->TextInput()
 							->setName( 'remove-confirm-box' )
+							->setInputId( 'remove-confirm-box' )
 							->build()
 							->getHtml()
 					] )
