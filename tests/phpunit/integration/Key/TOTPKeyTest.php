@@ -74,7 +74,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 
 	public function testNewFromArrayWithoutSecret(): void {
 		// We aren't setting secret, so this will return null
-		$this->assertSame( null, TOTPKey::newFromArray( [] ) );
+		$this->assertNull( TOTPKey::newFromArray( [] ) );
 	}
 
 	public function testJsonSerializerWithEncryption(): void {
@@ -90,10 +90,8 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$this->encryptionTestSetup();
 
 		$key = TOTPKey::newFromRandom();
-		$data = $key->jsonSerialize();
-		$encryptedData = $key->getEncryptedSecretAndNonce();
-		$oldEncryptedSecret = $encryptedData[0];
-		$oldNonce = $encryptedData[1];
+		$key->jsonSerialize();
+		[ $oldEncryptedSecret, $oldNonce ] = $key->getEncryptedSecretAndNonce();
 
 		$newData = $key->jsonSerialize();
 		$this->assertEquals( $oldEncryptedSecret, $newData['secret'] );
@@ -115,6 +113,6 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 
 		$testData1 = [];
 		$key = TOTPKey::newFromRandom();
-		$this->assertSame( false, $key->verify( $testData1, $mockOATHUser ) );
+		$this->assertFalse( $key->verify( $testData1, $mockOATHUser ) );
 	}
 }
