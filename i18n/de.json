@@ -160,5 +160,7 @@
 	"oathauth-delete-wrong-confirm-message": "Falsche Eingabe für die endgültige Schlüsselentfernung. Bitte gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
 	"oathauth-delete-success": "<strong>$1</strong> entfernt.",
 	"oathauth-created-at": "Hinzugefügt am $1",
-	"oathauth-enable-success": "<strong>$1</strong> hinzugefügt."
+	"oathauth-enable-success": "<strong>$1</strong> hinzugefügt.",
+	"oathauth-max-keys-exceeded": "Limit der Authentifizierungsmethoden erreicht",
+	"oathauth-max-keys-exceeded-message": "Du hast die maximale Anzahl an Authentifizierungsmethoden erreicht, die $1 beträgt. Bitte entferne eine Authentifizierungsmethode, bevor du eine neue hinzufügst."
 }

@@ -10,6 +10,7 @@
 			"Incelemeelemani",
 			"Leo",
 			"MuratTheTurkish",
+			"Sakblue",
 			"SaldırganSincap",
 			"Sayginer",
 			"Sezgin İbiş",
@@ -34,6 +35,7 @@
 	"oathauth-recoverycodes-download": "İndir",
 	"oathauth-recoverycodes-copy": "Kopyala",
 	"oathauth-recoverycodes-copy-success": "Kurtarma kodları panonuza kopyalandı!",
+	"oathauth-recoverycodes-header-create": "Yeni kurtarma kodları oluştur",
 	"oathauth-failedtovalidateoath": "Kimlik doğrulama uygulamanızdan kodu doğrulamaya çalışırken bir hata oluştu. Lütfen tekrar deneyin.",
 	"oathauth-disable": "İki faktörlü kimlik doğrulamayı devre dışı bırak",
 	"oathauth-validatedoath": "İki faktörlü kimlik bilgileri doğrulandı. Bundan sonra iki faktörlü kimlik doğrulama uygulanacak.",
@@ -42,6 +44,8 @@
 	"oathauth-prefs-label": "İki faktörlü kimlik doğrulama:",
 	"oathauth-step1": "1. Adım: İki faktörlü bir kimlik doğrulama programı indirin",
 	"oathauth-step1-test": "İki faktörlü kimlik doğrulama için bir program indirin. Bu, [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] veya [https://1password.com/ 1Password] gibi bir mobil veya masaüstü uygulaması olabilir.",
+	"oathauth-step-friendly-name": "Adım 2: Ona bir isim verin",
+	"oathauth-step-friendly-name-text": "Birden fazla uygulama eklerseniz hangisinin hangisi olduğunu bilirsiniz.",
 	"oathauth-step2": "3. Adım: QR kodu tarayın",
 	"oathauth-step2-qrcode": "İki faktörlü kimlik doğrulama için 1. adımda indirdiğiniz uygulamayı veya tarayıcı eklentisini kullanarak QR kodunu tarayın.",
 	"oathauth-step2alt": "QR kodunu tarayamıyorsanız, gizli anahtarı ve hesap adını manuel olarak girin:",
@@ -103,5 +107,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirdi.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi.",
 	"group-oathauth-twofactorauth": "İki faktörlü kimlik doğrulamayı kullanabilecek kullanıcılar",
-	"group-oathauth-twofactorauth-member": "iki faktörlü kimlik doğrulamayı kullanabilen {{GENDER:$1|kullanıcı}}"
+	"group-oathauth-twofactorauth-member": "iki faktörlü kimlik doğrulamayı kullanabilen {{GENDER:$1|kullanıcı}}",
+	"oathauth-delete-warning": "Bu kimlik doğrulama yöntemi ile artık giriş yapamazsınız ve kurtarma kodlarınız artık çalışmayacak."
 }

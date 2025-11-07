@@ -154,5 +154,7 @@
 	"oathauth-delete-wrong-confirm-message": "Mã xác nhận sai. Vui lòng nhập \"{{int:oathauth-authenticator-delete-text}}\" để tiếp tục.",
 	"oathauth-delete-success": "Đã xóa <strong>$1</strong>.",
 	"oathauth-created-at": "Đã thêm vào $1",
-	"oathauth-enable-success": "Đã thêm <strong>$1</strong>."
+	"oathauth-enable-success": "Đã thêm <strong>$1</strong>.",
+	"oathauth-max-keys-exceeded": "Đã đạt đến giới hạn phương thức xác thực",
+	"oathauth-max-keys-exceeded-message": "Bạn đã đạt đến số lượng phương thức xác thực tối đa là $1. Vui lòng xóa một phương thức xác thực trước khi thêm phương thức mới."
 }

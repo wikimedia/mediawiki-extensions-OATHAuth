@@ -161,5 +161,7 @@
 	"oathauth-delete-wrong-confirm-message": "Onjuiste invoer voor definitieve sleutelverwijdering. Typ \"{{int:oathauth-authenticator-delete-text}}\" om door te gaan.",
 	"oathauth-delete-success": "<strong>$1</strong> verwijderd.",
 	"oathauth-created-at": "Toegevoegd op $1",
-	"oathauth-enable-success": "<strong>$1</strong> toegevoegd."
+	"oathauth-enable-success": "<strong>$1</strong> toegevoegd.",
+	"oathauth-max-keys-exceeded": "De limiet van de authenticatiemethode is bereikt",
+	"oathauth-max-keys-exceeded-message": "U hebt het maximale aantal authenticatiemethoden bereikt, namelijk $1. Verwijder een authenticatiemethode voordat u een nieuwe toevoegt."
 }

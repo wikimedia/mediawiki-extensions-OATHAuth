@@ -149,5 +149,7 @@
 	"oathauth-delete-wrong-confirm-message": "Погрешен внос за конечно остранување на клучот. Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
 	"oathauth-delete-success": "Отстранет <strong>$1</strong>.",
 	"oathauth-created-at": "Додадено на $1",
-	"oathauth-enable-success": "Додаден <strong>$1</strong>."
+	"oathauth-enable-success": "Додаден <strong>$1</strong>.",
+	"oathauth-max-keys-exceeded": "Достигнато е ограничувањето на начини на заверка",
+	"oathauth-max-keys-exceeded-message": "Го достигнавте дозволениот број на начини на заверка, кој изнесува $1. Отстранете нечин на заверка пред да додадете нов."
 }
