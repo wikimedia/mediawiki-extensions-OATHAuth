@@ -19,6 +19,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'ext.oath.recovery.styles' );
 		$out->addModules( 'ext.oath.recovery' );
+		$out->setPageTitleMsg( $this->msg( 'oathauth-recoverycodes-header-create' ) );
 		return parent::getHTML( $submitResult );
 	}
 
@@ -33,7 +34,6 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 			$this->setSubmitDestructive();
 			$this->showCancel();
 			$this->setCancelTarget( $this->getTitle() );
-			$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-recoverycodes-header-create' ) );
 		} else {
 			$this->suppressDefaultSubmit();
 		}
