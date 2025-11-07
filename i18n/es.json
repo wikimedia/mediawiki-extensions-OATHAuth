@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "No se pudo recuperar la información de autenticación.",
 	"oathauth-webauthn-add-key-section-name": "Registrar una nueva clave de WebAuthn",
 	"webauthn-error-get-reginfo-fail": "No se pudo recuperar la información de registro.",
-	"webauthn-error-max-keys-reached": "Solo puedes registrar un máximo de {{PLURAL:$1|$1 clave|$1 claves}}",
 	"webauthn-module-description": "WebAuthn (Web Authentication) es un estándar del web publicado por el World Wide Web Consortium (W3C). WebAuthn es un componente clave del FIDO2 Project bajo la dirección de FIDO Alliance. El objetivo del proyecto es estandarizar una interfaz para autenticar usuarios a aplicaciones y servicios basados en la web mediante la criptografía de claves públicas. [https://en.wikipedia.org/wiki/WebAuthn Saber más]",
 	"webauthn-ui-reload-page-label": "Recargar página"
 }

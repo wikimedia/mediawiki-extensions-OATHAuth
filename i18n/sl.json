@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "Aventikacijskih podatkov ni bilo mogoče pridobiti.",
 	"oathauth-webauthn-add-key-section-name": "Registracija novega ključa WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Registracijskih podatkov ni bilo mogoče pridobiti.",
-	"webauthn-error-max-keys-reached": "Registrirati je mogoče največ {{PLURAL:$1|$1 ključ|$1 ključa|$1 ključe|$1 ključev}}.",
 	"webauthn-module-description": "WebAuthn je v eksperimentalnem stanju. Trenutno ni za to metodo na voljo nobena obnovitvena možnost za izgubljene ali poškodovane avtentikacijske naprave.\n\n[https://sl.wikipedia.org/wiki/WebAuthn Več o WebAuthn]",
 	"webauthn-ui-reload-page-label": "Znova naloži stran",
 	"webauthn-authentication-info-label": "Avtentikacijski podatki",

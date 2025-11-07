@@ -26,7 +26,6 @@
 	"webauthn-error-get-authinfo-fail": "Аутентификацин информаци схьаэца аьтто ца баьлла.",
 	"oathauth-webauthn-add-key-section-name": "Керла WebAuthn догӀа дӀайаздан",
 	"webauthn-error-get-reginfo-fail": "Регистрацех лаьцна информацин тӀекхочийла дац.",
-	"webauthn-error-max-keys-reached": "ДӀайаздан мега максимум {{PLURAL:$1|$1 догӀа}}.",
 	"webauthn-module-description": "WebAuthn эксперимент йеш йу. Карарчу хенахь дӀабайна йа галбаьлла аутентификацин гӀирсаш меттахӀотто аьттонаш бац.\n\n[https://en.wikipedia.org/wiki/WebAuthn Кхин дӀа а довза WebAuthn лаьцна].",
 	"webauthn-ui-reload-page-label": "Карлайаккха агӀо",
 	"webauthn-authentication-info-label": "Аутентификацин хаамаш",

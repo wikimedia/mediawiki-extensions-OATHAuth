@@ -10,7 +10,6 @@
 	"webuathn-ui-remove-key": "Ewechhuelen",
 	"webauthn-error-module-not-enabled": "D'Modul „$1“ ass net aktivéiert fir {{GENDER:$2|de Benotzer|d'Benotzerin}} „$2“.",
 	"webauthn-ui-key-register-help": "Sicht ee Spëtznumm fir Äre Schlëssel eraus:",
-	"webauthn-error-max-keys-reached": "Et {{PLURAL:$1|ka maximal $1 Schlëssel|kënne maximal $1 Schlëssele}} registréiert ginn.",
 	"webauthn-ui-reload-page-label": "Säit nei lueden",
 	"webauthn-add-security-key": "E Sécherheetsschlëssel derbäisetzen"
 }

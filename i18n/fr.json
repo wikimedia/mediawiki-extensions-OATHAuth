@@ -34,7 +34,6 @@
 	"webauthn-error-get-authinfo-fail": "Les informations d’authentification n’ont pas pu être récupérées.",
 	"oathauth-webauthn-add-key-section-name": "Inscrire une nouvelle clef WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Les informations sur l’inscription n’ont pas pu être récupérées.",
-	"webauthn-error-max-keys-reached": "Au maximum {{PLURAL:$1|$1 clef peut être enregistrée|$1 clefs peuvent être enregistrées}}.",
 	"webauthn-module-description": "WebAuthn est en phase expérimentale. Il n'existe actuellement aucune option de récupération pour les dispositifs d'authentification perdus ou endommagés. [https://en.wikipedia.org/wiki/WebAuthn En savoir plus sur WebAuthn]",
 	"webauthn-ui-reload-page-label": "Recharger la page",
 	"webauthn-authentication-info-label": "Données d’authentification",

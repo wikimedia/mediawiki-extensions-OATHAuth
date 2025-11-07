@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "驗證資訊無法取得。",
 	"oathauth-webauthn-add-key-section-name": "註冊新的 WebAuthn 密鑰",
 	"webauthn-error-get-reginfo-fail": "註冊資訊無法取得。",
-	"webauthn-error-max-keys-reached": "最多可註冊 {{PLURAL:$1|$1}} 個密鑰。",
 	"webauthn-module-description": "WebAuthn 處於實驗階段。目前此方法尚不支援遺失或損壞的身份驗證設備復原。\n\n[https://zh.wikipedia.org/wiki/WebAuthn 了解更多關於 WebAuthn 的資訊]",
 	"webauthn-ui-reload-page-label": "重新載入頁面",
 	"webauthn-authentication-info-label": "驗證資料",

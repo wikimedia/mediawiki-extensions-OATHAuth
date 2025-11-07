@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "Kimlik doğrulama bilgileri alınamadı.",
 	"oathauth-webauthn-add-key-section-name": "Yeni WebAuthn anahtarı kaydedin",
 	"webauthn-error-get-reginfo-fail": "Kayıt bilgileri alınamadı.",
-	"webauthn-error-max-keys-reached": "Maksimum {{PLURAL:$1|$1 anahtar}} kaydedilebilir.",
 	"webauthn-module-description": "WebAuthn deneysel bir aşamadadır. Şu anda bu yöntemde kaybolan veya hasar gören kimlik doğrulama aygıtları için bir kurtarma seçeneği bulunmamaktadır.\n\n[https://tr.wikipedia.org/wiki/WebAuthn WebAuthn hakkında daha fazla bilgi edinin]",
 	"webauthn-ui-reload-page-label": "Sayfayı yeniden yükle",
 	"webauthn-authentication-info-label": "Kimlik doğrulama verileri",

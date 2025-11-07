@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "Non se puido recuperar a información de autenticación.",
 	"oathauth-webauthn-add-key-section-name": "Rexistrar unha nova chave WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Non se puido recuperar a información de rexistro.",
-	"webauthn-error-max-keys-reached": "Pódese rexistrar un máximo {{PLURAL:$1|dunha chave|de $1 chaves}}.",
 	"webauthn-module-description": "WebAuthn atópase nun estado experimental. Actualmente non hai ningunha opción de recuperación para dispositivos de autenticación perdidos ou danados para este método.\n\n[https://en.wikipedia.org/wiki/WebAuthn Máis información sobre WebAuthn]",
 	"webauthn-ui-reload-page-label": "Recargar a páxina",
 	"webauthn-authentication-info-label": "Datos de autenticación",

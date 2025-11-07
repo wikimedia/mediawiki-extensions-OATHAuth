@@ -28,7 +28,6 @@
 	"webauthn-error-get-authinfo-fail": "لا يمكن استرداد معلومات المصادقة.",
 	"oathauth-webauthn-add-key-section-name": "تسجيل مفتاح WebAuthn جديد",
 	"webauthn-error-get-reginfo-fail": "لا يمكن استرجاع معلومات التسجيل.",
-	"webauthn-error-max-keys-reached": "يمكن تسجيل {{PLURAL:$1|$1 مفتاح|$1 مفاتيح}} كح أقصى.",
 	"webauthn-module-description": "WebAuthn في حالة تجريبية. لا يتوفر حاليًا خيار استرداد لأجهزة المصادقة المفقودة أو التالفة لهذه الطريقة. \n\n[https://en.wikipedia.org/wiki/WebAuthn تعرّف على المزيد حول WebAuthn]",
 	"webauthn-ui-reload-page-label": "إعادة تحميل الصفحة",
 	"webauthn-authentication-info-label": "بيانات المصادقة",

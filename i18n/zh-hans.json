@@ -31,7 +31,6 @@
 	"webauthn-error-get-authinfo-fail": "无法检索身份验证信息。",
 	"oathauth-webauthn-add-key-section-name": "注册新的WebAuthn密钥",
 	"webauthn-error-get-reginfo-fail": "无法检索注册信息。",
-	"webauthn-error-max-keys-reached": "最多可以注册{{PLURAL:$1|$1个密钥}}。",
 	"webauthn-module-description": "WebAuthn处于实验阶段。此方法目前尚不支持恢复丢失或损坏的身份验证设备。\n\n[https://zh.wikipedia.org/wiki/WebAuthn 了解关于WebAuthn的更多信息]",
 	"webauthn-ui-reload-page-label": "重新加载页面",
 	"webauthn-authentication-info-label": "认证数据",

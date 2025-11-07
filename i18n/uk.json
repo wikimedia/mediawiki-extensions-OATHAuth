@@ -28,7 +28,6 @@
 	"webauthn-error-get-authinfo-fail": "Не вдалося отримати інформацію щодо автентифікації.",
 	"oathauth-webauthn-add-key-section-name": "Зареєструвати новий ключ WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Не вдалося отримати інформацію щодо реєстрації.",
-	"webauthn-error-max-keys-reached": "Можна зареєструвати максимум {{PLURAL:$1|$1 ключ|$1 ключі|$1 ключів}}.",
 	"webauthn-module-description": "WebAuthn перебуває в експериментальному стані. Наразі для цього методу немає можливості відновлення втрачених або пошкоджених пристроїв автентифікації. \n\n[https://en.wikipedia.org/wiki/WebAuthn Дізнайтеся більше про WebAuthn]",
 	"webauthn-ui-reload-page-label": "Оновити сторінку",
 	"webauthn-authentication-info-label": "Дані автентифікації",

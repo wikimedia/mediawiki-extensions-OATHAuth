@@ -32,7 +32,6 @@
 	"webauthn-error-get-authinfo-fail": "認証情報を取得できませんでした。",
 	"oathauth-webauthn-add-key-section-name": "新しい WebAuthn キーを登録する",
 	"webauthn-error-get-reginfo-fail": "登録情報を取得できませんでした。",
-	"webauthn-error-max-keys-reached": "登録できるキーは最大で {{PLURAL:$1|$1 本}}です。",
 	"webauthn-module-description": "WebAuthnは実験段階です。現時点ではこの認証方法において、認証デバイスを紛失、または破損した場合、復旧する方法は提供されていません。\n\n[https://ja.wikipedia.org/wiki/WebAuthn WebAuthnの詳細はこちら]",
 	"webauthn-ui-reload-page-label": "ページを再読み込み",
 	"webauthn-authentication-info-label": "認証データ",

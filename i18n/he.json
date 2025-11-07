@@ -27,7 +27,6 @@
 	"webauthn-error-get-authinfo-fail": "לא ניתן לאחזר מידע על אימות.",
 	"oathauth-webauthn-add-key-section-name": "לרשום מפתח WebAuthn חדש",
 	"webauthn-error-get-reginfo-fail": "לא ניתן לאחזר מידע על רישום.",
-	"webauthn-error-max-keys-reached": "אפשר לרשום {{PLURAL:$1|מפתח אחד|$1 מפתחות}} לכל היותר.",
 	"webauthn-module-description": "שירות WebAuthn נמצא במצב ניסיוני. כרגע אין אפשרות שחזור עבור מכשירי אימות שאבדו או ניזוקו עבור השיטה הזאת.\n\n[https://en.wikipedia.org/wiki/WebAuthn מידע נוסף על WebAuthn]",
 	"webauthn-ui-reload-page-label": "רענון הדף",
 	"webauthn-authentication-info-label": "נתוני האימות",

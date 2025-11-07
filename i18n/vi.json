@@ -30,7 +30,6 @@
 	"webauthn-error-get-authinfo-fail": "Không thể truy xuất thông tin xác thực.",
 	"oathauth-webauthn-add-key-section-name": "Tạo mã WebAuthn mới",
 	"webauthn-error-get-reginfo-fail": "Không thể truy xuất thông tin đăng ký.",
-	"webauthn-error-max-keys-reached": "Được tạo tối đa {{PLURAL:$1|$1 khóa}}.",
 	"webauthn-module-description": "WebAuthn đang trong giai đoạn thử nghiệm. Hiện tại không có tùy chọn khôi phục thiết bị xác thực bị mất hoặc bị hỏng cho phương pháp này. \n\n[https://en.wikipedia.org/wiki/WebAuthn Tìm hiểu thêm về WebAuthn]",
 	"webauthn-ui-reload-page-label": "Tải lại trang",
 	"webauthn-authentication-info-label": "Dữ liệu xác thực",

@@ -5,7 +5,7 @@
 		]
 	},
 	"webauthn-desc": "Дава поддршка за заверка со протоколот WebAuthn",
-	"webauthn-module-label": "Семрежна заверка (WebAuthn)",
+	"webauthn-module-label": "Безбедносен клуч",
 	"webauthn-javascript-required": "Во вашиот прелистувач мора да е овозможен JavaScript за да го користите WebAuthn.",
 	"webauthn-ui-login-prompt": "Допрете на уредот за заверка или проследете ги напатствијата од прелистувачот.",
 	"webauthn-ui-add-key": "Додај клуч",
@@ -26,7 +26,6 @@
 	"webauthn-error-get-authinfo-fail": "Не можев да ги добијам информациите на заверката",
 	"oathauth-webauthn-add-key-section-name": "Пријави нов клуч за WebAuthn",
 	"webauthn-error-get-reginfo-fail": "Не можев да ги добијам информациите на зачленувањето.",
-	"webauthn-error-max-keys-reached": "Можете да пријавите највеќе {{PLURAL:$1|$1 клуч|$1 клуча}}.",
 	"webauthn-module-description": "WebAuthn (Семрежна заверка) е во експериментална фаза. Засега нема можност за повраток на изгубени или општетени уреди за заверка со овој метод. \n\n[https://en.wikipedia.org/wiki/WebAuthn Дознајте повеќе за WebAuthn]",
 	"webauthn-ui-reload-page-label": "Превчитај ја страницата",
 	"webauthn-authentication-info-label": "Податоци за заверка",

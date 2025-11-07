@@ -29,7 +29,6 @@
 	"webauthn-error-get-authinfo-fail": "De authenticatie-informatie kon niet worden opgevraagd.",
 	"oathauth-webauthn-add-key-section-name": "Een nieuwe WebAuthn-sleutel registreren",
 	"webauthn-error-get-reginfo-fail": "De registratiegegevens kon niet worden opgevraagd.",
-	"webauthn-error-max-keys-reached": "Er {{PLURAL:$1|kan niet meer dan één sleutel|kunnen niet meer dan $1 sleutels}} worden geregistreerd.",
 	"webauthn-module-description": "WebAuthn is nog experimenteel. Er is nog geen herstelmogelijkheid voor verloren of beschadigde authenticatieapparaten voor deze methode. \n\n[https://en.wikipedia.org/wiki/WebAuthn Meer informatie over WebAuthn]",
 	"webauthn-ui-reload-page-label": "Pagina opnieuw laden",
 	"webauthn-authentication-info-label": "Authenticatiegegevens",
