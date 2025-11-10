@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\HTMLForm;
 
 use LogicException;
 use MediaWiki\Config\MultiConfig;

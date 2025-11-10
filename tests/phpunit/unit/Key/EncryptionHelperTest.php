@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Key;
+namespace MediaWiki\Extension\OATHAuth\Tests\Unit\Key;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;

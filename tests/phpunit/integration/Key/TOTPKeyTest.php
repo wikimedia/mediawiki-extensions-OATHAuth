@@ -6,7 +6,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\Tests\Key\EncryptionHelperTest;
+use MediaWiki\Extension\OATHAuth\Tests\Unit\Key\EncryptionHelperTest;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 

@@ -6,7 +6,7 @@ use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\Tests\Key\EncryptionHelperTest;
+use MediaWiki\Extension\OATHAuth\Tests\Unit\Key\EncryptionHelperTest;
 use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
