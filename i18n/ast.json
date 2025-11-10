@@ -55,13 +55,10 @@
 	"oathauth-module-totp-label": "TOTP (pase d’un solu usu)",
 	"oathauth-ui-manage": "Alministrar",
 	"oathmanage": "Alministrar la identificación de dos factores",
-	"oathauth-ui-not-enabled-modules": "Cambiar a un métodu alternativu",
-	"oathauth-ui-enabled-module": "Métodu d'identificación activáu",
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Desactivar",
 	"oathauth-invalid-data-format": "El fornidor de datos ye inválidu pa crear una clave pal métodu d'identificación escoyíu",
 	"oathauth-disable-page-title": "Desactivar $1",
 	"oathauth-enable-page-title": "Activar $1",
-	"oathauth-action-exclusive-to-2fa": "Esta aición solo puen facela usuarios que tengan activada la identificación en dos pasos.",
-	"oathauth-ui-available-modules": "Métodos disponibles"
+	"oathauth-action-exclusive-to-2fa": "Esta aición solo puen facela usuarios que tengan activada la identificación en dos pasos."
 }

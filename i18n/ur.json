@@ -45,11 +45,9 @@
 	"oathauth-module-totp-label": "TOTP (یک وقتی ٹوکن)",
 	"oathauth-ui-manage": "انتظام",
 	"oathmanage": "دو مرحلہ توثیق کا انتظام",
-	"oathauth-ui-enabled-module": "توثیقی طریقہ فعال ہو گیا",
 	"oathauth-enable-generic": "فعال کریں",
 	"oathauth-disable-generic": "غیر فعال کریں",
 	"oathauth-disable-page-title": "$1 کو غیر فعال کریں",
 	"oathauth-enable-page-title": "$1 کو فعال کریں",
-	"oathauth-action-exclusive-to-2fa": "اس اقدام کو محض وہ صارفین انجام دے سکتے ہیں جنہوں نے دو مرحلہ توثیق کو فعال کیا ہو۔",
-	"oathauth-ui-available-modules": "دستیاب طریقے"
+	"oathauth-action-exclusive-to-2fa": "اس اقدام کو محض وہ صارفین انجام دے سکتے ہیں جنہوں نے دو مرحلہ توثیق کو فعال کیا ہو۔"
 }

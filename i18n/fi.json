@@ -98,8 +98,6 @@
 	"oathauth-ui-manage": "Hallitse",
 	"oathmanage": "Hallitse kaksivaiheista tunnistautumista",
 	"accountsecurity": "Tilin turvallisuus",
-	"oathauth-ui-not-enabled-modules": "Muut tunnistautumistavat",
-	"oathauth-ui-enabled-module": "Ota {{PLURAL:$1|tunnistautumistapa|tunnistautumistavat}} käyttöön",
 	"oathauth-ui-special-modules": "Muut tunnistautumistavat",
 	"oathauth-enable-generic": "Ota käyttöön",
 	"oathauth-disable-generic": "Poista käytöstä",
@@ -108,7 +106,6 @@
 	"oathauth-disable-page-title": "Poista moduuli $1 käytöstä",
 	"oathauth-enable-page-title": "Ota moduuli $1 käyttöön",
 	"oathauth-action-exclusive-to-2fa": "Tämän toiminnon voivat suorittaa vain käyttäjät, jotka ovat ottaneet käyttöön kaksivaiheisen tunnistautumisen.",
-	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
 	"oathauth-invalidrequest": "Virheellinen pyyntö",
 	"notification-header-oathauth-disable": "Kaksivaiheinen tunnistautuminen on poistettu käytöstä {{GENDER:$2|tunnuksellasi}}.",
 	"notification-header-oathauth-remove-device": "Kaksivaiheisen tunnistautumisen laite on poistettu {{GENDER:$2|tunnukseltasi}}.",
@@ -148,5 +145,6 @@
 	"oathauth-delete-warning-final-privileged-user": "Sinulla on {{GRAMMAR:inessive|{{SITENAME}}}} käyttöoikeuksia, jotka vaativat kaksivaiheista tunnistautumista.\n<strong>Saatat menettää nämä käyttöoikeudet ja joutua pyytämään niitä uudelleen manuaalisesti.</strong>\n\nVihje: Lisää uusi tunnistautumistapa ennen kuin poistat tämän.",
 	"oathauth-delete-success": "<strong>$1</strong> poistettu.",
 	"oathauth-created-at": "Lisätty $1",
-	"oathauth-enable-success": "<strong>$1</strong> lisätty."
+	"oathauth-enable-success": "<strong>$1</strong> lisätty.",
+	"oathauth-max-keys-exceeded": "Tunnistamistapojen raja saavutettu"
 }

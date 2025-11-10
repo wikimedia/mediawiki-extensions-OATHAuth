@@ -90,8 +90,6 @@
 	"oathauth-ui-manage": "Gerer",
 	"oathmanage": "Gerer le authentication bifactorial",
 	"accountsecurity": "Securitate del conto",
-	"oathauth-ui-not-enabled-modules": "Altere methodos de authentication",
-	"oathauth-ui-enabled-module": "Methodo{{PLURAL:$1||s}} de authentication active",
 	"oathauth-ui-special-modules": "Methodos special de authentication",
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Disactivar",
@@ -100,8 +98,6 @@
 	"oathauth-disable-page-title": "Disactivar $1",
 	"oathauth-enable-page-title": "Activar $1",
 	"oathauth-action-exclusive-to-2fa": "Iste action pote solmente esser exequite per usatores con authentication bifactorial activate.",
-	"oathauth-ui-available-modules": "Methodos disponibile",
-	"oathauth-ui-general-help": "Le '''authentication multifactorial''' ('''MFA''') es un methodo de authentication in que le usator de un computator gania accesso solmente post correctemente presentar duo o plus pecias de evidentia (o factores) a un mechanismo de authentication: cognoscentia (un cosa que le usator, e solmente le usator, sape), possession (un cosa que le usator, e solmente le usator, possede), e essentia (un cosa que le usator, e solmente le usator, es). [https://ia.wikipedia.org/wiki/Authentication_multifactorial Lege plus]",
 	"oathauth-totp-description": "Le algorithmo de contrasigno a uso unic basate sur tempore (TOTP) es un extension del algorithmo de contrasigno a uso unic basate sur HMAC (HOTP) que genera un contrasigno a uso unic fundante su unicitate sur le data e hora actual.",
 	"oathauth-disable-method-warning": "Si tu disactiva le methodo de authentication bifactorial $1, tu non plus potera usar iste methodo pro aperir session, e tote le datos associate a iste methodo de authentication essera delite. Si tu ha un altere methodo de authentication active, tu codices de recuperation non essera delite.",
 	"oathauth-totp-disable-warning": "Tu non plus potera usar le apparato de authentication registrate pro iste conto. Tote le codices de recuperation associate a iste conto essera invalidate, a minus que tu ha un altere factor de authentication active.",
@@ -149,5 +145,7 @@
 	"oathauth-delete-wrong-confirm-message": "Mal entrata pro le remotion del clave final. Per favor scribe “{{int:oathauth-authenticator-delete-text}}” pro continuar",
 	"oathauth-delete-success": "<strong>$1</strong> removite.",
 	"oathauth-created-at": "Addite le $1",
-	"oathauth-enable-success": "<strong>$1</strong> addite."
+	"oathauth-enable-success": "<strong>$1</strong> addite.",
+	"oathauth-max-keys-exceeded": "Le limite del methodo de authentication ha essite attingite",
+	"oathauth-max-keys-exceeded-message": "Tu ha attingite le numero maxime de methodos de authentication, que es $1. Per favor elimina un methodo de authentication ante de adder un nove."
 }

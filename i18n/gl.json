@@ -93,8 +93,6 @@
 	"oathauth-ui-manage": "Xestionar",
 	"oathmanage": "Xestionar a autenticación de dous factores",
 	"accountsecurity": "Seguranza da conta",
-	"oathauth-ui-not-enabled-modules": "Outros métodos de autenticación",
-	"oathauth-ui-enabled-module": "{{PLURAL:$1|Método|Métodos}} de autenticación {{PLURAL:$1|activado|activados}}",
 	"oathauth-ui-special-modules": "Métodos especiais de autenticación",
 	"oathauth-enable-generic": "Activar",
 	"oathauth-disable-generic": "Desactivar",
@@ -103,8 +101,6 @@
 	"oathauth-disable-page-title": "Desactivar $1",
 	"oathauth-enable-page-title": "Activar $1",
 	"oathauth-action-exclusive-to-2fa": "Esta acción só a poden realizar os usuarios coa autenticación de dous factores activada.",
-	"oathauth-ui-available-modules": "Métodos dispoñíbeis",
-	"oathauth-ui-general-help": "A '''autenticación de múltiples factores''' (''multi-factor authentication'' ou '''MFA''') é un método de autenticación no que se lle concede acceso a un usuario unicamente cando presenta dúas ou máis evidencias (ou factores) a un mecanismo de autenticación: coñecemento (algo que o usuario e só o usuario coñece), posesión (algo que o usuario e só o usuario posúe) e herdanza (algo que o usuario e só o usuario é). [https://en.wikipedia.org/wiki/Multi-factor_authentication Máis información]",
 	"oathauth-totp-description": "O algoritmo de contrasinal baseado no tempo dun único uso (Time-based One-Time Password ou TOTP) é unha extensión do algoritmo de contrasinal baseado en HMAC dun único uso (HMAC-based One-time Password ou HOTP) que xera un contrasinal de único uso tomando como unicidade a hora actual.",
 	"oathauth-disable-method-warning": "Se desactivas o método de autenticación de dous factores $1, xa non poderás usalo ao iniciar sesión e eliminaranse todos os datos asociados a este método de autenticación. Se tes outro método de autenticación activo, os teus códigos de recuperación non se eliminarán.",
 	"oathauth-totp-disable-warning": "Xa non poderás utilizar o dispositivo de autenticación rexistrado nesta conta. Desactivaranse todos os códigos de recuperación asociados a ela, a menos que teñas outro factor de autenticación activado.",
@@ -152,5 +148,7 @@
 	"oathauth-delete-wrong-confirm-message": "Entrada incorrecta para a eliminación final da chave. Escribe «{{int:oathauth-authenticator-delete-text}}» para continuar.",
 	"oathauth-delete-success": "Eliminouse «<strong>$1</strong>».",
 	"oathauth-created-at": "Engadido o $1",
-	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>»."
+	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>».",
+	"oathauth-max-keys-exceeded": "Alcanzouse o límite de métodos de autenticación",
+	"oathauth-max-keys-exceeded-message": "Alcanzaches o número máximo de métodos de autenticación, que é de $1. Elimina un método de autenticación antes de engadires un novo."
 }

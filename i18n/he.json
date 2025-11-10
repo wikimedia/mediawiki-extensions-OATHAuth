@@ -96,8 +96,6 @@
 	"oathauth-ui-manage": "ניהול",
 	"oathmanage": "ניהול אימות דו־שלבי",
 	"accountsecurity": "אבטחת חשבון",
-	"oathauth-ui-not-enabled-modules": "שיטות אימות אחרות",
-	"oathauth-ui-enabled-module": "{{PLURAL:$1|שיטת האימות המופעלת|שיטות האימות המופעלות}}",
 	"oathauth-ui-special-modules": "שיטות אימות מיוחדות",
 	"oathauth-enable-generic": "הפעלה",
 	"oathauth-disable-generic": "כיבוי",
@@ -106,8 +104,6 @@
 	"oathauth-disable-page-title": "לכבות את $1",
 	"oathauth-enable-page-title": "להפעיל את $1",
 	"oathauth-action-exclusive-to-2fa": "רק משתמשים שהפעילו אימות דו־שלבי יכולים לבצע את הפעולה הזאת.",
-	"oathauth-ui-available-modules": "שיטות זמינות",
-	"oathauth-ui-general-help": "'''אימות רב־גורמי''' ('''MFA''') הוא שיטת אימות שבה הגישה ניתנת למשתמש מחשב רק אחרי הצגת שתי ראיות (\"גורמים\") או יותר למנגנון האימות: ידיעה (משהו שהמשתמש ורק המשתמש יודע), החזקה (משהו שהמשתמש ורק המשתמש מחזיק בבעלותו), ועצמיות (תכונה שיש למשתמש עצמו ורק למשתמש עצמו). [https://en.wikipedia.org/wiki/Multi-factor_authentication מידע נוסף]",
 	"oathauth-totp-description": "אלגוריתם סיסמה חד־פעמית מבוסס זמן (או TOTP) הוא הרחבה של אלגוריתם סיסמה חד־פעמית מבוסס HMAC (או HOTP) שמייצר סיסמה חד־פעמית על־ידי שימוש בזמן הנוכחי לשם ייחוד.",
 	"oathauth-disable-method-warning": "אם {{GENDER:|תכבה|תכבי}} את שיטת האימות הדו־השלבי $1, לא {{GENDER:|תוכל|תוכלי}} להשתמש בשיטה הזאת בעת כניסה לחשבון, וכל הנתונים המשויכים לשיטת האימות הזאת יימחקו. אם יש לך שיטת אימות פעילה אחרת, קודי השחזור שלך לא יימחקו.",
 	"oathauth-totp-disable-warning": "לא {{GENDER:|תוכל|תוכלי}} להשתמש במכשיר האימות שרשום לחשבון הזה. כל קודי השחזור שמשויכים לחשבון הזה יושתבו אלא אם כן הפעלת גורם אימות אחר.",
@@ -155,5 +151,7 @@
 	"oathauth-delete-wrong-confirm-message": "קלט שגוי להסרת מפתח אחרון. נא להקליד \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
 	"oathauth-delete-success": "<strong>$1</strong> הוסרה.",
 	"oathauth-created-at": "נוסף ב־$1",
-	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>."
+	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>.",
+	"oathauth-max-keys-exceeded": "הגעת למגבלת שיטות האימות",
+	"oathauth-max-keys-exceeded-message": "הגעת למספר המרבי של שיטות אימות, שהוא $1. נא להסיר שיטת אימות לפני הוספת שיטה חדשה."
 }

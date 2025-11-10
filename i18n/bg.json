@@ -51,12 +51,10 @@
 	"oathauth-module-totp-label": "TOTP (еднократен маркер)",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление на двуфакторното удостоверяване",
-	"oathauth-ui-enabled-module": "{{PLURAL:$1|Включен метод|Включени методи}} за удостоверяване",
 	"oathauth-enable-generic": "Включване",
 	"oathauth-disable-generic": "Изключване",
 	"oathauth-disable-page-title": "Изключване на $1",
 	"oathauth-enable-page-title": "Включване на $1",
-	"oathauth-ui-available-modules": "Налични методи",
 	"oathauth-notifications-disable-help": "Помощ",
 	"oathauth-notifications-enable-help": "Помощ"
 }

@@ -96,8 +96,6 @@
 	"oathauth-ui-manage": "İdarə et",
 	"oathmanage": "İki faktorlu autentifikasiyanı idarə et",
 	"accountsecurity": "Hesab təhlükəsizliyi",
-	"oathauth-ui-not-enabled-modules": "Digər autentifikasiya üsulları",
-	"oathauth-ui-enabled-module": "Aktiv autentifikasiya {{PLURAL:$1|üsulu|üsulları}}",
 	"oathauth-ui-special-modules": "Xüsusi autentifikasiya üsulları",
 	"oathauth-enable-generic": "Aktivləşdir",
 	"oathauth-disable-generic": "Deaktivləşdir",
@@ -106,8 +104,6 @@
 	"oathauth-disable-page-title": "$1 modulunu deaktiv et",
 	"oathauth-enable-page-title": "$1 modulunu aktivləşdir",
 	"oathauth-action-exclusive-to-2fa": "Bu əməliyyat yalnız iki faktorlu autentifikasiya aktivləşdirilmiş istifadəçilər tərəfindən həyata keçirilə bilər.",
-	"oathauth-ui-available-modules": "Mövcud üsullar",
-	"oathauth-ui-general-help": "'''Çox faktorlu autentifikasiya''' ('''MFA''') autentifikasiya üsullarından biridir. Burada kompüter istifadəçisi sadəcə iki və ya daha çox autentifikasiya mexanizmi sübutu - bilinən şey (yalnız istifadəçinin bildiyi bir şey), sahib olma (yalnız istifadəçidə olan bir şey) və irsiyyət (istifadəçi olan bir şey) təqdim etdikdə giriş icazəsi verilir.\n[https://az.wikipedia.org/wiki/%C3%87oxfaktorlu_autentifikasiya Daha ətraflı]",
 	"oathauth-totp-description": "Zamana əsaslanan Birdəfəlik Parol alqoritmi (Time-based One-Time Password; TOTP) cari vaxtdakı unikallığı götürmək əvəzinə tək istifadəlik şifrə yaradan HMAC əsaslı Birdəfəlik Parol alqoritminin (HOTP) uzantısıdır.",
 	"oathauth-disable-method-warning": "$1 iki faktorlu autentifikasiya üsulunu deaktiv etsəniz, daxil olarkən daha bu üsuldan istifadə edə bilməyəcəksiniz və bu autentifikasiya üsulu ilə əlaqəli bütün məlumatlar silinəcək. Başqa aktiv autentifikasiya üsulunuz varsa, bərpa kodlarınız silinməyəcək.",
 	"oathauth-totp-disable-warning": "Siz artıq bu hesabda qeydiyyatdan keçmiş identifikasiya cihazından istifadə edə bilməyəcəksiniz. Bu hesabla əlaqəli bütün bərpa kodları başqa bir autentifikasiya üsulunu aktivləşdirənə qədər deaktivləşdiriləcək.",
@@ -155,5 +151,7 @@
 	"oathauth-delete-wrong-confirm-message": "Son açarın silinməsi üçün yanlış söz. Davam etmək üçün \"{{int:oathauth-authenticator-delete-text}}\" yazın",
 	"oathauth-delete-success": "<strong>$1</strong> silindi.",
 	"oathauth-created-at": "$1 tarixində əlavə edilib",
-	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi."
+	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi.",
+	"oathauth-max-keys-exceeded": "Autentifikasiya metodu limitinə çatıldı",
+	"oathauth-max-keys-exceeded-message": "Siz autentifikasiya üsullarının maksimum sayına ($1) çatmısınız. Zəhmət olmasa, yenisini əlavə etməzdən əvvəl bir autentifikasiya metodu silin."
 }
