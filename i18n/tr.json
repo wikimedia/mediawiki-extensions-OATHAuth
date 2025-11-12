@@ -16,7 +16,9 @@
 			"ToprakM",
 			"Vito Genovese",
 			"Wooze",
-			"Leo"
+			"Leo",
+			"Sakblue",
+			"SaldırganSincap"
 		]
 	},
 	"oathauth-desc": "HMAC tabanlı tek kullanımlık parolalar kullanarak kimlik doğrulama desteği sağlar",
