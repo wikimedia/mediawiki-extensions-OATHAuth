@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Samoasambia"
+		]
+	},
+	"webauthn-ui-add-key": "Lisää avain",
+	"webuathn-ui-remove-key": "Poista",
+	"oathauth-webauthn-add-key-section-name": "Rekisteröi uusi WebAuthn-avain",
+	"webauthn-ui-reload-page-label": "Päivitä sivu"
+}
