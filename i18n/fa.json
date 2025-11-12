@@ -151,5 +151,7 @@
 	"oathauth-delete-warning-final-privileged-user": "شما در {{SITENAME}} دارای اختیاراتی هستید که نیازمند اصالت‌سنجی دوعاملی است.\n<strong>ممکن است این اختیارات را از دست بدهید و لازم باشد برای آن‌ها مجدداً به‌صورت دستی درخواست دهید.</strong>\n\nنکته: پیش از حذف این روش، یک روش جدید اضافه کنید.",
 	"oathauth-delete-wrong-confirm-message": "ورودی اشتباه برای حذف نهایی کلید. برای ادامه لطفاً «{{int:oathauth-authenticator-delete-text}}» را تایپ کنید",
 	"oathauth-delete-success": "<strong>$1</strong> حذف شد.",
-	"oathauth-enable-success": "<strong>$1</strong> افزوده شد."
+	"oathauth-enable-success": "<strong>$1</strong> افزوده شد.",
+	"oathauth-max-keys-exceeded": "مواجهه با محدودیت روش اصالت‌سنجی",
+	"oathauth-max-keys-exceeded-message": "شما به حداکثر تعداد روش‌های اصالت‌سنجی رسیده‌اید که برابر با $1 است. لطفاً پیش از افزودن یک روش اصالت‌سنجی جدید، یک روش دیگر را حذف کنید."
 }

@@ -7,6 +7,7 @@
 			"Mormegil",
 			"Patriccck",
 			"Patrik L.",
+			"Polda18",
 			"Urbanecm"
 		]
 	},
@@ -25,10 +26,10 @@
 	"oathauth-prefs-label": "Dvoufaktorová autentizace:",
 	"oathauth-step1": "Krok 1: Stáhněte si program pro dvoufaktorovou autentizaci",
 	"oathauth-step1-test": "Stáhněte si program pro dvoufaktorovou autentizaci. Může jím být jak mobilní aplikace (jako je třeba Google Authenticator), tak desktopový program.",
-	"oathauth-step2": "Krok 2: Naskenujte QR kód",
+	"oathauth-step2": "Krok 3: Naskenujte QR kód",
 	"oathauth-step2alt": "Nebo tajemství zadejte ručně:",
-	"oathauth-step3": "Krok 3: Zapište si provizorní kódy",
-	"oathauth-step4": "Krok 4: Ověření",
+	"oathauth-step3": "Krok 4: Zapište si kódy pro obnovení",
+	"oathauth-step4": "Krok 5: Ověření",
 	"oathauth-entertoken": "Pro ověření zadejte kód z vašeho autentizačního zařízení:",
 	"oathauth-disable-for-user": "Vypnout jinému uživateli dvoufaktorovou autentizaci",
 	"right-oathauth-disable-for-user": "Vypínání dvoufaktorové autentizace jiným uživatelům",

@@ -154,5 +154,7 @@
 	"oathauth-delete-wrong-confirm-message": "إدخال خاطئ لإزالة المفتاح النهائي. يُرجى كتابة \"{{int:oathauth-authenticator-delete-text}}\" للمتابعة.",
 	"oathauth-delete-success": "<strong>$1</strong> حذف.",
 	"oathauth-created-at": "تمت الإضافة على $1",
-	"oathauth-enable-success": "تمت إضافة <strong>$1</strong> ."
+	"oathauth-enable-success": "تمت إضافة <strong>$1</strong> .",
+	"oathauth-max-keys-exceeded": "تم الوصول إلى حد طريقة المصادقة",
+	"oathauth-max-keys-exceeded-message": "لقد وصلتَ إلى الحد الأقصى لعدد طرق المصادقة، وهو $1 . يُرجى إزالة طريقة مصادقة قبل إضافة طريقة جديدة."
 }
