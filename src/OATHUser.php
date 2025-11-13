@@ -26,7 +26,7 @@ use MediaWiki\User\UserIdentity;
  * @ingroup Extensions
  */
 class OATHUser {
-	/** @var IAuthKey[] */
+	/** @var AuthKey[] */
 	private array $keys = [];
 
 	/**
@@ -60,7 +60,7 @@ class OATHUser {
 	}
 
 	/**
-	 * @return IAuthKey[]
+	 * @return AuthKey[]
 	 */
 	public function getRecoveryCodes() {
 		return $this->getKeysForModule( 'recoverycodes' );
@@ -69,7 +69,7 @@ class OATHUser {
 	/**
 	 * Get the key associated with this user.
 	 *
-	 * @return IAuthKey[]
+	 * @return AuthKey[]
 	 */
 	public function getKeys(): array {
 		return $this->keys;
@@ -77,33 +77,33 @@ class OATHUser {
 
 	/**
 	 * @param string $moduleName As in IModule::getName().
-	 * @return IAuthKey[]
+	 * @return AuthKey[]
 	 */
 	public function getKeysForModule( string $moduleName ): array {
 		return array_values(
 			array_filter(
 				$this->keys,
-				static fn ( IAuthKey $key ) => $key->getModule() === $moduleName
+				static fn ( AuthKey $key ) => $key->getModule() === $moduleName
 			)
 		);
 	}
 
-	public function getKeyById( int $id ): ?IAuthKey {
+	public function getKeyById( int $id ): ?AuthKey {
 		$matchingKeys = array_values(
 			array_filter(
 				$this->keys,
-				static fn ( IAuthKey $key ) => $key->getId() === $id
+				static fn ( AuthKey $key ) => $key->getId() === $id
 			)
 		);
 		return $matchingKeys[0] ?? null;
 	}
 
-	public function removeKey( IAuthKey $key ) {
+	public function removeKey( AuthKey $key ) {
 		$keyId = $key->getId();
 		$this->keys = array_values(
 			array_filter(
 				$this->keys,
-				static fn ( IAuthKey $key ) => $key->getId() !== $keyId
+				static fn ( AuthKey $key ) => $key->getId() !== $keyId
 			)
 		);
 	}
@@ -115,7 +115,7 @@ class OATHUser {
 		$this->keys = array_values(
 			array_filter(
 				$this->keys,
-				static fn ( IAuthKey $key ) => $key->getModule() !== $moduleName
+				static fn ( AuthKey $key ) => $key->getModule() !== $moduleName
 			)
 		);
 	}
@@ -123,7 +123,7 @@ class OATHUser {
 	/**
 	 * Adds a single key to the key array
 	 */
-	public function addKey( IAuthKey $key ) {
+	public function addKey( AuthKey $key ) {
 		$this->keys[] = $key;
 	}
 
@@ -131,7 +131,7 @@ class OATHUser {
 	 * Gets the module instance associated with this user
 	 *
 	 * @return IModule|null
-	 * @deprecated Use {@link IAuthKey::getModule()} instead
+	 * @deprecated Use {@link AuthKey::getModule()} instead
 	 */
 	public function getModule() {
 		wfDeprecated( 'OATHUser::getModule()', '1.44', 'OATHAuth' );
@@ -157,15 +157,15 @@ class OATHUser {
 	}
 
 	/**
-	 * Get all the user's keys but exclude special keys
-	 * @return IAuthKey[]
+	 * Get all of the user's keys, but exclude special keys
+	 * @return AuthKey[]
 	 */
 	public function getNonSpecialKeys(): array {
 		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
 		return array_values(
 			array_filter(
 				$this->keys,
-				static fn ( IAuthKey $key ) => !$moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial()
+				static fn ( AuthKey $key ) => !$moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial()
 			)
 		);
 	}

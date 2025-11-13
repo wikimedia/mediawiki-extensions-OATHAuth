@@ -22,7 +22,7 @@ interface IModule {
 
 	/**
 	 * @param array $data
-	 * @return IAuthKey
+	 * @return AuthKey
 	 */
 	public function newKey( array $data );
 

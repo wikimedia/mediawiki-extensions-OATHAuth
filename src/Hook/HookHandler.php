@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\OATHAuth\Hook;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -125,7 +125,7 @@ class HookHandler implements
 		}
 
 		$modules = array_unique( array_map(
-			static fn ( IAuthKey $key ) => $key->getModule(),
+			static fn ( AuthKey $key ) => $key->getModule(),
 			$oathUser->getKeys(),
 		) );
 		$moduleNames = array_map(

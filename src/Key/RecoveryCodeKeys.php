@@ -21,7 +21,7 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -37,13 +37,7 @@ use UnexpectedValueException;
  *
  * @ingroup Extensions
  */
-class RecoveryCodeKeys implements IAuthKey {
-	/** @var int|null */
-	private ?int $id;
-
-	/** @var string|null timestamp created for recovery code */
-	private ?string $createdTimestamp;
-
+class RecoveryCodeKeys extends AuthKey {
 	/** @var string[] List of recovery codes */
 	public $recoveryCodeKeys = [];
 
@@ -89,6 +83,7 @@ class RecoveryCodeKeys implements IAuthKey {
 
 		return new static(
 			$data['id'] ?? null,
+			null,
 			$data['created_timestamp'] ?? null,
 			$data['recoverycodekeys'],
 			$data['recoverycodekeysencrypted'],
@@ -97,37 +92,25 @@ class RecoveryCodeKeys implements IAuthKey {
 	}
 
 	/**
-	 * @param int|null $id the database id of this key
-	 * @param string|null $createdTimestamp
+	 * @param ?int $id
+	 * @param ?string $friendlyName
+	 * @param ?string $createdTimestamp
 	 * @param array $recoveryCodeKeys
 	 * @param array $recoveryCodeKeysEncrypted
 	 * @param string $nonce
 	 */
 	public function __construct(
 		?int $id,
+		?string $friendlyName,
 		?string $createdTimestamp,
 		array $recoveryCodeKeys,
 		array $recoveryCodeKeysEncrypted,
 		string $nonce = ''
 	) {
-		$this->id = $id;
-		$this->createdTimestamp = $createdTimestamp;
+		parent::__construct( $id, $friendlyName, $createdTimestamp );
 		$this->recoveryCodeKeys = array_values( $recoveryCodeKeys );
 		$this->recoveryCodeKeysEncrypted = array_values( $recoveryCodeKeysEncrypted );
 		$this->nonce = $nonce;
-	}
-
-	/** @inheritDoc */
-	public function getId(): ?int {
-		return $this->id;
-	}
-
-	public function getFriendlyName(): ?string {
-		return null;
-	}
-
-	public function getCreatedTimestamp(): ?string {
-		return $this->createdTimestamp;
 	}
 
 	public function getRecoveryCodeKeys(): array {
@@ -141,7 +124,6 @@ class RecoveryCodeKeys implements IAuthKey {
 	public function setRecoveryCodeKeysEncryptedAndNonce( array $recoveryCodeKeysEncrypted, string $nonce ): void {
 		$this->recoveryCodeKeysEncrypted = $recoveryCodeKeysEncrypted;
 		$this->nonce = $nonce;
-		$this->createdTimestamp = null;
 	}
 
 	/**

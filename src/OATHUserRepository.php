@@ -64,7 +64,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): IAuthKey {
+	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): AuthKey {
 		$uid = $user->getCentralId();
 		if ( !$uid ) {
 			throw new InvalidArgumentException( "Can't persist a key for user with no central ID available" );
@@ -107,7 +107,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * Saves an existing key in the database.
 	 */
-	public function updateKey( OATHUser $user, IAuthKey $key ): void {
+	public function updateKey( OATHUser $user, AuthKey $key ): void {
 		$keyId = $key->getId();
 		if ( !$keyId ) {
 			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
@@ -139,7 +139,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->cache->delete( $user->getUser()->getName() );
 	}
 
-	public function removeKey( OATHUser $user, IAuthKey $key, string $clientInfo, bool $self ) {
+	public function removeKey( OATHUser $user, AuthKey $key, string $clientInfo, bool $self ) {
 		$keyId = $key->getId();
 		if ( !$keyId ) {
 			throw new InvalidArgumentException( 'A non-persisted key cannot be removed' );
@@ -206,7 +206,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->removeSomeKeys( $user, [] );
 
 		$keyTypes = array_unique( array_map(
-			static fn ( IAuthKey $key ) => $key->getModule(),
+			static fn ( AuthKey $key ) => $key->getModule(),
 			$user->getKeys()
 		) );
 		$user->disable();

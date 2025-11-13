@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\HTMLForm;
 
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Request\WebRequest;
@@ -38,9 +38,9 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 
 	public function provideSessionKeyNameAndDataData(): array {
 		return [
-			[ 'TOTPKey', [ '' ], false, IAuthKey::class ],
+			[ 'TOTPKey', [ '' ], false, AuthKey::class ],
 			[ 'RecoveryCodeKeys', [ '' ], true, null ],
-			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==' ], true, IAuthKey::class ],
+			[ 'TOTPKey', [ 'secret' => 'ABCDEFGH==' ], true, AuthKey::class ],
 		];
 	}
 
@@ -48,7 +48,7 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideSessionKeyNameAndDataData
 	 */
 	public function testSetGetKeyDataInSession( $keyType, $keyData, $assertEquals, $interfaceType ): void {
-		// test creation and setting of new IAuthKeys in session
+		// test creation and setting of new AuthKeys in session
 		// TODO: $authKey1 assignment should be done dynamically, if PHP will allow...
 		$authKey1 = ( $keyType === 'TOTPKey' ) ?
 			TOTPKey::newFromArray( $keyData )

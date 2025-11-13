@@ -9,7 +9,7 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\TwoFactorModuleSelectAuthenticationRequest;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -46,7 +46,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$user->method( 'getRequest' )->willReturn( $request );
 
 		$keys = array_map( function ( $moduleName ) {
-			$key = $this->createNoOpAbstractMock( IAuthKey::class, [ 'getModule' ] );
+			$key = $this->createNoOpAbstractMock( AuthKey::class, [ 'getModule' ] );
 			$key->method( 'getModule' )->willReturn( $moduleName );
 			return $key;
 		}, $enabledModules );

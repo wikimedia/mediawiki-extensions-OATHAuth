@@ -24,10 +24,10 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -195,10 +195,10 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * Get the name, description, and timestamp to display for a given key.
-	 * @param IAuthKey $key
-	 * @return array{name:string, description?:string, timestamp: ?string}
+	 * @param AuthKey $key
+	 * @return array{name:string, description?:string, timestamp:?string}
 	 */
-	private function getKeyNameAndDescription( IAuthKey $key ): array {
+	private function getKeyNameAndDescription( AuthKey $key ): array {
 		$keyName = $key->getFriendlyName();
 		$moduleName = $this->moduleRegistry->getModuleByKey( $key->getModule() )->getDisplayName()->text();
 		$createdTimestamp = null;
@@ -467,7 +467,7 @@ class OATHManage extends SpecialPage {
 		}
 	}
 
-	private function deleteKey(): IAuthKey {
+	private function deleteKey(): AuthKey {
 		$keyToDelete = $this->oathUser->getKeyById( $this->getRequest()->getInt( 'keyId' ) );
 		if ( !$keyToDelete ) {
 			throw new ErrorPageError(

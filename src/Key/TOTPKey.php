@@ -24,7 +24,7 @@ use DomainException;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -42,7 +42,7 @@ use Wikimedia\ObjectCache\EmptyBagOStuff;
  *
  * @ingroup Extensions
  */
-class TOTPKey implements IAuthKey {
+class TOTPKey extends AuthKey {
 	/** @var array TOTP binary secret */
 	private $secret;
 
@@ -104,13 +104,14 @@ class TOTPKey implements IAuthKey {
 	}
 
 	public function __construct(
-		private readonly ?int $id,
-		private readonly ?string $friendlyName,
-		private readonly ?string $createdTimestamp,
+		?int $id,
+		?string $friendlyName,
+		?string $createdTimestamp,
 		string $secret,
 		string $encryptedSecret = '',
 		string $nonce = ''
 	) {
+		parent::__construct( $id, $friendlyName, $createdTimestamp );
 		// Currently hardcoded values; might be used in the future
 		$this->secret = [
 			'mode' => 'hotp',
@@ -122,20 +123,8 @@ class TOTPKey implements IAuthKey {
 		];
 	}
 
-	public function getId(): ?int {
-		return $this->id;
-	}
-
-	public function getFriendlyName(): ?string {
-		return $this->friendlyName;
-	}
-
 	public function getSecret(): string {
 		return $this->secret['secret'];
-	}
-
-	public function getCreatedTimestamp(): ?string {
-		return $this->createdTimestamp;
 	}
 
 	public function setEncryptedSecretAndNonce( string $encryptedSecret, string $nonce ) {
@@ -265,7 +254,7 @@ class TOTPKey implements IAuthKey {
 			$data = [ 'secret' => $this->getSecret() ];
 		}
 
-		$data['friendly_name'] = $this->friendlyName;
+		$data['friendly_name'] = $this->getFriendlyName();
 		return $data;
 	}
 }
