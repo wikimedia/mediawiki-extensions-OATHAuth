@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\WebAuthn\Module;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -121,7 +121,7 @@ class WebAuthn implements IModule {
 	/**
 	 * @param string $id
 	 * @param OATHUser $user
-	 * @return IAuthKey|null
+	 * @return AuthKey|null
 	 */
 	public function findKeyByCredentialId( $id, $user ) {
 		foreach ( self::getWebAuthnKeys( $user ) as $key ) {

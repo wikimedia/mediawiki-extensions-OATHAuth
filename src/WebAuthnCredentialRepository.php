@@ -23,6 +23,9 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		$friendlyNames = [];
 		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
 			$friendlyName = $key->getFriendlyName();
+			if ( $friendlyName === null ) {
+				continue;
+			}
 			if ( $lc ) {
 				$friendlyName = strtolower( $friendlyName );
 			}

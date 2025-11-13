@@ -29,7 +29,7 @@ use Cose\Algorithm\Signature\RSA\RS512;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\MWException;
-use MediaWiki\Extension\OATHAuth\IAuthKey;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
@@ -68,7 +68,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * and does the actual authentication of data passed
  * by the client with data saved on server
  */
-class WebAuthnKey implements IAuthKey {
+class WebAuthnKey extends AuthKey {
 	private const MODE_CREATE = 'webauthn.create';
 	private const MODE_AUTHENTICATE = 'webauthn.authenticate';
 
@@ -84,8 +84,6 @@ class WebAuthnKey implements IAuthKey {
 	protected string $userHandle;
 
 	protected AttestedCredentialData $attestedCredentialData;
-
-	protected string $friendlyName;
 
 	protected int $signCounter = 0;
 
@@ -108,6 +106,7 @@ class WebAuthnKey implements IAuthKey {
 		return new static(
 			null,
 			null,
+			null,
 			static::MODE_CREATE,
 			RequestContext::getMain()
 		);
@@ -121,6 +120,7 @@ class WebAuthnKey implements IAuthKey {
 	public static function newFromData( array $data ): self {
 		$key = new static(
 			$data['id'] ?? null,
+			$data['friendlyName'] ?? null,
 			$data['created_timestamp'] ?? null,
 			static::MODE_AUTHENTICATE,
 			RequestContext::getMain()
@@ -130,11 +130,13 @@ class WebAuthnKey implements IAuthKey {
 	}
 
 	protected function __construct(
-		protected ?int $id,
-		protected ?string $createdTimestamp,
+		?int $id,
+		?string $friendlyName,
+		?string $createdTimestamp,
 		protected string $mode,
 		protected RequestContext $context
 	) {
+		parent::__construct( $id, $friendlyName, $createdTimestamp );
 		// There is no documentation on what this trust path is
 		// and how it should be used
 		$this->credentialTrustPath = new EmptyTrustPath();
@@ -163,7 +165,6 @@ class WebAuthnKey implements IAuthKey {
 	 */
 	public function setDataFromEncodedDBData( array $data ): void {
 		$this->userHandle = base64_decode( $data['userHandle'] );
-		$this->friendlyName = $data['friendlyName'];
 		$this->signCounter = $data['counter'];
 		$this->credentialTransports = $data['transports'];
 		$this->attestedCredentialData = new AttestedCredentialData(
@@ -171,20 +172,6 @@ class WebAuthnKey implements IAuthKey {
 			base64_decode( $data['publicKeyCredentialId'] ),
 			base64_decode( $data['credentialPublicKey'] )
 		);
-	}
-
-	/** @inheritDoc */
-	public function getId(): ?int {
-		return $this->id;
-	}
-
-	public function getFriendlyName(): string {
-		return $this->friendlyName;
-	}
-
-	/** @inheritDoc */
-	public function getCreatedTimestamp(): ?string {
-		return $this->createdTimestamp;
 	}
 
 	/**
