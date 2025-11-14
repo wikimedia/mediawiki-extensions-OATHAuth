@@ -4,7 +4,7 @@
 			"ChrisPtDe"
 		]
 	},
-	"oathauth-desc": "Balye n’assistance d’ôtentificacion empleyent HMAC basâ sur des contresegnos a usâjo solèt",
+	"oathauth-desc": "Balye n’assistance d’ôtentificacion qu’emplèye HMAC bâsâ sus de contresegnos a usâjo solèt",
 	"oathauth-account": "Nom du compto a doux factors :",
 	"oathauth-secret": "Cllâf secrèta a doux factors :",
 	"oathauth-enable": "Activar l’ôtentificacion a doux factors",
