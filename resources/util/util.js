@@ -4,6 +4,7 @@ mw.ext.webauthn = mw.ext.webauthn || {};
 mw.ext.webauthn.util = {
 	/**
 	 * Convert between various base64 flavors.
+	 *
 	 * @param {string} input
 	 * @param {'base64'|'base64url'} type
 	 * @param {'padded'|'unpadded'} padding
