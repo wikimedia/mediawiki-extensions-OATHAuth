@@ -18,6 +18,9 @@ use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\ButtonWidget;
 
+/**
+ * @property WebAuthn $module
+ */
 class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 	/** @var bool */
@@ -25,11 +28,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 	/** @var bool */
 	protected $panelFramed = false;
-
-	/**
-	 * @var WebAuthn
-	 */
-	protected $module;
 
 	/** @inheritDoc */
 	public function __construct(
