@@ -97,5 +97,6 @@
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다.",
 	"oathauth-qrcode-alt": "비밀 키를 나타내는 스캔 가능한 QR \n코드입니다.",
-	"group-oathauth-twofactorauth": "2요소 인증을 사용할 수 있는 사용자"
+	"group-oathauth-twofactorauth": "2요소 인증을 사용할 수 있는 사용자",
+	"group-oathauth-twofactorauth-member": "2요소 인증을 사용할 수 있는 {{GENDER:$1|사용자}}"
 }
