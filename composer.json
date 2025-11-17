@@ -1,7 +1,8 @@
 {
 	"require": {
-		"web-auth/webauthn-lib": "^4.9.2",
-		"psr/http-message": "^1.0"
+		"okvpn/clock-lts": "^1.0.0",
+		"psr/http-message": "^1.0",
+		"web-auth/webauthn-lib": "^4.9.2"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "48.0.0",
