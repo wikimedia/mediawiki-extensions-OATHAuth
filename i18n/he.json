@@ -27,7 +27,7 @@
 	"oathauth-recoverycodes-copy-success": "קודי השחזור הועתקו ללוח שלך!",
 	"oathauth-recoverycodes-create-label": "יצירת {{PLURAL:$1|קוד שחזור חדש|קודי שחזור חדשים}}",
 	"oathauth-recoverycodes-too-many-instances": "נמצאו יותר ממופע אחד של קודי שחזור במסד הנתונים עבור המשתמש הזה.",
-	"oathauth-recoverycodes-exist": "יש לך קודי שחזור קיימים. הנה הם שוב כדי שתהיה לך אפשרות להעתיק או להוריד אותם למיקום בטוח.",
+	"oathauth-recoverycodes-exist": "יש לך קודי שחזור קיימים. הינה הם שוב כדי שתהיה לך אפשרות להעתיק או להוריד אותם למיקום בטוח.",
 	"oathauth-recoverycodes-header": "אפשרויות שחזור",
 	"oathauth-recoverycodes-header-create": "יצירת קודי שחזור חדשים",
 	"oathauth-recoverycodes-regenerate-warning": "אם {{GENDER:|תיצור|תיצרי}} {{PLURAL:$1|קוד שחזור חדש, <strong>קוד השחזור המקורי שלך לא יעבוד עוד</strong>|קודי שחזור חדשים, <strong>קודי השחזור המקוריים שלך לא יעבדו עוד</strong>}}.",
