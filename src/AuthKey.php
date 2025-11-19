@@ -27,7 +27,7 @@ abstract class AuthKey implements JsonSerializable {
 
 	/**
 	 * @return string|null the user generated name of this key in the oathauth_devices table,
-	 * or null if this key was created before timestamp data was saved in the database
+	 * or null if this key was created before this data was saved in the database
 	 */
 	public function getFriendlyName(): ?string {
 		return $this->friendlyName;
@@ -38,6 +38,13 @@ abstract class AuthKey implements JsonSerializable {
 	 */
 	public function getCreatedTimestamp(): ?string {
 		return $this->createdTimestamp;
+	}
+
+	/**
+	 * @return bool whether the auth key supports passwordless login or not
+	 */
+	public function supportsPasswordlessLogin(): bool {
+		return false;
 	}
 
 	/**
