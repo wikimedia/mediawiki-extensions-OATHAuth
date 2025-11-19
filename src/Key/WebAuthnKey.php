@@ -97,6 +97,8 @@ class WebAuthnKey extends AuthKey {
 
 	protected array $credentialTransports = [];
 
+	protected bool $supportsPasswordless;
+
 	/**
 	 * Create a new empty key instance.
 	 *
@@ -156,7 +158,8 @@ class WebAuthnKey extends AuthKey {
 			"type" => $this->credentialType,
 			"transports" => $this->getTransports(),
 			"attestationType" => $this->credentialAttestationType,
-			"trustPath" => $this->credentialTrustPath
+			"trustPath" => $this->credentialTrustPath,
+			"supportsPasswordless" => $this->supportsPasswordless
 		];
 	}
 
@@ -167,11 +170,17 @@ class WebAuthnKey extends AuthKey {
 		$this->userHandle = base64_decode( $data['userHandle'] );
 		$this->signCounter = $data['counter'];
 		$this->credentialTransports = $data['transports'];
+		$this->supportsPasswordless = $data['supportsPasswordless'] ?? false;
 		$this->attestedCredentialData = new AttestedCredentialData(
 			Uuid::fromString( $data['aaguid'] ),
 			base64_decode( $data['publicKeyCredentialId'] ),
 			base64_decode( $data['credentialPublicKey'] )
 		);
+	}
+
+	/** @inheritDoc */
+	public function supportsPasswordlessLogin(): bool {
+		return $this->supportsPasswordless;
 	}
 
 	/**
