@@ -63,6 +63,7 @@
 	"action-oathauth-enable": "activar la autenticación en dos pasos",
 	"oathauth-auth-token-label": "Clave",
 	"oathauth-auth-token-help": "La contraseña de un solo uso utilizada como segundo paso de la autenticación en dos pasos.",
+	"oathauth-auth-token-help-ui": "Ingrese un código desde su dispositivo de autentificación",
 	"oathauth-auth-use-recovery-code": "Usar códigos de recuperación",
 	"oathauth-auth-ui": "Proporciona un código de verificación del dispositivo de autenticación.",
 	"oathauth-auth-switch-module-label": "Use una aplicación de autentificación",

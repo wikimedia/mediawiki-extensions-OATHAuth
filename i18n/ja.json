@@ -38,6 +38,7 @@
 	"oathauth-recoverycodes-exist": "既存の回復コードがあります。こちらから再度コピーまたは安全な場所にダウンロードしてください。",
 	"oathauth-recoverycodes-header": "回復オプション",
 	"oathauth-recoverycodes-header-create": "新しい回復コードを作成",
+	"oathauth-recoverycodes-regenerate-warning": "{{PLURAL:$1|新しい回復コード}}を作成する場合、<strong>元の{{PLURAL:$1|回復コード}}は機能しなくなります。</strong>",
 	"oathauth-failedtovalidateoath": "認証アプリケーションからコードを検証しようとしたときにエラーが発生しました。もう一度試してください。",
 	"oathauth-disable": "二要素認証の無効化",
 	"oathauth-validatedoath": "二要素認証の設定が完了しました。今から二要素認証が有効になります。",
@@ -154,6 +155,10 @@
 	"oathauth-totp-add-key": "認証アプリを追加する",
 	"oathauth-delete-warning-header": "$1 を除去",
 	"oathauth-delete-warning": "ログインにこの認証方法を使用できなくなり、回復コードは機能しなくなります。",
+	"oathauth-delete-confirm-box": "続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
+	"oathauth-delete-warning-final": "この方法を除去すると二要素認証が完全に無効になります。",
+	"oathauth-delete-wrong-confirm-message": "最終キー除去の入力が間違っています。続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
 	"oathauth-delete-success": "<strong>$1</strong> は除去されました。",
+	"oathauth-created-at": "$1に追加",
 	"oathauth-enable-success": "<strong>$1</strong> が追加されました。"
 }
