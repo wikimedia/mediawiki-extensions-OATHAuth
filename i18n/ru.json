@@ -23,6 +23,7 @@
 			"Reedy",
 			"Saimongoltinio",
 			"Serhio Magpie",
+			"Shabe",
 			"Tanzun",
 			"Vlad5250"
 		]
@@ -104,5 +105,6 @@
 	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация.",
 	"oathauth-prefs-disabledgroups": "Отключенн{{PLURAL:$1|ая группа|ые группы}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} в {{PLURAL:$1|этой группе|этих группах}} отключено, пока вы не включите [[Special:Manage Two-factor authentication|двухфакторную аутентификацию]].",
+	"group-oathauth-twofactorauth": "С доступом к двухфакторной аутентификации",
 	"group-oathauth-twofactorauth-member": "участни{{GENDER:$1|к|ца}}, котор{{GENDER:$1|ый|ая}} может использовать двухфакторную аутентификацию"
 }
