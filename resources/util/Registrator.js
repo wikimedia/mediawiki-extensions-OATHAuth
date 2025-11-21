@@ -30,9 +30,12 @@ mw.ext.webauthn.Registrator.prototype.register = function () {
 };
 
 mw.ext.webauthn.Registrator.prototype.getRegisterInfo = function () {
+	const queryString = window.location.search;
+	const params = new URLSearchParams( queryString );
 	return new mw.Api().get( {
 		action: 'webauthn',
-		func: 'getRegisterInfo'
+		func: 'getRegisterInfo',
+		passkeyMode: params.get( 'passkeyMode' )
 	} );
 };
 

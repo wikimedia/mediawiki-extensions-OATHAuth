@@ -183,6 +183,10 @@ class WebAuthnKey extends AuthKey {
 		return $this->supportsPasswordless;
 	}
 
+	public function setPasswordlessSupport( bool $supportsPasswordlessMode ) {
+		$this->supportsPasswordless = $supportsPasswordlessMode;
+	}
+
 	/**
 	 * Sets friendly name
 	 * If value exists, it will be appended with a unique suffix

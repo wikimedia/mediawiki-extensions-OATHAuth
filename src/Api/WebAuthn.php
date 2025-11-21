@@ -64,6 +64,11 @@ class WebAuthn extends ApiBase {
 					'getRegisterInfo' => 'apihelp-webauthn-paramvalue-func-getregisterinfo',
 				],
 			],
+			'passkeyMode' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_REQUIRED => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-webauthn-paramvalue-func-passkeymode',
+			],
 		];
 	}
 
@@ -144,7 +149,8 @@ class WebAuthn extends ApiBase {
 	 * @throws MWException
 	 */
 	protected function getRegisterInfo(): array {
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
+		$passkeyMode = $this->getParameter( 'passkeyMode' );
+		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
 		$canRegister = $authenticator->canRegister();
 		if ( !$canRegister->isGood() ) {
 			$this->dieWithError( $canRegister->getMessage() );

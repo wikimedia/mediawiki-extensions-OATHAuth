@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\WebAuthn\Tests\Integration;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\WebAuthn\Authenticator
@@ -32,5 +33,12 @@ class AuthenticatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse(
 			Authenticator::factory( $this->getMockUser() )->isEnabled()
 		);
+	}
+
+	public function testInPasskeyMode() {
+		$this->setMwGlobals( 'wgOATHNewPasskeyFeatures', true );
+		$auth = Authenticator::factory( $this->getMockUser(), null, true );
+		$res = TestingAccessWrapper::newFromObject( $auth )->inPasskeyMode();
+		$this->assertTrue( $res );
 	}
 }

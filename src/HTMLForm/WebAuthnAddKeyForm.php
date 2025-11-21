@@ -96,7 +96,8 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		}
 		$credential = $formData['credential'];
 		$credential = FormatJson::decode( $credential );
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
+
+		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $formData['passkeyMode'] );
 		$registrationResult = $authenticator->continueRegistration( $credential );
 		if ( $registrationResult->isGood() ) {
 
@@ -128,6 +129,11 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 			],
 			'credential' => [
 				'name' => 'credential',
+				'type' => 'hidden',
+				'value' => ''
+			],
+			'passkeyMode' => [
+				'name' => 'passkeyMode',
 				'type' => 'hidden',
 				'value' => ''
 			]

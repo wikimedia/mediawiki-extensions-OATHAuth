@@ -68,7 +68,7 @@ class Authenticator {
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
-	public static function factory( User $user, ?WebRequest $request = null ): self {
+	public static function factory( User $user, ?WebRequest $request = null, bool $passkeyMode = false ): self {
 		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
@@ -82,7 +82,8 @@ class Authenticator {
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
 			$request ?? RequestContext::getMain()->getRequest(),
-			$services->getUrlUtils()
+			$services->getUrlUtils(),
+			$passkeyMode
 		);
 	}
 
@@ -93,7 +94,8 @@ class Authenticator {
 		protected IContextSource $context,
 		protected LoggerInterface $logger,
 		protected WebRequest $request,
-		private readonly UrlUtils $urlUtils
+		private readonly UrlUtils $urlUtils,
+		protected bool $passkeyMode
 	) {
 		$this->serverId = $this->getServerId();
 	}
@@ -235,6 +237,9 @@ class Authenticator {
 				$registerInfo,
 				$this->oathUser
 			);
+			if ( $this->inPasskeyMode() ) {
+				$key->setPasswordlessSupport( true );
+			}
 			if ( $registered ) {
 				$this->userRepo->createKey(
 					$this->oathUser,
@@ -250,6 +255,10 @@ class Authenticator {
 			return Status::newFatal( $error->getMessageObject() );
 		}
 		return Status::newFatal( 'webauthn-error-registration-failed' );
+	}
+
+	private function inPasskeyMode(): bool {
+		return $this->passkeyMode && $this->context->getConfig()->get( 'OATHNewPasskeyFeatures' );
 	}
 
 	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
@@ -386,12 +395,19 @@ class Authenticator {
 			),
 		];
 
-		$authenticatorAttachment = $this->context->getConfig()->get( 'WebAuthnLimitPasskeysToRoaming' )
-			? AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM
-			: null;
-		$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
-			$authenticatorAttachment,
-		);
+		if ( $this->inPasskeyMode() ) {
+			$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
+				userVerification: AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED,
+				residentKey: AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED,
+			);
+		} else {
+			$authenticatorAttachment = $this->context->getConfig()->get( 'WebAuthnLimitPasskeysToRoaming' )
+				? AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM
+				: null;
+			$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
+				$authenticatorAttachment,
+			);
+		}
 
 		return PublicKeyCredentialCreationOptions::create(
 			$rpEntity,
