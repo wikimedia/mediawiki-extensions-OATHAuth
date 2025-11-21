@@ -25,7 +25,6 @@ use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AuthKey;
-use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -34,6 +33,7 @@ use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * Class representing a two-factor key
@@ -170,7 +170,8 @@ class TOTPKey extends AuthKey {
 			Base32::decode( $this->secret['secret'] ),
 			$this->secret['period'],
 			-$wgOATHAuthWindowRadius,
-			$wgOATHAuthWindowRadius
+			$wgOATHAuthWindowRadius,
+			(int)ConvertibleTimestamp::now( TS_UNIX )
 		);
 
 		// Remove any whitespace from the received token, which can be an intended group separator
@@ -201,27 +202,6 @@ class TOTPKey extends AuthKey {
 			);
 
 			return true;
-		}
-
-		// TODO: We should deprecate (T408043) logging in on the TOTP form using recovery codes, and eventually
-		// remove this ability (T408044).
-		$moduleDbKeysRecCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
-
-		if ( array_key_exists( 0, $moduleDbKeysRecCodes ) ) {
-			/** @var RecoveryCodeKeys $recoveryCodeKeys */
-			$recoveryCodeKeys = array_shift( $moduleDbKeysRecCodes );
-			$res = $recoveryCodeKeys->verify( [ 'recoverycode' => $token ], $user );
-			if ( $res ) {
-				$logger->info(
-					// phpcs:ignore
-					"OATHAuth {user} used a recovery code from {clientip} on TOTP form.", [
-						'user' => $user->getUser()->getName(),
-						'clientip' => $clientIP
-					]
-				);
-			}
-
-			return $res;
 		}
 
 		return false;
