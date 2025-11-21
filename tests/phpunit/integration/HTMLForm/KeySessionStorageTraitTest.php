@@ -36,7 +36,7 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 		return $this->session;
 	}
 
-	public function provideSessionKeyNameAndDataData(): array {
+	public static function provideSessionKeyNameAndDataData(): array {
 		return [
 			[ 'TOTPKey', [ '' ], false, AuthKey::class ],
 			[ 'RecoveryCodeKeys', [ '' ], true, null ],
@@ -75,7 +75,7 @@ class KeySessionStorageTraitTest extends MediaWikiIntegrationTestCase {
 		$this->setKeyDataInSessionToNull( $keyType );
 	}
 
-	public function provideSessionKeyNameData(): array {
+	public static function provideSessionKeyNameData(): array {
 		return [
 			[ 'TOTPKey_oathauth_key', 'TOTPKey' ],
 			[ 'RecoveryCodeKeys_oathauth_key', 'RecoveryCodeKeys' ]

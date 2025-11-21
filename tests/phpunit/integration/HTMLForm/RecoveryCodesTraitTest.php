@@ -44,7 +44,7 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $formatted1, $formatted2 );
 	}
 
-	public function provideTokenFormatterData(): array {
+	public static function provideTokenFormatterData(): array {
 		return [
 			[ 'ABCDEFGHIJKLMNOP', 'ABCD EFGH IJKL MNOP' ],
 			[ '1234567891011121', '1234 5678 9101 1121' ],
@@ -60,7 +60,7 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $this->tokenFormatterFunction( $token1 ), $token2 );
 	}
 
-	public function provideCreateTextListData(): array {
+	public static function provideCreateTextListData(): array {
 		return [
 			[ [ 'Hey this is a test' ], "Hey this is a test" ],
 			[ [ 'token1', 'token2', 'token3' ], "* token1\n* token2\n* token3" ]
