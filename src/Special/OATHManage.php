@@ -227,6 +227,42 @@ class OATHManage extends SpecialPage {
 		];
 	}
 
+	private function buildKeyAccordion( AuthKey $key ): string {
+		$codex = new Codex();
+		$keyData = $this->getKeyNameAndDescription( $key );
+		$keyAccordion = $codex->accordion();
+
+		$keyAccordion->setTitle( $keyData['name'] );
+
+		$accordionDescription = $keyData['timestamp'] ?? $keyData['description'] ?? null;
+		if ( $accordionDescription !== null ) {
+			$keyAccordion->setDescription( $accordionDescription );
+		}
+
+		$keyAccordion
+			->setContentHtml( $codex->htmlSnippet()->setContent(
+				Html::rawElement( 'form', [
+						'action' => wfScript(),
+						'class' => 'mw-special-OATHManage-authmethods__method-actions'
+					],
+					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+					Html::hidden( 'module', $key->getModule() ) .
+					Html::hidden( 'keyId', $key->getId() ) .
+					Html::hidden( 'warn', '1' ) .
+					// TODO implement rename (T401775)
+					$codex->button()
+						->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
+						->setAction( 'destructive' )
+						->setWeight( 'primary' )
+						->setType( 'submit' )
+						->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
+						->build()
+						->getHtml()
+				)
+			)->build() );
+		return $keyAccordion->build()->getHtml();
+	}
+
 	private function displayNewUI(): void {
 		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
 		// TODO JS enhancement for rename and delete buttons
@@ -279,52 +315,25 @@ class OATHManage extends SpecialPage {
 
 		// 2FA section
 		$keyAccordions = '';
-		$placeholderMessage = '';
-		foreach ( $this->oathUser->getKeys() as $key ) {
-			if ( $this->moduleRegistry->getModuleByKey( $key->getModule() )->isSpecial() ) {
+		$keyPlaceholder = '';
+		$authmethodsClasses = [
+			'mw-special-OATHManage-authmethods'
+		];
+		foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
+			if ( $key->supportsPasswordlessLogin() ) {
+				// Keys that support passwordless login are displayed in the passkeys section instead
 				continue;
 			}
 
-			// TODO use outlined Accordions once these are available in Codex
-			$keyData = $this->getKeyNameAndDescription( $key );
-			$keyAccordion = $codex->accordion();
-
-			$keyAccordion->setTitle( $keyData['name'] );
-
-			$accordionDescription = $keyData['timestamp'] ?? $keyData['description'] ?? null;
-			if ( $accordionDescription !== null ) {
-				$keyAccordion->setDescription( $accordionDescription );
-			}
-
-			$keyAccordion
-				->setContentHtml( $codex->htmlSnippet()->setContent(
-					Html::rawElement( 'form', [
-							'action' => wfScript(),
-							'class' => 'mw-special-OATHManage-authmethods__method-actions'
-						],
-						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-						Html::hidden( 'module', $key->getModule() ) .
-						Html::hidden( 'keyId', $key->getId() ) .
-						Html::hidden( 'warn', '1' ) .
-						// TODO implement rename (T401775)
-						$codex->button()
-							->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
-							->setAction( 'destructive' )
-							->setWeight( 'primary' )
-							->setType( 'submit' )
-							->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
-							->build()
-							->getHtml()
-					)
-				)->build() );
-			$keyAccordions .= $keyAccordion->build()->getHtml();
+			$keyAccordions .= $this->buildKeyAccordion( $key );
 		}
-		if ( !$this->oathUser->getKeys() ) {
+		if ( $keyAccordions === '' ) {
 			// User has no keys, display the placeholder message instead
-			$placeholderMessage = Html::element( 'p',
+			$keyPlaceholder = Html::element( 'p',
 				[ 'class' => 'mw-special-OATHManage-authmethods__placeholder' ],
 				$this->msg( 'oathauth-authenticator-placeholder' )->text()
 			);
+			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
 		}
 
 		$moduleButtons = '';
@@ -342,28 +351,76 @@ class OATHManage extends SpecialPage {
 				->getHtml();
 		}
 
-		$authmethodsClasses = [
-			'mw-special-OATHManage-authmethods'
-		];
-		if ( !$this->oathUser->getKeys() ) {
-			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
-		}
+		$authMethodsSection = Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
+			Html::element( 'h3', [], $this->msg( 'oathauth-authenticator-header' )->text() ) .
+			$keyAccordions .
+			Html::rawElement( 'form', [
+					'action' => wfScript(),
+					'class' => 'mw-special-OATHManage-authmethods__addform'
+				],
+				Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+				Html::hidden( 'action', 'enable' ) .
+				$keyPlaceholder .
+				$moduleButtons
+			)
+		);
 
-		$this->getOutput()->addHTML(
-			Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
-				Html::element( 'h3', [], $this->msg( 'oathauth-authenticator-header' )->text() ) .
-				$keyAccordions .
+		// Passkeys section
+		$passkeySection = '';
+		if ( $this->getConfig()->get( 'OATHNewPasskeyFeatures' ) ) {
+			$passkeyAccordions = '';
+			$passkeyPlaceholder = '';
+			$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
+			foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
+				if ( !$key->supportsPasswordlessLogin() ) {
+					// Regular 2FA keys are displayed in the 2FA section below
+					continue;
+				}
+				$passkeyAccordions .= $this->buildKeyAccordion( $key );
+			}
+			if ( $passkeyAccordions === '' ) {
+				$passkeyPlaceholder = Html::element( 'p',
+					[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
+					$this->msg( 'oathauth-passkeys-placeholder' )->text()
+				);
+				// Display an additional message if the user can't add passkeys
+				if ( $keyAccordions === '' ) {
+					$passkeyPlaceholder .= Html::element( 'p',
+						[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
+						 $this->msg( 'oathauth-passkeys-no2fa' )->text()
+					);
+				}
+				$passkeyClasses[] = 'mw-special-OATHManage-passkeys--no-keys';
+			}
+			// Only display the "Add passkey" button if the user can add passkeys
+			$passkeyAddButton = $keyAccordions === '' ? '' : $codex->button()
+				->setLabel( $this->msg( 'oathauth-passkeys-add' )->text() )
+				->setType( 'submit' )
+				->build()
+				->getHtml();
+			$passkeySection = Html::rawElement( 'div', [ 'class' => $passkeyClasses ],
+				Html::element( 'h3', [], $this->msg( 'oathauth-passkeys-header' )->text() ) .
+				$passkeyAccordions .
 				Html::rawElement( 'form', [
 						'action' => wfScript(),
 						'class' => 'mw-special-OATHManage-authmethods__addform'
 					],
 					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
 					Html::hidden( 'action', 'enable' ) .
-					$placeholderMessage .
-					$moduleButtons
+					Html::hidden( 'module', 'webauthn' ) .
+					Html::hidden( 'passkeyMode', '1' ) .
+					$passkeyPlaceholder .
+					$passkeyAddButton
 				)
-			)
-		);
+			);
+		}
+
+		// If 2FA is enabled then put passkeys first, otherwise put 2FA first
+		if ( $keyAccordions === '' ) {
+			$this->getOutput()->addHTML( $authMethodsSection . $passkeySection );
+		} else {
+			$this->getOutput()->addHTML( $passkeySection . $authMethodsSection );
+		}
 	}
 
 	private function addModuleHTML( IModule $module ): void {

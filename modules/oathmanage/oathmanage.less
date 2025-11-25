@@ -20,7 +20,8 @@
 		margin-bottom: @spacing-150;
 	}
 
-	&-authmethods {
+	&-authmethods,
+	&-passkeys {
 		// On wide screens, put the actions buttons side by side;
 		// on narrow screens, put them below each other
 		&__method-actions {
@@ -42,6 +43,10 @@
 		& &__placeholder {
 			color: @color-subtle;
 			margin-top: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 
 		&--no-keys &__addform {

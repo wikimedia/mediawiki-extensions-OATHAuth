@@ -168,5 +168,9 @@
 	"oathauth-created-at": "Timestamp label for key\n\nParameters:\n* $1 - Date from createdTimestamp for key",
 	"oathauth-enable-success": "Success message shown when a 2FA method has been added.\n\nParameters:\n* $1 - Name of the 2FA method that was enabled",
 	"oathauth-max-keys-exceeded": "Error message title shown when a user has exceeded the max amount of keys.",
-	"oathauth-max-keys-exceeded-message": "Error message title shown when a user has exceeded the max amount of keys.\n\nParameters:\n* $1 - Number of max keys allowed per user."
+	"oathauth-max-keys-exceeded-message": "Error message title shown when a user has exceeded the max amount of keys.\n\nParameters:\n* $1 - Number of max keys allowed per user.",
+	"oathauth-passkeys-header": "Section header for the passkeys section on Special:AccountSecurity.",
+	"oathauth-passkeys-placeholder": "Text shown in the passkeys section on Special:AccountSecurity when the user does not have any passkeys set up.",
+	"oathauth-passkeys-no2fa": "Additional text shown in the passkeys section on Special:AccountSecurity when the user does not have 2FA set up.",
+	"oathauth-passkeys-add": "Label for the button that adds a new passkey."
 }
