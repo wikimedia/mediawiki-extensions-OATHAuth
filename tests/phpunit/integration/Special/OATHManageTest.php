@@ -130,4 +130,42 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys ) );
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
+
+	public function testPasskeysSectionHiddenWhenFeatureDisabled() {
+		$user = $this->getTestUser()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		$this->overrideConfigValue( 'OATHNewPasskeyFeatures', false );
+
+		[ $output ] = $this->executeSpecialPage( '', null, null, $user );
+
+		// Should NOT show the header at all
+		$this->assertStringNotContainsString( '(oathauth-passkeys-header)', $output );
+	}
+
+	public function testPasskeysSectionAllowsAddingPasskeysWhenUserHas2fa() {
+		// Setup user + existing TOTP key
+		$user = $this->getTestUser()->getUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$totpKey = TOTPKey::newFromRandom();
+		$userRepo->createKey(
+			$userRepo->findByUser( $user ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			$totpKey->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$this->overrideConfigValue( 'OATHNewPasskeyFeatures', true );
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+		RequestContext::getMain()->setLanguage( 'qqx' );
+
+		[ $output ] = $this->executeSpecialPage( '', null, null, $user );
+
+		$this->assertStringContainsString( '(oathauth-passkeys-header)', $output );
+		$this->assertStringContainsString( '(oathauth-passkeys-add)', $output );
+		$this->assertStringNotContainsString( '(oathauth-passkeys-no2fa)', $output );
+	}
 }
