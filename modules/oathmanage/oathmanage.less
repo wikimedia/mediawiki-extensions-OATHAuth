@@ -72,15 +72,19 @@
 		margin: 0;
 	}
 
-	&-delete-warning__actions {
-		// On wide screens, put the "delete" and "cancel" buttons side by side;
-		// on narrow screens, put them below each other
-		display: flex;
-		gap: @spacing-75;
-		margin-top: @spacing-125;
+	.mw-special-OATHManage-delete-warning {
+		.mw-htmlform-submit-buttons {
+			display: flex;
 
-		@media ( max-width: @max-width-breakpoint-mobile ) {
-			flex-direction: column;
+			@media ( max-width: @max-width-breakpoint-mobile ) {
+				flex-direction: column;
+				gap: @spacing-75;
+
+				.oo-ui-buttonElement {
+					// Remove default horizontal margin when buttons are stacked
+					margin-right: 0;
+				}
+			}
 		}
 	}
 

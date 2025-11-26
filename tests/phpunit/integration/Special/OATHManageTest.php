@@ -168,4 +168,131 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathauth-passkeys-add)', $output );
 		$this->assertStringNotContainsString( '(oathauth-passkeys-no2fa)', $output );
 	}
+
+	public function testDeleteLastKeyWithCorrectConfirmation() {
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$key = TOTPKey::newFromRandom();
+		$userRepo->createKey(
+		$userRepo->findByUser( $user->getUserIdentity() ),
+		OATHAuthServices::getInstance( $this->getServiceContainer() )
+			->getModuleRegistry()
+			->getModuleByKey( 'totp' ),
+		$key->jsonSerialize(),
+		'127.0.0.1'
+		);
+
+		$oathUser = $userRepo->findByUser( $user->getUser() );
+		$this->assertCount( 1, $oathUser->getKeys() );
+		$keyId = $oathUser->getKeys()[0]->getId();
+
+		$context = RequestContext::getMain();
+		$context->setLanguage( 'qqx' );
+		$session = $context->getRequest()->getSession();
+		$session->setUser( $user->getUser() );
+
+		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
+		->inLanguage( 'qqx' )
+		->text();
+
+		$token = $session->getToken( '' );
+
+		$request = new FauxRequest(
+		[
+			'action' => 'delete',
+			'module' => 'totp',
+			'keyId' => $keyId,
+			'wpremove-confirm-box' => $confirmText,
+			'wpEditToken' => $token,
+		],
+		true,
+		$session
+		);
+
+		$this->executeSpecialPage( '', $request, null, $user->getUser() );
+
+		$oathUser = $userRepo->findByUser( $user->getUser() );
+		$this->assertCount( 0, $oathUser->getKeys() );
+	}
+
+	public function testDeleteLastKeyWithWrongConfirmation() {
+		$testUser = $this->getTestUser();
+		$user = $testUser->getUser();
+		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$userRepository->createKey(
+		$userRepository->findByUser( $testUser->getUserIdentity() ),
+		OATHAuthServices::getInstance( $this->getServiceContainer() )
+			->getModuleRegistry()
+			->getModuleByKey( 'totp' ),
+		TOTPKey::newFromRandom()->jsonSerialize(),
+		'127.0.0.1'
+		);
+
+		$oathUser = $userRepository->findByUser( $user );
+		$this->assertCount( 1, $oathUser->getKeys() );
+		$keyId = $oathUser->getKeys()[0]->getId();
+
+		$context = RequestContext::getMain();
+		$context->getRequest()->getSession()->setUser( $user );
+		$context->setLanguage( 'qqx' );
+		$session = $context->getRequest()->getSession();
+
+		$request = new FauxRequest(
+		[
+			'action' => 'delete',
+			'keyId' => $keyId,
+			'wpremove-confirm-box' => 'wrong-string',
+			'wpEditToken' => $session->getToken( '' ),
+		],
+		true,
+		$session
+		);
+
+		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
+
+		$oathUser = $userRepository->findByUser( $user );
+		$this->assertCount( 1, $oathUser->getKeys() );
+
+		$this->assertStringContainsString( 'oathauth-delete-wrong-confirm-message', $output );
+	}
+
+	public function testDeleteNonLastKeyWithoutConfirmation() {
+		$user = $this->getTestUser();
+		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+		for ( $i = 0; $i < 2; $i++ ) {
+			$key = TOTPKey::newFromRandom();
+			$userRepository->createKey(
+				$userRepository->findByUser( $user->getUserIdentity() ),
+				OATHAuthServices::getInstance( $this->getServiceContainer() )
+					->getModuleRegistry()
+					->getModuleByKey( 'totp' ),
+				$key->jsonSerialize(),
+				'127.0.0.1'
+			);
+		}
+
+		$oathUser = $userRepository->findByUser( $user->getUser() );
+		$this->assertCount( 2, $oathUser->getKeys() );
+		$keyId = $oathUser->getKeys()[0]->getId();
+
+		$context = RequestContext::getMain();
+		$context->getRequest()->getSession()->setUser( $user->getUser() );
+		$session = $context->getRequest()->getSession();
+		$request = new FauxRequest(
+			[
+				'action' => 'delete',
+				'module' => 'totp',
+				'keyId' => $keyId
+			],
+			true,
+			$session
+		);
+
+		$this->executeSpecialPage( '', $request, null, $user->getUser() );
+
+		$oathUser = $userRepository->findByUser( $user->getUser() );
+		$this->assertCount( 1, $oathUser->getKeys() );
+	}
 }
