@@ -79,7 +79,9 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 				RecoveryCodes::MODULE_NAME => [ $rcKey ],
 				default => []
 			} );
-		$module = new TOTP( $this->createMock( OATHUserRepository::class ) );
+		$mockUserRepo = $this->createMock( OATHUserRepository::class );
+		$this->setService( 'OATHUserRepository', $mockUserRepo );
+		$module = new TOTP( $mockUserRepo );
 
 		$this->assertTrue( $module->verify( $mockUser, [ 'token' => '64SZLJTTPRI5XBUE' ] ) );
 	}

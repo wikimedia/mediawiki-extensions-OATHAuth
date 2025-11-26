@@ -60,13 +60,6 @@ class OATHUser {
 	}
 
 	/**
-	 * @return AuthKey[]
-	 */
-	public function getRecoveryCodes() {
-		return $this->getKeysForModule( 'recoverycodes' );
-	}
-
-	/**
 	 * Get the key associated with this user.
 	 *
 	 * @return AuthKey[]

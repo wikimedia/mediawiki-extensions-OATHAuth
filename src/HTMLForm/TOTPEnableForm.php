@@ -11,7 +11,6 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
 use OOUI\FieldLayout;
@@ -197,35 +196,22 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			return [ 'oathauth-failedtovalidateoath' ];
 		}
 
-		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
+		// Create recovery codes if needed, using the same codes that we displayed to the user
+		/** @var RecoveryCodes $recoveryCodesModule */
+		$recoveryCodesModule = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+		'@phan-var RecoveryCodes $recoveryCodesModule';
+		$recoveryCodesModule->ensureExistence( $this->oathUser, $this->getKeyDataInSession( 'RecoveryCodeKeys' ) );
 
-		// only create the recovery code module entry if this is the first 2FA key a user is creating
-		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-			throw new UnexpectedValueException(
-				$this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped()
-			);
-		}
-
-		if ( count( $moduleDbKeys ) < RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-			$keyData = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
-			$recCodeKeys = RecoveryCodeKeys::newFromArray( $keyData );
-			$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
-			$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-			$this->oathRepo->createKey(
-				$this->oathUser,
-				$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
-				$recCodeKeys->jsonSerialize(),
-				$this->getRequest()->getIP()
-			);
-		}
-
-		$this->setKeyDataInSessionToNull( 'TOTPKey' );
+		// Store the new TOTP key
 		$this->oathRepo->createKey(
 			$this->oathUser,
 			$this->module,
 			$TOTPkey->jsonSerialize(),
 			$this->getRequest()->getIP()
 		);
+
+		$this->setKeyDataInSessionToNull( 'TOTPKey' );
+		$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
 
 		return true;
 	}

@@ -9,6 +9,8 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -79,21 +81,20 @@ class TOTP implements IModule {
 		// Check recovery codes
 		// TODO: We should deprecate (T408043) logging in on the TOTP form using recovery codes, and eventually
 		// remove this ability (T408044).
-		/** @var RecoveryCodeKeys|null $recoveryCodeKeys */
-		$recoveryCodeKeys = $user->getKeysForModule( RecoveryCodes::MODULE_NAME )[0] ?? null;
-		if ( $recoveryCodeKeys ) {
-			$res = $recoveryCodeKeys->verify( [ 'recoverycode' => $data['token'] ?? '' ], $user );
-			if ( $res ) {
-				LoggerFactory::getInstance( 'authentication' )->info(
-					// phpcs:ignore
-					"OATHAuth {user} used a recovery code from {clientip} on TOTP form.", [
-						'user' => $user->getUser()->getName(),
-						'clientip' => RequestContext::getMain()->getRequest()->getIP()
-					]
-				);
-			}
 
-			return $res;
+		/** @var RecoveryCodes $recoveryCodes */
+		$recoveryCodes = OATHAuthServices::getInstance()->getModuleRegistry()
+			->getModuleByKey( RecoveryCodes::MODULE_NAME );
+		$validRecoveryCode = $recoveryCodes->verify( $user, [ 'recoverycode' => $data['token'] ?? '' ] );
+		if ( $validRecoveryCode ) {
+			LoggerFactory::getInstance( 'authentication' )->info(
+				// phpcs:ignore
+				"OATHAuth {user} used a recovery code from {clientip} on TOTP form.", [
+					'user' => $user->getUser()->getName(),
+					'clientip' => RequestContext::getMain()->getRequest()->getIP()
+				]
+			);
+			return true;
 		}
 
 		return false;
@@ -111,16 +112,18 @@ class TOTP implements IModule {
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource $context
+	 * @param ?OATHAuthModuleRegistry $registry
 	 * @return IManageForm|TOTPEnableForm|null
 	 */
 	public function getManageForm(
 		$action,
 		OATHUser $user,
 		OATHUserRepository $repo,
-		IContextSource $context
+		IContextSource $context,
+		?OATHAuthModuleRegistry $registry
 	) {
 		if ( $action === OATHManage::ACTION_ENABLE ) {
-			return new TOTPEnableForm( $user, $repo, $this, $context );
+			return new TOTPEnableForm( $user, $repo, $this, $context, $registry );
 		}
 		return null;
 	}

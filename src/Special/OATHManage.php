@@ -29,7 +29,6 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -457,13 +456,15 @@ class OATHManage extends SpecialPage {
 		}
 
 		if ( $this->action === self::ACTION_DISABLE ) {
-			$form = new DisableForm( $this->oathUser, $this->userRepo, $module, $this->getContext() );
+			$form = new DisableForm( $this->oathUser, $this->userRepo, $module, $this->getContext(),
+				$this->moduleRegistry );
 		} else {
 			$form = $module->getManageForm(
 				$this->action,
 				$this->oathUser,
 				$this->userRepo,
-				$this->getContext()
+				$this->getContext(),
+				$this->moduleRegistry
 			);
 		}
 		if ( $form === null || !$this->isValidFormType( $form ) ) {
@@ -534,7 +535,8 @@ class OATHManage extends SpecialPage {
 			static::ACTION_ENABLE,
 			$this->oathUser,
 			$this->userRepo,
-			$this->getContext()
+			$this->getContext(),
+			$this->moduleRegistry
 		);
 
 		return $form !== '';
@@ -729,70 +731,56 @@ class OATHManage extends SpecialPage {
 	 */
 	private function addSpecialModuleHTML( IModule $module ): void {
 		// only one special module type is currently supported
-		if ( $module->getName() === RecoveryCodes::MODULE_NAME ) {
+		if ( $module instanceof RecoveryCodes ) {
 			$this->getRecoveryCodesHTML( $module );
 		}
 	}
 
-	private function getRecoveryCodesHTML( IModule $module ): void {
-		$keys = $this->oathUser->getKeysForModule( $module->getName() );
-		if ( count( $keys ) === 0 ) {
-			// This path should only be possible if a user had an existing TOTP or WebAuthn
-			// key, pre-multi-module support. So let's create an empty Recovery Code Keys
-			// for them, since they will otherwise not yet exist.
-			RecoveryCodeKeys::maybeCreateOrUpdateRecoveryCodeKeys( $this->oathUser );
-			$keys = $this->oathUser->getKeysForModule( $module->getName() );
-		}
+	private function getRecoveryCodesHTML( RecoveryCodes $module ): void {
+		$key = $module->ensureExistence( $this->oathUser );
 
 		$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
 		$this->getOutput()->addModules( 'ext.oath.recovery' );
 		$codex = new Codex();
-		$keyAccordions = '';
 		$placeholderMessage = '';
 
-		foreach ( $keys as $key ) {
-			/** @var RecoveryCodeKeys $key */
-			'@phan-var RecoveryCodeKeys $key';
-			$this->setOutputJsConfigVars(
-				array_map(
-					[ $this, 'tokenFormatterFunction' ],
-					$key->getRecoveryCodeKeys()
-				)
-			);
+		$this->setOutputJsConfigVars(
+			array_map(
+				[ $this, 'tokenFormatterFunction' ],
+				$key->getRecoveryCodeKeys()
+			)
+		);
 
-			// TODO: use outlined Accordions once these are available in Codex
-			$keyData = $this->getKeyNameAndDescription( $key );
-			$keyAccordion = $codex->accordion()
-				->setTitle( $keyData['name'] );
-			$keyAccordion->setDescription(
-				$this->msg( 'oathauth-recoverycodes' )->text()
-			);
-			$keyAccordion
-				->setContentHtml( $codex->htmlSnippet()->setContent(
-					Html::rawElement( 'form', [
-							'action' => wfScript(),
-							'class' => 'mw-special-OATHManage-authmethods__method-actions'
-						],
-						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-						Html::hidden( 'module', $key->getModule() ) .
-						Html::hidden( 'keyId', $key->getId() ) .
-						$this->createRecoveryCodesCopyButton() .
-						$this->createRecoveryCodesDownloadLink(
-							$key->getRecoveryCodeKeys()
-						) .
-						$codex->button()
-							->setLabel( $this->msg(
-								'oathauth-recoverycodes-create-label',
-								$this->getConfig()->get( 'OATHRecoveryCodesCount' )
-							) )
-							->setType( 'submit' )
-							->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
-							->build()
-							->getHtml()
-					)
-				)->build() );
-			$keyAccordions .= $keyAccordion->build()->getHtml();
-		}
+		// TODO: use outlined Accordions once these are available in Codex
+		$keyAccordion = $codex->accordion()
+			->setTitle( $module->getDisplayName()->text() );
+		$keyAccordion->setDescription(
+			$this->msg( 'oathauth-recoverycodes' )->text()
+		);
+		$keyAccordion
+			->setContentHtml( $codex->htmlSnippet()->setContent(
+				Html::rawElement( 'form', [
+						'action' => wfScript(),
+						'class' => 'mw-special-OATHManage-authmethods__method-actions'
+					],
+					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+					Html::hidden( 'module', $key->getModule() ) .
+					Html::hidden( 'keyId', $key->getId() ) .
+					$this->createRecoveryCodesCopyButton() .
+					$this->createRecoveryCodesDownloadLink(
+						$key->getRecoveryCodeKeys()
+					) .
+					$codex->button()
+						->setLabel( $this->msg(
+							'oathauth-recoverycodes-create-label',
+							$this->getConfig()->get( 'OATHRecoveryCodesCount' )
+						) )
+						->setType( 'submit' )
+						->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
+						->build()
+						->getHtml()
+				)
+			)->build() );
 
 		$authmethodsClasses = [
 			'mw-special-OATHManage-authmethods'
@@ -804,7 +792,7 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->addHTML(
 			Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
 				Html::element( 'h3', [], $this->msg( 'oathauth-' . $module->getName() . '-header' )->text() ) .
-				$keyAccordions .
+				$keyAccordion->build()->getHTML() .
 				Html::rawElement( 'form', [
 						'action' => wfScript(),
 						'class' => 'mw-special-OATHManage-authmethods__addform'

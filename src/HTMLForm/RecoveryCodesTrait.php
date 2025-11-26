@@ -62,16 +62,16 @@ trait RecoveryCodesTrait {
 	}
 
 	private function generateRecoveryCodesContent( array $recoveryCodes, bool $displayExisting = false ): FieldLayout {
+		/** @var RecoveryCodeKeys[] $moduleDbKeys */
 		$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
+		'@phan-var RecoveryCodeKeys[] $moduleDbKeys';
 
-		if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
+		if ( count( $moduleDbKeys ) > RecoveryCodes::RECOVERY_CODE_MODULE_COUNT ) {
 			throw new UnexpectedValueException( $this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped() );
 		}
 
-		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-			/** @var RecoveryCodeKeys $key */
+		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodes::RECOVERY_CODE_MODULE_COUNT ) {
 			$key = array_shift( $moduleDbKeys );
-			'@phan-var RecoveryCodeKeys $key';
 			$recoveryCodes = array_map(
 				[ $this, 'tokenFormatterFunction' ],
 				$key->getRecoveryCodeKeys()

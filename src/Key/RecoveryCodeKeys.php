@@ -53,11 +53,6 @@ class RecoveryCodeKeys extends AuthKey {
 	private const RECOVERY_CODE_LENGTH = 10;
 
 	/**
-	 * Number of recovery code module instances allowed per user in oathauth_devices
-	 */
-	public const RECOVERY_CODE_MODULE_COUNT = 1;
-
-	/**
 	 * @param array $data
 	 * @return RecoveryCodeKeys|null on invalid data
 	 * @throws UnexpectedValueException When encryption is not configured but db is encrypted
@@ -146,11 +141,9 @@ class RecoveryCodeKeys extends AuthKey {
 				continue;
 			}
 
-			self::maybeCreateOrUpdateRecoveryCodeKeys( $user, $this, $userRecoveryCode );
-
 			$logger->info(
 				// phpcs:ignore
-				"OATHAuth {user} used a recovery code from {clientip} and had their existing recovery codes regenerated automatically.", [
+				"OATHAuth {user} used a recovery code from {clientip}.", [
 					'user' => $user->getUser()->getName(),
 					'clientip' => $clientData['clientIp']
 				]
@@ -160,6 +153,31 @@ class RecoveryCodeKeys extends AuthKey {
 		}
 
 		return false;
+	}
+
+	public function removeRecoveryCode( OATHUser $user, string $codeToRemove ) {
+		$codeToRemove = $this->normaliseRecoveryCode( $codeToRemove );
+		$key = array_search( $codeToRemove, $this->recoveryCodeKeys );
+		if ( $key === false ) {
+			return;
+		}
+
+		unset( $this->recoveryCodeKeys[$key] );
+		// T408297 - Unset the key for the same encrypted token.
+		unset( $this->recoveryCodeKeysEncrypted[$key] );
+
+		if ( $this->recoveryCodeKeys === [] ) {
+			// If we just deleted the last recovery code, generate new ones
+			$this->regenerateRecoveryCodeKeys();
+
+			$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
+			$this->getLogger()->info(
+				'OATHAuth {user} had their recovery codes automatically regenerated.', [
+					'user' => $user->getUser()->getName(),
+					'clientip' => $clientData['clientIp']
+				]
+			);
+		}
 	}
 
 	public function regenerateRecoveryCodeKeys(): void {
@@ -215,72 +233,6 @@ class RecoveryCodeKeys extends AuthKey {
 			'recoverycodekeys' => $encData['encrypted_array'],
 			'nonce' => $encData['nonce']
 		];
-	}
-
-	/**
-	 * @throws UnexpectedValueException
-	 */
-	public static function maybeCreateOrUpdateRecoveryCodeKeys(
-		OATHUser $user,
-		?RecoveryCodeKeys $recoveryKeys = null,
-		string $usedRecoveryCode = ''
-	): void {
-		$uid = $user->getCentralId();
-		if ( !$uid ) {
-			throw new UnexpectedValueException( wfMessage( 'oathauth-invalidrequest' )->escaped() );
-		}
-
-		if ( $recoveryKeys === null ) {
-			// see if recovery codes module exists for user
-			$moduleDbKeys = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
-
-			if ( count( $moduleDbKeys ) > self::RECOVERY_CODE_MODULE_COUNT ) {
-				throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' ) );
-			}
-
-			if ( array_key_exists( 0, $moduleDbKeys ) && $moduleDbKeys[0] instanceof self ) {
-				$recoveryKeys = $moduleDbKeys[0];
-			} else {
-				$recoveryKeys = self::newFromArray( [ 'recoverycodekeys' => [] ] );
-			}
-		}
-
-		// attempt to remove used recovery code
-		if ( $usedRecoveryCode ) {
-			$key = array_search( $usedRecoveryCode, $recoveryKeys->recoveryCodeKeys );
-			if ( $key !== false ) {
-				unset( $recoveryKeys->recoveryCodeKeys[$key] );
-				// T408297 - Unset the key for the same encrypted token.
-				// Can we assume the array key is the same?
-				unset( $recoveryKeys->recoveryCodeKeysEncrypted[$key] );
-			}
-		}
-
-		// only regenerate if there are no tokens left or these are brand-new recovery codes
-		if ( count( $recoveryKeys->recoveryCodeKeys ) === 0 ) {
-			$recoveryKeys->regenerateRecoveryCodeKeys();
-		}
-
-		$recoveryCodeKeys = $recoveryKeys->getRecoveryCodeKeys();
-		if ( count( $recoveryCodeKeys ) > 0 && !in_array( '', $recoveryCodeKeys ) ) {
-			$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
-			$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-			$module = $moduleRegistry->getModuleByKey( $recoveryKeys->getModule() );
-			if ( $module->isEnabled( $user ) ) {
-				$oathRepo->updateKey(
-					$user,
-					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-					$recoveryKeys
-				);
-			} else {
-				$oathRepo->createKey(
-					$user,
-					$module,
-					$recoveryKeys->jsonSerialize(),
-					RequestContext::getMain()->getRequest()->getIP()
-				);
-			}
-		}
 	}
 
 	private function normaliseRecoveryCode( string $token ): string {
