@@ -86,7 +86,7 @@
 	"oathauth-disable-generic": "Poista käytöstä",
 	"oathauth-invalid-data-format": "Tiedon tarjoaja ei ole kelvollinen luomaan avainta valitulle tunnistautumistavalle",
 	"oathauth-disable-page-title": "Poista moduuli $1 käytöstä",
-	"oathauth-enable-page-title": "Ota moduuli $1 käyttöön",
+	"oathauth-enable-page-title": "Ota $1 käyttöön",
 	"oathauth-action-exclusive-to-2fa": "Tämän toiminnon voivat suorittaa vain käyttäjät, jotka ovat ottaneet käyttöön kaksivaiheisen tunnistautumisen.",
 	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
 	"oathauth-disable-method-warning-button-label": "Vahvista ja jatka",
