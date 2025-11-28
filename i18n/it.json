@@ -92,5 +92,9 @@
 	"oathauth-error-multiple-modules": "Per il momento, l'utilizzo di più metodi di autenticazione 2FA non è supportato. Puoi attivare $1 solo dopo aver disabilitato $2.",
 	"group-oathauth-twofactorauth": "Utenti che possono utilizzare l'autenticazione a due fattori",
 	"group-oathauth-twofactorauth-member": "{{GENDER:$1|utente}} che può utilizzare l'autenticazione a due fattori",
-	"oathauth-created-at": "Aggiunto il $1"
+	"oathauth-created-at": "Aggiunto il $1",
+	"oathauth-passkeys-header": "Passkey",
+	"oathauth-passkeys-placeholder": "Le passkey sono più sicure delle password e consentono di accedere allo stesso modo in cui si sblocca il dispositivo.",
+	"oathauth-passkeys-no2fa": "Per aggiungere una passkey è necessario prima impostare l'autenticazione a due fattori.",
+	"oathauth-passkeys-add": "Aggiungi una passkey"
 }

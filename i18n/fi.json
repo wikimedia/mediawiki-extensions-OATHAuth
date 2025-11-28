@@ -122,7 +122,7 @@
 	"oathauth-verify-enabled": "Käyttäjällä {{GENDER:$1|$1}} on kaksivaiheinen tunnistautuminen käytössä.",
 	"oathauth-verify-disabled": "Käyttäjällä {{GENDER:$1|$1}} ei ole kaksivaiheista tunnistautumista käytössä.",
 	"oathauth-prefs-disabledgroups": "Käytöstä {{PLURAL:$1|poistettu ryhmä|poistetut ryhmät}}:",
-	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Jäsenyytesi}} {{PLURAL:$1|tässä ryhmässä|näissä ryhmissä}} on kytketty pois päältä, kunnes  otat käyttöön [[Special:Manage Two-factor authentication|kaksivaiheisen tunnistautumisen]].",
+	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Jäsenyytesi}} {{PLURAL:$1|tässä ryhmässä|näissä ryhmissä}} on kytketty pois päältä, kunnes otat käyttöön [[Special:Manage Two-factor authentication|kaksivaiheisen tunnistautumisen]].",
 	"oathauth-qrcode-alt": "Skannattava QR-koodi, joka edustaa salaista avainta.",
 	"oathauth-hint": "Eikö sinulla ole pääsyä laitteellesi tai tunnistautumissovellukseesi? Voit syöttää tähän kenttään palautuskoodin (joka näytettiin, kun otit käyttöön kaksivaiheisen tunnistautumisen).",
 	"oathauth-recovery-code-hint": "Oletko kadottanut palautuskoodisi? Ota yhteyttä [[{{MediaWiki:Grouppage-sysop}}|ylläpitäjään]].",

@@ -5,6 +5,7 @@
 			"A Chinese Wikipedian",
 			"Anterdc99",
 			"Diskdance",
+			"ExoHyper2026",
 			"Gerongfenh",
 			"GuoPC",
 			"Hanyanbo98",
@@ -176,5 +177,9 @@
 	"oathauth-created-at": "于$1添加",
 	"oathauth-enable-success": "已添加<strong>$1</strong>。",
 	"oathauth-max-keys-exceeded": "已达到身份验证方法数量上限",
-	"oathauth-max-keys-exceeded-message": "您已达到身份验证方法的最大数量，即$1个。请先移除一个身份验证方式，再添加新的方式。"
+	"oathauth-max-keys-exceeded-message": "您已达到身份验证方法的最大数量，即$1个。请先移除一个身份验证方式，再添加新的方式。",
+	"oathauth-passkeys-header": "通行密钥",
+	"oathauth-passkeys-placeholder": "通行密钥比密码更安全，并且允许您以与解锁设备相同的方式登录。",
+	"oathauth-passkeys-no2fa": "要添加通行密钥，您必须先设置双因素身份验证。",
+	"oathauth-passkeys-add": "添加通行密钥"
 }

@@ -159,5 +159,9 @@
 	"oathauth-created-at": "$1に追加",
 	"oathauth-enable-success": "<strong>$1</strong> が追加されました。",
 	"oathauth-max-keys-exceeded": "認証方法の制限に達しました",
-	"oathauth-max-keys-exceeded-message": "認証方法の数が最大値である $1 に達しました。新しい認証方法を追加する前に認証方法を除去してください。"
+	"oathauth-max-keys-exceeded-message": "認証方法の数が最大値である $1 に達しました。新しい認証方法を追加する前に認証方法を除去してください。",
+	"oathauth-passkeys-header": "パスキー",
+	"oathauth-passkeys-placeholder": "パスキーはパスワードよりも安全で、デバイスのロックを解除するのと同じ方法でサインインできます。",
+	"oathauth-passkeys-no2fa": "パスキーを追加するには、まず二要素認証を設定する必要があります。",
+	"oathauth-passkeys-add": "パスキーを追加"
 }

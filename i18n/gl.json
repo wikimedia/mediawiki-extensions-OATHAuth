@@ -150,5 +150,9 @@
 	"oathauth-created-at": "Engadido o $1",
 	"oathauth-enable-success": "Engadiuse «<strong>$1</strong>».",
 	"oathauth-max-keys-exceeded": "Alcanzouse o límite de métodos de autenticación",
-	"oathauth-max-keys-exceeded-message": "Alcanzaches o número máximo de métodos de autenticación, que é de $1. Elimina un método de autenticación antes de engadires un novo."
+	"oathauth-max-keys-exceeded-message": "Alcanzaches o número máximo de métodos de autenticación, que é de $1. Elimina un método de autenticación antes de engadires un novo.",
+	"oathauth-passkeys-header": "Claves de acceso",
+	"oathauth-passkeys-placeholder": "As claves de acceso son máis seguras que os contrasinais e permítenche iniciar sesión do mesmo xeito que desbloqueas o teu dispositivo.",
+	"oathauth-passkeys-no2fa": "Para engadir unha clave de acceso, primeiro debes configurar a autenticación de dous factores.",
+	"oathauth-passkeys-add": "Engadir unha clave de acceso"
 }

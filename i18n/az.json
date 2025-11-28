@@ -92,7 +92,7 @@
 	"oathauth-ui-no-module": "Heç biri aktiv deyil",
 	"oathauth-module-totp-label": "Autentifikator tətbiqi",
 	"oathauth-module-recoverycodes-label": "Bərpa kodları",
-	"oathauth-recoverycodes-description": "İdentifikasiya üçün ikinci amil kimi istifadə edilə bilən və ya əvvəlki amil aradan qaldırıldıqda hesabı bərpa etmək üçün istifadə edilə bilən unikal kod və ya kodlar dəsti. Bərpa kodları avtomatik olaraq digər autentifikasiya faktoru (məsələn, autentifikator proqramı) aktivləşdirildikdə yaradılır. Başqa bir autentifikasiya faktoru aktivləşdirildiyi müddətcə sizə istənilən vaxt bərpa kodlarını bərpa etmək, kopyalamaq və yükləmək icazəsi verilir.",
+	"oathauth-recoverycodes-description": "İdentifikasiya üçün ikinci amil kimi istifadə edilə bildiyiniz və ya əvvəlki amil silindikdə hesabınızı bərpa etmək üçün istifadə edilə bilən unikal kod və ya kodlar dəsti. Bərpa kodları avtomatik olaraq digər autentifikasiya faktoru (məsələn, autentifikator proqramı) aktivləşdirildikdə yaradılır. Başqa bir autentifikasiya faktoru aktivləşdirildiyi müddətcə sizə istənilən vaxt bərpa kodlarını bərpa edə, kopiyalaya və yükləyə bilərsiniz.",
 	"oathauth-ui-manage": "İdarə et",
 	"oathmanage": "İki faktorlu autentifikasiyanı idarə et",
 	"accountsecurity": "Hesab təhlükəsizliyi",
@@ -153,5 +153,9 @@
 	"oathauth-created-at": "$1 tarixində əlavə edilib",
 	"oathauth-enable-success": "<strong>$1</strong> əlavə edildi.",
 	"oathauth-max-keys-exceeded": "Autentifikasiya metodu limitinə çatıldı",
-	"oathauth-max-keys-exceeded-message": "Siz autentifikasiya üsullarının maksimum sayına ($1) çatmısınız. Zəhmət olmasa, yenisini əlavə etməzdən əvvəl bir autentifikasiya metodu silin."
+	"oathauth-max-keys-exceeded-message": "Siz autentifikasiya üsullarının maksimum sayına ($1) çatmısınız. Zəhmət olmasa, yenisini əlavə etməzdən əvvəl bir autentifikasiya metodu silin.",
+	"oathauth-passkeys-header": "Keçid açarları",
+	"oathauth-passkeys-placeholder": "Keçid açarları parollardan daha təhlükəsizdir və cihazınızın kilidini açdığınız formada daxil olmağa imkan verir.",
+	"oathauth-passkeys-no2fa": "Keçid açarı əlavə etmək üçün əvvəlcə iki faktorlu autentifikasiya qurmalısınız.",
+	"oathauth-passkeys-add": "Keçid açarı əlavə et"
 }
