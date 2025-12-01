@@ -15,7 +15,6 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
 use MediaWiki\User\User;
@@ -229,18 +228,6 @@ class HookHandler implements
 		$disabledGroups = $this->getDisabledGroups( $user, $groups );
 		if ( $disabledGroups ) {
 			$groups = array_diff( $groups, $disabledGroups );
-		}
-
-		// Enable 2FA for users in gradual rollout if MFARollout is enabled.
-		// Exclude temp users and users without email addresses; check this first
-		// so that we don't try to look up central user IDs for non-named users.
-		if ( $user->isNamed() && $user->getEmail() ) {
-			$centralID = $this->centralIdLookupFactory->getLookup()
-				->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW );
-			$MFARollout = $this->config->get( 'OATHRolloutPercent' );
-			if ( $centralID % 100 < $MFARollout ) {
-				$groups[] = "oathauth-twofactorauth";
-			}
 		}
 	}
 

@@ -142,10 +142,6 @@
 			"value": [],
 			"description": "List of user groups that must use two-factor authentication."
 		},
-		"OATHRolloutPercent": {
-			"value": 0,
-			"description": "Percentage of users to add to 2FA rollout."
-		},
 		"OATHSecretKey": {
 			"value": false,
 			"description": "A secret key value for encrypting OATH-related data which should be SODIUM_CRYPTO_SECRETBOX_KEYBYTES hexadecimal bytes (64 chars) in length. This variable is currently considered immutable. Do not publicly set this value."
@@ -263,9 +259,6 @@
 			"oathauth-disable-for-user": true,
 			"oathauth-verify-user": true,
 			"oathauth-view-log": true
-		},
-		"oathauth-twofactorauth": {
-			"oathauth-enable": true
 		}
 	},
 	"GrantPermissions": {

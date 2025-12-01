@@ -147,8 +147,6 @@
 	"oathauth-recovery-code-hint": "Reminder that users can use recovery codes if they don't have access to their device or application.",
 	"oathauth-must-be-central": "Used as an error message when an account does not have a central ID available.",
 	"oathauth-error-multiple-modules": "Error message shown when the user tries to set up a second type of 2FA module.",
-	"group-oathauth-twofactorauth": "{{doc-group|oathauth-twofactorauth}}\n\nNote: ''may'' means that the users are ''allowed'' to use two-factor authentication.",
-	"group-oathauth-twofactorauth-member": "{{doc-group|oathauth-twofactorauth|member}}\n\nNote: ''may'' means that the user is ''allowed'' to use two-factor authentication.",
 	"oathauth-remove-nosuchkey": "Error message shown when the user tries to delete a key that doesn't exist.",
 	"oathauth-password-header": "Section header for the password management section on Special:AccountSecurity.",
 	"oathauth-password-label": "Subtitle for the password management section on Special:AccountSecurity.",
