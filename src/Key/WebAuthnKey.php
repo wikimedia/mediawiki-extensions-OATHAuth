@@ -97,7 +97,7 @@ class WebAuthnKey extends AuthKey {
 
 	protected array $credentialTransports = [];
 
-	protected bool $supportsPasswordless;
+	protected bool $supportsPasswordless = false;
 
 	/**
 	 * Create a new empty key instance.
