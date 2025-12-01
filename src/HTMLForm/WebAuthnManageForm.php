@@ -8,7 +8,7 @@ use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
@@ -34,9 +34,10 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		OATHUser $oathUser,
 		OATHUserRepository $oathRepo,
 		IModule $module,
-		IContextSource $context
+		IContextSource $context,
+		?OATHAuthModuleRegistry $moduleRegistry
 	) {
-		parent::__construct( $oathUser, $oathRepo, $module, $context );
+		parent::__construct( $oathUser, $oathRepo, $module, $context, $moduleRegistry );
 
 		$this->setId( 'webauthn-manage-form' );
 		$this->suppressDefaultSubmit();
@@ -110,8 +111,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 * @throws MWException
 	 */
 	protected function getDescriptors() {
-		$userRepo = OATHAuthServices::getInstance()->getUserRepository();
-		$oathUser = $userRepo->findByUser( $this->getUser() );
+		$oathUser = $this->oathRepo->findByUser( $this->getUser() );
 		$keys = WebAuthn::getWebAuthnKeys( $oathUser );
 
 		$registeredKeys = [];

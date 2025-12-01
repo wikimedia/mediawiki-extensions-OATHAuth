@@ -10,7 +10,7 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\WebAuthn\Authenticator;
@@ -19,7 +19,6 @@ use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
-use UnexpectedValueException;
 
 class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 
@@ -39,9 +38,10 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		OATHUser $oathUser,
 		OATHUserRepository $oathRepo,
 		IModule $module,
-		IContextSource $context
+		IContextSource $context,
+		?OATHAuthModuleRegistry $registry
 	) {
-		parent::__construct( $oathUser, $oathRepo, $module, $context );
+		parent::__construct( $oathUser, $oathRepo, $module, $context, $registry );
 
 		$this->setId( 'webauthn-add-key-form' );
 		$this->suppressDefaultSubmit();
@@ -100,28 +100,12 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		$registrationResult = $authenticator->continueRegistration( $credential );
 		if ( $registrationResult->isGood() ) {
 
-			// handle new recovery codes
-			$moduleDbKeys = $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
+			// Create recovery codes if needed, using the same codes that we displayed to the user
+			$recoveryCodesModule = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+			'@phan-var RecoveryCodes $recoveryCodesModule';
+			$recoveryCodesModule->ensureExistence( $this->oathUser, $this->getKeyDataInSession( 'RecoveryCodeKeys' ) );
 
-			// only create a recovery code module entry if this is the first 2FA key a user is creating
-			if ( count( $moduleDbKeys ) > RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-				throw new UnexpectedValueException(
-					$this->msg( 'oathauth-recoverycodes-too-many-instances' )->escaped()
-				);
-			}
-
-			if ( count( $moduleDbKeys ) < RecoveryCodeKeys::RECOVERY_CODE_MODULE_COUNT ) {
-				$keyData = $this->getKeyDataInSession( 'RecoveryCodeKeys' );
-				$recCodeKeys = RecoveryCodeKeys::newFromArray( $keyData );
-				$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
-				$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
-				$this->oathRepo->createKey(
-					$this->oathUser,
-					$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
-					$recCodeKeys->jsonSerialize(),
-					$this->getRequest()->getIP()
-				);
-			}
+			$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
 
 			return true;
 		}
