@@ -147,5 +147,8 @@
 	"oathauth-created-at": "Lisätty $1",
 	"oathauth-enable-success": "<strong>$1</strong> lisätty.",
 	"oathauth-max-keys-exceeded": "Tunnistamistapojen raja saavutettu",
-	"oathauth-max-keys-exceeded-message": "Olet saavuttanut tunnistautumistapojen enimmäismäärän ($1). Poista yksi tunnistautumistapa ennen uuden lisäämistä."
+	"oathauth-max-keys-exceeded-message": "Olet saavuttanut tunnistautumistapojen enimmäismäärän ($1). Poista yksi tunnistautumistapa ennen uuden lisäämistä.",
+	"oathauth-passkeys-header": "Pääsyavaimet",
+	"oathauth-passkeys-placeholder": "Pääsyavaimet ovat turvallisempia kuin salasanat, ja niiden avulla voit kirjautua sisään samalla tavalla kuin avaat laitteesi lukituksen.",
+	"oathauth-passkeys-add": "Lisää pääsyavain"
 }

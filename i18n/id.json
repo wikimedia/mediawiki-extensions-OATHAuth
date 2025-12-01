@@ -4,6 +4,7 @@
 			"Daud I.F. Argana",
 			"Ezagren",
 			"Iwan Novirion",
+			"Penyuwangi",
 			"Rachmat.Wahidi",
 			"Rachmat04",
 			"William Surya Permana"
@@ -77,5 +78,9 @@
 	"oathauth-totp-disable-warning": "Anda tidak akan lagi bisa menggunakan perangkat autentikasi yang didaftarkan dengan akun ini. Semua token cadangan yang terkait dengan akun ini akan menjadi tidak valid.",
 	"oathauth-invalidrequest": "Permintaan tidak sah",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} mengaktifkan autentikasi dua faktor.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak mengaktifkan autentikasi dua faktor."
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak mengaktifkan autentikasi dua faktor.",
+	"oathauth-passkeys-header": "Kunci Sandi",
+	"oathauth-passkeys-placeholder": "Kunci sandi lebih aman daripada kata sandi, dan memungkinkan Anda masuk dengan cara yang sama seperti saat membuka kunci perangkat Anda.",
+	"oathauth-passkeys-no2fa": "Untuk menambahkan kunci sandi, Anda harus terlebih dahulu mengatur autentikasi dua faktor.",
+	"oathauth-passkeys-add": "Tambah kunci sandi"
 }

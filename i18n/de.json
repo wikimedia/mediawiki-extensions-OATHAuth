@@ -160,7 +160,7 @@
 	"oathauth-max-keys-exceeded": "Limit der Authentifizierungsmethoden erreicht",
 	"oathauth-max-keys-exceeded-message": "Du hast die maximale Anzahl an Authentifizierungsmethoden erreicht, die $1 beträgt. Bitte entferne eine Authentifizierungsmethode, bevor du eine neue hinzufügst.",
 	"oathauth-passkeys-header": "Passkeys",
-	"oathauth-passkeys-placeholder": "Passkeys sind sicherer als Passwörter und ermöglichen es dir, sich auf die gleiche Weise anzumelden, wie du dein Gerät entsperrst.",
+	"oathauth-passkeys-placeholder": "Passkeys sind sicherer als Passwörter und ermöglichen es dir, dich auf die gleiche Weise anzumelden, wie du dein Gerät entsperrst.",
 	"oathauth-passkeys-no2fa": "Um einen Passkey hinzuzufügen, musst du zuerst die Zwei-Faktor-Authentifizierung einrichten.",
 	"oathauth-passkeys-add": "Füge einen Passkey hinzu"
 }

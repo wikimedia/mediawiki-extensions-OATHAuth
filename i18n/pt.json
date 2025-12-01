@@ -6,6 +6,7 @@
 			"Hamilton Abreu",
 			"Mansil",
 			"Mansil alfalb",
+			"Maria Manuela Silva",
 			"Vitorvicentevalente"
 		]
 	},
@@ -98,5 +99,7 @@
 	"oathauth-hint": "Não tem acesso ao seu dispositivo ou aplicação? Pode introduzir neste campo chaves de recuperação (apresentadas quando ativou a A2F).",
 	"oathauth-authenticator-delete-text": "remover",
 	"oathauth-delete-confirm-box": "Digite \"{{int:oathauth-authenticator-delete-text}}\" para continuar",
-	"oathauth-delete-warning-final": "Se remover este método irá desativar completamente a autenticação de dois fatores."
+	"oathauth-delete-warning-final": "Se remover este método irá desativar completamente a autenticação de dois fatores.",
+	"oathauth-passkeys-header": "Chaves passe",
+	"oathauth-passkeys-add": "Adicione uma chave passe"
 }
