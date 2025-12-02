@@ -11,7 +11,8 @@
 			"Tark",
 			"TheEduGobi",
 			"YuriNikolai",
-			"EGobi"
+			"EGobi",
+			"Sixaxis"
 		]
 	},
 	"oathauth-desc": "Fornece suporte a autenticação usando HMAC com base em senhas de uso único",

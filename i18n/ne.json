@@ -6,11 +6,15 @@
 			"बडा काजी"
 		]
 	},
+	"oathauth-recoverycodes-copy": "प्रतिलिपि गर्नुहोस्",
 	"oathauth-prefs-label": "दुई चरण प्रामाणिकरण",
 	"oathauth-ui-no-module": "कुनै पनि सक्षम छैन",
 	"oathauth-ui-manage": "व्यवस्थापन गर्नुहाेस्",
 	"oathmanage": "दुई-चरण प्रमाणीकरण व्यवस्थापन गर्नुहोस्",
 	"oathauth-enable-generic": "सक्षम पार्नुहोस्",
 	"oathauth-disable-generic": "असक्षम पार्नुहाेस्",
-	"oathauth-disable-page-title": "$1 असक्षम"
+	"oathauth-disable-page-title": "$1 असक्षम",
+	"oathauth-notifications-disable-help": "सहयोग",
+	"oathauth-notifications-enable-help": "सहयोग",
+	"oathauth-notifications-recoverycodesleft-help": "सहयोग"
 }
