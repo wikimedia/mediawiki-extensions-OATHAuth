@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\OOUIHTMLForm;
@@ -20,8 +19,6 @@ use Psr\Log\LoggerInterface;
 abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm {
 
 	protected LoggerInterface $logger;
-
-	protected OATHAuthModuleRegistry $moduleRegistry;
 
 	/**
 	 * @var Layout|null
@@ -45,14 +42,11 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 		protected readonly OATHUserRepository $oathRepo,
 		protected readonly IModule $module,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $moduleRegistry = null
+		protected readonly OATHAuthModuleRegistry $moduleRegistry
 	) {
 		$this->logger = $this->getLogger();
 
 		parent::__construct( $this->getDescriptors(), $context, "oathauth" );
-
-		// Temporary fallback logic so that we can update WebAuthn without causing a circular dependency
-		$this->moduleRegistry = $moduleRegistry ?? OATHAuthServices::getInstance()->getModuleRegistry();
 	}
 
 	/** @inheritDoc */

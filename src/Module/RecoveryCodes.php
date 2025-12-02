@@ -133,7 +133,7 @@ class RecoveryCodes implements IModule {
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $registry
+		OATHAuthModuleRegistry $registry
 	): ?IManageForm {
 		return new RecoveryCodesStatusForm( $user, $repo, $this, $context, $registry );
 	}

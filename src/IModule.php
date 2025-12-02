@@ -56,7 +56,7 @@ interface IModule {
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource $context
-	 * @param ?OATHAuthModuleRegistry $registry
+	 * @param OATHAuthModuleRegistry $registry
 	 * @return IManageForm|null if no form is available for given action
 	 */
 	public function getManageForm(
@@ -64,7 +64,7 @@ interface IModule {
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $registry,
+		OATHAuthModuleRegistry $registry,
 	);
 
 	/**

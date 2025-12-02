@@ -112,7 +112,7 @@ class TOTP implements IModule {
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource $context
-	 * @param ?OATHAuthModuleRegistry $registry
+	 * @param OATHAuthModuleRegistry $registry
 	 * @return IManageForm|TOTPEnableForm|null
 	 */
 	public function getManageForm(
@@ -120,7 +120,7 @@ class TOTP implements IModule {
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $registry
+		OATHAuthModuleRegistry $registry
 	) {
 		if ( $action === OATHManage::ACTION_ENABLE ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context, $registry );
