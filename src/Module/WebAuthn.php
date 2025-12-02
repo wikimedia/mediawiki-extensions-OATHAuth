@@ -7,6 +7,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -92,17 +93,18 @@ class WebAuthn implements IModule {
 	 * @param string $action
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
-	 * @param IContextSource|null $context optional for backwards compatibility
+	 * @param IContextSource $context
+	 * @param ?OATHAuthModuleRegistry $registry
 	 * @return IManageForm|string|null
 	 */
 	public function getManageForm(
 		$action,
 		OATHUser $user,
 		OATHUserRepository $repo,
-		?IContextSource $context = null
+		IContextSource $context,
+		?OATHAuthModuleRegistry $registry = null
 	) {
 		$module = $this;
-		$context = $context ?: RequestContext::getMain();
 		$enabledForUser = $this->isEnabled( $user );
 
 		if ( $context->getConfig()->get( 'WebAuthnNewCredsDisabled' ) === false ) {
