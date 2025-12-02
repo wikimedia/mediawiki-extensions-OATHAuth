@@ -153,5 +153,9 @@
 	"oathauth-created-at": "נוסף ב־$1",
 	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>.",
 	"oathauth-max-keys-exceeded": "הגעת למגבלת שיטות האימות",
-	"oathauth-max-keys-exceeded-message": "הגעת למספר המרבי של שיטות אימות, שהוא $1. נא להסיר שיטת אימות לפני הוספת שיטה חדשה."
+	"oathauth-max-keys-exceeded-message": "הגעת למספר המרבי של שיטות אימות, שהוא $1. נא להסיר שיטת אימות לפני הוספת שיטה חדשה.",
+	"oathauth-passkeys-header": "מפתחות גישה",
+	"oathauth-passkeys-placeholder": "מפתחות גישה (passkeys) מאובטחים יותר מסיסמאות, ומאפשרים לך להיכנס באותו אופן שבו {{GENDER:|אתה פותח|את פותחת}} את המכשיר שלך.",
+	"oathauth-passkeys-no2fa": "כדי להוסיף מפתח גישה, יש להגדיר תחילה אימות דו־שלבי.",
+	"oathauth-passkeys-add": "הוספת מפתח גישה"
 }

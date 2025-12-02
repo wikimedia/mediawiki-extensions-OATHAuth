@@ -26,6 +26,7 @@
 	"oathauth-prefs-label": "Dvoufaktorová autentizace:",
 	"oathauth-step1": "Krok 1: Stáhněte si program pro dvoufaktorovou autentizaci",
 	"oathauth-step1-test": "Stáhněte si program pro dvoufaktorovou autentizaci. Může jím být jak mobilní aplikace (jako je třeba Google Authenticator), tak desktopový program.",
+	"oathauth-step-friendly-name": "Krok 2: Pojmenujte si ho",
 	"oathauth-step2": "Krok 3: Naskenujte QR kód",
 	"oathauth-step2alt": "Nebo tajemství zadejte ručně:",
 	"oathauth-step3": "Krok 4: Zapište si kódy pro obnovení",
