@@ -6,7 +6,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\Tests\Unit\Key\EncryptionHelperTest;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 
@@ -17,18 +17,7 @@ use SodiumException;
  * @covers \MediaWiki\Extension\OATHAuth\Key\TOTPKey
  */
 class TOTPKeyTest extends MediaWikiIntegrationTestCase {
-	public function encryptionTestSetup() {
-		if ( !extension_loaded( 'sodium' ) ) {
-			$this->markTestSkipped( 'sodium extension not installed, skipping' );
-		}
-		$this->setMwGlobals( 'wgOATHSecretKey', EncryptionHelperTest::SECRET_KEY );
-		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
-		$this->assertTrue(
-			OATHAuthServices::getInstance( $this->getServiceContainer() )
-				->getEncryptionHelper()
-				->isEnabled(),
-		);
-	}
+	use EncryptionTestTrait;
 
 	public function testDeserialization(): void {
 		$key = TOTPKey::newFromRandom();
@@ -43,9 +32,9 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testNewFromArrayWithNonceNoEncryption(): void {
-		// bad nonce value will throw a sodium exception
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
+		// bad nonce value will throw a sodium exception
 		$this->expectException( SodiumException::class );
 		TOTPKey::newFromArray( [
 			'secret' => '123456',
@@ -54,7 +43,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testNewFromArrayWithEncryption(): void {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
 		$key = TOTPKey::newFromRandom();
 		$data = $key->jsonSerialize();
@@ -78,7 +67,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testJsonSerializerWithEncryption(): void {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 		$key = TOTPKey::newFromRandom();
 		$data = $key->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
@@ -87,7 +76,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDoNotReencryptEncryptedKeyData(): void {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
 		$key = TOTPKey::newFromRandom();
 		$key->jsonSerialize();

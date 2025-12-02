@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Unit\Key;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWikiUnitTestCase;
 use UnexpectedValueException;
 
@@ -12,14 +13,12 @@ use UnexpectedValueException;
  */
 class EncryptionHelperTest extends MediaWikiUnitTestCase {
 
-	public const SECRET_KEY = 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a';
+	use EncryptionTestTrait;
 
 	protected function setUp(): void {
 		parent::setUp();
 
-		if ( !extension_loaded( 'sodium' ) ) {
-			$this->markTestSkipped( 'sodium extension not installed, skipping' );
-		}
+		$this->encryptionUnitTestSetup();
 	}
 
 	private function getHelper() {

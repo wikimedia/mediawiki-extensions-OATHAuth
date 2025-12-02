@@ -2,10 +2,13 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Module;
 
+use Generator;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 
@@ -14,12 +17,35 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
+	use EncryptionTestTrait;
 
-	public function testVerify(): void {
+	private const NONCE = '7LRMXBX2AKPYWDBUBDHCN2WCFJXFX4XR2GZRV7Q=';
+
+	public static function provideVerify(): Generator {
+		yield 'Without encryption' => [ false ];
+		yield 'With encryption' => [ true ];
+	}
+
+	/**
+	 * @dataProvider provideVerify
+	 */
+	public function testVerify( bool $useEncryption ): void {
 		$this->overrideConfigValue( 'OATHRecoveryCodesCount', 10 );
-		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' =>
-			[ 'ABCD1234EFGH5678', 'IJKL9012MNOP3456' ]
-		] );
+		$keyData = [
+			'recoverycodekeys' => [ 'ABCD1234EFGH5678', 'IJKL9012MNOP3456' ]
+		];
+
+		if ( $useEncryption ) {
+			$this->encryptionIntegrationTestSetup();
+			$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )->getEncryptionHelper();
+			$encrypted = $encryptionHelper->encryptStringArrayValues( $keyData['recoverycodekeys'], self::NONCE );
+			$keyData = [
+				'recoverycodekeys' => $encrypted['encrypted_array'],
+				'nonce' => $encrypted['nonce']
+			];
+		}
+		$key = RecoveryCodeKeys::newFromArray( $keyData );
+
 		$mockWebRequest = $this->createMock( WebRequest::class );
 		$mockOATHUser = $this->createMock( OATHUser::class );
 		$mockOATHUser->method( 'getCentralId' )

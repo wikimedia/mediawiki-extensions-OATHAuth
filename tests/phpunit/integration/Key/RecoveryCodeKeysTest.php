@@ -6,7 +6,7 @@ use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\Tests\Unit\Key\EncryptionHelperTest;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
@@ -21,23 +21,11 @@ use UnexpectedValueException;
  * @group Database
  */
 class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
+	use EncryptionTestTrait;
 
 	private const NONCE = '7LRMXBX2AKPYWDBUBDHCN2WCFJXFX4XR2GZRV7Q=';
 	private const VALID_RECOVERY_KEY = [ '88as3hh433jj2o22' ];
 	private const INVALID_RECOVERY_KEY = [ '88asdyf09sadf' ];
-
-	public function encryptionTestSetup() {
-		if ( !extension_loaded( 'sodium' ) ) {
-			$this->markTestSkipped( 'sodium extension not installed, skipping' );
-		}
-		$this->setMwGlobals( 'wgOATHSecretKey', EncryptionHelperTest::SECRET_KEY );
-		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
-		$this->assertTrue(
-			OATHAuthServices::getInstance( $this->getServiceContainer() )
-				->getEncryptionHelper()
-				->isEnabled(),
-		);
-	}
 
 	public function testDeserializationUnencrypted() {
 		$this->assertNull( RecoveryCodeKeys::newFromArray( [] ) );
@@ -68,7 +56,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		];
 		RecoveryCodeKeys::newFromArray( $keyArray );
 
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
 		$this->expectException( SodiumException::class );
 		RecoveryCodeKeys::newFromArray( $keyArray );
@@ -81,7 +69,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testNewFromArrayWithEncryption() {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
@@ -102,7 +90,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testJsonSerializerWithEncryption() {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
 		$keys->regenerateRecoveryCodeKeys();
@@ -115,7 +103,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDoNotReencryptEncryptedKeyData() {
-		$this->encryptionTestSetup();
+		$this->encryptionIntegrationTestSetup();
 
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
 		$keys->jsonSerialize();
