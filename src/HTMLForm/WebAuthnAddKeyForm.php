@@ -39,7 +39,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		OATHUserRepository $oathRepo,
 		IModule $module,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $registry
+		OATHAuthModuleRegistry $registry
 	) {
 		parent::__construct( $oathUser, $oathRepo, $module, $context, $registry );
 

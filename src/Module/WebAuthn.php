@@ -94,7 +94,7 @@ class WebAuthn implements IModule {
 	 * @param OATHUser $user
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource $context
-	 * @param ?OATHAuthModuleRegistry $registry
+	 * @param OATHAuthModuleRegistry $registry
 	 * @return IManageForm|string|null
 	 */
 	public function getManageForm(
@@ -102,7 +102,7 @@ class WebAuthn implements IModule {
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $registry = null
+		OATHAuthModuleRegistry $registry
 	) {
 		$module = $this;
 		$enabledForUser = $this->isEnabled( $user );

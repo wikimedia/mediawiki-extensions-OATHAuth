@@ -35,7 +35,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		OATHUserRepository $oathRepo,
 		IModule $module,
 		IContextSource $context,
-		?OATHAuthModuleRegistry $moduleRegistry
+		OATHAuthModuleRegistry $moduleRegistry
 	) {
 		parent::__construct( $oathUser, $oathRepo, $module, $context, $moduleRegistry );
 
