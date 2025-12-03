@@ -11,10 +11,10 @@ use MediaWikiIntegrationTestCase;
 use SodiumException;
 
 /**
- * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
- * @covers \MediaWiki\Extension\OATHAuth\OATHUser
+ * @covers \MediaWiki\Extension\OATHAuth\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
  * @covers \MediaWiki\Extension\OATHAuth\Key\TOTPKey
+ * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  */
 class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	use EncryptionTestTrait;

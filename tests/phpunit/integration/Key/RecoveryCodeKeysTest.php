@@ -13,11 +13,11 @@ use SodiumException;
 use UnexpectedValueException;
 
 /**
- * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
+ * @covers \MediaWiki\Extension\OATHAuth\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\EncryptionHelper
+ * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
  * @covers \MediaWiki\Extension\OATHAuth\Module\TOTP
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
- * @covers \MediaWiki\Extension\OATHAuth\OATHUser
  * @group Database
  */
 class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
