@@ -56,16 +56,16 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			. "&issuer="
 			. rawurlencode( $issuer );
 
-		$qrCode = Builder::create()
-			->writer( new SvgWriter() )
-			->writerOptions( [ SvgWriter::WRITER_OPTION_EXCLUDE_XML_DECLARATION => true ] )
-			->data( $qrcodeUrl )
-			->encoding( new Encoding( 'UTF-8' ) )
-			->errorCorrectionLevel( ErrorCorrectionLevel::High )
-			->roundBlockSizeMode( RoundBlockSizeMode::None )
-			->size( 256 )
-			->margin( 0 )
-			->build();
+		$qrCode = ( new Builder(
+			writer: new SvgWriter(),
+			writerOptions: [ SvgWriter::WRITER_OPTION_EXCLUDE_XML_DECLARATION => true ],
+			data: $qrcodeUrl,
+			encoding: new Encoding( 'UTF-8' ),
+			errorCorrectionLevel: ErrorCorrectionLevel::High,
+			size: 256,
+			margin: 0,
+			roundBlockSizeMode: RoundBlockSizeMode::None,
+		) )->build();
 
 		// messages used: oathauth-step1, oathauth-step-friendly-name oathauth-step2, oathauth-step3, oathauth-step4
 		return [
