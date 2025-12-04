@@ -42,7 +42,7 @@
 	"oathauth-disabledoath": "غیرفعال کردن اصالت‌سنجی دومرحله‌ای.",
 	"oathauth-prefs-label": "اصالت‌سنجی دومرحله‌ای:",
 	"oathauth-step1": "مرحلۀ ۱: یک برنامه اصالت‌سنجی دومرحله‌ای بارگیری کنید",
-	"oathauth-step1-test": "یک برنامه برای احراز هویت دومرحله‌ای دانلود کنید. این برنامه می‌تواند یک اپلیکیشن موبایل یا دسکتاپ باشد، مانند [https://www.authy.com/ Authy]، [https://freeotp.github.io/ FreeOTP]، [https://support.google.com/accounts/answer/1066447 Google Authenticator]، [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] یا [https://1password.com/ 1Password].",
+	"oathauth-step1-test": "یک نرم‌افزار برای اصالت‌سنجی دوعاملی دانلود کنید. این نرم‌افزار می‌تواند یک اپلیکیشن موبایل یا دسکتاپ باشد، مانند [https://www.authy.com/ Authy]، [https://freeotp.github.io/ FreeOTP]، [https://support.google.com/accounts/answer/1066447 Google Authenticator]، [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] یا [https://1password.com/ 1Password].",
 	"oathauth-step2": "قدم ۳: رمزینهٔ پاسخ سریع را پویش کنید",
 	"oathauth-step2-qrcode": "کد QR را با استفاده از برنامه یا افزونهٔ مرورگری که در مرحلهٔ ۱ برای احراز هویت دومرحله‌ای دانلود کرده‌اید، اسکن کنید.",
 	"oathauth-step2alt": "اگر قادر به اسکن کد QR نیستید، کلید مخفی و نام حساب را به‌صورت دستی وارد کنید:",
