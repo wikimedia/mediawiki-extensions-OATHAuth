@@ -2,6 +2,7 @@ mw.ext.webauthn.Registrator = function ( friendlyName, registerData ) {
 	OO.EventEmitter.call( this );
 	this.friendlyName = friendlyName;
 	this.registerData = registerData || null;
+	this.passkeyMode = !!Number( new URLSearchParams( document.location.search ).get( 'passkeyMode' ) );
 };
 
 OO.initClass( mw.ext.webauthn.Registrator );
@@ -30,12 +31,10 @@ mw.ext.webauthn.Registrator.prototype.register = function () {
 };
 
 mw.ext.webauthn.Registrator.prototype.getRegisterInfo = function () {
-	const queryString = window.location.search;
-	const params = new URLSearchParams( queryString );
 	return new mw.Api().get( {
 		action: 'webauthn',
 		func: 'getRegisterInfo',
-		passkeyMode: !!Number( params.get( 'passkeyMode' ) )
+		passkeyMode: this.passkeyMode
 	} );
 };
 
@@ -67,7 +66,11 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 		} ) );
 	}
 
-	if ( mw.config.get( 'wgWebAuthnLimitPasskeysToRoaming' ) ) {
+	if ( this.passkeyMode ) {
+		// Ask the browser to prefer storing a passkey on the device itself
+		publicKey.hints = [ 'client-device' ];
+	} else if ( mw.config.get( 'wgWebAuthnLimitPasskeysToRoaming' ) ) {
+		// Ask the browser to prefer an external security key
 		publicKey.hints = [ 'security-key' ];
 	}
 
