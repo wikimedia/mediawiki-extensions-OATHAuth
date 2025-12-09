@@ -129,13 +129,12 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 			],
 			'credential' => [
 				'name' => 'credential',
-				'type' => 'hidden',
-				'value' => ''
+				'type' => 'hidden'
 			],
 			'passkeyMode' => [
 				'name' => 'passkeyMode',
 				'type' => 'hidden',
-				'value' => ''
+				'default' => $this->getRequest()->getVal( 'passkeyMode', '' )
 			]
 		];
 	}

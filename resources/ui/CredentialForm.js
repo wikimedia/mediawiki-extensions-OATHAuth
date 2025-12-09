@@ -71,9 +71,5 @@ mw.ext.webauthn.CredentialForm.prototype.setCredential = function ( credential )
 mw.ext.webauthn.CredentialForm.prototype.submitWithCredential = function ( credential ) {
 	this.setCredential( credential );
 
-	const queryString = window.location.search;
-	const params = new URLSearchParams( queryString );
-	this.$passkeyMode = this.$form.find( 'input[name="passkeyMode"]' );
-	this.$passkeyMode.val( params.get( 'passkeyMode' ) );
 	this.$form.trigger( 'submit' );
 };
