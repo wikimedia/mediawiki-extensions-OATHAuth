@@ -35,7 +35,7 @@ mw.ext.webauthn.Registrator.prototype.getRegisterInfo = function () {
 	return new mw.Api().get( {
 		action: 'webauthn',
 		func: 'getRegisterInfo',
-		passkeyMode: params.get( 'passkeyMode' )
+		passkeyMode: !!Number( params.get( 'passkeyMode' ) )
 	} );
 };
 
