@@ -490,27 +490,6 @@ class OATHManage extends SpecialPage {
 		}
 	}
 
-	/**
-	 * Function to remove recovery codes as an auth factor if the user
-	 * has removed their final 2FA key. This functionality also exists
-	 * within the older DisableForm class.
-	 */
-	public function maybeDeleteRecoveryCodes(): bool {
-		// delete recovery codes if this is the last 2fa method for a user
-		if ( $this->oathUser->userHasNonSpecialEnabledKeys() ) {
-			return false;
-		}
-
-		$this->userRepo->removeAllOfType(
-			$this->oathUser,
-			RecoveryCodes::MODULE_NAME,
-			$this->getRequest()->getIP(),
-			true
-		);
-
-		return true;
-	}
-
 	private function shouldShowGenericButtons(): bool {
 		return !$this->requestedModule instanceof IModule || !$this->isGenericAction();
 	}
@@ -638,24 +617,31 @@ class OATHManage extends SpecialPage {
 		$keyName = $this->getKeyNameAndDescription( $keyToDelete )['name'];
 		$remainingKeys = array_filter(
 			$this->oathUser->getNonSpecialKeys(),
-			static fn ( $key ) => $key->getId() !== $keyId
+			static fn ( $key ) => $key->getId() !== $keyId && !$key->supportsPasswordlessLogin()
 		);
 		$lastKey = count( $remainingKeys ) === 0;
-		$isPrivilegedUser = $this->isPrivilegedUser();
 
 		$this->getOutput()->setPageTitleMsg( $this->msg( 'oathauth-delete-warning-header', $keyName ) );
 		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
 
 		$formDescriptor = [];
+		$warningDescription = $this->msg( 'oathauth-delete-warning' )->parse();
 
-		$warningMessage = ( $lastKey && $isPrivilegedUser ) ?
-			$this->msg( 'oathauth-delete-warning-final-privileged-user' )->parse() :
-			$this->msg( 'oathauth-delete-warning' )->escaped();
+		if ( $lastKey ) {
+			$formDescriptor['warning'] = [
+				'type' => 'info',
+				'raw' => true,
+				'default' => Html::warningBox( $this->msg( 'oathauth-delete-warning-final' )->parse() ),
+			];
+			if ( $this->isPrivilegedUser() ) {
+				$warningDescription = $this->msg( 'oathauth-delete-warning-final-privileged-user' )->parse();
+			}
+		}
 
-		$formDescriptor['message'] = [
+		$formDescriptor['warning-description'] = [
 			'type' => 'info',
 			'raw' => true,
-			'default' => Html::warningBox( $warningMessage ),
+			'default' => $warningDescription,
 		];
 
 		if ( $lastKey ) {
@@ -665,10 +651,9 @@ class OATHManage extends SpecialPage {
 				'required' => true,
 				'validation-callback' => function ( $value ) {
 					$expectedText = $this->msg( 'oathauth-authenticator-delete-text' )->text();
-					if ( $value !== $expectedText ) {
-						return $this->msg( 'oathauth-delete-wrong-confirm-message' )->text();
-					}
-					return true;
+					return $value !== $expectedText
+						? $this->msg( 'oathauth-delete-wrong-confirm-message' )->text()
+						: true;
 				},
 			];
 		}
@@ -686,7 +671,7 @@ class OATHManage extends SpecialPage {
 		$form->setCancelTarget( $this->getPageTitle() );
 		$form->setWrapperLegend( false );
 
-		$form->setSubmitCallback( function ( $formData ) use ( $keyToDelete, $keyName ) {
+		$form->setSubmitCallback( function ( $formData ) use ( $keyToDelete, $keyName, $lastKey ) {
 			$this->userRepo->removeKey(
 				$this->oathUser,
 				$keyToDelete,
@@ -694,7 +679,13 @@ class OATHManage extends SpecialPage {
 				true
 			);
 
-			$this->maybeDeleteRecoveryCodes();
+			if ( $lastKey ) {
+				$this->userRepo->removeAll(
+				$this->oathUser,
+				$this->getRequest()->getIP(),
+				true
+				);
+			}
 
 			$this->getOutput()->redirect( $this->getPageTitle()->getFullURL( [
 				'deletesuccess' => $keyName
