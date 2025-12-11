@@ -13,6 +13,9 @@
 	"webauthn-ui-add-key": "افزودن کلید",
 	"oathauth-webauthn-registered-keys-section-name": "کلیدهای ثبت‌شده",
 	"webuathn-ui-remove-key": "حذف",
+	"webauthn-ui-key-register-help": "برای کلیدتان لقبی انتخاب کنید:",
+	"oathauth-webauthn-add-key-section-name": "ثبت کلید نوی WebAuthn",
 	"webauthn-module-description": "WebAuthn (اصالت‌سنجی وب) یک استاندارد وب است که توسط کنسرسیوم وب جهان‌گستر (W3C) منتشر شده است. WebAuthn جزئی مهم از پروژهٔ FIDO2 تحت نظارت اتحاد فیدو است. هدف این پروژه استانداردسازی یک رابط کاربری برای اصالت‌سنجی کاربران برای نرم‌افزارها و خدمات مبتنی بر وبی است که از رمزنگاری کلید عمومی استفاده می‌کنند. [https://en.wikipedia.org/wiki/WebAuthn بیشتر بخوانید]",
-	"webauthn-ui-reload-page-label": "بارگیری دوبارۀ صفحه"
+	"webauthn-ui-reload-page-label": "بارگیری دوبارۀ صفحه",
+	"webauthn-add-security-key": "افزودن کلید امنیتی"
 }
