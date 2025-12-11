@@ -1,8 +1,8 @@
-mw.ext.webauthn.Registrator = function ( friendlyName, registerData ) {
+mw.ext.webauthn.Registrator = function ( friendlyName, registerData, passkeyMode ) {
 	OO.EventEmitter.call( this );
 	this.friendlyName = friendlyName;
 	this.registerData = registerData || null;
-	this.passkeyMode = !!Number( new URLSearchParams( document.location.search ).get( 'passkeyMode' ) );
+	this.passkeyMode = passkeyMode;
 };
 
 OO.initClass( mw.ext.webauthn.Registrator );

@@ -61,19 +61,27 @@
 				"stylesheets/ui.base.styles.less"
 			]
 		},
-		"ext.webauthn.register": {
+		"ext.webauthn.Registrator": {
 			"scripts": [
-				"util/Registrator.js",
-				"ui/RegisterForm.js",
-				"register.js"
+				"util/Registrator.js"
 			],
 			"dependencies": [
-				"mediawiki.api",
 				"ext.webauthn.ui.base"
 			],
 			"messages": [
 				"webauthn-error-get-reginfo-fail",
 				"webauthn-error-reg-generic"
+			]
+		},
+		"ext.webauthn.register": {
+			"scripts": [
+				"ui/RegisterForm.js",
+				"register.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"ext.webauthn.ui.base",
+				"ext.webauthn.Registrator"
 			]
 		},
 		"ext.webauthn.login": {
