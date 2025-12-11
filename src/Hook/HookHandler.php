@@ -13,6 +13,7 @@ use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Context;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
@@ -265,5 +266,18 @@ class HookHandler implements
 			// User has some disabled groups, add oathauth-enable
 			$rights[] = 'oathauth-enable';
 		}
+	}
+
+	/**
+	 * Callback that generates the contents of the virtual data.json file in the ext.oath.manage
+	 * ResourceLoader module.
+	 *
+	 * @param Context $context
+	 * @return array
+	 */
+	public static function getOathManageModuleData( Context $context ) {
+		return [
+			'passkeyDialogTextHtml' => $context->msg( 'oathauth-passkey-dialog-text' )->parseAsBlock()
+		];
 	}
 }

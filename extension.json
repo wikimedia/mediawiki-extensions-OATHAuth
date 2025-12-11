@@ -194,6 +194,33 @@
 				"oathauth-recoverycodes-copy-success"
 			]
 		},
+		"ext.oath.manage": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"localBasePath": "modules/oathmanage",
+			"remoteExtPath": "OATHAuth/modules/oathmanage",
+			"packageFiles": [
+				"init.js",
+				"AddPasskeyButton.vue",
+				"AddPasskeyDialog.vue",
+				{
+					"name": "data.json",
+					"callback": "MediaWiki\\Extension\\OATHAuth\\Hook\\HookHandler::getOathManageModuleData"
+				}
+			],
+			"codexComponents": [
+				"CdxButton",
+				"CdxDialog",
+				"CdxMessage",
+				"useModelWrapper"
+			],
+			"messages": [
+				"oathauth-passkeys-add",
+				"oathauth-passkey-dialog-title",
+				"oathauth-passkey-dialog-text",
+				"oathauth-passkey-dialog-back",
+				"oathauth-passkey-dialog-add"
+			]
+		},
 		"ext.oath.manage.styles": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"styles": [

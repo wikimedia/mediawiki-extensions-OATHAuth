@@ -35,6 +35,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserGroupManager;
@@ -229,7 +230,7 @@ class OATHManage extends SpecialPage {
 
 	private function displayNewUI(): void {
 		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
-		// TODO JS enhancement for rename and delete buttons
+		$this->getOutput()->addModules( 'ext.oath.manage' );
 		$codex = new Codex();
 
 		// Show the delete success message, if applicable
@@ -331,7 +332,10 @@ class OATHManage extends SpecialPage {
 
 		// Passkeys section
 		$passkeySection = '';
-		if ( $this->getConfig()->get( 'OATHNewPasskeyFeatures' ) ) {
+		if (
+			$this->getConfig()->get( 'OATHNewPasskeyFeatures' ) &&
+			MediaWikiServices::getInstance()->getExtensionRegistry()->isLoaded( 'WebAuthn' )
+		) {
 			$passkeyAccordions = '';
 			$passkeyPlaceholder = '';
 			$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
@@ -359,24 +363,23 @@ class OATHManage extends SpecialPage {
 			// Only display the "Add passkey" button if the user can add passkeys
 			$passkeyAddButton = $keyAccordions === '' ? '' : $codex->button()
 				->setLabel( $this->msg( 'oathauth-passkeys-add' )->text() )
-				->setType( 'submit' )
+				->setAttributes( [ 'class' => 'mw-special-OATHManage-passkeys__addbutton' ] )
 				->build()
 				->getHtml();
 			$passkeySection = Html::rawElement( 'div', [ 'class' => $passkeyClasses ],
 				Html::element( 'h3', [], $this->msg( 'oathauth-passkeys-header' )->text() ) .
 				$passkeyAccordions .
-				Html::rawElement( 'form', [
-						'action' => wfScript(),
-						'class' => 'mw-special-OATHManage-authmethods__addform'
-					],
-					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-					Html::hidden( 'action', 'enable' ) .
-					Html::hidden( 'module', 'webauthn' ) .
-					Html::hidden( 'passkeyMode', '1' ) .
+				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-authmethods__addform' ],
 					$passkeyPlaceholder .
 					$passkeyAddButton
 				)
 			);
+			if ( $passkeyAddButton ) {
+				// TODO this should just be a dependency of ext.oath.manage, but it can't be because
+				// OATHAuth can't depend on WebAuthn directly. This should be resolved by merging
+				// the two extensions (T303495)
+				$this->getOutput()->addModules( 'ext.webauthn.Registrator' );
+			}
 		}
 
 		// If 2FA is enabled then put passkeys first, otherwise put 2FA first

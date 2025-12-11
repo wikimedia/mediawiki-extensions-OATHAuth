@@ -64,6 +64,15 @@
 		}
 	}
 
+	&-passkeys {
+		&__addbutton {
+			// Hide the "Add passkey" button if JS is not available
+			.client-nojs & {
+				display: none;
+			}
+		}
+	}
+
 	.mw-oathauth-recoverycodes-copy-button.cdx-button {
 		// HACK: Override margin-right from ext.oath.recovery.less
 		// We use the copy+delete buttons a little differently here than on TOTPAddForm,
@@ -72,7 +81,7 @@
 		margin: 0;
 	}
 
-	.mw-special-OATHManage-delete-warning {
+	&-delete-warning {
 		.mw-htmlform-submit-buttons {
 			display: flex;
 
@@ -89,8 +98,8 @@
 	}
 
 	@media ( max-width: @max-width-breakpoint-mobile ) {
-		// On narrow screens, make all buttons full width
-		.cdx-button {
+		// On narrow screens, make all buttons full width (but not those inside dialogs)
+		.mw-body-content .cdx-button {
 			display: flex;
 			width: 100%;
 		}

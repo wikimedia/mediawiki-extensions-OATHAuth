@@ -153,5 +153,9 @@
 	"oathauth-passkeys-header": "Passkeys",
 	"oathauth-passkeys-placeholder": "Passkeys are more secure than passwords, and allow you to sign in the same way you unlock your device.",
 	"oathauth-passkeys-no2fa": "To add a passkey you must first set up two-factor authentication.",
-	"oathauth-passkeys-add": "Add a passkey"
+	"oathauth-passkeys-add": "Add a passkey",
+	"oathauth-passkey-dialog-title": "Add a passkey",
+	"oathauth-passkey-dialog-text": "Passkeys are the most secure way for you to sign in to your account. For most people, they’re also the simplest way.\n\nWith a passkey, you can sign in to {{SITENAME}} the same way that you unlock your device, whether that’s a PIN, fingerprint, or facial recognition.\n\nHowever you sign in, your biometric data and PIN stay on your device and are never sent to us.",
+	"oathauth-passkey-dialog-back": "Back",
+	"oathauth-passkey-dialog-add": "Add passkey"
 }
