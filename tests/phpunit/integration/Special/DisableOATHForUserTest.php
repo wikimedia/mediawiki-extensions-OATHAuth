@@ -18,12 +18,15 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\DisableOATHForUser;
 use MediaWiki\MainConfigNames;
+use MediaWiki\RecentChanges\RecentChange;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 
@@ -34,6 +37,8 @@ use SpecialPageTestBase;
  */
 class DisableOATHForUserTest extends SpecialPageTestBase {
 	use BypassReauthTrait;
+
+	private ?ExtensionRegistry $mockExtensionRegistry;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -46,7 +51,8 @@ class DisableOATHForUserTest extends SpecialPageTestBase {
 		return new DisableOATHForUser(
 			OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository(),
 			$this->getServiceContainer()->getUserFactory(),
-			$this->getServiceContainer()->getCentralIdLookup()
+			$this->getServiceContainer()->getCentralIdLookup(),
+			$this->mockExtensionRegistry ?? $this->getServiceContainer()->getExtensionRegistry()
 		);
 	}
 
@@ -119,7 +125,38 @@ class DisableOATHForUserTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathauth-user-not-does-not-have-oath-enabled)', $html );
 	}
 
-	public function testDisabledTwoFactorAuth() {
+	/** @dataProvider provideDisabledTwoFactorAuth */
+	public function testDisabledTwoFactorAuth( bool $checkUserInstalled ) {
+		// If CheckUser is installed for this test case, then expect that the log entry is sent to be stored
+		// in the CheckUser data tables. Otherwise, mock that it is not installed and expect no calls to do this
+		$logIdFromRecentChange = null;
+		if ( $checkUserInstalled ) {
+			$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+			$mockCheckUserInsert = $this->createMock( CheckUserInsert::class );
+			$mockCheckUserInsert->expects( $this->once() )
+				->method( 'updateCheckUserData' )
+				->with( $this->callback( function ( $actualRecentChange ) use ( &$logIdFromRecentChange ) {
+					$this->assertInstanceOf( RecentChange::class, $actualRecentChange );
+					$logIdFromRecentChange = $actualRecentChange->getAttribute( 'rc_logid' );
+					return true;
+				} ) );
+			$this->setService( 'CheckUserInsert', $mockCheckUserInsert );
+		} else {
+			// Mock that CheckUser is not installed but only modify this for the special page instance
+			// as hooks called by executing the special page use a lot of ExtensionRegistry methods calls
+			$mockExtensionRegistry = $this->createMock( ExtensionRegistry::class );
+			$mockExtensionRegistry->method( 'isLoaded' )
+				->with( 'CheckUser' )
+				->willReturn( false );
+			$this->mockExtensionRegistry = $mockExtensionRegistry;
+
+			$this->setService(
+				'CheckUserInsert',
+				fn () => $this->fail( 'The CheckUserInsert service was expected to not be called' )
+			);
+		}
+
 		$otherUser = $this->getTestUser()->getUser();
 
 		OATHAuthServices::getInstance( $this->getServiceContainer() )
@@ -146,7 +183,7 @@ class DisableOATHForUserTest extends SpecialPageTestBase {
 
 		$this->assertStringContainsString( "(oathauth-disabledoath)", $html );
 
-		$logEntry = $this->newSelectQueryBuilder()
+		$actualLogId = $this->newSelectQueryBuilder()
 			->caller( __METHOD__ )
 			->select( 'log_id' )
 			->from( 'logging' )
@@ -157,6 +194,20 @@ class DisableOATHForUserTest extends SpecialPageTestBase {
 				'log_title' => str_replace( ' ', '_', $otherUser->getName() ),
 			] )
 			->fetchField();
-		$this->assertNotNull( $logEntry );
+		$this->assertNotNull( $actualLogId );
+		if ( $logIdFromRecentChange !== null ) {
+			$this->assertSame(
+				$logIdFromRecentChange,
+				(int)$actualLogId,
+				'Log ID in RecentChange sent to CheckUser was not as expected'
+			);
+		}
+	}
+
+	public static function provideDisabledTwoFactorAuth(): array {
+		return [
+			'CheckUser is installed' => [ true ],
+			'CheckUser is not installed' => [ false ],
+		];
 	}
 }

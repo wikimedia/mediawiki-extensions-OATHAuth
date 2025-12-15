@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use MediaWiki\CheckUser\Hooks as CheckUserHooks;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Exception\UserBlockedError;
@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\User\User;
@@ -23,6 +24,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
 		private readonly UserFactory $userFactory,
+		private readonly ExtensionRegistry $extensionRegistry,
 	) {
 		// messages used: verifyoathforuser (display "name" on Special:SpecialPages),
 		// right-oathauth-verify-user, action-oathauth-verify-user
@@ -118,10 +120,12 @@ class VerifyOATHForUser extends FormSpecialPage {
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $user->getUserPage() );
 		$logEntry->setComment( $formData['reason'] );
-		$logEntry->insert();
+		$logId = $logEntry->insert();
 
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
-			CheckUserHooks::updateCheckUserData( $logEntry->getRecentChange() );
+		if ( $this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			/** @var CheckUserInsert $checkUserInsert */
+			$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+			$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange( $logId ) );
 		}
 
 		LoggerFactory::getInstance( 'authentication' )->info(

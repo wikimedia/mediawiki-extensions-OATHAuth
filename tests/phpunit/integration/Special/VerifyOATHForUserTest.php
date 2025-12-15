@@ -18,12 +18,15 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\VerifyOATHForUser;
 use MediaWiki\MainConfigNames;
+use MediaWiki\RecentChanges\RecentChange;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 
@@ -34,6 +37,8 @@ use SpecialPageTestBase;
  */
 class VerifyOATHForUserTest extends SpecialPageTestBase {
 	use BypassReauthTrait;
+
+	private ?ExtensionRegistry $mockExtensionRegistry;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -46,6 +51,7 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 		return new VerifyOATHForUser(
 			OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository(),
 			$this->getServiceContainer()->getUserFactory(),
+			$this->mockExtensionRegistry ?? $this->getServiceContainer()->getExtensionRegistry()
 		);
 	}
 
@@ -94,7 +100,37 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 	}
 
 	/** @dataProvider provideStatusUsers */
-	public function testVerifiesStatus( bool $hasDevice, string $expectedMessage ) {
+	public function testVerifiesStatus( bool $checkUserInstalled, bool $hasDevice, string $expectedMessage ) {
+		// If CheckUser is installed for this test case, then expect that the log entry is sent to be stored
+		// in the CheckUser data tables. Otherwise, mock that it is not installed and expect no calls to do this
+		$logIdFromRecentChange = null;
+		if ( $checkUserInstalled ) {
+			$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+			$mockCheckUserInsert = $this->createMock( CheckUserInsert::class );
+			$mockCheckUserInsert->expects( $this->once() )
+				->method( 'updateCheckUserData' )
+				->with( $this->callback( function ( $actualRecentChange ) use ( &$logIdFromRecentChange ) {
+					$this->assertInstanceOf( RecentChange::class, $actualRecentChange );
+					$logIdFromRecentChange = $actualRecentChange->getAttribute( 'rc_logid' );
+					return true;
+				} ) );
+			$this->setService( 'CheckUserInsert', $mockCheckUserInsert );
+		} else {
+			// Mock that CheckUser is not installed but only modify this for the special page instance
+			// as hooks called by executing the special page use a lot of ExtensionRegistry methods calls
+			$mockExtensionRegistry = $this->createMock( ExtensionRegistry::class );
+			$mockExtensionRegistry->method( 'isLoaded' )
+				->with( 'CheckUser' )
+				->willReturn( false );
+			$this->mockExtensionRegistry = $mockExtensionRegistry;
+
+			$this->setService(
+				'CheckUserInsert',
+				fn () => $this->fail( 'The CheckUserInsert service was expected to not be called' )
+			);
+		}
+
 		$otherUser = $this->getTestUser()->getUser();
 
 		if ( $hasDevice ) {
@@ -123,7 +159,7 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 
 		$this->assertStringContainsString( "($expectedMessage:", $html );
 
-		$logEntry = $this->newSelectQueryBuilder()
+		$actualLogId = $this->newSelectQueryBuilder()
 			->caller( __METHOD__ )
 			->select( 'log_id' )
 			->from( 'logging' )
@@ -134,11 +170,37 @@ class VerifyOATHForUserTest extends SpecialPageTestBase {
 				'log_title' => str_replace( ' ', '_', $otherUser->getName() ),
 			] )
 			->fetchField();
-		$this->assertNotNull( $logEntry );
+
+		$this->assertNotNull( $actualLogId );
+		if ( $logIdFromRecentChange !== null ) {
+			$this->assertSame(
+				$logIdFromRecentChange,
+				(int)$actualLogId,
+				'Log ID in RecentChange sent to CheckUser was not as expected'
+			);
+		}
 	}
 
 	public static function provideStatusUsers() {
-		yield 'User with two-factor authentication disabled' => [ false, 'oathauth-verify-disabled' ];
-		yield 'User with two-factor authentication enabled' => [ true, 'oathauth-verify-enabled' ];
+		yield 'User with two-factor authentication disabled' => [
+			'checkUserInstalled' => false,
+			'hasDevice' => false,
+			'expectedMessage' => 'oathauth-verify-disabled',
+		];
+		yield 'User with two-factor authentication enabled' => [
+			'checkUserInstalled' => false,
+			'hasDevice' => true,
+			'expectedMessage' => 'oathauth-verify-enabled',
+		];
+		yield 'User with two-factor authentication enabled when CheckUser installed' => [
+			'checkUserInstalled' => true,
+			'hasDevice' => true,
+			'expectedMessage' => 'oathauth-verify-enabled',
+		];
+		yield 'User with two-factor authentication disabled when CheckUser installed' => [
+			'checkUserInstalled' => true,
+			'hasDevice' => false,
+			'expectedMessage' => 'oathauth-verify-disabled',
+		];
 	}
 }

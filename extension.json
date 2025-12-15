@@ -220,7 +220,8 @@
 			"services": [
 				"OATHUserRepository",
 				"UserFactory",
-				"CentralIdLookup"
+				"CentralIdLookup",
+				"ExtensionRegistry"
 			]
 		},
 		"OATHManage": {
@@ -236,7 +237,8 @@
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
 			"services": [
 				"OATHUserRepository",
-				"UserFactory"
+				"UserFactory",
+				"ExtensionRegistry"
 			]
 		}
 	},
