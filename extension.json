@@ -181,7 +181,7 @@
 		},
 		"WebAuthnLimitPasskeysToRoaming": {
 			"description": "Temporary option to limit passkeys to roaming until better passkey support is added",
-			"value": false
+			"value": true
 		}
 	},
 	"ResourceModules": {
