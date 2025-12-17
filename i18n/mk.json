@@ -126,8 +126,6 @@
 	"oathauth-recovery-code-hint": "Го изгубивте кодот за заверка? Обратете се на [[{{MediaWiki:Grouppage-sysop}}|администратор]].",
 	"oathauth-must-be-central": "{{GENDER:$1|Вашата сметка}} мора да биде поврзана со централниот систем за заверка за да користи двочинителска заверка.",
 	"oathauth-error-multiple-modules": "Засега не е поддржано користење на повеќе начини на двочинителска заверка. Можете да го овозможите $1 само откако ќе го оневозможите $2.",
-	"group-oathauth-twofactorauth": "Корисници кои можат да користат двочинителска заверка",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|корисник}} кој може да користи двочинителска заверка",
 	"oathauth-remove-nosuchkey": "Клучот не е пронајден",
 	"oathauth-password-header": "Лозинка",
 	"oathauth-password-label": "Задајте силна лозинка за да си ја заштитите сметката.",

@@ -126,8 +126,6 @@
 	"oathauth-recovery-code-hint": "Ha tu perdite tu codice de recuperation? Per favor contacta un [[{{MediaWiki:Grouppage-sysop}}|administrator]].",
 	"oathauth-must-be-central": "{{GENDER:$1|Tu conto}} debe esser ligate al systema de authentication central pro usar le authentication bifactorial.",
 	"oathauth-error-multiple-modules": "Pro le momento, le uso de plure methodos de authentication bifactorial non es supportate. Tu pote solmente activar $1 post disactivar $2.",
-	"group-oathauth-twofactorauth": "Usatores qui pote usar le authentication bifactorial",
-	"group-oathauth-twofactorauth-member": "usat{{GENDER:$1|or|rice}} qui pote usar le authentication bifactorial",
 	"oathauth-remove-nosuchkey": "Clave non trovate.",
 	"oathauth-password-header": "Contrasigno",
 	"oathauth-password-label": "Defini un contrasigno forte pro proteger tu conto.",

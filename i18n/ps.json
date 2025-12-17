@@ -108,8 +108,6 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} خپل دوه‌پړاوييز تاييد چارن کړی نه دی.",
 	"oathauth-prefs-disabledgroups": "ناچارن‌شوې {{PLURAL:$1|ډله|ډلې}}:",
 	"oathauth-prefs-disabledgroups-help": "{{PLURAL:$1|دې ډلگي|دې ډلگيو}} کې {{GENDER:$2|ستاسو غړيتوب}} ناچارن دی، تر هغې چې تاسو [[Special:Manage Two-factor authentication|دوه پړاويز تاييد]] چارن کړئ.",
-	"group-oathauth-twofactorauth": "هغه کارنان چې ښايي له دوه‌پړاويزه تاييد نه کار واخلي",
-	"group-oathauth-twofactorauth-member": "هغه {{GENDER:$1|کارن}} چې له دوه‌پړاويزه تاييد نه کار اخيستلای شي.",
 	"oathauth-remove-nosuchkey": "کونجي ونه موندل شوه.",
 	"oathauth-password-header": "پټنوم",
 	"oathauth-password-label": "د خپل گڼون ساتنې لپاره يو ځواکمن پټنوم و اوڼئ.",

@@ -69,6 +69,5 @@
 	"oathauth-action-exclusive-to-2fa": "Radnju mogu izvršiti samo suradnici/suradnice koji/koje imaju omogućenu dvofaktorsku autentifikaciju.",
 	"oathauth-totp-description": "Jednokratna zaporka/kôd (TOTP) bazirana na vremenu kreiranja, proširenje je mogućnosti algoritma jednokratne zaporke zasnovane na HMAC-u (HOTP), koja uključuje generiranje jednokratne zaporke bez preuzimanja jedinstvenosti kôda iz trenutačnog vremena kad je zaporka kreirana.",
 	"oathauth-disable-method-warning": "Ako onemogućite dvofaktorsku autentifikacijsku metodu naziva $1, više nećete biti u mogućnosti rabiti tu metodu pri prijavljivanju, a svi će podatci povezani s tom autentifikacijskom metodom biti izbrisani.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nema omogućenu dvofaktorsku autentifikaciju.",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|Suradnik kojemu|Suradnica kojoj}} je dopuštena uporaba dvofaktorske autentifikacije"
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} nema omogućenu dvofaktorsku autentifikaciju."
 }

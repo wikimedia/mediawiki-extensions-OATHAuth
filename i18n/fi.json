@@ -127,8 +127,6 @@
 	"oathauth-hint": "Eikö sinulla ole pääsyä laitteellesi tai tunnistautumissovellukseesi? Voit syöttää tähän kenttään palautuskoodin (joka näytettiin, kun otit käyttöön kaksivaiheisen tunnistautumisen).",
 	"oathauth-recovery-code-hint": "Oletko kadottanut palautuskoodisi? Ota yhteyttä [[{{MediaWiki:Grouppage-sysop}}|ylläpitäjään]].",
 	"oathauth-error-multiple-modules": "Tällä hetkellä useiden kaksivaiheisten tunnustautumistapojen käyttöä ei tueta. Voit ottaa käyttöön tavan $1 vasta poistettuasi käytöstä tavan $2.",
-	"group-oathauth-twofactorauth": "käyttäjät, jotka voivat käyttää kaksivaiheista tunnistautumista",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|käyttäjä}}, joka voi käyttää kaksivaiheista tunnistautumista",
 	"oathauth-remove-nosuchkey": "Avainta ei löytynyt.",
 	"oathauth-password-header": "Salasana",
 	"oathauth-password-label": "Aseta vahva salasana suojataksesi tunnustasi.",

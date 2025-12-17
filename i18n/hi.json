@@ -124,8 +124,6 @@
 	"oathauth-recovery-code-hint": "क्या आपने अपना पुनर्प्राप्ति कोड खो दिया है? कृपया एक [[{{MediaWiki:Grouppage-sysop}}|प्रबंधक]] से संपर्क करें।",
 	"oathauth-must-be-central": "दो-कारक प्रमाणीकरण का उपयोग करने के लिए {{GENDER:$1|आपके खाते}} को केंद्रीय प्रमाणीकरण प्रणाली से जुड़ा हुआ होना होगा।",
 	"oathauth-error-multiple-modules": "2FA प्रमाणीकरण की कई विधियों का एक साथ उपयोग फ़िलहाल समर्थित नहीं है। आप $2 अक्षम करने के बाद ही $1 सक्षम कर सकते हैं।",
-	"group-oathauth-twofactorauth": "सदस्य जो दो-कारक प्रमाणीकरण का उपयोग कर सकते हैं",
-	"group-oathauth-twofactorauth-member": "सदस्य जो दो-कारक प्रमाणीकरण का उपयोग कर सकता/सकती है",
 	"oathauth-remove-nosuchkey": "कुँजी नहीं मिली।",
 	"oathauth-password-header": "पासवर्ड",
 	"oathauth-password-label": "अपने खाते को सुरक्षित रखने के लिए एक मज़बूत पासवर्ड सेट करें।",

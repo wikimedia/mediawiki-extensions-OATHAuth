@@ -132,8 +132,6 @@
 	"oathauth-recovery-code-hint": "Bərpa kodunu itirmisiniz? [[{{MediaWiki:Grouppage-sysop}}|İnzibatçılar]] ilə əlaqə saxlayın.",
 	"oathauth-must-be-central": "İki faktorlu autentifikasiyadan istifadə etmək üçün {{GENDER:$1|hesabınız}} mərkəzi autentifikasiya sisteminə qoşulmalıdır.",
 	"oathauth-error-multiple-modules": "Hələlik çoxlu 2FA autentifikasiya metodlarından istifadə dəstəklənmir. Siz yalnız $2 söndürdükdən sonra $1 aktiv edə bilərsiniz.",
-	"group-oathauth-twofactorauth": "İki faktorlu autentifikasiyadan istifadə edə bilən istifadəçilər",
-	"group-oathauth-twofactorauth-member": "iki faktorlu autentifikasiyadan istifadə edə bilən {{GENDER:$1|istifadəçi}}",
 	"oathauth-remove-nosuchkey": "Açar tapılmadı.",
 	"oathauth-password-header": "Parol",
 	"oathauth-password-label": "Hesabınızı qorumaq üçün güclü parol təyin edin.",

@@ -109,8 +109,6 @@
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Är Memberschaft}} an {{PLURAL:$1|dëser Grupp|dëse Gruppe}} gouf desaktivéiert, bis Dir d'[[Special:Manage Two-factor authentication|Zwee-Faktor-Authentifizéierung]] aktivéiert.",
 	"oathauth-qrcode-alt": "QR-Code fir ze scannen, deen de geheime Schlëssel representéiert.",
 	"oathauth-must-be-central": "{{GENDER:$1|Äre Kont}} muss mam zentralen Authentifizéierungssystem verbonne si fir d'Zwee-Faktor-Authentifizéierung benotzen ze kënnen.",
-	"group-oathauth-twofactorauth": "Benotzer, déi d'Zwee-Faktor-Authentifizéierung benotzen däerfen",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|Benotzer, deen|Benotzerin, déi}} Zwee-Faktor-Authentifizéierung benotzen däerf",
 	"oathauth-remove-nosuchkey": "Schlëssel net fonnt.",
 	"oathauth-password-header": "Passwuert",
 	"oathauth-password-label": "Leet e staarkt Passwuert fest fir Äre Kont ze schützen.",

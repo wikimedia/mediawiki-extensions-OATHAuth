@@ -138,8 +138,6 @@
 	"oathauth-recovery-code-hint": "回復コードを紛失しましたか？[[{{MediaWiki:Grouppage-sysop}}|管理者]]にご連絡ください。",
 	"oathauth-must-be-central": "二要素認証を使用するには、{{GENDER:$1|あなたのアカウント}}が中央認証システムにリンクされていなければなりません。",
 	"oathauth-error-multiple-modules": "現在のところ、複数の2FA認証方法の使用はサポートされていません。 $2 を無効化した後にのみ、 $1 を有効化できます。",
-	"group-oathauth-twofactorauth": "二要素認証を利用できる利用者",
-	"group-oathauth-twofactorauth-member": "二要素認証を利用できる{{GENDER:$1|利用者}}",
 	"oathauth-remove-nosuchkey": "キーが見つかりません。",
 	"oathauth-password-header": "パスワード",
 	"oathauth-password-label": "アカウントを保護するために強力なパスワードを設定してください。",

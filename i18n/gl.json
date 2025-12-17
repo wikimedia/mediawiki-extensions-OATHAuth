@@ -129,8 +129,6 @@
 	"oathauth-recovery-code-hint": "Perdiches o teu código de recuperación? Ponte en contacto coa [[{{MediaWiki:Grouppage-sysop}}|administración]].",
 	"oathauth-must-be-central": "{{GENDER:$1|A túa conta}} debe estar ligada ao sistema de autenticación central para usar a autenticación en dous pasos.",
 	"oathauth-error-multiple-modules": "Polo de agora non se admite o uso de múltiples métodos de autenticación de dous factores. Unicamente podes activar «$1» despois de desactivares «$2».",
-	"group-oathauth-twofactorauth": "Usuarios que poden usar a autenticación de dous factores",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|usuario|usuaria}} que pode usar a autenticación de dous factores",
 	"oathauth-remove-nosuchkey": "Non se atopou a clave.",
 	"oathauth-password-header": "Contrasinal",
 	"oathauth-password-label": "Define un contrasinal forte para protexer a túa conta.",

@@ -107,7 +107,5 @@
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} no tiene activada la autenticación en dos pasos.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desactivado|Grupos desactivados}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Tu}} pertenencia {{PLURAL:$1|al siguiente grupo|a los siguientes grupos}} de usuario están desactivados hasta que actives la [[Special:Manage Two-factor authentication|autenticación en dos pasos]].",
-	"oathauth-hint": "¿No tienes acceso a tu dispositivo o aplicación? Puede ingresar tokens de recuperación (presentados cuando habilitó 2FA) en este campo.",
-	"group-oathauth-twofactorauth": "Usuarios que pueden utilizar la autenticación de dos factores",
-	"group-oathauth-twofactorauth-member": "Usuario que puede utilizar la autenticación de dos factores"
+	"oathauth-hint": "¿No tienes acceso a tu dispositivo o aplicación? Puede ingresar tokens de recuperación (presentados cuando habilitó 2FA) en este campo."
 }

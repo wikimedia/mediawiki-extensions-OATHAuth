@@ -101,8 +101,6 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Strollad|Strolladoù}} diweredekaet ː",
 	"oathauth-hint": "Ne c’hallit ket ober gant hoc’h ardivink pe arload? Gallout a rit ober gant ur c’hod restaoler (diskouezet pa'z oc'h eus gweredekaet an dilesadur div-elfenn) er vaezienn-mañ.",
 	"oathauth-recovery-code-hint": "Ha kollet hoc'h eus ho kod restaoler ? Kit e darempred gant ur [[{{MediaWiki:Grouppage-sysop}}|merour]].",
-	"group-oathauth-twofactorauth": "Implijerien aotreet da ober gant an dilesadur div-elfenn",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|Implijer|Implijerez}} aotreet da ober gant an dilesadur div-elfenn",
 	"oathauth-remove-nosuchkey": "N'eo ket bet kavet an alc'hwez.",
 	"oathauth-password-header": "Ger-tremen",
 	"oathauth-password-label": "Lakait ur ger-tremen kreñv evit gwareziñ ho kont.",

@@ -102,7 +102,5 @@
 	"oathauth-invalidrequest": "Geçersiz istek",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirdi.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi.",
-	"group-oathauth-twofactorauth": "İki faktörlü kimlik doğrulamayı kullanabilecek kullanıcılar",
-	"group-oathauth-twofactorauth-member": "iki faktörlü kimlik doğrulamayı kullanabilen {{GENDER:$1|kullanıcı}}",
 	"oathauth-delete-warning": "Bu kimlik doğrulama yöntemi ile artık giriş yapamazsınız ve kurtarma kodlarınız artık çalışmayacak."
 }

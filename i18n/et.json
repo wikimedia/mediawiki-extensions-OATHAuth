@@ -106,8 +106,6 @@
 	"oathauth-verify-disabled": "Kasutajal {{GENDER:$1|$1}} ei ole kaheastmeline autentimine lubatud.",
 	"oathauth-prefs-disabledgroups": "Keelatud {{PLURAL:$1|rühm|rühmad}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Sinu liikmesus}} {{PLURAL:$1|selles rühmas|neis rühmades}} on keelatud kuni oled lubanud [[Special:Manage Two-factor authentication|kaheastmelise autentimise]].",
-	"group-oathauth-twofactorauth": "Kasutajad, kes saavad kasutada kaheastmelist autentimist",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|kasutaja}}, kes saab kasutada kaheastmelist autentimist",
 	"oathauth-password-header": "Parool",
 	"oathauth-password-label": "Määra tugev parool, et kontot kaitsta.",
 	"oathauth-password-action": "Muuda parool",

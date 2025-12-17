@@ -125,8 +125,6 @@
 	"oathauth-recovery-code-hint": "Ste izgubili obnovitveno kodo? Kontaktirajte [[{{MediaWiki:Grouppage-sysop}}|administratorja]].",
 	"oathauth-must-be-central": "{{GENDER:$1| Vaš račun}} mora biti povezan s centralnim avtentikacijskim sistemom, da lahko uporabljate dvofaktorsko avtentikacijo.",
 	"oathauth-error-multiple-modules": "Za zdaj uporaba več metod 2FA-avtentikacije ni podprta. $1 lahko omogočite šele po onemogočenju $2.",
-	"group-oathauth-twofactorauth": "Uporabniki, ki lahko uporabljajo dvofaktorsko avtentikacijo",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|uporabnik}}, ki lahko uporablja dvofaktorsko avtentikacijo",
 	"oathauth-remove-nosuchkey": "Ključ ni bil najden.",
 	"oathauth-password-header": "Geslo",
 	"oathauth-password-label": "Za zaščito svojega računa nastavite močno geslo.",

@@ -134,8 +134,6 @@
 	"oathauth-recovery-code-hint": "آیا کد بازیابی خود را گم کرده‌اید؟ لطفاً با یک [[{{MediaWiki:Grouppage-sysop}}|مدیر]] تماس بگیرید.",
 	"oathauth-must-be-central": "برای استفاده از اصالت‌سنجی دوعاملی، {{GENDER:$1|حساب شما}} باید به سامانهٔ مرکزی احراز هویت متصل باشد.",
 	"oathauth-error-multiple-modules": "در حال حاضر استفاده از چندین روش اصالت‌سنجی دوعاملی پشتیبانی نمی‌شود. شما فقط می‌توانید $1 را پس از غیرفعال کردن $2 فعال کنید.",
-	"group-oathauth-twofactorauth": "کاربرانی که ممکن است از اصالت‌سنجی دوعاملی استفاده کنند",
-	"group-oathauth-twofactorauth-member": "کاربرانی که می‌توانند از اصالت‌سنجی دوعاملی استفاده کنند",
 	"oathauth-remove-nosuchkey": "کلید یافت نشد.",
 	"oathauth-password-header": "گذرواژه",
 	"oathauth-password-label": "برای حفاظت از حساب خود یک گذرواژهٔ قوی تنظیم کنید.",

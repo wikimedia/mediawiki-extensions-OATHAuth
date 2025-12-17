@@ -35,6 +35,5 @@
 	"oathmanage": "Upravljanje potvrdom u dva koraka",
 	"oathauth-disable-generic": "Isključi",
 	"oathauth-totp-description": "Jednokratni algoritam zasnovan na vremenu (TOTP) proširenje je algoritma zasnovanog na HMAC-u (HOTP) i stvara jednokratnu lozinku uzimajući jedinstvenost trenutnog vremena.",
-	"oathauth-invalidrequest": "Nevažeći zahtjev",
-	"group-oathauth-twofactorauth-member": "Korisnik koji može koristiti dvofaktorsku autentifikaciju"
+	"oathauth-invalidrequest": "Nevažeći zahtjev"
 }

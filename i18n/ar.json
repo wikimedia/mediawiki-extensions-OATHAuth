@@ -135,8 +135,6 @@
 	"oathauth-recovery-code-hint": "هل فقدت رمز الاسترداد؟ يُرجى التواصل مع [[{{MediaWiki:Grouppage-sysop}}|المسؤول]].",
 	"oathauth-must-be-central": "يجب ربط {{GENDER:$1|حسابك}} بنظام المصادقة المركزي لاستخدام المصادقة الثنائية.",
 	"oathauth-error-multiple-modules": "حاليًا، لا يُدعم استخدام طرق مصادقة ثنائية متعددة. يمكنك تفعيل $1 فقط بعد تعطيل $2 .",
-	"group-oathauth-twofactorauth": "المستخدمون الذين يمكنهم استخدام المصادقة الثنائية",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|المستخدم}} الذي يمكنه استخدام المصادقة الثنائية",
 	"oathauth-remove-nosuchkey": "لم يُعثَر على المفتاح.",
 	"oathauth-password-header": "كلمة المرور",
 	"oathauth-password-label": "حدد كلمة مرور قوية لحماية حسابك",

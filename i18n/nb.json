@@ -125,8 +125,6 @@
 	"oathauth-recovery-code-hint": "Har du mistet gjenopprettingskoden din? Kontakt en [[{{MediaWiki:Grouppage-sysop}}|administrator]].",
 	"oathauth-must-be-central": "Kontoen {{GENDER:$1|din}} må være koblet til det sentrale autentiseringssystemet for å bruke tofaktorautentisering.",
 	"oathauth-error-multiple-modules": "Foreløpig støttes ikke bruk av flere tofaktorautentiseringsmetoder. Du kan bare aktivere $1 ved å deaktivere $2.",
-	"group-oathauth-twofactorauth": "Brukere som kan bruke tofaktorautentisering",
-	"group-oathauth-twofactorauth-member": "Bruk som kan bruke tofaktorautentisering",
 	"oathauth-remove-nosuchkey": "Nøkkel ikke funnet.",
 	"oathauth-password-header": "Passord",
 	"oathauth-password-label": "Velg et sterkt passord for å beskytte kontoen din.",

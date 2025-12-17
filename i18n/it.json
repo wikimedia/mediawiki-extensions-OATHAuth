@@ -90,8 +90,6 @@
 	"oathauth-hint": "Non hai accesso al tuo dispositivo o alla tua applicazione di autenticazione? Puoi inserire un codice di recupero (fornito quando hai abilitato 2FA) in questo campo.",
 	"oathauth-recovery-code-hint": "Hai perso il codice di recupero? Contatta un [[{{MediaWiki:Grouppage-sysop}}|amministratore]].",
 	"oathauth-error-multiple-modules": "Per il momento, l'utilizzo di più metodi di autenticazione 2FA non è supportato. Puoi attivare $1 solo dopo aver disabilitato $2.",
-	"group-oathauth-twofactorauth": "Utenti che possono utilizzare l'autenticazione a due fattori",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|utente}} che può utilizzare l'autenticazione a due fattori",
 	"oathauth-created-at": "Aggiunto il $1",
 	"oathauth-passkeys-header": "Passkey",
 	"oathauth-passkeys-placeholder": "Le passkey sono più sicure delle password e consentono di accedere allo stesso modo in cui si sblocca il dispositivo.",

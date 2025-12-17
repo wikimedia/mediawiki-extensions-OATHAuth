@@ -136,8 +136,6 @@
 	"oathauth-recovery-code-hint": "Zgubiłeś kod odzyskiwania? Skontaktuj się z [[{{MediaWiki:Grouppage-sysop}}|administratorem]].",
 	"oathauth-must-be-central": "{{GENDER:$1|Twoje konto}} musi być połączone z centralnym systemem uwierzytelniania, aby móc używać uwierzytelniania dwuskładnikowego.",
 	"oathauth-error-multiple-modules": "W chwili obecnej używanie wielu metod uwierzytelniania dwuskładnikowego nie jest wspierane. Możesz włączyć $1 dopiero po wyłączeniu $2.",
-	"group-oathauth-twofactorauth": "Użytkownicy uprawnieni do korzystania z uwierzytelniania dwuskładnikowego",
-	"group-oathauth-twofactorauth-member": "{{GENDER:$1|uprawniony|uprawniona}} do korzystania z uwierzytelniania dwuskładnikowego",
 	"oathauth-remove-nosuchkey": "Nie znaleziono klucza.",
 	"oathauth-password-header": "Hasło",
 	"oathauth-password-label": "Ustaw silne hasło, aby chronić swoje konto.",

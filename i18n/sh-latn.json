@@ -44,6 +44,7 @@
 	"oathauth-auth-token-label": "Dvofaktorski žeton ili kod za oporavak",
 	"oathauth-auth-token-help": "Jednokratna lozinka koja služi kao drugi faktor u dvofaktorskoj autentifikaciji.",
 	"oathauth-auth-recovery-code-label": "Kodovi za oporavak",
+	"oathauth-auth-use-recovery-code": "Koristi kodove za oporavak",
 	"oathauth-auth-ui": "Unesite kod iz aplikacije za dvofaktorsku potvrdu identiteta (kao što je [https://www.authy.com Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] ili [https://1password.com/ 1Password]).",
 	"oathauth-throttled": "Napravili ste previše pokušaja potvrde! Sačekajte $1.",
 	"oathauth-login-failed": "Potvrda nije uspjela.",
@@ -74,6 +75,5 @@
 	"oathauth-totp-disable-warning": "Više nećete moći koristiti uređaj za autentifikaciju registrovan ovim računom. Svi pričuvni žetoni povezani sa njim biće proglašeni nevažećim.",
 	"oathauth-invalidrequest": "Nevažeći zahtjev",
 	"oathauth-notifications-disable-help": "Pomoć",
-	"oathauth-notifications-enable-help": "Pomoć",
-	"group-oathauth-twofactorauth": "Korisnici s dvofaktorskom autentifikacijom"
+	"oathauth-notifications-enable-help": "Pomoć"
 }
