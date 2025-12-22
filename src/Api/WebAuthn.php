@@ -25,6 +25,7 @@ use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -35,6 +36,7 @@ class WebAuthn extends ApiBase {
 
 	private const ACTION_GET_AUTH_INFO = 'getAuthInfo';
 	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
+	private const ACTION_REGISTER = 'register';
 
 	/**
 	 * @throws ApiUsageException
@@ -48,9 +50,25 @@ class WebAuthn extends ApiBase {
 		$result = match ( $func ) {
 			self::ACTION_GET_REGISTER_INFO => $this->getRegisterInfo(),
 			self::ACTION_GET_AUTH_INFO => $this->getAuthInfo(),
+			self::ACTION_REGISTER => $this->register(),
 		};
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/** @inheritDoc */
+	public function needsToken() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER ? 'csrf' : false;
+	}
+
+	/** @inheritDoc */
+	public function mustBePosted() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER;
+	}
+
+	/** @inheritDoc */
+	public function isWriteMode() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER;
 	}
 
 	/** @inheritDoc */
@@ -62,12 +80,21 @@ class WebAuthn extends ApiBase {
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
 					'getAuthInfo' => 'apihelp-webauthn-paramvalue-func-getauthinfo',
 					'getRegisterInfo' => 'apihelp-webauthn-paramvalue-func-getregisterinfo',
+					'register' => 'apihelp-webauthn-paramvalue-func-register',
 				],
 			],
 			'passkeyMode' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
 				ParamValidator::PARAM_REQUIRED => false,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-webauthn-paramvalue-func-passkeymode',
+			],
+			'credential' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'friendlyname' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 		];
 	}
@@ -84,6 +111,10 @@ class WebAuthn extends ApiBase {
 				'mustBeLoggedIn' => false,
 			],
 			static::ACTION_GET_REGISTER_INFO => [
+				'permissions' => [ 'oathauth-enable' ],
+				'mustBeLoggedIn' => true,
+			],
+			static::ACTION_REGISTER => [
 				'permissions' => [ 'oathauth-enable' ],
 				'mustBeLoggedIn' => true,
 			],
@@ -149,7 +180,7 @@ class WebAuthn extends ApiBase {
 	 * @throws MWException
 	 */
 	protected function getRegisterInfo(): array {
-		$passkeyMode = $this->getParameter( 'passkeyMode' );
+		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
 		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
 		$canRegister = $authenticator->canRegister();
 		if ( !$canRegister->isGood() ) {
@@ -162,5 +193,40 @@ class WebAuthn extends ApiBase {
 			];
 		}
 		$this->dieWithError( $startRegResult->getMessage() );
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	protected function register(): array {
+		$credentialJson = $this->getParameter( 'credential' );
+		$friendlyName = $this->getParameter( 'friendlyname' );
+		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
+
+		if ( !$credentialJson ) {
+			$this->dieWithError( 'apierror-webauthn-missing-credential' );
+		}
+
+		$credential = FormatJson::decode( $credentialJson );
+		if ( !is_object( $credential ) ) {
+			$this->dieWithError( 'apierror-webauthn-invalid-credential' );
+		}
+		$credential->friendlyName = $friendlyName ?? '';
+
+		$authenticator = Authenticator::factory(
+			$this->getUser(),
+			$this->getRequest(),
+			$passkeyMode
+		);
+
+		$result = $authenticator->continueRegistration( $credential );
+
+		if ( !$result->isGood() ) {
+			$this->dieWithError( $result->getMessage() );
+		}
+
+		return [ 'success' => true ];
 	}
 }

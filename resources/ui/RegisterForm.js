@@ -27,9 +27,5 @@ mw.ext.webauthn.RegisterFormWidget.prototype.submitForm = function ( e ) {
 };
 
 mw.ext.webauthn.RegisterFormWidget.prototype.validateAndEmit = function () {
-	this.name.getValidity().then(
-		() => {
-			this.emit( 'addKey', this.name.getValue() );
-		}
-	);
+	this.emit( 'addKey', this.name.getValue() );
 };

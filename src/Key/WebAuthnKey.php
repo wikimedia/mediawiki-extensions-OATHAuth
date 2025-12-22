@@ -32,6 +32,7 @@ use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\WebAuthn\AAGUIDLookup;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\Extension\WebAuthn\Request;
 use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
@@ -247,8 +248,7 @@ class WebAuthnKey extends AuthKey {
 			] );
 			throw new LogicException( 'WebAuthnKey::verifyRegistration(): invalid mode' );
 		}
-		$this->setFriendlyName( $friendlyName );
-		return $this->registrationCeremony( $data, $registrationObject, $user );
+		return $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
 	}
 
 	/**
@@ -295,7 +295,8 @@ class WebAuthnKey extends AuthKey {
 	private function registrationCeremony(
 		string $data,
 		PublicKeyCredentialCreationOptions $registrationObject,
-		OATHUser $user
+		OATHUser $user,
+		string $friendlyName = ''
 	): bool {
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
 		$attestationStatementSupportManager = $this->getAttestationSupportManager();
@@ -341,6 +342,12 @@ class WebAuthnKey extends AuthKey {
 				->authData->attestedCredentialData;
 			$this->signCounter = $response->attestationObject->authData->signCount;
 			$this->credentialTransports = $response->transports;
+
+			if ( trim( $friendlyName ) === '' ) {
+				$aaguid = (string)$this->attestedCredentialData->getAaguid();
+				$friendlyName = AAGUIDLookup::generateFriendlyName( $aaguid );
+			}
+			$this->setFriendlyName( $friendlyName );
 
 			$this->logger->info(
 				"User {$user->getUser()->getName()} registered new WebAuthn key"

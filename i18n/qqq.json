@@ -34,5 +34,11 @@
 	"webauthn-credential-label": "WebAuthn user credential label",
 	"webauthn-credential-help": "Help message for WebAuthn user credential",
 	"webauthn-add-security-key": "Button label for adding a new WebAuthn key",
-	"webauthn-auth-switch-module-label": "Label for the 2FA method switcher button on login"
+	"webauthn-auth-switch-module-label": "Label for the 2FA method switcher button on login",
+	"apierror-webauthn-module-missing": "API error message when the WebAuthn module is not registered or available.",
+	"apierror-webauthn-missing-credential": "API error message when the credential parameter is missing from the register request.",
+	"apierror-webauthn-invalid-credential": "API error message when the credential JSON cannot be decoded or is not a valid object.",
+	"apihelp-webauthn-paramvalue-func-register": "{{doc-apihelp-paramvalue|webauthn|func|register}}",
+	"apihelp-webauthn-param-credential": "{{doc-apihelp-param|webauthn|credential}}",
+	"apihelp-webauthn-param-friendlyname": "{{doc-apihelp-param|webauthn|friendlyname}}"
 }

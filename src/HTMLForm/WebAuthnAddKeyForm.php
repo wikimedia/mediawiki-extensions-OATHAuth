@@ -2,23 +2,17 @@
 
 namespace MediaWiki\Extension\WebAuthn\HTMLForm;
 
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
-use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
 use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
-use MediaWiki\Json\FormatJson;
-use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Status\Status;
 
 class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 
@@ -48,8 +42,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @param array|bool|Status|string $submitResult
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function getHTML( $submitResult ) {
 		$html = parent::getHTML( $submitResult );
@@ -78,40 +71,18 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when the operation was successful
+	 * @inheritDoc
 	 */
 	public function onSuccess() {
-		$this->getOutput()->redirect(
-			SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL()
-		);
+		// Not used - redirect is handled client-side after API call
 	}
 
 	/**
 	 * @return array|bool
-	 * @throws ConfigException
 	 */
 	public function onSubmit( array $formData ) {
-		if ( !isset( $formData['credential'] ) ) {
-			return [ 'oathauth-failedtovalidateoath' ];
-		}
-		$credential = $formData['credential'];
-		$credential = FormatJson::decode( $credential );
-
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $formData['passkeyMode'] );
-		$registrationResult = $authenticator->continueRegistration( $credential );
-		if ( $registrationResult->isGood() ) {
-
-			// Create recovery codes if needed, using the same codes that we displayed to the user
-			$recoveryCodesModule = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
-			'@phan-var RecoveryCodes $recoveryCodesModule';
-			$recoveryCodesModule->ensureExistence( $this->oathUser, $this->getKeyDataInSession( 'RecoveryCodeKeys' ) );
-
-			$this->setKeyDataInSessionToNull( 'RecoveryCodeKeys' );
-
-			return true;
-		}
-
-		return [ $registrationResult->getMessage() ];
+		// Registration is handled client-side via API (action=webauthn&func=register)
+		return [ 'webauthn-javascript-required' ];
 	}
 
 	/** @inheritDoc */
@@ -127,15 +98,6 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 				'raw' => true,
 				'section' => 'webauthn-add-key-section-name'
 			],
-			'credential' => [
-				'name' => 'credential',
-				'type' => 'hidden'
-			],
-			'passkeyMode' => [
-				'name' => 'passkeyMode',
-				'type' => 'hidden',
-				'default' => $this->getRequest()->getVal( 'passkeyMode', '' )
-			]
 		];
 	}
 }

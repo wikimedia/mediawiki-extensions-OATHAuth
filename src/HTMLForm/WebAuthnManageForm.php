@@ -7,11 +7,9 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\IModule;
-use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\Authenticator;
 use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\WebAuthn\HTMLField\RegisteredKeyLayout;
 use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
@@ -69,40 +67,19 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * Add content to output when the operation was successful
+	 * @inheritDoc
 	 */
 	public function onSuccess() {
-		$this->getOutput()->redirect(
-			SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL()
-		);
+		// Not used - redirect is handled client-side after API call
 	}
 
 	/**
 	 * @param array $formData
 	 * @return array|bool
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	public function onSubmit( array $formData ) {
-		if ( !isset( $formData['credential'] ) || !$this->authenticate( $formData['credential'] ) ) {
-			return [ 'oathauth-failedtovalidateoath' ];
-		}
-		if ( isset( $formData['remove_key'] ) ) {
-			$removedKey = $this->removeKey( $formData['remove_key'] );
-
-			// also remove recovery codes if there are no more factors
-			if ( $removedKey === true && !$this->oathUser->userHasNonSpecialEnabledKeys() ) {
-				$this->oathRepo->removeAllOfType(
-					$this->oathUser,
-					RecoveryCodes::MODULE_NAME,
-					$this->getRequest()->getIP(),
-					true
-				);
-			}
-
-			return $removedKey;
-		}
-		return true;
+		// This is handled client-side via API
+		return [ 'webauthn-javascript-required' ];
 	}
 
 	/**
@@ -133,49 +110,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 				'class' => NoJsInfoField::class,
 				'section' => 'webauthn-registered-keys-section-name',
 			],
-		] + $registeredKeys + [
-			'edit_key' => [
-				'type' => 'hidden',
-				'name' => 'edit_key'
-			],
-			'remove_key' => [
-				'type' => 'hidden',
-				'name' => 'remove_key'
-			],
-			'credential' => [
-				'type' => 'hidden',
-				'name' => 'credential'
-			]
-		];
-	}
-
-	/**
-	 * @throws MWException
-	 * @throws ConfigException
-	 */
-	private function removeKey( string $key ): array|bool {
-		$key = $this->module->getKeyByFriendlyName( $key, $this->oathUser );
-		if ( !$key ) {
-			return [ 'webauthn-error-cannot-remove-key' ];
-		}
-
-		$this->oathRepo->removeKey( $this->oathUser, $key, $this->getRequest()->getIP(), true );
-		return true;
-	}
-
-	/**
-	 * @throws ConfigException
-	 */
-	private function authenticate( string $credential ): bool {
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
-		if ( !$authenticator->isEnabled() ) {
-			return false;
-		}
-
-		$authenticationResult = $authenticator->continueAuthentication( [
-			'credential' => $credential
-		] );
-
-		return $authenticationResult->isGood();
+		] + $registeredKeys;
 	}
 }

@@ -19,7 +19,7 @@ class AddKeyLayout extends HTMLFormField {
 		$input = new TextInputWidget( [
 			'id' => 'key_name',
 			'name' => 'key_name',
-			'required' => true,
+			'required' => false,
 			'infusable' => true,
 			'disabled' => true,
 			'autofocus' => true,

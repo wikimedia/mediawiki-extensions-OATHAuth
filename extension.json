@@ -80,6 +80,7 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.util",
 				"ext.webauthn.ui.base",
 				"ext.webauthn.Registrator"
 			]
