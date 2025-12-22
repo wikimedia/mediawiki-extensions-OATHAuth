@@ -180,5 +180,9 @@
 	"oathauth-passkeys-header": "通行密钥",
 	"oathauth-passkeys-placeholder": "通行密钥比密码更安全，并且允许您以与解锁设备相同的方式登录。",
 	"oathauth-passkeys-no2fa": "要添加通行密钥，您必须先设置双因素身份验证。",
-	"oathauth-passkeys-add": "添加通行密钥"
+	"oathauth-passkeys-add": "添加通行密钥",
+	"oathauth-passkey-dialog-title": "添加通行密钥",
+	"oathauth-passkey-dialog-text": "通行密钥是您登录账号最为安全的方式。对大多数人来说也是最为简单的方式。借助通行密钥，无论是PIN、指纹还是面部识别，您都可以像解锁设备一样登录{{SITENAME}}。无论您使用哪种方式登录，您的生物识别数据和PIN都会保留在您的设备上，绝不会发送给我们。",
+	"oathauth-passkey-dialog-back": "返回",
+	"oathauth-passkey-dialog-add": "添加通行密钥"
 }

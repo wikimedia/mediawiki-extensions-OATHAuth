@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alno",
+			"Bananax47",
 			"Crochet.david",
 			"Derugon",
 			"Escargot bleu",
@@ -158,7 +159,7 @@
 	"oathauth-authenticator-delete-text": "supprimer",
 	"oathauth-totp-add-key": "Ajouter une application d'authentification",
 	"oathauth-delete-warning-header": "Retirer « $1 »",
-	"oathauth-delete-warning": "Vous ne pourrez plus utiliser cette méthode d'authentification pour vous connecter et vos codes de récupération cesseront de fonctionner.",
+	"oathauth-delete-warning": "Vous ne pourrez plus utiliser cette méthode d'authentification pour vous connecter.",
 	"oathauth-delete-confirm-box": "Saisissez « {{int:oathauth-authenticator-delete-text}} » pour continuer",
 	"oathauth-delete-warning-final": "Supprimer cette méthode désactivera complètement l'authentification à deux facteurs.",
 	"oathauth-delete-warning-final-privileged-user": "Vous disposez de privilèges sur {{SITENAME}} qui requièrent une authentification à deux facteurs. <strong>Vous pourriez perdre ces privilèges et devoir faire manuellement la demande pour les réobtenir.</strong>\n\nConseil : ajoutez une nouvelle méthode avant de supprimer celle-ci.",
@@ -171,5 +172,8 @@
 	"oathauth-passkeys-header": "Clés de passe",
 	"oathauth-passkeys-placeholder": "Les clés de passe sont plus sécurisées que les mots de passe et vous permettent de vous connecter de la même manière que vous déverrouillez votre appareil.",
 	"oathauth-passkeys-no2fa": "Pour ajouter une clé de passe, vous devez d'abord paramétrer l'authentification à deux facteurs.",
-	"oathauth-passkeys-add": "Ajouter une clé de passe"
+	"oathauth-passkeys-add": "Ajouter une clé de passe",
+	"oathauth-passkey-dialog-title": "Ajouter une clé de passe",
+	"oathauth-passkey-dialog-back": "Retour",
+	"oathauth-passkey-dialog-add": "Ajouter une clé de passe"
 }

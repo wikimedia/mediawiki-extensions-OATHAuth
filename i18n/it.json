@@ -4,6 +4,7 @@
 			"Beta16",
 			"Darth Kule",
 			"Gianfranco",
+			"GseSro",
 			"McDutchie",
 			"Pierpao",
 			"Ruthven",
@@ -94,5 +95,9 @@
 	"oathauth-passkeys-header": "Passkey",
 	"oathauth-passkeys-placeholder": "Le passkey sono più sicure delle password e consentono di accedere allo stesso modo in cui si sblocca il dispositivo.",
 	"oathauth-passkeys-no2fa": "Per aggiungere una passkey è necessario prima impostare l'autenticazione a due fattori.",
-	"oathauth-passkeys-add": "Aggiungi una passkey"
+	"oathauth-passkeys-add": "Aggiungi una passkey",
+	"oathauth-passkey-dialog-title": "Aggiungi una passkey",
+	"oathauth-passkey-dialog-text": "Le passkey sono il modo più sicuro per accedere al tuo account. Per la maggior parte delle persone, sono anche il modo più semplice.\n\nCon una passkey, puoi accedere a {{SITENAME}} nello stesso modo in cui sblocchi il tuo dispositivo, che sia tramite PIN, impronta digitale o riconoscimento facciale.\n\nIn qualunque modo tu acceda, i tuoi dati biometrici e il tuo PIN rimangono sul tuo dispositivo e non ci vengono mai inviati.",
+	"oathauth-passkey-dialog-back": "Indietro",
+	"oathauth-passkey-dialog-add": "Aggiungi passkey"
 }

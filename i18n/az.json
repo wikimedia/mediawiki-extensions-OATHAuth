@@ -155,5 +155,9 @@
 	"oathauth-passkeys-header": "Keçid açarları",
 	"oathauth-passkeys-placeholder": "Keçid açarları parollardan daha təhlükəsizdir və cihazınızın kilidini açdığınız formada daxil olmağa imkan verir.",
 	"oathauth-passkeys-no2fa": "Keçid açarı əlavə etmək üçün əvvəlcə iki faktorlu autentifikasiya qurmalısınız.",
-	"oathauth-passkeys-add": "Keçid açarı əlavə et"
+	"oathauth-passkeys-add": "Keçid açarı əlavə et",
+	"oathauth-passkey-dialog-title": "Keçid açarı əlavə et",
+	"oathauth-passkey-dialog-text": "Keçid açarları hesabınıza daxil olmağın ən təhlükəsiz yoludur. Əksər insanlar üçün onlar həm də ən sadə yoldur.\n\nKeçid açarı ilə cihazınızın kilidini açdığınız kimi (PIN, barmaq izi və ya üz tanıma) {{SITENAME}} saytına daxil ola bilərsiniz.\n\nNecə daxil olmağınızdan asılı olmayaraq, biometrik məlumatlarınız və PIN kodunuz cihazınızda qalır və heç vaxt bizə göndərilmir.",
+	"oathauth-passkey-dialog-back": "Geriyə",
+	"oathauth-passkey-dialog-add": "Keçid açarı əlavə et"
 }

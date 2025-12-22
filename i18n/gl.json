@@ -152,5 +152,9 @@
 	"oathauth-passkeys-header": "Claves de acceso",
 	"oathauth-passkeys-placeholder": "As claves de acceso son máis seguras que os contrasinais e permítenche iniciar sesión do mesmo xeito que desbloqueas o teu dispositivo.",
 	"oathauth-passkeys-no2fa": "Para engadir unha clave de acceso, primeiro debes configurar a autenticación de dous factores.",
-	"oathauth-passkeys-add": "Engadir unha clave de acceso"
+	"oathauth-passkeys-add": "Engadir unha clave de acceso",
+	"oathauth-passkey-dialog-title": "Engadir unha clave de acceso",
+	"oathauth-passkey-dialog-text": "As claves de acceso son o xeito máis seguro de iniciar sesión na túa conta. Para a maioría da xente, tamén son o xeito máis sinxelo.\n\nCunha clave de acceso, podes iniciar sesión en {{SITENAME}} do mesmo xeito que desbloqueas o teu dispositivo, xa sexa cun PIN, unha impresión dixital ou un recoñecemento facial.\n\nIndependentemente de como inicies sesión, os teus datos biométricos e o PIN permanecen no teu dispositivo e nunca se nos envían.",
+	"oathauth-passkey-dialog-back": "Volver",
+	"oathauth-passkey-dialog-add": "Engadir a clave de acceso"
 }

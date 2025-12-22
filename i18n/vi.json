@@ -141,9 +141,9 @@
 	"oathauth-authenticator-delete-text": "xóa",
 	"oathauth-totp-add-key": "Thêm ứng dụng xác thực",
 	"oathauth-delete-warning-header": "Xóa $1",
-	"oathauth-delete-warning": "Bạn sẽ không thể sử dụng phương thức xác thực này để đăng nhập và mã khôi phục của bạn sẽ không còn hiệu lực nữa.",
+	"oathauth-delete-warning": "Bạn sẽ không thể sử dụng phương pháp xác thực này để đăng nhập nữa.",
 	"oathauth-delete-confirm-box": "Nhập \"{{int:oathauth-authenticator-delete-text}}\" để tiếp tục",
-	"oathauth-delete-warning-final": "Việc xóa phương pháp này sẽ vô hiệu hóa hoàn toàn xác thực hai yếu tố.",
+	"oathauth-delete-warning-final": "Việc xóa phương thức này sẽ vô hiệu hóa hoàn toàn xác thực hai yếu tố.\n\nĐiều này cũng sẽ xóa mọi mã khôi phục và mã khoá, và cũng sẽ <strong>làm cho tài khoản của bạn kém an toàn hơn.</strong>",
 	"oathauth-delete-warning-final-privileged-user": "Tài khoản của bạn trên {{SITENAME}} có một số dặc quyền yêu cầu bạn phải bật xác thực hai yếu tố.\n<strong>Bạn có thể mất các đặc quyền này và có thể cần phải yêu cầu cấp lại theo cách thủ công.</strong> \n\nMẹo: Thêm phương thức xác thực mới trước khi xóa phương thức này.",
 	"oathauth-delete-wrong-confirm-message": "Mã xác nhận sai. Vui lòng nhập \"{{int:oathauth-authenticator-delete-text}}\" để tiếp tục.",
 	"oathauth-delete-success": "Đã xóa <strong>$1</strong>.",
@@ -154,5 +154,9 @@
 	"oathauth-passkeys-header": "Khóa bảo mật",
 	"oathauth-passkeys-placeholder": "Khóa bảo mật an toàn hơn mật khẩu và cho phép bạn đăng nhập theo cách giống như khi mở khóa thiết bị của mình.",
 	"oathauth-passkeys-no2fa": "Để thêm khóa bảo mật, trước tiên bạn phải thiết lập xác thực hai yếu tố.",
-	"oathauth-passkeys-add": "Thêm khóa bảo mật"
+	"oathauth-passkeys-add": "Thêm khóa bảo mật",
+	"oathauth-passkey-dialog-title": "Thêm mã khóa",
+	"oathauth-passkey-dialog-text": "Mã khóa (Passkey) là cách an toàn nhất để bạn đăng nhập vào tài khoản của mình. Với hầu hết mọi người, đây cũng là cách đơn giản nhất.\n\nKhi sử dụng mã khóa, bạn có thể đăng nhập vào {{SITENAME}} giống như cách bạn mở khóa thiết bị của mình, cho dù đó là mã PIN, dấu vân tay hay nhận diện khuôn mặt.\n\nDù bạn đăng nhập bằng cách nào, dữ liệu sinh trắc học và mã PIN của bạn luôn được lưu trữ trên thiết bị và không bao giờ được gửi cho chúng tôi.",
+	"oathauth-passkey-dialog-back": "Quay lại",
+	"oathauth-passkey-dialog-add": "Thêm mã khóa"
 }

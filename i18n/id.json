@@ -3,6 +3,7 @@
 		"authors": [
 			"Daud I.F. Argana",
 			"Ezagren",
+			"Fafau06",
 			"Iwan Novirion",
 			"Penyuwangi",
 			"Rachmat.Wahidi",
@@ -82,5 +83,6 @@
 	"oathauth-passkeys-header": "Kunci Sandi",
 	"oathauth-passkeys-placeholder": "Kunci sandi lebih aman daripada kata sandi, dan memungkinkan Anda masuk dengan cara yang sama seperti saat membuka kunci perangkat Anda.",
 	"oathauth-passkeys-no2fa": "Untuk menambahkan kunci sandi, Anda harus terlebih dahulu mengatur autentikasi dua faktor.",
-	"oathauth-passkeys-add": "Tambah kunci sandi"
+	"oathauth-passkeys-add": "Tambah kunci sandi",
+	"oathauth-passkey-dialog-back": "Kembali"
 }

@@ -109,5 +109,6 @@
 	"oathauth-authenticator-delete-text": "уклони",
 	"oathauth-delete-warning-header": "Уклони $1",
 	"oathauth-delete-success": "<strong>$1</strong> уклоњен.",
-	"oathauth-enable-success": "Додата <strong>$1</strong>."
+	"oathauth-enable-success": "Додата <strong>$1</strong>.",
+	"oathauth-passkey-dialog-back": "Назад"
 }

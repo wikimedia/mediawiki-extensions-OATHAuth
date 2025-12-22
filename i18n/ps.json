@@ -119,5 +119,6 @@
 	"oathauth-delete-warning-header": "$1 لرې‌کول",
 	"oathauth-delete-warning": "تاسو به نور د دې تاييدي چلندلارې څخه د ننوتلو لپاره کار نشئ اخيستلای او ستاسو د بياترلاسن کوډونه به نور کار ونکړي.",
 	"oathauth-delete-success": "<strong>$1</strong> لرې‌شو",
-	"oathauth-enable-success": "<strong>$1</strong> ورگډ شو."
+	"oathauth-enable-success": "<strong>$1</strong> ورگډ شو.",
+	"oathauth-passkey-dialog-back": "پر شا کېدل"
 }

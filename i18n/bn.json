@@ -91,5 +91,8 @@
 	"oathauth-authenticator-delete": "সরান",
 	"oathauth-totp-add-key": "একটি প্রমাণীকরণ অ্যাপ যোগ করুন",
 	"oathauth-delete-warning-header": "$1 সরান",
-	"oathauth-delete-success": "<strong>$1</strong> সরানো হয়েছে।"
+	"oathauth-delete-success": "<strong>$1</strong> সরানো হয়েছে।",
+	"oathauth-passkey-dialog-title": "একটি পাসকি যোগ করুন",
+	"oathauth-passkey-dialog-back": "পিছনে",
+	"oathauth-passkey-dialog-add": "একটি পাসকি যোগ করুন"
 }

@@ -124,5 +124,6 @@
 	"oathauth-created-at": "De(n) $1 derbäigesat",
 	"oathauth-enable-success": "<strong>$1</strong> derbäigesat.",
 	"oathauth-max-keys-exceeded": "Limitt vun den Authentifizéierungsmethoden erreecht",
-	"oathauth-max-keys-exceeded-message": "Dir hutt déi maximal Zuel vun Authentifizéierungsmethoden erreecht, déi bei $1 läit. Huelt wgl. eng Authentifizéierungsmethod ewech, ier Dir eng nei derbäisetzt."
+	"oathauth-max-keys-exceeded-message": "Dir hutt déi maximal Zuel vun Authentifizéierungsmethoden erreecht, déi bei $1 läit. Huelt wgl. eng Authentifizéierungsmethod ewech, ier Dir eng nei derbäisetzt.",
+	"oathauth-passkey-dialog-back": "Zeréck"
 }

@@ -161,5 +161,9 @@
 	"oathauth-passkeys-header": "パスキー",
 	"oathauth-passkeys-placeholder": "パスキーはパスワードよりも安全で、デバイスのロックを解除するのと同じ方法でサインインできます。",
 	"oathauth-passkeys-no2fa": "パスキーを追加するには、まず二要素認証を設定する必要があります。",
-	"oathauth-passkeys-add": "パスキーを追加"
+	"oathauth-passkeys-add": "パスキーを追加",
+	"oathauth-passkey-dialog-title": "パスキーを追加",
+	"oathauth-passkey-dialog-text": "パスキーはアカウントにサインインする最も安全な方法です。ほとんどの人にとっては、最も簡単な方法でもあります。\n\nパスキーを使うと、PIN、指紋認証、あるいは顔認証など、デバイスのロック解除と同じ方法で{{SITENAME}}にサインインできます。\n\nいずれの方法でサインインしても、生体認証データおよびPINはデバイス上にとどまり、決して送信されることはありません。",
+	"oathauth-passkey-dialog-back": "戻る",
+	"oathauth-passkey-dialog-add": "パスキーを追加"
 }

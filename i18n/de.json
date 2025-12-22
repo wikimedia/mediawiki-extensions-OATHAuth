@@ -160,5 +160,9 @@
 	"oathauth-passkeys-header": "Passkeys",
 	"oathauth-passkeys-placeholder": "Passkeys sind sicherer als Passwörter und ermöglichen es dir, dich auf die gleiche Weise anzumelden, wie du dein Gerät entsperrst.",
 	"oathauth-passkeys-no2fa": "Um einen Passkey hinzuzufügen, musst du zuerst die Zwei-Faktor-Authentifizierung einrichten.",
-	"oathauth-passkeys-add": "Füge einen Passkey hinzu"
+	"oathauth-passkeys-add": "Füge einen Passkey hinzu",
+	"oathauth-passkey-dialog-title": "Füge einen Passkey hinzu",
+	"oathauth-passkey-dialog-text": "Passkeys sind die sicherste Methode, sich in deinem Konto anzumelden. Für die meisten Nutzer sind sie auch die einfachste. Mit einem Passkey kannst du dich bei {{SITENAME}} genauso anmelden, wie du dein  Gerät entsperrst – egal ob mit PIN, Fingerabdruck oder Gesichtserkennung. Unabhängig von der Anmeldemethode bleiben deine biometrischen Daten und deine PIN auf deinem Gerät gespeichert und werden niemals an uns übermittelt.",
+	"oathauth-passkey-dialog-back": "Zurück",
+	"oathauth-passkey-dialog-add": "Passkey hinzufügen"
 }
