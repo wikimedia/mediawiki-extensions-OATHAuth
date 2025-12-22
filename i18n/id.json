@@ -17,7 +17,7 @@
 	"specialpages-group-oath": "Otentikasi dua faktor",
 	"oathauth-account": "Nama akun:",
 	"oathauth-secret": "Kunci rahasia otentikasi dua faktor",
-	"oathauth-enable": "Aktifkan otentikasi dua faktor",
+	"oathauth-enable": "Nyalakan otentikasi dua faktor",
 	"oathauth-recoverycodes-important": "Langkah ini penting! Jangan lewatkan langkah ini!",
 	"oathauth-token": "Token",
 	"oathauth-disable": "Nonaktifkan otentikasi dua faktor",
@@ -47,8 +47,8 @@
 	"oathauth-enterdisablereason": "Alasan dinonaktifkan:",
 	"oathauth-enterverifyreason": "Alasan pemeriksaan:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Pengguna tidak mengaktifkan otentikasi dua faktor, jadi tidak ada yang dapat dinonaktifkan",
-	"right-oathauth-enable": "Aktifkan otentikasi dua faktor",
-	"action-oathauth-enable": "aktifkan otentikasi dua faktor",
+	"right-oathauth-enable": "Nyalakan otentikasi dua faktor",
+	"action-oathauth-enable": "nyalakan otentikasi dua faktor",
 	"oathauth-auth-token-label": "Token",
 	"oathauth-auth-token-help": "Kata sandi sekali-pakai digunakan sebagai faktor kedua dari otentikasi dua faktor.",
 	"oathauth-auth-ui": "Silakan masukkan kode verifikasi dari aplikasi perangkat otentikasi Anda",
@@ -88,6 +88,6 @@
 	"oathauth-switch-method-warning": "Dengan berganti ke metode autentikasi dua faktor $2, metode yang sekarang ($1) akan dimatikan, dan semua data yang terkait dengan metode autentikasi yang sekarang akan dihapus",
 	"oathauth-totp-disable-warning": "Anda tidak akan lagi bisa menggunakan perangkat autentikasi yang didaftarkan dengan akun ini. Semua token cadangan yang terkait dengan akun ini akan menjadi tidak valid.",
 	"oathauth-invalidrequest": "Permintaan tidak sah",
-	"oathauth-verify-enabled": "{{GENDER:$1|$1}} mengaktifkan autentikasi dua faktor.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak mengaktifkan autentikasi dua faktor."
+	"oathauth-verify-enabled": "{{GENDER:$1|$1}} menyalakan autentikasi dua faktor.",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak menyalakan autentikasi dua faktor."
 }
