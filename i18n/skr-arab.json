@@ -8,5 +8,6 @@
 	"oathauth-recoverycodes-copy": "نقل کرو",
 	"oathauth-enteruser": "ورتݨ ناں:",
 	"oathauth-notifications-recoverycodesleft-help": "مدد",
-	"oathauth-authenticator-delete": "ہٹاؤ"
+	"oathauth-authenticator-delete": "ہٹاؤ",
+	"oathauth-passkey-dialog-back": "پچھوں"
 }
