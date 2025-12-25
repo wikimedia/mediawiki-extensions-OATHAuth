@@ -76,7 +76,7 @@
 	"right-oathauth-api-all": "查詢同驗證自己同其他人嘅OATH資訊",
 	"action-oathauth-api-all": "檢查OATH狀態",
 	"oathauth-user-not-found": "搵唔到呢個名嘅用戶帳戶",
-	"oathauth-ui-no-module": "未啟用任何",
+	"oathauth-ui-no-module": "未啟用",
 	"oathauth-ui-manage": "管理",
 	"oathmanage": "管理兩步驟驗證",
 	"oathauth-ui-not-enabled-modules": "其他認證方法",
