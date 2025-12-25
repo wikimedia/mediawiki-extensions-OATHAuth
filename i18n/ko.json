@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"YeBoy371",
 			"Ykhwong"
 		]
 	},
 	"webauthn-desc": "WebAuthn 프로토콜을 사용한 인증 지원을 제공합니다",
-	"webauthn-module-label": "웹 인증 (WebAuthn)",
+	"webauthn-module-label": "보안 키",
 	"webauthn-ui-add-key": "키 추가",
 	"webauthn-error-browser-unsupported": "이 브라우저는 WebAuthentication을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
 	"webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오",
