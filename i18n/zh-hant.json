@@ -153,9 +153,9 @@
 	"oathauth-authenticator-delete-text": "移除",
 	"oathauth-totp-add-key": "新增一個認證器應用程式",
 	"oathauth-delete-warning-header": "移除$1",
-	"oathauth-delete-warning": "您將無法再使用此認證方式登入，您的恢復代碼也會失效。",
+	"oathauth-delete-warning": "您將無法再使用此認證方式登入。",
 	"oathauth-delete-confirm-box": "請輸入「{{int:oathauth-authenticator-delete-text}}」繼續",
-	"oathauth-delete-warning-final": "移除此方法將完全停用雙重認證。",
+	"oathauth-delete-warning-final": "移除此方法將完全停用雙重認證。\n\n這將刪除所有恢復代碼和通行金鑰。\n\n<strong>這會降低您的帳號安全性。</strong>",
 	"oathauth-delete-warning-final-privileged-user": "您在{{SITENAME}}上擁有需要雙重認證的權限。\n<strong>您可能失去這些權限，並且可能需要手動重新申請。</strong>\n\n提示：請先新增新的方法，然後再移除此方法。",
 	"oathauth-delete-wrong-confirm-message": "輸入移除最終密鑰時有誤。請輸入「{{int:oathauth-authenticator-delete-text}}」繼續",
 	"oathauth-delete-success": "已移除<strong>$1</strong>。",
@@ -166,5 +166,9 @@
 	"oathauth-passkeys-header": "通行金鑰",
 	"oathauth-passkeys-placeholder": "通行金鑰比密碼更加安全，並允許您以與解鎖裝置相同的方式登入。",
 	"oathauth-passkeys-no2fa": "若要新增通行金鑰，您必須先設定雙重認證。",
-	"oathauth-passkeys-add": "新增通行金鑰"
+	"oathauth-passkeys-add": "新增通行金鑰",
+	"oathauth-passkey-dialog-title": "新增通行金鑰",
+	"oathauth-passkey-dialog-text": "通行金鑰是您登入帳號最安全的方式。對大多數人來說，也是最簡單的方式。\n\n使用通行金鑰，您可以像解鎖裝置一樣登入{{SITENAME}}，無論是使用 PIN 碼、指紋、或是臉部辨識。\n\n無論您使用哪種方式登入，您的生物辨識資料和 PIN 碼都只會保留在您的裝置上，絕不會傳送給我們。",
+	"oathauth-passkey-dialog-back": "返回",
+	"oathauth-passkey-dialog-add": "新增通行金鑰"
 }
