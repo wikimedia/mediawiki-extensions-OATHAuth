@@ -16,7 +16,6 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
 use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
@@ -40,7 +39,6 @@ class HookHandler implements
 		private readonly PermissionManager $permissionManager,
 		private readonly Config $config,
 		private readonly UserGroupManager $userGroupManager,
-		private readonly CentralIdLookupFactory $centralIdLookupFactory,
 	) {
 	}
 
