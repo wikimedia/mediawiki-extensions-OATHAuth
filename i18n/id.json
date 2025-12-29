@@ -7,7 +7,8 @@
 			"Rachmat04",
 			"William Surya Permana",
 			"Ezagren",
-			"Penyuwangi"
+			"Penyuwangi",
+			"Fafau06"
 		]
 	},
 	"oathauth-desc": "Memberikan dukungan otentikasi menggunakan kata sandi sekali-pakai berbasis HMAC",
@@ -46,7 +47,7 @@
 	"oathauth-enteruser": "Nama pengguna:",
 	"oathauth-enterdisablereason": "Alasan dinonaktifkan:",
 	"oathauth-enterverifyreason": "Alasan pemeriksaan:",
-	"oathauth-user-not-does-not-have-oath-enabled": "Pengguna tidak mengaktifkan otentikasi dua faktor, jadi tidak ada yang dapat dinonaktifkan",
+	"oathauth-user-not-does-not-have-oath-enabled": "Pengguna tidak menyalakan otentikasi dua faktor, jadi tak ada yang dapat dimatikan",
 	"right-oathauth-enable": "Nyalakan otentikasi dua faktor",
 	"action-oathauth-enable": "nyalakan otentikasi dua faktor",
 	"oathauth-auth-token-label": "Token",
