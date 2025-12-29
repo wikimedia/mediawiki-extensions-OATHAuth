@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Felba",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
 	"webauthn-desc": "Tillhandahåller autentiseringssupport med WebAuthn-protokoll",
 	"webauthn-module-label": "Webautentisering (WebAuthn)",
-	"webauthn-ui-login-prompt": "Vänligen tryck på din verifieringsenhet eller följ instruktionerna i webbläsaren",
+	"webauthn-ui-login-prompt": "Tryck på din säkerhetsnyckel eller följ instruktionerna från webbläsaren.",
 	"webauthn-ui-add-key": "Lägg till nyckel",
-	"webauthn-error-browser-unsupported": "Denna webbläsare stödjer inte WebAuthentication eller så är det inte tillgängligt för denna webbplats. Vänligen försök igen med en annan webbläsare. \n[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Läs mer]",
-	"webauthn-error-browser-unsupported-console": "Denna webbläsare stödjer inte WebAuthentication eller så är det inte tillgängligt för denna webbplats.",
+	"webauthn-error-browser-unsupported": "Den här webbläsaren stöder inte autentisering med säkerhetsnycklar, eller så är det inte tillgängligt för den här webbplatsen. Försök med en annan webbläsare. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Läs mer]",
+	"webauthn-error-browser-unsupported-console": "Den här webbläsaren stöder inte autentisering med säkerhetsnycklar, eller så är den inte tillgänglig för den här webbplatsen.",
 	"webauthn-error-auth-generic": "Autentiseringsprocessen avbröts. Vänligen starta autentiseringsprocessen på nytt.",
 	"webauthn-error-reg-generic": "Kunde inte verifiera din nyckel. Vänligen starta registreringsprocessen igen.",
 	"oathauth-webauthn-registered-keys-section-name": "Registrerade nycklar",
@@ -23,9 +24,9 @@
 	"webauthn-ui-key-register-help": "Välj smeknamnet på din nyckel",
 	"webauthn-error-cannot-remove-key": "Nyckeln kan inte tas bort",
 	"webauthn-error-get-authinfo-fail": "Autentiseringsinformation kunde inte hämtas.",
-	"oathauth-webauthn-add-key-section-name": "Registrera ny WebAuthn-nyckel",
+	"oathauth-webauthn-add-key-section-name": "Registrera ny säkerhetsnyckel",
 	"webauthn-error-get-reginfo-fail": "Autentiseringsinformation kunde inte hämtas.",
-	"webauthn-module-description": "WebAuthn (Web Authentication) är en nätstandard publicerad av World Wide Web Consortium (W3C). WebAuthn är en kärnkomponent i FIDO2-projektet under ledning av FIDO-Alliansen. Projektets mål är att standardisera ett gränssnitt för att autentisera användare till nätbaserade applikationer och tjänster med offentlig nyckel-kryptografi. [https://en.wikipedia.stjäl/wiki/WebAuthn Läs mer]",
+	"webauthn-module-description": "WebAuthn är i ett experimentellt tillstånd. Det erbjuder för närvarande inget återställningsalternativ för förlorade eller skadade autentiseringsenheter. \n\n[https://en.wikipedia.org/wiki/WebAuthn Läs mer om WebAuthn]",
 	"webauthn-ui-reload-page-label": "Ladda om sidan",
 	"webauthn-authentication-info-label": "Autentiseringsdata",
 	"webauthn-authentication-info-help": "Autentiseringsdata som skickas till klienten för hämtning av uppgifter",
