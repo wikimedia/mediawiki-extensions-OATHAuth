@@ -7,6 +7,7 @@
 			"Mjälten",
 			"Sabelöga",
 			"Skalman",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -76,5 +77,11 @@
 	"oathauth-invalidrequest": "Ogiltig begäran",
 	"oathauth-notifications-enable-help": "Hjälp",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} har aktiverat tvåfaktorsautentisering.",
-	"oathauth-verify-disabled": "{{GENDER:$1|$1}} har inte aktiverat tvåfaktorsautentisering."
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} har inte aktiverat tvåfaktorsautentisering.",
+	"oathauth-delete-warning": "Du kommer inte längre att kunna använda den här autentiseringsmetoden för att logga in.",
+	"oathauth-delete-warning-final": "Om du tar bort den här metoden inaktiveras tvåfaktorsautentisering helt.\n\nDetta kommer även att ta bort alla återställningskoder och lösennycklar.\n\n<strong>Detta kommer att göra ditt konto mindre säkert.</strong>",
+	"oathauth-passkey-dialog-title": "Lägg till en lösennyckel",
+	"oathauth-passkey-dialog-text": "Lösenord är det säkraste sättet att logga in på ditt konto. För de flesta är de också det enklaste sättet.\n\nMed ett lösenord kan du logga in på {{SITENAME}} på samma sätt som du låser upp din enhet, oavsett om det är en PIN-kod, fingeravtryck eller ansiktsigenkänning.\n\nOavsett hur du loggar in finns dina biometriska data och din PIN-kod kvar på din enhet och skickas aldrig till oss.",
+	"oathauth-passkey-dialog-back": "Tillbaka",
+	"oathauth-passkey-dialog-add": "Lägg till lösennyckel"
 }
