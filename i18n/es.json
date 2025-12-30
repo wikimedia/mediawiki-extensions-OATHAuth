@@ -109,6 +109,8 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desactivado|Grupos desactivados}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Tu}} pertenencia {{PLURAL:$1|al siguiente grupo|a los siguientes grupos}} de usuario están desactivados hasta que actives la [[Special:Manage Two-factor authentication|autenticación en dos pasos]].",
 	"oathauth-hint": "¿No tienes acceso a tu dispositivo o aplicación? Puede ingresar tokens de recuperación (presentados cuando habilitó 2FA) en este campo.",
+	"oathauth-delete-warning": "Ya no podrás utilizar este método de autenticación para iniciar sesión.",
+	"oathauth-delete-warning-final": "La eliminación de este método deshabilitará por completo la autenticación de dos factores. \n\nEsto también eliminará cualquier código de recuperación y claves de acceso. \n\n<strong>Esto hará que su cuenta sea menos segura.</strong>",
 	"oathauth-passkey-dialog-title": "Agregar una clave de acceso",
 	"oathauth-passkey-dialog-text": "Las claves de acceso son la forma más segura de iniciar sesión en su cuenta. Para la mayoría de las personas, también son la forma más sencilla.\n\nCon una clave de acceso, puede iniciar sesión en {{SITENAME}} de la misma manera que desbloquea su dispositivo, ya sea con PIN, huella dactilar o reconocimiento facial.\n\nIndependientemente de cómo inicie sesión, sus datos biométricos y PIN permanecerán en su dispositivo y nunca se nos enviarán.",
 	"oathauth-passkey-dialog-back": "Volver",

@@ -115,9 +115,9 @@
 	"oathauth-authenticator-delete-text": "eemalda",
 	"oathauth-totp-add-key": "Lisa autentimisrakendus",
 	"oathauth-delete-warning-header": "Meetodi eemaldamine ($1)",
-	"oathauth-delete-warning": "Sa ei saa seda autentimismeetodit enam sisselogimiseks kasutada ja sinu taastekoodid ei tööta enam.",
+	"oathauth-delete-warning": "Sa ei saa seda autentimismeetodit enam sisselogimiseks kasutada.",
 	"oathauth-delete-confirm-box": "Sisesta \"{{int:oathauth-authenticator-delete-text}}\", et jätkata",
-	"oathauth-delete-warning-final": "Selle meetodi eemaldamisega keelatakse kaheastmeline autentimine täielikult.",
+	"oathauth-delete-warning-final": "Selle meetodi eemaldamisega keelatakse kaheastmeline autentimine täielikult.\n\nÜhtlasi kustutatakse kõik taastekoodid ja pääsuvõtmed.\n\n<strong>See teeb sinu konto vähem turvaliseks.</strong>",
 	"oathauth-delete-warning-final-privileged-user": "Sul on {{GRAMMAR:inessive|{{SITENAME}}}} õigused, mis nõuavad kaheastmelist autentimist.\n<strong>Võimalik, et jääd neist õigustest ilma ja pead neid käsitsi uuesti taotlema.</strong>\n\nVihje: lisa uus meetod enne selle meetodi eemaldamist.",
 	"oathauth-delete-wrong-confirm-message": "Eemaldamise lõpule viimisel sisestatud vale võti. Palun sisesta \"{{int:oathauth-authenticator-delete-text}}\", et jätkata.",
 	"oathauth-delete-success": "<strong>$1</strong> eemaldatud.",
@@ -126,5 +126,9 @@
 	"oathauth-passkeys-header": "Pääsuvõtmed",
 	"oathauth-passkeys-placeholder": "Pääsuvõtmed on turvalisemad kui paroolid. Need võimaldavad sisse logida samamoodi nagu teed seadme lukust lahti.",
 	"oathauth-passkeys-no2fa": "Et lisada pääsuvõti, pead kõigepealt lubama kaheastmelise autentimise.",
-	"oathauth-passkeys-add": "Lisa pääsuvõti"
+	"oathauth-passkeys-add": "Lisa pääsuvõti",
+	"oathauth-passkey-dialog-title": "Pääsuvõtme lisamine",
+	"oathauth-passkey-dialog-text": "Pääsuvõtmed on kõige turvalisem moodus, millega kontole sisse logida. Enamiku inimeste jaoks on need ühtlasi lihtsaim mooodus.\n\nPääsuvõtmega saad {{GRAMMAR:illative|{{SITENAME}}}} sisse logida samamoodi nagu teed seadme lukust lahti kas PIN-koodiga, sõrmejäljega või näotuvastusega.\n\nKuidas tahes sisse logid, sinu biomeetrilised andmed ja PIN-kood jäävad sinu seadmesse ja neid ei saadeta meile.",
+	"oathauth-passkey-dialog-back": "Tagasi",
+	"oathauth-passkey-dialog-add": "Lisa pääsuvõti"
 }
