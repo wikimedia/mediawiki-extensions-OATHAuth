@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Canaan9801",
 			"Fitoschido",
 			"Jackiezelaya",
@@ -9,10 +10,11 @@
 	},
 	"webauthn-desc": "Brinda compatibilidad con la autenticación a través del protocolo WebAuthn",
 	"webauthn-module-label": "Autenticación web (WebAuthn)",
-	"webauthn-ui-login-prompt": "Por favor toque su aparato de verificación o siga las instrucciones del navegador.",
+	"webauthn-javascript-required": "Debe habilitar JavaScript en su navegador para utilizar una clave de seguridad.",
+	"webauthn-ui-login-prompt": "Por favor toque su clave de seguridad o siga las instrucciones del navegador.",
 	"webauthn-ui-add-key": "Añadir clave",
-	"webauthn-error-browser-unsupported": "Este navegador no soporta WebAuthentication o no está disponible para este sitio. Por favor inténtalo con otro navegador. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leer más]",
-	"webauthn-error-browser-unsupported-console": "Este navegador no admite WebAuthentication o no está disponible en este sitio web",
+	"webauthn-error-browser-unsupported": "Este navegador no admite la autenticación con clave de seguridad o no está disponible para este sitio web. Inténtelo con otro navegador. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leer más]",
+	"webauthn-error-browser-unsupported-console": "Este navegador no admite la autenticación de clave de seguridad o no está disponible para este sitio web.",
 	"webauthn-error-auth-generic": "Se interrumpió el proceso de autenticación. Por favor reinicia el proceso.",
 	"webauthn-error-reg-generic": "No se pudo verificar tu clave. Por favor reinicia el proceso de registro.",
 	"oathauth-webauthn-registered-keys-section-name": "Claves registradas",
@@ -25,8 +27,8 @@
 	"webauthn-ui-key-register-help": "Eligir el apodo para tu clave",
 	"webauthn-error-cannot-remove-key": "La clave no puede ser eliminada",
 	"webauthn-error-get-authinfo-fail": "No se pudo recuperar la información de autenticación.",
-	"oathauth-webauthn-add-key-section-name": "Registrar una nueva clave de WebAuthn",
+	"oathauth-webauthn-add-key-section-name": "Registrar nueva clave de seguridad",
 	"webauthn-error-get-reginfo-fail": "No se pudo recuperar la información de registro.",
-	"webauthn-module-description": "WebAuthn (Web Authentication) es un estándar del web publicado por el World Wide Web Consortium (W3C). WebAuthn es un componente clave del FIDO2 Project bajo la dirección de FIDO Alliance. El objetivo del proyecto es estandarizar una interfaz para autenticar usuarios a aplicaciones y servicios basados en la web mediante la criptografía de claves públicas. [https://en.wikipedia.org/wiki/WebAuthn Saber más]",
+	"webauthn-module-description": "WebAuthn se encuentra en fase experimental. Actualmente no ofrece opciones de recuperación para dispositivos de autenticación perdidos o dañados. \n\n[https://en.wikipedia.org/wiki/WebAuthn Más información sobre WebAuthn]",
 	"webauthn-ui-reload-page-label": "Recargar página"
 }

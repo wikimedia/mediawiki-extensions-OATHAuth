@@ -8,6 +8,7 @@
 	},
 	"webauthn-desc": "Tillhandahåller autentiseringssupport med WebAuthn-protokoll",
 	"webauthn-module-label": "Webautentisering (WebAuthn)",
+	"webauthn-javascript-required": "JavaScript måste vara aktiverat i din webbläsare för att du ska kunna använda en säkerhetsnyckel.",
 	"webauthn-ui-login-prompt": "Tryck på din säkerhetsnyckel eller följ instruktionerna från webbläsaren.",
 	"webauthn-ui-add-key": "Lägg till nyckel",
 	"webauthn-error-browser-unsupported": "Den här webbläsaren stöder inte autentisering med säkerhetsnycklar, eller så är det inte tillgängligt för den här webbplatsen. Försök med en annan webbläsare. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Läs mer]",
