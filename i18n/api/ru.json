@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vonavy"
+		]
+	},
+	"apihelp-webauthn-summary": "Модуль API для связи между сервером и клиентом в процессе регистрации/аутентификации.",
+	"apihelp-webauthn-param-func": "Имя запрашиваемой функции для выполнения."
+}
