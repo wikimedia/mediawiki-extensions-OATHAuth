@@ -60,6 +60,7 @@
 	"oathauth-auth-token-help": "Одноразовий пароль використовується як другий фактор двофакторної автентифікації.",
 	"oathauth-auth-token-help-ui": "Введіть або код з Вашої програми двофакторної автентифікації, або код відновлення",
 	"oathauth-auth-ui": "Будь ласка, введіть код з Вашої програми двофакторної автентифікації (наприклад, [https://www.authy.com Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] або [https://1password.com/ 1Password]).",
+	"oathauth-auth-switch-module-keep": "(не перемикати)",
 	"oathauth-throttled": "Забагато спроб верифікації! Будь ласка, зачекайте $1.",
 	"oathauth-login-failed": "Верифікація не вдалася.",
 	"oathauth-describe-provider": "Двофакторна автентифікація (OATH).",
@@ -107,6 +108,7 @@
 	"notification-body-oathauth-enable": "Якщо {{GENDER:$2|ви}} цього не робили, {{GENDER:$2|ваш обліковий запис}} може бути скомпрометованим.",
 	"oathauth-notifications-enable-help": "Довідка",
 	"oathauth-notifications-enable-primary": "Перевірте налаштування двофакторної автентифікації",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Вам}} слід повторно увімкнути двофакторну автентифікацію у своєму обліковому записі.",
 	"notification-body-oathauth-recoverycodesleft": "У {{GENDER:$2|вас}} {{PLURAL:$3|залишився $3 код|залишилося $3 коди|залишилося $3 кодів}} відновлення. Ви можете вимкнути та знову ввімкнути двофакторну автентифікацію, щоб створити $4 {{PLURAL:$4|новий код|нові коди|нових кодів}} відновлення для використання в майбутньому.",
 	"oathauth-notifications-recoverycodesleft-help": "Довідка",
 	"oathauth-notifications-recoverycodesleft-primary": "Перевірте налаштування двофакторної автентифікації",
@@ -115,5 +117,7 @@
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Вимкнена група|Вимкнені групи}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Ваше членство}} у {{PLURAL:$1|цій групі|цих групах}} вимкнено, поки ви не увімкнете [[Special:Manage Two-factor authentication|двофакторну автентифікацію]].",
 	"oathauth-qrcode-alt": "Скановний QR-код, який представляє секретний ключ.",
-	"oathauth-hint": "Не маєте доступу до свого пристрою чи програми? Ви можете ввести коди відновлення (надані вам, коли ви вмикали 2FA) у це поле."
+	"oathauth-hint": "Не маєте доступу до свого пристрою чи програми? Ви можете ввести коди відновлення (надані вам, коли ви вмикали 2FA) у це поле.",
+	"oathauth-must-be-central": "{{GENDER:$1|Ваш обліковий запис}} має бути підключений до центральної системи автентифікації, щоб використовувати двофакторну автентифікацію.",
+	"oathauth-error-multiple-modules": "Наразі використання кількох методів двофакторної автентифікації не підтримується. Ви можете ввімкнути $1 лише після вимкнення $2."
 }
