@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"129femtoseconds",
+			"Dragoniez",
 			"Foomin10",
 			"Kokage si",
 			"Marine-Blue",
@@ -107,8 +108,8 @@
 	"oathauth-disable-generic": "無効にする",
 	"oathauth-invalid-data-format": "選択した認証方法のキーを作成するにはデータプロバイダが無効です",
 	"oathauth-invalid-recovery-code-data-format": "回復コードを作成できませんでした。",
-	"oathauth-disable-page-title": "$1を無効化しました",
-	"oathauth-enable-page-title": "$1を有効化しました",
+	"oathauth-disable-page-title": "$1を無効化",
+	"oathauth-enable-page-title": "$1を有効化",
 	"oathauth-action-exclusive-to-2fa": "この操作は、二要素認証が有効になっている利用者のみが実行できます。",
 	"oathauth-totp-description": "TOTP (Time-based One-Time Password algorithm) は HOTP (HMAC-based One-time Password algorithm) を拡張したアルゴリズムで、現在の時刻からワンタイムパスワードを生成します。",
 	"oathauth-disable-method-warning": "二要素認証方法 $1 を無効にすると、ログイン時にこの方法を使用できなくなり、この認証方法に関連付けられているすべてのデータが削除されます。別のアクティブな認証方法がある場合、回復コードは削除されません。",

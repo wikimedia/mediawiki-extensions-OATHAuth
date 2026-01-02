@@ -9,6 +9,7 @@
 			"Hedda",
 			"Incelemeelemani",
 			"Leo",
+			"LisafBia",
 			"MuratTheTurkish",
 			"Sakblue",
 			"SaldırganSincap",
@@ -90,6 +91,7 @@
 	"oathauth-module-totp-label": "Kimlik doğrulayıcı uygulaması",
 	"oathauth-ui-manage": "Yönet",
 	"oathmanage": "İki faktörlü kimlik doğrulamayı yönet",
+	"accountsecurity": "Hesap güvenliği",
 	"oathauth-enable-generic": "Etkinleştir",
 	"oathauth-disable-generic": "Devre dışı bırak",
 	"oathauth-invalid-data-format": "Veri sağlayıcı, seçilen kimlik doğrulama yöntemi için bir anahtar oluşturmak üzere geçersiz",
@@ -102,5 +104,11 @@
 	"oathauth-invalidrequest": "Geçersiz istek",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirdi.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi.",
+	"oathauth-password-header": "Parola",
+	"oathauth-password-label": "Hesabınızı korumak için güçlü bir parola seçin.",
+	"oathauth-password-action": "Parolayı değiştir",
+	"oathauth-authenticator-header": "İki faktörlü kimlik doğrulaması",
+	"oathauth-authenticator-placeholder": "Hesabınızın güvenliğini sağlamak için giriş yaparken ek bir adım ekleyin.",
+	"oathauth-totp-add-key": "Kimlik doğrulama uygulaması ekleyin",
 	"oathauth-delete-warning": "Bu kimlik doğrulama yöntemi ile artık giriş yapamazsınız ve kurtarma kodlarınız artık çalışmayacak."
 }
