@@ -92,7 +92,7 @@
 	"log-action-filter-oath": "Kaksivaiheiseen tunnistautumiseen liittyvän toiminnon tyyppi:",
 	"log-action-filter-oath-verify": "Tarkistus, onko kaksivaiheinen tunnistautuminen käytössä",
 	"log-action-filter-oath-disable-other": "Kaksivaiheista tunnistautumisen poisto toiselta käyttäjältä",
-	"oathauth-ui-no-module": "Ei mitään",
+	"oathauth-ui-no-module": "Ei käytössä",
 	"oathauth-module-totp-label": "Todennussovellus",
 	"oathauth-module-recoverycodes-label": "Palautuskoodit",
 	"oathauth-ui-manage": "Hallitse",

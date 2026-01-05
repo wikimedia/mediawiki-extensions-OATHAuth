@@ -110,5 +110,5 @@
 	"oathauth-authenticator-header": "İki faktörlü kimlik doğrulaması",
 	"oathauth-authenticator-placeholder": "Hesabınızın güvenliğini sağlamak için giriş yaparken ek bir adım ekleyin.",
 	"oathauth-totp-add-key": "Kimlik doğrulama uygulaması ekleyin",
-	"oathauth-delete-warning": "Bu kimlik doğrulama yöntemi ile artık giriş yapamazsınız ve kurtarma kodlarınız artık çalışmayacak."
+	"oathauth-delete-warning": "Bu kimlik doğrulama yöntemini kullanarak artık oturumu açamayacaksınız."
 }

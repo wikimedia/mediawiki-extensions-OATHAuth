@@ -87,7 +87,7 @@
 	"oathauth-describe-provider": "二要素認証 (OATH)。",
 	"grant-group-authentication": "自分および他人の認証操作を実行",
 	"grant-oath": "自分および他の利用者の二要素認証 (OATH) 情報にアクセス",
-	"right-oathauth-api-all": "自分や他人の OATH 情報を照会して検証する",
+	"right-oathauth-api-all": "自分や他人の OATH 情報を照会して検証",
 	"action-oathauth-api-all": "OATH 状態の確認",
 	"oathauth-user-not-found": "その名前の利用者アカウントは見つかりませんでした",
 	"oath-log-name": "二要素認証の記録",
