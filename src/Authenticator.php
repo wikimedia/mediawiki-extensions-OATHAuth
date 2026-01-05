@@ -12,6 +12,8 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
+use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -42,6 +44,9 @@ use Webauthn\PublicKeyCredentialUserEntity;
  * the authentication process
  */
 class Authenticator {
+
+	use KeySessionStorageTrait;
+
 	private const SESSION_KEY = 'webauthn_session_data';
 
 	/**
@@ -65,6 +70,7 @@ class Authenticator {
 		return new static(
 			$userRepo,
 			$moduleRegistry->getModuleByKey( 'webauthn' ),
+			$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
 			$userRepo->findByUser( $user ),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
@@ -77,6 +83,7 @@ class Authenticator {
 	protected function __construct(
 		protected OATHUserRepository $userRepo,
 		protected WebAuthn $module,
+		protected RecoveryCodes $recoveryCodesModule,
 		protected OATHUser $oathUser,
 		protected IContextSource $context,
 		protected LoggerInterface $logger,
@@ -89,6 +96,10 @@ class Authenticator {
 
 	public function isEnabled(): bool {
 		return $this->module->isEnabled( $this->oathUser );
+	}
+
+	public function getRequest(): WebRequest {
+		return $this->request;
 	}
 
 	public function canAuthenticate(): Status {
@@ -233,6 +244,11 @@ class Authenticator {
 					$this->module,
 					$key->jsonSerialize(),
 					$this->request->getIP()
+				);
+
+				$this->recoveryCodesModule->ensureExistence(
+					$this->oathUser,
+					$this->getKeyDataInSession( 'RecoveryCodeKeys' )
 				);
 
 				$this->clearSessionData();

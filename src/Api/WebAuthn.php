@@ -135,7 +135,7 @@ class WebAuthn extends ApiBase {
 	protected function checkModule() {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
-		$module = $moduleRegistry->getModuleByKey( 'webauthn' );
+		$module = $moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
 		if ( !( $module instanceof WebAuthnModule ) ) {
 			$this->dieWithError( 'apierror-webauthn-module-missing' );
 		}
