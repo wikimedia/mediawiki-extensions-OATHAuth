@@ -25,24 +25,10 @@
 			</cdx-message>
 		</template>
 	</cdx-dialog>
-	<!-- HACK: form mimicking WebAuthnAddKeyForm, replace this with an API endpoint -->
-	<form
-		ref="form"
-		:action="formAction"
-		method="POST"
-	>
-		<input
-			v-for="( value, name ) in formFields"
-			:key="name"
-			type="hidden"
-			:name="name"
-			:value="value"
-		>
-	</form>
 </template>
 
 <script>
-const { defineComponent, ref, reactive, toRef, useTemplateRef, nextTick } = require( 'vue' );
+const { defineComponent, ref, toRef } = require( 'vue' );
 const { CdxDialog, CdxMessage, useModelWrapper } = require( './codex.js' );
 const { passkeyDialogTextHtml } = require( './data.json' );
 
@@ -59,17 +45,7 @@ module.exports = exports = defineComponent( {
 	},
 	setup( props, { emit } ) {
 		const wrappedOpen = useModelWrapper( toRef( () => props.open ), emit, 'update:open' );
-		const form = useTemplateRef( 'form' );
 		const errorMessage = ref( '' );
-		const formAction = mw.config.get( 'wgScript' );
-		const formFields = reactive( {
-			title: mw.config.get( 'wgPageName' ),
-			wpEditToken: mw.user.tokens.get( 'csrfToken' ),
-			module: 'webauthn',
-			action: 'enable',
-			passkeyMode: '1',
-			credential: ''
-		} );
 		const primaryAction = {
 			label: mw.msg( 'oathauth-passkey-dialog-add' ),
 			actionType: 'progressive'
@@ -83,22 +59,24 @@ module.exports = exports = defineComponent( {
 			// extension can't depend on the WebAuthn extension. This should be resolved by
 			// merging the two extensions (T303495)
 			mw.loader.using( 'ext.webauthn.Registrator' ).then( () => {
-				// FIXME we should not hard-code 'Passkey', but instead generate a name in the API
-				const registrator = new mw.ext.webauthn.Registrator( 'Passkey', null, true );
+				const registrator = new mw.ext.webauthn.Registrator( '', null, true );
 				return registrator.register();
-			} ).then(
-				( credential ) => {
-					// HACK: for now, create a form that mimicks WebAuthnAddKeyForm and submit it
-					// But really this should use an api.php endpoint via mw.Api()
-					formFields.credential = JSON.stringify( credential );
-
-					// Wait for Vue to update the form fields in the DOM before submitting the form,
-					// otherwise the updated credential is not submitted
-					nextTick( () => {
-						form.value.submit();
-					} );
+			} ).then( ( credential ) => new mw.Api().postWithToken( 'csrf', {
+				action: 'webauthn',
+				func: 'register',
+				credential: JSON.stringify( credential ),
+				passkeyMode: true
+			} ) ).then(
+				() => {
+					window.location.reload();
 				},
 				( error ) => {
+					if ( error === 'webauthn-reauthenticate' ) {
+						// The user's authentication has expired, and they need to reauthenticate.
+						// Reload the page, which will automatically redirect the user to the
+						// reauthentication flow.
+						window.location.reload();
+					}
 					errorMessage.value = mw.message( error ).exists() ?
 						mw.message( error ).text() :
 						error;
@@ -118,9 +96,7 @@ module.exports = exports = defineComponent( {
 			createPasskey,
 			close,
 			passkeyDialogTextHtml,
-			errorMessage,
-			formAction,
-			formFields
+			errorMessage
 		};
 	}
 } );
