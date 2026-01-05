@@ -7,7 +7,8 @@
 			"Sabelöga",
 			"Skalman",
 			"WikiPhoenix",
-			"Gkyziridis"
+			"Gkyziridis",
+			"Stefan2255"
 		]
 	},
 	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
@@ -27,7 +28,7 @@
 	"oathauth-step1": "Steg 1: Ladda ner ett program för tvåfaktorsautentisering",
 	"oathauth-step1-test": "Ladda ner ett program för tvåfaktorsautentisering. Det kan vara en mobilapp (som Google Authenticator) eller ett datorprogram.",
 	"oathauth-step2": "Steg 2: Skanna QR-koden",
-	"oathauth-step2alt": "Eller skriv in hemligheten manuellt:",
+	"oathauth-step2alt": "Om du inte kan skanna QR-koden anger du den hemliga nyckeln och kontonamnet manuellt:",
 	"oathauth-step3": "Steg 3: Skriv ner engångskoderna",
 	"oathauth-step4": "Steg 4: Verifiering",
 	"oathauth-entertoken": "Skriv in en kod från enheten med tvåfaktorsautentiseringen för att bekräfta:",
