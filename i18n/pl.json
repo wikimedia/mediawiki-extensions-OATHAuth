@@ -12,7 +12,8 @@
 			"Railfail536",
 			"WTM",
 			"WaldiSt",
-			"Rzuwig"
+			"Rzuwig",
+			"Woytecr"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC",
@@ -85,8 +86,8 @@
 	"oathauth-enable-generic": "Włącz",
 	"oathauth-disable-generic": "Wyłącz",
 	"oathauth-invalid-data-format": "Dostawca danych nie mógł stworzyć klucza dla wybranej metody uwierzytelniania",
-	"oathauth-disable-page-title": "Wyłącz $1",
-	"oathauth-enable-page-title": "Włącz $1",
+	"oathauth-disable-page-title": "Wyłącz: „$1”",
+	"oathauth-enable-page-title": "Włącz: „$1”",
 	"oathauth-action-exclusive-to-2fa": "Ta operacja może być wykonana tylko przez użytkowników, którzy mają włączone uwierzytelnianie dwuskładnikowe.",
 	"oathauth-ui-available-modules": "Dostępne metody",
 	"oathauth-ui-general-help": "'''Uwierzytelnianie wielopoziomowe''' (ang. '''MFA''') jest metodą uwierzytelniania, która przyznaje użytkownikowi dostęp dopiero po pomyślnym wprowadzeniu dwóch lub więcej składników logowania do mechanizmu uwierzytelniającego: wiedzę (coś, co wie tylko użytkownik), posiadanie (coś, co posiada tylko użytkownik) oraz obecność (dokonać tego może tylko ów użytkownik). [https://pl.wikipedia.org/wiki/Uwierzytelnianie_wielopoziomowe Dowiedz się więcej]",
