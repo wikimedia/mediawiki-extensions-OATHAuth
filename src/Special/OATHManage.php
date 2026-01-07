@@ -214,9 +214,43 @@ class OATHManage extends SpecialPage {
 		return $keyAccordion->build()->getHtml();
 	}
 
+	private function buildVueData(): array {
+		$data = [
+			'modules' => [],
+			'keys' => [],
+			'passkeys' => []
+		];
+
+		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
+			$labelMessage = $module->getAddKeyMessage();
+			if ( $labelMessage ) {
+				$data['modules'][] = [
+					'name' => $module->getName(),
+					'labelMessage' => $labelMessage->text()
+				];
+			}
+		}
+
+		foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
+			$keyData = [
+				'id' => $key->getId(),
+				'module' => $key->getModule()
+			] + $this->getKeyNameAndDescription( $key );
+
+			if ( $key->supportsPasswordlessLogin() ) {
+				$data['passkeys'][] = $keyData;
+			} else {
+				$data['keys'][] = $keyData;
+			}
+		}
+
+		return $data;
+	}
+
 	private function displayNewUI(): void {
 		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
 		$this->getOutput()->addModules( 'ext.oath.manage' );
+		$this->getOutput()->addJsConfigVars( 'wgOATHManageData', $this->buildVueData() );
 		$codex = new Codex();
 
 		// Show the delete success message, if applicable
@@ -317,6 +351,7 @@ class OATHManage extends SpecialPage {
 		);
 
 		// Passkeys section
+		$passkeySection = '';
 		$passkeyAccordions = '';
 		$passkeyPlaceholder = '';
 		$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
@@ -362,12 +397,12 @@ class OATHManage extends SpecialPage {
 			$this->getOutput()->addModules( 'ext.webauthn.Registrator' );
 		}
 
-		// If 2FA is enabled then put passkeys first, otherwise put 2FA first
-		if ( $keyAccordions === '' ) {
-			$this->getOutput()->addHTML( $authMethodsSection . $passkeySection );
-		} else {
-			$this->getOutput()->addHTML( $passkeySection . $authMethodsSection );
-		}
+		$this->getOutput()->addHTML( Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-vue-container' ],
+			// If 2FA is enabled then put passkeys first, otherwise put 2FA first
+			$keyAccordions === '' ?
+				$authMethodsSection . $passkeySection :
+				$passkeySection . $authMethodsSection
+		) );
 	}
 
 	private function addModuleHTML( IModule $module ): void {

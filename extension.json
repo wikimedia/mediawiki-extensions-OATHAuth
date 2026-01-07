@@ -214,6 +214,7 @@
 			"remoteExtPath": "OATHAuth/modules/oathmanage",
 			"packageFiles": [
 				"init.js",
+				"OATHManage.vue",
 				"AddPasskeyButton.vue",
 				"AddPasskeyDialog.vue",
 				{
@@ -225,9 +226,16 @@
 				"CdxButton",
 				"CdxDialog",
 				"CdxMessage",
+				"CdxAccordion",
 				"useModelWrapper"
 			],
 			"messages": [
+				"oathauth-authenticator-header",
+				"oathauth-authenticator-placeholder",
+				"oathauth-authenticator-delete",
+				"oathauth-passkeys-header",
+				"oathauth-passkeys-placeholder",
+				"oathauth-passkeys-no2fa",
 				"oathauth-passkeys-add",
 				"oathauth-passkey-dialog-title",
 				"oathauth-passkey-dialog-text",

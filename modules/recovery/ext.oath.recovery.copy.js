@@ -5,7 +5,7 @@
 class CopyButton {
 
 	static attach() {
-		// eslint-disable-next-line no-jquery/no-global-selector
+
 		$( '.mw-oathauth-recoverycodes-copy-button' )
 			.addClass( 'clipboard-api-supported' )
 			.on( 'click', ( e ) => {
