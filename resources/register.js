@@ -11,12 +11,21 @@ $( () => {
 				credential: JSON.stringify( credential ),
 				friendlyname: credential.friendlyName,
 				passkeyMode: passkeyMode
-			} ).then( () => {
-				window.location.href = mw.util.getUrl( 'Special:OATHManage' );
-			} ),
-			( error ) => {
-				form.dieWithError( error );
-			}
+			} ).then(
+				() => {
+					window.location.href = mw.util.getUrl( 'Special:OATHManage' );
+				},
+				( error ) => {
+					if ( error === 'webauthn-reauthenticate' ) {
+						// The user's authentication has expired, and they need to reauthenticate.
+						// Reload the page, which will automatically redirect the user to the
+						// reauthentication flow.
+						window.location.reload();
+					} else {
+						form.dieWithError( error );
+					}
+				}
+			)
 		);
 	} );
 } );

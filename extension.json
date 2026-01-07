@@ -139,7 +139,12 @@
 		}
 	},
 	"APIModules": {
-		"webauthn": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn"
+		"webauthn": {
+			"class": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn",
+			"services": [
+				"AuthManager"
+			]
+		}
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2

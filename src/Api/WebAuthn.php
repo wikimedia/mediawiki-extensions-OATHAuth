@@ -6,7 +6,9 @@
 namespace MediaWiki\Extension\WebAuthn\Api;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Auth\AuthManager;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -24,6 +26,14 @@ class WebAuthn extends ApiBase {
 	private const ACTION_GET_AUTH_INFO = 'getAuthInfo';
 	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
 	private const ACTION_REGISTER = 'register';
+
+	public function __construct(
+		ApiMain $main,
+		string $moduleName,
+		private AuthManager $authManager
+	) {
+		parent::__construct( $main, $moduleName );
+	}
 
 	/**
 	 * @throws ApiUsageException
@@ -104,6 +114,7 @@ class WebAuthn extends ApiBase {
 			static::ACTION_REGISTER => [
 				'permissions' => [ 'oathauth-enable' ],
 				'mustBeLoggedIn' => true,
+				'loginSecurityLevel' => 'OATHManage'
 			],
 		];
 	}
@@ -126,6 +137,13 @@ class WebAuthn extends ApiBase {
 		$funcPermissions = $functionConfig['permissions'];
 		if ( $funcPermissions ) {
 			$this->checkUserRightsAny( $funcPermissions );
+		}
+
+		if ( isset( $functionConfig[ 'loginSecurityLevel' ] ) ) {
+			$status = $this->authManager->securitySensitiveOperationStatus( $functionConfig[ 'loginSecurityLevel' ] );
+			if ( $status !== AuthManager::SEC_OK ) {
+				$this->dieWithError( 'apierror-webauthn-reauthenticate' );
+			}
 		}
 	}
 
