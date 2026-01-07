@@ -34,6 +34,7 @@
 	"webauthn-credential-help": "User credential based on authentication data",
 	"webauthn-add-security-key": "Add a security key",
 	"webauthn-auth-switch-module-label": "Use security key",
+	"webauthn-auth-switch-module-label-passkey": "Use security key or passkey",
 	"apierror-webauthn-module-missing": "The WebAuthn module is not available.",
 	"apierror-webauthn-missing-credential": "No credential data was provided.",
 	"apierror-webauthn-invalid-credential": "The credential data is invalid or malformed.",
