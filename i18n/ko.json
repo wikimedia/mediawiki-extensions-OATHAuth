@@ -101,5 +101,8 @@
 	"oathauth-notifications-recoverycodesleft-primary": "2요소 인증 설정 확인하기",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다.",
-	"oathauth-qrcode-alt": "비밀 키를 나타내는 스캔 가능한 QR \n코드입니다."
+	"oathauth-qrcode-alt": "비밀 키를 나타내는 스캔 가능한 QR \n코드입니다.",
+	"oathauth-passkey-dialog-title": "비밀번호 추가",
+	"oathauth-passkey-dialog-back": "뒤로",
+	"oathauth-passkey-dialog-add": "비밀번호 추가"
 }

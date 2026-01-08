@@ -145,5 +145,13 @@
 	"oathauth-created-at": "Addite le $1",
 	"oathauth-enable-success": "<strong>$1</strong> addite.",
 	"oathauth-max-keys-exceeded": "Le limite del methodo de authentication ha essite attingite",
-	"oathauth-max-keys-exceeded-message": "Tu ha attingite le numero maxime de methodos de authentication, que es $1. Per favor elimina un methodo de authentication ante de adder un nove."
+	"oathauth-max-keys-exceeded-message": "Tu ha attingite le numero maxime de methodos de authentication, que es $1. Per favor elimina un methodo de authentication ante de adder un nove.",
+	"oathauth-passkeys-header": "Claves de accesso",
+	"oathauth-passkeys-placeholder": "Le claves de accesso es plus secur que le contrasignos, e permitte aperir session del mesme maniera que tu disserra tu apparato.",
+	"oathauth-passkeys-no2fa": "Pro adder un clave de accesso, tu debe primo configurar le authentication bifactorial.",
+	"oathauth-passkeys-add": "Adder un clave de accesso",
+	"oathauth-passkey-dialog-title": "Adder un clave de accesso",
+	"oathauth-passkey-dialog-text": "Claves de accesso es le maniera le plus secur pro aperir session a tu conto. Pro le majoritate del personas, illos es etiam le maniera le plus simple.\n\nCon un clave de accesso, tu pote connecter te a {{SITENAME}} del mesme maniera que tu disserra tu apparato, sia un codice PIN, tu impression digital o le recognoscimento de tu facie.\n\nIn omne caso, tu datos biometric e codice PIN remane sur tu apparato e non es jammais inviate a nos.",
+	"oathauth-passkey-dialog-back": "Retornar",
+	"oathauth-passkey-dialog-add": "Adder clave de accesso"
 }
