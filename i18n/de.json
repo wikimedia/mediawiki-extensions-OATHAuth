@@ -35,5 +35,12 @@
 	"webauthn-credential-label": "Anmeldedaten des Benutzers",
 	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten",
 	"webauthn-add-security-key": "Einen Sicherheitsschlüssel hinzufügen",
-	"webauthn-auth-switch-module-label": "Sicherheitsschlüssel verwenden"
+	"webauthn-auth-switch-module-label": "Sicherheitsschlüssel verwenden",
+	"apierror-webauthn-module-missing": "Das WebAuthn-Modul ist nicht verfügbar.",
+	"apierror-webauthn-missing-credential": "Es wurden keine Anmeldeinformationen angegeben.",
+	"apierror-webauthn-invalid-credential": "Die Anmeldedaten sind ungültig oder fehlerhaft.",
+	"apierror-webauthn-reauthenticate": "{{#FORMAL:Du musst dich|Sie müssen sich}} zuerst über Special:OATHManage erneut authentifizieren, bevor {{#FORMAL:du|Sie}} diese Aktion ausführen {{#FORMAL:kannst|können}}.",
+	"apihelp-webauthn-paramvalue-func-register": "{{#FORMAL:Registriere|Registrieren Sie}} neue WebAuthn-Anmeldeinformationen für den aktuellen Benutzer.",
+	"apihelp-webauthn-param-credential": "JSON-kodierte WebAuthn-Anmeldeinformationen vom Browser.",
+	"apihelp-webauthn-param-friendlyname": "Ein bezeichnender Name für die neuen Anmeldeinformationen."
 }

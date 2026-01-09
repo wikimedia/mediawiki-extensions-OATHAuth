@@ -34,5 +34,11 @@
 	"webauthn-credential-label": "Credencial do usuario",
 	"webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación",
 	"webauthn-add-security-key": "Engadir unha chave de seguranza",
-	"webauthn-auth-switch-module-label": "Usar a chave de seguranza"
+	"webauthn-auth-switch-module-label": "Usar a chave de seguranza",
+	"apierror-webauthn-module-missing": "O módulo WebAuthn non está dispoñible.",
+	"apierror-webauthn-missing-credential": "Non se proporcionaron datos das credenciais.",
+	"apierror-webauthn-invalid-credential": "Os datos das credenciais non son válidos ou teñen un formato incorrecto.",
+	"apihelp-webauthn-paramvalue-func-register": "Rexistrar unha nova credencial de WebAuthn para o usuario actual.",
+	"apihelp-webauthn-param-credential": "Resposta do navegador coas credenciais de WebAuthn codificadas en JSON.",
+	"apihelp-webauthn-param-friendlyname": "Nome amigable para a credencial nova."
 }
