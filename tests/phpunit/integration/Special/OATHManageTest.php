@@ -144,6 +144,8 @@ class OATHManageTest extends SpecialPageTestBase {
 	}
 
 	public function testPasskeysSectionAllowsAddingPasskeysWhenUserHas2fa() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'WebAuthn' );
+
 		// Setup user + existing TOTP key
 		$user = $this->getTestUser()->getUser();
 		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
