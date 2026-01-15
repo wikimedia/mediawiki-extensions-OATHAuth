@@ -102,6 +102,10 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 			if ( $key->getAttestedCredentialData()->credentialId !== $credentialId ) {
 				continue;
 			}
+			if ( $key->getSignCounter() === $newCounter ) {
+				// Nothing to update
+				return;
+			}
 
 			$key->setSignCounter( $newCounter );
 
