@@ -29,7 +29,7 @@
 	"webauthn-error-cannot-remove-key": "Không thể xóa chìa khóa.",
 	"webauthn-error-get-authinfo-fail": "Không thể truy xuất thông tin xác thực.",
 	"oathauth-webauthn-add-key-section-name": "Tạo một khóa bảo mật mới",
-	"webauthn-error-get-reginfo-fail": "Không thể truy xuất thông tin đăng ký.",
+	"webauthn-error-get-reginfo-fail": "Không thể truy xuất thông tin xác thực.",
 	"webauthn-module-description": "WebAuthn đang trong giai đoạn thử nghiệm. Hiện tại không có tùy chọn khôi phục thiết bị xác thực bị mất hoặc bị hỏng cho phương pháp này. \n\n[https://en.wikipedia.org/wiki/WebAuthn Tìm hiểu thêm về WebAuthn]",
 	"webauthn-ui-reload-page-label": "Tải lại trang",
 	"webauthn-authentication-info-label": "Dữ liệu xác thực",
@@ -37,5 +37,12 @@
 	"webauthn-credential-label": "Thông tin người dùng",
 	"webauthn-credential-help": "Thông tin xác thực của người dùng dựa trên dữ liệu xác thực",
 	"webauthn-add-security-key": "Thêm khóa bảo mật",
-	"webauthn-auth-switch-module-label": "Sử dụng khóa bảo mật"
+	"webauthn-auth-switch-module-label": "Sử dụng khóa bảo mật",
+	"apierror-webauthn-module-missing": "Mô-đun WebAuthn hiện không khả dụng.",
+	"apierror-webauthn-missing-credential": "Không có thông tin xác thực nào được cung cấp.",
+	"apierror-webauthn-invalid-credential": "Dữ liệu xác thực không hợp lệ hoặc bị lỗi.",
+	"apierror-webauthn-reauthenticate": "Trước khi thực hiện thao tác này, bạn phải xác thực lại thông qua Special:OATHManage.",
+	"apihelp-webauthn-paramvalue-func-register": "Tạo thông tin xác thực WebAuthn mới cho người dùng hiện tại.",
+	"apihelp-webauthn-param-credential": "Phản hồi thông tin xác thực WebAuthn được mã hóa JSON từ trình duyệt.",
+	"apihelp-webauthn-param-friendlyname": "Tên chứng chỉ mới"
 }
