@@ -94,6 +94,7 @@
 		"LoadExtensionSchemaUpdates": "updater",
 		"UserEffectiveGroups": "main",
 		"UserGetRights": "main",
+		"UserRequirementsCondition": "main",
 		"UnitTestsAfterDatabaseSetup": "test",
 		"UnitTestsBeforeDatabaseTeardown": "test"
 	},
@@ -124,6 +125,7 @@
 			"i18n/api"
 		]
 	},
+	"callback": "MediaWiki\\Extension\\OATHAuth\\Hook\\RegistrationCallback::onRegistration",
 	"config": {
 		"OATHAuthWindowRadius": {
 			"value": 4,

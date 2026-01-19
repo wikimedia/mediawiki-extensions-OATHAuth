@@ -17,9 +17,11 @@ use MediaWiki\ResourceLoader\Context;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
+use MediaWiki\User\Hook\UserRequirementsConditionHook;
 use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserGroupMembership;
+use MediaWiki\User\UserIdentity;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\LabelWidget;
@@ -31,7 +33,8 @@ class HookHandler implements
 	GetPreferencesHook,
 	getUserPermissionsErrorsHook,
 	UserEffectiveGroupsHook,
-	UserGetRightsHook
+	UserGetRightsHook,
+	UserRequirementsConditionHook
 {
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
@@ -277,5 +280,21 @@ class HookHandler implements
 		return [
 			'passkeyDialogTextHtml' => $context->msg( 'oathauth-passkey-dialog-text' )->parseAsBlock()
 		];
+	}
+
+	/** @inheritDoc */
+	public function onUserRequirementsCondition(
+		$type,
+		array $args,
+		UserIdentity $user,
+		bool $isPerformingRequest,
+		?bool &$result
+	): void {
+		if ( $type !== APCOND_OATH_HAS2FA ) {
+			return;
+		}
+
+		$oathUser = $this->userRepo->findByUser( $user );
+		$result = $oathUser->isTwoFactorAuthEnabled();
 	}
 }
