@@ -33,5 +33,12 @@
 	"webauthn-credential-label": "Credential del usator",
 	"webauthn-credential-help": "Credential del usator basate sur le datos de authentication",
 	"webauthn-add-security-key": "Adder un clave de securitate",
-	"webauthn-auth-switch-module-label": "Usar un clave de securitate"
+	"webauthn-auth-switch-module-label": "Usar un clave de securitate",
+	"apierror-webauthn-module-missing": "Le modulo WebAuthn non es disponibile.",
+	"apierror-webauthn-missing-credential": "Nulle credentiales ha essite fornite.",
+	"apierror-webauthn-invalid-credential": "Le credentiales non es valide o es mal formate.",
+	"apierror-webauthn-reauthenticate": "Tu debe reauthenticar te per Special:OATHManage ante de poter prender iste action.",
+	"apihelp-webauthn-paramvalue-func-register": "Registrar un nove credential WebAuthn pro le usator actual.",
+	"apihelp-webauthn-param-credential": "Responsa de credential WebAuthn codificatte in JSON ab le navigator.",
+	"apihelp-webauthn-param-friendlyname": "Nomine facile a leger pro le nove credential."
 }
