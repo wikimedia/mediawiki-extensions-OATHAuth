@@ -7,5 +7,6 @@
 	"apihelp-webauthn-summary": "Modulo API pro communicar inter le servitor e le cliente durante le processo de registration/authentication.",
 	"apihelp-webauthn-param-func": "Nomine del function requestate a executar.",
 	"apihelp-webauthn-paramvalue-func-getauthinfo": "Information de authentication.",
-	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Information de registration."
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Information de registration.",
+	"apihelp-webauthn-paramvalue-func-passkeymode": "Si le clave in curso de registration es in modo de clave de accesso. (Solmente pro getRegisterInfo.)"
 }
