@@ -42,9 +42,7 @@ mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd 
 	this.createCredential()
 		.then( ( assertion ) => {
 			// FIXME should handle null?
-			const formattedCredential = this.formatCredential( assertion );
-			mw.log( 'Credential:\n' + JSON.stringify( formattedCredential, null, 4 ) );
-			dfd.resolve( formattedCredential );
+			dfd.resolve( this.formatCredential( assertion ) );
 		} )
 		.catch( ( error ) => {
 			mw.log.error( error );
@@ -78,7 +76,17 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 
 	this.emit( 'userPrompt' );
 	mw.log( 'PublicKeyCredentialCreationOptions: ', publicKey );
-	return navigator.credentials.create( { publicKey: publicKey } );
+	return navigator.credentials.create( { publicKey: publicKey } ).then( ( credential ) => {
+		try {
+			mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
+		} catch ( e ) {
+			// 1Password returns credential objects that throw an error when stringified
+			// In that case, log the formatted credential object instead
+			mw.log( 'Credential serialization failed' );
+			mw.log( 'Formatted credential:\n' + JSON.stringify( this.formatCredential( credential ), null, 4 ) );
+		}
+		return credential;
+	} );
 };
 
 /**

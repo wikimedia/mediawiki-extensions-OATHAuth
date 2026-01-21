@@ -37,9 +37,7 @@ mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( df
 	// At this point we assume authInfo is set
 	this.getCredentials()
 		.then( ( assertion ) => {
-			const formattedCredential = this.formatCredential( assertion );
-			mw.log( 'Credential:\n' + JSON.stringify( formattedCredential, null, 4 ) );
-			dfd.resolve( formattedCredential );
+			dfd.resolve( this.formatCredential( assertion ) );
 		} )
 		.catch( () => {
 			// This usually happens when the process gets interrupted
@@ -57,7 +55,17 @@ mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
 	} ) );
 
 	mw.log( 'PublicKeyCredentialRequestOptions: ', publicKey );
-	return navigator.credentials.get( { publicKey: publicKey } );
+	return navigator.credentials.get( { publicKey: publicKey } ).then( ( credential ) => {
+		try {
+			mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
+		} catch ( e ) {
+			// 1Password returns credential objects that throw an error when stringified
+			// In that case, log the formatted credential object instead
+			mw.log( 'Credential serialization failed' );
+			mw.log( 'Formatted credential:\n' + JSON.stringify( this.formatCredential( credential ), null, 4 ) );
+		}
+		return credential;
+	} );
 };
 
 mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion ) {
