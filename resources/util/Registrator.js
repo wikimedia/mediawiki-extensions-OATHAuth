@@ -42,7 +42,9 @@ mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd 
 	this.createCredential()
 		.then( ( assertion ) => {
 			// FIXME should handle null?
-			dfd.resolve( this.formatCredential( assertion ) );
+			const formattedCredential = this.formatCredential( assertion );
+			mw.log( 'Credential:\n' + JSON.stringify( formattedCredential, null, 4 ) );
+			dfd.resolve( formattedCredential );
 		} )
 		.catch( ( error ) => {
 			mw.log.error( error );
@@ -76,10 +78,7 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 
 	this.emit( 'userPrompt' );
 	mw.log( 'PublicKeyCredentialCreationOptions: ', publicKey );
-	return navigator.credentials.create( { publicKey: publicKey } ).then( ( credential ) => {
-		mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
-		return credential;
-	} );
+	return navigator.credentials.create( { publicKey: publicKey } );
 };
 
 /**
