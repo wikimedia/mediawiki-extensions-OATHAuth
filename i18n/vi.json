@@ -38,6 +38,7 @@
 	"webauthn-credential-help": "Thông tin xác thực của người dùng dựa trên dữ liệu xác thực",
 	"webauthn-add-security-key": "Thêm khóa bảo mật",
 	"webauthn-auth-switch-module-label": "Sử dụng khóa bảo mật",
+	"webauthn-auth-switch-module-label-passkey": "Sử dụng khóa bảo mật hoặc mã khóa",
 	"apierror-webauthn-module-missing": "Mô-đun WebAuthn hiện không khả dụng.",
 	"apierror-webauthn-missing-credential": "Không có thông tin xác thực nào được cung cấp.",
 	"apierror-webauthn-invalid-credential": "Dữ liệu xác thực không hợp lệ hoặc bị lỗi.",

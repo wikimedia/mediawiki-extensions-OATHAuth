@@ -36,6 +36,7 @@
 	"webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten",
 	"webauthn-add-security-key": "Einen Sicherheitsschlüssel hinzufügen",
 	"webauthn-auth-switch-module-label": "Sicherheitsschlüssel verwenden",
+	"webauthn-auth-switch-module-label-passkey": "Sicherheitsschlüssel oder Passkey verwenden",
 	"apierror-webauthn-module-missing": "Das WebAuthn-Modul ist nicht verfügbar.",
 	"apierror-webauthn-missing-credential": "Es wurden keine Anmeldeinformationen angegeben.",
 	"apierror-webauthn-invalid-credential": "Die Anmeldedaten sind ungültig oder fehlerhaft.",
