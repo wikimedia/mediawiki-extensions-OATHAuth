@@ -34,6 +34,7 @@
 	"webauthn-credential-help": "Корисничко овластување според податоците за заверка",
 	"webauthn-add-security-key": "Додај безбедносен клуч",
 	"webauthn-auth-switch-module-label": "Користи безбедносен клуч",
+	"webauthn-auth-switch-module-label-passkey": "Користи безбедносен или пропустен клуч",
 	"apierror-webauthn-module-missing": "Модулот WebAuthn е недостапен.",
 	"apierror-webauthn-missing-credential": "Нема внесено најавни податоци.",
 	"apierror-webauthn-invalid-credential": "Најавните податоци се неважечки или погрешно срочени.",
