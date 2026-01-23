@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Red Winged Duck",
-			"Renessaince"
+			"Renessaince",
+			"Ucukor"
 		]
 	},
 	"oathauth-desc": "Прадастаўляе падтрымку аўтэнтыфікацыі з выкарыстаньнем аднаразовых пароляў на аснове HMAC",
 	"disableoathforuser": "Адключыць двухфактарную аўтэнтыфікацыю карыстальніка",
 	"verifyoathforuser": "Праверыць статус двухфактарнай аўтэнтыфікацыі",
 	"oath": "OATHAuth",
-	"oathauth-account": "Назва ўліковага запісу:",
+	"oathauth-account": "Назва рахунку:",
 	"oathauth-secret": "Двухфактарны сакрэтны ключ аўтэнтыфікацыі:",
 	"oathauth-enable": "Уключыць двухфактарную аўтэнтыфікацыю",
-	"oathauth-recoverycodes": "Ніжэй пададзены сьпіс аднаразовых кодаў аднаўленьня. Гэтыя коды магчыма выкарыстаць толькі аднойчы ў надзвычайных сытуацыях, калі вы ня маеце доступу да сваёй прылады. Калі ласка, запішыце іх і захоўвайце ў бясьпечным месцы. Пажадана, каб вы пазначалі скарыстаныя коды, калі заходзіце зь іх дапамогай. Калі вы згубіце прыладу, гэтыя коды — адзіны спосаб захаваць ваш уліковы запіс.",
+	"oathauth-recoverycodes": "Ужываць гэта, калі зьнікне доступ да двухфактарнай аўтэнтыфікацыі.",
 	"oathauth-recoverycodes-important": "Гэты крок важны! Не прапускайце яго!",
 	"oathauth-recoverycodes-neveragain": "Гэтыя коды больш ніколі не пакажуцца!",
 	"oathauth-recoverytokens-createdat": "Створаныя коды аднаўленьня: $1",
@@ -28,7 +29,7 @@
 	"oathauth-step1": "Крок 1: спампуйце праграму двухфактарнай аўтэнтыфікацыі",
 	"oathauth-step1-test": "Спампуйце праграму двухфактарнай аўтэнтыфікацыі. Гэта можа быць мабільная ці кампутарная праграма, такая як [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/account/authenticator/ Microsoft Authenticator] ці [https://1password.com/ 1Password].",
 	"oathauth-step2": "Крок 2: адскануйце QR-код",
-	"oathauth-step2alt": "Калі вы ня можаце адсканаваць QR-код, увядзіце сакрэтны ключ і назву ўліковага запісу ўручную:",
+	"oathauth-step2alt": "Калі вы ня можаце адсканаваць QR-код, увядзіце сакрэтны ключ і назву рахунку ўласнаруч:",
 	"oathauth-step3": "Крок 3: запішыце коды аднаўленьня",
 	"oathauth-step4": "Крок 4: спраўджваньне",
 	"oathauth-entertoken": "Увядзіце код для праверкі з вашай прылады аўтэнтыфікацыі:",
@@ -70,8 +71,8 @@
 	"oathauth-enable-generic": "Уключыць",
 	"oathauth-disable-generic": "Выключыць",
 	"oathauth-totp-description": "Альгарытм часовых аднаразовых пароляў (TOTP) — пашырэньне альгарытму аднаразовых пароляў на базе HMAC (HOTP), які стварае адначасны пароль, карыстаючыся ўнікальным значэньнем цяперашняга часу.",
-	"notification-header-oathauth-disable": "Двухфактарная аўтэнтыфікацыя {{GENDER:$2|вашага ўліковага запісу}} адключаная.",
-	"notification-body-oathauth-disable": "Калі {{GENDER:$2|вы}} гэтага не рабілі, то {{GENDER:$2|ваш уліковы запіс}} мог быць узламаны.",
+	"notification-header-oathauth-disable": "Двухфактарная аўтэнтыфікацыя {{GENDER:$2|вашага рахунку}} адключаная.",
+	"notification-body-oathauth-disable": "Калі {{GENDER:$2|вы}} гэтага не рабілі, то {{GENDER:$2|ваш рахунак}} мог быць узламаны.",
 	"notification-body-oathauth-disable-other": "Калі {{GENDER:$2|вы}} гэтага не запытвалі, то мусіце зьвязацца з адміністратарам.",
 	"oathauth-notifications-disable-help": "Дапамога",
 	"oathauth-notifications-disable-primary": "Праверце налады сваёй двухфактарнай аўтэнтыфікацыі",
