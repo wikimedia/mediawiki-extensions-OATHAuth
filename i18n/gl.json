@@ -35,6 +35,7 @@
 	"webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación",
 	"webauthn-add-security-key": "Engadir unha chave de seguranza",
 	"webauthn-auth-switch-module-label": "Usar a chave de seguranza",
+	"webauthn-auth-switch-module-label-passkey": "Usar a chave de seguranza ou a chave de acceso",
 	"apierror-webauthn-module-missing": "O módulo WebAuthn non está dispoñible.",
 	"apierror-webauthn-missing-credential": "Non se proporcionaron datos das credenciais.",
 	"apierror-webauthn-invalid-credential": "Os datos das credenciais non son válidos ou teñen un formato incorrecto.",

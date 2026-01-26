@@ -30,5 +30,6 @@
 	"webauthn-authentication-info-label": "Dados de autenticação",
 	"webauthn-authentication-info-help": "Dados de autenticação passados para o cliente para recuperação de credenciais",
 	"webauthn-credential-label": "Credencial do usuário",
-	"webauthn-credential-help": "Credencial do usuário com base nos dados de autenticação"
+	"webauthn-credential-help": "Credencial do usuário com base nos dados de autenticação",
+	"webauthn-add-security-key": "Adicionar uma chave de segurança"
 }
