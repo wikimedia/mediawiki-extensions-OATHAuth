@@ -165,10 +165,6 @@
 			"value": 100,
 			"description": "Maximum amount of keys allowed per user."
 		},
-		"OATHNewPasskeyFeatures": {
-			"value": false,
-			"description": "Temporary feature flag for the new passkey features (T410332)."
-		},
 		"WebAuthnRelyingPartyName": {
 			"value": null
 		},

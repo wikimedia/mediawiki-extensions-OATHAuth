@@ -317,52 +317,49 @@ class OATHManage extends SpecialPage {
 		);
 
 		// Passkeys section
-		$passkeySection = '';
-		if ( $this->getConfig()->get( 'OATHNewPasskeyFeatures' ) ) {
-			$passkeyAccordions = '';
-			$passkeyPlaceholder = '';
-			$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
-			foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
-				if ( !$key->supportsPasswordlessLogin() ) {
-					// Regular 2FA keys are displayed in the 2FA section below
-					continue;
-				}
-				$passkeyAccordions .= $this->buildKeyAccordion( $key );
+		$passkeyAccordions = '';
+		$passkeyPlaceholder = '';
+		$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
+		foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
+			if ( !$key->supportsPasswordlessLogin() ) {
+				// Regular 2FA keys are displayed in the 2FA section below
+				continue;
 			}
-			if ( $passkeyAccordions === '' ) {
-				$passkeyPlaceholder = Html::element( 'p',
-					[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
-					$this->msg( 'oathauth-passkeys-placeholder' )->text()
-				);
-				// Display an additional message if the user can't add passkeys
-				if ( $keyAccordions === '' ) {
-					$passkeyPlaceholder .= Html::element( 'p',
-						[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
-						 $this->msg( 'oathauth-passkeys-no2fa' )->text()
-					);
-				}
-				$passkeyClasses[] = 'mw-special-OATHManage-passkeys--no-keys';
-			}
-			// Only display the "Add passkey" button if the user can add passkeys
-			$passkeyAddButton = $keyAccordions === '' ? '' : $codex->button()
-				->setLabel( $this->msg( 'oathauth-passkeys-add' )->text() )
-				->setAttributes( [ 'class' => 'mw-special-OATHManage-passkeys__addbutton' ] )
-				->build()
-				->getHtml();
-			$passkeySection = Html::rawElement( 'div', [ 'class' => $passkeyClasses ],
-				Html::element( 'h3', [], $this->msg( 'oathauth-passkeys-header' )->text() ) .
-				$passkeyAccordions .
-				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-authmethods__addform' ],
-					$passkeyPlaceholder .
-					$passkeyAddButton
-				)
+			$passkeyAccordions .= $this->buildKeyAccordion( $key );
+		}
+		if ( $passkeyAccordions === '' ) {
+			$passkeyPlaceholder = Html::element( 'p',
+				[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
+				$this->msg( 'oathauth-passkeys-placeholder' )->text()
 			);
-			if ( $passkeyAddButton ) {
-				// TODO this should just be a dependency of ext.oath.manage, but it can't be because
-				// OATHAuth can't depend on WebAuthn directly. This should be resolved by merging
-				// the two extensions (T303495)
-				$this->getOutput()->addModules( 'ext.webauthn.Registrator' );
+			// Display an additional message if the user can't add passkeys
+			if ( $keyAccordions === '' ) {
+				$passkeyPlaceholder .= Html::element( 'p',
+					[ 'class' => 'mw-special-OATHManage-passkeys__placeholder' ],
+					 $this->msg( 'oathauth-passkeys-no2fa' )->text()
+				);
 			}
+			$passkeyClasses[] = 'mw-special-OATHManage-passkeys--no-keys';
+		}
+		// Only display the "Add passkey" button if the user can add passkeys
+		$passkeyAddButton = $keyAccordions === '' ? '' : $codex->button()
+			->setLabel( $this->msg( 'oathauth-passkeys-add' )->text() )
+			->setAttributes( [ 'class' => 'mw-special-OATHManage-passkeys__addbutton' ] )
+			->build()
+			->getHtml();
+		$passkeySection = Html::rawElement( 'div', [ 'class' => $passkeyClasses ],
+			Html::element( 'h3', [], $this->msg( 'oathauth-passkeys-header' )->text() ) .
+			$passkeyAccordions .
+			Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-authmethods__addform' ],
+				$passkeyPlaceholder .
+				$passkeyAddButton
+			)
+		);
+		if ( $passkeyAddButton ) {
+			// TODO this should just be a dependency of ext.oath.manage, but it can't be because
+			// OATHAuth can't depend on WebAuthn directly. This should be resolved by merging
+			// the two extensions (T303495)
+			$this->getOutput()->addModules( 'ext.webauthn.Registrator' );
 		}
 
 		// If 2FA is enabled then put passkeys first, otherwise put 2FA first

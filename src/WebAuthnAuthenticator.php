@@ -232,7 +232,7 @@ class WebAuthnAuthenticator {
 				$registerInfo,
 				$this->oathUser
 			);
-			if ( $this->inPasskeyMode() ) {
+			if ( $this->passkeyMode ) {
 				$key->setPasswordlessSupport( true );
 			}
 			if ( $registered ) {
@@ -255,10 +255,6 @@ class WebAuthnAuthenticator {
 			return Status::newFatal( $error->getMessageObject() );
 		}
 		return Status::newFatal( 'webauthn-error-registration-failed' );
-	}
-
-	private function inPasskeyMode(): bool {
-		return $this->passkeyMode && $this->context->getConfig()->get( 'OATHNewPasskeyFeatures' );
 	}
 
 	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
@@ -395,7 +391,7 @@ class WebAuthnAuthenticator {
 			),
 		];
 
-		if ( $this->inPasskeyMode() ) {
+		if ( $this->passkeyMode ) {
 			$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
 				userVerification: AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED,
 				residentKey: AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED,

@@ -176,8 +176,6 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function getLoginSwitchButtonMessage() {
-		return RequestContext::getMain()->getConfig()->get( 'OATHNewPasskeyFeatures' ) ?
-			wfMessage( 'webauthn-auth-switch-module-label-passkey' ) :
-			wfMessage( 'webauthn-auth-switch-module-label' );
+		return wfMessage( 'webauthn-auth-switch-module-label-passkey' );
 	}
 }

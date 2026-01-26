@@ -118,18 +118,6 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
 
-	public function testPasskeysSectionHiddenWhenFeatureDisabled() {
-		$user = $this->getTestUser()->getUser();
-		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
-
-		$this->overrideConfigValue( 'OATHNewPasskeyFeatures', false );
-
-		[ $output ] = $this->executeSpecialPage( '', null, null, $user );
-
-		// Should NOT show the header at all
-		$this->assertStringNotContainsString( '(oathauth-passkeys-header)', $output );
-	}
-
 	public function testPasskeysSectionAllowsAddingPasskeysWhenUserHas2fa() {
 		// Setup user + existing TOTP key
 		$user = $this->getTestUser()->getUser();
@@ -145,7 +133,6 @@ class OATHManageTest extends SpecialPageTestBase {
 			'127.0.0.1'
 		);
 
-		$this->overrideConfigValue( 'OATHNewPasskeyFeatures', true );
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
 		RequestContext::getMain()->setLanguage( 'qqx' );
 
