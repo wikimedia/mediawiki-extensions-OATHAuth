@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dejan Savuljesku <savuljesku@hallowelt.com>",
+			"Umherirrender"
+		]
+	},
+	"apihelp-webauthn-summary": "{{doc-apihelp-summary|webauthn}}",
+	"apihelp-webauthn-param-func": "{{doc-apihelp-param|webauthn|func}}",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "{{doc-apihelp-paramvalue|main|webauthn|getAuthInfo}}",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "{{doc-apihelp-paramvalue|main|webauthn|getRegisterInfo}}",
+	"apihelp-webauthn-paramvalue-func-passkeymode": "{{doc-apihelp-paramvalue|main|webauthn|passkeyMode}}"
+}

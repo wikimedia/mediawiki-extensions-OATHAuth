@@ -1,0 +1,237 @@
+<?php
+/**
+ * @license GPL-2.0-or-later
+ */
+
+namespace MediaWiki\Extension\WebAuthn\Api;
+
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Auth\AuthManager;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Exception\MWException;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
+use MediaWiki\Json\FormatJson;
+use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
+
+/**
+ * This class provides an endpoint for all WebAuthn actions.
+ */
+class WebAuthn extends ApiBase {
+
+	private const ACTION_GET_AUTH_INFO = 'getAuthInfo';
+	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
+	private const ACTION_REGISTER = 'register';
+
+	public function __construct(
+		ApiMain $main,
+		string $moduleName,
+		private AuthManager $authManager
+	) {
+		parent::__construct( $main, $moduleName );
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 */
+	public function execute() {
+		$func = $this->getParameter( 'func' );
+
+		$this->checkPermissions( $func );
+		$this->checkModule();
+
+		$result = match ( $func ) {
+			self::ACTION_GET_REGISTER_INFO => $this->getRegisterInfo(),
+			self::ACTION_GET_AUTH_INFO => $this->getAuthInfo(),
+			self::ACTION_REGISTER => $this->register(),
+		};
+
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/** @inheritDoc */
+	public function needsToken() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER ? 'csrf' : false;
+	}
+
+	/** @inheritDoc */
+	public function mustBePosted() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER;
+	}
+
+	/** @inheritDoc */
+	public function isWriteMode() {
+		return $this->getRequest()->getVal( 'func' ) === self::ACTION_REGISTER;
+	}
+
+	/** @inheritDoc */
+	public function getAllowedParams() {
+		return [
+			'func' => [
+				ParamValidator::PARAM_TYPE => array_keys( $this->getRegisteredFunctions() ),
+				ParamValidator::PARAM_REQUIRED => true,
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
+					'getAuthInfo' => 'apihelp-webauthn-paramvalue-func-getauthinfo',
+					'getRegisterInfo' => 'apihelp-webauthn-paramvalue-func-getregisterinfo',
+					'register' => 'apihelp-webauthn-paramvalue-func-register',
+				],
+			],
+			'passkeyMode' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_REQUIRED => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-webauthn-paramvalue-func-passkeymode',
+			],
+			'credential' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'friendlyname' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+		];
+	}
+
+	/**
+	 * Array of all functions that are allowed to be called.
+	 * Each key must have the appropriate configuration that
+	 * defines user requirements for the action.
+	 */
+	protected function getRegisteredFunctions(): array {
+		return [
+			static::ACTION_GET_AUTH_INFO => [
+				'permissions' => [],
+				'mustBeLoggedIn' => false,
+			],
+			static::ACTION_GET_REGISTER_INFO => [
+				'permissions' => [ 'oathauth-enable' ],
+				'mustBeLoggedIn' => true,
+			],
+			static::ACTION_REGISTER => [
+				'permissions' => [ 'oathauth-enable' ],
+				'mustBeLoggedIn' => true,
+				'loginSecurityLevel' => 'OATHManage'
+			],
+		];
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 */
+	protected function checkPermissions( string $func ): void {
+		$registered = $this->getRegisteredFunctions();
+		$functionConfig = $registered[$func];
+
+		$mustBeLoggedIn = $functionConfig['mustBeLoggedIn'];
+		if ( $mustBeLoggedIn === true ) {
+			$user = $this->getUser();
+			if ( !$user->isNamed() ) {
+				$this->dieWithError( [ 'apierror-mustbeloggedin', $this->msg( 'action-oathauth-enable' ) ] );
+			}
+		}
+
+		$funcPermissions = $functionConfig['permissions'];
+		if ( $funcPermissions ) {
+			$this->checkUserRightsAny( $funcPermissions );
+		}
+
+		if ( isset( $functionConfig[ 'loginSecurityLevel' ] ) ) {
+			$status = $this->authManager->securitySensitiveOperationStatus( $functionConfig[ 'loginSecurityLevel' ] );
+			if ( $status !== AuthManager::SEC_OK ) {
+				$this->dieWithError( 'apierror-webauthn-reauthenticate' );
+			}
+		}
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 */
+	protected function checkModule() {
+		/** @var OATHAuthModuleRegistry $moduleRegistry */
+		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
+		$module = $moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
+		if ( !( $module instanceof WebAuthnModule ) ) {
+			$this->dieWithError( 'apierror-webauthn-module-missing' );
+		}
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	protected function getAuthInfo(): array {
+		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
+		$canAuthenticate = $authenticator->canAuthenticate();
+		if ( !$canAuthenticate->isGood() ) {
+			$this->dieWithError( $canAuthenticate->getMessage() );
+		}
+		$startAuthResult = $authenticator->startAuthentication();
+		if ( $startAuthResult->isGood() ) {
+			return [
+				'auth_info' => $startAuthResult->getValue()['json']
+			];
+		}
+		$this->dieWithError( $startAuthResult->getMessage() );
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	protected function getRegisterInfo(): array {
+		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
+		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
+		$canRegister = $authenticator->canRegister();
+		if ( !$canRegister->isGood() ) {
+			$this->dieWithError( $canRegister->getMessage() );
+		}
+		$startRegResult = $authenticator->startRegistration();
+		if ( $startRegResult->isGood() ) {
+			return [
+				'register_info' => $startRegResult->getValue()['json']
+			];
+		}
+		$this->dieWithError( $startRegResult->getMessage() );
+	}
+
+	/**
+	 * @throws ApiUsageException
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	protected function register(): array {
+		$credentialJson = $this->getParameter( 'credential' );
+		$friendlyName = $this->getParameter( 'friendlyname' );
+		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
+
+		if ( !$credentialJson ) {
+			$this->dieWithError( 'apierror-webauthn-missing-credential' );
+		}
+
+		$credential = FormatJson::decode( $credentialJson );
+		if ( !is_object( $credential ) ) {
+			$this->dieWithError( 'apierror-webauthn-invalid-credential' );
+		}
+		$credential->friendlyName = $friendlyName ?? '';
+
+		$authenticator = Authenticator::factory(
+			$this->getUser(),
+			$this->getRequest(),
+			$passkeyMode
+		);
+
+		$result = $authenticator->continueRegistration( $credential );
+
+		if ( !$result->isGood() ) {
+			$this->dieWithError( $result->getMessage() );
+		}
+
+		return [ 'success' => true ];
+	}
+}

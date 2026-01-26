@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bugoslav"
+		]
+	},
+	"webauthn-desc": "Omogućava autentifikacijsku potporu rabeći protokol WebAuthn",
+	"webauthn-module-label": "Mrežna autentifikacija (WebAuthn)",
+	"webauthn-ui-login-prompt": "Molimo Vas, tapšnite uređaj za verifikaciju ili slijedite upute u pregledniku",
+	"webauthn-ui-add-key": "Dodaj ključ",
+	"webauthn-module-description": "WebAuthn (mrežna autentifikacija) objavljeni je mrežni standard World Wide Web Consortiuma (W3C). WebAuthn ključni je dio projekta FIDO2 pod ravnanjem FIDO Alliancea. Cilj projekta standardizacija je sučelja za autentifikaciju korisnika mrežnih aplikacija i usluga upotrebljavanjem kriptografije javnoga ključa. [https://en.wikipedia.org/wiki/WebAuthn Pročitajte više]"
+}

@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu",
+			"ItsaMeSandy"
+		]
+	},
+	"webauthn-desc": "Fornece suporte de autenticação usando o protocolo WebAuthn",
+	"webauthn-module-label": "Autenticação da internet (WebAuthn)",
+	"webauthn-ui-login-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'', por favor",
+	"webauthn-ui-add-key": "Adicionar chave",
+	"webauthn-error-browser-unsupported": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet. Tente com um ''browser'' diferente, por favor. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Saiba mais]",
+	"webauthn-error-browser-unsupported-console": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet.",
+	"webauthn-error-auth-generic": "O processo de autenticação foi interrompido. Reinicie o processo de autenticação, por favor",
+	"webauthn-error-reg-generic": "Não foi possível verificar a sua chave. Reinicie o processo de registo, por favor",
+	"oathauth-webauthn-registered-keys-section-name": "Chaves registadas",
+	"webuathn-ui-remove-key": "Remover",
+	"webauthn-error-module-not-enabled": "O módulo \"$1\" não está ativado para {{GENDER:$2|o utilizador|a utilizadora}} \"$2\"",
+	"webauthn-error-verification-failed": "A verificação falhou",
+	"webauthn-error-cannot-register": "{{GENDER:$1|O utilizador|A utilizadora}} \"$1\" não pode registar uma nova credencial",
+	"webauthn-error-invalid-new-key": "A chave nova devolvida pelo módulo não é do tipo obrigatório",
+	"webauthn-error-registration-failed": "O registo da chave nova falhou",
+	"webauthn-ui-key-register-help": "Escolha o apelido da sua chave",
+	"webauthn-error-cannot-remove-key": "A chave não pode ser removida",
+	"webauthn-error-get-authinfo-fail": "Não foi possível obter as informações de autenticação.",
+	"oathauth-webauthn-add-key-section-name": "Registar nova chave WebAuthn",
+	"webauthn-error-get-reginfo-fail": "Não foi possível obter as informações de registo.",
+	"webauthn-module-description": "WebAuthn encontra-se num estado experimental. Actualmente não há opção de recuperação para dispositivos de autenticação perdidos ou danificados para este método.\n\n[https://em.wikipedia.org/wiki/WebAuthn Saiba mais sobre WebAuthn]",
+	"webauthn-ui-reload-page-label": "Recarregar a página",
+	"webauthn-authentication-info-label": "Dados de autenticação",
+	"webauthn-authentication-info-help": "Dados de autenticação passados ao cliente para obtenção de credenciais",
+	"webauthn-credential-label": "Credencial do utilizador",
+	"webauthn-credential-help": "Credencial do utilizador baseada nos dados de autenticação"
+}

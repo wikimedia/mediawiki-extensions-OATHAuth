@@ -61,13 +61,15 @@
 					"services": [
 						"OATHUserRepository"
 					]
-				}
+				},
+				"webauthn": "MediaWiki\\Extension\\WebAuthn\\Module\\WebAuthn::factory"
 			}
 		}
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\OATHAuth\\": "src/",
-		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/"
+		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/",
+		"MediaWiki\\Extension\\WebAuthn\\": "src/"
 	},
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\OATHAuth\\Tests\\Integration\\": "tests/phpunit/integration/",
@@ -88,10 +90,11 @@
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
 	"Hooks": {
-		"AuthChangeFormFields": "main",
+		"AuthChangeFormFields": [ "main", "WebAuthnHooks" ],
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"LoadExtensionSchemaUpdates": "updater",
+		"ResourceLoaderGetConfigVars": "WebAuthnHooks",
 		"UserEffectiveGroups": "main",
 		"UserGetRights": "main",
 		"UserRequirementsCondition": "main",
@@ -117,12 +120,19 @@
 			"services": [
 				"DBLoadBalancer"
 			]
+		},
+		"WebAuthnHooks": {
+			"class": "MediaWiki\\Extension\\WebAuthn\\Hooks"
 		}
 	},
 	"MessagesDirs": {
 		"OATHAuth": [
 			"i18n",
 			"i18n/api"
+		],
+		"WebAuthn": [
+			"i18n/webauthn",
+			"i18n/webauthn/api"
 		]
 	},
 	"callback": "MediaWiki\\Extension\\OATHAuth\\Hook\\RegistrationCallback::onRegistration",
@@ -162,6 +172,20 @@
 		"OATHNewPasskeyFeatures": {
 			"value": false,
 			"description": "Temporary feature flag for the new passkey features (T410332)."
+		},
+		"WebAuthnRelyingPartyName": {
+			"value": null
+		},
+		"WebAuthnRelyingPartyID": {
+			"value": null
+		},
+		"WebAuthnNewCredsDisabled": {
+			"description": "If true, new credentials cannot be added, see T354701",
+			"value": false
+		},
+		"WebAuthnLimitPasskeysToRoaming": {
+			"description": "Temporary option to limit passkeys to roaming until better passkey support is added",
+			"value": false
 		}
 	},
 	"ResourceModules": {
@@ -236,6 +260,83 @@
 				"CdxLabel",
 				"CdxTextInput"
 			]
+		},
+		"ext.webauthn.ui.base": {
+			"scripts": [
+				"webauthn/util/util.js",
+				"webauthn/ui/CredentialForm.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base.styles",
+				"oojs-ui",
+				"mediawiki.jqueryMsg"
+			],
+			"messages": [
+				"webauthn-error-browser-unsupported",
+				"webauthn-error-browser-unsupported-console",
+				"webauthn-ui-reload-page-label"
+			]
+		},
+		"ext.webauthn.ui.base.styles": {
+			"styles": [
+				"webauthn/stylesheets/ui.base.styles.less"
+			]
+		},
+		"ext.webauthn.Registrator": {
+			"scripts": [
+				"webauthn/util/Registrator.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-reginfo-fail",
+				"webauthn-error-reg-generic"
+			]
+		},
+		"ext.webauthn.register": {
+			"scripts": [
+				"webauthn/ui/RegisterForm.js",
+				"webauthn/register.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.util",
+				"ext.webauthn.ui.base",
+				"ext.webauthn.Registrator"
+			]
+		},
+		"ext.webauthn.login": {
+			"scripts": [
+				"webauthn/util/Authenticator.js",
+				"webauthn/ui/LoginForm.js",
+				"webauthn/login.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-authinfo-fail",
+				"webauthn-error-auth-generic"
+			]
+		},
+		"ext.webauthn.manage": {
+			"scripts": [
+				"webauthn/util/Authenticator.js",
+				"webauthn/ui/ManageForm.js",
+				"webauthn/manage.js"
+			],
+			"styles": [
+				"webauthn/stylesheets/manage.styles.less"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"ext.webauthn.ui.base"
+			],
+			"messages": [
+				"webauthn-error-get-authinfo-fail",
+				"webauthn-error-auth-generic"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -309,6 +410,12 @@
 			"services": [
 				"OATHUserRepository",
 				"UserFactory"
+			]
+		},
+		"webauthn": {
+			"class": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn",
+			"services": [
+				"AuthManager"
 			]
 		}
 	},

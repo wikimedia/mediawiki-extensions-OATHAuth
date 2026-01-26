@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Guycn2"
+		]
+	},
+	"webauthn-desc": "מספק תמיכה באימות בפרוטוקול WebAuthn",
+	"webauthn-module-label": "מפתח אבטחה",
+	"webauthn-javascript-required": "יש להפעיל JavaScript בדפדפן שלך כדי להשתמש ב־WebAuthn.",
+	"webauthn-ui-login-prompt": "נא לגעת במכשיר האימות שלך או לעקוב אחר ההוראות בדפדפן.",
+	"webauthn-ui-add-key": "הוספת מפתח",
+	"webauthn-error-browser-unsupported": "הדפדפן הזה אינו תומך ב־WebAuthentication או שזה לא זמין עבור האתר הזה. נא לנסות עם דפדפן אחר. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support מידע נוסף]",
+	"webauthn-error-browser-unsupported-console": "הדפדפן הזה אינו תומך ב־WebAuthentication או שזה לא זמין עבור האתר הזה.",
+	"webauthn-error-auth-generic": "תהליך האימות נקטע. נא להתחיל את תהליך האימות שוב.",
+	"webauthn-error-reg-generic": "לא היה אפשר לאמת את המפתח שלך. נא להתחיל את תהליך הרישום שוב.",
+	"oathauth-webauthn-registered-keys-section-name": "מפתחות רשומים",
+	"webuathn-ui-remove-key": "הסרה",
+	"webauthn-error-module-not-enabled": "המודול \"$1\" לא מופעל עבור {{GENDER:$2|משתמש \"$2\"}}.",
+	"webauthn-error-verification-failed": "האימות ב־WebAuthn נכשל.",
+	"webauthn-error-credentials-missing": "נתוני ההזדהות לא נשלחו.",
+	"webauthn-error-cannot-register": "{{GENDER:$1|המשתמש|המשתמשת}} \"$1\" לא יכול לרשום נתון האמנה חדש.",
+	"webauthn-error-invalid-new-key": "מפתח חדש שהוחזר על־ידי מודול לא שייך לסוג הדרוש.",
+	"webauthn-error-registration-failed": "רישום מפתח חדש נכשל.",
+	"webauthn-ui-key-register-help": "נא לבחור כינוי למפתח שלך.",
+	"webauthn-error-cannot-remove-key": "לא ניתן להסיר מפתח.",
+	"webauthn-error-get-authinfo-fail": "לא ניתן לאחזר מידע על אימות.",
+	"oathauth-webauthn-add-key-section-name": "לרשום מפתח WebAuthn חדש",
+	"webauthn-error-get-reginfo-fail": "לא ניתן לאחזר מידע על רישום.",
+	"webauthn-module-description": "שירות WebAuthn נמצא במצב ניסיוני. כרגע אין אפשרות שחזור עבור מכשירי אימות שאבדו או ניזוקו עבור השיטה הזאת.\n\n[https://en.wikipedia.org/wiki/WebAuthn מידע נוסף על WebAuthn]",
+	"webauthn-ui-reload-page-label": "רענון הדף",
+	"webauthn-authentication-info-label": "נתוני האימות",
+	"webauthn-authentication-info-help": "נתוני האימות הועברו ללקוח לשם אחזור נתוני הזדהות",
+	"webauthn-credential-label": "נתוני הזדהות משתמש",
+	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות",
+	"webauthn-add-security-key": "הוספת מפתח אבטחה",
+	"webauthn-auth-switch-module-label": "להשתמש במפתח אבטחה"
+}

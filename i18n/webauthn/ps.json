@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"webauthn-module-label": "خونديتوب کونجي",
+	"webauthn-ui-add-key": "کونجي ورگډول",
+	"webauthn-ui-key-register-help": "د خپلې کونجۍ لپاره بلن‌نوم خوښ کړئ:",
+	"webauthn-error-cannot-remove-key": "کونجي نشي لرې کېدای.",
+	"oathauth-webauthn-add-key-section-name": "د نوې وېب‌تاييد کونجي نوم‌ليکنه",
+	"webauthn-module-description": "WebAuthn يو ازمېښتي ونگ‌ډول دی. په دې ونگ‌ډول کې وسمهال د ورک شوو او مات شوو وسيلو د تاييد بياترلاسنې هېڅ چلندلار نشته.\n[https://en.wikipedia.org/wiki/WebAuthn د  WebAuthn په اړه نور ولولئ]",
+	"webauthn-ui-reload-page-label": "مخ بارول",
+	"webauthn-authentication-info-label": "تاييد اومتوکي",
+	"webauthn-authentication-info-help": "د باور ترلاسه کولو لپاره مراجع ته تاييد اومتوکي لېږدول شوي.",
+	"webauthn-credential-label": "کارن باور",
+	"webauthn-credential-help": "د کارن باور د تاييد اومتوکو پربنسټ",
+	"webauthn-add-security-key": "خونديتوب کونجي ورگډول",
+	"webauthn-auth-switch-module-label": "خونديتوب کونجي کارول",
+	"apierror-webauthn-module-missing": "د وېب‌تاييد چلنوال د لاسرسي وړ نه دی.",
+	"apierror-webauthn-missing-credential": "هېڅ ډول باوري اومتوکي نه دي ورکړل شوي.",
+	"apierror-webauthn-invalid-credential": "باوري اومتوکي ناسم يا بدبڼي دي."
+}

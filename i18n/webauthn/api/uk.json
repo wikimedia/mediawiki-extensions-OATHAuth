@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Movses"
+		]
+	},
+	"apihelp-webauthn-summary": "Модуль API для комунікації між сервером та клієнтом протягом процесу реєстрації/автентифікації.",
+	"apihelp-webauthn-param-func": "Назва запитуваної функції, яку слід виконати.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Інформація для автентифікації.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Інформація для реєстрації."
+}

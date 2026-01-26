@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hzy980512",
+			"Marine-Blue",
+			"Omotecho",
+			"Shirayuki",
+			"Shulmj",
+			"Siglite3",
+			"Waki285"
+		]
+	},
+	"webauthn-desc": "WebAuthn を用いた認証サポートを提供する",
+	"webauthn-module-label": "セキュリティキー",
+	"webauthn-javascript-required": "WebAuthn を使用するには、ブラウザで JavaScript を有効化する必要があります。",
+	"webauthn-ui-login-prompt": "ご使用の認証用デバイスをタッチするか、ブラウザーの指示に従ってください。",
+	"webauthn-ui-add-key": "キーを追加",
+	"webauthn-error-browser-unsupported": "このブラウザーは WebAuthentication に対応していないか、このウェブサイトに対応していません。別のブラウザーで再試行してください。[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support もっと詳しく]",
+	"webauthn-error-browser-unsupported-console": "このブラウザーは WebAuthentication に対応していないか、このウェブサイトに対応していません。",
+	"webauthn-error-auth-generic": "認証プロセスは中断されました。やり直してください。",
+	"webauthn-error-reg-generic": "キーを登録できませんでした。登録の手順をやり直してください。",
+	"oathauth-webauthn-registered-keys-section-name": "登録済みのキー",
+	"webuathn-ui-remove-key": "除去",
+	"webauthn-error-module-not-enabled": "モジュール「$1」は{{GENDER:$2|利用者「$2」}}に対して有効化されていません。",
+	"webauthn-error-verification-failed": "WebAuthn 検証に失敗しました。",
+	"webauthn-error-credentials-missing": "WebAuthn 認証情報が送信されませんでした。",
+	"webauthn-error-cannot-register": "{{GENDER:$1|利用者「$1」}}は新しい証明書を登録できません。",
+	"webauthn-error-invalid-new-key": "モジュールが返した新しいキーは適切なタイプではありません。",
+	"webauthn-error-registration-failed": "新しいキーの登録に失敗しました。",
+	"webauthn-ui-key-register-help": "キーのニックネームを選択してください:",
+	"webauthn-error-cannot-remove-key": "キーを除去できません。",
+	"webauthn-error-get-authinfo-fail": "認証情報を取得できませんでした。",
+	"oathauth-webauthn-add-key-section-name": "新しい WebAuthn キーを登録する",
+	"webauthn-error-get-reginfo-fail": "登録情報を取得できませんでした。",
+	"webauthn-module-description": "WebAuthnは実験段階です。現時点ではこの認証方法において、認証デバイスを紛失、または破損した場合、復旧する方法は提供されていません。\n\n[https://ja.wikipedia.org/wiki/WebAuthn WebAuthnの詳細はこちら]",
+	"webauthn-ui-reload-page-label": "ページを再読み込み",
+	"webauthn-authentication-info-label": "認証データ",
+	"webauthn-authentication-info-help": "資格情報取得のためにクライアントに渡される認証データ",
+	"webauthn-credential-label": "利用者認証情報",
+	"webauthn-credential-help": "認証データに基づく利用者認証情報",
+	"webauthn-add-security-key": "セキュリティキーを追加",
+	"webauthn-auth-switch-module-label": "セキュリティキーを使用"
+}

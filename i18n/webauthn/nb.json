@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"webauthn-desc": "Gir autentiseringsstøtte med WebAuthn-protokollen",
+	"webauthn-module-label": "Sikkerhetsnøkkel",
+	"webauthn-javascript-required": "Du må aktivere JavaScript i nettleseren din for å bruke WebAuthn.",
+	"webauthn-ui-login-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren.",
+	"webauthn-ui-add-key": "Legg til nøkkel",
+	"webauthn-error-browser-unsupported": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet. Prøv igjen med en annen nettleser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Les mer]",
+	"webauthn-error-browser-unsupported-console": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet.",
+	"webauthn-error-auth-generic": "Autentiseringsprosessen ble avbrutt. Begynn på nytt.",
+	"webauthn-error-reg-generic": "Kunne ikke bekrefte nøkkelen din. Begynn prosessen på nytt.",
+	"oathauth-webauthn-registered-keys-section-name": "Registrerte nøkler",
+	"webuathn-ui-remove-key": "Fjern",
+	"webauthn-error-module-not-enabled": "Modulen «$1» er ikke slått på for {{GENDER:$2|brukeren}} «$2».",
+	"webauthn-error-verification-failed": "WebAuthn-bekreftelse mislyktes.",
+	"webauthn-error-credentials-missing": "WebAuthn-akkreditivene ble ikke sendt.",
+	"webauthn-error-cannot-register": "{{GENDER:$1|Brukeren}} «$1» kan ikke registrere nye akkreditiver.",
+	"webauthn-error-invalid-new-key": "Den nye nøkkelen returnert av modulen er ikke av den påkrevde typen.",
+	"webauthn-error-registration-failed": "Registrering av ny nøkkel mislyktes.",
+	"webauthn-ui-key-register-help": "Velg et kallenavn for nøkkelen din:",
+	"webauthn-error-cannot-remove-key": "Nøkkelen kan ikke fjernes.",
+	"webauthn-error-get-authinfo-fail": "Autentiseringsinformasjon kunne ikke hentes.",
+	"oathauth-webauthn-add-key-section-name": "Registrer ny WebAuthn-nøkkel",
+	"webauthn-error-get-reginfo-fail": "Regisetreringsinformasjon kunne ikke hentes.",
+	"webauthn-module-description": "WebAuthn er eksperimentelt. Det er for tiden ingen måte å gjenopprette tapte eller skadde autentiseringsenheter for denne metoden.\n\n[https://en.wikipedia.org/wiki/WebAuthn Lær mer om WebAuthn]",
+	"webauthn-ui-reload-page-label": "Last siden på nytt",
+	"webauthn-authentication-info-label": "Autentiseringsdata",
+	"webauthn-authentication-info-help": "Autentiseringsdata sendt til klienten for henting av legitimasjon",
+	"webauthn-credential-label": "Brukerlegitimasjon",
+	"webauthn-credential-help": "Brukerlegitimasjon basert på autentiseringsdata",
+	"webauthn-add-security-key": "Legg til en sikkerhetsnøkkel",
+	"webauthn-auth-switch-module-label": "Bruk sikkerhetsnøkkel"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-webauthn-summary": "API-Modul zur Kommunikation zwischen Server und Client während des Registrierungs-Authentifizierungsprozesses.",
+	"apihelp-webauthn-param-func": "Name der gewünschten Funktion, die ausgeführt werden soll.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Authentifizierungsinformationen.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Registrierungsinformationen.",
+	"apihelp-webauthn-paramvalue-func-passkeymode": "Ob sich der zu registrierende Schlüssel im Passkey-Modus befindet. (Nur für getRegisterInfo.)"
+}

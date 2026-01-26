@@ -2,7 +2,10 @@
 	"require": {
 		"christian-riesen/base32": "^1.4.0",
 		"endroid/qr-code": "6.0.9",
-		"jakobo/hotp-php": "2.0.0"
+		"jakobo/hotp-php": "2.0.0",
+		"okvpn/clock-lts": "^1.0.0",
+		"psr/http-message": "^1.0 || ^2.0",
+		"web-auth/webauthn-lib": "^4.9.2"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "49.0.0",
@@ -13,6 +16,9 @@
 	},
 	"suggest": {
 		"ext-sodium": "Used to encrypt OTP secrets"
+	},
+	"replace": {
+		"paragonie/random_compat": "v9.99.99"
 	},
 	"scripts": {
 		"lint": "parallel-lint . --exclude vendor --exclude node_modules",

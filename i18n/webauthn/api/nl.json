@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-webauthn-summary": "API-module om te communiceren tussen server en cliënt tijdens het registratie-/authenticatieproces.",
+	"apihelp-webauthn-param-func": "Naam van de uit te voeren functie.",
+	"apihelp-webauthn-paramvalue-func-getauthinfo": "Authenticatie-informatie.",
+	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Registratie-informatie."
+}
