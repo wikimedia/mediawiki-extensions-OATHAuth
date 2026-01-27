@@ -4,7 +4,6 @@
 			"Dejan Savuljesku <savuljesku@hallowelt.com>"
 		]
 	},
-	"webauthn-desc": "Provides authentication support using WebAuthn protocol",
 	"webauthn-module-label": "Security key",
 	"webauthn-javascript-required": "JavaScript must be enabled in your browser to use a security key.",
 	"webauthn-ui-login-prompt": "Please touch your security key or follow the instructions from the browser.",
