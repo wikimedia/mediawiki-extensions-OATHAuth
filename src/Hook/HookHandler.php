@@ -2,18 +2,22 @@
 
 namespace MediaWiki\Extension\OATHAuth\Hook;
 
+use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\WebAuthn\Auth\WebAuthnAuthenticationRequest;
+use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 use MediaWiki\Message\Message;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
@@ -32,6 +36,7 @@ class HookHandler implements
 	AuthChangeFormFieldsHook,
 	GetPreferencesHook,
 	getUserPermissionsErrorsHook,
+	ResourceLoaderGetConfigVarsHook,
 	UserEffectiveGroupsHook,
 	UserGetRightsHook,
 	UserRequirementsConditionHook
@@ -107,6 +112,14 @@ class HookHandler implements
 				];
 				$extraWeight++;
 			}
+		}
+
+		$req = AuthenticationRequest::getRequestByClass( $requests, WebAuthnAuthenticationRequest::class );
+		if ( $req ) {
+			$formDescriptor['webauthn-nojs'] = [
+				'class' => NoJsInfoField::class,
+				'weight' => -50,
+			];
 		}
 
 		return true;
@@ -296,5 +309,10 @@ class HookHandler implements
 
 		$oathUser = $this->userRepo->findByUser( $user );
 		$result = $oathUser->isTwoFactorAuthEnabled();
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
+		$vars['wgWebAuthnLimitPasskeysToRoaming'] = $config->get( 'WebAuthnLimitPasskeysToRoaming' );
 	}
 }

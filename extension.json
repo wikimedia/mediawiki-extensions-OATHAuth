@@ -90,11 +90,11 @@
 		"OATHAuthAlias": "OATHAuth.alias.php"
 	},
 	"Hooks": {
-		"AuthChangeFormFields": [ "main", "WebAuthnHooks" ],
+		"AuthChangeFormFields": "main",
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"LoadExtensionSchemaUpdates": "updater",
-		"ResourceLoaderGetConfigVars": "WebAuthnHooks",
+		"ResourceLoaderGetConfigVars": "main",
 		"UserEffectiveGroups": "main",
 		"UserGetRights": "main",
 		"UserRequirementsCondition": "main",
@@ -120,9 +120,6 @@
 			"services": [
 				"DBLoadBalancer"
 			]
-		},
-		"WebAuthnHooks": {
-			"class": "MediaWiki\\Extension\\WebAuthn\\Hooks"
 		}
 	},
 	"MessagesDirs": {

@@ -5,7 +5,7 @@
 			"Tyler Romeo <tylerromeo@gmail.com>"
 		]
 	},
-	"oathauth-desc": "Provides authentication support using HMAC based one-time passwords",
+	"oathauth-desc": "Provides authentication support using HMAC based one-time passwords and the WebAuthn protocol",
 	"disableoathforuser": "Disable user's two-factor authentication",
 	"verifyoathforuser": "Verify two-factor authentication status",
 	"oath": "OATHAuth",

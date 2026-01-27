@@ -22,7 +22,6 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserGroupManager;
@@ -319,10 +318,7 @@ class OATHManage extends SpecialPage {
 
 		// Passkeys section
 		$passkeySection = '';
-		if (
-			$this->getConfig()->get( 'OATHNewPasskeyFeatures' ) &&
-			MediaWikiServices::getInstance()->getExtensionRegistry()->isLoaded( 'WebAuthn' )
-		) {
+		if ( $this->getConfig()->get( 'OATHNewPasskeyFeatures' ) ) {
 			$passkeyAccordions = '';
 			$passkeyPlaceholder = '';
 			$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
