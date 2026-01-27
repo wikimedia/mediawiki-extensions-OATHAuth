@@ -4,7 +4,7 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn\Key;
+namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Cose\Algorithm\Manager;
 use Cose\Algorithm\Signature\ECDSA\ES256;
@@ -16,13 +16,13 @@ use Cose\Algorithm\Signature\RSA\RS512;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\MWException;
+use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
 use MediaWiki\Extension\OATHAuth\AuthKey;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\AAGUIDLookup;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
-use MediaWiki\Extension\WebAuthn\Request;
-use MediaWiki\Extension\WebAuthn\WebAuthnCredentialRepository;
+use MediaWiki\Extension\OATHAuth\WebAuthnCredentialRepository;
+use MediaWiki\Extension\OATHAuth\WebAuthnRequest;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
@@ -309,7 +309,7 @@ class WebAuthnKey extends AuthKey {
 				throw new MWException( 'webauthn-invalid-response' );
 			}
 
-			$request = Request::newFromWebRequest( $this->context->getRequest() );
+			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
 
 			$authenticatorAttestationResponseValidator->check(
 				$response,
@@ -384,7 +384,7 @@ class WebAuthnKey extends AuthKey {
 				throw new RuntimeException( 'Not an authenticator assertion response' );
 			}
 
-			$request = Request::newFromWebRequest( $this->context->getRequest() );
+			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
 				$publicKeyCredential->rawId,

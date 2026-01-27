@@ -1,12 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn;
+namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Config\ConfigException;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
-use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
+use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use ParagonIE\ConstantTime\Base64UrlSafe;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;

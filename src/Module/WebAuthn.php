@@ -1,20 +1,20 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\Module;
+namespace MediaWiki\Extension\OATHAuth\Module;
 
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\OATHAuth\Auth\WebAuthnSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnAddKeyForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
-use MediaWiki\Extension\WebAuthn\Auth\WebAuthnSecondaryAuthenticationProvider;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnAddKeyForm;
-use MediaWiki\Extension\WebAuthn\HTMLForm\WebAuthnManageForm;
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
 use MediaWiki\Message\Message;
 
 class WebAuthn implements IModule {

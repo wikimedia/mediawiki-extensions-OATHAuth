@@ -3,7 +3,7 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn\Api;
+namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
@@ -11,9 +11,9 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Exception\MWException;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\WebAuthn\Authenticator;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn as WebAuthnModule;
+use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -165,7 +165,7 @@ class WebAuthn extends ApiBase {
 	 * @throws MWException
 	 */
 	protected function getAuthInfo(): array {
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest() );
 		$canAuthenticate = $authenticator->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			$this->dieWithError( $canAuthenticate->getMessage() );
@@ -186,7 +186,7 @@ class WebAuthn extends ApiBase {
 	 */
 	protected function getRegisterInfo(): array {
 		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
-		$authenticator = Authenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
+		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
 		$canRegister = $authenticator->canRegister();
 		if ( !$canRegister->isGood() ) {
 			$this->dieWithError( $canRegister->getMessage() );
@@ -220,7 +220,7 @@ class WebAuthn extends ApiBase {
 		}
 		$credential->friendlyName = $friendlyName ?? '';
 
-		$authenticator = Authenticator::factory(
+		$authenticator = WebAuthnAuthenticator::factory(
 			$this->getUser(),
 			$this->getRequest(),
 			$passkeyMode

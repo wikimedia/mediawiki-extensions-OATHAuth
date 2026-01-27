@@ -3,13 +3,13 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn\Auth;
+namespace MediaWiki\Extension\OATHAuth\Auth;
 
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 
 class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
@@ -20,7 +20,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 
 	/** @inheritDoc */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = Authenticator::factory( $user, $this->manager->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $user, $this->manager->getRequest() );
 		if ( !$authenticator->isEnabled() ) {
 			return AuthenticationResponse::newAbstain();
 		}
@@ -41,7 +41,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = Authenticator::factory( $user, $this->manager->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $user, $this->manager->getRequest() );
 		$canAuthenticate = $authenticator->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			return AuthenticationResponse::newFail( $canAuthenticate->getMessage() );

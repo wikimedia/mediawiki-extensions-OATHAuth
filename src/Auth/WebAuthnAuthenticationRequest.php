@@ -3,7 +3,7 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn\Auth;
+namespace MediaWiki\Extension\OATHAuth\Auth;
 
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Language\RawMessage;

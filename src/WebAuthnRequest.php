@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn;
+namespace MediaWiki\Extension\OATHAuth;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use MediaWiki\Request\WebRequest;
@@ -12,7 +12,7 @@ use MediaWiki\Request\WebRequest;
  * It does not provide full-fledged ServerRequest, just the
  * functionality we actually need.
  */
-class Request extends ServerRequest {
+class WebAuthnRequest extends ServerRequest {
 
 	public static function newFromWebRequest( WebRequest $request ): self {
 		return new static(

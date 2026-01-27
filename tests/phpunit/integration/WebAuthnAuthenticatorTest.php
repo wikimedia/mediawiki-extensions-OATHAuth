@@ -1,17 +1,17 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
-use MediaWiki\Extension\WebAuthn\Authenticator;
+use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @covers \MediaWiki\Extension\WebAuthn\Authenticator
+ * @covers \MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator
  * @group Database
  */
-class AuthenticatorTest extends MediaWikiIntegrationTestCase {
+class WebAuthnAuthenticatorTest extends MediaWikiIntegrationTestCase {
 
 	private function getMockUser() {
 		$user = $this->createMock( User::class );
@@ -24,20 +24,20 @@ class AuthenticatorTest extends MediaWikiIntegrationTestCase {
 
 	public function testFactory() {
 		$this->assertInstanceOf(
-			Authenticator::class,
-			Authenticator::factory( $this->getMockUser() ),
+			WebAuthnAuthenticator::class,
+			WebAuthnAuthenticator::factory( $this->getMockUser() ),
 		);
 	}
 
 	public function testIsEnabled() {
 		$this->assertFalse(
-			Authenticator::factory( $this->getMockUser() )->isEnabled()
+			WebAuthnAuthenticator::factory( $this->getMockUser() )->isEnabled()
 		);
 	}
 
 	public function testInPasskeyMode() {
 		$this->setMwGlobals( 'wgOATHNewPasskeyFeatures', true );
-		$auth = Authenticator::factory( $this->getMockUser(), null, true );
+		$auth = WebAuthnAuthenticator::factory( $this->getMockUser(), null, true );
 		$res = TestingAccessWrapper::newFromObject( $auth )->inPasskeyMode();
 		$this->assertTrue( $res );
 	}

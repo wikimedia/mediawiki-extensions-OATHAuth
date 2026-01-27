@@ -1,12 +1,12 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
-use MediaWiki\Extension\WebAuthn\Key\WebAuthnKey;
+use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @covers \MediaWiki\Extension\WebAuthn\Key\WebAuthnKey
+ * @covers \MediaWiki\Extension\OATHAuth\Key\WebAuthnKey
  */
 class WebAuthnKeyTest extends MediaWikiIntegrationTestCase {
 

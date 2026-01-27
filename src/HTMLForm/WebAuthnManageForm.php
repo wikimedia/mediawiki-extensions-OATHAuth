@@ -1,18 +1,17 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\HTMLForm;
+namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Exception\MWException;
-use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
+use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
+use MediaWiki\Extension\OATHAuth\HTMLField\RegisteredKeyLayout;
 use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
-use MediaWiki\Extension\WebAuthn\HTMLField\RegisteredKeyLayout;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
 use MediaWiki\SpecialPage\SpecialPage;
 use OOUI\ButtonWidget;
 

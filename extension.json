@@ -62,14 +62,13 @@
 						"OATHUserRepository"
 					]
 				},
-				"webauthn": "MediaWiki\\Extension\\WebAuthn\\Module\\WebAuthn::factory"
+				"webauthn": "MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn::factory"
 			}
 		}
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\OATHAuth\\": "src/",
-		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/",
-		"MediaWiki\\Extension\\WebAuthn\\": "src/"
+		"MediaWiki\\Extension\\OATHAuth\\Maintenance\\": "maintenance/"
 	},
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\OATHAuth\\Tests\\Integration\\": "tests/phpunit/integration/",
@@ -410,7 +409,7 @@
 			]
 		},
 		"webauthn": {
-			"class": "\\MediaWiki\\Extension\\WebAuthn\\Api\\WebAuthn",
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\WebAuthn",
 			"services": [
 				"AuthManager"
 			]

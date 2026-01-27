@@ -1,18 +1,15 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\HTMLForm;
+namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
-use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
-use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
+use MediaWiki\Extension\OATHAuth\HTMLField\AddKeyLayout;
+use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\HTMLField\AddKeyLayout;
-use MediaWiki\Extension\WebAuthn\HTMLField\NoJsInfoField;
 
 class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 

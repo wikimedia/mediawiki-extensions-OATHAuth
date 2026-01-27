@@ -3,7 +3,7 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn;
+namespace MediaWiki\Extension\OATHAuth;
 
 /**
  * Lookup table for mapping AAGUIDs to human-readable device names.

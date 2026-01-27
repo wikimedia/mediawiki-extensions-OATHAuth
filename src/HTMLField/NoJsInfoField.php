@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\WebAuthn\HTMLField;
+namespace MediaWiki\Extension\OATHAuth\HTMLField;
 
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;

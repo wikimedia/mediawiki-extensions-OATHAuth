@@ -4,7 +4,7 @@
  * @license GPL-2.0-or-later
  */
 
-namespace MediaWiki\Extension\WebAuthn;
+namespace MediaWiki\Extension\OATHAuth;
 
 use Cose\Algorithms;
 use MediaWiki\Config\ConfigException;
@@ -14,10 +14,7 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\WebAuthn\Module\WebAuthn;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -43,7 +40,7 @@ use Webauthn\PublicKeyCredentialUserEntity;
  * proxy, connecting the users to their keys and carrying out
  * the authentication process
  */
-class Authenticator {
+class WebAuthnAuthenticator {
 
 	use KeySessionStorageTrait;
 
