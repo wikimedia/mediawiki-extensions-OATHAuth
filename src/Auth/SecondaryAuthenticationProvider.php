@@ -29,6 +29,11 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
+		if ( $this->manager->getAuthenticationSessionData( PasskeyPrimaryAuthenticationProvider::SUCCESS_KEY ) ) {
+			// The user logged in with a passwordless passkey; skip 2FA
+			return AuthenticationResponse::newAbstain();
+		}
+
 		$authUser = OATHAuthServices::getInstance()->getUserRepository()->findByUser( $user );
 
 		if ( !$authUser->isTwoFactorAuthEnabled() ) {

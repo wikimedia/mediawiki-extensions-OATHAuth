@@ -1,6 +1,7 @@
-mw.ext.webauthn.Authenticator = function ( authInfo ) {
+mw.ext.webauthn.Authenticator = function ( authInfo = null, passwordless = false ) {
 	OO.EventEmitter.call( this );
-	this.authInfo = authInfo || null;
+	this.authInfo = authInfo;
+	this.passwordless = passwordless;
 };
 
 OO.initClass( mw.ext.webauthn.Authenticator );
@@ -50,12 +51,20 @@ mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
 	const publicKey = this.authInfo;
 	publicKey.challenge = mw.ext.webauthn.util.base64ToByteArray( publicKey.challenge );
 
-	publicKey.allowCredentials = publicKey.allowCredentials.map( ( data ) => Object.assign( data, {
-		id: mw.ext.webauthn.util.base64ToByteArray( data.id )
-	} ) );
+	if ( publicKey.allowCredentials ) {
+		publicKey.allowCredentials = publicKey.allowCredentials.map(
+			( data ) => Object.assign( data, {
+				id: mw.ext.webauthn.util.base64ToByteArray( data.id )
+			} )
+		);
+	}
 
 	mw.log( 'PublicKeyCredentialRequestOptions: ', publicKey );
-	return navigator.credentials.get( { publicKey: publicKey } ).then( ( credential ) => {
+	const options = { publicKey };
+	if ( this.passwordless ) {
+		options.mediation = 'conditional';
+	}
+	return navigator.credentials.get( options ).then( ( credential ) => {
 		try {
 			mw.log( 'Credential:\n' + JSON.stringify( credential, null, 4 ) );
 		} catch ( e ) {

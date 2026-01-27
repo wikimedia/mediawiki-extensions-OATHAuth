@@ -16,6 +16,7 @@
 	"oathauth-webauthn-ui-remove-key": "Remove",
 	"oathauth-webauthn-error-module-not-enabled": "Module \"$1\" is not enabled for {{GENDER:$2|user \"$2\"}}.",
 	"oathauth-webauthn-error-verification-failed": "WebAuthn verification failed.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Passkey verification failed.",
 	"oathauth-webauthn-error-credentials-missing": "WebAuthn credentials were not sent.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|User \"$1\"}} cannot register a new credential.",
 	"oathauth-webauthn-error-invalid-new-key": "New key returned by the module is not of required type.",

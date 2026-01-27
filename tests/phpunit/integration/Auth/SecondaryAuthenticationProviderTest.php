@@ -73,7 +73,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$provider = new SecondaryAuthenticationProvider();
 		$provider->init(
 			new NullLogger(),
-			$this->createNoOpMock( AuthManager::class ),
+			$this->createNoOpMock( AuthManager::class, [ 'getAuthenticationSessionData' ] ),
 			$this->createNoOpMock( HookContainer::class ),
 			new HashConfig( [ 'OATHPrioritizedModules' => [] ] ),
 			$this->createNoOpMock( UserNameUtils::class )

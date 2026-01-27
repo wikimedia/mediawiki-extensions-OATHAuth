@@ -20,6 +20,8 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
+use Throwable;
+use Webauthn\AuthenticatorAssertionResponse;
 use Webauthn\AuthenticatorSelectionCriteria;
 use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
@@ -127,6 +129,28 @@ class WebAuthnAuthenticator {
 			'json' => $serializer->serialize( $authInfo, 'json' ),
 			'raw' => $authInfo
 		] );
+	}
+
+	public function determineUser( string $credential ): ?OATHUser {
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		try {
+			$publicKeyCredential = $serializer->deserialize(
+				$credential,
+				PublicKeyCredential::class,
+				'json',
+			);
+		} catch ( Throwable ) {
+			return null;
+		}
+		$response = $publicKeyCredential->response;
+		if ( !$response instanceof AuthenticatorAssertionResponse ) {
+			return null;
+		}
+		$userHandle = $response->userHandle;
+		if ( $userHandle === null ) {
+			return null;
+		}
+		return $this->userRepo->findByUserHandle( $userHandle );
 	}
 
 	public function continueAuthentication(
@@ -304,7 +328,9 @@ class WebAuthnAuthenticator {
 	 */
 	private function getPendingRequestWithChallenge( string $returnClass, string $challenge ) {
 		$requests = $this->getPendingRequests( $returnClass );
-		return array_find( $requests, static fn ( $request ) => $request->challenge === $challenge );
+		// We'd like to use array_find here, but that's PHP 8.4+
+		$matching = array_filter( $requests, static fn ( $request ) => $request->challenge === $challenge );
+		return $matching ? reset( $matching ) : null;
 	}
 
 	private function filterExpiredRequests( array $requests ): array {

@@ -17,6 +17,7 @@
 	"oathauth-webauthn-ui-remove-key": "Button label to remove a single WebAuthn key",
 	"oathauth-webauthn-error-module-not-enabled": "Error message when authentication/registration is attempted with module not enabled for the user. \n$1 - module name\n$2 - user",
 	"oathauth-webauthn-error-verification-failed": "Error message when verification of the WebAuthn key was not successful",
+	"oathauth-webauthn-error-passkey-verification-failed": "Error message when verification of a passkey was not successful during passwordless login",
 	"oathauth-webauthn-error-credentials-missing": "Error message when the WebAuthn key was not sent by the user",
 	"oathauth-webauthn-error-cannot-register": "Error message when user cannot register new key.\n$1 - username",
 	"oathauth-webauthn-error-invalid-new-key": "Error message when created instance of WebAuthn is not of appropriate type",

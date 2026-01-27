@@ -13,6 +13,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\Permissions\PermissionManager;
@@ -35,6 +36,7 @@ use Wikimedia\Message\ListType;
 
 class HookHandler implements
 	AuthChangeFormFieldsHook,
+	BeforePageDisplayHook,
 	GetPreferencesHook,
 	getUserPermissionsErrorsHook,
 	ReadPrivateUserRequirementsConditionHook,
@@ -122,6 +124,16 @@ class HookHandler implements
 				'class' => NoJsInfoField::class,
 				'weight' => -50,
 			];
+		}
+
+		if ( $this->config->get( 'OATHPasswordlessLogin' ) && isset( $fieldInfo['username'] ) ) {
+			$formDescriptor['username']['autocomplete'] = 'username webauthn';
+
+			// HACK autofocus the username even when it's prepopulated
+			$formDescriptor['username']['autofocus'] = true;
+			if ( isset( $formDescriptor['password']['autofocus'] ) ) {
+				unset( $formDescriptor['password']['autofocus'] );
+			}
 		}
 
 		return true;
@@ -318,6 +330,16 @@ class HookHandler implements
 	): void {
 		if ( in_array( APCOND_OATH_HAS2FA, $conditions ) ) {
 			$this->oathLogger->logImplicitVerification( $performer, $target );
+		}
+	}
+
+	/** @inheritDoc */
+	public function onBeforePageDisplay( $out, $skin ): void {
+		if (
+			$this->config->get( 'OATHPasswordlessLogin' ) &&
+			$out->getTitle()->isSpecial( 'Userlogin' )
+		) {
+			$out->addModules( 'ext.webauthn.passwordlessLogin' );
 		}
 	}
 }

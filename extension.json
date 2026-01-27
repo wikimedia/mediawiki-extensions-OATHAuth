@@ -81,6 +81,18 @@
 		"MediaWiki\\Extension\\OATHAuth\\Tests\\Unit\\": "tests/phpunit/unit/"
 	},
 	"AuthManagerAutoConfig": {
+		"primaryauth": {
+			"PasskeyPrimaryAuthenticationProvider": {
+				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\PasskeyPrimaryAuthenticationProvider",
+				"services": [
+					"WebAuthnAuthenticator",
+					"OATHUserRepository",
+					"OATHAuthLogger",
+					"UserFactory"
+				],
+				"sort": 50
+			}
+		},
 		"secondaryauth": {
 			"OATHSecondaryAuthenticationProvider": {
 				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\SecondaryAuthenticationProvider",
@@ -96,6 +108,7 @@
 	},
 	"Hooks": {
 		"AuthChangeFormFields": "main",
+		"BeforePageDisplay": "main",
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"LoadExtensionSchemaUpdates": "updater",
@@ -176,6 +189,10 @@
 			"value": [],
 			"description": "An array of page names, where user can ask to have themselves removed from groups that require 2FA (keyed by the group name). The pages will be linked in the notice about 2FA being required for user. If there's no entry for the relevant group, key '*' will be used."
 		},
+		"OATHPasswordlessLogin": {
+			"value": false,
+			"description": "Allow passwordless login with passkeys"
+		},
 		"WebAuthnRelyingPartyName": {
 			"value": null
 		},
@@ -216,6 +233,16 @@
 			],
 			"messages": [
 				"oathauth-recoverycodes-copy-success"
+			]
+		},
+		"ext.webauthn.passwordlessLogin": {
+			"scripts": [
+				"webauthn/util/Authenticator.js",
+				"webauthn/ui/LoginForm.js",
+				"webauthn/passwordlessLogin.js"
+			],
+			"dependencies": [
+				"ext.webauthn.ui.base"
 			]
 		},
 		"ext.oath.manage": {
