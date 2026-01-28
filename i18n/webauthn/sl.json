@@ -5,7 +5,6 @@
 			"Upwinxp"
 		]
 	},
-	"webauthn-desc": "Zagotavlja avtentikacijsko podporo s protokolom WebAuthn",
 	"webauthn-module-label": "Varnostni ključ",
 	"webauthn-javascript-required": "Za uporabo WebAuthn mora biti v vašem brskalniku omogočen JavaScript.",
 	"webauthn-ui-login-prompt": "Dotaknite se naprave za preverjanje ali sledite navodilom v brskalniku.",

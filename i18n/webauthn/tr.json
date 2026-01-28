@@ -8,7 +8,6 @@
 			"Vito Genovese"
 		]
 	},
-	"webauthn-desc": "WebAuthn protokolünü kullanarak kimlik doğrulama desteği sağlar",
 	"webauthn-module-label": "Güvenlik anahtarı",
 	"webauthn-javascript-required": "Güvenlik anahtarı kullanabilmek için tarayıcınızda JavaScript’in etkinleştirilmiş olması gerekir.",
 	"webauthn-ui-login-prompt": "Lütfen güvenlik anahtarınıza dokunun ya da tarayıcının verdiği talimatları izleyin.",

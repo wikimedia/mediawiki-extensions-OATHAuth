@@ -10,7 +10,6 @@
 			"Waki285"
 		]
 	},
-	"webauthn-desc": "WebAuthn を用いた認証サポートを提供する",
 	"webauthn-module-label": "セキュリティキー",
 	"webauthn-javascript-required": "WebAuthn を使用するには、ブラウザで JavaScript を有効化する必要があります。",
 	"webauthn-ui-login-prompt": "ご使用の認証用デバイスをタッチするか、ブラウザーの指示に従ってください。",

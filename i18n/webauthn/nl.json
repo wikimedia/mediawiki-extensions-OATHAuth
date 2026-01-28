@@ -8,7 +8,6 @@
 			"Siebrand"
 		]
 	},
-	"webauthn-desc": "Biedt ondersteuning voor authenticatie met behulp van het protocol WebAuthn",
 	"webauthn-module-label": "Beveiligingssleutel",
 	"webauthn-javascript-required": "Om beveiligingssleutel te kunnen gebruiken, moet JavaScript in uw browser ingeschakeld zijn.",
 	"webauthn-ui-login-prompt": "Raak uw beveiligingssleutel aan of volg de instructies van de browser.",

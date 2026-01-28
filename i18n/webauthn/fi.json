@@ -4,7 +4,6 @@
 			"Samoasambia"
 		]
 	},
-	"webauthn-desc": "Tarjoaa tunnistautumismenetelmän käyttäen WebAuthn-protokollaa",
 	"webauthn-module-label": "Suojausavain",
 	"webauthn-javascript-required": "JavaScriptin on oltava käytössä selaimessasi käyttääksesi suojausavainta.",
 	"webauthn-ui-login-prompt": "Kosketa suojausavaintasi tai seuraa selaimen ohjeita.",

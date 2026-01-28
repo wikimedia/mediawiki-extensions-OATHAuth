@@ -6,7 +6,6 @@
 			"WikiPhoenix"
 		]
 	},
-	"webauthn-desc": "Tillhandahåller autentiseringssupport med WebAuthn-protokoll",
 	"webauthn-module-label": "Säkerhetsnyckel",
 	"webauthn-javascript-required": "JavaScript måste vara aktiverat i din webbläsare för att du ska kunna använda en säkerhetsnyckel.",
 	"webauthn-ui-login-prompt": "Tryck på din säkerhetsnyckel eller följ instruktionerna från webbläsaren.",

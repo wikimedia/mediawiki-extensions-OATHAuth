@@ -4,7 +4,6 @@
 			"Mosime"
 		]
 	},
-	"webauthn-desc": "E neela tshegetso ka netefatso ya ditaelo tsa web.",
 	"webauthn-ui-add-key": "Tsenya konopo",
 	"webauthn-error-browser-unsupported": "Browser e ga e amogele netefatso ka web kgotsa eka tswa e sena yona.",
 	"webuathn-ui-remove-key": "Tlosa",

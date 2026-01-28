@@ -4,7 +4,6 @@
 			"Joetaras"
 		]
 	},
-	"webauthn-desc": "Dèje 'nu supporte de autendicazione ausanne 'u protocolle WebAuthn",
 	"webauthn-module-label": "Autendicazione web (WebAuthn)",
 	"webauthn-ui-login-prompt": "Pe piacere tuècche 'a verifiche d'u dispositive tune o segue le 'struziune da 'u browser",
 	"webauthn-ui-add-key": "Aggiunge chiave",

@@ -5,7 +5,6 @@
 			"ItsaMeSandy"
 		]
 	},
-	"webauthn-desc": "Fornece suporte de autenticação usando o protocolo WebAuthn",
 	"webauthn-module-label": "Autenticação da internet (WebAuthn)",
 	"webauthn-ui-login-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'', por favor",
 	"webauthn-ui-add-key": "Adicionar chave",

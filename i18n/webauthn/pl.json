@@ -8,7 +8,6 @@
 			"Woytecr"
 		]
 	},
-	"webauthn-desc": "Dodaje wsparcie dla uwierzytelniania protokołem WebAuthn",
 	"webauthn-module-label": "Klucz zabezpieczeń",
 	"webauthn-javascript-required": "Aby korzystać z klucza zabezpieczającego, w przeglądarce musi być włączona obsługa JavaScriptu.",
 	"webauthn-ui-login-prompt": "Dotknij swojego klucza zabezpieczającego lub wykonaj instrukcje podane przez przeglądarkę.",

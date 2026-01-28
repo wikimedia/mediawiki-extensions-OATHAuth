@@ -9,7 +9,6 @@
 			"人间百态"
 		]
 	},
-	"webauthn-desc": "使用WebAuthn协议提供身份验证支持",
 	"webauthn-module-label": "安全密钥",
 	"webauthn-javascript-required": "您的浏览器必须启用JavaScript才能使用安全密钥。",
 	"webauthn-ui-login-prompt": "请触摸您的安全密钥或按照浏览器中的说明进行操作。",
@@ -39,6 +38,7 @@
 	"webauthn-credential-help": "基于身份验证数据的用户凭证",
 	"webauthn-add-security-key": "添加安全密钥",
 	"webauthn-auth-switch-module-label": "使用安全密钥",
+	"webauthn-auth-switch-module-label-passkey": "使用安全密钥或通行密钥",
 	"apierror-webauthn-module-missing": "WebAuthn模块不可用。",
 	"apierror-webauthn-missing-credential": "未提供任何凭证数据。",
 	"apierror-webauthn-invalid-credential": "凭证数据无效或格式错误。",

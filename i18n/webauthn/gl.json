@@ -5,7 +5,6 @@
 			"Toliño"
 		]
 	},
-	"webauthn-desc": "Ofrece soporte de autenticación mediante o protocolo WebAuthn",
 	"webauthn-module-label": "Chave de seguranza",
 	"webauthn-javascript-required": "Cómpre activar o JavaScript no navegador para usar unha chave de seguranza.",
 	"webauthn-ui-login-prompt": "Toca a túa chave de seguranza ou sigue as instrucións do navegador.",

@@ -4,7 +4,6 @@
 			"Bugoslav"
 		]
 	},
-	"webauthn-desc": "Omogućava autentifikacijsku potporu rabeći protokol WebAuthn",
 	"webauthn-module-label": "Mrežna autentifikacija (WebAuthn)",
 	"webauthn-ui-login-prompt": "Molimo Vas, tapšnite uređaj za verifikaciju ili slijedite upute u pregledniku",
 	"webauthn-ui-add-key": "Dodaj ključ",

@@ -4,7 +4,6 @@
 			"Pikne"
 		]
 	},
-	"webauthn-desc": "Võimaldab autentida kasutades WebAuthni protokolli.",
 	"webauthn-module-label": "Turbevõti",
 	"webauthn-ui-login-prompt": "Palun puuduta turbevõtit või järgi brauseris näidatud juhiseid.",
 	"webauthn-ui-add-key": "Lisa võti",

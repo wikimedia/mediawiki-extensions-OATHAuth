@@ -5,7 +5,6 @@
 			"Jlrb+"
 		]
 	},
-	"webauthn-desc": "Proporciona ajuda a l'autenticació amb el protocol WebAuthn",
 	"webauthn-module-label": "Autenticació per web (WebAuthn)",
 	"webauthn-ui-login-prompt": "Toca el teu dispositiu de verificació o segueix les instruccions del navegador",
 	"webauthn-ui-add-key": "Afegeix una clau",

@@ -6,7 +6,6 @@
 			"ديفيد"
 		]
 	},
-	"webauthn-desc": "يوفر دعم المصادقة باستخدام بروتوكول WebAuthn",
 	"webauthn-module-label": "مفتاح الأمان",
 	"webauthn-javascript-required": "يجب تفعيل جافا سكريبت في متصفحك لاستخدام مفتاح الأمان.",
 	"webauthn-ui-login-prompt": "يرجى لمس مفتاح الأمان الخاص بك أو اتباع التعليمات من المتصفح.",

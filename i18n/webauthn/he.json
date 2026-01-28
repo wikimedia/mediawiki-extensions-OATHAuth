@@ -5,7 +5,6 @@
 			"Guycn2"
 		]
 	},
-	"webauthn-desc": "מספק תמיכה באימות בפרוטוקול WebAuthn",
 	"webauthn-module-label": "מפתח אבטחה",
 	"webauthn-javascript-required": "יש להפעיל JavaScript בדפדפן שלך כדי להשתמש ב־WebAuthn.",
 	"webauthn-ui-login-prompt": "נא לגעת במכשיר האימות שלך או לעקוב אחר ההוראות בדפדפן.",

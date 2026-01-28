@@ -6,7 +6,6 @@
 			"Peterxy12"
 		]
 	},
-	"webauthn-desc": "提供使用WebAuthn協定的驗證支援",
 	"webauthn-module-label": "安全金鑰",
 	"webauthn-javascript-required": "您的瀏覽器必須啟用JavaScript才能使用安全金鑰。",
 	"webauthn-ui-login-prompt": "請輕觸您的安全金鑰或依照瀏覽器的指示說明。",

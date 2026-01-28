@@ -4,7 +4,6 @@
 			"Jon Harald Søby"
 		]
 	},
-	"webauthn-desc": "Gir autentiseringsstøtte med WebAuthn-protokollen",
 	"webauthn-module-label": "Sikkerhetsnøkkel",
 	"webauthn-javascript-required": "Du må aktivere JavaScript i nettleseren din for å bruke WebAuthn.",
 	"webauthn-ui-login-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren.",

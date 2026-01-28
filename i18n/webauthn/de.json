@@ -6,7 +6,6 @@
 			"Umherirrender"
 		]
 	},
-	"webauthn-desc": "Bietet Unterstützung bei der Authentifizierung mit dem WebAuthn-Protokoll",
 	"webauthn-module-label": "Sicherheitsschlüssel",
 	"webauthn-javascript-required": "JavaScript muss in deinem Browser aktiviert sein, um einen Sicherheitsschlüssel nutzen zu können.",
 	"webauthn-ui-login-prompt": "Bitte berühre deinen Sicherheitsschlüssel oder folge den Anweisungen des Browsers.",

@@ -8,7 +8,6 @@
 			"MarcoAurelio"
 		]
 	},
-	"webauthn-desc": "Brinda compatibilidad con la autenticación a través del protocolo WebAuthn",
 	"webauthn-module-label": "Autenticación web (WebAuthn)",
 	"webauthn-javascript-required": "Debe habilitar JavaScript en su navegador para utilizar una clave de seguridad.",
 	"webauthn-ui-login-prompt": "Por favor toque su clave de seguridad o siga las instrucciones del navegador.",

@@ -4,7 +4,6 @@
 			"Bjankuloski06"
 		]
 	},
-	"webauthn-desc": "Дава поддршка за заверка со протоколот WebAuthn",
 	"webauthn-module-label": "Безбедносен клуч",
 	"webauthn-javascript-required": "Во вашиот прелистувач мора да е овозможен JavaScript за да користите безбедносен клуч.",
 	"webauthn-ui-login-prompt": "Допрете на вашиот безбедносен клуч или проследете ги напатствијата од прелистувачот.",

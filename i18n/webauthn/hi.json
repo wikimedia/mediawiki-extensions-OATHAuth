@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saurmandal"
+		]
+	},
+	"webauthn-auth-switch-module-label-passkey": "सुरक्षा कुँजी या फिर पासकुँजी का प्रयोग करें"
+}

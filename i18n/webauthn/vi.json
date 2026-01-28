@@ -8,7 +8,6 @@
 			"Vinhtantran"
 		]
 	},
-	"webauthn-desc": "Hỗ trợ xác thực bằng giao thức WebAuthn",
 	"webauthn-module-label": "Khóa bảo mật",
 	"webauthn-javascript-required": "Bạn cần bật JavaScript trong trình duyệt để sử dụng khóa bảo mật.",
 	"webauthn-ui-login-prompt": "Vui lòng sử dụng khóa bảo mật của bạn hoặc làm theo hướng dẫn trên trình duyệt.",

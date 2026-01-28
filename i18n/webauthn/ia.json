@@ -4,7 +4,6 @@
 			"McDutchie"
 		]
 	},
-	"webauthn-desc": "Forni supporto de authentication usante le protocollo WebAuthn",
 	"webauthn-module-label": "Clave de securitate",
 	"webauthn-javascript-required": "JavaScript debe esser activate in tu navigator pro usar un clave de securitate.",
 	"webauthn-ui-login-prompt": "Per favor tocca tu clave de securitate o seque le instructiones del navigator.",

@@ -8,7 +8,6 @@
 			"Jeeputer"
 		]
 	},
-	"webauthn-desc": "پشتیبانی از تأیید اعتبار با استفاده از پروتکل WebAuthn را فراهم می‌کند",
 	"webauthn-module-label": "اصالت‌سنجی وب (WebAuthn)",
 	"webauthn-ui-add-key": "افزودن کلید",
 	"oathauth-webauthn-registered-keys-section-name": "کلیدهای ثبت‌شده",

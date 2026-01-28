@@ -4,7 +4,6 @@
 			"Nemoralis"
 		]
 	},
-	"webauthn-desc": "WebAuthn protokolundan istifadə edərək autentifikasiya dəstəyini təmin edir",
 	"webauthn-module-label": "Təhlükəsizlik açarı",
 	"webauthn-javascript-required": "Təhlükəsizlik açarı istifadə etmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
 	"webauthn-ui-login-prompt": "Zəhmət olmasa, təhlükəsizlik açarınıza toxunun və ya brauzerin təlimatlarına əməl edin.",
