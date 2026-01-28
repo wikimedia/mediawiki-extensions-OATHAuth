@@ -34,7 +34,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 			$request->setAuthInfo( $startAuthResult->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'webauthn-ui-login-prompt' ) );
+				wfMessage( 'oathauth-webauthn-ui-login-prompt' ) );
 		}
 		return AuthenticationResponse::newFail( $startAuthResult->getMessage() );
 	}
@@ -58,14 +58,14 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 			$request->setAuthInfo( $authenticator->startAuthentication()->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'webauthn-error-credentials-missing' ), 'error' );
+				wfMessage( 'oathauth-webauthn-error-credentials-missing' ), 'error' );
 		}
 
 		// Get credential retrieved from the client
 		$verificationData = $request->getSubmittedData();
 		if ( $verificationData['credential'] === '' ) {
 			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'webauthn-error-credentials-missing' ), 'error' );
+				wfMessage( 'oathauth-webauthn-error-credentials-missing' ), 'error' );
 		}
 
 		$authResult = $authenticator->continueAuthentication( $verificationData );
@@ -76,7 +76,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		foreach ( $authResult->getMessages() as $msg ) {
 			return AuthenticationResponse::newFail( wfMessage( $msg ) );
 		}
-		return AuthenticationResponse::newFail( wfMessage( 'webauthn-error-verification-failed' ) );
+		return AuthenticationResponse::newFail( wfMessage( 'oathauth-webauthn-error-verification-failed' ) );
 	}
 
 	protected function addModules() {

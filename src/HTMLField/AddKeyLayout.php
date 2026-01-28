@@ -26,7 +26,7 @@ class AddKeyLayout extends HTMLFormField {
 		] );
 		$button = new ButtonWidget( [
 			'flags' => [ 'primary', 'progressive' ],
-			'label' => wfMessage( 'webauthn-ui-add-key' )->plain(),
+			'label' => wfMessage( 'oathauth-webauthn-ui-add-key' )->plain(),
 			'disabled' => true,
 			'id' => 'button_add_key',
 			'infusable' => true

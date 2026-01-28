@@ -81,13 +81,13 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		return [
 			'nojs' => [
 				'class' => NoJsInfoField::class,
-				'section' => 'webauthn-add-key-section-name',
+				'section' => 'oathauth-webauthn-add-key-section-name',
 			],
 			'name-layout' => [
-				'label-message' => 'webauthn-ui-key-register-help',
+				'label-message' => 'oathauth-webauthn-ui-key-register-help',
 				'class' => AddKeyLayout::class,
 				'raw' => true,
-				'section' => 'webauthn-add-key-section-name'
+				'section' => 'oathauth-webauthn-add-key-section-name'
 			],
 		];
 	}

@@ -42,7 +42,7 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function getDisplayName(): Message {
-		return wfMessage( 'webauthn-module-label' );
+		return wfMessage( 'oathauth-webauthn-module-label' );
 	}
 
 	public function newKey( array $data = [] ): WebAuthnKey {
@@ -105,7 +105,7 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function getDescriptionMessage(): Message {
-		return wfMessage( 'webauthn-module-description' );
+		return wfMessage( 'oathauth-webauthn-module-description' );
 	}
 
 	/** @inheritDoc */
@@ -117,7 +117,7 @@ class WebAuthn implements IModule {
 	public function getAddKeyMessage(): ?Message {
 		return RequestContext::getMain()->getConfig()->get( 'WebAuthnNewCredsDisabled' ) ?
 			null :
-			wfMessage( 'webauthn-add-security-key' );
+			wfMessage( 'oathauth-webauthn-add-security-key' );
 	}
 
 	/** @inheritDoc */
@@ -127,6 +127,6 @@ class WebAuthn implements IModule {
 
 	/** @inheritDoc */
 	public function getLoginSwitchButtonMessage(): Message {
-		return wfMessage( 'webauthn-auth-switch-module-label-passkey' );
+		return wfMessage( 'oathauth-webauthn-auth-switch-module-label-passkey' );
 	}
 }

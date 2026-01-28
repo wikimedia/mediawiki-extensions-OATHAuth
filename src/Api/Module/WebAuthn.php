@@ -69,29 +69,37 @@ class WebAuthn extends ApiBase {
 	}
 
 	/** @inheritDoc */
+	protected function getSummaryMessage() {
+		return "apihelp-oathauth-webauthn-summary";
+	}
+
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'func' => [
 				ParamValidator::PARAM_TYPE => array_keys( $this->getRegisteredFunctions() ),
 				ParamValidator::PARAM_REQUIRED => true,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-func',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
-					'getAuthInfo' => 'apihelp-webauthn-paramvalue-func-getauthinfo',
-					'getRegisterInfo' => 'apihelp-webauthn-paramvalue-func-getregisterinfo',
-					'register' => 'apihelp-webauthn-paramvalue-func-register',
+					'getAuthInfo' => 'apihelp-oathauth-webauthn-paramvalue-func-getauthinfo',
+					'getRegisterInfo' => 'apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo',
+					'register' => 'apihelp-oathauth-webauthn-paramvalue-func-register',
 				],
 			],
 			'passkeyMode' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
 				ParamValidator::PARAM_REQUIRED => false,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-webauthn-paramvalue-func-passkeymode',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-passkeymode',
 			],
 			'credential' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-credential',
 			],
 			'friendlyname' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-friendlyname',
 			],
 		];
 	}
@@ -142,7 +150,7 @@ class WebAuthn extends ApiBase {
 		if ( isset( $functionConfig[ 'loginSecurityLevel' ] ) ) {
 			$status = $this->authManager->securitySensitiveOperationStatus( $functionConfig[ 'loginSecurityLevel' ] );
 			if ( $status !== AuthManager::SEC_OK ) {
-				$this->dieWithError( 'apierror-webauthn-reauthenticate' );
+				$this->dieWithError( 'apierror-oathauth-webauthn-reauthenticate' );
 			}
 		}
 	}
@@ -155,7 +163,7 @@ class WebAuthn extends ApiBase {
 		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
 		$module = $moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
 		if ( !( $module instanceof WebAuthnModule ) ) {
-			$this->dieWithError( 'apierror-webauthn-module-missing' );
+			$this->dieWithError( 'apierror-oathauth-webauthn-module-missing' );
 		}
 	}
 
@@ -211,12 +219,12 @@ class WebAuthn extends ApiBase {
 		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
 
 		if ( !$credentialJson ) {
-			$this->dieWithError( 'apierror-webauthn-missing-credential' );
+			$this->dieWithError( 'apierror-oathauth-webauthn-missing-credential' );
 		}
 
 		$credential = FormatJson::decode( $credentialJson );
 		if ( !is_object( $credential ) ) {
-			$this->dieWithError( 'apierror-webauthn-invalid-credential' );
+			$this->dieWithError( 'apierror-oathauth-webauthn-invalid-credential' );
 		}
 		$credential->friendlyName = $friendlyName ?? '';
 

@@ -261,9 +261,9 @@
 				"mediawiki.jqueryMsg"
 			],
 			"messages": [
-				"webauthn-error-browser-unsupported",
-				"webauthn-error-browser-unsupported-console",
-				"webauthn-ui-reload-page-label"
+				"oathauth-webauthn-error-browser-unsupported",
+				"oathauth-webauthn-error-browser-unsupported-console",
+				"oathauth-webauthn-ui-reload-page-label"
 			]
 		},
 		"ext.webauthn.ui.base.styles": {
@@ -279,8 +279,8 @@
 				"ext.webauthn.ui.base"
 			],
 			"messages": [
-				"webauthn-error-get-reginfo-fail",
-				"webauthn-error-reg-generic"
+				"oathauth-webauthn-error-get-reginfo-fail",
+				"oathauth-webauthn-error-reg-generic"
 			]
 		},
 		"ext.webauthn.register": {
@@ -305,8 +305,8 @@
 				"ext.webauthn.ui.base"
 			],
 			"messages": [
-				"webauthn-error-get-authinfo-fail",
-				"webauthn-error-auth-generic"
+				"oathauth-webauthn-error-get-authinfo-fail",
+				"oathauth-webauthn-error-auth-generic"
 			]
 		},
 		"ext.webauthn.manage": {
@@ -323,8 +323,8 @@
 				"ext.webauthn.ui.base"
 			],
 			"messages": [
-				"webauthn-error-get-authinfo-fail",
-				"webauthn-error-auth-generic"
+				"oathauth-webauthn-error-get-authinfo-fail",
+				"oathauth-webauthn-error-auth-generic"
 			]
 		}
 	},

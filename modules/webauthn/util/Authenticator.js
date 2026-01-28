@@ -11,7 +11,7 @@ mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
 	if ( this.authInfo === null ) {
 		this.getAuthInfo().done( ( response ) => {
 			if ( !response.webauthn.hasOwnProperty( 'auth_info' ) ) {
-				dfd.reject( 'webauthn-error-get-authinfo-fail' );
+				dfd.reject( 'oathauth-webauthn-error-get-authinfo-fail' );
 			}
 			this.authInfo = response.webauthn.auth_info;
 			this.authInfo = JSON.parse( this.authInfo );
@@ -42,7 +42,7 @@ mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( df
 		.catch( () => {
 			// This usually happens when the process gets interrupted
 			// - show generic interrupt error
-			dfd.reject( 'webauthn-error-auth-generic' );
+			dfd.reject( 'oathauth-webauthn-error-auth-generic' );
 		} );
 };
 

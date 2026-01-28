@@ -22,7 +22,7 @@ class NoJsInfoField extends HTMLInfoField {
 		$this->mParent->getOutput()->addModuleStyles( 'ext.webauthn.ui.base.styles' );
 		return new MessageWidget( [
 			'type' => 'error',
-			'label' => new HtmlSnippet( wfMessage( 'webauthn-javascript-required' )->parse() ),
+			'label' => new HtmlSnippet( wfMessage( 'oathauth-webauthn-javascript-required' )->parse() ),
 		] );
 	}
 
@@ -31,6 +31,6 @@ class NoJsInfoField extends HTMLInfoField {
 		// This style is used in the MediaWiki auth forms
 		$this->mParent->getOutput()->addModuleStyles( 'ext.webauthn.ui.base.styles' );
 		$this->mParent->getOutput()->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
-		return Html::errorBox( wfMessage( 'webauthn-javascript-required' )->parse() );
+		return Html::errorBox( wfMessage( 'oathauth-webauthn-javascript-required' )->parse() );
 	}
 }

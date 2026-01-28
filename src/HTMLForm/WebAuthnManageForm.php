@@ -56,7 +56,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 			'id' => 'button_add_key',
 			'flags' => [ 'progressive', 'primary' ],
 			'disabled' => true,
-			'label' => wfMessage( 'webauthn-ui-add-key' )->plain(),
+			'label' => wfMessage( 'oathauth-webauthn-ui-add-key' )->plain(),
 			'href' => SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL( [
 				'module' => 'webauthn',
 				'action' => WebAuthn::ACTION_ADD_KEY
@@ -76,7 +76,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	 */
 	public function onSubmit( array $formData ) {
 		// This is handled client-side via API
-		return [ 'webauthn-javascript-required' ];
+		return [ 'oathauth-webauthn-javascript-required' ];
 	}
 
 	/**
@@ -98,14 +98,14 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 				],
 				'raw' => true,
 				'class' => RegisteredKeyLayout::class,
-				'section' => 'webauthn-registered-keys-section-name'
+				'section' => 'oathauth-webauthn-registered-keys-section-name'
 			];
 		}
 
 		return [
 			'nojs' => [
 				'class' => NoJsInfoField::class,
-				'section' => 'webauthn-registered-keys-section-name',
+				'section' => 'oathauth-webauthn-registered-keys-section-name',
 			],
 		] + $registeredKeys;
 	}

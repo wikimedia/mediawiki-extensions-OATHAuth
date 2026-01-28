@@ -305,7 +305,7 @@ class WebAuthnKey extends AuthKey {
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->response;
 			if ( !$response instanceof AuthenticatorAttestationResponse ) {
-				throw new MWException( 'webauthn-invalid-response' );
+				throw new MWException( 'oathauth-webauthn-invalid-response' );
 			}
 
 			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );

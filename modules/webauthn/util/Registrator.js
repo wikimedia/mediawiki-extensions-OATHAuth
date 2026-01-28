@@ -14,7 +14,7 @@ mw.ext.webauthn.Registrator.prototype.register = function () {
 		this.getRegisterInfo().then(
 			( response ) => {
 				if ( !response.webauthn.hasOwnProperty( 'register_info' ) ) {
-					dfd.reject( 'webauthn-error-get-reginfo-fail' );
+					dfd.reject( 'oathauth-webauthn-error-get-reginfo-fail' );
 				}
 				this.registerData = response.webauthn.register_info;
 				this.registerData = JSON.parse( this.registerData );
@@ -48,7 +48,7 @@ mw.ext.webauthn.Registrator.prototype.registerWithRegisterInfo = function ( dfd 
 			mw.log.error( error );
 			// This usually happens when the process gets interrupted
 			// - show generic interrupt error
-			dfd.reject( 'webauthn-error-reg-generic' );
+			dfd.reject( 'oathauth-webauthn-error-reg-generic' );
 		} );
 };
 

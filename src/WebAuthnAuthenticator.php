@@ -107,7 +107,7 @@ class WebAuthnAuthenticator {
 	public function canAuthenticate(): Status {
 		if ( !$this->isEnabled() ) {
 			return Status::newFatal(
-				'webauthn-error-module-not-enabled',
+				'oathauth-webauthn-error-module-not-enabled',
 				$this->module->getName(),
 				$this->oathUser->getUser()->getName()
 			);
@@ -122,7 +122,7 @@ class WebAuthnAuthenticator {
 		}
 
 		return Status::newFatal(
-			'webauthn-error-cannot-register',
+			'oathauth-webauthn-error-cannot-register',
 			$this->oathUser->getUser()->getName()
 		);
 	}
@@ -176,7 +176,7 @@ class WebAuthnAuthenticator {
 		$this->logger->warning(
 			"Webauthn login failed for user {$this->oathUser->getUser()->getName()}"
 		);
-		return Status::newFatal( 'webauthn-error-verification-failed' );
+		return Status::newFatal( 'oathauth-webauthn-error-verification-failed' );
 	}
 
 	/**
@@ -223,7 +223,7 @@ class WebAuthnAuthenticator {
 				PublicKeyCredentialCreationOptions::class
 			);
 			if ( $registerInfo === null ) {
-				return Status::newFatal( 'webauthn-error-registration-failed' );
+				return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 			}
 		}
 
@@ -259,7 +259,7 @@ class WebAuthnAuthenticator {
 		} catch ( ErrorPageError $error ) {
 			return Status::newFatal( $error->getMessageObject() );
 		}
-		return Status::newFatal( 'webauthn-error-registration-failed' );
+		return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 	}
 
 	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {

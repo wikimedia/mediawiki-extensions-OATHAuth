@@ -5,8 +5,8 @@ mw.ext.webauthn.CredentialForm = function ( cfg ) {
 
 	if ( !window.PublicKeyCredential ) {
 		this.dieWithError(
-			'webauthn-error-browser-unsupported',
-			'webauthn-error-browser-unsupported-console'
+			'oathauth-webauthn-error-browser-unsupported',
+			'oathauth-webauthn-error-browser-unsupported-console'
 		);
 	}
 
@@ -39,7 +39,7 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 	} );
 
 	const reloadButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'webauthn-ui-reload-page-label' ).text()
+		label: mw.message( 'oathauth-webauthn-ui-reload-page-label' ).text()
 	} );
 	reloadButton.connect( this, {
 		click: function () {

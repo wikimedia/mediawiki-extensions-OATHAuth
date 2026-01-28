@@ -35,14 +35,14 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 			'auth_info' => [
 				'type' => 'hidden',
 				'value' => $this->authInfo,
-				'label' => wfMessage( 'webauthn-authentication-info-label' ),
-				'help' => wfMessage( 'webauthn-authentication-info-help' ),
+				'label' => wfMessage( 'oathauth-webauthn-authentication-info-label' ),
+				'help' => wfMessage( 'oathauth-webauthn-authentication-info-help' ),
 			],
 			'credential' => [
 				'type' => 'hidden',
 				'value' => '',
-				'label' => wfMessage( 'webauthn-credential-label' ),
-				'help' => wfMessage( 'webauthn-credential-help' ),
+				'label' => wfMessage( 'oathauth-webauthn-credential-label' ),
+				'help' => wfMessage( 'oathauth-webauthn-credential-help' ),
 			]
 		];
 	}

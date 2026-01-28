@@ -24,7 +24,7 @@ class RegisteredKeyLayout extends HTMLFormField {
 		$removeButton = new ButtonInputWidget( [
 			'framed' => false,
 			'flags' => [ 'primary', 'progressive' ],
-			'label' => wfMessage( 'webuathn-ui-remove-key' )->plain(),
+			'label' => wfMessage( 'oathauth-webauthn-ui-remove-key' )->plain(),
 			'classes' => [ 'removeButton' ],
 			'disabled' => true,
 			'value' => $nameValue,
