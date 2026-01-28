@@ -397,11 +397,8 @@ class WebAuthnAuthenticator {
 				residentKey: AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED,
 			);
 		} else {
-			$authenticatorAttachment = $this->context->getConfig()->get( 'WebAuthnLimitPasskeysToRoaming' )
-				? AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM
-				: null;
 			$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
-				$authenticatorAttachment,
+				authenticatorAttachment: AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM,
 			);
 		}
 

@@ -69,7 +69,7 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 	if ( this.passkeyMode ) {
 		// Ask the browser to prefer storing a passkey on the device itself
 		publicKey.hints = [ 'client-device' ];
-	} else if ( mw.config.get( 'wgWebAuthnLimitPasskeysToRoaming' ) ) {
+	} else {
 		// Ask the browser to prefer an external security key
 		publicKey.hints = [ 'security-key' ];
 	}

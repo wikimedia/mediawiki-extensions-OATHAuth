@@ -17,7 +17,6 @@ use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
@@ -36,7 +35,6 @@ class HookHandler implements
 	AuthChangeFormFieldsHook,
 	GetPreferencesHook,
 	getUserPermissionsErrorsHook,
-	ResourceLoaderGetConfigVarsHook,
 	UserEffectiveGroupsHook,
 	UserGetRightsHook,
 	UserRequirementsConditionHook
@@ -309,10 +307,5 @@ class HookHandler implements
 
 		$oathUser = $this->userRepo->findByUser( $user );
 		$result = $oathUser->isTwoFactorAuthEnabled();
-	}
-
-	/** @inheritDoc */
-	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$vars['wgWebAuthnLimitPasskeysToRoaming'] = $config->get( 'WebAuthnLimitPasskeysToRoaming' );
 	}
 }
