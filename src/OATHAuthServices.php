@@ -38,6 +38,10 @@ class OATHAuthServices {
 		return $this->services->getService( 'OATHAuth.EncryptionHelper' );
 	}
 
+	public function getLogger(): OATHAuthLogger {
+		return $this->services->getService( 'OATHAuthLogger' );
+	}
+
 	public function getConfig(): Config {
 		return $this->services->getMainConfig();
 	}

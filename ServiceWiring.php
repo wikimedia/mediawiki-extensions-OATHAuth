@@ -2,6 +2,7 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Logger\LoggerFactory;
@@ -10,6 +11,13 @@ use MediaWiki\Registration\ExtensionRegistry;
 use Wikimedia\ObjectCache\HashBagOStuff;
 
 return [
+	'OATHAuthLogger' => static function ( MediaWikiServices $services ): OATHAuthLogger {
+		return new OATHAuthLogger(
+			$services->getExtensionRegistry(),
+			RequestContext::getMain(),
+			LoggerFactory::getInstance( 'authentication' )
+		);
+	},
 	'OATHAuthModuleRegistry' => static function ( MediaWikiServices $services ): OATHAuthModuleRegistry {
 		return new OATHAuthModuleRegistry(
 			$services->getDBLoadBalancerFactory(),

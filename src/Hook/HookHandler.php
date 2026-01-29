@@ -9,6 +9,7 @@ use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHAuth;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
@@ -19,6 +20,7 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\Hook\ReadPrivateUserRequirementsConditionHook;
 use MediaWiki\User\Hook\UserEffectiveGroupsHook;
 use MediaWiki\User\Hook\UserRequirementsConditionHook;
 use MediaWiki\User\User;
@@ -35,6 +37,7 @@ class HookHandler implements
 	AuthChangeFormFieldsHook,
 	GetPreferencesHook,
 	getUserPermissionsErrorsHook,
+	ReadPrivateUserRequirementsConditionHook,
 	UserEffectiveGroupsHook,
 	UserGetRightsHook,
 	UserRequirementsConditionHook
@@ -42,6 +45,7 @@ class HookHandler implements
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly OATHAuthLogger $oathLogger,
 		private readonly PermissionManager $permissionManager,
 		private readonly Config $config,
 		private readonly UserGroupManager $userGroupManager,
@@ -304,5 +308,16 @@ class HookHandler implements
 
 		$oathUser = $this->userRepo->findByUser( $user );
 		$result = $oathUser->isTwoFactorAuthEnabled();
+	}
+
+	/** @inheritDoc */
+	public function onReadPrivateUserRequirementsCondition(
+		UserIdentity $performer,
+		UserIdentity $target,
+		array $conditions
+	): void {
+		if ( in_array( APCOND_OATH_HAS2FA, $conditions ) ) {
+			$this->oathLogger->logImplicitVerification( $performer, $target );
+		}
 	}
 }

@@ -101,6 +101,7 @@
 	"log-action-filter-oath": "{{Doc-log-action-filter-type|oath}}\n{{Related|Log-action-filter}}",
 	"log-action-filter-oath-verify": "{{doc-log-action-filter-action|oath|verify}}",
 	"log-action-filter-oath-disable-other": "{{doc-log-action-filter-action|oath|disable-other}}",
+	"oathauth-verify-automatic-comment": "A comment in log entry, which appears when user's 2FA status is verified automatically, on behalf of the performing user",
 	"oathauth-ui-no-module": "User preference value for the type of two-factor authentication operation {{msg-mw|Log-action-filter-oath}} when no 2FA module is enabled.",
 	"oathauth-module-totp-label": "Description for the 'authenticator app' (TOTP) type of two-factor authentication method on Special:AccountSecurity",
 	"oathauth-module-recoverycodes-label": "User preference value when the recovery code module is enabled.",

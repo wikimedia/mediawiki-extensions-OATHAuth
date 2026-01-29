@@ -84,6 +84,7 @@
 	"log-action-filter-oath": "Type of two-factor authentication operation:",
 	"log-action-filter-oath-verify": "Checking if two-factor authentication is enabled",
 	"log-action-filter-oath-disable-other": "Disabling two-factor authentication for another user",
+	"oathauth-verify-automatic-comment": "Automatically verifying to check eligibility for user groups",
 	"oathauth-ui-no-module": "None enabled",
 	"oathauth-module-totp-label": "Authenticator app",
 	"oathauth-module-recoverycodes-label": "Recovery codes",

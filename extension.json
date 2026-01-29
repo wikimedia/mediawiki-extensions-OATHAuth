@@ -93,6 +93,7 @@
 		"GetPreferences": "main",
 		"getUserPermissionsErrors": "main",
 		"LoadExtensionSchemaUpdates": "updater",
+		"ReadPrivateUserRequirementsCondition": "main",
 		"UserEffectiveGroups": "main",
 		"UserGetRights": "main",
 		"UserRequirementsCondition": "main",
@@ -105,6 +106,7 @@
 			"services": [
 				"OATHUserRepository",
 				"OATHAuthModuleRegistry",
+				"OATHAuthLogger",
 				"PermissionManager",
 				"MainConfig",
 				"UserGroupManager"

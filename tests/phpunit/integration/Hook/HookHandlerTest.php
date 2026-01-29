@@ -7,6 +7,8 @@
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Hook;
 
 use MediaWiki\Extension\OATHAuth\Hook\HookHandler;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\MediaWikiServices;
@@ -23,6 +25,7 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 		return new HookHandler(
 			$services->get( 'OATHUserRepository' ),
 			$services->get( 'OATHAuthModuleRegistry' ),
+			$services->get( 'OATHAuthLogger' ),
 			$services->getPermissionManager(),
 			$services->getMainConfig(),
 			$services->getUserGroupManager()
@@ -74,6 +77,56 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 				'has2FA' => false,
 				'expectedResult' => null,
 			],
+		];
+	}
+
+	/** @dataProvider provideOnReadPrivateUserRequirementsCondition */
+	public function testOnReadPrivateUserRequirementsCondition( array $conditions, bool $shouldLog ) {
+		$performer = UserIdentityValue::newRegistered( 1, 'Admin' );
+		$target = UserIdentityValue::newRegistered( 2, 'User' );
+
+		$loggerMock = $this->createMock( OATHAuthLogger::class );
+		if ( $shouldLog ) {
+			$loggerMock->expects( $this->once() )
+				->method( 'logImplicitVerification' )
+				->with( $performer, $target );
+		} else {
+			$loggerMock->expects( $this->never() )
+				->method( 'logImplicitVerification' );
+		}
+
+		$oathServices = OATHAuthServices::getInstance();
+		$mwServices = MediaWikiServices::getInstance();
+		$hookHandler = new HookHandler(
+			$oathServices->getUserRepository(),
+			$oathServices->getModuleRegistry(),
+			$loggerMock,
+			$mwServices->getPermissionManager(),
+			$mwServices->getMainConfig(),
+			$mwServices->getUserGroupManager()
+		);
+
+		$hookHandler->onReadPrivateUserRequirementsCondition( $performer, $target, $conditions );
+	}
+
+	public static function provideOnReadPrivateUserRequirementsCondition(): array {
+		return [
+			'Only 2FA condition was read' => [
+				'conditions' => [ APCOND_OATH_HAS2FA ],
+				'shouldLog' => true,
+			],
+			'2FA and some other condition were read' => [
+				'conditions' => [ APCOND_OATH_HAS2FA, 'other condition' ],
+				'shouldLog' => true,
+			],
+			'Only some other condition was read' => [
+				'conditions' => [ 'other condition' ],
+				'shouldLog' => false,
+			],
+			'No condition was read' => [
+				'conditions' => [],
+				'shouldLog' => false,
+			]
 		];
 	}
 }
