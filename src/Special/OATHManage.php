@@ -15,7 +15,7 @@ use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
-use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -493,15 +493,13 @@ class OATHManage extends SpecialPage {
 	 * Verifies if the module can be enabled
 	 */
 	private function isModuleAvailable( IModule $module ): bool {
-		$form = $module->getManageForm(
+		return $module->getManageForm(
 			static::ACTION_ENABLE,
 			$this->oathUser,
 			$this->userRepo,
 			$this->getContext(),
 			$this->moduleRegistry
-		);
-
-		return $form !== '';
+		) !== null;
 	}
 
 	/**

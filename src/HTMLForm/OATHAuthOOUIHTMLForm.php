@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Extension\OATHAuth\IModule;
+use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;

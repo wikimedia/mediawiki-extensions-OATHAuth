@@ -7,7 +7,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -35,12 +34,12 @@ class TOTP implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getName() {
+	public function getName(): string {
 		return self::MODULE_NAME;
 	}
 
 	/** @inheritDoc */
-	public function getDisplayName() {
+	public function getDisplayName(): Message {
 		return wfMessage( 'oathauth-module-totp-label' );
 	}
 
@@ -48,7 +47,7 @@ class TOTP implements IModule {
 	 * @inheritDoc
 	 * @throws UnexpectedValueException
 	 */
-	public function newKey( array $data ) {
+	public function newKey( array $data ): TOTPKey {
 		if ( !isset( $data['secret'] ) ) {
 			throw new UnexpectedValueException( 'oathauth-invalid-data-format' );
 		}
@@ -56,10 +55,7 @@ class TOTP implements IModule {
 		return TOTPKey::newFromArray( $data );
 	}
 
-	/**
-	 * @return TOTPSecondaryAuthenticationProvider
-	 */
-	public function getSecondaryAuthProvider() {
+	public function getSecondaryAuthProvider(): TOTPSecondaryAuthenticationProvider {
 		return new TOTPSecondaryAuthenticationProvider(
 			$this,
 			$this->userRepository
@@ -107,21 +103,13 @@ class TOTP implements IModule {
 		return (bool)self::getTOTPKeys( $user );
 	}
 
-	/**
-	 * @param string $action
-	 * @param OATHUser $user
-	 * @param OATHUserRepository $repo
-	 * @param IContextSource $context
-	 * @param OATHAuthModuleRegistry $registry
-	 * @return IManageForm|TOTPEnableForm|null
-	 */
 	public function getManageForm(
-		$action,
+		string $action,
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
-	) {
+	): ?IManageForm {
 		if ( $action === OATHManage::ACTION_ENABLE ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context, $registry );
 		}
@@ -129,12 +117,12 @@ class TOTP implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getDescriptionMessage() {
+	public function getDescriptionMessage(): Message {
 		return wfMessage( 'oathauth-totp-description' );
 	}
 
 	/** @inheritDoc */
-	public function getDisableWarningMessage() {
+	public function getDisableWarningMessage(): Message {
 		return wfMessage( 'oathauth-totp-disable-warning' );
 	}
 
@@ -144,7 +132,7 @@ class TOTP implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getLoginSwitchButtonMessage() {
+	public function getLoginSwitchButtonMessage(): Message {
 		return wfMessage( 'oathauth-auth-switch-module-label' );
 	}
 

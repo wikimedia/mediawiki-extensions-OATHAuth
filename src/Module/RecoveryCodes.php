@@ -7,7 +7,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\RecoveryCodesSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesStatusForm;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -28,12 +27,12 @@ class RecoveryCodes implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getName() {
+	public function getName(): string {
 		return self::MODULE_NAME;
 	}
 
 	/** @inheritDoc */
-	public function getDisplayName() {
+	public function getDisplayName(): Message {
 		return wfMessage( 'oathauth-module-recoverycodes-label' );
 	}
 
@@ -110,6 +109,7 @@ class RecoveryCodes implements IModule {
 
 		// Save the new key to the database
 		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
+		/** @var RecoveryCodeKeys $newKey */
 		$newKey = $oathRepo->createKey(
 			$user,
 			$this,
@@ -129,7 +129,7 @@ class RecoveryCodes implements IModule {
 
 	/** @inheritDoc */
 	public function getManageForm(
-		$action,
+		string $action,
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
@@ -139,12 +139,12 @@ class RecoveryCodes implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getDescriptionMessage() {
+	public function getDescriptionMessage(): Message {
 		return wfMessage( 'oathauth-recoverycodes-description' );
 	}
 
 	/** @inheritDoc */
-	public function getDisableWarningMessage() {
+	public function getDisableWarningMessage(): ?Message {
 		return null;
 	}
 

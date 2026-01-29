@@ -5,6 +5,7 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
+use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\User\UserIdentity;
 
 /**

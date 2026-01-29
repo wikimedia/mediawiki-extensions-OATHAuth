@@ -8,6 +8,7 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
+use MediaWiki\Extension\OATHAuth\Module\IModule;
 use Wikimedia\ObjectFactory\ObjectFactory;
 use Wikimedia\Rdbms\IConnectionProvider;
 

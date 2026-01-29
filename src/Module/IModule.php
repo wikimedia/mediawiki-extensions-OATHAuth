@@ -1,55 +1,40 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth;
+namespace MediaWiki\Extension\OATHAuth\Module;
 
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
 
 interface IModule {
 	/**
 	 * Name of the module, as declared in the OATHAuth.Modules extension.json attribute.
-	 *
-	 * @return string
 	 */
-	public function getName();
+	public function getName(): string;
 
-	/**
-	 * @return Message
-	 */
-	public function getDisplayName();
+	public function getDisplayName(): Message;
 
-	/**
-	 * @param array $data
-	 * @return AuthKey
-	 */
-	public function newKey( array $data );
+	public function newKey( array $data ): AuthKey;
 
-	/**
-	 * @return AbstractSecondaryAuthenticationProvider
-	 */
-	public function getSecondaryAuthProvider();
+	public function getSecondaryAuthProvider(): AbstractSecondaryAuthenticationProvider;
 
 	/**
 	 * Is this module currently enabled for the given user?
 	 *
-	 * Arguably, module is enabled just by the fact its set on user,
+	 * Arguably, the module is enabled just by the fact it's set on a user,
 	 * but it might not be true for all future modules
-	 *
-	 * @param OATHUser $user
-	 * @return bool
 	 */
-	public function isEnabled( OATHUser $user );
+	public function isEnabled( OATHUser $user ): bool;
 
 	/**
 	 * Run the validation
-	 *
-	 * @param OATHUser $user
-	 * @param array $data
-	 * @return bool
 	 */
-	public function verify( OATHUser $user, array $data );
+	public function verify( OATHUser $user, array $data ): bool;
 
 	/**
 	 * @param string $action
@@ -57,31 +42,30 @@ interface IModule {
 	 * @param OATHUserRepository $repo
 	 * @param IContextSource $context
 	 * @param OATHAuthModuleRegistry $registry
-	 * @return IManageForm|null if no form is available for given action
+	 * @return ?IManageForm null if no form is available for given action
 	 */
 	public function getManageForm(
-		$action,
+		string $action,
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry,
-	);
+	): ?IManageForm;
 
 	/**
-	 * Return Message object for the short text to be displayed as description
-	 *
-	 * @return Message
+	 * Return Message object for the short text to be displayed as the description
 	 */
-	public function getDescriptionMessage();
+	public function getDescriptionMessage(): Message;
 
 	/**
 	 * Module-specific text that will be shown when the user is disabling
-	 * the module, to warn of data-loss.
+	 * this module to warn of data-loss.
+	 *
 	 * This will be shown alongside the generic warning message.
 	 *
-	 * @return Message|null if no additional text is needed
+	 * @return ?Message null if no additional text is needed
 	 */
-	public function getDisableWarningMessage();
+	public function getDisableWarningMessage(): ?Message;
 
 	/**
 	 * Module-specific text for the label of the button to add a new key in this module.
@@ -91,11 +75,9 @@ interface IModule {
 	public function getAddKeyMessage(): ?Message;
 
 	/**
-	 * Return Message object for button text to be displayed on login page
-	 *
-	 * @return Message
+	 * Return Message object for button text to be displayed on the login page
 	 */
-	public function getLoginSwitchButtonMessage();
+	public function getLoginSwitchButtonMessage(): Message;
 
 	/**
 	 * ext:OATHAuth makes a lot of assumptions in different portions of its

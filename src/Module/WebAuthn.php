@@ -5,11 +5,9 @@ namespace MediaWiki\Extension\OATHAuth\Module;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnSecondaryAuthenticationProvider;
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnManageForm;
-use MediaWiki\Extension\OATHAuth\IModule;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -38,12 +36,12 @@ class WebAuthn implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getName() {
+	public function getName(): string {
 		return self::MODULE_ID;
 	}
 
 	/** @inheritDoc */
-	public function getDisplayName() {
+	public function getDisplayName(): Message {
 		return wfMessage( 'webauthn-module-label' );
 	}
 
@@ -54,26 +52,19 @@ class WebAuthn implements IModule {
 		return WebAuthnKey::newFromData( $data );
 	}
 
-	/**
-	 * @return WebAuthnSecondaryAuthenticationProvider
-	 */
-	public function getSecondaryAuthProvider() {
+	public function getSecondaryAuthProvider(): WebAuthnSecondaryAuthenticationProvider {
 		return new WebAuthnSecondaryAuthenticationProvider();
 	}
 
 	/** @inheritDoc */
-	public function isEnabled( OATHUser $user ) {
+	public function isEnabled( OATHUser $user ): bool {
 		return (bool)self::getWebAuthnKeys( $user );
 	}
 
 	/**
 	 * Run the validation for each of the registered keys
-	 *
-	 * @param OATHUser $user
-	 * @param array $data
-	 * @return bool
 	 */
-	public function verify( OATHUser $user, array $data ) {
+	public function verify( OATHUser $user, array $data ): bool {
 		$keys = self::getWebAuthnKeys( $user );
 		foreach ( $keys as $key ) {
 			// Pass if any of the keys matches
@@ -89,21 +80,14 @@ class WebAuthn implements IModule {
 	 * If the ability to add new credentials is disabled by configuration,
 	 * the empty string will be returned for any action other than ACTION_DISABLE.
 	 * The value null will be returned If no suitable form is found otherwise.
-	 *
-	 * @param string $action
-	 * @param OATHUser $user
-	 * @param OATHUserRepository $repo
-	 * @param IContextSource $context
-	 * @param OATHAuthModuleRegistry $registry
-	 * @return IManageForm|string|null
 	 */
 	public function getManageForm(
-		$action,
+		string $action,
 		OATHUser $user,
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
-	) {
+	): ?IManageForm {
 		$module = $this;
 		$enabledForUser = $this->isEnabled( $user );
 
@@ -114,51 +98,18 @@ class WebAuthn implements IModule {
 			if ( $enabledForUser ) {
 				return new WebAuthnManageForm( $user, $repo, $module, $context, $registry );
 			}
-			return null;
-		}
-
-		return '';
-	}
-
-	/**
-	 * @param string $id
-	 * @param OATHUser $user
-	 * @return AuthKey|null
-	 */
-	public function findKeyByCredentialId( $id, $user ) {
-		foreach ( self::getWebAuthnKeys( $user ) as $key ) {
-			if ( $key->getAttestedCredentialData()->getCredentialId() === $id ) {
-				return $key;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Get a single key by its name.
-	 */
-	public function getKeyByFriendlyName( string $name, OATHUser $user ): ?WebAuthnKey {
-		foreach ( self::getWebAuthnKeys( $user ) as $key ) {
-			if ( $key->getFriendlyName() === $name ) {
-				return $key;
-			}
 		}
 
 		return null;
 	}
 
 	/** @inheritDoc */
-	public function getDescriptionMessage() {
+	public function getDescriptionMessage(): Message {
 		return wfMessage( 'webauthn-module-description' );
 	}
 
-	/**
-	 * Message that will be shown when user is disabling the module,
-	 * to warn the user of token/data loss
-	 *
-	 * @return Message|null
-	 */
-	public function getDisableWarningMessage() {
+	/** @inheritDoc */
+	public function getDisableWarningMessage(): ?Message {
 		return null;
 	}
 
@@ -175,7 +126,7 @@ class WebAuthn implements IModule {
 	}
 
 	/** @inheritDoc */
-	public function getLoginSwitchButtonMessage() {
+	public function getLoginSwitchButtonMessage(): Message {
 		return wfMessage( 'webauthn-auth-switch-module-label-passkey' );
 	}
 }
