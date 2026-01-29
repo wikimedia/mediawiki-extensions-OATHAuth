@@ -24,13 +24,10 @@ use UnexpectedValueException;
  */
 class RecoveryCodeKeys extends AuthKey {
 	/** @var string[] List of recovery codes */
-	public $recoveryCodeKeys = [];
+	public array $recoveryCodeKeys;
 
 	/** @var string[] List of encrypted recovery codes */
-	private $recoveryCodeKeysEncrypted = [];
-
-	/** @var string optional nonce for encryption */
-	private $nonce = '';
+	private array $recoveryCodeKeysEncrypted;
 
 	/**
 	 * Length (in bytes) that recovery codes should be
@@ -71,26 +68,17 @@ class RecoveryCodeKeys extends AuthKey {
 		);
 	}
 
-	/**
-	 * @param ?int $id
-	 * @param ?string $friendlyName
-	 * @param ?string $createdTimestamp
-	 * @param array $recoveryCodeKeys
-	 * @param array $recoveryCodeKeysEncrypted
-	 * @param string $nonce
-	 */
 	public function __construct(
 		?int $id,
 		?string $friendlyName,
 		?string $createdTimestamp,
 		array $recoveryCodeKeys,
 		array $recoveryCodeKeysEncrypted,
-		string $nonce = ''
+		private string $nonce = '',
 	) {
 		parent::__construct( $id, $friendlyName, $createdTimestamp );
 		$this->recoveryCodeKeys = array_values( $recoveryCodeKeys );
 		$this->recoveryCodeKeysEncrypted = array_values( $recoveryCodeKeysEncrypted );
-		$this->nonce = $nonce;
 	}
 
 	public function getRecoveryCodeKeys(): array {
@@ -176,7 +164,6 @@ class RecoveryCodeKeys extends AuthKey {
 		return RecoveryCodes::MODULE_NAME;
 	}
 
-	/** @inheritDoc */
 	private function getLogger(): LoggerInterface {
 		return LoggerFactory::getInstance( 'authentication' );
 	}
@@ -202,7 +189,6 @@ class RecoveryCodeKeys extends AuthKey {
 			];
 		}
 
-		// brand new set of recovery codes
 		$nonce ??= '';
 		$encData = $encryptionHelper->encryptStringArrayValues(
 			// T408299 - array_values() to renumber array keys
@@ -217,7 +203,7 @@ class RecoveryCodeKeys extends AuthKey {
 	}
 
 	private function normaliseRecoveryCode( string $token ): string {
-		return (string)preg_replace( '/\s+/', '', $token );
+		return preg_replace( '/\s+/', '', $token );
 	}
 
 	/**
