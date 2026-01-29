@@ -180,4 +180,37 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		// Wrong token
 		$this->assertFalse( $key->isValidRecoveryCode( 'WIQGC24UJUFXQDW4' ) );
 	}
+
+	public function testGenerateAdditionalCodes(): void {
+		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ 'BL5KE9W38GYGEB9T' ] ] );
+		$this->assertSame( [ 'BL5KE9W38GYGEB9T' ], $keys->getRecoveryCodeKeys() );
+
+		$keys->generateAdditionalRecoveryCodeKeys( 1 );
+		$this->assertCount( 2, $keys->getRecoveryCodeKeys() );
+
+		$existingKeys = $keys->getRecoveryCodeKeys();
+		$this->assertSame( 'BL5KE9W38GYGEB9T', $existingKeys[0] );
+	}
+
+	public function testGenerateAdditionalCodesWithEncryption(): void {
+		$this->encryptionIntegrationTestSetup();
+
+		$keysObject = RecoveryCodeKeys::newFromArray( [
+			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
+			'nonce' => self::NONCE,
+		] );
+		$existingKeysInitial = $keysObject->getRecoveryCodeKeys();
+		$this->assertCount( 1, $existingKeysInitial );
+
+		$keysObject->generateAdditionalRecoveryCodeKeys( 1 );
+		$existingKeysPreSerialization = $keysObject->getRecoveryCodeKeys();
+		$this->assertCount( 2, $existingKeysPreSerialization );
+		$this->assertSame( $existingKeysInitial[0], $existingKeysPreSerialization[0] );
+
+		$data = $keysObject->jsonSerialize();
+		$keysObjectPostSerialization = RecoveryCodeKeys::newFromArray( $data );
+		$existingKeysPostSerialization = $keysObjectPostSerialization->getRecoveryCodeKeys();
+		$this->assertCount( 2, $existingKeysPostSerialization );
+		$this->assertSame( $existingKeysInitial[0], $existingKeysPostSerialization[0] );
+	}
 }

@@ -149,13 +149,25 @@ class RecoveryCodeKeys extends AuthKey {
 		}
 	}
 
+	/**
+	 * Regenerate the full set of recovery codes, invalidating any existing ones.
+	 */
 	public function regenerateRecoveryCodeKeys(): void {
-		$recoveryCodesCount = OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' );
 		$this->recoveryCodeKeys = [];
-		for ( $i = 0; $i < $recoveryCodesCount; $i++ ) {
+		$this->generateAdditionalRecoveryCodeKeys(
+			OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' )
+		);
+	}
+
+	/**
+	 * Generate additional recovery codes and add them to the set, without invalidating existing ones.
+	 * @param int $numCodes Number of codes to generate
+	 */
+	public function generateAdditionalRecoveryCodeKeys( int $numCodes ): void {
+		for ( $i = 0; $i < $numCodes; $i++ ) {
 			$this->recoveryCodeKeys[] = Base32::encode( random_bytes( self::RECOVERY_CODE_LENGTH ) );
 		}
-		// reset this when we regenerate codes
+		// This causes jsonSerialize() to re-encrypt the full set of recovery codes
 		$this->setRecoveryCodeKeysEncryptedAndNonce( [], '' );
 	}
 
