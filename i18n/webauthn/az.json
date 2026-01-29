@@ -32,7 +32,6 @@
 	"webauthn-credential-label": "İstifadəçi identifikasiyası",
 	"webauthn-credential-help": "Doğrulama məlumatlarına əsaslanan istifadəçi identifikasiyası",
 	"webauthn-add-security-key": "Təhlükəsizlik açarı əlavə et",
-	"webauthn-auth-switch-module-label": "Təhlükəsizlik açarından istifadə et",
 	"webauthn-auth-switch-module-label-passkey": "Təhlükəsizlik və ya keçid açarından istifadə et",
 	"apierror-webauthn-module-missing": "WebAuthn modulu mövcud deyil.",
 	"apierror-webauthn-missing-credential": "Heç bir giriş məlumatı verilməyib.",

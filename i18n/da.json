@@ -9,7 +9,7 @@
 			"Weblars"
 		]
 	},
-	"oathauth-desc": "Understøtter godkendelse ved hjælp af HMAC-baserede engangsadgangskoder",
+	"oathauth-desc": "Understøtter godkendelse ved hjælp af HMAC-baserede engangsadgangskoder og WebAuthn-protokollen",
 	"disableoathforuser": "Deaktivere brugeres tofaktorgodkendelse",
 	"verifyoathforuser": "Bekræft status for tofaktorgodkendelse",
 	"oathauth-account": "Kontonavn:",

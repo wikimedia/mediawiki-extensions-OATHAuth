@@ -16,7 +16,7 @@
 			"Wnme"
 		]
 	},
-	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern",
+	"oathauth-desc": "Ermöglicht die Authentifizierung mit HMAC-gestützten Einmalpasswörtern und dem WebAuthn-Protokoll",
 	"disableoathforuser": "Zwei-Faktor-Authentifizierung für Benutzer deaktivieren",
 	"verifyoathforuser": "Überprüfen des Zwei-Faktor-Authentifizierungsstatus",
 	"oathauth-account": "Benutzerkonto:",

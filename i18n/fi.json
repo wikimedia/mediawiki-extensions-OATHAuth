@@ -16,7 +16,7 @@
 			"Veikk0.ma"
 		]
 	},
-	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen avulla",
+	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen ja WebAuthn-protokollan avulla",
 	"disableoathforuser": "Poista käytöstä käyttäjän kaksivaiheinen tunnistautuminen",
 	"verifyoathforuser": "Varmista kaksivaiheisen tunnistautumisen tila",
 	"oathauth-account": "Tunnuksen nimi:",

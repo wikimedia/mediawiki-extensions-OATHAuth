@@ -5,7 +5,7 @@
 			"McDutchie"
 		]
 	},
-	"oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC",
+	"oathauth-desc": "Forni supporto de authentication usante contrasignos a uso unic a base de HMAC e le protocollo WebAuthn",
 	"disableoathforuser": "Disactivar le authentication bifactorial pro le usator",
 	"verifyoathforuser": "Verificar le stato del authentication bifactorial",
 	"oathauth-account": "Nomine de conto:",

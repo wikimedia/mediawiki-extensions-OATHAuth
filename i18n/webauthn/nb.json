@@ -31,6 +31,5 @@
 	"webauthn-authentication-info-help": "Autentiseringsdata sendt til klienten for henting av legitimasjon",
 	"webauthn-credential-label": "Brukerlegitimasjon",
 	"webauthn-credential-help": "Brukerlegitimasjon basert på autentiseringsdata",
-	"webauthn-add-security-key": "Legg til en sikkerhetsnøkkel",
-	"webauthn-auth-switch-module-label": "Bruk sikkerhetsnøkkel"
+	"webauthn-add-security-key": "Legg til en sikkerhetsnøkkel"
 }

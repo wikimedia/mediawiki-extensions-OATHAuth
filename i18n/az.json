@@ -10,7 +10,7 @@
 			"Əkrəm Cəfər"
 		]
 	},
-	"oathauth-desc": "HMAC əsaslı birdəfəlik şifrələrdən istifadə edərək autentifikasiya dəstəyi təmin edir",
+	"oathauth-desc": "HMAC əsaslı birdəfəlik parol və WebAuthn protokolundan istifadə edərək identifikasiya dəstəyi təmin edir",
 	"disableoathforuser": "İstifadəçinin iki faktorlu autentifikasiyasını deaktiv edin",
 	"verifyoathforuser": "İki faktorlu autentifikasiya statusunu yoxlayın",
 	"oath": "OATHAuth",

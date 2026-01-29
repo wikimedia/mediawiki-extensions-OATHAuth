@@ -9,7 +9,7 @@
 			"Vinhtantran"
 		]
 	},
-	"oathauth-desc": "Hỗ trợ xác thực bằng mật khẩu một lần dựa trên HMAC",
+	"oathauth-desc": "Cung cấp hỗ trợ xác thực bằng mật khẩu dùng một lần dựa trên HMAC và giao thức WebAuthn.",
 	"disableoathforuser": "Tắt xác thực hai yếu tố của thành viên",
 	"verifyoathforuser": "Kiểm tra tình trạng xác thực hai yếu tố",
 	"oath": "Xác thực OATH",

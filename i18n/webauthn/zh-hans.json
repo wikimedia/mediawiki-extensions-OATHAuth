@@ -37,7 +37,6 @@
 	"webauthn-credential-label": "用户凭证",
 	"webauthn-credential-help": "基于身份验证数据的用户凭证",
 	"webauthn-add-security-key": "添加安全密钥",
-	"webauthn-auth-switch-module-label": "使用安全密钥",
 	"webauthn-auth-switch-module-label-passkey": "使用安全密钥或通行密钥",
 	"apierror-webauthn-module-missing": "WebAuthn模块不可用。",
 	"apierror-webauthn-missing-credential": "未提供任何凭证数据。",

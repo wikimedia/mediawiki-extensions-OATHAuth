@@ -5,6 +5,5 @@
 		]
 	},
 	"webauthn-module-label": "নিরাপত্তা চাবি",
-	"oathauth-webauthn-registered-keys-section-name": "নিবন্ধিত চাবি",
-	"webauthn-auth-switch-module-label": "নিরাপত্তা চাবি ব্যবহার করুন"
+	"oathauth-webauthn-registered-keys-section-name": "নিবন্ধিত চাবি"
 }

@@ -31,6 +31,5 @@
 	"webauthn-credential-label": "Käyttäjän todennustiedot",
 	"webauthn-credential-help": "Käyttäjän todennustiedot tunnistautumistietojen perusteella",
 	"webauthn-add-security-key": "Lisää suojausavain",
-	"webauthn-auth-switch-module-label": "Käytä suojausavainta",
 	"apierror-webauthn-module-missing": "WebAuthn-moduuli ei ole käytettävissä."
 }

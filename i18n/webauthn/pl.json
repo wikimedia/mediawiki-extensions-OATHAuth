@@ -35,6 +35,5 @@
 	"webauthn-authentication-info-help": "Dane uwierzytelniające przekazywane do klienta w celu uzyskania poświadczenia",
 	"webauthn-credential-label": "Poświadczenie użytkownika",
 	"webauthn-credential-help": "Poświadczenie użytkownika oparte na danych uwierzytelniajacych",
-	"webauthn-add-security-key": "Dodaj klucz zabezpieczeń",
-	"webauthn-auth-switch-module-label": "Użyj klucza zabezpieczeń"
+	"webauthn-add-security-key": "Dodaj klucz zabezpieczeń"
 }

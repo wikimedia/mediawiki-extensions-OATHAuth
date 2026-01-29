@@ -34,7 +34,6 @@
 	"webauthn-credential-label": "بيانات اعتماد المستخدم",
 	"webauthn-credential-help": "اعتماد المستخدم على أساس بيانات المصادقة",
 	"webauthn-add-security-key": "إضافة مفتاح أمان",
-	"webauthn-auth-switch-module-label": "استخدم مفتاح الأمان",
 	"webauthn-auth-switch-module-label-passkey": "استخدم مفتاح الأمان أو رمز المرور",
 	"apierror-webauthn-module-missing": "وحدة WebAuthn غير متوفرة.",
 	"apierror-webauthn-missing-credential": "لم يتم تقديم أي بيانات اعتماد.",

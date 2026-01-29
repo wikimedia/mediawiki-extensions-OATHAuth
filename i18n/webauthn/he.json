@@ -32,6 +32,5 @@
 	"webauthn-authentication-info-help": "נתוני האימות הועברו ללקוח לשם אחזור נתוני הזדהות",
 	"webauthn-credential-label": "נתוני הזדהות משתמש",
 	"webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות",
-	"webauthn-add-security-key": "הוספת מפתח אבטחה",
-	"webauthn-auth-switch-module-label": "להשתמש במפתח אבטחה"
+	"webauthn-add-security-key": "הוספת מפתח אבטחה"
 }

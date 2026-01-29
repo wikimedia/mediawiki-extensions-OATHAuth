@@ -32,7 +32,6 @@
 	"webauthn-credential-label": "Credential del usator",
 	"webauthn-credential-help": "Credential del usator basate sur le datos de authentication",
 	"webauthn-add-security-key": "Adder un clave de securitate",
-	"webauthn-auth-switch-module-label": "Usar un clave de securitate",
 	"webauthn-auth-switch-module-label-passkey": "Usar clave de securitate o clave de accesso",
 	"apierror-webauthn-module-missing": "Le modulo WebAuthn non es disponibile.",
 	"apierror-webauthn-missing-credential": "Nulle credentiales ha essite fornite.",

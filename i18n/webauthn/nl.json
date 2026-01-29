@@ -36,7 +36,6 @@
 	"webauthn-credential-label": "Aanmeldgegevens gebruiker",
 	"webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens",
 	"webauthn-add-security-key": "Een beveiligingssleutel toevoegen",
-	"webauthn-auth-switch-module-label": "Beveiligingssleutel gebruiken",
 	"apierror-webauthn-module-missing": "De WebAuthn-module is niet beschikbaar.",
 	"apierror-webauthn-missing-credential": "Er zijn geen aanmeldgegevens verstrekt.",
 	"apierror-webauthn-invalid-credential": "De aanmeldgegevens zijn onjuist of verkeerd gevormd.",

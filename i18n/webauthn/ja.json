@@ -37,6 +37,5 @@
 	"webauthn-authentication-info-help": "資格情報取得のためにクライアントに渡される認証データ",
 	"webauthn-credential-label": "利用者認証情報",
 	"webauthn-credential-help": "認証データに基づく利用者認証情報",
-	"webauthn-add-security-key": "セキュリティキーを追加",
-	"webauthn-auth-switch-module-label": "セキュリティキーを使用"
+	"webauthn-add-security-key": "セキュリティキーを追加"
 }

@@ -16,7 +16,6 @@
 	"webauthn-credential-label": "کارن باور",
 	"webauthn-credential-help": "د کارن باور د تاييد اومتوکو پربنسټ",
 	"webauthn-add-security-key": "خونديتوب کونجي ورگډول",
-	"webauthn-auth-switch-module-label": "خونديتوب کونجي کارول",
 	"apierror-webauthn-module-missing": "د وېب‌تاييد چلنوال د لاسرسي وړ نه دی.",
 	"apierror-webauthn-missing-credential": "هېڅ ډول باوري اومتوکي نه دي ورکړل شوي.",
 	"apierror-webauthn-invalid-credential": "باوري اومتوکي ناسم يا بدبڼي دي."

@@ -5,12 +5,27 @@
 			"Hakimi97"
 		]
 	},
-	"oathauth-desc": "Menyediakan sokongan penentusahan dengan menggunakan kata laluan kegunaan sekali berasaskan HMAC",
+	"oathauth-desc": "Menyediakan sokongan pengesahihan menggunakan kata laluan sekali guna berasaskan HMAC dan protokol WebAuthn",
+	"disableoathforuser": "Lumpuhkan pengesahihan dwifaktor pengguna",
+	"verifyoathforuser": "Sahkan status pengesahihan dwifaktor",
 	"oathauth-account": "Nama Akaun:",
 	"oathauth-secret": "Kunci rahsia pengesahihan dwifaktor:",
 	"oathauth-enable": "Hidupkan Penentusahan Dwifaktor",
-	"oathauth-recoverycodes": "Senarai berikut ialah senarai kod pemulihan guna sekali. Kod ini hanya boleh digunakan sekali sahaja dan untuk kegunaan kecemasan apabila anda tidak mempunyai akses kepada peranti anda. Sila catat kod ini dan simpan di lokasi yang selamat. Anda disyorkan untuk menanda setiap kod sebagai \"telah diguna\" apabila anda telah log masuk menggunakan kod tersebut. Jika anda kehilangan peranti anda, kod ini adalah satu-satunya cara untuk menyelamatkan akaun anda.",
-	"oathauth-failedtovalidateoath": "Watikah dwifaktor gagal disahkan",
+	"oathauth-recoverycodes": "Gunakan kaedah ini jika anda kehilangan akses kepada kaedah pengesahihan dwifaktor anda.",
+	"oathauth-recoverycodes-important": "Langkah ini penting! Jangan langkau langkah ini!",
+	"oathauth-recoverycodes-neveragain": "Kod-kod ini tidak akan dipaparkan lagi!",
+	"oathauth-recoverytokens-createdat": "Kod pemulihan dicipta: $1",
+	"oathauth-recoverycodes-download": "Muat turun",
+	"oathauth-recoverycodes-filename": "kod pemulihan",
+	"oathauth-recoverycodes-copy": "Salin",
+	"oathauth-recoverycodes-copy-success": "Kod pemulihan telah disalin ke papan keratan anda!",
+	"oathauth-recoverycodes-create-label": "Cipta {{PLURAL:$1|satu kod pemulihan baharu|beberapa kod pemulihan baharu}}",
+	"oathauth-recoverycodes-too-many-instances": "Lebih daripada satu contoh kod pemulihan ditemui dalam pangkalan data untuk pengguna ini.",
+	"oathauth-recoverycodes-exist": "Anda mempunyai beberapa kod pemulihan yang wujud. Berikut merupakan kod-kod tersebut untuk anda salin atau muat turun ke lokasi yang selamat.",
+	"oathauth-recoverycodes-header": "Pilihan pemulihan",
+	"oathauth-recoverycodes-header-create": "Cipta kod pemulihan baharu",
+	"oathauth-recoverycodes-regenerate-warning": "Jika anda mencipta {{PLURAL:$1|suatu kod pemulihan baharu|beberapa kod pemulihan baharu}} maka <strong>{{PLURAL:$1|kod pemulihan|kod-kod pemulihan}} asal anda tidak akan berfungsi lagi.</strong>",
+	"oathauth-failedtovalidateoath": "Ralat berlaku semasa cuba mengesahkan kod daripada aplikasi pengesahihan anda. Sila cuba lagi.",
 	"oathauth-disable": "Matikan Penentusahan Dwifaktor",
 	"oathauth-validatedoath": "Watikah dwifaktor disahkan. Penentusahan dwifaktor kini akan berkuatkuasa.",
 	"oathauth-disabledoath": "Penentusahan dwifaktor dimatikan.",
@@ -19,5 +34,6 @@
 	"action-oathauth-view-log": "mengakses log perubahan penyahihan dua-faktor",
 	"oathauth-auth-token-label": "Token dwifaktor atau kod pemulihan",
 	"oathauth-auth-token-help-ui": "Masukkan sama ada kod dari perisian pengesahihan ataupun kod pemulihan",
-	"oathauth-module-totp-label": "TOTP (token guna sekali)"
+	"oathauth-module-totp-label": "TOTP (token guna sekali)",
+	"accountsecurity": "Keselamatan akaun"
 }

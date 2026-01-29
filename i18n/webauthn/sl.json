@@ -32,6 +32,5 @@
 	"webauthn-authentication-info-help": "Avtentikacijski podatki, posredovani odjemalcu za pridobitev poverilnice",
 	"webauthn-credential-label": "Uporabnikove poverilnice",
 	"webauthn-credential-help": "Uporabnikova poverilnica na podlagi avtentikacijskih podatkov",
-	"webauthn-add-security-key": "Dodaj varnostni ključ",
-	"webauthn-auth-switch-module-label": "Uporabi varnostni ključ"
+	"webauthn-add-security-key": "Dodaj varnostni ključ"
 }
