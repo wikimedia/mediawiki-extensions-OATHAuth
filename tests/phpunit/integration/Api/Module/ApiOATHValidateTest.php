@@ -14,6 +14,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\UserIdentity;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -27,15 +28,21 @@ class ApiOATHValidateTest extends ApiTestCase {
 		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
 	}
 
-	public function testNonexistentUser() {
+	public function testFailures() {
+		$testUser = $this->getTestUser()->getUserIdentity();
+		$this->failureTest( $testUser, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA I am fake', 'User does not exist' );
+		$this->failureTest( $testUser, $testUser->getName(), '2FA not enabled for user' );
+	}
+
+	public function failureTest( UserIdentity $user, string $username, string $message ) {
 		[ $result, ] = $this->doApiRequestWithToken(
 			[
 				'action' => 'oathvalidate',
-				'user' => 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA I am fake',
+				'user' => $username,
 				'data' => '{"token": "123456"}',
 			],
 			null,
-			new UltimateAuthority( $this->getTestUser()->getUserIdentity() )
+			new UltimateAuthority( $user )
 		);
 
 		$this->assertArraySubmapSame(
@@ -45,38 +52,36 @@ class ApiOATHValidateTest extends ApiTestCase {
 					'valid' => false,
 				],
 			],
-			$result
+			$result,
+			$message
 		);
 	}
 
-	public function testDisabled() {
-		$testUser = $this->getTestUser();
-
-		[ $result, ] = $this->doApiRequestWithToken(
-			[
-				'action' => 'oathvalidate',
-				'user' => $testUser->getUserIdentity()->getName(),
-				'data' => '{"token": "123456"}',
-			],
-			null,
-			new UltimateAuthority( $testUser->getUserIdentity() )
-		);
-
-		$this->assertArraySubmapSame(
-			[
-				'oathvalidate' => [
-					'enabled' => false,
-					'valid' => false,
-				],
-			],
-			$result
-		);
-	}
-
-	public function testCorrectToken() {
-		$testUser = $this->getTestUser();
-
+	public function provideToken() {
 		$key = TOTPKey::newFromRandom();
+		$secret = TestingAccessWrapper::newFromObject( $key )->secret;
+		yield 'correct' => [
+			HOTP::generateByTime(
+				Base32::decode( $secret['secret'] ),
+				$secret['period'],
+			)->toHOTP( 6 ),
+			$key,
+			true,
+			'Correct TOTP token'
+		];
+
+		yield 'incorrect' => [
+			'000000',
+			TOTPKey::newFromRandom(),
+			false,
+			'Incorrect TOTP token'
+		];
+	}
+
+	/** @dataProvider provideToken */
+	public function testToken( string $token, TOTPKey $key, bool $valid, string $message ) {
+		$testUser = $this->getTestUser();
+
 		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
 		$userRepository->createKey(
 			$userRepository->findByUser( $testUser->getUserIdentity() ),
@@ -87,17 +92,11 @@ class ApiOATHValidateTest extends ApiTestCase {
 			'127.0.0.1'
 		);
 
-		$secret = TestingAccessWrapper::newFromObject( $key )->secret;
-		$correctToken = HOTP::generateByTime(
-			Base32::decode( $secret['secret'] ),
-			$secret['period'],
-		)->toHOTP( 6 );
-
 		[ $result, ] = $this->doApiRequestWithToken(
 			[
 				'action' => 'oathvalidate',
 				'user' => $testUser->getUserIdentity()->getName(),
-				'data' => json_encode( [ 'token' => $correctToken ] ),
+				'data' => json_encode( [ 'token' => $token ] ),
 			],
 			null,
 			new UltimateAuthority( $testUser->getUserIdentity() )
@@ -107,44 +106,11 @@ class ApiOATHValidateTest extends ApiTestCase {
 			[
 				'oathvalidate' => [
 					'enabled' => true,
-					'valid' => true,
+					'valid' => $valid,
 				],
 			],
-			$result
-		);
-	}
-
-	public function testWrongToken() {
-		$testUser = $this->getTestUser();
-
-		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
-		$userRepository->createKey(
-			$userRepository->findByUser( $testUser->getUserIdentity() ),
-			OATHAuthServices::getInstance( $this->getServiceContainer() )
-				->getModuleRegistry()
-				->getModuleByKey( 'totp' ),
-			TOTPKey::newFromRandom()->jsonSerialize(),
-			'127.0.0.1'
-		);
-
-		[ $result, ] = $this->doApiRequestWithToken(
-			[
-				'action' => 'oathvalidate',
-				'user' => $testUser->getUserIdentity()->getName(),
-				'data' => json_encode( [ 'token' => '000000' ] ),
-			],
-			null,
-			new UltimateAuthority( $testUser->getUserIdentity() )
-		);
-
-		$this->assertArraySubmapSame(
-			[
-				'oathvalidate' => [
-					'enabled' => true,
-					'valid' => false,
-				],
-			],
-			$result
+			$result,
+			$message
 		);
 	}
 }
