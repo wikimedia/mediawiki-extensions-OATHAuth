@@ -23,9 +23,11 @@ use UnexpectedValueException;
 class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	use EncryptionTestTrait;
 
-	private const NONCE = '7LRMXBX2AKPYWDBUBDHCN2WCFJXFX4XR2GZRV7Q=';
-	private const VALID_RECOVERY_KEY = [ '88as3hh433jj2o22' ];
-	private const INVALID_RECOVERY_KEY = [ '88asdyf09sadf' ];
+	private const NONCE = 'ZQLYMZGFRFXA62IPRSX6ZQGZERFIM6M6ZQ4PI2I=';
+	// The two below correspond to each other with the above nonce
+	private const VALID_ENCRYPTED_RECOVERY_KEY = 'YD576FTL362W5AJL6GYNI55SRZFBWV72NWAF3IZV2NSMXX2X5T2A====';
+	private const VALID_RECOVERY_KEY = 'IETUSRVABHG54F33';
+	private const INVALID_ENCRYPTED_RECOVERY_KEY = '88asdyf09sadf';
 
 	public function testDeserializationUnencrypted() {
 		$this->assertNull( RecoveryCodeKeys::newFromArray( [] ) );
@@ -47,25 +49,35 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $key->getRecoveryCodeKeys(), $deserialized->getRecoveryCodeKeys() );
 	}
 
-	public function testNewFromArrayWithNonce() {
+	public function testNewFromArrayWithNonce_encryptionDisabled() {
 		$this->setMwGlobals( 'wgOATHSecretKey', false );
 		$this->expectException( UnexpectedValueException::class );
-		$keyArray = [
-			'recoverycodekeys' => self::INVALID_RECOVERY_KEY,
+		RecoveryCodeKeys::newFromArray( [
+			'recoverycodekeys' => [ self::INVALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => 'bad_value',
-		];
-		RecoveryCodeKeys::newFromArray( $keyArray );
+		] );
+	}
 
+	public function testNewFromArrayWithNonce_invalidKey() {
 		$this->encryptionIntegrationTestSetup();
-
 		$this->expectException( SodiumException::class );
-		RecoveryCodeKeys::newFromArray( $keyArray );
+		RecoveryCodeKeys::newFromArray( [
+			'recoverycodekeys' => [ self::INVALID_ENCRYPTED_RECOVERY_KEY ],
+			'nonce' => 'bad_value',
+		] );
+	}
 
+	public function testNewFromArrayWithNonce_validKey() {
+		$this->encryptionIntegrationTestSetup();
 		$key = RecoveryCodeKeys::newFromArray( [
-			'recoverycodekeys' => self::VALID_RECOVERY_KEY,
+			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => self::NONCE,
 		] );
 		$this->assertInstanceOf( RecoveryCodeKeys::class, $key );
+
+		$recoveryCodes = $key->getRecoveryCodeKeys();
+		$this->assertCount( 1, $recoveryCodes );
+		$this->assertSame( self::VALID_RECOVERY_KEY, $recoveryCodes[0] );
 	}
 
 	public function testNewFromArrayWithEncryption() {
