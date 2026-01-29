@@ -1,9 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth;
+namespace MediaWiki\Extension\OATHAuth\Key;
 
 use JsonSerializable;
-use stdClass;
+use MediaWiki\Extension\OATHAuth\OATHUser;
 
 abstract class AuthKey implements JsonSerializable {
 	public function __construct(
@@ -47,10 +47,5 @@ abstract class AuthKey implements JsonSerializable {
 		return false;
 	}
 
-	/**
-	 * @param array|stdClass $data
-	 * @param OATHUser $user
-	 * @return bool
-	 */
-	abstract public function verify( $data, OATHUser $user );
+	abstract public function verify( OATHUser $user, array $data ): bool;
 }

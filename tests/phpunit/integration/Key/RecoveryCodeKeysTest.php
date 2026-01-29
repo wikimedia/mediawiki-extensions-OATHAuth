@@ -13,7 +13,7 @@ use SodiumException;
 use UnexpectedValueException;
 
 /**
- * @covers \MediaWiki\Extension\OATHAuth\AuthKey
+ * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\EncryptionHelper
  * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
  * @covers \MediaWiki\Extension\OATHAuth\Module\TOTP
@@ -157,19 +157,19 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 
 		$testData = [];
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
-		$this->assertFalse( $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertFalse( $keys->verify( $mockOATHUser, $testData ) );
 
 		$keys->regenerateRecoveryCodeKeys();
 
 		$testData = [ 'recoverycode' => 'bad_token' ];
-		$this->assertFalse( $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertFalse( $keys->verify( $mockOATHUser, $testData ) );
 
 		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $keys->getRecoveryCodeKeys() );
 
 		// Test that verify works with a generated key
 		$testData = [ 'recoverycode' => $keys->getRecoveryCodeKeys()[0] ];
-		$this->assertTrue( $keys->verify( $testData, $mockOATHUser ) );
+		$this->assertTrue( $keys->verify( $mockOATHUser, $testData ) );
 	}
 
 	public function testIsValidRecoveryCode(): void {

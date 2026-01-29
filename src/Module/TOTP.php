@@ -69,7 +69,7 @@ class TOTP implements IModule {
 		}
 
 		foreach ( self::getTOTPKeys( $user ) as $key ) {
-			if ( $key->verify( $data, $user ) ) {
+			if ( $key->verify( $user, $data ) ) {
 				return true;
 			}
 		}

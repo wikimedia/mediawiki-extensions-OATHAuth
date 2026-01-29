@@ -17,7 +17,6 @@ use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -209,7 +208,7 @@ class WebAuthnKey extends AuthKey {
 	}
 
 	/** @inheritDoc */
-	public function verify( $data, OATHUser $user ) {
+	public function verify( OATHUser $user, array $data ): bool {
 		if ( $this->mode !== static::MODE_AUTHENTICATE ) {
 			$this->logger->error( 'Authentication attempt by user {user} while not in authenticate mode', [
 				'user' => $user->getUser()->getName(),

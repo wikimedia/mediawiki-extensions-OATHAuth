@@ -69,7 +69,7 @@ class RecoveryCodes implements IModule {
 		$recoveryCodeKey = $recoveryCodeKeys[0];
 		'@phan-var RecoveryCodeKeys $recoveryCodeKey';
 
-		if ( !$recoveryCodeKey->verify( $data, $user ) ) {
+		if ( !$recoveryCodeKey->verify( $user, $data ) ) {
 			return false;
 		}
 

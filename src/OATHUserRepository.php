@@ -6,6 +6,7 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
+use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;

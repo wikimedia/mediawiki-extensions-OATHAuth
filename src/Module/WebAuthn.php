@@ -68,7 +68,7 @@ class WebAuthn implements IModule {
 		$keys = self::getWebAuthnKeys( $user );
 		foreach ( $keys as $key ) {
 			// Pass if any of the keys matches
-			if ( $key->verify( $data, $user ) === true ) {
+			if ( $key->verify( $user, $data ) ) {
 				return true;
 			}
 		}

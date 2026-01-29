@@ -11,7 +11,7 @@ use MediaWikiIntegrationTestCase;
 use SodiumException;
 
 /**
- * @covers \MediaWiki\Extension\OATHAuth\AuthKey
+ * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
  * @covers \MediaWiki\Extension\OATHAuth\Key\TOTPKey
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
@@ -102,6 +102,6 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 
 		$testData1 = [];
 		$key = TOTPKey::newFromRandom();
-		$this->assertFalse( $key->verify( $testData1, $mockOATHUser ) );
+		$this->assertFalse( $key->verify( $mockOATHUser, $testData1 ) );
 	}
 }

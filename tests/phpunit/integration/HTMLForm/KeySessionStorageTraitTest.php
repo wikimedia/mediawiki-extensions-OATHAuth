@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\HTMLForm;
 
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
+use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Request\WebRequest;

@@ -70,7 +70,7 @@ class ApiOATHValidate extends ApiBase {
 				}
 
 				foreach ( $keys as $key ) {
-					if ( $key->verify( $data, $authUser ) !== false ) {
+					if ( $key->verify( $authUser, $data ) ) {
 						$result['valid'] = true;
 						break;
 					}

@@ -11,7 +11,6 @@ use DomainException;
 use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -127,12 +126,9 @@ class TOTPKey extends AuthKey {
 	}
 
 	/**
-	 * @param array $data
-	 * @param OATHUser $user
-	 * @return bool
 	 * @throws DomainException
 	 */
-	public function verify( $data, OATHUser $user ) {
+	public function verify( OATHUser $user, array $data ): bool {
 		global $wgOATHAuthWindowRadius;
 
 		$token = $data['token'] ?? '';

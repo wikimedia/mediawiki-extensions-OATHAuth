@@ -186,7 +186,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 			);
 			return [ 'oathauth-noscratchforvalidation' ];
 		}
-		if ( !$TOTPkey->verify( [ 'token' => $formData['token'] ], $this->oathUser ) ) {
+		if ( !$TOTPkey->verify( $this->oathUser, [ 'token' => $formData['token'] ] ) ) {
 			LoggerFactory::getInstance( 'authentication' )->info(
 				'OATHAuth {user} failed to provide a correct token while enabling 2FA from {clientip}', [
 					'user' => $this->getUser()->getName(),

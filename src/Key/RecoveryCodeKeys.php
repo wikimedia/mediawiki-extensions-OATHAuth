@@ -8,13 +8,11 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
 use Psr\Log\LoggerInterface;
-use stdClass;
 use UnexpectedValueException;
 
 /**
@@ -108,11 +106,7 @@ class RecoveryCodeKeys extends AuthKey {
 		$this->nonce = $nonce;
 	}
 
-	/**
-	 * @param array|stdClass $data
-	 * @param OATHUser $user
-	 */
-	public function verify( $data, OATHUser $user ): bool {
+	public function verify( OATHUser $user, array $data ): bool {
 		if ( !isset( $data['recoverycode'] ) ) {
 			return false;
 		}

@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\OATHAuth\Module;
 
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Extension\OATHAuth\AuthKey;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
