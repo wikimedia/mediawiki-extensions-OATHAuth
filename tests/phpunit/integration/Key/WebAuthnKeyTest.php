@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWikiIntegrationTestCase;
