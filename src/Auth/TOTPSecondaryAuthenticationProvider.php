@@ -12,7 +12,6 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
-use MediaWiki\User\User;
 
 /**
  * AuthManager secondary authentication provider for TOTP second-factor authentication.
@@ -30,12 +29,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	) {
 	}
 
-	/**
-	 * @param string $action
-	 * @param array $options
-	 *
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
 		// don't ask for anything initially, so the second factor is on a separate screen
 		return [];
@@ -44,10 +38,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	/**
 	 * If the user has enabled two-factor authentication, request a second factor.
 	 *
-	 * @param User $user
-	 * @param array $reqs
-	 *
-	 * @return AuthenticationResponse
+	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$authUser = $this->userRepository->findByUser( $user );
@@ -62,9 +53,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
 		/** @var TOTPAuthenticationRequest $request */
 		$request = AuthenticationRequest::getRequestByClass( $reqs, TOTPAuthenticationRequest::class );
@@ -106,13 +95,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		);
 	}
 
-	/**
-	 * @param User $user
-	 * @param User $creator
-	 * @param array $reqs
-	 *
-	 * @return AuthenticationResponse
-	 */
+	/** @inheritDoc */
 	public function beginSecondaryAccountCreation( $user, $creator, array $reqs ) {
 		return AuthenticationResponse::newAbstain();
 	}

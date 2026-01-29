@@ -283,11 +283,8 @@ class HookHandler implements
 	/**
 	 * Callback that generates the contents of the virtual data.json file in the ext.oath.manage
 	 * ResourceLoader module.
-	 *
-	 * @param Context $context
-	 * @return array
 	 */
-	public static function getOathManageModuleData( Context $context ) {
+	public static function getOathManageModuleData( Context $context ): array {
 		return [
 			'passkeyDialogTextHtml' => $context->msg( 'oathauth-passkey-dialog-text' )->parseAsBlock()
 		];

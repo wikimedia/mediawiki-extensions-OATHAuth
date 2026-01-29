@@ -10,26 +10,15 @@ use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\User;
 
 class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
-	/**
-	 * @param string $action
-	 * @param array $options
-	 *
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
 		return [];
 	}
 
-	/**
-	 * @param User $user
-	 * @param User $creator
-	 * @param array|AuthenticationRequest[] $reqs
-	 * @return AuthenticationResponse
-	 */
+	/** @inheritDoc */
 	public function beginSecondaryAccountCreation( $user, $creator, array $reqs ) {
 		return AuthenticationResponse::newAbstain();
 	}
@@ -37,10 +26,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	/**
 	 * If the user has enabled two-factor authentication, request a second factor.
 	 *
-	 * @param User $user
-	 * @param array $reqs
-	 *
-	 * @return AuthenticationResponse
+	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
 		$authUser = OATHAuthServices::getInstance()->getUserRepository()->findByUser( $user );
@@ -62,9 +48,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		return $response;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
 		$authUser = OATHAuthServices::getInstance()->getUserRepository()->findByUser( $user );
 
@@ -99,6 +83,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	/**
 	 * Return the ID of the module corresponding to the 2FA type option the user selected in the
 	 * login form (or null if not selected / invalid).
+	 *
 	 * @param OATHUser $authUser
 	 * @param AuthenticationRequest[] $reqs
 	 * @return string|null

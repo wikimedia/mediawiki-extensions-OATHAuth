@@ -30,7 +30,7 @@ class Manager {
 	 * @param OATHUser $oUser
 	 * @param bool $self Whether they disabled it themselves
 	 */
-	public static function notifyDisabled( OATHUser $oUser, bool $self ) {
+	public static function notifyDisabled( OATHUser $oUser, bool $self ): void {
 		if ( !self::isEnabled() ) {
 			return;
 		}
@@ -49,7 +49,7 @@ class Manager {
 	/**
 	 * Send a notification that 2FA has been enabled
 	 */
-	public static function notifyEnabled( OATHUser $oUser ) {
+	public static function notifyEnabled( OATHUser $oUser ): void {
 		if ( !self::isEnabled() ) {
 			return;
 		}
@@ -67,7 +67,9 @@ class Manager {
 	/**
 	 * Send a notification that the user has $tokenCount recovery tokens left
 	 */
-	public static function notifyRecoveryTokensRemaining( OATHUser $oUser, int $tokenCount, int $generatedCount ) {
+	public static function notifyRecoveryTokensRemaining(
+		OATHUser $oUser, int $tokenCount, int $generatedCount
+	): void {
 		if ( !self::isEnabled() ) {
 			return;
 		}

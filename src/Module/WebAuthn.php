@@ -115,9 +115,9 @@ class WebAuthn implements IModule {
 				return new WebAuthnManageForm( $user, $repo, $module, $context, $registry );
 			}
 			return null;
-		} else {
-			return '';
 		}
+
+		return '';
 	}
 
 	/**

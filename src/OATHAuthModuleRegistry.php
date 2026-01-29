@@ -13,7 +13,6 @@ use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHAuthModuleRegistry {
 
-	/** @var array|null */
 	private ?array $moduleIds = null;
 
 	public function __construct(

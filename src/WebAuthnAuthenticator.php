@@ -64,10 +64,15 @@ class WebAuthnAuthenticator {
 		/** @var OATHUserRepository $userRepo */
 		$userRepo = $services->getService( 'OATHUserRepository' );
 
+		/** @var WebAuthn $webAuthn */
+		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
+		/** @var RecoveryCodes $recovery */
+		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+
 		return new static(
 			$userRepo,
-			$moduleRegistry->getModuleByKey( 'webauthn' ),
-			$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
+			$webAuthn,
+			$recovery,
 			$userRepo->findByUser( $user ),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),

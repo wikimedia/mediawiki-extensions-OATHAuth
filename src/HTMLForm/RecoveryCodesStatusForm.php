@@ -2,10 +2,11 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Logger\LoggerFactory;
 
 /**
- * @property \MediaWiki\Extension\OATHAuth\Module\RecoveryCodes $module
+ * @property RecoveryCodes $module
  */
 class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 	use KeySessionStorageTrait;

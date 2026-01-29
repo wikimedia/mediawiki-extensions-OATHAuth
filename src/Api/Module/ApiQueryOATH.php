@@ -83,11 +83,7 @@ class ApiQueryOATH extends ApiQueryBase {
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
 
-	/**
-	 * @param array $params
-	 *
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getCacheMode( $params ) {
 		return 'private';
 	}
@@ -97,9 +93,7 @@ class ApiQueryOATH extends ApiQueryBase {
 		return true;
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'user' => [
@@ -111,9 +105,7 @@ class ApiQueryOATH extends ApiQueryBase {
 		];
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=query&meta=oath'

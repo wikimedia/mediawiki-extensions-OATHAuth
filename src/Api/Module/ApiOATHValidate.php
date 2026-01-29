@@ -104,9 +104,7 @@ class ApiOATHValidate extends ApiBase {
 		return 'csrf';
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'user' => [
@@ -119,9 +117,7 @@ class ApiOATHValidate extends ApiBase {
 		];
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=oathvalidate&data={"token":"123456"}&token=123ABC'

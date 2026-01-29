@@ -506,11 +506,8 @@ class OATHManage extends SpecialPage {
 
 	/**
 	 * Verifies if the given form instance fulfills the required conditions
-	 *
-	 * @param mixed $form
-	 * @return bool
 	 */
-	private function isValidFormType( $form ): bool {
+	private function isValidFormType( mixed $form ): bool {
 		if ( !( $form instanceof HTMLForm ) ) {
 			return false;
 		}

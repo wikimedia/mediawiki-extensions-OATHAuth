@@ -4,14 +4,11 @@ namespace MediaWiki\Extension\OATHAuth\Hook;
 
 use MediaWiki\Extension\OATHAuth\Maintenance\MoveRecoveryCodesFromTOTP;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
-use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
-	/**
-	 * @param DatabaseUpdater $updater
-	 */
+	/** @inheritDoc */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		$type = $updater->getDB()->getType();
 		$baseDir = dirname( __DIR__, 2 );

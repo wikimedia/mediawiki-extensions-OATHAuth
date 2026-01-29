@@ -47,7 +47,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 	}
 
 	/**
-	 * @return ButtonWidget|string
+	 * @return ButtonWidget
 	 * @throws ConfigException
 	 * @throws MWException
 	 */
@@ -65,9 +65,7 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		] );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onSuccess() {
 		// Not used - redirect is handled client-side after API call
 	}

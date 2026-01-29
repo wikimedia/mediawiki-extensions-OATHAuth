@@ -22,9 +22,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	/** @var bool */
 	protected $panelFramed = false;
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function __construct(
 		OATHUser $oathUser,
 		OATHUserRepository $oathRepo,
@@ -38,9 +36,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		$this->suppressDefaultSubmit();
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getHTML( $submitResult ) {
 		$html = parent::getHTML( $submitResult );
 
@@ -67,9 +63,7 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		return $html . $this->generateRecoveryCodesContent( $recCodeKeysForContent, true );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onSuccess() {
 		// Not used - redirect is handled client-side after API call
 	}
