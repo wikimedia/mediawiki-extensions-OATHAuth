@@ -14,6 +14,7 @@ use OOUI\FieldLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
 use UnexpectedValueException;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Helper trait to display and manage recovery codes within various contexts
@@ -93,7 +94,9 @@ trait RecoveryCodesTrait {
 					$this->getLanguage()->userTimeAndDate( $timestamp, $this->oathUser->getUser() )
 				)->parse()
 				. $this->msg( 'word-separator' )->escaped()
-				. $this->msg( 'parentheses' )->rawParams( wfTimestamp( TS_ISO_8601, $timestamp ) )->escaped()
+				. $this->msg( 'parentheses' )->rawParams(
+					wfTimestamp( TimestampFormat::ISO_8601, $timestamp )
+				)->escaped()
 			) .
 			'</p>' .
 			$this->createResourceList( $recoveryCodes ) .

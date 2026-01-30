@@ -20,6 +20,7 @@ use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * Class representing a two-factor key
@@ -154,7 +155,7 @@ class TOTPKey extends AuthKey {
 			$this->secret['period'],
 			-$wgOATHAuthWindowRadius,
 			$wgOATHAuthWindowRadius,
-			(int)ConvertibleTimestamp::now( TS_UNIX )
+			(int)ConvertibleTimestamp::now( TimestampFormat::UNIX )
 		);
 
 		// Remove any whitespace from the received token, which can be an intended group separator
