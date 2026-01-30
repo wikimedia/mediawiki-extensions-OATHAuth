@@ -9,8 +9,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Config\ConfigException;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
@@ -167,11 +165,6 @@ class WebAuthn extends ApiBase {
 		}
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
 	protected function getAuthInfo(): array {
 		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest() );
 		$canAuthenticate = $authenticator->canAuthenticate();
@@ -187,11 +180,6 @@ class WebAuthn extends ApiBase {
 		$this->dieWithError( $startAuthResult->getMessage() );
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
 	protected function getRegisterInfo(): array {
 		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
 		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
@@ -208,11 +196,6 @@ class WebAuthn extends ApiBase {
 		$this->dieWithError( $startRegResult->getMessage() );
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
 	protected function register(): array {
 		$credentialJson = $this->getParameter( 'credential' );
 		$friendlyName = $this->getParameter( 'friendlyname' );

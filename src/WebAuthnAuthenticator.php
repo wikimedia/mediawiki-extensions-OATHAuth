@@ -11,7 +11,6 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
@@ -53,10 +52,6 @@ class WebAuthnAuthenticator {
 
 	protected ?string $serverId;
 
-	/**
-	 * @throws ConfigException
-	 * @throws MWException
-	 */
 	public static function factory( User $user, ?WebRequest $request = null, bool $passkeyMode = false ): self {
 		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
@@ -127,9 +122,6 @@ class WebAuthnAuthenticator {
 		);
 	}
 
-	/**
-	 * @throws MWException
-	 */
 	public function startAuthentication(): Status {
 		$canAuthenticate = $this->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
@@ -310,7 +302,6 @@ class WebAuthnAuthenticator {
 
 	/**
 	 * Information to be sent to the client to start the authentication process
-	 * @throws MWException
 	 */
 	protected function getAuthInfo(): PublicKeyCredentialRequestOptions {
 		$keys = WebAuthn::getWebAuthnKeys( $this->oathUser );

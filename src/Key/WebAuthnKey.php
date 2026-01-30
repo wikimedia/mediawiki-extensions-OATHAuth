@@ -15,7 +15,6 @@ use Cose\Algorithm\Signature\RSA\RS256;
 use Cose\Algorithm\Signature\RSA\RS512;
 use LogicException;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -251,9 +250,6 @@ class WebAuthnKey extends AuthKey {
 		return $this->credentialTransports;
 	}
 
-	/**
-	 * @throws MWException
-	 */
 	private function checkFriendlyName() {
 		/** @var OATHUserRepository $repo */
 		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
@@ -301,26 +297,20 @@ class WebAuthnKey extends AuthKey {
 			$extensionOutputCheckerHandler
 		);
 
-		try {
-			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
-			$response = $publicKeyCredential->response;
-			if ( !$response instanceof AuthenticatorAttestationResponse ) {
-				throw new MWException( 'oathauth-webauthn-invalid-response' );
-			}
+		$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
+		$response = $publicKeyCredential->response;
 
-			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
-
-			$authenticatorAttestationResponseValidator->check(
-				$response,
-				$registrationObject,
-				$request
-			);
-		} catch ( Throwable $ex ) {
-			$this->logger->warning(
-				"WebAuthn key registration failed due to: {$ex->getMessage()}"
-			);
+		if ( !$response instanceof AuthenticatorAttestationResponse ) {
 			return false;
 		}
+
+		$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
+
+		$authenticatorAttestationResponseValidator->check(
+			$response,
+			$registrationObject,
+			$request
+		);
 
 		if ( $response->attestationObject->authData->hasAttestedCredentialData() ) {
 			$this->userHandle = $registrationObject->user->id;

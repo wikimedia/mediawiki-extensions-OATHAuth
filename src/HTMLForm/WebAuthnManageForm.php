@@ -2,9 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Exception\MWException;
 use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\HTMLField\RegisteredKeyLayout;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
@@ -48,8 +46,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 	/**
 	 * @return ButtonWidget
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	public function getButtons() {
 		return new ButtonWidget( [
@@ -81,8 +77,6 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 	/**
 	 * @return array
-	 * @throws ConfigException
-	 * @throws MWException
 	 */
 	protected function getDescriptors() {
 		$oathUser = $this->oathRepo->findByUser( $this->getUser() );
