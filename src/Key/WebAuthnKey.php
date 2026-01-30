@@ -137,7 +137,7 @@ class WebAuthnKey extends AuthKey {
 			"credentialPublicKey" => base64_encode(
 				(string)$this->attestedCredentialData->credentialPublicKey
 			),
-			"aaguid" => (string)$this->attestedCredentialData->getAaguid(),
+			"aaguid" => (string)$this->attestedCredentialData->aaguid,
 			"friendlyName" => $this->friendlyName,
 			"counter" => $this->signCounter,
 			"type" => $this->credentialType,
@@ -326,7 +326,7 @@ class WebAuthnKey extends AuthKey {
 			$this->credentialTransports = $response->transports;
 
 			if ( trim( $friendlyName ) === '' ) {
-				$aaguid = (string)$this->attestedCredentialData->getAaguid();
+				$aaguid = (string)$this->attestedCredentialData->aaguid;
 				$friendlyName = AAGUIDLookup::generateFriendlyName( $aaguid );
 			}
 			$this->setFriendlyName( $friendlyName );
@@ -374,7 +374,7 @@ class WebAuthnKey extends AuthKey {
 
 		try {
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
-			$response = $publicKeyCredential->getResponse();
+			$response = $publicKeyCredential->response;
 
 			if ( !$response instanceof AuthenticatorAssertionResponse ) {
 				return false;
