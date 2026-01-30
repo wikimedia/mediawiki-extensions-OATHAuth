@@ -9,9 +9,6 @@
 		"no-prototype-builtins": "off",
 		"no-jquery/no-global-selector": "off",
 		"mediawiki/msg-doc": "off",
-		"compat/compat": "warn",
-		"prefer-arrow-callback": "warn",
-		"no-jquery/no-extend": "warn",
-		"no-jquery/no-done-fail": "warn"
+		"compat/compat": "warn"
 	}
 }

@@ -1,5 +1,6 @@
 mw.ext.webauthn.LoginFormWidget = function () {
 	mw.ext.webauthn.LoginFormWidget.parent.call( this, {
+		// eslint-disable-next-line no-jquery/no-global-selector
 		$form: $( '#userloginForm' ).find( 'form' )
 	} );
 };

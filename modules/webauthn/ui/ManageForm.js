@@ -31,7 +31,7 @@ mw.ext.webauthn.ManageFormWidget.prototype.setupRegisteredKeys = function () {
 
 mw.ext.webauthn.ManageFormWidget.prototype.onRemoveClick = function ( friendlyName ) {
 	const authenticator = new mw.ext.webauthn.Authenticator();
-	authenticator.authenticate().done(
+	authenticator.authenticate().then(
 		( credential ) => {
 			this.$form.find( 'input[name="remove_key"]' ).val( friendlyName );
 			this.setCredential( credential );

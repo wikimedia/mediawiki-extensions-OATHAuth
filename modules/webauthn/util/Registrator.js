@@ -61,9 +61,11 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 	publicKey.user.id = mw.ext.webauthn.util.base64ToByteArray( publicKey.user.id );
 
 	if ( publicKey.excludeCredentials ) {
-		publicKey.excludeCredentials = publicKey.excludeCredentials.map( ( data ) => Object.assign( data, {
-			id: mw.ext.webauthn.util.base64ToByteArray( data.id )
-		} ) );
+		publicKey.excludeCredentials = publicKey.excludeCredentials.map( ( data ) => Object.assign(
+			data, {
+				id: mw.ext.webauthn.util.base64ToByteArray( data.id )
+			}
+		) );
 	}
 
 	if ( this.passkeyMode ) {
@@ -91,6 +93,7 @@ mw.ext.webauthn.Registrator.prototype.createCredential = function () {
 
 /**
  * @param {Credential} newCredential
+ * @return {Credential}
  */
 mw.ext.webauthn.Registrator.prototype.formatCredential = function ( newCredential ) {
 	// encoding should match PublicKeyCredentialLoader::loadArray()
@@ -103,8 +106,8 @@ mw.ext.webauthn.Registrator.prototype.formatCredential = function ( newCredentia
 		response: {
 			transports: newCredential.response.getTransports ?
 				newCredential.response.getTransports() :
-				// This omits AUTHENTICATOR_TRANSPORT_CABLE ('cable') for compatibility with iOS Safari
-				// (tested on iOS 15, may not be needed for newer versions). (T358771)
+				// This omits AUTHENTICATOR_TRANSPORT_CABLE ('cable') for compatibility with iOS
+				// Safari (tested on iOS 15, may not be needed for newer versions). (T358771)
 				[ 'usb', 'nfc', 'ble', 'internal' ],
 			// encoding should match CollectedClientData::createFormJson()
 			clientDataJSON: mw.ext.webauthn.util.byteArrayToBase64(

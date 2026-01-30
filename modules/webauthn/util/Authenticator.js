@@ -9,14 +9,14 @@ OO.mixinClass( mw.ext.webauthn.Authenticator, OO.EventEmitter );
 mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
 	const dfd = $.Deferred();
 	if ( this.authInfo === null ) {
-		this.getAuthInfo().done( ( response ) => {
+		this.getAuthInfo().then( ( response ) => {
 			if ( !response.webauthn.hasOwnProperty( 'auth_info' ) ) {
 				dfd.reject( 'oathauth-webauthn-error-get-authinfo-fail' );
 			}
 			this.authInfo = response.webauthn.auth_info;
 			this.authInfo = JSON.parse( this.authInfo );
 			this.authenticateWithAuthInfo( dfd );
-		} ).fail( ( error ) => {
+		} ).then( ( error ) => {
 			dfd.reject( error );
 		}
 		);
@@ -84,9 +84,10 @@ mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion 
 			signature: mw.ext.webauthn.util.byteArrayToBase64(
 				new Uint8Array( assertion.response.signature ), 'base64', 'padded' ),
 			userHandle: assertion.response.userHandle ?
-				mw.ext.webauthn.util.byteArrayToBase64( new Uint8Array( assertion.response.userHandle ),
-					'base64', 'padded' ) :
-				null
+				mw.ext.webauthn.util.byteArrayToBase64(
+					new Uint8Array( assertion.response.userHandle ),
+					'base64', 'padded'
+				) : null
 		}
 	};
 	return this.credential;
