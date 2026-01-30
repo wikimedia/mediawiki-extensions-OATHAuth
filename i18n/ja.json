@@ -15,12 +15,13 @@
 			"Suyama",
 			"Waki285",
 			"Whym",
+			"X200b",
 			"Yusuke1109",
 			"ネイ",
 			"春春眠眠"
 		]
 	},
-	"oathauth-desc": "HMAC に基づいたワンタイムパスワードを使用する認証機能を提供する",
+	"oathauth-desc": "HMACに基づいたワンタイムパスワードまたはWebAuthnプロトコルを利用した認証機能を提供する",
 	"disableoathforuser": "利用者の二要素認証を無効化",
 	"verifyoathforuser": "二要素認証の状態を確認",
 	"oathauth-account": "アカウント名:",

@@ -8,7 +8,7 @@
 			"Toliño"
 		]
 	},
-	"oathauth-desc": "Ofrece soporte de autenticación mediante contrasinais baseados en HMAC dun único uso",
+	"oathauth-desc": "Ofrece soporte de autenticación mediante contrasinais baseados en HMAC dun único uso e o protocolo WebAuthn",
 	"disableoathforuser": "Desactivar a autenticación de dous factores dun usuario",
 	"verifyoathforuser": "Comprobar o estado da autenticación de dous factores",
 	"oathauth-account": "Nome da conta:",
