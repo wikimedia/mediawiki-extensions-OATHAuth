@@ -6,7 +6,6 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
-use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -107,21 +106,6 @@ class OATHUser {
 	 */
 	public function addKey( AuthKey $key ) {
 		$this->keys[] = $key;
-	}
-
-	/**
-	 * Gets the module instance associated with this user
-	 *
-	 * @return IModule|null
-	 * @deprecated Use {@link AuthKey::getModule()} instead
-	 */
-	public function getModule() {
-		wfDeprecated( 'OATHUser::getModule()', '1.44', 'OATHAuth' );
-		if ( !$this->keys ) {
-			return null;
-		}
-		$key = $this->keys[0];
-		return OATHAuthServices::getInstance()->getModuleRegistry()->getModuleByKey( $key->getModule() );
 	}
 
 	/**
