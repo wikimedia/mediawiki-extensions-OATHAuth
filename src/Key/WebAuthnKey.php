@@ -348,12 +348,14 @@ class WebAuthnKey extends AuthKey {
 			$attestationObjectLoader
 		);
 		$coseAlgorithmManager = new Manager();
-		$coseAlgorithmManager->add( new ES256() );
-		$coseAlgorithmManager->add( new ES512() );
-		$coseAlgorithmManager->add( new EdDSA() );
-		$coseAlgorithmManager->add( new RS1() );
-		$coseAlgorithmManager->add( new RS256() );
-		$coseAlgorithmManager->add( new RS512() );
+		$coseAlgorithmManager->add(
+			new ES256(),
+			new ES512(),
+			new EdDSA(),
+			new RS1(),
+			new RS256(),
+			new RS512()
+		);
 
 		$credentialRepository = new WebAuthnCredentialRepository( $user );
 		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
