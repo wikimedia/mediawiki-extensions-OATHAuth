@@ -241,6 +241,9 @@
 				"oathauth-passkey-dialog-text",
 				"oathauth-passkey-dialog-back",
 				"oathauth-passkey-dialog-add"
+			],
+			"dependencies": [
+				"ext.webauthn.Registrator"
 			]
 		},
 		"ext.oath.manage.styles": {

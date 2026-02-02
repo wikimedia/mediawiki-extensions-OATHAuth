@@ -390,12 +390,6 @@ class OATHManage extends SpecialPage {
 				$passkeyAddButton
 			)
 		);
-		if ( $passkeyAddButton ) {
-			// TODO this should just be a dependency of ext.oath.manage, but it can't be because
-			// OATHAuth can't depend on WebAuthn directly. This should be resolved by merging
-			// the two extensions (T303495)
-			$this->getOutput()->addModules( 'ext.webauthn.Registrator' );
-		}
 
 		$this->getOutput()->addHTML( Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-vue-container' ],
 			// If 2FA is enabled then put passkeys first, otherwise put 2FA first

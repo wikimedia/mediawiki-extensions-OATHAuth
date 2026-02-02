@@ -55,33 +55,29 @@ module.exports = exports = defineComponent( {
 		};
 
 		function createPasskey() {
-			// TODO we can't directly depend on ext.webauthn.Registrator because the OATHAuth
-			// extension can't depend on the WebAuthn extension. This should be resolved by
-			// merging the two extensions (T303495)
-			mw.loader.using( 'ext.webauthn.Registrator' ).then( () => {
-				const registrator = new mw.ext.webauthn.Registrator( '', null, true );
-				return registrator.register();
-			} ).then( ( credential ) => new mw.Api().postWithToken( 'csrf', {
-				action: 'webauthn',
-				func: 'register',
-				credential: JSON.stringify( credential ),
-				passkeyMode: true
-			} ) ).then(
-				() => {
-					window.location.reload();
-				},
-				( error ) => {
-					if ( error === 'webauthn-reauthenticate' ) {
-						// The user's authentication has expired, and they need to reauthenticate.
-						// Reload the page, which will automatically redirect the user to the
-						// reauthentication flow.
+			const registrator = new mw.ext.webauthn.Registrator( '', null, true );
+			return registrator.register()
+				.then( ( credential ) => new mw.Api().postWithToken( 'csrf', {
+					action: 'webauthn',
+					func: 'register',
+					credential: JSON.stringify( credential ),
+					passkeyMode: true
+				} ) ).then(
+					() => {
 						window.location.reload();
+					},
+					( error ) => {
+						if ( error === 'webauthn-reauthenticate' ) {
+							// The user's authentication has expired, and they need to
+							// reauthenticate. Reload the page, which will automatically redirect
+							// the user to the reauthentication flow.
+							window.location.reload();
+						}
+						errorMessage.value = mw.message( error ).exists() ?
+							mw.message( error ).text() :
+							error;
 					}
-					errorMessage.value = mw.message( error ).exists() ?
-						mw.message( error ).text() :
-						error;
-				}
-			);
+				);
 		}
 
 		function close() {
