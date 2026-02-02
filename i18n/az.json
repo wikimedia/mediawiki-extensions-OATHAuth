@@ -89,6 +89,7 @@
 	"log-action-filter-oath": "İki faktorlu autentifikasiya əməliyyatının növü:",
 	"log-action-filter-oath-verify": "İki faktorlu autentifikasiyanın aktiv olub olmadığının yoxlanması",
 	"log-action-filter-oath-disable-other": "Digər istifadəçinin iki faktorlu autentifikasiyasının deaktiv edilməsi",
+	"oathauth-verify-automatic-comment": "İstifadəçi qrupları üçün uyğunluğu yoxlamaq üçün avtomatik olaraq yoxlanılır",
 	"oathauth-ui-no-module": "Heç biri aktiv deyil",
 	"oathauth-module-totp-label": "Autentifikator tətbiqi",
 	"oathauth-module-recoverycodes-label": "Bərpa kodları",

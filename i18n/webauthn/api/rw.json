@@ -4,7 +4,7 @@
 			"EmyArt"
 		]
 	},
-	"apihelp-webauthn-summary": "API Module yo kuvugana hagati ya seriveri numukiriya mugihe cyo kwiyandikisha / kwemeza.",
-	"apihelp-webauthn-paramvalue-func-getauthinfo": "Amakuru yo kwemeza ko ari ukuri.",
-	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Amakuru yo kwiyandikisha."
+	"apihelp-oathauth-webauthn-summary": "API Module yo kuvugana hagati ya seriveri numukiriya mugihe cyo kwiyandikisha / kwemeza.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "Amakuru yo kwemeza ko ari ukuri.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Amakuru yo kwiyandikisha."
 }

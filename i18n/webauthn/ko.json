@@ -6,19 +6,19 @@
 			"Ykhwong"
 		]
 	},
-	"webauthn-module-label": "보안 키",
-	"webauthn-ui-add-key": "키 추가",
-	"webauthn-error-browser-unsupported": "이 브라우저는 WebAuthentication을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
-	"webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오",
+	"oathauth-webauthn-module-label": "보안 키",
+	"oathauth-webauthn-ui-add-key": "키 추가",
+	"oathauth-webauthn-error-browser-unsupported": "이 브라우저는 WebAuthentication을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
+	"oathauth-webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오",
 	"oathauth-webauthn-registered-keys-section-name": "등록된 키",
-	"webuathn-ui-remove-key": "제거",
-	"webauthn-error-module-not-enabled": "\"$1\" 모듈은 {{GENDER:$2|사용자 \"$2\"}}에 대해 활성화되어 있지 않습니다",
-	"webauthn-error-verification-failed": "WebAuthn 인증에 실패했습니다.",
-	"webauthn-error-registration-failed": "새로운 키 등록에 실패했습니다.",
-	"webauthn-ui-key-register-help": "키의 별칭을 선택하세요:",
-	"webauthn-error-cannot-remove-key": "키는 제거할 수 없습니다",
+	"oathauth-webauthn-ui-remove-key": "제거",
+	"oathauth-webauthn-error-module-not-enabled": "\"$1\" 모듈은 {{GENDER:$2|사용자 \"$2\"}}에 대해 활성화되어 있지 않습니다",
+	"oathauth-webauthn-error-verification-failed": "WebAuthn 인증에 실패했습니다.",
+	"oathauth-webauthn-error-registration-failed": "새로운 키 등록에 실패했습니다.",
+	"oathauth-webauthn-ui-key-register-help": "키의 별칭을 선택하세요:",
+	"oathauth-webauthn-error-cannot-remove-key": "키는 제거할 수 없습니다",
 	"oathauth-webauthn-add-key-section-name": "새 보안 키 등록",
-	"webauthn-error-get-reginfo-fail": "등록 정보를 검색하지 못했습니다.",
-	"webauthn-module-description": "웹 인증(WebAuthn)은 W3C(World Wide Web Consortium)에서 발표한 웹 표준입니다. WebAuthn은 FIDO 얼라이언스의 지도 하에 있는 FIDO2 프로젝트의 핵심 구성 요소입니다. 이 프로젝트의 목표는 공개 키 암호화를 사용하여 웹 기반 애플리케이션 및 서비스에 대한 사용자를 인증하기 위한 인터페이스를 표준화하는 것입니다. [https://en.wikipedia.org/wiki/WebAuthn 자세히 보기]",
-	"webauthn-ui-reload-page-label": "문서 새로 고침"
+	"oathauth-webauthn-error-get-reginfo-fail": "등록 정보를 검색하지 못했습니다.",
+	"oathauth-webauthn-module-description": "웹 인증(WebAuthn)은 W3C(World Wide Web Consortium)에서 발표한 웹 표준입니다. WebAuthn은 FIDO 얼라이언스의 지도 하에 있는 FIDO2 프로젝트의 핵심 구성 요소입니다. 이 프로젝트의 목표는 공개 키 암호화를 사용하여 웹 기반 애플리케이션 및 서비스에 대한 사용자를 인증하기 위한 인터페이스를 표준화하는 것입니다. [https://en.wikipedia.org/wiki/WebAuthn 자세히 보기]",
+	"oathauth-webauthn-ui-reload-page-label": "문서 새로 고침"
 }

@@ -11,7 +11,7 @@
 			"WikiPhoenix"
 		]
 	},
-	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord",
+	"oathauth-desc": "Ger autentiseringsstöd med HMAC-baserade engångslösenord och WebAuthn-protokollet",
 	"disableoathforuser": "Inaktivera användarens tvåfaktorsautentisering",
 	"verifyoathforuser": "Bekräfta status för tvåfaktorsautentisering",
 	"oathauth-account": "Kontonamn:",

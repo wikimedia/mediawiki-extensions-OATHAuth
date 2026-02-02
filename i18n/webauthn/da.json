@@ -4,7 +4,7 @@
 			"Saederup92"
 		]
 	},
-	"webauthn-ui-add-key": "Tilføj nøgle",
-	"webuathn-ui-remove-key": "Fjern",
-	"webauthn-error-cannot-remove-key": "Nøglen kunne ikke fjernes"
+	"oathauth-webauthn-ui-add-key": "Tilføj nøgle",
+	"oathauth-webauthn-ui-remove-key": "Fjern",
+	"oathauth-webauthn-error-cannot-remove-key": "Nøglen kunne ikke fjernes"
 }

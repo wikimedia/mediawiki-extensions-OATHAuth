@@ -5,6 +5,6 @@
 		]
 	},
 	"oathauth-webauthn-registered-keys-section-name": "Kılitê qeydıni",
-	"webuathn-ui-remove-key": "Wedare",
-	"webauthn-ui-reload-page-label": "Pele reyna bar ke"
+	"oathauth-webauthn-ui-remove-key": "Wedare",
+	"oathauth-webauthn-ui-reload-page-label": "Pele reyna bar ke"
 }

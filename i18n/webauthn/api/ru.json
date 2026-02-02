@@ -4,6 +4,6 @@
 			"Vonavy"
 		]
 	},
-	"apihelp-webauthn-summary": "Модуль API для связи между сервером и клиентом в процессе регистрации/аутентификации.",
-	"apihelp-webauthn-param-func": "Имя запрашиваемой функции для выполнения."
+	"apihelp-oathauth-webauthn-summary": "Модуль API для связи между сервером и клиентом в процессе регистрации/аутентификации.",
+	"apihelp-oathauth-webauthn-param-func": "Имя запрашиваемой функции для выполнения."
 }

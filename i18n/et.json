@@ -6,7 +6,7 @@
 			"Pikne"
 		]
 	},
-	"oathauth-desc": "Võimaldab autentimist HMAC-põhiste ühekordsete paroolidega.",
+	"oathauth-desc": "Võimaldab autentimist HMAC-põhiste ühekordsete paroolidega ja WebAuthni protokolliga.",
 	"disableoathforuser": "Kasutaja kaheastmelise autentimise keelamine",
 	"verifyoathforuser": "Kaheastmelise autentimise oleku kontroll",
 	"oathauth-account": "Konto nimi:",
@@ -92,6 +92,7 @@
 	"notification-header-oathauth-remove-device": "{{GENDER:$2|Sinu kontoga}} seotud kaheastmelise autentimise seade on eemaldatud.",
 	"notification-body-oathauth-disable": "Kui {{GENDER:$2|sa}} ei teinud seda ise, siis võib {{GENDER:$2|sinu konto}} turvalisus ohus olla.",
 	"notification-body-oathauth-disable-other": "Kui {{GENDER:$2|sa}} ei taotlenud seda, siis peaksid võtma ühendust administraatoriga.",
+	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|Sinu}} kontol on jätkuvalt {{PLURAL:$3|täiendav aktiivne seade|aktiivsed $3 täiendavat seadet}}.",
 	"oathauth-notifications-disable-help": "Abi",
 	"oathauth-notifications-disable-primary": "Kontrolli kaheastmelise autentimise sätteid",
 	"notification-header-oathauth-enable": "{{GENDER:$2|Sinu konto}} kaheastmeline autentimine on lubatud.",

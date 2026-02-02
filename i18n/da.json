@@ -87,6 +87,7 @@
 	"log-action-filter-oath": "Type af tofaktorgodkendelsesoperation:",
 	"log-action-filter-oath-verify": "Undersøger, om tofaktorgodkendelse er aktiveret",
 	"log-action-filter-oath-disable-other": "Deaktiver tofaktorgodkendelse for en anden bruger",
+	"oathauth-verify-automatic-comment": "Automatisk verificering for at kontrollere berettigelse for brugergrupper",
 	"oathauth-ui-no-module": "Ingen aktiveret",
 	"oathauth-module-totp-label": "Authenticator-app",
 	"oathauth-module-recoverycodes-label": "Gendannelseskoder",

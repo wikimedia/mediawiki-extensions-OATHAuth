@@ -22,7 +22,7 @@
 			"神樂坂秀吉"
 		]
 	},
-	"oathauth-desc": "提供認證的支援，這是使用基於HMAC的一次性密碼",
+	"oathauth-desc": "提供認證的支援，這是使用基於HMAC和WebAuthn協議的一次性密碼",
 	"disableoathforuser": "停用使用者的雙重認證",
 	"verifyoathforuser": "驗證雙重認證狀態",
 	"oathauth-account": "帳號名稱：",

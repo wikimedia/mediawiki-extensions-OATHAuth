@@ -83,6 +83,7 @@
 	"log-action-filter-oath": "Typo de operation de authentication bifactorial:",
 	"log-action-filter-oath-verify": "Verificar si le authentication bifactorial es active",
 	"log-action-filter-oath-disable-other": "Disactivar le authentication bifactorial pro un altere usator",
+	"oathauth-verify-automatic-comment": "Verification automatic del eligibilitate pro gruppos de usatores",
 	"oathauth-ui-no-module": "Nihil activate",
 	"oathauth-module-totp-label": "App de authentication",
 	"oathauth-module-recoverycodes-label": "Codices de recuperation",

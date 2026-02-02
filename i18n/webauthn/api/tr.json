@@ -4,6 +4,6 @@
 			"SaldırganSincap"
 		]
 	},
-	"apihelp-webauthn-summary": "Kayıt/kimlik doğrulama işlemi sırasında sunucu ile istemci arasında iletişimi sağlayan API Modülü.",
-	"apihelp-webauthn-param-func": "Çalıştırılması istenen işlevin adı."
+	"apihelp-oathauth-webauthn-summary": "Kayıt/kimlik doğrulama işlemi sırasında sunucu ile istemci arasında iletişimi sağlayan API Modülü.",
+	"apihelp-oathauth-webauthn-param-func": "Çalıştırılması istenen işlevin adı."
 }

@@ -4,8 +4,8 @@
 			"Baba Ayɛ'ɛra"
 		]
 	},
-	"apihelp-webauthn-summary": "APImodili la de la ba tara bɔ'ɔra lahebaari da'ara la kɔɔsera la tiŋasuka",
-	"apihelp-webauthn-param-func": "Fum n eeri Yusɛka ti a tum la",
-	"apihelp-webauthn-paramvalue-func-getauthinfo": "Yelemiŋerɛ lahebaari",
-	"apihelp-webauthn-paramvalue-func-getregisterinfo": "Yɔ'ɔ ki'a lahebaari"
+	"apihelp-oathauth-webauthn-summary": "APImodili la de la ba tara bɔ'ɔra lahebaari da'ara la kɔɔsera la tiŋasuka",
+	"apihelp-oathauth-webauthn-param-func": "Fum n eeri Yusɛka ti a tum la",
+	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "Yelemiŋerɛ lahebaari",
+	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Yɔ'ɔ ki'a lahebaari"
 }

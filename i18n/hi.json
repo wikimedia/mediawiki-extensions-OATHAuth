@@ -86,6 +86,7 @@
 	"log-action-filter-oath": "दो-कारक प्रमाणीकरण के कार्य का प्रकार:",
 	"log-action-filter-oath-verify": "जाँचा गया कि दो-कारक प्रमाणीकरण सक्षम है या नहीं",
 	"log-action-filter-oath-disable-other": "किसी दूसरे सदस्य के लिए दो-कारक प्रमाणीकरण सक्षम किया गया",
+	"oathauth-verify-automatic-comment": "सदस्य समूहों के लिए पात्रता जाँचने के लिए स्वचालित रूप से प्रमाणित किया",
 	"oathauth-ui-no-module": "कोई सक्षम नहीं",
 	"oathauth-module-totp-label": "प्रमाणक ऐप",
 	"oathauth-module-recoverycodes-label": "पुनर्प्राप्ति कोड्स",

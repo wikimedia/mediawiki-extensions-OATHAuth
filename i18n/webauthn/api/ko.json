@@ -4,5 +4,5 @@
 			"Ykhwong"
 		]
 	},
-	"apihelp-webauthn-summary": "등록/인증 과정 중에 서버와 클라이언트 간 통신을 하기 위한 API 모듈입니다."
+	"apihelp-oathauth-webauthn-summary": "등록/인증 과정 중에 서버와 클라이언트 간 통신을 하기 위한 API 모듈입니다."
 }

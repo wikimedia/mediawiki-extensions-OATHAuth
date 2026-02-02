@@ -94,6 +94,7 @@
 	"log-action-filter-oath": "Art der Zwei-Faktoren-Authentifizierung:",
 	"log-action-filter-oath-verify": "Prüfen, ob die Zwei-Faktor-Authentifizierung aktiviert ist",
 	"log-action-filter-oath-disable-other": "Deaktivieren der Zwei-Faktor-Authentifizierung für einen anderen Benutzer",
+	"oathauth-verify-automatic-comment": "Automatische Überprüfung zur Prüfung der Berechtigung für Benutzergruppen",
 	"oathauth-ui-no-module": "nicht aktiviert",
 	"oathauth-module-totp-label": "Authentifizierungs-App",
 	"oathauth-module-recoverycodes-label": "Wiederherstellungscodes",

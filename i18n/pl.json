@@ -16,7 +16,7 @@
 			"Woytecr"
 		]
 	},
-	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC",
+	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC oraz protokołu WebAuthn",
 	"disableoathforuser": "Wyłączanie uwierzytelniania dwuskładnikowego dla użytkownika",
 	"verifyoathforuser": "Weryfikacja statusu uwierzytelniania dwuskładnikowego",
 	"oathauth-account": "Nazwa konta:",

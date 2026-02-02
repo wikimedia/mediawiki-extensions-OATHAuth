@@ -5,7 +5,7 @@
 			"Vlad5250"
 		]
 	},
-	"oathauth-desc": "Овозможува заверка на корисничката веродостојност со HMAC врз основа на еднократни лозинки",
+	"oathauth-desc": "Овозможува заверка на корисничката веродостојност со HMAC врз основа на еднократни лозинки и протоколот WebAuthn",
 	"disableoathforuser": "Оневозможи двочинителска заверка на корисникот",
 	"verifyoathforuser": "Провери статус на двочинителска заверка",
 	"oathauth-account": "Име на сметката:",
@@ -83,6 +83,7 @@
 	"log-action-filter-oath": "Вид на двочинителска заверка:",
 	"log-action-filter-oath-verify": "Проверка дали двочинителската заверка е овозможена",
 	"log-action-filter-oath-disable-other": "Оневозможување на двочинителска заверка за друг корисник",
+	"oathauth-verify-automatic-comment": "Автоматска заверка за проверка на подобноста за кориснички групи",
 	"oathauth-ui-no-module": "Ниеден не е овозможен",
 	"oathauth-module-totp-label": "Прилог за заверка",
 	"oathauth-module-recoverycodes-label": "Кодови за повраток",

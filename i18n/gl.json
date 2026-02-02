@@ -86,6 +86,7 @@
 	"log-action-filter-oath": "Tipo de operación de autenticación de dous factores:",
 	"log-action-filter-oath-verify": "Comprobando se a autenticación de dous factores está activada",
 	"log-action-filter-oath-disable-other": "Desactivando a autenticación de dous factores para outro usuario",
+	"oathauth-verify-automatic-comment": "Verificación automática para comprobar a elixibilidade dos grupos do usuario",
 	"oathauth-ui-no-module": "Ningunha activada",
 	"oathauth-module-totp-label": "Aplicación de autenticación",
 	"oathauth-module-recoverycodes-label": "Códigos de recuperación",

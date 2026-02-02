@@ -4,8 +4,8 @@
 			"Amire80"
 		]
 	},
-	"apihelp-webauthn-summary": "מודול API לתקשורת בין השרת ללקוח בעת תהליך רישום/אימות.",
-	"apihelp-webauthn-param-func": "שם הפונקציה המבוקשת לביצוע.",
-	"apihelp-webauthn-paramvalue-func-getauthinfo": "מידע על אימות.",
-	"apihelp-webauthn-paramvalue-func-getregisterinfo": "מידע על רישום."
+	"apihelp-oathauth-webauthn-summary": "מודול API לתקשורת בין השרת ללקוח בעת תהליך רישום/אימות.",
+	"apihelp-oathauth-webauthn-param-func": "שם הפונקציה המבוקשת לביצוע.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "מידע על אימות.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "מידע על רישום."
 }

@@ -17,7 +17,7 @@
 			"Southparkfan"
 		]
 	},
-	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden",
+	"oathauth-desc": "Biedt ondersteuning voor authenticatie via op HMAC-gebaseerde eenmalige wachtwoorden en het WebAuthn-protocol",
 	"disableoathforuser": "Tweetrapsauthenticatie van een gebruiker uitschakelen",
 	"verifyoathforuser": "Tweetrapsauthenticatie-status controleren",
 	"oathauth-account": "Accountnaam:",
@@ -95,6 +95,7 @@
 	"log-action-filter-oath": "Type tweetrapsauthenticatie-bewerking:",
 	"log-action-filter-oath-verify": "Controleren of tweetrapsauthenticatie is ingeschakeld",
 	"log-action-filter-oath-disable-other": "Tweetrapsauthenticatie voor een andere gebruiker uitschakelen",
+	"oathauth-verify-automatic-comment": "Automatische verificatie om de geschiktheid voor gebruikersgroepen te controleren",
 	"oathauth-ui-no-module": "Geen ingesteld",
 	"oathauth-module-totp-label": "Authenticatie-app",
 	"oathauth-module-recoverycodes-label": "Herstelcodes",

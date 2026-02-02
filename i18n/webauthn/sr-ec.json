@@ -4,9 +4,9 @@
 			"Milicevic01"
 		]
 	},
-	"webauthn-module-label": "Сигурносни кључ",
-	"webauthn-ui-add-key": "Додај кључ",
-	"webuathn-ui-remove-key": "Уклони",
-	"webauthn-ui-key-register-help": "Изаберите надимак за Ваш кључ:",
-	"webauthn-add-security-key": "Додај сигурносни кључ"
+	"oathauth-webauthn-module-label": "Сигурносни кључ",
+	"oathauth-webauthn-ui-add-key": "Додај кључ",
+	"oathauth-webauthn-ui-remove-key": "Уклони",
+	"oathauth-webauthn-ui-key-register-help": "Изаберите надимак за Ваш кључ:",
+	"oathauth-webauthn-add-security-key": "Додај сигурносни кључ"
 }
