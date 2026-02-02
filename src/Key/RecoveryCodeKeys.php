@@ -162,13 +162,17 @@ class RecoveryCodeKeys extends AuthKey {
 	/**
 	 * Generate additional recovery codes and add them to the set, without invalidating existing ones.
 	 * @param int $numCodes Number of codes to generate
+	 * @return list<string> Newly generated recovery codes
 	 */
-	public function generateAdditionalRecoveryCodeKeys( int $numCodes ): void {
+	public function generateAdditionalRecoveryCodeKeys( int $numCodes ): array {
+		$newCodes = [];
 		for ( $i = 0; $i < $numCodes; $i++ ) {
-			$this->recoveryCodeKeys[] = Base32::encode( random_bytes( self::RECOVERY_CODE_LENGTH ) );
+			$newCodes[] = Base32::encode( random_bytes( self::RECOVERY_CODE_LENGTH ) );
 		}
+		$this->recoveryCodeKeys = array_merge( $this->recoveryCodeKeys, $newCodes );
 		// This causes jsonSerialize() to re-encrypt the full set of recovery codes
 		$this->setRecoveryCodeKeysEncryptedAndNonce( [], '' );
+		return $newCodes;
 	}
 
 	/** @inheritDoc */

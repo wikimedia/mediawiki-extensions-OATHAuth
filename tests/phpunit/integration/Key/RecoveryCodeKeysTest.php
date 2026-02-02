@@ -185,7 +185,8 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ 'BL5KE9W38GYGEB9T' ] ] );
 		$this->assertSame( [ 'BL5KE9W38GYGEB9T' ], $keys->getRecoveryCodeKeys() );
 
-		$keys->generateAdditionalRecoveryCodeKeys( 1 );
+		$newCodes = $keys->generateAdditionalRecoveryCodeKeys( 1 );
+		$this->assertCount( 1, $newCodes );
 		$this->assertCount( 2, $keys->getRecoveryCodeKeys() );
 
 		$existingKeys = $keys->getRecoveryCodeKeys();

@@ -35,16 +35,57 @@ class OATHAuthLogger {
 	 * when checking if user is eligible for being a member of some groups.
 	 */
 	public function logImplicitVerification( UserIdentity $performer, UserIdentity $target ): void {
-		$targetPage = PageReferenceValue::localReference( NS_USER, $target->getName() );
 		$comment = Message::newFromKey( 'oathauth-verify-automatic-comment' )
 			->inContentLanguage()
 			->text();
 
 		// messages used: logentry-oath-verify, log-action-oath-verify
-		$logEntry = new ManualLogEntry( 'oath', 'verify' );
+		$this->insertLogEntry( 'verify', $performer, $target, $comment );
+
+		$this->logger->info(
+			'OATHAuth status implicitly checked for {usertarget} by {user} from {clientip}', [
+				'user' => $performer->getName(),
+				'usertarget' => $target,
+				'clientip' => $this->getClientIP(),
+			]
+		);
+	}
+
+	/**
+	 * Creates a new log entry for when a user generates additional recovery keys for another user.
+	 */
+	public function logOATHRecovery(
+		UserIdentity $performer,
+		UserIdentity $target,
+		string $reason,
+		int $codesCount
+	): void {
+		// messages used: logentry-oath-recover, log-action-oath-recover
+		$this->insertLogEntry( 'recover', $performer, $target, $reason, [ '4::count' => $codesCount ] );
+
+		$this->logger->info(
+			'{user} generated additional OATHAuth recovery keys for {usertarget} from {clientip}', [
+				'user' => $performer->getName(),
+				'usertarget' => $target,
+				'clientip' => $this->getClientIP(),
+			]
+		);
+	}
+
+	private function insertLogEntry(
+		string $subtype,
+		UserIdentity $performer,
+		UserIdentity $target,
+		string $comment,
+		array $params = []
+	): void {
+		$targetPage = PageReferenceValue::localReference( NS_USER, $target->getName() );
+
+		$logEntry = new ManualLogEntry( 'oath', $subtype );
 		$logEntry->setPerformer( $performer );
 		$logEntry->setTarget( $targetPage );
 		$logEntry->setComment( $comment );
+		$logEntry->setParameters( $params );
 		$logId = $logEntry->insert();
 
 		if ( $this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
@@ -52,22 +93,19 @@ class OATHAuthLogger {
 			$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
 			$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange( $logId ) );
 		}
+	}
 
+	/**
+	 * Returns the IP address from which the current request originated or 'unknown IP' if it cannot be determined.
+	 */
+	private function getClientIP(): string {
 		try {
 			$request = $this->context->getRequest();
-			$clientIP = $request->getIP();
+			return $request->getIP();
 		} catch ( Exception ) {
 			// Let's log with unknown IP, it's not a serious condition, and it's better to have any
 			// logs around 2FA than not
-			$clientIP = 'unknown IP';
+			return 'unknown IP';
 		}
-
-		$this->logger->info(
-			'OATHAuth status implicitly checked for {usertarget} by {user} from {clientip}', [
-				'user' => $performer->getName(),
-				'usertarget' => $target,
-				'clientip' => $clientIP,
-			]
-		);
 	}
 }

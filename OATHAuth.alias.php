@@ -13,6 +13,7 @@ $specialPageAliases['en'] = [
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
 	'OATHManage' => [ 'AccountSecurity', 'Manage_Two-factor_authentication', 'OATH_Manage',
 		'OATHManage', 'OATH', 'Two-factor_authentication', 'OATHAuth' ],
+	'Recover2FAForUser' => [ 'Recover2FAForUser' ],
 	'VerifyOATHForUser' => [ 'VerifyOATHForUser' ],
 ];
 

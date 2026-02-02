@@ -362,6 +362,17 @@
 				"UserGroupManager"
 			]
 		},
+		"Recover2FAForUser": {
+			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\Recover2FAForUser",
+			"services": [
+				"OATHUserRepository",
+				"OATHAuthModuleRegistry",
+				"OATHAuthLogger",
+				"UserFactory",
+				"CentralIdLookup",
+				"LinkRenderer"
+			]
+		},
 		"VerifyOATHForUser": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
 			"services": [
@@ -375,12 +386,14 @@
 		"oathauth-enable",
 		"oathauth-api-all",
 		"oathauth-disable-for-user",
+		"oathauth-recover-for-user",
 		"oathauth-verify-user",
 		"oathauth-view-log"
 	],
 	"GroupPermissions": {
 		"*": {
 			"oathauth-disable-for-user": false,
+			"oathauth-recover-for-user": false,
 			"oathauth-view-log": false
 		},
 		"user": {
@@ -463,6 +476,9 @@
 			],
 			"disable-other": [
 				"disable-other"
+			],
+			"recover": [
+				"recover"
 			]
 		}
 	},
