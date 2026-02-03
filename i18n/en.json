@@ -129,7 +129,7 @@
 	"oathauth-qrcode-alt": "Scannable QR code representing the secret key.",
 	"oathauth-hint": "Don't have access to your device or authenticator app? You can enter a recovery code (presented when you enabled 2FA) in this field.",
 	"oathauth-recovery-code-hint": "Have you lost your recovery code? Please contact an [[{{MediaWiki:Grouppage-sysop}}|administrator]].",
-	"oathauth-must-be-central": "{{GENDER:$1|Your account}} must linked to the central authentication system to use two-factor authentication.",
+	"oathauth-must-be-central": "{{GENDER:$1|Your account}} must be linked to the central authentication system to use two-factor authentication.",
 	"oathauth-error-multiple-modules": "For now, using multiple 2FA authentication methods is not supported. You can only enable $1 after disabling $2.",
 	"oathauth-remove-nosuchkey": "Key not found.",
 	"oathauth-password-header": "Password",
