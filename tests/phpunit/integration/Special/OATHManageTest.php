@@ -190,6 +190,75 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->assertCount( 0, $oathUser->getKeys() );
 	}
 
+	public function testDeleteLastKeyCreatesCheckUserEntry() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$key = TOTPKey::newFromRandom();
+		$userRepo->createKey(
+			$userRepo->findByUser( $user->getUserIdentity() ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			$key->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$oathUser = $userRepo->findByUser( $user->getUserIdentity() );
+		$keyId = $oathUser->getKeys()[0]->getId();
+
+		$logCountBefore = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'disable-self',
+				'cupe_actor' => $user->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$context = RequestContext::getMain();
+		$context->setLanguage( 'qqx' );
+		$session = $context->getRequest()->getSession();
+		$session->setUser( $user->getUser() );
+
+		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
+			->inLanguage( 'qqx' )
+			->text();
+
+		$request = new FauxRequest(
+			[
+				'action' => 'delete',
+				'module' => 'totp',
+				'keyId' => $keyId,
+				'wpremove-confirm-box' => $confirmText,
+				'wpEditToken' => $session->getToken( '' ),
+			],
+			true,
+			$session
+		);
+
+		$this->executeSpecialPage( '', $request, null, $user->getUser() );
+
+		$logCountAfter = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'disable-self',
+				'cupe_actor' => $user->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$this->assertSame(
+			(int)$logCountBefore + 1,
+			(int)$logCountAfter,
+			'A disable-self entry should be created in cu_private_event'
+		);
+	}
+
 	public function testDeleteLastKeyWithWrongConfirmation() {
 		$testUser = $this->getTestUser();
 		$user = $testUser->getUser();

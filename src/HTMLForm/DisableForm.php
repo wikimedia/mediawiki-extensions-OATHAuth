@@ -2,7 +2,11 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
+use MediaWiki\CheckUser\Services\CheckUserInsert;
+use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Registration\ExtensionRegistry;
 
 class DisableForm extends OATHAuthOOUIHTMLForm {
 
@@ -42,6 +46,16 @@ class DisableForm extends OATHAuthOOUIHTMLForm {
 			$this->getRequest()->getIP(),
 			true
 		);
+
+		if ( !$this->oathUser->getKeys() && ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+			$logEntry = new ManualLogEntry( 'oath', 'disable-self' );
+			$logEntry->setPerformer( $this->getUser() );
+			$logEntry->setTarget( $this->getUser()->getUserPage() );
+			/** @var CheckUserInsert $checkUserInsert */
+			$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+			$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
+		}
+
 		return true;
 	}
 }

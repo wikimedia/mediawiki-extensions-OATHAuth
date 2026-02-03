@@ -22,7 +22,10 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserGroupManager;
 use OOUI\ButtonWidget;
@@ -692,6 +695,15 @@ class OATHManage extends SpecialPage {
 				$this->getRequest()->getIP(),
 				true
 				);
+
+				if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+					$logEntry = new ManualLogEntry( 'oath', 'disable-self' );
+					$logEntry->setPerformer( $this->getUser() );
+					$logEntry->setTarget( $this->getUser()->getUserPage() );
+					/** @var \MediaWiki\CheckUser\Services\CheckUserInsert $checkUserInsert */
+					$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+					$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
+				}
 			}
 
 			$this->getOutput()->redirect( $this->getPageTitle()->getFullURL( [
