@@ -24,7 +24,6 @@ use MediaWiki\Extension\OATHAuth\WebAuthnRequest;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
-use RuntimeException;
 use Symfony\Component\Uid\Uuid;
 use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
@@ -297,20 +296,27 @@ class WebAuthnKey extends AuthKey {
 			$extensionOutputCheckerHandler
 		);
 
-		$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
-		$response = $publicKeyCredential->response;
+		try {
+			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
+			$response = $publicKeyCredential->response;
 
-		if ( !$response instanceof AuthenticatorAttestationResponse ) {
+			if ( !$response instanceof AuthenticatorAttestationResponse ) {
+				return false;
+			}
+
+			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
+
+			$authenticatorAttestationResponseValidator->check(
+				$response,
+				$registrationObject,
+				$request
+			);
+		} catch ( Throwable $ex ) {
+			$this->logger->warning(
+				"WebAuthn key registration failed due to: {$ex->getMessage()}"
+			);
 			return false;
 		}
-
-		$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
-
-		$authenticatorAttestationResponseValidator->check(
-			$response,
-			$registrationObject,
-			$request
-		);
 
 		if ( $response->attestationObject->authData->hasAttestedCredentialData() ) {
 			$this->userHandle = $registrationObject->user->id;
@@ -370,9 +376,8 @@ class WebAuthnKey extends AuthKey {
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->getResponse();
 
-			// Check if the response is an Authenticator Assertion Response
 			if ( !$response instanceof AuthenticatorAssertionResponse ) {
-				throw new RuntimeException( 'Not an authenticator assertion response' );
+				return false;
 			}
 
 			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
