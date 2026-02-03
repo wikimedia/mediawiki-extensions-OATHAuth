@@ -110,5 +110,6 @@
 	"oathauth-prefs-disabledgroups": "Käytöstä {{PLURAL:$1|poistettu ryhmä|poistetut ryhmät}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Jäsenyytesi}} {{PLURAL:$1|tässä ryhmässä|näissä ryhmissä}} on kytketty pois päältä, kunnes otat käyttöön [[Special:Manage Two-factor authentication|kaksivaiheisen tunnistautumisen]].",
 	"oathauth-qrcode-alt": "Skannattava QR-koodi, joka edustaa salaista avainta.",
+	"oathauth-must-be-central": "{{GENDER:$1|Käyttäjätunnuksesi}} on oltava linkitetty keskitettyyn tunnistautumisjärjestelmään käyttääksesi kaksivaiheista tunnistautumista.",
 	"oathauth-error-multiple-modules": "Tällä hetkellä useiden kaksivaiheisten tunnustautumistapojen käyttöä ei tueta. Voit ottaa käyttöön tavan $1 vasta poistettuasi käytöstä tavan $2."
 }
