@@ -5,5 +5,6 @@
 		]
 	},
 	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "Informazioni di autenticazione.",
-	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Informazioni di registrazione."
+	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Informazioni di registrazione.",
+	"apierror-oathauth-webauthn-invalid-credential": "I dati delle credenziali non sono validi o sono malformati."
 }

@@ -11,7 +11,7 @@
 			"YaronSh"
 		]
 	},
-	"oathauth-desc": "תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC",
+	"oathauth-desc": "מספקת תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC ופרוטוקול WebAuthn",
 	"disableoathforuser": "כיבוי אימות דו־שלבי של משתמש",
 	"verifyoathforuser": "וידוא מצב אימות דו־גורמי",
 	"oathauth-account": "שם החשבון:",
@@ -89,6 +89,7 @@
 	"log-action-filter-oath": "סוג פעולת האימות הדו־שלבי:",
 	"log-action-filter-oath-verify": "בדיקה האם האימות הדו־שלבי מופעל",
 	"log-action-filter-oath-disable-other": "כיבוי אימות דו־שלבי בעבור משתמש אחר",
+	"oathauth-verify-automatic-comment": "אימות אוטומטי לבדיקת זכאות עבור קבוצות משתמשים",
 	"oathauth-ui-no-module": "לא מופעל אף אחד",
 	"oathauth-module-totp-label": "יישום אימות",
 	"oathauth-module-recoverycodes-label": "קודי שחזור",
@@ -142,9 +143,9 @@
 	"oathauth-authenticator-delete-text": "להסיר",
 	"oathauth-totp-add-key": "הוספת יישום אימות",
 	"oathauth-delete-warning-header": "הסרת $1",
-	"oathauth-delete-warning": "לא תהיה לך עוד אפשרות להשתמש בשיטת האימות הזאת כדי להיכנס לחשבון וקודי השחזור שלך לא יעבדו עוד.",
+	"oathauth-delete-warning": "לא תהיה לך עוד אפשרות להשתמש בשיטת האימות הזאת כדי להיכנס לחשבון.",
 	"oathauth-delete-confirm-box": "יש להזין \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
-	"oathauth-delete-warning-final": "הסרת השיטה הזאת תכבה את האימות הדו־שלבי לגמרי.",
+	"oathauth-delete-warning-final": "הסרת השיטה הזאת תכבה את האימות הדו־שלבי לגמרי.\n\nזה גם ימחק את כל קודי השחזור ומפתחות הגישה.\n\n<strong>זה יהפוך את החשבון שלך למאובטח פחות.</strong>",
 	"oathauth-delete-warning-final-privileged-user": "יש לך הרשאות באתר {{SITENAME}} שדורשות אימות דו־שלבי.\n<strong>ייתכן {{GENDER:|שתאבד|שתאבדי}} את ההרשאות האלו וייתכן {{GENDER:|שתצטרך|שתצטרכי}} לבקש אותן שוב באופן ידני.</strong> \n\nעצה: כדאי להוסיף שיטה חדשה לפני הסרת השיטה הזאת.",
 	"oathauth-delete-wrong-confirm-message": "קלט שגוי להסרת מפתח אחרון. נא להקליד \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
 	"oathauth-delete-success": "<strong>$1</strong> הוסרה.",
@@ -155,5 +156,9 @@
 	"oathauth-passkeys-header": "מפתחות גישה",
 	"oathauth-passkeys-placeholder": "מפתחות גישה (passkeys) מאובטחים יותר מסיסמאות, ומאפשרים לך להיכנס באותו אופן שבו {{GENDER:|אתה פותח|את פותחת}} את המכשיר שלך.",
 	"oathauth-passkeys-no2fa": "כדי להוסיף מפתח גישה, יש להגדיר תחילה אימות דו־שלבי.",
-	"oathauth-passkeys-add": "הוספת מפתח גישה"
+	"oathauth-passkeys-add": "הוספת מפתח גישה",
+	"oathauth-passkey-dialog-title": "הוספת מפתח גישה",
+	"oathauth-passkey-dialog-text": "מפתחות גישה הם הדרך הבטוחה ביותר עבורך להיכנס לחשבונך. עבור רוב האנשים, הם גם הדרך הפשוטה ביותר.\n\nבעזרת מפתח גישה, יש לך אפשרות להיכנס לאלר {{SITENAME}} באותו אופן שבו עובדת פתיחת המכשיר שלך, בין אם זה קוד סודי, טביעת אצבע או זיהוי פנים.\n\nבכל שיטת התחברות, הנתונים הביומטריים וה־PIN שלך נשארים במכשיר שלך ולעולם לא נשלחים אלינו.",
+	"oathauth-passkey-dialog-back": "חזרה",
+	"oathauth-passkey-dialog-add": "הוספת מפתח גישה"
 }
