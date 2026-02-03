@@ -13,6 +13,7 @@ use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 
@@ -27,6 +28,7 @@ class OATHManageTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 
+		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
 		$this->bypassReauthentication();
 	}
 
