@@ -7,7 +7,9 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
+use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logging\ManualLogEntry;
@@ -53,6 +55,43 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	/**
+	 * Find the user who owns a given User Handle, and load an OATHUser object for them.
+	 * Use this to identify a user when you only have their WebAuthn authentication result.
+	 * @param string $userHandle User Handle value from the user's WebAuthn key
+	 * @return OATHUser|null OATHUser object for the user, or null if no user was found for the
+	 *   given User Handle
+	 */
+	public function findByUserHandle( string $userHandle ): ?OATHUser {
+		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
+			return null;
+		}
+		$userId = $this->dbProvider
+			->getReplicaDatabase( 'virtual-oathauth' )
+			->newSelectQueryBuilder()
+			->select( 'oah_user' )
+			->from( 'oathauth_user_handles' )
+			->where( [ 'oah_handle' => base64_encode( $userHandle ) ] )
+			->caller( __METHOD__ )
+			->fetchField();
+		if ( $userId === false ) {
+			return null;
+		}
+
+		$user = $this->centralIdLookupFactory->getLookup()->localUserFromCentralId(
+			$userId, CentralIdLookup::AUDIENCE_RAW
+		);
+		if ( $user === null ) {
+			return null;
+		}
+
+		$oathUser = new OATHUser( $user, $userId );
+		$oathUser->setUserHandle( $userHandle );
+		$this->loadKeysFromDatabase( $oathUser );
+		$this->cache->set( $user->getName(), $oathUser );
+		return $oathUser;
+	}
+
+	/**
 	 * Persists the given OAuth key in the database.
 	 *
 	 * @throws InvalidArgumentException
@@ -89,6 +128,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 			'clientip' => $clientInfo,
 			'oathtype' => $module->getName(),
 		] );
+
+		// If the user added a WebAuthn key, but doesn't have a User Handle yet, add this key's
+		// User Handle to the oathauth_user_handles table
+		if ( $key instanceof WebAuthnKey && $user->getUserHandle() === null ) {
+			$user->setUserHandle( $key->getUserHandle() );
+			$this->insertUserHandle( $user );
+		}
 
 		if ( !$hasExistingKey ) {
 			Manager::notifyEnabled( $user );
@@ -152,6 +198,12 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$this->removeSomeKeys( $user, [ 'oad_id' => $keyId ] );
 		$user->removeKey( $key );
 
+		$moduleName = $key->getModule();
+		// If the user just deleted their last WebAuthn key, delete their User Handle
+		if ( $moduleName === WebAuthn::MODULE_ID && $user->getKeysForModule( $moduleName ) === [] ) {
+			$this->deleteUserHandle( $user );
+		}
+
 		$this->logger->info( 'OATHAuth removed {oathtype} key {key} for {user} from {clientip}', [
 			'key' => $keyId,
 			'user' => $user->getUser()->getName(),
@@ -178,6 +230,11 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 		$this->removeSomeKeys( $user, [ 'oad_type' => $moduleId ] );
 		$user->removeKeysForModule( $keyType );
+
+		// If the user just deleted all of their WebAuthn keys, delete their User Handle
+		if ( $keyType === WebAuthn::MODULE_ID ) {
+			$this->deleteUserHandle( $user );
+		}
 
 		$this->logger->info( 'OATHAuth removed {oathtype} keys for {user} from {clientip}', [
 			'user' => $user->getUser()->getName(),
@@ -214,6 +271,8 @@ class OATHUserRepository implements LoggerAwareInterface {
 			$user->getKeys()
 		) );
 		$user->disable();
+
+		$this->deleteUserHandle( $user );
 
 		$this->logger->info( 'OATHAuth disabled for {user} from {clientip}', [
 			'user' => $user->getUser()->getName(),
@@ -260,5 +319,65 @@ class OATHUserRepository implements LoggerAwareInterface {
 				] )
 			);
 		}
+
+		if ( $user->getUserHandle() === null ) {
+			$userHandle = false;
+			if ( OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
+				$userHandle = $this->dbProvider
+					->getReplicaDatabase( 'virtual-oathauth' )
+					->newSelectQueryBuilder()
+					->select( 'oah_handle' )
+					->from( 'oathauth_user_handles' )
+					->where( [ 'oah_user' => $uid ] )
+					->caller( __METHOD__ )
+					->fetchField();
+			}
+			if ( $userHandle !== false ) {
+				$user->setUserHandle( base64_decode( $userHandle ) );
+			} else {
+				// If the user has any WebAuthn keys, derive their userHandle from that
+				/** @var WebAuthnKey[] */
+				$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_ID );
+				'@phan-var WebAuthnKey[] $webauthnKeys';
+				if ( $webauthnKeys ) {
+					$user->setUserHandle( $webauthnKeys[0]->getUserHandle() );
+				}
+			}
+		}
+	}
+
+	private function insertUserHandle( OATHUser $user ): void {
+		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
+			return;
+		}
+		$userHandle = $user->getUserHandle();
+		if ( $userHandle === null ) {
+			return;
+		}
+		$this->dbProvider
+			->getPrimaryDatabase( 'virtual-oathauth' )
+			->newInsertQueryBuilder()
+			->insertInto( 'oathauth_user_handles' )
+			->ignore()
+			->row( [
+				'oah_user' => $user->getCentralId(),
+				'oah_handle' => base64_encode( $userHandle )
+			] )
+			->caller( __METHOD__ )
+			->execute();
+	}
+
+	private function deleteUserHandle( OATHUser $user ): void {
+		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
+			return;
+		}
+		$user->setUserHandle( null );
+		$this->dbProvider
+			->getPrimaryDatabase( 'virtual-oathauth' )
+			->newDeleteQueryBuilder()
+			->deleteFrom( 'oathauth_user_handles' )
+			->where( [ 'oah_user' => $user->getCentralId() ] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 }

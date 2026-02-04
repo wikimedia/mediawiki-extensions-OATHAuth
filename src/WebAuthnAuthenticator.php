@@ -325,25 +325,15 @@ class WebAuthnAuthenticator {
 		$mwUser = $this->context->getUser();
 
 		// Exclude all already registered keys for user
-		$excludedPublicKeyDescriptors = [];
+		/** @var WebAuthnKey[] $webauthnKeys */
+		$webauthnKeys = $this->oathUser->getKeysForModule( WebAuthn::MODULE_ID );
+		'@phan-var WebAuthnKey[] $webauthnKeys';
+		$excludedPublicKeyDescriptors = array_map( static fn ( $key ) => new PublicKeyCredentialDescriptor(
+			PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
+			$key->getAttestedCredentialData()->credentialId
+		), $webauthnKeys );
 
-		// If the user already has webauthn enabled, and is just registering another key,
-		// make sure userHandle remains the same across keys
-		$userHandle = null;
-
-		foreach ( WebAuthn::getWebAuthnKeys( $this->oathUser ) as $key ) {
-			$userHandle = $key->getUserHandle();
-
-			$excludedPublicKeyDescriptors[] = new PublicKeyCredentialDescriptor(
-				PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
-				$key->getAttestedCredentialData()->credentialId
-			);
-		}
-
-		if ( !$userHandle ) {
-			$userHandle = random_bytes( 64 );
-		}
-
+		$userHandle = $this->oathUser->getUserHandle() ?? random_bytes( 64 );
 		$realName = $mwUser->getRealName() ?: $mwUser->getName();
 		$userEntity = new PublicKeyCredentialUserEntity(
 			$mwUser->getName(),

@@ -17,6 +17,8 @@ class OATHUser {
 	/** @var AuthKey[] */
 	private array $keys = [];
 
+	private ?string $userHandle = null;
+
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 */
@@ -142,5 +144,25 @@ class OATHUser {
 	 */
 	public function userHasNonSpecialEnabledKeys(): bool {
 		return count( $this->getNonSpecialKeys() ) > 0;
+	}
+
+	/**
+	 * Get the user's WebAuthn User Handle value. The User Handle appears in each of the user's
+	 * WebAuthn keys, and is used to identify the user based on one of their WebAuthn keys.
+	 * See also OATHUserRepository::findByUserHandle().
+	 *
+	 * For more information about User Handles, see
+	 * https://developers.yubico.com/WebAuthn/WebAuthn_Developer_Guide/User_Handle.html
+	 */
+	public function getUserHandle(): ?string {
+		return $this->userHandle;
+	}
+
+	/**
+	 * Set the User Handle. This should only be used by OATHUserRepository.
+	 * @internal
+	 */
+	public function setUserHandle( ?string $userHandle ): void {
+		$this->userHandle = $userHandle;
 	}
 }
