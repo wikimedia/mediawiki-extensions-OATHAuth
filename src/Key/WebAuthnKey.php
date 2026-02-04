@@ -39,11 +39,11 @@ use Webauthn\AuthenticatorAssertionResponse;
 use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
+use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialLoader;
 use Webauthn\PublicKeyCredentialRequestOptions;
-use Webauthn\TokenBinding\TokenBindingNotSupportedHandler;
 use Webauthn\TrustPath\EmptyTrustPath;
 use Webauthn\TrustPath\TrustPath;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -279,24 +279,15 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user,
 		string $friendlyName = ''
 	): bool {
-		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
-		$attestationStatementSupportManager = $this->getAttestationSupportManager();
-		$attestationObjectLoader = new AttestationObjectLoader(
-			$attestationStatementSupportManager
-		);
-		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-			$attestationObjectLoader
-		);
-		$credentialRepository = new WebAuthnCredentialRepository( $user );
-		$extensionOutputCheckerHandler = new ExtensionOutputCheckerHandler();
-		$authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
-			$attestationStatementSupportManager,
-			$credentialRepository,
-			$tokenBindingHandler,
-			$extensionOutputCheckerHandler
-		);
-
 		try {
+			$attestationStatementSupportManager = $this->getAttestationSupportManager();
+
+			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
+				new AttestationObjectLoader(
+					$attestationStatementSupportManager
+				)
+			);
+
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->response;
 
@@ -304,12 +295,21 @@ class WebAuthnKey extends AuthKey {
 				return false;
 			}
 
-			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
+			$stepManagerFactory = new CeremonyStepManagerFactory();
+			$stepManagerFactory->setAttestationStatementSupportManager( $attestationStatementSupportManager );
+			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
+
+			$authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
+				ceremonyStepManager: $stepManagerFactory->creationCeremony()
+			);
+
+			$authenticatorAttestationResponseValidator->setLogger( $this->logger );
 
 			$authenticatorAttestationResponseValidator->check(
+				// TODO: Please inject the host as a string instead
 				$response,
 				$registrationObject,
-				$request
+				WebAuthnRequest::newFromWebRequest( $this->context->getRequest() ),
 			);
 		} catch ( Throwable $ex ) {
 			$this->logger->warning(
@@ -347,32 +347,13 @@ class WebAuthnKey extends AuthKey {
 		PublicKeyCredentialRequestOptions $publicKeyCredentialRequestOptions,
 		OATHUser $user
 	): bool {
-		$attestationObjectLoader = new AttestationObjectLoader(
-			$this->getAttestationSupportManager()
-		);
-		$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-			$attestationObjectLoader
-		);
-		$coseAlgorithmManager = new Manager();
-		$coseAlgorithmManager->add(
-			new ES256(),
-			new ES512(),
-			new EdDSA(),
-			new RS1(),
-			new RS256(),
-			new RS512()
-		);
-
-		$credentialRepository = new WebAuthnCredentialRepository( $user );
-		$tokenBindingHandler = new TokenBindingNotSupportedHandler();
-		$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
-			$credentialRepository,
-			$tokenBindingHandler,
-			new ExtensionOutputCheckerHandler(),
-			$coseAlgorithmManager
-		);
-
 		try {
+			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
+				new AttestationObjectLoader(
+					$this->getAttestationSupportManager()
+				)
+			);
+
 			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->response;
 
@@ -380,15 +361,40 @@ class WebAuthnKey extends AuthKey {
 				return false;
 			}
 
-			$request = WebAuthnRequest::newFromWebRequest( $this->context->getRequest() );
+			$coseAlgorithmManager = new Manager();
+			$coseAlgorithmManager->add(
+				new ES256(),
+				new ES512(),
+				new EdDSA(),
+				new RS1(),
+				new RS256(),
+				new RS512()
+			);
+
+			$stepManagerFactory = new CeremonyStepManagerFactory();
+			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
+			$stepManagerFactory->setAlgorithmManager( $coseAlgorithmManager );
+
+			$pubKeySource = ( new WebAuthnCredentialRepository( $user ) )
+				->findOneByCredentialId( $publicKeyCredential->rawId );
+
+			if ( $pubKeySource === null ) {
+				return false;
+			}
+
+			$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
+				ceremonyStepManager: $stepManagerFactory->requestCeremony(),
+			);
+			$authenticatorAssertionResponseValidator->setLogger( $this->logger );
+
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
-				$publicKeyCredential->rawId,
+				$pubKeySource,
 				// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
 				$publicKeyCredential->response,
 				$publicKeyCredentialRequestOptions,
-				$request,
-				$this->userHandle
+				WebAuthnRequest::newFromWebRequest( $this->context->getRequest() ),
+				$this->userHandle,
 			);
 			return true;
 		} catch ( Throwable $ex ) {
