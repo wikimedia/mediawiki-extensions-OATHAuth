@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -162,6 +163,7 @@ class Recover2FAForUser extends FormSpecialPage {
 			return $emailStatus;
 		}
 
+		Manager::notifyRecoveryTokensGeneratedForUser( $user, $this->codesCount );
 		$this->oathLogger->logOATHRecovery( $this->getUser(), $user, $formData['reason'], $this->codesCount );
 		return Status::newGood();
 	}

@@ -9,8 +9,10 @@ namespace MediaWiki\Extension\OATHAuth\Notifications;
 
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Notification\RecipientSet;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Manages logic for configuring and sending out notifications with Echo
@@ -82,5 +84,24 @@ class Manager {
 				'generatedCount' => $generatedCount,
 			],
 		] );
+	}
+
+	/**
+	 * Sends a notification that the user had additional recovery tokens generated for them
+	 */
+	public static function notifyRecoveryTokensGeneratedForUser(
+		UserIdentity $targetUser,
+		int $tokenCount
+	): void {
+		if ( !self::isEnabled() ) {
+			return;
+		}
+		Event::create( [
+			// message used: notification-header-oathauth-recoverycodes-generated-for-user
+			'type' => 'oathauth-recoverycodes-generated-for-user',
+			'extra' => [
+				'codeCount' => $tokenCount
+			],
+		], new RecipientSet( $targetUser ) );
 	}
 }

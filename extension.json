@@ -45,6 +45,12 @@
 					"user-locators": [
 						"MediaWiki\\Extension\\Notifications\\UserLocator::locateEventAgent"
 					]
+				},
+				"oathauth-recoverycodes-generated-for-user": {
+					"category": "system",
+					"group": "interactive",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\RecoveryCodesGeneratedForUserPresentationModel"
 				}
 			}
 		},
