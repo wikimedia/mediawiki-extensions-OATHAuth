@@ -2,18 +2,12 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use ParagonIE\ConstantTime\Base64UrlSafe;
 use Webauthn\PublicKeyCredentialSource;
-use Webauthn\PublicKeyCredentialSourceRepository;
-use Webauthn\PublicKeyCredentialUserEntity;
 
-/**
- * TODO: PublicKeyCredentialSourceRepository is deprecated
- */
-class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
+class WebAuthnCredentialRepository {
 	public function __construct( private OATHUser $oauthUser ) {
 	}
 
@@ -47,34 +41,6 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 		return null;
 	}
 
-	/**
-	 * @return PublicKeyCredentialSource[]
-	 */
-	public function findAllForUserEntity(
-		PublicKeyCredentialUserEntity $publicKeyCredentialUserEntity
-	): array {
-		$res = [];
-		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
-			if ( $key->getUserHandle() === $publicKeyCredentialUserEntity->id ) {
-				$res[] = $this->credentialSourceFromKey( $key );
-			}
-		}
-
-		return $res;
-	}
-
-	/**
-	 * @throws ConfigException
-	 */
-	public function saveCredentialSource(
-		PublicKeyCredentialSource $publicKeyCredentialSource
-	): void {
-		$this->updateCounterFor(
-			$publicKeyCredentialSource->publicKeyCredentialId,
-			$publicKeyCredentialSource->counter
-		);
-	}
-
 	private function credentialSourceFromKey( WebAuthnKey $key ): PublicKeyCredentialSource {
 		// TODO: createFromArray() is deprecated. Use Webauthn\Denormalizer\WebauthnSerializerFactory to create
 		return PublicKeyCredentialSource::createFromArray( [
@@ -93,31 +59,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 			'transports' => $key->getTransports(),
 			'attestationType' => $key->getAttestationType(),
 			// TODO: Can we actually call jsonSerialize()?
-			'trustPath' => $key->getTrustPath()->jsonSerialize()
+			'trustPath' => $key->getTrustPath()->jsonSerialize(),
 		] );
-	}
-
-	/**
-	 * Set a new sign counter-value for the credential
-	 */
-	private function updateCounterFor( string $credentialId, int $newCounter ): void {
-		foreach ( WebAuthn::getWebAuthnKeys( $this->oauthUser ) as $key ) {
-			if ( $key->getAttestedCredentialData()->credentialId !== $credentialId ) {
-				continue;
-			}
-			if ( $key->getSignCounter() === $newCounter ) {
-				// Nothing to update
-				return;
-			}
-
-			$key->setSignCounter( $newCounter );
-
-			OATHAuthServices::getInstance()
-				->getUserRepository()
-				->updateKey(
-					$this->oauthUser,
-					$key
-				);
-		}
 	}
 }
