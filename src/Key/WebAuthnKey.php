@@ -28,7 +28,6 @@ use Symfony\Component\Uid\Uuid;
 use Throwable;
 use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
 use Webauthn\AttestationStatement\AppleAttestationStatementSupport;
-use Webauthn\AttestationStatement\AttestationObjectLoader;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
 use Webauthn\AttestationStatement\FidoU2FAttestationStatementSupport;
 use Webauthn\AttestationStatement\PackedAttestationStatementSupport;
@@ -40,9 +39,10 @@ use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
+use Webauthn\Denormalizer\WebauthnSerializerFactory;
+use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
-use Webauthn\PublicKeyCredentialLoader;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\TrustPath\EmptyTrustPath;
 use Webauthn\TrustPath\TrustPath;
@@ -282,14 +282,13 @@ class WebAuthnKey extends AuthKey {
 		try {
 			$attestationStatementSupportManager = $this->getAttestationSupportManager();
 
-			// TODO: PublicKeyCredentialLoader is deprecated
-			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-				new AttestationObjectLoader(
-					$attestationStatementSupportManager
-				)
+			$serializer = ( new WebauthnSerializerFactory( $attestationStatementSupportManager ) )->create();
+			$publicKeyCredential = $serializer->deserialize(
+				$data,
+				PublicKeyCredential::class,
+				'json',
 			);
 
-			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->response;
 
 			if ( !$response instanceof AuthenticatorAttestationResponse ) {
@@ -349,14 +348,13 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user
 	): bool {
 		try {
-			// TODO: PublicKeyCredentialLoader is deprecated
-			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
-				new AttestationObjectLoader(
-					$this->getAttestationSupportManager()
-				)
+			$serializer = ( new WebauthnSerializerFactory( $this->getAttestationSupportManager() ) )->create();
+			$publicKeyCredential = $serializer->deserialize(
+				$data,
+				PublicKeyCredential::class,
+				'json',
 			);
 
-			$publicKeyCredential = $publicKeyCredentialLoader->load( $data );
 			$response = $publicKeyCredential->response;
 
 			if ( !$response instanceof AuthenticatorAssertionResponse ) {
@@ -392,7 +390,6 @@ class WebAuthnKey extends AuthKey {
 			// Check the response against the attestation request
 			$authenticatorAssertionResponseValidator->check(
 				$pubKeySource,
-				// @phan-suppress-next-line PhanTypeMismatchArgumentSuperType
 				$publicKeyCredential->response,
 				$publicKeyCredentialRequestOptions,
 				WebAuthnRequest::newFromWebRequest( $this->context->getRequest() ),
