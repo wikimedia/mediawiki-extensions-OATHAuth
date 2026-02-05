@@ -88,6 +88,7 @@
 	"log-action-filter-oath": "Kiểu tác vụ xác thực dùng hai nhân tố:",
 	"log-action-filter-oath-verify": "Kiểm tra chế độ xác thực dùng hai nhân tố có được bật hay tắt",
 	"log-action-filter-oath-disable-other": "Tắt xác thực dùng hai nhân tố của thành viên khác",
+	"oathauth-verify-automatic-comment": "Tự động xác minh để kiểm tra tư cách thành viên cho các nhóm người dùng.",
 	"oathauth-ui-no-module": "Không kích hoạt",
 	"oathauth-module-totp-label": "Ứng dụng xác thực",
 	"oathauth-module-recoverycodes-label": "Mã khôi phục",

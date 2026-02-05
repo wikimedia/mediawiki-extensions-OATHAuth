@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x48fe75df30",
 			"94rain",
 			"A Chinese Wikipedian",
 			"Anterdc99",
@@ -110,6 +111,7 @@
 	"oath-log-name": "双重身份验证日志",
 	"oath-log-header": "这些事件记录了用户的双重身份验证状态变化。",
 	"logentry-oath-disable-other": "$1{{GENDER:$2|禁用了}}$3的双重身份验证",
+	"logentry-oath-disable-self": "{{GENDER:$2|禁用}} 双重验证",
 	"logentry-oath-verify": "$1{{GENDER:$2|检查了}}是否$3已启用双重身份验证",
 	"log-action-filter-oath": "双重身份验证操作类型：",
 	"log-action-filter-oath-verify": "检查是否启用双重验证",

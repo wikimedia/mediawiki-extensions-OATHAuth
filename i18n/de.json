@@ -90,6 +90,7 @@
 	"oath-log-name": "Zwei-Faktor-Authentifizierungs-Logbuch",
 	"oath-log-header": "Diese Ereignisse verfolgen Änderungen des Zwei-Faktor-Authentifizierungs-Status von Benutzern",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|deaktivierte}} die Zwei-Faktor-Authentifizierung von $3",
+	"logentry-oath-disable-self": "{{GENDER:$2|deaktivierte}} die Zwei-Faktor-Authentifizierung",
 	"logentry-oath-verify": "$1 {{GENDER:$2|prüfte}}, ob bei $3 die Zwei-Faktor-Authentifizierung aktiviert war",
 	"log-action-filter-oath": "Art der Zwei-Faktoren-Authentifizierung:",
 	"log-action-filter-oath-verify": "Prüfen, ob die Zwei-Faktor-Authentifizierung aktiviert ist",

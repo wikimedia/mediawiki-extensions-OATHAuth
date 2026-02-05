@@ -83,6 +83,7 @@
 	"oath-log-name": "Log over tofaktorgodkendelse",
 	"oath-log-header": "Disse hændelser sporer ændringer i brugernes status for tofaktorgodkendelse.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|deaktiverede}} tofaktorgodkendelsen for $3",
+	"logentry-oath-disable-self": "Tofaktorgodkendelse er {{GENDER:$2|deaktiveret}}",
 	"logentry-oath-verify": "$1 {{GENDER:$2|tjekkede}} om $3 havde tofaktorgodkendelse aktiveret",
 	"log-action-filter-oath": "Type af tofaktorgodkendelsesoperation:",
 	"log-action-filter-oath-verify": "Undersøger, om tofaktorgodkendelse er aktiveret",
