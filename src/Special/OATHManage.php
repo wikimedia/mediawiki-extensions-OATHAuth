@@ -184,9 +184,10 @@ class OATHManage extends SpecialPage {
 	private function buildKeyAccordion( AuthKey $key ): string {
 		$codex = new Codex();
 		$keyData = $this->getKeyNameAndDescription( $key );
-		$keyAccordion = $codex->accordion();
-
-		$keyAccordion->setTitle( $keyData['name'] );
+		$keyAccordion = $codex->accordion()
+			->setTitle( $keyData['name'] )
+			// TODO support outlined Accordions in Codex-PHP (T416645)
+			->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] );
 
 		$accordionDescription = $keyData['timestamp'] ?? $keyData['description'] ?? null;
 		if ( $accordionDescription !== null ) {
@@ -761,13 +762,13 @@ class OATHManage extends SpecialPage {
 			)
 		);
 
-		// TODO: use outlined Accordions once these are available in Codex
 		$keyAccordion = $codex->accordion()
-			->setTitle( $module->getDisplayName()->text() );
-		$keyAccordion->setDescription(
-			$this->msg( 'oathauth-recoverycodes' )->text()
-		);
-		$keyAccordion
+			->setTitle( $module->getDisplayName()->text() )
+			->setDescription(
+				$this->msg( 'oathauth-recoverycodes' )->text()
+			)
+			// TODO support outlined Accordions in Codex-PHP (T416645)
+			->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] )
 			->setContentHtml( $codex->htmlSnippet()->setContent(
 				Html::rawElement( 'form', [
 						'action' => wfScript(),
