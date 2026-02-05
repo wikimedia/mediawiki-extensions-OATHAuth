@@ -291,6 +291,7 @@
 			],
 			"messages": [
 				"oathauth-webauthn-error-get-reginfo-fail",
+				"oathauth-webauthn-error-registration-failed",
 				"oathauth-webauthn-error-reg-generic"
 			]
 		},
