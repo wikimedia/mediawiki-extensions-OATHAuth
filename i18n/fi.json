@@ -110,6 +110,8 @@
 	"oathauth-enable-page-title": "Ota $1 käyttöön",
 	"oathauth-action-exclusive-to-2fa": "Tämän toiminnon voivat suorittaa vain käyttäjät, jotka ovat ottaneet käyttöön kaksivaiheisen tunnistautumisen.",
 	"oathauth-ui-available-modules": "Saatavilla olevat tunnistautumistavat",
+	"oathauth-disable-method-warning": "Jos poistat kaksivaiheisen tunnistautumisen menetelmän $1 käytöstä, et pysty enää käyttämään tätä menetelmää sisäänkirjautumisessa ja kaikki tähän tunnistautumismenetelmään liittyvät tiedot poistetaan. Jos sinulla on toinen aktiivinen tunnistautumismenetelmä, palautuskoodejasi ei poisteta.",
+	"oathauth-totp-disable-warning": "Et pysty enää käyttämään tähän tunnukseen liitettyä tunnistautumislaitetta. Kaikki tähän tunnukseen liitetyt palautuskoodit poistetaan, paitsi jos sinulla on toinen tunnistautumismenetelmä käytössä.",
 	"oathauth-invalidrequest": "Virheellinen pyyntö",
 	"notification-header-oathauth-disable": "Kaksivaiheinen tunnistautuminen on poistettu käytöstä {{GENDER:$2|tunnuksellasi}}.",
 	"notification-header-oathauth-remove-device": "Kaksivaiheisen tunnistautumisen laite on poistettu {{GENDER:$2|tunnukseltasi}}.",
