@@ -20,9 +20,9 @@ use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnCredentialRepository;
-use MediaWiki\Extension\OATHAuth\WebAuthnRequest;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\WebRequest;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 use Throwable;
@@ -306,10 +306,9 @@ class WebAuthnKey extends AuthKey {
 			$authenticatorAttestationResponseValidator->setLogger( $this->logger );
 
 			$authenticatorAttestationResponseValidator->check(
-				// TODO: Please inject the host as a string instead
 				$response,
 				$registrationObject,
-				WebAuthnRequest::newFromWebRequest( $this->context->getRequest() ),
+				$this->getHost( $this->context->getRequest() ),
 			);
 		} catch ( Throwable $ex ) {
 			$this->logger->warning(
@@ -392,7 +391,7 @@ class WebAuthnKey extends AuthKey {
 				$pubKeySource,
 				$publicKeyCredential->response,
 				$publicKeyCredentialRequestOptions,
-				WebAuthnRequest::newFromWebRequest( $this->context->getRequest() ),
+				$this->getHost( $this->context->getRequest() ),
 				$this->userHandle,
 			);
 			return true;
@@ -404,6 +403,10 @@ class WebAuthnKey extends AuthKey {
 			] );
 			return false;
 		}
+	}
+
+	private function getHost( WebRequest $request ): string {
+		return parse_url( $request->getFullRequestURL(), PHP_URL_HOST );
 	}
 
 	public static function getAttestationSupportManager(): AttestationStatementSupportManager {
