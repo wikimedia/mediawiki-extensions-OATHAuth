@@ -92,14 +92,14 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 				],
 				'raw' => true,
 				'class' => RegisteredKeyLayout::class,
-				'section' => 'oathauth-webauthn-registered-keys-section-name'
+				'section' => 'webauthn-registered-keys-section-name'
 			];
 		}
 
 		return [
 			'nojs' => [
 				'class' => NoJsInfoField::class,
-				'section' => 'oathauth-webauthn-registered-keys-section-name',
+				'section' => 'webauthn-registered-keys-section-name',
 			],
 		] + $registeredKeys;
 	}
