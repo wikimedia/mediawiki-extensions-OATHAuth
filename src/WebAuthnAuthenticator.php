@@ -292,6 +292,7 @@ class WebAuthnAuthenticator {
 				$data['user']['id'] = Base64::encode( Base64UrlSafe::decode( $data['user']['id'] ) );
 			}
 			$factory = match ( $returnClass ) {
+				// TODO: createFromArray() is deprecated. Use Webauthn\Denormalizer\WebauthnSerializerFactory to create
 				PublicKeyCredentialRequestOptions::class => PublicKeyCredentialRequestOptions::createFromArray( ... ),
 				PublicKeyCredentialCreationOptions::class => PublicKeyCredentialCreationOptions::createFromArray( ... ),
 			};

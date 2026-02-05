@@ -282,6 +282,7 @@ class WebAuthnKey extends AuthKey {
 		try {
 			$attestationStatementSupportManager = $this->getAttestationSupportManager();
 
+			// TODO: PublicKeyCredentialLoader is deprecated
 			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
 				new AttestationObjectLoader(
 					$attestationStatementSupportManager
@@ -348,6 +349,7 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user
 	): bool {
 		try {
+			// TODO: PublicKeyCredentialLoader is deprecated
 			$publicKeyCredentialLoader = new PublicKeyCredentialLoader(
 				new AttestationObjectLoader(
 					$this->getAttestationSupportManager()

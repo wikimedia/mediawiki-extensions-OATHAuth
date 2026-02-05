@@ -10,6 +10,9 @@ use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
+/**
+ * TODO: PublicKeyCredentialSourceRepository is deprecated
+ */
 class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepository {
 	public function __construct( private OATHUser $oauthUser ) {
 	}
@@ -73,6 +76,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 	}
 
 	private function credentialSourceFromKey( WebAuthnKey $key ): PublicKeyCredentialSource {
+		// TODO: createFromArray() is deprecated. Use Webauthn\Denormalizer\WebauthnSerializerFactory to create
 		return PublicKeyCredentialSource::createFromArray( [
 			'userHandle' => Base64UrlSafe::encodeUnpadded( $key->getUserHandle() ),
 			'aaguid' => (string)$key->getAttestedCredentialData()->aaguid,
@@ -88,6 +92,7 @@ class WebAuthnCredentialRepository implements PublicKeyCredentialSourceRepositor
 			'type' => $key->getType(),
 			'transports' => $key->getTransports(),
 			'attestationType' => $key->getAttestationType(),
+			// TODO: Can we actually call jsonSerialize()?
 			'trustPath' => $key->getTrustPath()->jsonSerialize()
 		] );
 	}
