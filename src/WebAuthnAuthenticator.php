@@ -133,11 +133,10 @@ class WebAuthnAuthenticator {
 		$authInfo = $this->getAuthInfo();
 		$this->setSessionData( $authInfo );
 
+		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+
 		return Status::newGood( [
-			'json' => json_encode(
-				$authInfo,
-				JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
-			),
+			'json' => $serializer->serialize( $authInfo, 'json' ),
 			'raw' => $authInfo
 		] );
 	}
@@ -185,11 +184,10 @@ class WebAuthnAuthenticator {
 		$registerInfo = $this->getRegisterInfo();
 		$this->setSessionData( $registerInfo );
 
+		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+
 		return Status::newGood( [
-			'json' => json_encode(
-				$registerInfo,
-				JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
-			),
+			'json' => $serializer->serialize( $registerInfo, 'json' ),
 			'raw' => $registerInfo
 		] );
 	}
@@ -260,7 +258,10 @@ class WebAuthnAuthenticator {
 		if ( !is_array( $authData ) ) {
 			$authData = [];
 		}
-		$authData[static::SESSION_KEY] = FormatJson::encode( $data );
+
+		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+
+		$authData[static::SESSION_KEY] = $serializer->serialize( $data, 'json' );
 		$session->setSecret( 'authData', $authData );
 	}
 
