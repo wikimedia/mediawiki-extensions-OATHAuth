@@ -259,6 +259,49 @@ class OATHManageTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testCreateFirstKeyCreatesCheckUserEntry() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+		$oathUser = $userRepo->findByUser( $user->getUserIdentity() );
+
+		$logCountBefore = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'enable-self',
+				'cupe_actor' => $user->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$userRepo->createKey(
+			$oathUser,
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			TOTPKey::newFromRandom()->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$logCountAfter = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'enable-self',
+				'cupe_actor' => $user->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$this->assertSame(
+			(int)$logCountBefore + 1,
+			(int)$logCountAfter,
+			'An enable-self entry should be created in cu_private_event'
+		);
+	}
+
 	public function testDeleteLastKeyWithWrongConfirmation() {
 		$testUser = $this->getTestUser();
 		$user = $testUser->getUser();

@@ -107,6 +107,7 @@
 	"oath-log-header": "The Special:Log description that appears on the Special:Log page when you filter logs on this specific log name",
 	"logentry-oath-disable-other": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
 	"logentry-oath-disable-self": "{{Logentry}}\nDisplayed in CheckUser for private events when a user disables their own two-factor authentication.",
+	"logentry-oath-enable-self": "{{Logentry}}\nDisplayed in CheckUser for private events when a user enables their own two-factor authentication.",
 	"logentry-oath-recover": "{{Logentry|<kbd>Special:Log/oath</kbd>}}\nAdditional parameters:\n* $4 - Number of recovery codes that were generated for the user",
 	"logentry-oath-verify": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
 	"log-action-filter-oath": "{{Doc-log-action-filter-type|oath}}\n{{Related|Log-action-filter}}",

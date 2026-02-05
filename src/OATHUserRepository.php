@@ -10,6 +10,10 @@ use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageReferenceValue;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\UserIdentity;
@@ -88,6 +92,17 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 		if ( !$hasExistingKey ) {
 			Manager::notifyEnabled( $user );
+
+			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+				$logEntry = new ManualLogEntry( 'oath', 'enable-self' );
+				$logEntry->setPerformer( $user->getUser() );
+				$logEntry->setTarget(
+					PageReferenceValue::localReference( NS_USER, $user->getUser()->getName() )
+				);
+				/** @var \MediaWiki\CheckUser\Services\CheckUserInsert $checkUserInsert */
+				$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+				$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
+			}
 		}
 
 		return $key;
