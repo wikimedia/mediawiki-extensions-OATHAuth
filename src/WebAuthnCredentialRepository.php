@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
-use ParagonIE\ConstantTime\Base64UrlSafe;
 use Webauthn\PublicKeyCredentialSource;
 
 class WebAuthnCredentialRepository {
@@ -42,24 +41,16 @@ class WebAuthnCredentialRepository {
 	}
 
 	private function credentialSourceFromKey( WebAuthnKey $key ): PublicKeyCredentialSource {
-		// TODO: createFromArray() is deprecated. Use Webauthn\Denormalizer\WebauthnSerializerFactory to create
-		return PublicKeyCredentialSource::createFromArray( [
-			'userHandle' => Base64UrlSafe::encodeUnpadded( $key->getUserHandle() ),
-			'aaguid' => (string)$key->getAttestedCredentialData()->aaguid,
-			'friendlyName' => $key->getFriendlyName(),
-			'publicKeyCredentialId' => Base64UrlSafe::encodeUnpadded(
-				$key->getAttestedCredentialData()->credentialId
-			),
-			'credentialPublicKey' => Base64UrlSafe::encodeUnpadded(
-				(string)$key->getAttestedCredentialData()->credentialPublicKey
-			),
-			'counter' => $key->getSignCounter(),
-			'userMWId' => $this->oauthUser->getUser()->getId(),
-			'type' => $key->getType(),
-			'transports' => $key->getTransports(),
-			'attestationType' => $key->getAttestationType(),
-			// TODO: Can we actually call jsonSerialize()?
-			'trustPath' => $key->getTrustPath()->jsonSerialize(),
-		] );
+		return PublicKeyCredentialSource::create(
+			publicKeyCredentialId: $key->getAttestedCredentialData()->credentialId,
+			type: $key->getType(),
+			transports: $key->getTransports(),
+			attestationType: $key->getAttestationType(),
+			trustPath: $key->getTrustPath(),
+			aaguid: $key->getAttestedCredentialData()->aaguid,
+			credentialPublicKey: (string)$key->getAttestedCredentialData()->credentialPublicKey,
+			userHandle: $key->getUserHandle(),
+			counter: $key->getSignCounter(),
+		);
 	}
 }
