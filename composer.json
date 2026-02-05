@@ -18,7 +18,8 @@
 		"ext-sodium": "Used to encrypt OTP secrets"
 	},
 	"replace": {
-		"paragonie/random_compat": "v9.99.99"
+		"paragonie/random_compat": "v9.99.99",
+		"phpdocumentor/reflection-docblock": "5.99"
 	},
 	"scripts": {
 		"lint": "parallel-lint . --exclude vendor --exclude node_modules",

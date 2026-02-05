@@ -25,7 +25,6 @@ use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 use stdClass;
 use Webauthn\AuthenticatorSelectionCriteria;
-use Webauthn\Denormalizer\WebauthnSerializerFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialParameters;
@@ -136,7 +135,7 @@ class WebAuthnAuthenticator {
 		$authInfo = $this->getAuthInfo();
 		$this->setSessionData( $authInfo );
 
-		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
 		return Status::newGood( [
 			'json' => $serializer->serialize( $authInfo, 'json' ),
@@ -187,7 +186,7 @@ class WebAuthnAuthenticator {
 		$registerInfo = $this->getRegisterInfo();
 		$this->setSessionData( $registerInfo );
 
-		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
 		return Status::newGood( [
 			'json' => $serializer->serialize( $registerInfo, 'json' ),
@@ -261,7 +260,7 @@ class WebAuthnAuthenticator {
 			$authData = [];
 		}
 
-		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
 		$authData[static::SESSION_KEY] = $serializer->serialize( $data, 'json' );
 		$session->setSecret( 'authData', $authData );
@@ -284,7 +283,7 @@ class WebAuthnAuthenticator {
 			return null;
 		}
 
-		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
 		return $serializer->deserialize(
 			$authData[static::SESSION_KEY],

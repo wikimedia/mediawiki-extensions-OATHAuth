@@ -20,6 +20,7 @@ use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnCredentialRepository;
+use MediaWiki\Extension\OATHAuth\WebAuthnSerializerFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
@@ -39,7 +40,6 @@ use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
-use Webauthn\Denormalizer\WebauthnSerializerFactory;
 use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
@@ -282,7 +282,7 @@ class WebAuthnKey extends AuthKey {
 		try {
 			$attestationStatementSupportManager = self::getAttestationSupportManager();
 
-			$serializer = ( new WebauthnSerializerFactory( $attestationStatementSupportManager ) )->create();
+			$serializer = ( new WebAuthnSerializerFactory( $attestationStatementSupportManager ) )->create();
 			$publicKeyCredential = $serializer->deserialize(
 				$data,
 				PublicKeyCredential::class,
@@ -347,7 +347,7 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user
 	): bool {
 		try {
-			$serializer = ( new WebauthnSerializerFactory( self::getAttestationSupportManager() ) )->create();
+			$serializer = ( new WebAuthnSerializerFactory( self::getAttestationSupportManager() ) )->create();
 			$publicKeyCredential = $serializer->deserialize(
 				$data,
 				PublicKeyCredential::class,
