@@ -372,7 +372,10 @@
 				"OATHAuthLogger",
 				"UserFactory",
 				"CentralIdLookup",
-				"LinkRenderer"
+				"LinkRenderer",
+				"ExtensionRegistry",
+				"Emailer",
+				"UserOptionsLookup"
 			]
 		},
 		"VerifyOATHForUser": {
