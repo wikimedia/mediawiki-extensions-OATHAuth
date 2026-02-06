@@ -89,6 +89,7 @@
 	"oath-log-name": "Kaksivaiheisen tunnistautumisen loki",
 	"oath-log-header": "Nämä tapahtumat kuvaavat muutoksia käyttäjien kaksivaiheisen tunnistautumisen tilaan.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|poisti}} käytöstä käyttäjän $3 kaksivaiheisen tunnistautumisen",
+	"logentry-oath-disable-self": "{{GENDER:$2|Poisti}} käytöstä kaksivaiheisen tunnistautumisen",
 	"logentry-oath-verify": "$1 {{GENDER:$2|tarkisti}}, onko käyttäjällä $3 kaksivaiheinen tunnistautuminen käytössä",
 	"log-action-filter-oath": "Kaksivaiheiseen tunnistautumiseen liittyvän toiminnon tyyppi:",
 	"log-action-filter-oath-verify": "Tarkistus, onko kaksivaiheinen tunnistautuminen käytössä",

@@ -91,6 +91,7 @@
 	"oath-log-name": "Tweetrapsauthenticatie logboek",
 	"oath-log-header": "Deze gebeurtenissen houden wijzigen bij aan de tweetrapsauthenticatiestatus van gebruikers.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|schakelde}} de tweetrapsauthenticatie van $3 uit",
+	"logentry-oath-disable-self": "{{GENDER:$2|Heeft}} tweetrapsauthenticatie uitgeschakeld",
 	"logentry-oath-verify": "$1 {{GENDER:$2|heeft gecheckt}} of $3 de tweetrapsauthenticatie heeft ingeschakeld",
 	"log-action-filter-oath": "Type tweetrapsauthenticatie-bewerking:",
 	"log-action-filter-oath-verify": "Controleren of tweetrapsauthenticatie is ingeschakeld",
