@@ -80,6 +80,32 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 1, $countAfter - $countBefore );
 	}
 
+	public function testLogFailedVerification(): void {
+		$logger = OATHAuthServices::getInstance()->getLogger();
+
+		$this->assertNoLogs( 'verify-failed' );
+
+		$user = $this->getTestUser()->getUser();
+		$logger->logFailedVerification( $user );
+
+		$this->assertNoLogs( 'verify-failed' );
+	}
+
+	public function testLogFailedVerification_CheckUser(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		$logger = OATHAuthServices::getInstance()->getLogger();
+
+		$user = $this->getTestUser()->getUser();
+		$countBefore = $this->countCuPrivateRows();
+
+		$logger->logFailedVerification( $user );
+
+		$countAfter = $this->countCuPrivateRows();
+
+		$this->assertSame( 1, $countAfter - $countBefore );
+	}
+
 	private function assertNoLogs( string $subtype ): void {
 		$this->newSelectQueryBuilder()
 			->select( 'log_id' )
@@ -118,6 +144,14 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 		return $this->newSelectQueryBuilder()
 			->select( 'cule_id' )
 			->from( 'cu_log_event' )
+			->caller( __METHOD__ )
+			->fetchRowCount();
+	}
+
+	private function countCuPrivateRows(): int {
+		return $this->newSelectQueryBuilder()
+			->select( 'cupe_id' )
+			->from( 'cu_private_event' )
 			->caller( __METHOD__ )
 			->fetchRowCount();
 	}

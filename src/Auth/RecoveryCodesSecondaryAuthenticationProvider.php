@@ -10,6 +10,7 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
 
@@ -25,6 +26,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 	public function __construct(
 		private readonly RecoveryCodes $module,
 		private readonly OATHUserRepository $userRepository,
+		private readonly OATHAuthLogger $oathLogger,
 	) {
 	}
 
@@ -86,6 +88,8 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 			'user'     => $user->getName(),
 			'clientip' => $user->getRequest()->getIP(),
 		] );
+
+		$this->oathLogger->logFailedVerification( $user );
 
 		return AuthenticationResponse::newUI(
 			[ new RecoveryCodesAuthenticationRequest() ],

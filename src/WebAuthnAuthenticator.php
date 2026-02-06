@@ -57,6 +57,8 @@ class WebAuthnAuthenticator {
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
 		/** @var OATHUserRepository $userRepo */
 		$userRepo = $services->getService( 'OATHUserRepository' );
+		/** @var OATHAuthLogger $oathLogger */
+		$oathLogger = $services->getService( 'OATHAuthLogger' );
 
 		/** @var WebAuthn $webAuthn */
 		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
@@ -68,6 +70,7 @@ class WebAuthnAuthenticator {
 			$webAuthn,
 			$recovery,
 			$userRepo->findByUser( $user ),
+			$oathLogger,
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
 			$request ?? RequestContext::getMain()->getRequest(),
@@ -81,6 +84,7 @@ class WebAuthnAuthenticator {
 		protected WebAuthn $module,
 		protected RecoveryCodes $recoveryCodesModule,
 		protected OATHUser $oathUser,
+		protected OATHAuthLogger $oathLogger,
 		protected IContextSource $context,
 		protected LoggerInterface $logger,
 		protected WebRequest $request,
@@ -166,6 +170,9 @@ class WebAuthnAuthenticator {
 		$this->logger->warning(
 			"Webauthn login failed for user {$this->oathUser->getUser()->getName()}"
 		);
+
+		$this->oathLogger->logFailedVerification( $this->oathUser->getUser() );
+
 		return Status::newFatal( 'oathauth-webauthn-error-verification-failed' );
 	}
 

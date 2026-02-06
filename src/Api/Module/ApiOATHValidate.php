@@ -9,6 +9,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
@@ -27,6 +28,7 @@ class ApiOATHValidate extends ApiBase {
 		string $moduleName,
 		private readonly OATHUserRepository $oathUserRepository,
 		private readonly UserFactory $userFactory,
+		private readonly OATHAuthLogger $oathLogger,
 	) {
 		parent::__construct( $mainModule, $moduleName );
 	}
@@ -87,6 +89,8 @@ class ApiOATHValidate extends ApiBase {
 							'clientip' => $user->getRequest()->getIP(),
 						]
 					);
+
+					$this->oathLogger->logFailedVerification( $user );
 				}
 			}
 		}

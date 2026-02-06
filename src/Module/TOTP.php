@@ -53,7 +53,8 @@ class TOTP implements IModule {
 	public function getSecondaryAuthProvider(): TOTPSecondaryAuthenticationProvider {
 		return new TOTPSecondaryAuthenticationProvider(
 			$this,
-			$this->userRepository
+			$this->userRepository,
+			OATHAuthServices::getInstance()->getLogger()
 		);
 	}
 

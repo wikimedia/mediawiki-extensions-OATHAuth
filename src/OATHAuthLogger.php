@@ -72,6 +72,23 @@ class OATHAuthLogger {
 		);
 	}
 
+	/**
+	 * Creates a CheckUser-only log entry for a failed 2FA verification attempt.
+	 */
+	public function logFailedVerification( UserIdentity $user ): void {
+		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			return;
+		}
+
+		$logEntry = new ManualLogEntry( 'oath', 'verify-failed' );
+		$logEntry->setPerformer( $user );
+		$logEntry->setTarget(
+			PageReferenceValue::localReference( NS_USER, $user->getName() )
+		);
+
+		$this->updateCheckUserData( $logEntry );
+	}
+
 	private function insertLogEntry(
 		string $subtype,
 		UserIdentity $performer,
@@ -88,11 +105,20 @@ class OATHAuthLogger {
 		$logEntry->setParameters( $params );
 		$logId = $logEntry->insert();
 
-		if ( $this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
-			/** @var CheckUserInsert $checkUserInsert */
-			$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
-			$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange( $logId ) );
+		$this->updateCheckUserData( $logEntry, $logId );
+	}
+
+	private function updateCheckUserData( ManualLogEntry $logEntry, ?int $logId = null ): void {
+		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			return;
 		}
+
+		/** @var CheckUserInsert $checkUserInsert */
+		$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+		$recentChange = $logId === null
+			? $logEntry->getRecentChange()
+			: $logEntry->getRecentChange( $logId );
+		$checkUserInsert->updateCheckUserData( $recentChange );
 	}
 
 	/**

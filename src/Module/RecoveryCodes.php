@@ -47,7 +47,8 @@ class RecoveryCodes implements IModule {
 	public function getSecondaryAuthProvider(): RecoveryCodesSecondaryAuthenticationProvider {
 		return new RecoveryCodesSecondaryAuthenticationProvider(
 			$this,
-			$this->userRepository
+			$this->userRepository,
+			OATHAuthServices::getInstance()->getLogger()
 		);
 	}
 

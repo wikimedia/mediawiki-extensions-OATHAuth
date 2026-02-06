@@ -10,6 +10,7 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
 
@@ -26,6 +27,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 	public function __construct(
 		private readonly TOTP $module,
 		private readonly OATHUserRepository $userRepository,
+		private readonly OATHAuthLogger $oathLogger,
 	) {
 	}
 
@@ -87,6 +89,8 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 			'user'     => $user->getName(),
 			'clientip' => $user->getRequest()->getIP(),
 		] );
+
+		$this->oathLogger->logFailedVerification( $user );
 
 		return AuthenticationResponse::newUI(
 			[ new TOTPAuthenticationRequest() ],

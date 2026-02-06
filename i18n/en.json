@@ -93,6 +93,7 @@
 	"logentry-oath-enable-self": "{{GENDER:$2|Enabled}} two-factor authentication",
 	"logentry-oath-recover": "$1 {{GENDER:$2|generated}} additional recovery {{PLURAL:$4|code|codes}} for $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|checked}} if $3 had two-factor authentication enabled",
+	"logentry-oath-verify-failed": "Failed two-factor authentication attempt",
 	"log-action-filter-oath": "Type of two-factor authentication operation:",
 	"log-action-filter-oath-verify": "Checking if two-factor authentication is enabled",
 	"log-action-filter-oath-disable-other": "Disabling two-factor authentication for another user",

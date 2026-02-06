@@ -427,7 +427,8 @@
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiOATHValidate",
 			"services": [
 				"OATHUserRepository",
-				"UserFactory"
+				"UserFactory",
+				"OATHAuthLogger"
 			]
 		},
 		"webauthn": {
