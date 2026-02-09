@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\OATHAuth\Module;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\RecoveryCodesSecondaryAuthenticationProvider;
-use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesStatusForm;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -132,7 +132,7 @@ class RecoveryCodes implements IModule {
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
-	): ?IManageForm {
+	): ?OATHAuthOOUIHTMLForm {
 		return new RecoveryCodesStatusForm( $user, $repo, $this, $context, $registry );
 	}
 

@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
 use OOUI\ButtonWidget;
 
 /**
@@ -58,24 +59,16 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 		] );
 	}
 
-	/** @inheritDoc */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		// Not used - redirect is handled client-side after API call
 	}
 
-	/**
-	 * @param array $formData
-	 * @return array|bool
-	 */
-	public function onSubmit( array $formData ) {
+	public function onSubmit( array $formData ): Status|bool|array|string {
 		// This is handled client-side via API
 		return [ 'oathauth-webauthn-javascript-required' ];
 	}
 
-	/**
-	 * @return array
-	 */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		$oathUser = $this->oathRepo->findByUser( $this->getUser() );
 		$keys = WebAuthn::getWebAuthnKeys( $oathUser );
 

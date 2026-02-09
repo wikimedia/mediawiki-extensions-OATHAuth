@@ -9,6 +9,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\OOUIHTMLForm;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Status\Status;
 use OOUI\FieldsetLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Layout;
@@ -16,14 +17,11 @@ use OOUI\PanelLayout;
 use OOUI\Widget;
 use Psr\Log\LoggerInterface;
 
-abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm {
+abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm {
 
 	protected LoggerInterface $logger;
 
-	/**
-	 * @var Layout|null
-	 */
-	protected $layoutContainer = null;
+	protected ?Layout $layoutContainer = null;
 
 	/**
 	 * Make the form-wrapper panel padded
@@ -48,7 +46,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 	}
 
 	/** @inheritDoc */
-	public function show( $layout = null ) {
+	public function show( $layout = null ): Status|bool {
 		$this->layoutContainer = $layout;
 		return parent::show();
 	}
@@ -65,10 +63,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 		) );
 	}
 
-	/**
-	 * @return array
-	 */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		return [];
 	}
 
@@ -100,14 +95,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 		return $layout;
 	}
 
-	/**
-	 * @param array $formData
-	 * @return array|bool
-	 */
-	abstract public function onSubmit( array $formData );
+	abstract public function onSubmit( array $formData ): Status|bool|array|string;
 
-	/**
-	 * @return void
-	 */
-	abstract public function onSuccess();
+	abstract public function onSuccess(): void;
 }

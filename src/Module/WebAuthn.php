@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\OATHAuth\Module;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnSecondaryAuthenticationProvider;
-use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
@@ -86,7 +86,7 @@ class WebAuthn implements IModule {
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
-	): ?IManageForm {
+	): ?OATHAuthOOUIHTMLForm {
 		$module = $this;
 		$enabledForUser = $this->isEnabled( $user );
 

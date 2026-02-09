@@ -11,7 +11,6 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
-use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
@@ -465,8 +464,13 @@ class OATHManage extends SpecialPage {
 		}
 
 		if ( $this->action === self::ACTION_DISABLE ) {
-			$form = new DisableForm( $this->oathUser, $this->userRepo, $module, $this->getContext(),
-				$this->moduleRegistry );
+			$form = new DisableForm(
+				$this->oathUser,
+				$this->userRepo,
+				$module,
+				$this->getContext(),
+				$this->moduleRegistry
+			);
 		} else {
 			$form = $module->getManageForm(
 				$this->action,
@@ -475,12 +479,13 @@ class OATHManage extends SpecialPage {
 				$this->getContext(),
 				$this->moduleRegistry
 			);
+
+			if ( $form === null ) {
+				return;
+			}
 		}
-		if ( $form === null || !$this->isValidFormType( $form ) ) {
-			return;
-		}
+
 		$form->setTitle( $this->getOutput()->getTitle() );
-		$this->ensureRequiredFormFields( $form, $module );
 		$form->setSubmitCallback( [ $form, 'onSubmit' ] );
 		if ( $form->show( $panel ) ) {
 			$form->onSuccess();
@@ -526,30 +531,6 @@ class OATHManage extends SpecialPage {
 			$this->getContext(),
 			$this->moduleRegistry
 		) !== null;
-	}
-
-	/**
-	 * Verifies if the given form instance fulfills the required conditions
-	 */
-	private function isValidFormType( mixed $form ): bool {
-		if ( !( $form instanceof HTMLForm ) ) {
-			return false;
-		}
-		$implements = class_implements( $form );
-		if ( !isset( $implements[IManageForm::class] ) ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	private function ensureRequiredFormFields( IManageForm $form, IModule $module ): void {
-		if ( !$form->hasField( 'module' ) ) {
-			$form->addHiddenField( 'module', $module->getName() );
-		}
-		if ( !$form->hasField( 'action' ) ) {
-			$form->addHiddenField( 'action', $this->action );
-		}
 	}
 
 	/**

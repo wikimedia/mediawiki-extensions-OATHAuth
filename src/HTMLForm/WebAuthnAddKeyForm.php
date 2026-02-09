@@ -10,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Status\Status;
 
 class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 
@@ -60,21 +61,16 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 		return $html . $this->generateRecoveryCodesContent( $recCodeKeysForContent, true );
 	}
 
-	/** @inheritDoc */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		// Not used - redirect is handled client-side after API call
 	}
 
-	/**
-	 * @return array|bool
-	 */
-	public function onSubmit( array $formData ) {
+	public function onSubmit( array $formData ): Status|bool|array|string {
 		// Registration is handled client-side via API (action=webauthn&func=register)
 		return [ 'webauthn-javascript-required' ];
 	}
 
-	/** @inheritDoc */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		return [
 			'nojs' => [
 				'class' => NoJsInfoField::class,

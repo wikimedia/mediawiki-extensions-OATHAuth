@@ -12,6 +12,7 @@ use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Html\Html;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Status\Status;
 use OOUI\FieldLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
@@ -33,12 +34,11 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * Add content to output when the operation was successful
 	 */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		$this->getOutput()->addWikiMsg( 'oathauth-validatedoath' );
 	}
 
-	/** @return array */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		/** @var TOTPKey $key */
 		$key = $this->setKeyDataInSession( 'TOTPKey' );
 		$secret = $key->getSecret();
@@ -158,11 +158,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		return $this->tokenFormatterFunction( $key->getSecret() );
 	}
 
-	/**
-	 * @param array $formData
-	 * @return array|bool
-	 */
-	public function onSubmit( array $formData ) {
+	public function onSubmit( array $formData ): Status|bool|array|string {
 		$keyData = $this->getKeyDataInSession( 'TOTPKey' );
 		$keyData['friendly_name'] = $formData["friendly_name"];
 		$TOTPkey = TOTPKey::newFromArray( $keyData );

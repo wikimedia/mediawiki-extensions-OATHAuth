@@ -7,16 +7,15 @@ use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Status\Status;
 
 class DisableForm extends OATHAuthOOUIHTMLForm {
 
-	/** @inheritDoc */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		$this->getOutput()->addWikiMsg( 'oathauth-disabledoath' );
 	}
 
-	/** @inheritDoc */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		$this->setSubmitTextMsg( 'oathauth-disable-generic' );
 		$this->setSubmitDestructive();
 
@@ -38,8 +37,7 @@ class DisableForm extends OATHAuthOOUIHTMLForm {
 		];
 	}
 
-	/** @inheritDoc */
-	public function onSubmit( array $formData ) {
+	public function onSubmit( array $formData ): Status|bool|array|string {
 		$this->oathRepo->removeAllOfType(
 			$this->oathUser,
 			$this->module->getName(),

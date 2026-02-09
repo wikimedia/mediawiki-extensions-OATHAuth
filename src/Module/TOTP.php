@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\OATHAuth\Module;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
-use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -105,7 +105,7 @@ class TOTP implements IModule {
 		OATHUserRepository $repo,
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
-	): ?IManageForm {
+	): ?OATHAuthOOUIHTMLForm {
 		if ( $action === OATHManage::ACTION_ENABLE ) {
 			return new TOTPEnableForm( $user, $repo, $this, $context, $registry );
 		}

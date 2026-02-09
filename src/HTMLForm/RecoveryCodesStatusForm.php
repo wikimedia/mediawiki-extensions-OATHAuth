@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Status\Status;
 
 /**
  * @property RecoveryCodes $module
@@ -21,8 +22,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		return parent::getHTML( $submitResult );
 	}
 
-	/** @inheritDoc */
-	protected function getDescriptors() {
+	protected function getDescriptors(): array {
 		if ( $this->oathUser->userHasNonSpecialEnabledKeys() ) {
 			$submitMsg = $this->msg(
 				'oathauth-recoverycodes-create-label',
@@ -47,7 +47,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 	/**
 	 * Add content to output when the operation was successful
 	 */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		$key = $this->module->ensureExistence( $this->oathUser );
 
 		$recoveryCodes = $this->getRecoveryCodesForDisplay( $key );
@@ -59,8 +59,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		);
 	}
 
-	/** @inheritDoc */
-	public function onSubmit( array $formData ) {
+	public function onSubmit( array $formData ): Status|bool|array|string {
 		$key = $this->module->ensureExistence( $this->oathUser );
 		$key->regenerateRecoveryCodeKeys();
 		$this->oathRepo->updateKey( $this->oathUser, $key );
