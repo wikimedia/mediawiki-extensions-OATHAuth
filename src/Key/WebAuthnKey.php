@@ -412,7 +412,7 @@ class WebAuthnKey extends AuthKey {
 	public static function getAttestationSupportManager(): AttestationStatementSupportManager {
 		return new AttestationStatementSupportManager( [
 			// FIXME supporting all these formats probably doesn't do much good as long as we
-			//   set the attestation conveyance preference to 'none' in Authenticator::getRegisterInfo()
+			//  set the attestation conveyance preference to 'none' in WebAuthnAuthenticator::getRegisterInfo()
 			new FidoU2FAttestationStatementSupport(),
 			new PackedAttestationStatementSupport( new Manager() ),
 			new AndroidKeyAttestationStatementSupport(),
