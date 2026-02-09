@@ -27,22 +27,20 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm implements IManageForm 
 
 	/**
 	 * Make the form-wrapper panel padded
-	 * @var bool
 	 */
-	protected $panelPadded = true;
+	protected bool $panelPadded = true;
 
 	/**
 	 * Make the form-wrapper panel framed
-	 * @var bool
 	 */
-	protected $panelFramed = true;
+	protected bool $panelFramed = true;
 
 	public function __construct(
 		protected readonly OATHUser $oathUser,
 		protected readonly OATHUserRepository $oathRepo,
 		protected readonly IModule $module,
 		IContextSource $context,
-		protected readonly OATHAuthModuleRegistry $moduleRegistry
+		protected readonly OATHAuthModuleRegistry $moduleRegistry,
 	) {
 		$this->logger = $this->getLogger();
 

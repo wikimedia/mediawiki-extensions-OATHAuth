@@ -40,7 +40,6 @@ class WebAuthn implements IModule {
 		return self::MODULE_ID;
 	}
 
-	/** @inheritDoc */
 	public function getDisplayName(): Message {
 		return wfMessage( 'oathauth-webauthn-module-label' );
 	}

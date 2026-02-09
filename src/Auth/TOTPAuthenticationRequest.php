@@ -15,8 +15,7 @@ use MediaWiki\Language\RawMessage;
  * by the server and the client.
  */
 class TOTPAuthenticationRequest extends AuthenticationRequest {
-	/** @var string */
-	public $OATHToken;
+	public string $OATHToken;
 
 	/** @inheritDoc */
 	public function describeCredentials() {
@@ -26,9 +25,7 @@ class TOTPAuthenticationRequest extends AuthenticationRequest {
 		] + parent::describeCredentials();
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getFieldInfo() {
 		return [
 			'OATHToken' => [

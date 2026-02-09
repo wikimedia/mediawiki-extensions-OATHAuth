@@ -7,7 +7,6 @@ namespace MediaWiki\Extension\OATHAuth\Api\Module;
 
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -28,14 +27,11 @@ class WebAuthn extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		string $moduleName,
-		private AuthManager $authManager
+		private readonly AuthManager $authManager,
 	) {
 		parent::__construct( $main, $moduleName );
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 */
 	public function execute() {
 		$func = $this->getParameter( 'func' );
 
@@ -125,9 +121,6 @@ class WebAuthn extends ApiBase {
 		];
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 */
 	protected function checkPermissions( string $func ): void {
 		$registered = $this->getRegisteredFunctions();
 		$functionConfig = $registered[$func];
@@ -153,9 +146,6 @@ class WebAuthn extends ApiBase {
 		}
 	}
 
-	/**
-	 * @throws ApiUsageException
-	 */
 	protected function checkModule() {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
@@ -181,8 +171,11 @@ class WebAuthn extends ApiBase {
 	}
 
 	protected function getRegisterInfo(): array {
-		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
-		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest(), $passkeyMode );
+		$authenticator = WebAuthnAuthenticator::factory(
+			$this->getUser(),
+			$this->getRequest(),
+			(bool)$this->getParameter( 'passkeyMode' )
+		);
 		$canRegister = $authenticator->canRegister();
 		if ( !$canRegister->isGood() ) {
 			$this->dieWithError( $canRegister->getMessage() );
@@ -198,8 +191,6 @@ class WebAuthn extends ApiBase {
 
 	protected function register(): array {
 		$credentialJson = $this->getParameter( 'credential' );
-		$friendlyName = $this->getParameter( 'friendlyname' );
-		$passkeyMode = (bool)$this->getParameter( 'passkeyMode' );
 
 		if ( !$credentialJson ) {
 			$this->dieWithError( 'apierror-oathauth-webauthn-missing-credential' );
@@ -209,12 +200,12 @@ class WebAuthn extends ApiBase {
 		if ( !is_object( $credential ) ) {
 			$this->dieWithError( 'apierror-oathauth-webauthn-invalid-credential' );
 		}
-		$credential->friendlyName = $friendlyName ?? '';
+		$credential->friendlyName = $this->getParameter( 'friendlyname' ) ?? '';
 
 		$authenticator = WebAuthnAuthenticator::factory(
 			$this->getUser(),
 			$this->getRequest(),
-			$passkeyMode
+			(bool)$this->getParameter( 'passkeyMode' )
 		);
 
 		$result = $authenticator->continueRegistration( $credential );

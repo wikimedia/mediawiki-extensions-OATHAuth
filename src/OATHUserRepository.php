@@ -6,6 +6,7 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
@@ -93,8 +94,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * Persists the given OAuth key in the database.
-	 *
-	 * @throws InvalidArgumentException
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): AuthKey {
 		$uid = $user->getCentralId();
@@ -145,7 +144,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				$logEntry->setTarget(
 					PageReferenceValue::localReference( NS_USER, $user->getUser()->getName() )
 				);
-				/** @var \MediaWiki\CheckUser\Services\CheckUserInsert $checkUserInsert */
+				/** @var CheckUserInsert $checkUserInsert */
 				$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
 				$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
 			}

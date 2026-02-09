@@ -8,7 +8,6 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use DomainException;
-use Exception;
 use jakobo\HOTP\HOTP;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
@@ -30,14 +29,10 @@ use Wikimedia\Timestamp\TimestampFormat;
  * @ingroup Extensions
  */
 class TOTPKey extends AuthKey {
-	/** @var array TOTP binary secret */
-	private $secret;
+	/** TOTP binary secret */
+	private array $secret;
 
-	/**
-	 * @return TOTPKey
-	 * @throws Exception
-	 */
-	public static function newFromRandom() {
+	public static function newFromRandom(): TOTPKey {
 		return new self(
 			null,
 			null,
@@ -126,9 +121,6 @@ class TOTPKey extends AuthKey {
 		];
 	}
 
-	/**
-	 * @throws DomainException
-	 */
 	public function verify( OATHUser $user, array $data ): bool {
 		global $wgOATHAuthWindowRadius;
 

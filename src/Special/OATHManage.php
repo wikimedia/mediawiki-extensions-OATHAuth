@@ -9,8 +9,7 @@ namespace MediaWiki\Extension\OATHAuth\Special;
 use ErrorPageError;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
-use MediaWiki\Exception\PermissionsError;
-use MediaWiki\Exception\UserNotLoggedIn;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\IManageForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
@@ -47,10 +46,7 @@ class OATHManage extends SpecialPage {
 
 	protected OATHUser $oathUser;
 
-	/**
-	 * @var string
-	 */
-	protected $action;
+	protected string $action;
 
 	protected ?IModule $requestedModule;
 
@@ -109,10 +105,6 @@ class OATHManage extends SpecialPage {
 		}
 	}
 
-	/**
-	 * @throws PermissionsError
-	 * @throws UserNotLoggedIn
-	 */
 	public function checkPermissions() {
 		$this->requireNamedUser();
 
@@ -252,15 +244,16 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function displayNewUI(): void {
-		$this->getOutput()->addModuleStyles( 'ext.oath.manage.styles' );
-		$this->getOutput()->addModules( 'ext.oath.manage' );
-		$this->getOutput()->addJsConfigVars( 'wgOATHManageData', $this->buildVueData() );
+		$output = $this->getOutput();
+		$output->addModuleStyles( 'ext.oath.manage.styles' );
+		$output->addModules( 'ext.oath.manage' );
+		$output->addJsConfigVars( 'wgOATHManageData', $this->buildVueData() );
 		$codex = new Codex();
 
 		// Show the delete success message, if applicable
 		$deletedKeyName = $this->getRequest()->getVal( 'deletesuccess' );
 		if ( $deletedKeyName !== null ) {
-			$this->getOutput()->addHTML( Html::successBox(
+			$output->addHTML( Html::successBox(
 				$this->msg( 'oathauth-delete-success', $deletedKeyName )->parse()
 			) );
 		}
@@ -268,7 +261,7 @@ class OATHManage extends SpecialPage {
 		// Add the success message for newly enabled key
 		$addedKeyName = $this->getRequest()->getVal( 'addsuccess' );
 		if ( $addedKeyName !== null ) {
-			$this->getOutput()->addHTML(
+			$output->addHTML(
 				Html::successBox(
 					$this->msg( 'oathauth-enable-success', $addedKeyName )->parse()
 				)
@@ -279,7 +272,7 @@ class OATHManage extends SpecialPage {
 		if ( $this->authManager->allowsAuthenticationDataChange(
 			new PasswordAuthenticationRequest(), false )->isGood()
 		) {
-			$this->getOutput()->addHTML(
+			$output->addHTML(
 				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-password' ],
 					Html::element( 'h3', [], $this->msg( 'oathauth-password-header' )->text() ) .
 					Html::rawElement( 'form', [
@@ -395,7 +388,7 @@ class OATHManage extends SpecialPage {
 			)
 		);
 
-		$this->getOutput()->addHTML( Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-vue-container' ],
+		$output->addHTML( Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-vue-container' ],
 			// If 2FA is enabled then put passkeys first, otherwise put 2FA first
 			$keyAccordions === '' ?
 				$authMethodsSection . $passkeySection :
@@ -701,7 +694,7 @@ class OATHManage extends SpecialPage {
 					$logEntry = new ManualLogEntry( 'oath', 'disable-self' );
 					$logEntry->setPerformer( $this->getUser() );
 					$logEntry->setTarget( $this->getUser()->getUserPage() );
-					/** @var \MediaWiki\CheckUser\Services\CheckUserInsert $checkUserInsert */
+					/** @var CheckUserInsert $checkUserInsert */
 					$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
 					$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
 				}

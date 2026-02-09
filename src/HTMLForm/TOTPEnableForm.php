@@ -37,9 +37,7 @@ class TOTPEnableForm extends OATHAuthOOUIHTMLForm {
 		$this->getOutput()->addWikiMsg( 'oathauth-validatedoath' );
 	}
 
-	/**
-	 * @return array
-	 */
+	/** @return array */
 	protected function getDescriptors() {
 		/** @var TOTPKey $key */
 		$key = $this->setKeyDataInSession( 'TOTPKey' );

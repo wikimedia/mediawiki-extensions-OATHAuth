@@ -24,7 +24,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 
 	public function __construct(
 		private readonly RecoveryCodes $module,
-		private readonly OATHUserRepository $userRepository
+		private readonly OATHUserRepository $userRepository,
 	) {
 	}
 
@@ -52,9 +52,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 		);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
 		/** @var RecoveryCodesAuthenticationRequest $request */
 		$request = AuthenticationRequest::getRequestByClass( $reqs, RecoveryCodesAuthenticationRequest::class );

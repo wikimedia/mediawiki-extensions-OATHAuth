@@ -18,12 +18,6 @@ use OOUI\ButtonWidget;
  */
 class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
-	/** @var bool */
-	protected $panelPadded = false;
-
-	/** @var bool */
-	protected $panelFramed = false;
-
 	/** @inheritDoc */
 	public function __construct(
 		OATHUser $oathUser,
@@ -36,6 +30,9 @@ class WebAuthnManageForm extends OATHAuthOOUIHTMLForm {
 
 		$this->setId( 'webauthn-manage-form' );
 		$this->suppressDefaultSubmit();
+
+		$this->panelPadded = false;
+		$this->panelFramed = false;
 	}
 
 	/** @inheritDoc */

@@ -36,10 +36,7 @@ class RecoveryCodes implements IModule {
 		return wfMessage( 'oathauth-module-recoverycodes-label' );
 	}
 
-	/**
-	 * @inheritDoc
-	 * @throws UnexpectedValueException
-	 */
+	/** @inheritDoc */
 	public function newKey( array $data ): RecoveryCodeKeys {
 		if ( !isset( $data['recoverycodekeys'] ) ) {
 			throw new UnexpectedValueException( 'oathauth-invalid-recovery-code-data-format' );
@@ -65,7 +62,7 @@ class RecoveryCodes implements IModule {
 			return false;
 		}
 
-		/** @var RecoveryCodeKeys */
+		/** @var $recoveryCodeKey RecoveryCodeKeys */
 		$recoveryCodeKey = $recoveryCodeKeys[0];
 		'@phan-var RecoveryCodeKeys $recoveryCodeKey';
 

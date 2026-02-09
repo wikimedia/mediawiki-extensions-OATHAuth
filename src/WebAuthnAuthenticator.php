@@ -7,7 +7,6 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use Cose\Algorithms;
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
@@ -170,9 +169,6 @@ class WebAuthnAuthenticator {
 		return Status::newFatal( 'oathauth-webauthn-error-verification-failed' );
 	}
 
-	/**
-	 * @throws ConfigException
-	 */
 	public function startRegistration(): Status {
 		$canRegister = $this->canRegister();
 		if ( !$canRegister->isGood() ) {
@@ -196,7 +192,6 @@ class WebAuthnAuthenticator {
 	 * @param stdClass $credential
 	 * @param PublicKeyCredentialCreationOptions|null $registerInfo
 	 * @return Status
-	 * @throws ConfigException
 	 */
 	public function continueRegistration( $credential, $registerInfo = null ): Status {
 		$canRegister = $this->canRegister();
@@ -316,7 +311,6 @@ class WebAuthnAuthenticator {
 
 	/**
 	 * Information to be sent to the client to start the registration process
-	 * @throws ConfigException
 	 */
 	protected function getRegisterInfo(): PublicKeyCredentialCreationOptions {
 		$serverName = $this->getServerName();

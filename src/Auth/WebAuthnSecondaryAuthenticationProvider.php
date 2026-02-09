@@ -72,11 +72,15 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		if ( $authResult->isGood() ) {
 			return AuthenticationResponse::newPass( $authResult->getValue()->getUser()->getName() );
 		}
-		// Return the first error from the authenticator, if there is any
-		foreach ( $authResult->getMessages() as $msg ) {
-			return AuthenticationResponse::newFail( wfMessage( $msg ) );
+
+		$messages = $authResult->getMessages();
+
+		if ( $messages === [] ) {
+			return AuthenticationResponse::newFail( wfMessage( 'oathauth-webauthn-error-verification-failed' ) );
 		}
-		return AuthenticationResponse::newFail( wfMessage( 'oathauth-webauthn-error-verification-failed' ) );
+
+		// Return the first error from the authenticator, if there is any
+		return AuthenticationResponse::newFail( wfMessage( $messages[0] ) );
 	}
 
 	protected function addModules() {

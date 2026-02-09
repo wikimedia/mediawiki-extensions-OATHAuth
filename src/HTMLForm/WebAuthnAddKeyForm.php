@@ -16,12 +16,6 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 	use KeySessionStorageTrait;
 	use RecoveryCodesTrait;
 
-	/** @var bool */
-	protected $panelPadded = false;
-
-	/** @var bool */
-	protected $panelFramed = false;
-
 	/** @inheritDoc */
 	public function __construct(
 		OATHUser $oathUser,
@@ -34,6 +28,9 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 
 		$this->setId( 'webauthn-add-key-form' );
 		$this->suppressDefaultSubmit();
+
+		$this->panelPadded = false;
+		$this->panelFramed = false;
 	}
 
 	/** @inheritDoc */

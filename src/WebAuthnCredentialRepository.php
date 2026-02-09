@@ -7,7 +7,7 @@ use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use Webauthn\PublicKeyCredentialSource;
 
 class WebAuthnCredentialRepository {
-	public function __construct( private OATHUser $oauthUser ) {
+	public function __construct( private readonly OATHUser $oauthUser ) {
 	}
 
 	/**

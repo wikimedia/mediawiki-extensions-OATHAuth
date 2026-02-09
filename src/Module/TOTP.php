@@ -38,15 +38,10 @@ class TOTP implements IModule {
 		return self::MODULE_NAME;
 	}
 
-	/** @inheritDoc */
 	public function getDisplayName(): Message {
 		return wfMessage( 'oathauth-module-totp-label' );
 	}
 
-	/**
-	 * @inheritDoc
-	 * @throws UnexpectedValueException
-	 */
 	public function newKey( array $data ): TOTPKey {
 		if ( !isset( $data['secret'] ) ) {
 			throw new UnexpectedValueException( 'oathauth-invalid-data-format' );

@@ -22,7 +22,10 @@ class OATHUser {
 	/**
 	 * Constructor. Can't be called directly. Use OATHUserRepository::findByUser instead.
 	 */
-	public function __construct( private UserIdentity $user, private int $centralId ) {
+	public function __construct(
+		private readonly UserIdentity $user,
+		private readonly int $centralId,
+	) {
 	}
 
 	public function getUser(): UserIdentity {
@@ -125,7 +128,7 @@ class OATHUser {
 	}
 
 	/**
-	 * Get all of the user's keys, but exclude special keys
+	 * Get all the user's keys, but exclude special keys
 	 * @return AuthKey[]
 	 */
 	public function getNonSpecialKeys(): array {

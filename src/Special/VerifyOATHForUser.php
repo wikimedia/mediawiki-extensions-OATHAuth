@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\OATHAuth\Special;
 
 use MediaWiki\CheckUser\Services\CheckUserInsert;
-use MediaWiki\Exception\UserBlockedError;
-use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
@@ -60,10 +58,6 @@ class VerifyOATHForUser extends FormSpecialPage {
 		return true;
 	}
 
-	/**
-	 * @throws UserBlockedError
-	 * @throws UserNotLoggedIn
-	 */
 	protected function checkExecutePermissions( User $user ) {
 		$this->requireNamedUser();
 
