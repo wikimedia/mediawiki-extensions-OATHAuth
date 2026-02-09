@@ -89,6 +89,7 @@
 	"oath-log-header": "Iste eventos tracia le modificationes al stato de authentication bifactorial de usatores.",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|disactivava}} le authentication bifactorial pro $3",
 	"logentry-oath-disable-self": "{{GENDER:$2|ha disactivate}} le authentication bifactorial",
+	"logentry-oath-enable-self": "{{GENDER:$2|ha activate}} le authentication bifactorial",
 	"logentry-oath-recover": "$1 {{GENDER:$2|ha generate}} codice{{PLURAL:$4||s}} de recuperation additional pro $3",
 	"logentry-oath-verify": "$1 {{GENDER:$2|verificava}} si $3 habeva activate le authentication bifactorial",
 	"log-action-filter-oath": "Typo de operation de authentication bifactorial:",

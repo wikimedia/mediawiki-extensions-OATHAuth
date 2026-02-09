@@ -12,6 +12,7 @@
 			"Metalhead64",
 			"MuratTheTurkish",
 			"Sushi",
+			"Tacsipacsi",
 			"Umherirrender",
 			"Wnme"
 		]
@@ -163,7 +164,7 @@
 	"oathauth-delete-warning-header": "$1 entfernen",
 	"oathauth-delete-warning": "Du kannst diese Authentifizierungsmethode nicht mehr zum Anmelden verwenden.",
 	"oathauth-delete-confirm-box": "Gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
-	"oathauth-delete-warning-final": "Durch das Entfernen dieser Methode wird die Zwei-Faktor-Authentifizierung vollständig deaktiviert.\n\nDadurch werden auch alle Wiederherstellungscodes und Passwörter gelöscht.\n\n<strong>Dadurch wird dein Konto weniger sicher.</strong>",
+	"oathauth-delete-warning-final": "Durch das Entfernen dieser Methode wird die Zwei-Faktor-Authentifizierung vollständig deaktiviert.\n\nDadurch werden auch alle Wiederherstellungscodes und Passkeys gelöscht.\n\n<strong>Dadurch wird dein Konto weniger sicher.</strong>",
 	"oathauth-delete-warning-final-privileged-user": "Du hast Berechtigungen auf {{SITENAME}}, die eine Zwei-Faktor-Authentifizierung erfordern. <strong>Diese Berechtigungen können verloren gehen und müssen gegebenenfalls manuell neu beantragt werden.</strong>\n\nTipp: Füge eine neue Methode hinzu, bevor du diese entfernst.",
 	"oathauth-delete-wrong-confirm-message": "Falsche Eingabe für die endgültige Schlüsselentfernung. Bitte gib „{{int:oathauth-authenticator-delete-text}}“ ein, um fortzufahren",
 	"oathauth-delete-success": "<strong>$1</strong> entfernt.",

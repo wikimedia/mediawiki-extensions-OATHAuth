@@ -71,7 +71,7 @@
 	"oathauth-enteruser": "使用者名稱：",
 	"oathauth-enterdisablereason": "停用原因：",
 	"oathauth-enterverifyreason": "檢查原因：",
-	"oathauth-user-not-does-not-have-oath-enabled": "使用者未啟用雙重認證，因此無需停用",
+	"oathauth-user-not-does-not-have-oath-enabled": "使用者未啟用雙重認證，因此無需停用。",
 	"right-oathauth-enable": "啟用雙重認證",
 	"action-oathauth-enable": "啟用雙重認證",
 	"oathauth-auth-token-label": "雙重認證權杖",
