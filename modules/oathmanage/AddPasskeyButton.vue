@@ -23,6 +23,17 @@ async function checkPasskeySupport() {
 	if ( !window.PublicKeyCredential ) {
 		return false;
 	}
+	// Workaround for T415089: Firefox on Linux returns false for userVerifyingPlatformAuthenticator
+	// even when certain browser extensions are installed that should cause it to return true.
+	// To provide a better user experience, skip this check for Firefox on Linux.
+	const profile = $.client.profile();
+	if (
+		profile.layout === 'gecko' &&
+		( profile.platform === 'linux' || profile.platform === 'solaris' )
+	) {
+		return true;
+	}
+
 	// Try the mode modern getClientCapabilities API first
 	if ( window.PublicKeyCredential.getClientCapabilities ) {
 		const capabilities = await window.PublicKeyCredential.getClientCapabilities();

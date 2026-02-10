@@ -247,7 +247,8 @@
 				"oathauth-passkey-dialog-add"
 			],
 			"dependencies": [
-				"ext.webauthn.Registrator"
+				"ext.webauthn.Registrator",
+				"jquery.client"
 			]
 		},
 		"ext.oath.manage.styles": {
