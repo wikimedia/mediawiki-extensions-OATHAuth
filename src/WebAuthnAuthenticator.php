@@ -22,10 +22,11 @@ use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
+use ParagonIE\ConstantTime\Base64;
+use ParagonIE\ConstantTime\Base64UrlSafe;
 use Psr\Log\LoggerInterface;
 use stdClass;
 use Webauthn\AuthenticatorSelectionCriteria;
-use Webauthn\Denormalizer\WebauthnSerializerFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialParameters;
@@ -272,17 +273,28 @@ class WebAuthnAuthenticator {
 		string $returnClass
 	): PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null {
 		$authData = $this->request->getSession()->getSecret( 'authData' );
-		if ( !is_array( $authData ) || !array_key_exists( static::SESSION_KEY, $authData ) ) {
+		if ( !is_array( $authData ) ) {
 			return null;
 		}
-
-		$serializer = ( new WebauthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-
-		return $serializer->deserialize(
-			$authData[static::SESSION_KEY],
-			$returnClass,
-			'json',
-		);
+		if ( array_key_exists( static::SESSION_KEY, $authData ) ) {
+			$json = $authData[static::SESSION_KEY];
+			$data = json_decode( $json, associative: true, flags: JSON_THROW_ON_ERROR );
+			// FIXME webauthn-lib uses different encoding to serialize (base64url unpadded)
+			//   and unserialize (base64) the challenge and user.id and JSON fields :/
+			/** @var array $data */'@phan-var array{challenge:string} $data';
+			$data['challenge'] = Base64::encode( Base64UrlSafe::decode( $data['challenge'] ) );
+			if ( $returnClass === PublicKeyCredentialCreationOptions::class ) {
+				/** @var array $data */'@phan-var array{challenge:string,user:array{id:string}} $data';
+				$data['user']['id'] = Base64::encode( Base64UrlSafe::decode( $data['user']['id'] ) );
+			}
+			$factory = match ( $returnClass ) {
+				// TODO: createFromArray() is deprecated. Use Webauthn\Denormalizer\WebauthnSerializerFactory to create
+				PublicKeyCredentialRequestOptions::class => PublicKeyCredentialRequestOptions::createFromArray( ... ),
+				PublicKeyCredentialCreationOptions::class => PublicKeyCredentialCreationOptions::createFromArray( ... ),
+			};
+			return $factory( $data );
+		}
+		return null;
 	}
 
 	/**

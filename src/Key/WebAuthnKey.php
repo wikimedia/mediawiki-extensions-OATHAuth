@@ -280,7 +280,7 @@ class WebAuthnKey extends AuthKey {
 		string $friendlyName = ''
 	): bool {
 		try {
-			$attestationStatementSupportManager = self::getAttestationSupportManager();
+			$attestationStatementSupportManager = $this->getAttestationSupportManager();
 
 			$serializer = ( new WebauthnSerializerFactory( $attestationStatementSupportManager ) )->create();
 			$publicKeyCredential = $serializer->deserialize(
@@ -347,7 +347,7 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user
 	): bool {
 		try {
-			$serializer = ( new WebauthnSerializerFactory( self::getAttestationSupportManager() ) )->create();
+			$serializer = ( new WebauthnSerializerFactory( $this->getAttestationSupportManager() ) )->create();
 			$publicKeyCredential = $serializer->deserialize(
 				$data,
 				PublicKeyCredential::class,
@@ -409,7 +409,7 @@ class WebAuthnKey extends AuthKey {
 		return parse_url( $request->getFullRequestURL(), PHP_URL_HOST );
 	}
 
-	public static function getAttestationSupportManager(): AttestationStatementSupportManager {
+	private function getAttestationSupportManager(): AttestationStatementSupportManager {
 		return new AttestationStatementSupportManager( [
 			// FIXME supporting all these formats probably doesn't do much good as long as we
 			//  set the attestation conveyance preference to 'none' in WebAuthnAuthenticator::getRegisterInfo()
