@@ -52,7 +52,7 @@
 	"oathauth-enteruser": "Benotzernumm:",
 	"oathauth-enterdisablereason": "Grond fir d'Desaktivéierung:",
 	"oathauth-enterverifyreason": "Grond fir nozekucken:",
-	"oathauth-user-not-does-not-have-oath-enabled": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung guer net aktivéiert, et gëtt also näischt ze desaktivéieren",
+	"oathauth-user-not-does-not-have-oath-enabled": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung guer net aktivéiert, et gëtt also näischt ze desaktivéieren.",
 	"right-oathauth-enable": "Zwee-Faktor-Authentifizéierung aktivéieren",
 	"action-oathauth-enable": "d'Zwee-Faktor-Authentifizéierung z'aktivéieren",
 	"oathauth-auth-token-label": "Zwee-Faktor-Token",
