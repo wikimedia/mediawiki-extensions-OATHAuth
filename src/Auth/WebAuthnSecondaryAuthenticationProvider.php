@@ -28,10 +28,9 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		if ( !$canAuthenticate->isGood() ) {
 			return AuthenticationResponse::newFail( $canAuthenticate->getMessage() );
 		}
-		$request = new WebAuthnAuthenticationRequest();
 		$startAuthResult = $authenticator->startAuthentication();
 		if ( $startAuthResult->isGood() ) {
-			$request->setAuthInfo( $startAuthResult->getValue()['json'] );
+			$request = new WebAuthnAuthenticationRequest( $startAuthResult->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
 				wfMessage( 'oathauth-webauthn-ui-login-prompt' ) );
@@ -54,8 +53,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		);
 		if ( !$request ) {
 			// Re-ask user for credentials
-			$request = new WebAuthnAuthenticationRequest();
-			$request->setAuthInfo( $authenticator->startAuthentication()->getValue()['json'] );
+			$request = new WebAuthnAuthenticationRequest( $authenticator->startAuthentication()->getValue()['json'] );
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
 				wfMessage( 'oathauth-webauthn-error-credentials-missing' ), 'error' );

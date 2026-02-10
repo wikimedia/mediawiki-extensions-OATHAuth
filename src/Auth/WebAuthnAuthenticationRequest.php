@@ -9,9 +9,15 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Language\RawMessage;
 
 class WebAuthnAuthenticationRequest extends AuthenticationRequest {
-	protected string $authInfo;
 
-	protected string $credential;
+	public string $credential;
+
+	/**
+	 * @param string $authInfo Serialized JSON blob obtained from
+	 *   WebAuthnAuthenticator::startAuthentication()
+	 */
+	public function __construct( public string $authInfo ) {
+	}
 
 	/** @inheritDoc */
 	public function describeCredentials() {
@@ -21,17 +27,12 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		] + parent::describeCredentials();
 	}
 
-	/**
-	 * Set the authentication data to be passed
-	 * to the client for credential retrieval
-	 */
-	public function setAuthInfo( string $info ) {
-		$this->authInfo = $info;
-	}
-
 	/** @inheritDoc */
 	public function getFieldInfo() {
 		return [
+			// The hidden auth_info field only exists to send the authInfo JSON blob to the client.
+			// It's not used for authentication and ignored when submitted back to us, we get the
+			// authInfo blob from the session instead.
 			'auth_info' => [
 				'type' => 'hidden',
 				'value' => $this->authInfo,
@@ -59,6 +60,9 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 
 	/** @inheritDoc */
 	public function getSubmittedData() {
+		// Don't trust the submitted auth_info, otherwise the user could control which challenge
+		// we're validating against and do a replay attack. Instead, we use the authInfo blob
+		// in the session, which we stored there when we issued the challenge.
 		return [
 			'credential' => $this->credential
 		];
