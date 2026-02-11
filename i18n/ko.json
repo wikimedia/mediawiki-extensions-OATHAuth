@@ -24,6 +24,7 @@
 	"oathauth-enable": "2요소 인증 활성화하기",
 	"oathauth-recoverycodes": "다음 목록은 일회용 스크래치 토큰 목록입니다. 이 토큰들은 한 번만 사용할 수 있으며 비상용입니다. 이것들을 적어놓고 안전한 위치에 보관하세요. 전화를 분실할 경우 이 토큰들이 당신의 계정을 찾을 유일한 수단입니다. '''이 토큰들은 다시 볼 수 없습니다'''.",
 	"oathauth-recoverycodes-important": "이 단계는 중요합니다! 이 단계를 건너뛰지 마세요!",
+	"oathauth-recoverycodes-neveragain": "이 코드는 다시 표시되지 않습니다.",
 	"oathauth-recoverytokens-createdat": "복구 코드가 생성되었습니다: $1",
 	"oathauth-recoverycodes-download": "다운로드",
 	"oathauth-recoverycodes-copy": "복사",
@@ -102,5 +103,6 @@
 	"oathauth-notifications-recoverycodesleft-primary": "2요소 인증 설정 확인하기",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있습니다.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}}은(는) 2요소 인증이 활성화 되어있지 않습니다.",
+	"oathauth-prefs-disabledgroups": "비활성화된 {{PLURAL:$1|그룹}}:",
 	"oathauth-qrcode-alt": "비밀 키를 나타내는 스캔 가능한 QR \n코드입니다."
 }

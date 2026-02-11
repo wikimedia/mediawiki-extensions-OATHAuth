@@ -112,5 +112,6 @@
 	"oathauth-prefs-disabledgroups": "Letiltott {{PLURAL:$1|csoport|csoportok}}:",
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|A tagságod}} {{PLURAL:$1|ebben a csoportban|ezekben a csoportokban}} nem aktív, amíg nem kapcsolod be a [[Special:Manage Two-factor authentication|kétlépcsős azonosítást]].",
 	"oathauth-qrcode-alt": "A titkos kulcsot jelképező beolvasható QR-kód.",
-	"oathauth-hint": "Nincs hozzáférésed az eszközödhöz vagy alkalmazásodhoz? Ebben a mezőben helyreállítási kódot is megadhatsz (ezek akkor jelentek meg, amikor engedélyezted a 2FA-t)."
+	"oathauth-hint": "Nincs hozzáférésed az eszközödhöz vagy alkalmazásodhoz? Ebben a mezőben helyreállítási kódot is megadhatsz (ezek akkor jelentek meg, amikor engedélyezted a 2FA-t).",
+	"oathauth-error-multiple-modules": "Jelenleg nem támogatott több kétlépcsős azonosítási módszer használata. A(z) $1 módszert csak a(z) $2 letiltása után engedélyezheted."
 }
