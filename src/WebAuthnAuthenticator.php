@@ -7,6 +7,7 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use Cose\Algorithms;
+use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
@@ -72,7 +73,7 @@ class WebAuthnAuthenticator {
 			$oathLogger,
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
-			$request ?? RequestContext::getMain()->getRequest(),
+			$services->getAuthManager(),
 			$services->getUrlUtils(),
 			$passkeyMode
 		);
@@ -86,7 +87,7 @@ class WebAuthnAuthenticator {
 		protected OATHAuthLogger $oathLogger,
 		protected IContextSource $context,
 		protected LoggerInterface $logger,
-		protected WebRequest $request,
+		protected AuthManager $authManager,
 		private readonly UrlUtils $urlUtils,
 		protected bool $passkeyMode
 	) {
@@ -98,7 +99,7 @@ class WebAuthnAuthenticator {
 	}
 
 	public function getRequest(): WebRequest {
-		return $this->request;
+		return $this->authManager->getRequest();
 	}
 
 	public function canAuthenticate(): Status {
@@ -236,7 +237,7 @@ class WebAuthnAuthenticator {
 					$this->oathUser,
 					$this->module,
 					$key->jsonSerialize(),
-					$this->request->getIP()
+					$this->getRequest()->getIP()
 				);
 
 				$this->recoveryCodesModule->ensureExistence(
@@ -254,42 +255,25 @@ class WebAuthnAuthenticator {
 	}
 
 	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
-		$session = $this->request->getSession();
-		$authData = $session->getSecret( 'authData' );
-		if ( !is_array( $authData ) ) {
-			$authData = [];
-		}
-
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-
-		$authData[static::SESSION_KEY] = $serializer->serialize( $data, 'json' );
-		$session->setSecret( 'authData', $authData );
+		$this->authManager->setAuthenticationSessionData( static::SESSION_KEY,
+			$serializer->serialize( $data, 'json' )
+		);
 	}
 
 	private function clearSessionData() {
-		$session = $this->request->getSession();
-		$authData = $session->getSecret( 'authData' );
-		if ( is_array( $authData ) && array_key_exists( static::SESSION_KEY, $authData ) ) {
-			unset( $authData[static::SESSION_KEY] );
-			$session->setSecret( 'authData', $authData );
-		}
+		$this->authManager->setAuthenticationSessionData( static::SESSION_KEY, null );
 	}
 
 	private function getSessionData(
 		string $returnClass
 	): PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null {
-		$authData = $this->request->getSession()->getSecret( 'authData' );
-		if ( !is_array( $authData ) || !array_key_exists( static::SESSION_KEY, $authData ) ) {
+		$json = $this->authManager->getAuthenticationSessionData( static::SESSION_KEY );
+		if ( $json === null ) {
 			return null;
 		}
-
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-
-		return $serializer->deserialize(
-			$authData[static::SESSION_KEY],
-			$returnClass,
-			'json',
-		);
+		return $serializer->deserialize( $json, $returnClass, 'json' );
 	}
 
 	/**
