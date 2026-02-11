@@ -19,7 +19,6 @@ use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\Extension\OATHAuth\WebAuthnCredentialRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnSerializerFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -44,6 +43,7 @@ use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialRequestOptions;
+use Webauthn\PublicKeyCredentialSource;
 use Webauthn\TrustPath\EmptyTrustPath;
 use Webauthn\TrustPath\TrustPath;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -249,17 +249,24 @@ class WebAuthnKey extends AuthKey {
 		return $this->credentialTransports;
 	}
 
-	private function checkFriendlyName() {
+	private function checkFriendlyName(): void {
 		/** @var OATHUserRepository $repo */
 		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
-		$oauthUser = $repo->findByUser( $this->context->getUser() );
-		$credRepo = new WebAuthnCredentialRepository( $oauthUser );
-		$names = $credRepo->getFriendlyNames( true );
-		$this->checkFriendlyNameInternal( $names );
+
+		$friendlyNames = [];
+		foreach ( WebAuthn::getWebAuthnKeys( $repo->findByUser( $this->context->getUser() ) ) as $key ) {
+			$friendlyName = $key->getFriendlyName();
+			if ( $friendlyName === null ) {
+				continue;
+			}
+			$friendlyNames[] = strtolower( $friendlyName );
+		}
+
+		$this->checkFriendlyNameInternal( $friendlyNames );
 	}
 
 	/**
-	 * This will not actually work very well, as third same key will
+	 * This will not actually work very well, as the third same key will
 	 * be named "Key #2 #3".
 	 *
 	 * It should be refactored once we have defined what this
@@ -374,8 +381,7 @@ class WebAuthnKey extends AuthKey {
 			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
 			$stepManagerFactory->setAlgorithmManager( $coseAlgorithmManager );
 
-			$pubKeySource = ( new WebAuthnCredentialRepository( $user ) )
-				->findOneByCredentialId( $publicKeyCredential->rawId );
+			$pubKeySource = $this->findOneByCredentialId( $user, $publicKeyCredential->rawId );
 
 			if ( $pubKeySource === null ) {
 				return false;
@@ -407,6 +413,31 @@ class WebAuthnKey extends AuthKey {
 
 	private function getHost( WebRequest $request ): string {
 		return parse_url( $request->getFullRequestURL(), PHP_URL_HOST );
+	}
+
+	private function findOneByCredentialId(
+		OATHUser $user,
+		string $publicKeyCredentialId
+	): ?PublicKeyCredentialSource {
+		foreach ( WebAuthn::getWebAuthnKeys( $user ) as $key ) {
+			if ( $key->getAttestedCredentialData()->credentialId !== $publicKeyCredentialId ) {
+				continue;
+			}
+
+			return PublicKeyCredentialSource::create(
+				publicKeyCredentialId: $key->getAttestedCredentialData()->credentialId,
+				type: $key->getType(),
+				transports: $key->getTransports(),
+				attestationType: $key->getAttestationType(),
+				trustPath: $key->getTrustPath(),
+				aaguid: $key->getAttestedCredentialData()->aaguid,
+				credentialPublicKey: (string)$key->getAttestedCredentialData()->credentialPublicKey,
+				userHandle: $key->getUserHandle(),
+				counter: $key->getSignCounter(),
+			);
+		}
+
+		return null;
 	}
 
 	public static function getAttestationSupportManager(): AttestationStatementSupportManager {
