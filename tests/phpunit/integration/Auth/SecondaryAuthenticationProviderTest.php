@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\TwoFactorModuleSelectAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -66,6 +67,8 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 			return $this->getFakeModule( $moduleName );
 		} );
 		$this->setService( 'OATHAuthModuleRegistry', $moduleRegistry );
+		$this->setService( 'OATHAuthLogger',
+			$this->createNoOpMock( OATHAuthLogger::class, [ 'logSuccessfulVerification' ] ) );
 
 		$provider = new SecondaryAuthenticationProvider();
 		$provider->init(

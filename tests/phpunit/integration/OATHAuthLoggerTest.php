@@ -6,8 +6,12 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Logging\DatabaseLogEntry;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
@@ -100,6 +104,40 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 		$countBefore = $this->countCuPrivateRows();
 
 		$logger->logFailedVerification( $user );
+
+		$countAfter = $this->countCuPrivateRows();
+
+		$this->assertSame( 1, $countAfter - $countBefore );
+	}
+
+	public function testLogSuccessfulVerification(): void {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )
+			->with( 'CheckUser' )
+			->willReturn( false );
+		$logger = new OATHAuthLogger(
+			$extensionRegistry,
+			RequestContext::getMain(),
+			LoggerFactory::getInstance( 'authentication' )
+		);
+
+		$this->assertNoLogs( 'verify-success' );
+
+		$user = $this->getTestUser()->getUser();
+		$logger->logSuccessfulVerification( $user );
+
+		$this->assertNoLogs( 'verify-success' );
+	}
+
+	public function testLogSuccessfulVerification_CheckUser(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		$logger = OATHAuthServices::getInstance()->getLogger();
+
+		$user = $this->getTestUser()->getUser();
+		$countBefore = $this->countCuPrivateRows();
+
+		$logger->logSuccessfulVerification( $user );
 
 		$countAfter = $this->countCuPrivateRows();
 

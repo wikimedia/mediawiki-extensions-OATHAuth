@@ -111,6 +111,7 @@
 	"logentry-oath-recover": "{{Logentry|<kbd>Special:Log/oath</kbd>}}\nAdditional parameters:\n* $4 - Number of recovery codes that were generated for the user",
 	"logentry-oath-verify": "{{Logentry|<kbd>Special:Log/oath</kbd>}}",
 	"logentry-oath-verify-failed": "{{Logentry}}\nDisplayed in CheckUser for private events when a user fails a two-factor authentication attempt.",
+	"logentry-oath-verify-success": "{{Logentry}}\nDisplayed in CheckUser for private events when a user succeeds a two-factor authentication attempt.",
 	"log-action-filter-oath": "{{Doc-log-action-filter-type|oath}}\n{{Related|Log-action-filter}}",
 	"log-action-filter-oath-verify": "{{doc-log-action-filter-action|oath|verify}}",
 	"log-action-filter-oath-disable-other": "{{doc-log-action-filter-action|oath|disable-other}}",

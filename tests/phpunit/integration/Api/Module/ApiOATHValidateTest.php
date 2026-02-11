@@ -166,4 +166,63 @@ class ApiOATHValidateTest extends ApiTestCase {
 			'A verify-failed entry should be created in cu_private_event'
 		);
 	}
+
+	public function testSuccessfulTokenCreatesCheckUserEntry() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		$testUser = $this->getTestUser();
+		$key = TOTPKey::newFromRandom();
+		$secret = TestingAccessWrapper::newFromObject( $key )->secret;
+
+		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+		$userRepository->createKey(
+			$userRepository->findByUser( $testUser->getUserIdentity() ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			$key->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$logCountBefore = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'verify-success',
+				'cupe_actor' => $testUser->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$token = HOTP::generateByTime(
+			Base32::decode( $secret['secret'] ),
+			$secret['period'],
+		)->toHOTP( 6 );
+
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'oathvalidate',
+				'user' => $testUser->getUserIdentity()->getName(),
+				'data' => json_encode( [ 'token' => $token ] ),
+			],
+			null,
+			new UltimateAuthority( $testUser->getUserIdentity() )
+		);
+
+		$logCountAfter = $this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'cu_private_event' )
+			->where( [
+				'cupe_log_type' => 'oath',
+				'cupe_log_action' => 'verify-success',
+				'cupe_actor' => $testUser->getUser()->getActorId(),
+			] )
+			->fetchField();
+
+		$this->assertSame(
+			(int)$logCountBefore + 1,
+			(int)$logCountAfter,
+			'A verify-success entry should be created in cu_private_event'
+		);
+	}
 }

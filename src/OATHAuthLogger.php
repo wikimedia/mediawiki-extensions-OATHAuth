@@ -89,6 +89,23 @@ class OATHAuthLogger {
 		$this->updateCheckUserData( $logEntry );
 	}
 
+	/**
+	 * Creates a CheckUser-only log entry for a successful 2FA verification attempt.
+	 */
+	public function logSuccessfulVerification( UserIdentity $user ): void {
+		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			return;
+		}
+
+		$logEntry = new ManualLogEntry( 'oath', 'verify-success' );
+		$logEntry->setPerformer( $user );
+		$logEntry->setTarget(
+			PageReferenceValue::localReference( NS_USER, $user->getName() )
+		);
+
+		$this->updateCheckUserData( $logEntry );
+	}
+
 	private function insertLogEntry(
 		string $subtype,
 		UserIdentity $performer,

@@ -69,6 +69,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 
 		if ( $response->status === AuthenticationResponse::PASS ) {
 			$user->getRequest()->getSession()->set( OATHAuth::AUTHENTICATED_OVER_2FA, true );
+			OATHAuthServices::getInstance()->getLogger()->logSuccessfulVerification( $user );
 		}
 
 		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module );

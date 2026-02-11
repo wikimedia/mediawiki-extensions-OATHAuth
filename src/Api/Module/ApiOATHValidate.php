@@ -74,6 +74,7 @@ class ApiOATHValidate extends ApiBase {
 				foreach ( $keys as $key ) {
 					if ( $key->verify( $authUser, $data ) ) {
 						$result['valid'] = true;
+						$this->oathLogger->logSuccessfulVerification( $user );
 						break;
 					}
 				}
