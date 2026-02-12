@@ -51,7 +51,7 @@ class WebAuthnAuthenticator {
 
 	protected ?string $serverId;
 
-	public static function factory( User $user, ?WebRequest $request = null, bool $passkeyMode = false ): self {
+	public static function factory( User $user, bool $passkeyMode = false ): self {
 		$services = MediaWikiServices::getInstance();
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );

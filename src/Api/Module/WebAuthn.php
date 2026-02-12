@@ -156,7 +156,7 @@ class WebAuthn extends ApiBase {
 	}
 
 	protected function getAuthInfo(): array {
-		$authenticator = WebAuthnAuthenticator::factory( $this->getUser(), $this->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $this->getUser() );
 		$canAuthenticate = $authenticator->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			$this->dieWithError( $canAuthenticate->getMessage() );
@@ -173,7 +173,6 @@ class WebAuthn extends ApiBase {
 	protected function getRegisterInfo(): array {
 		$authenticator = WebAuthnAuthenticator::factory(
 			$this->getUser(),
-			$this->getRequest(),
 			(bool)$this->getParameter( 'passkeyMode' )
 		);
 		$canRegister = $authenticator->canRegister();
@@ -204,7 +203,6 @@ class WebAuthn extends ApiBase {
 
 		$authenticator = WebAuthnAuthenticator::factory(
 			$this->getUser(),
-			$this->getRequest(),
 			(bool)$this->getParameter( 'passkeyMode' )
 		);
 

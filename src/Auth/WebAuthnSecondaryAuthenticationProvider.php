@@ -20,7 +20,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 
 	/** @inheritDoc */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = WebAuthnAuthenticator::factory( $user, $this->manager->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $user );
 		if ( !$authenticator->isEnabled() ) {
 			return AuthenticationResponse::newAbstain();
 		}
@@ -40,7 +40,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = WebAuthnAuthenticator::factory( $user, $this->manager->getRequest() );
+		$authenticator = WebAuthnAuthenticator::factory( $user );
 		$canAuthenticate = $authenticator->canAuthenticate();
 		if ( !$canAuthenticate->isGood() ) {
 			return AuthenticationResponse::newFail( $canAuthenticate->getMessage() );
