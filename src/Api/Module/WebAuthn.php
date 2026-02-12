@@ -10,9 +10,10 @@ use MediaWiki\Api\ApiMain;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn as WebAuthnModule;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -28,6 +29,9 @@ class WebAuthn extends ApiBase {
 		ApiMain $main,
 		string $moduleName,
 		private readonly AuthManager $authManager,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly OATHUserRepository $userRepo,
+		private readonly WebAuthnAuthenticator $authenticator,
 	) {
 		parent::__construct( $main, $moduleName );
 	}
@@ -103,7 +107,7 @@ class WebAuthn extends ApiBase {
 	 * Each key must have the appropriate configuration that
 	 * defines user requirements for the action.
 	 */
-	protected function getRegisteredFunctions(): array {
+	private function getRegisteredFunctions(): array {
 		return [
 			static::ACTION_GET_AUTH_INFO => [
 				'permissions' => [],
@@ -121,7 +125,7 @@ class WebAuthn extends ApiBase {
 		];
 	}
 
-	protected function checkPermissions( string $func ): void {
+	private function checkPermissions( string $func ): void {
 		$registered = $this->getRegisteredFunctions();
 		$functionConfig = $registered[$func];
 
@@ -146,22 +150,16 @@ class WebAuthn extends ApiBase {
 		}
 	}
 
-	protected function checkModule() {
-		/** @var OATHAuthModuleRegistry $moduleRegistry */
-		$moduleRegistry = MediaWikiServices::getInstance()->getService( 'OATHAuthModuleRegistry' );
-		$module = $moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
+	private function checkModule() {
+		$module = $this->moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
 		if ( !( $module instanceof WebAuthnModule ) ) {
 			$this->dieWithError( 'apierror-oathauth-webauthn-module-missing' );
 		}
 	}
 
-	protected function getAuthInfo(): array {
-		$authenticator = WebAuthnAuthenticator::factory( $this->getUser() );
-		$canAuthenticate = $authenticator->canAuthenticate();
-		if ( !$canAuthenticate->isGood() ) {
-			$this->dieWithError( $canAuthenticate->getMessage() );
-		}
-		$startAuthResult = $authenticator->startAuthentication();
+	private function getAuthInfo(): array {
+		$oathUser = $this->getOATHUser();
+		$startAuthResult = $this->authenticator->startAuthentication( $oathUser );
 		if ( $startAuthResult->isGood() ) {
 			return [
 				'auth_info' => $startAuthResult->getValue()['json']
@@ -170,16 +168,12 @@ class WebAuthn extends ApiBase {
 		$this->dieWithError( $startAuthResult->getMessage() );
 	}
 
-	protected function getRegisterInfo(): array {
-		$authenticator = WebAuthnAuthenticator::factory(
-			$this->getUser(),
+	private function getRegisterInfo(): array {
+		$oathUser = $this->getOATHUser();
+		$startRegResult = $this->authenticator->startRegistration(
+			$oathUser,
 			(bool)$this->getParameter( 'passkeyMode' )
 		);
-		$canRegister = $authenticator->canRegister();
-		if ( !$canRegister->isGood() ) {
-			$this->dieWithError( $canRegister->getMessage() );
-		}
-		$startRegResult = $authenticator->startRegistration();
 		if ( $startRegResult->isGood() ) {
 			return [
 				'register_info' => $startRegResult->getValue()['json']
@@ -188,7 +182,7 @@ class WebAuthn extends ApiBase {
 		$this->dieWithError( $startRegResult->getMessage() );
 	}
 
-	protected function register(): array {
+	private function register(): array {
 		$credentialJson = $this->getParameter( 'credential' );
 
 		if ( !$credentialJson ) {
@@ -201,17 +195,20 @@ class WebAuthn extends ApiBase {
 		}
 		$credential->friendlyName = $this->getParameter( 'friendlyname' ) ?? '';
 
-		$authenticator = WebAuthnAuthenticator::factory(
-			$this->getUser(),
+		$result = $this->authenticator->continueRegistration(
+			$credential,
+			$this->getOATHUser(),
 			(bool)$this->getParameter( 'passkeyMode' )
 		);
-
-		$result = $authenticator->continueRegistration( $credential );
 
 		if ( !$result->isGood() ) {
 			$this->dieWithError( $result->getMessage() );
 		}
 
 		return [ 'success' => true ];
+	}
+
+	private function getOATHUser(): OATHUser {
+		return $this->userRepo->findByUser( $this->getUser() );
 	}
 }

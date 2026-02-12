@@ -431,7 +431,10 @@
 		"webauthn": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\WebAuthn",
 			"services": [
-				"AuthManager"
+				"AuthManager",
+				"OATHAuthModuleRegistry",
+				"OATHUserRepository",
+				"WebAuthnAuthenticator"
 			]
 		}
 	},

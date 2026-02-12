@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
@@ -21,16 +22,14 @@ class WebAuthnAuthenticatorTest extends MediaWikiIntegrationTestCase {
 		return $user;
 	}
 
-	public function testFactory() {
-		$this->assertInstanceOf(
-			WebAuthnAuthenticator::class,
-			WebAuthnAuthenticator::factory( $this->getMockUser() ),
-		);
-	}
-
 	public function testIsEnabled() {
+		/** @var WebAuthnAuthenticator $authenticator */
+		$authenticator = $this->getServiceContainer()->getService( 'WebAuthnAuthenticator' );
+		/** @var OATHUserRepository $oathUser */
+		$repo = $this->getServiceContainer()->getService( 'OATHUserRepository' );
+
 		$this->assertFalse(
-			WebAuthnAuthenticator::factory( $this->getMockUser() )->isEnabled()
+			$authenticator->isEnabled( $repo->findByUser( $this->getMockUser() ) )
 		);
 	}
 }

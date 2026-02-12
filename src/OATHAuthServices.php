@@ -42,6 +42,10 @@ class OATHAuthServices {
 		return $this->services->getService( 'OATHAuthLogger' );
 	}
 
+	public function getWebAuthnAuthenticator(): WebAuthnAuthenticator {
+		return $this->services->getService( 'WebAuthnAuthenticator' );
+	}
+
 	public function getConfig(): Config {
 		return $this->services->getMainConfig();
 	}

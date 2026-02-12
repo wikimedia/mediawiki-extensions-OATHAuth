@@ -9,18 +9,15 @@ namespace MediaWiki\Extension\OATHAuth;
 use Cose\Algorithms;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Status\Status;
-use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
@@ -51,89 +48,60 @@ class WebAuthnAuthenticator {
 
 	protected ?string $serverId;
 
-	public static function factory( User $user, bool $passkeyMode = false ): self {
-		$services = MediaWikiServices::getInstance();
-		/** @var OATHAuthModuleRegistry $moduleRegistry */
-		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
-		/** @var OATHUserRepository $userRepo */
-		$userRepo = $services->getService( 'OATHUserRepository' );
-		/** @var OATHAuthLogger $oathLogger */
-		$oathLogger = $services->getService( 'OATHAuthLogger' );
-
-		/** @var WebAuthn $webAuthn */
-		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
-		/** @var RecoveryCodes $recovery */
-		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
-
-		return new static(
-			$userRepo,
-			$webAuthn,
-			$recovery,
-			$userRepo->findByUser( $user ),
-			$oathLogger,
-			RequestContext::getMain(),
-			LoggerFactory::getInstance( 'authentication' ),
-			$services->getAuthManager(),
-			$services->getUrlUtils(),
-			$passkeyMode
-		);
-	}
-
-	protected function __construct(
-		protected OATHUserRepository $userRepo,
-		protected WebAuthn $module,
-		protected RecoveryCodes $recoveryCodesModule,
-		protected OATHUser $oathUser,
-		protected OATHAuthLogger $oathLogger,
-		protected IContextSource $context,
-		protected LoggerInterface $logger,
-		protected AuthManager $authManager,
+	public function __construct(
+		private readonly OATHUserRepository $userRepo,
+		private readonly WebAuthn $module,
+		private readonly RecoveryCodes $recoveryCodesModule,
+		private readonly OATHAuthLogger $oathLogger,
+		private readonly IContextSource $context,
+		private readonly LoggerInterface $logger,
+		private readonly AuthManager $authManager,
 		private readonly UrlUtils $urlUtils,
-		protected bool $passkeyMode
+		private readonly UserFactory $userFactory,
 	) {
 		$this->serverId = $this->getServerId();
 	}
 
-	public function isEnabled(): bool {
-		return $this->module->isEnabled( $this->oathUser );
+	public function isEnabled( OATHUser $user ): bool {
+		return $this->module->isEnabled( $user );
 	}
 
 	public function getRequest(): WebRequest {
 		return $this->authManager->getRequest();
 	}
 
-	public function canAuthenticate(): Status {
-		if ( !$this->isEnabled() ) {
+	public function canAuthenticate( OATHUser $user ): Status {
+		if ( !$this->isEnabled( $user ) ) {
 			return Status::newFatal(
 				'oathauth-webauthn-error-module-not-enabled',
 				$this->module->getName(),
-				$this->oathUser->getUser()->getName()
+				$user->getUser()->getName()
 			);
 		}
 
 		return Status::newGood();
 	}
 
-	public function canRegister(): Status {
-		if ( $this->context->getUser()->isAllowed( 'oathauth-enable' ) ) {
+	public function canRegister( OATHUser $user ): Status {
+		if ( $this->userFactory->newFromUserIdentity( $user->getUser() )->isAllowed( 'oathauth-enable' ) ) {
 			return Status::newGood();
 		}
 
 		return Status::newFatal(
 			'oathauth-webauthn-error-cannot-register',
-			$this->oathUser->getUser()->getName()
+			$user->getUser()->getName()
 		);
 	}
 
-	public function startAuthentication(): Status {
-		$canAuthenticate = $this->canAuthenticate();
+	public function startAuthentication( OATHUser $user ): Status {
+		$canAuthenticate = $this->canAuthenticate( $user );
 		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->error(
-				"User {$this->oathUser->getUser()->getName()} cannot authenticate"
+				"User {$user->getUser()->getName()} cannot authenticate"
 			);
 			return $canAuthenticate;
 		}
-		$authInfo = $this->getAuthInfo();
+		$authInfo = $this->getAuthInfo( $user );
 		$this->setSessionData( $authInfo );
 
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
@@ -146,12 +114,13 @@ class WebAuthnAuthenticator {
 
 	public function continueAuthentication(
 		array $verificationData,
+		OATHUser $user,
 		?PublicKeyCredentialRequestOptions $authInfo = null
 	): Status {
-		$canAuthenticate = $this->canAuthenticate();
+		$canAuthenticate = $this->canAuthenticate( $user );
 		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->error(
-				"User {$this->oathUser->getUser()->getName()} lost authenticate ability mid-request"
+				"User {$user->getUser()->getName()} lost authenticate ability mid-request"
 			);
 			return $canAuthenticate;
 		}
@@ -161,30 +130,30 @@ class WebAuthnAuthenticator {
 		);
 		$this->clearSessionData();
 
-		if ( $this->module->verify( $this->oathUser, $verificationData ) ) {
+		if ( $this->module->verify( $user, $verificationData ) ) {
 			$this->logger->info(
-				"User {$this->oathUser->getUser()->getName()} logged in using WebAuthn"
+				"User {$user->getUser()->getName()} logged in using WebAuthn"
 			);
-			return Status::newGood( $this->oathUser );
+			return Status::newGood( $user );
 		}
 		$this->logger->warning(
-			"Webauthn login failed for user {$this->oathUser->getUser()->getName()}"
+			"Webauthn login failed for user {$user->getUser()->getName()}"
 		);
 
-		$this->oathLogger->logFailedVerification( $this->oathUser->getUser() );
+		$this->oathLogger->logFailedVerification( $user->getUser() );
 
 		return Status::newFatal( 'oathauth-webauthn-error-verification-failed' );
 	}
 
-	public function startRegistration(): Status {
-		$canRegister = $this->canRegister();
+	public function startRegistration( OATHUser $user, bool $passkeyMode = false ): Status {
+		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
 			$this->logger->error(
-				"User {$this->oathUser->getUser()->getName()} cannot register a credential"
+				"User {$user->getUser()->getName()} cannot register a credential"
 			);
 			return $canRegister;
 		}
-		$registerInfo = $this->getRegisterInfo();
+		$registerInfo = $this->getRegisterInfo( $user, $passkeyMode );
 		$this->setSessionData( $registerInfo );
 
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
@@ -195,28 +164,23 @@ class WebAuthnAuthenticator {
 		] );
 	}
 
-	/**
-	 * @param stdClass $credential
-	 * @param PublicKeyCredentialCreationOptions|null $registerInfo
-	 * @return Status
-	 */
-	public function continueRegistration( $credential, $registerInfo = null ): Status {
-		$canRegister = $this->canRegister();
+	public function continueRegistration(
+		stdClass $credential, OATHUser $user, bool $passkeyMode = false
+	): Status {
+		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
-			$username = $this->oathUser->getUser()->getName();
+			$username = $user->getUser()->getName();
 			$this->logger->error(
 				"User $username lost registration ability mid-request"
 			);
 			return $canRegister;
 		}
 
+		$registerInfo = $this->getSessionData(
+			PublicKeyCredentialCreationOptions::class
+		);
 		if ( $registerInfo === null ) {
-			$registerInfo = $this->getSessionData(
-				PublicKeyCredentialCreationOptions::class
-			);
-			if ( $registerInfo === null ) {
-				return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
-			}
+			return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 		}
 
 		$key = $this->module->newKey();
@@ -227,21 +191,21 @@ class WebAuthnAuthenticator {
 				$friendlyName,
 				$data,
 				$registerInfo,
-				$this->oathUser
+				$user
 			);
-			if ( $this->passkeyMode ) {
+			if ( $passkeyMode ) {
 				$key->setPasswordlessSupport( true );
 			}
 			if ( $registered ) {
 				$this->userRepo->createKey(
-					$this->oathUser,
+					$user,
 					$this->module,
 					$key->jsonSerialize(),
 					$this->getRequest()->getIP()
 				);
 
 				$this->recoveryCodesModule->ensureExistence(
-					$this->oathUser,
+					$user,
 					$this->getKeyDataInSession( 'RecoveryCodeKeys' )
 				);
 
@@ -279,8 +243,8 @@ class WebAuthnAuthenticator {
 	/**
 	 * Information to be sent to the client to start the authentication process
 	 */
-	protected function getAuthInfo(): PublicKeyCredentialRequestOptions {
-		$keys = WebAuthn::getWebAuthnKeys( $this->oathUser );
+	protected function getAuthInfo( OATHUser $user ): PublicKeyCredentialRequestOptions {
+		$keys = WebAuthn::getWebAuthnKeys( $user );
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
 			$credentialDescriptors[] = new PublicKeyCredentialDescriptor(
@@ -302,22 +266,24 @@ class WebAuthnAuthenticator {
 	/**
 	 * Information to be sent to the client to start the registration process
 	 */
-	protected function getRegisterInfo(): PublicKeyCredentialCreationOptions {
+	protected function getRegisterInfo(
+		OATHUser $user,
+		bool $passkeyMode = false
+	): PublicKeyCredentialCreationOptions {
 		$serverName = $this->getServerName();
 		$rpEntity = new PublicKeyCredentialRpEntity( $serverName, $this->serverId );
 
-		$mwUser = $this->context->getUser();
-
 		// Exclude all already registered keys for user
 		/** @var WebAuthnKey[] $webauthnKeys */
-		$webauthnKeys = $this->oathUser->getKeysForModule( WebAuthn::MODULE_ID );
+		$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_ID );
 		'@phan-var WebAuthnKey[] $webauthnKeys';
 		$excludedPublicKeyDescriptors = array_map( static fn ( $key ) => new PublicKeyCredentialDescriptor(
 			PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
 			$key->getAttestedCredentialData()->credentialId
 		), $webauthnKeys );
 
-		$userHandle = $this->oathUser->getUserHandle() ?? random_bytes( 64 );
+		$mwUser = $this->userFactory->newFromUserIdentity( $user->getUser() );
+		$userHandle = $user->getUserHandle() ?? random_bytes( 64 );
 		$realName = $mwUser->getRealName() ?: $mwUser->getName();
 		$userEntity = new PublicKeyCredentialUserEntity(
 			$mwUser->getName(),
@@ -352,7 +318,7 @@ class WebAuthnAuthenticator {
 			),
 		];
 
-		if ( $this->passkeyMode ) {
+		if ( $passkeyMode ) {
 			$authSelectorCriteria = AuthenticatorSelectionCriteria::create(
 				userVerification: AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED,
 				residentKey: AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED,

@@ -1,10 +1,14 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -44,4 +48,29 @@ return [
 			),
 		);
 	},
+	'WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
+		/** @var OATHAuthModuleRegistry $moduleRegistry */
+		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
+		/** @var OATHUserRepository $userRepo */
+		$userRepo = $services->getService( 'OATHUserRepository' );
+		/** @var OATHAuthLogger $oathLogger */
+		$oathLogger = $services->getService( 'OATHAuthLogger' );
+
+		/** @var WebAuthn $webAuthn */
+		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
+		/** @var RecoveryCodes $recovery */
+		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+
+		return new WebAuthnAuthenticator(
+			$userRepo,
+			$webAuthn,
+			$recovery,
+			$oathLogger,
+			RequestContext::getMain(),
+			LoggerFactory::getInstance( 'authentication' ),
+			$services->getAuthManager(),
+			$services->getUrlUtils(),
+			$services->getUserFactory(),
+		);
+	}
 ];
