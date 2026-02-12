@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
+use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
@@ -182,6 +183,12 @@ class Recover2FAForUser extends FormSpecialPage {
 	private function getUserEmail( User $user ): ?string {
 		if ( $user->isEmailConfirmed() ) {
 			return $user->getEmail();
+		}
+		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
+			$centralUser = CentralAuthUser::getInstanceByName( $user->getName() );
+			if ( $centralUser->getEmailAuthenticationTimestamp() ) {
+				return $centralUser->getEmail();
+			}
 		}
 		return null;
 	}

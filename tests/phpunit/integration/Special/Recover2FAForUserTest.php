@@ -9,6 +9,8 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\PermissionsError;
+use MediaWiki\Extension\CentralAuth\CentralAuthUserCache;
+use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
@@ -279,5 +281,64 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 		$this->assertInstanceOf( RecoveryCodeKeys::class, $newKey );
 		$newCodes = $newKey->getRecoveryCodeKeys();
 		$this->assertCount( 2, $newCodes );
+	}
+
+	public function testUsesCentralAccountEmailIfNoLocal() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CentralAuth' );
+
+		$loggerMock = $this->createMock( OATHAuthLogger::class );
+		$loggerMock->expects( $this->once() )->method( 'logOATHRecovery' );
+		$this->setService( 'OATHAuthLogger', $loggerMock );
+
+		$centralAuthUserCacheMock = $this->createMock( CentralAuthUserCache::class );
+		$centralAuthUserCacheMock->method( 'get' )
+			->willReturnCallback( static function ( $name, $fromPrimary ) {
+				$centralUser = new CentralAuthUser( $name );
+				$centralUser->setEmail( 'global@example.com' );
+				$centralUser->setEmailAuthenticationTimestamp( '20250101000000' );
+				return $centralUser;
+			} );
+		$this->setService( 'CentralAuth.CentralAuthUserCache', $centralAuthUserCacheMock );
+
+		$mailerMock = $this->createMock( IEmailer::class );
+		$mailerMock->expects( $this->once() )
+			->method( 'send' )
+			->willReturnCallback( function ( $to ) {
+				$this->assertSame( 'global@example.com', $to->address );
+				return StatusValue::newGood();
+			} );
+		$this->setService( 'Emailer', $mailerMock );
+
+		// This user has no local e-mail address but has global one
+		$otherUser = $this->getMutableTestUser()->getUser();
+		$otherUser->setEmail( '' );
+		$otherUser->saveSettings();
+
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+		$moduleRegistry = OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry();
+		$recoveryCodesModule = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+
+		$oathUser = $userRepo->findByUser( $otherUser );
+		$userRepo->createKey( $oathUser, $recoveryCodesModule, [
+			'recoverycodekeys' => [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ],
+		], '127.0.0.1' );
+
+		$reason = 'I am required!';
+
+		$user = $this->getTestSysop()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		[ $html ] = $this->executeSpecialPage(
+			'',
+			new FauxRequest(
+				[
+					'reason' => $reason,
+					'user' => $otherUser->getName(),
+				],
+				true
+			),
+			null,
+			$user,
+		);
 	}
 }
