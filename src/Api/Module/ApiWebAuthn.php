@@ -25,6 +25,27 @@ class ApiWebAuthn extends ApiBase {
 	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
 	private const ACTION_REGISTER = 'register';
 
+	/**
+	 * Array of all functions that are allowed to be called.
+	 * Each key must have the appropriate configuration that
+	 * defines user requirements for the action.
+	 */
+	private const REGISTERED_FUNCTIONS = [
+		self::ACTION_GET_AUTH_INFO => [
+			'permissions' => [],
+			'mustBeLoggedIn' => false,
+		],
+		self::ACTION_GET_REGISTER_INFO => [
+			'permissions' => [ 'oathauth-enable' ],
+			'mustBeLoggedIn' => true,
+		],
+		self::ACTION_REGISTER => [
+			'permissions' => [ 'oathauth-enable' ],
+			'mustBeLoggedIn' => true,
+			'loginSecurityLevel' => 'OATHManage'
+		],
+	];
+
 	public function __construct(
 		ApiMain $main,
 		string $moduleName,
@@ -75,7 +96,7 @@ class ApiWebAuthn extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'func' => [
-				ParamValidator::PARAM_TYPE => array_keys( $this->getRegisteredFunctions() ),
+				ParamValidator::PARAM_TYPE => array_keys( self::REGISTERED_FUNCTIONS ),
 				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-func',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
@@ -102,32 +123,8 @@ class ApiWebAuthn extends ApiBase {
 		];
 	}
 
-	/**
-	 * Array of all functions that are allowed to be called.
-	 * Each key must have the appropriate configuration that
-	 * defines user requirements for the action.
-	 */
-	private function getRegisteredFunctions(): array {
-		return [
-			static::ACTION_GET_AUTH_INFO => [
-				'permissions' => [],
-				'mustBeLoggedIn' => false,
-			],
-			static::ACTION_GET_REGISTER_INFO => [
-				'permissions' => [ 'oathauth-enable' ],
-				'mustBeLoggedIn' => true,
-			],
-			static::ACTION_REGISTER => [
-				'permissions' => [ 'oathauth-enable' ],
-				'mustBeLoggedIn' => true,
-				'loginSecurityLevel' => 'OATHManage'
-			],
-		];
-	}
-
 	private function checkPermissions( string $func ): void {
-		$registered = $this->getRegisteredFunctions();
-		$functionConfig = $registered[$func];
+		$functionConfig = self::REGISTERED_FUNCTIONS[$func];
 
 		$mustBeLoggedIn = $functionConfig['mustBeLoggedIn'];
 		if ( $mustBeLoggedIn === true ) {
