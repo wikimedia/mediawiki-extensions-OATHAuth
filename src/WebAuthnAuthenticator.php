@@ -46,7 +46,7 @@ class WebAuthnAuthenticator {
 	 */
 	private const CLIENT_ACTION_TIMEOUT = 60000;
 
-	protected ?string $serverId;
+	private ?string $serverId;
 
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
@@ -220,19 +220,19 @@ class WebAuthnAuthenticator {
 
 	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-		$this->authManager->setAuthenticationSessionData( static::SESSION_KEY,
+		$this->authManager->setAuthenticationSessionData( self::SESSION_KEY,
 			$serializer->serialize( $data, 'json' )
 		);
 	}
 
 	private function clearSessionData() {
-		$this->authManager->setAuthenticationSessionData( static::SESSION_KEY, null );
+		$this->authManager->setAuthenticationSessionData( self::SESSION_KEY, null );
 	}
 
 	private function getSessionData(
 		string $returnClass
 	): PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null {
-		$json = $this->authManager->getAuthenticationSessionData( static::SESSION_KEY );
+		$json = $this->authManager->getAuthenticationSessionData( self::SESSION_KEY );
 		if ( $json === null ) {
 			return null;
 		}
@@ -243,7 +243,7 @@ class WebAuthnAuthenticator {
 	/**
 	 * Information to be sent to the client to start the authentication process
 	 */
-	protected function getAuthInfo( OATHUser $user ): PublicKeyCredentialRequestOptions {
+	private function getAuthInfo( OATHUser $user ): PublicKeyCredentialRequestOptions {
 		$keys = WebAuthn::getWebAuthnKeys( $user );
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
@@ -259,14 +259,14 @@ class WebAuthnAuthenticator {
 			$this->serverId,
 			$credentialDescriptors,
 			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_PREFERRED,
-			static::CLIENT_ACTION_TIMEOUT
+			self::CLIENT_ACTION_TIMEOUT
 		);
 	}
 
 	/**
 	 * Information to be sent to the client to start the registration process
 	 */
-	protected function getRegisterInfo(
+	private function getRegisterInfo(
 		OATHUser $user,
 		bool $passkeyMode = false
 	): PublicKeyCredentialCreationOptions {
@@ -337,7 +337,7 @@ class WebAuthnAuthenticator {
 			$authSelectorCriteria,
 			PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE,
 			$excludedPublicKeyDescriptors,
-			static::CLIENT_ACTION_TIMEOUT
+			self::CLIENT_ACTION_TIMEOUT
 		);
 	}
 
