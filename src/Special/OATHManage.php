@@ -11,6 +11,7 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
@@ -486,6 +487,7 @@ class OATHManage extends SpecialPage {
 		}
 
 		$form->setTitle( $this->getOutput()->getTitle() );
+		$this->ensureRequiredFormFields( $form, $module );
 		$form->setSubmitCallback( [ $form, 'onSubmit' ] );
 		if ( $form->show( $panel ) ) {
 			$form->onSuccess();
@@ -531,6 +533,15 @@ class OATHManage extends SpecialPage {
 			$this->getContext(),
 			$this->moduleRegistry
 		) !== null;
+	}
+
+	private function ensureRequiredFormFields( OATHAuthOOUIHTMLForm $form, IModule $module ): void {
+		if ( !$form->hasField( 'module' ) ) {
+			$form->addHiddenField( 'module', $module->getName() );
+		}
+		if ( !$form->hasField( 'action' ) ) {
+			$form->addHiddenField( 'action', $this->action );
+		}
 	}
 
 	/**
