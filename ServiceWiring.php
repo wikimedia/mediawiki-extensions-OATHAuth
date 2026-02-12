@@ -2,6 +2,7 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -47,6 +48,13 @@ return [
 				EncryptionHelper::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig(),
 			),
+		);
+	},
+	'OATHAuth.Mandatory2FAChecker' => static function ( MediaWikiServices $services ): Mandatory2FAChecker {
+		return new Mandatory2FAChecker(
+			$services->getService( 'OATHAuth.UserConditionCheckerWith2FAAssumption' ),
+			$services->getRestrictedUserGroupCheckerFactory(),
+			$services->getUserGroupManagerFactory(),
 		);
 	},
 	'OATHAuth.UserConditionCheckerWith2FAAssumption' =>
