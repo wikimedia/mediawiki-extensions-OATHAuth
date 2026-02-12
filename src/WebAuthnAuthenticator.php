@@ -112,6 +112,24 @@ class WebAuthnAuthenticator {
 		] );
 	}
 
+	public function conditionalAuthentication(): Status {
+		$authInfo = PublicKeyCredentialRequestOptions::create(
+			random_bytes( 32 ),
+			$this->serverId,
+			[],
+			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_REQUIRED,
+			self::CLIENT_ACTION_TIMEOUT
+		);
+		$this->setSessionData( $authInfo );
+
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+
+		return Status::newGood( [
+			'json' => $serializer->serialize( $authInfo, 'json' ),
+			'raw' => $authInfo
+		] );
+	}
+
 	public function continueAuthentication(
 		array $verificationData,
 		OATHUser $user,
