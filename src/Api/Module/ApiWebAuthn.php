@@ -19,7 +19,7 @@ use Wikimedia\ParamValidator\ParamValidator;
 /**
  * This class provides an endpoint for all WebAuthn actions.
  */
-class WebAuthn extends ApiBase {
+class ApiWebAuthn extends ApiBase {
 
 	private const ACTION_GET_AUTH_INFO = 'getAuthInfo';
 	private const ACTION_GET_REGISTER_INFO = 'getRegisterInfo';
