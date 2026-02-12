@@ -63,9 +63,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 *   given User Handle
 	 */
 	public function findByUserHandle( string $userHandle ): ?OATHUser {
-		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
-			return null;
-		}
 		$userId = $this->dbProvider
 			->getReplicaDatabase( 'virtual-oathauth' )
 			->newSelectQueryBuilder()
@@ -320,17 +317,14 @@ class OATHUserRepository implements LoggerAwareInterface {
 		}
 
 		if ( $user->getUserHandle() === null ) {
-			$userHandle = false;
-			if ( OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
-				$userHandle = $this->dbProvider
-					->getReplicaDatabase( 'virtual-oathauth' )
-					->newSelectQueryBuilder()
-					->select( 'oah_handle' )
-					->from( 'oathauth_user_handles' )
-					->where( [ 'oah_user' => $uid ] )
-					->caller( __METHOD__ )
-					->fetchField();
-			}
+			$userHandle = $this->dbProvider
+				->getReplicaDatabase( 'virtual-oathauth' )
+				->newSelectQueryBuilder()
+				->select( 'oah_handle' )
+				->from( 'oathauth_user_handles' )
+				->where( [ 'oah_user' => $uid ] )
+				->caller( __METHOD__ )
+				->fetchField();
 			if ( $userHandle !== false ) {
 				$user->setUserHandle( base64_decode( $userHandle ) );
 			} else {
@@ -346,9 +340,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	private function insertUserHandle( OATHUser $user ): void {
-		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
-			return;
-		}
 		$userHandle = $user->getUserHandle();
 		if ( $userHandle === null ) {
 			return;
@@ -367,9 +358,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	private function deleteUserHandle( OATHUser $user ): void {
-		if ( !OATHAuthServices::getInstance()->getConfig()->get( 'OATHUserHandlesTable' ) ) {
-			return;
-		}
 		$user->setUserHandle( null );
 		$this->dbProvider
 			->getPrimaryDatabase( 'virtual-oathauth' )

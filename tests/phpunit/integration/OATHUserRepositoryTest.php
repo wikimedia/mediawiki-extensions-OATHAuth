@@ -122,7 +122,6 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testUserHandle() {
-		$this->overrideConfigValue( 'OATHUserHandlesTable', true );
 		$user = $this->getTestUser()->getUser();
 		$repository = $this->createUserRepo( $user, 12345 );
 

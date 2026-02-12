@@ -166,10 +166,6 @@
 			"value": 100,
 			"description": "Maximum amount of keys allowed per user."
 		},
-		"OATHUserHandlesTable": {
-			"value": false,
-			"description": "Temporary feature flag for use of the new oathauth_user_handles table."
-		},
 		"WebAuthnRelyingPartyName": {
 			"value": null
 		},
