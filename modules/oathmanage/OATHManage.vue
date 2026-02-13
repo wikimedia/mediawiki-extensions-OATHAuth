@@ -48,7 +48,11 @@
 	</div>
 
 	<!-- Empty passkeys section -->
-	<div v-if="hasKeys && !hasPasskeys" class="mw-special-OATHManage-passkeys--no-keys">
+	<div
+		v-if="hasKeys && !hasPasskeys"
+		class="mw-special-OATHManage-passkeys mw-special-OATHManage-passkeys--no-keys"
+	>
+		<h3>{{ $i18n( 'oathauth-passkeys-header' ) }}</h3>
 		<div class="mw-special-OATHManage-authmethods__addform">
 			<p class="mw-special-OATHManage-passkeys__placeholder">
 				{{ $i18n( 'oathauth-passkeys-placeholder' ) }}
