@@ -126,15 +126,23 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 	/** @dataProvider provideGeneratedAdditionalCodes */
 	public function testGeneratedAdditionalCodes(
 		?string $userEmail,
+		bool $userEmailConfirmed,
 		?string $enteredEmail,
 		string $expectedEmail
 	) {
+		// Make sure there's no email sent about enabling 2FA (which would confuse assertions)
+		global $wgEchoNotifications;
+		unset( $wgEchoNotifications['oathauth-enable'] );
+
 		$loggerMock = $this->createMock( OATHAuthLogger::class );
 		$loggerMock->expects( $this->once() )->method( 'logOATHRecovery' );
 		$this->setService( 'OATHAuthLogger', $loggerMock );
 
 		$otherUser = $this->getMutableTestUser()->getUser();
 		$otherUser->setEmail( $userEmail ?? '' );
+		if ( $userEmailConfirmed ) {
+			$otherUser->setEmailAuthenticationTimestamp( '20250101000000' );
+		}
 		$otherUser->saveSettings();
 
 		$mailerMock = $this->createMock( IEmailer::class );
@@ -196,17 +204,26 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 		return [
 			'User has email, no email entered' => [
 				'userEmail' => 'user@example.com',
+				'userEmailConfirmed' => true,
 				'enteredEmail' => null,
 				'expectedEmail' => 'user@example.com',
 			],
 			// Ensure that user's own email takes precedence
 			'User has email, email entered' => [
 				'userEmail' => 'user@example.com',
+				'userEmailConfirmed' => true,
 				'enteredEmail' => 'other@example.com',
 				'expectedEmail' => 'user@example.com',
 			],
+			'User has unconfirmed email, email entered' => [
+				'userEmail' => 'user@example.com',
+				'userEmailConfirmed' => false,
+				'enteredEmail' => 'other@example.com',
+				'expectedEmail' => 'other@example.com',
+			],
 			'User has no email, email entered' => [
 				'userEmail' => null,
+				'userEmailConfirmed' => false,
 				'enteredEmail' => 'other@example.com',
 				'expectedEmail' => 'other@example.com',
 			],

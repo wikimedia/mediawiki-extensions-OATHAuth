@@ -180,9 +180,8 @@ class Recover2FAForUser extends FormSpecialPage {
 	}
 
 	private function getUserEmail( User $user ): ?string {
-		$email = $user->getEmail();
-		if ( $email !== '' ) {
-			return $email;
+		if ( $user->isEmailConfirmed() ) {
+			return $user->getEmail();
 		}
 		return null;
 	}

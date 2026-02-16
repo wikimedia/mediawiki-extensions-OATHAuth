@@ -47,7 +47,7 @@
 					]
 				},
 				"oathauth-recoverycodes-generated-for-user": {
-					"category": "system",
+					"category": "system-noemail",
 					"group": "interactive",
 					"section": "alert",
 					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\RecoveryCodesGeneratedForUserPresentationModel"
