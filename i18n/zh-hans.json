@@ -33,7 +33,8 @@
 			"Peterxy12",
 			"ExoHyper2026",
 			"Pawsdt",
-			"0x48fe75df30"
+			"0x48fe75df30",
+			"SaoMikoto"
 		]
 	},
 	"oathauth-desc": "提供“基于HMAC的一次性密码”的身份验证支持",
@@ -94,7 +95,7 @@
 	"oath-log-name": "双重身份验证日志",
 	"oath-log-header": "这些事件记录了用户的双重身份验证状态变化。",
 	"logentry-oath-disable-other": "$1{{GENDER:$2|禁用了}}$3的双重身份验证",
-	"logentry-oath-verify": "$1{{GENDER:$2|检查了}}是否$3已启用双重身份验证",
+	"logentry-oath-verify": "$1{{GENDER:$2|检查了}}$3是否已启用双重身份验证",
 	"log-action-filter-oath": "双重身份验证操作类型：",
 	"log-action-filter-oath-verify": "检查是否启用双重验证",
 	"log-action-filter-oath-disable-other": "禁用其他用户的双重身份验证",
