@@ -6,9 +6,13 @@
 
 namespace MediaWiki\Extension\OATHAuth\Enforce2FA;
 
+use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\RestrictedUserGroupCheckerFactory;
 use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
+use MediaWiki\WikiMap\WikiMap;
 
 class Mandatory2FAChecker {
 
@@ -16,6 +20,7 @@ class Mandatory2FAChecker {
 		private readonly UserRequirementsConditionCheckerWith2FAAssumption $userRequirementsChecker,
 		private readonly RestrictedUserGroupCheckerFactory $restrictedUserGroupCheckerFactory,
 		private readonly UserGroupManagerFactory $userGroupManagerFactory,
+		private readonly ExtensionRegistry $extensionRegistry
 	) {
 	}
 
@@ -42,6 +47,56 @@ class Mandatory2FAChecker {
 				$groupsRequiring2FA[] = $group;
 			}
 		}
+		return $groupsRequiring2FA;
+	}
+
+	/**
+	 * For every wiki on the wiki farm, returns a list of groups the user is a member of that require 2FA.
+	 * This function uses the group requirements as they are specified on the remote wiki.
+	 *
+	 * If CentralAuth is not installed, this will just return the result for the local wiki.
+	 * @param UserIdentity $localUser
+	 * @return array<string, list<string>> An associative array where the keys are wiki IDs and the values are groups.
+	 *     A given key is present in the array only if the list of groups for that wiki is non-empty. Therefore,
+	 *     it's safe to check for the resulting array being non-empty to determine if the user has to have 2FA enabled
+	 *     on any wiki on the farm.
+	 */
+	public function getGroupsRequiring2FAAcrossWikiFarm( UserIdentity $localUser ): array {
+		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
+			$userName = $localUser->getName();
+			$centralUser = CentralAuthUser::getInstanceByName( $userName );
+			$attachments = $centralUser->queryAttached();
+
+			// Only wikis where the user has any groups are of interest to us
+			$attachments = array_filter(
+				$attachments,
+				static fn ( $attachment ) => count( $attachment['groupMemberships'] ) > 0
+			);
+			$identities = [];
+			foreach ( $attachments as $attachment ) {
+				$wikiId = $attachment['wiki'];
+				if ( WikiMap::isCurrentWikiId( $wikiId ) ) {
+					$wikiId = UserIdentity::LOCAL;
+				}
+				$identities[] = UserIdentityValue::newRegistered( $attachment['id'], $userName, $wikiId );
+			}
+		} else {
+			$identities = [ $localUser ];
+		}
+
+		$groupsRequiring2FA = [];
+		foreach ( $identities as $identity ) {
+			$groupsForWiki = $this->getGroupsRequiring2FA( $identity );
+			if ( !$groupsForWiki ) {
+				continue;
+			}
+			$wikiId = $identity->getWikiId();
+			if ( $wikiId === UserIdentity::LOCAL ) {
+				$wikiId = WikiMap::getCurrentWikiId();
+			}
+			$groupsRequiring2FA[$wikiId] = $groupsForWiki;
+		}
+
 		return $groupsRequiring2FA;
 	}
 

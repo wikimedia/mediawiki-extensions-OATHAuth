@@ -55,6 +55,7 @@ return [
 			$services->getService( 'OATHAuth.UserConditionCheckerWith2FAAssumption' ),
 			$services->getRestrictedUserGroupCheckerFactory(),
 			$services->getUserGroupManagerFactory(),
+			$services->getExtensionRegistry()
 		);
 	},
 	'OATHAuth.UserConditionCheckerWith2FAAssumption' =>

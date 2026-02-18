@@ -7,13 +7,17 @@
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Enforce2FA;
 
 use MediaWiki\Config\SiteConfiguration;
+use MediaWiki\Extension\CentralAuth\CentralAuthUserCache;
+use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\WikiMap\WikiMap;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -128,6 +132,107 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 		$userRemote = UserIdentityValue::newRegistered( 1, 'TestUser', 'remote-wiki' );
 		$this->assertSame( [], $checker->getGroupsRequiring2FA( $userLocal ) );
 		$this->assertSame( [ 'sysop' ], $checker->getGroupsRequiring2FA( $userRemote ) );
+	}
+
+	public function testGroupsRequiring2FAAcrossWikiFarm_withCentralAuth() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CentralAuth' );
+
+		$this->setUserGroupManagerMock( [ 'sysop' ] );
+
+		$caUser = $this->createMock( CentralAuthUser::class );
+		$caUser->method( 'queryAttached' )
+			->willReturn( [
+				[
+					'wiki' => WikiMap::getCurrentWikiId(),
+					'groupMemberships' => [ 'sysop' ],
+					'id' => 1,
+				],
+				[
+					'wiki' => 'remote1',
+					'groupMemberships' => [ 'sysop' ],
+					'id' => 1,
+				],
+				[
+					'wiki' => 'remote2',
+					'groupMemberships' => [],
+					'id' => 1,
+				],
+				[
+					'wiki' => 'remote3',
+					'groupMemberships' => [ 'sysop' ],
+					'id' => 1,
+				]
+			] );
+
+		$caUserCache = $this->createMock( CentralAuthUserCache::class );
+		$caUserCache->method( 'get' )
+			->willReturn( $caUser );
+		$this->setService( 'CentralAuth.CentralAuthUserCache', $caUserCache );
+
+		$restrictedGroups = [
+			'sysop' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+			],
+		];
+		$siteConfiguration = $this->createMock( SiteConfiguration::class );
+		$siteConfiguration->method( 'get' )
+			->willReturnCallback( static function ( $setting, $wiki ) use ( $restrictedGroups ) {
+				if ( $setting === 'wgRestrictedGroups' ) {
+					return $wiki !== 'remote3' ? $restrictedGroups : [];
+				}
+				return null;
+			} );
+
+		global $wgConf;
+		$wgConf = $siteConfiguration;
+		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, $restrictedGroups );
+
+		// The username and id don't matter, we're mocked to always return the same central user
+		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
+		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
+
+		$expected = [
+			WikiMap::getCurrentWikiId() => [ 'sysop' ],
+			'remote1' => [ 'sysop' ],
+		];
+		$this->assertSame( $expected, $result );
+	}
+
+	public function testGroupsRequiring2FAAcrossWikiFarm_withoutCentralAuth() {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )
+			->willReturn( false );
+		$this->setService( 'ExtensionRegistry', $extensionRegistry );
+
+		$this->setUserGroupManagerMock( [ 'sysop' ] );
+
+		$restrictedGroups = [
+			'sysop' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+			],
+		];
+		$siteConfiguration = $this->createMock( SiteConfiguration::class );
+		$siteConfiguration->method( 'get' )
+			->willReturnCallback( static function ( $setting ) use ( $restrictedGroups ) {
+				if ( $setting === 'wgRestrictedGroups' ) {
+					return $restrictedGroups;
+				}
+				return null;
+			} );
+
+		global $wgConf;
+		$wgConf = $siteConfiguration;
+		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, $restrictedGroups );
+
+		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
+		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
+
+		$expected = [
+			WikiMap::getCurrentWikiId() => [ 'sysop' ],
+		];
+		$this->assertSame( $expected, $result );
 	}
 
 	private function setUserGroupManagerMock( array $userGroups ) {
