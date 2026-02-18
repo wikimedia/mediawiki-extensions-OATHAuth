@@ -10,6 +10,7 @@ use ErrorPageError;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
@@ -27,6 +28,7 @@ use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserGroupManager;
+use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
@@ -50,9 +52,12 @@ class OATHManage extends SpecialPage {
 
 	protected ?IModule $requestedModule;
 
+	private array $groupsRequiring2FA;
+
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly Mandatory2FAChecker $mandatory2FAChecker,
 		private readonly AuthManager $authManager,
 		private readonly UserGroupManager $userGroupManager,
 	) {
@@ -79,6 +84,7 @@ class OATHManage extends SpecialPage {
 	/** @inheritDoc */
 	public function execute( $subPage ) {
 		$this->oathUser = $this->userRepo->findByUser( $this->getUser() );
+		$this->groupsRequiring2FA = $this->get2FAGroupsData();
 
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->disallowUserJs();
@@ -171,6 +177,52 @@ class OATHManage extends SpecialPage {
 			'name' => $moduleName,
 			'timestamp' => $createdTimestamp
 		];
+	}
+
+	private function canRemoveKeys(): bool {
+		if ( !$this->groupsRequiring2FA ) {
+			return true;
+		}
+		$numKeys = 0;
+		foreach ( $this->oathUser->getNonSpecialKeys() as $key ) {
+			if ( !$key->supportsPasswordlessLogin() ) {
+				$numKeys++;
+			}
+		}
+		// If there's exactly one proper key (non-special and non-passwordless), it cannot be removed, because
+		// then whole 2FA would be disabled for the user.
+		return $numKeys !== 1;
+	}
+
+	/**
+	 * Prepares data about the current user's groups that require 2FA
+	 */
+	private function get2FAGroupsData(): array {
+		$groupsRequiring2FA = $this->mandatory2FAChecker->getGroupsRequiring2FAAcrossWikiFarm( $this->getUser() );
+
+		// Keyed by wiki, then by page, with the value being an array of groups
+		$splitGroups = [];
+		foreach ( $groupsRequiring2FA as $wikiId => $groupsOnWiki ) {
+			foreach ( $groupsOnWiki as $group ) {
+				$relevantPage = 'Main_Page';
+				$splitGroups[$wikiId][$relevantPage][] = $group;
+			}
+		}
+
+		$result = [];
+		foreach ( $splitGroups as $wikiId => $pages ) {
+			$wiki = WikiMap::getWiki( $wikiId );
+			foreach ( $pages as $page => $groups ) {
+				$result[] = [
+					'wiki' => $wiki->getDisplayName(),
+					'page' => $page,
+					'url' => $wiki->getUrl( $page ),
+					'groupNames' => $this->getLanguage()->listToText( $groups ),
+					'groupCount' => count( $groups ),
+				];
+			}
+		}
+		return $result;
 	}
 
 	private function buildKeyAccordion( AuthKey $key ): string {
@@ -298,6 +350,7 @@ class OATHManage extends SpecialPage {
 		// 2FA section
 		$keyAccordions = '';
 		$keyPlaceholder = '';
+		$mandatory2FAMessage = '';
 		$authmethodsClasses = [
 			'mw-special-OATHManage-authmethods'
 		];
@@ -318,6 +371,14 @@ class OATHManage extends SpecialPage {
 			$authmethodsClasses[] = 'mw-special-OATHManage-authmethods--no-keys';
 		}
 
+		if ( $this->groupsRequiring2FA ) {
+			$mandatory2FAMessage = $codex->message()
+				->setInline( true )
+				->setContentText( $this->msg( 'oathauth-2fa-required' )->text() )
+				->build()
+				->getHtml();
+		}
+
 		$moduleButtons = '';
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
 			$labelMessage = $module->getAddKeyMessage();
@@ -335,7 +396,7 @@ class OATHManage extends SpecialPage {
 
 		$authMethodsSection = Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
 			Html::element( 'h3', [], $this->msg( 'oathauth-authenticator-header' )->text() ) .
-			$keyAccordions .
+			$mandatory2FAMessage . $keyAccordions .
 			Html::rawElement( 'form', [
 					'action' => wfScript(),
 					'class' => 'mw-special-OATHManage-authmethods__addform'
@@ -607,6 +668,13 @@ class OATHManage extends SpecialPage {
 			throw new ErrorPageError(
 				'oathauth-disable',
 				'oathauth-remove-nosuchkey'
+			);
+		}
+
+		if ( !$this->canRemoveKeys() ) {
+			throw new ErrorPageError(
+				'oathauth-disable',
+				'oathauth-remove-lastkey-required'
 			);
 		}
 

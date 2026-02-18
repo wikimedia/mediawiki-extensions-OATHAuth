@@ -10,11 +10,14 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Site\MediaWikiSite;
+use MediaWiki\Site\SiteLookup;
 use SpecialPageTestBase;
 
 /**
@@ -37,6 +40,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		return new OATHManage(
 			$services->getUserRepository(),
 			$services->getModuleRegistry(),
+			$services->getMandatory2FAChecker(),
 			$this->getServiceContainer()->getAuthManager(),
 			$this->getServiceContainer()->getUserGroupManager()
 		);
@@ -345,6 +349,13 @@ class OATHManageTest extends SpecialPageTestBase {
 	}
 
 	public function testDeleteNonLastKeyWithoutConfirmation() {
+		$mandatory2FAChecker = $this->createMock( Mandatory2FAChecker::class );
+		$mandatory2FAChecker->method( 'getGroupsRequiring2FAAcrossWikiFarm' )
+			->willReturn( [ 'remote-wiki' => [ 'interface-admin' ] ] );
+		$this->setService( 'OATHAuth.Mandatory2FAChecker', $mandatory2FAChecker );
+
+		$this->setFakeSiteLookup();
+
 		$user = $this->getTestUser();
 		$userRepository = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
 		for ( $i = 0; $i < 2; $i++ ) {
@@ -380,5 +391,64 @@ class OATHManageTest extends SpecialPageTestBase {
 
 		$oathUser = $userRepository->findByUser( $user->getUser() );
 		$this->assertCount( 1, $oathUser->getKeys() );
+	}
+
+	public function testDeleteLastKeyUnsuccessfulIfUserRequires2FA() {
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$key = TOTPKey::newFromRandom();
+		$userRepo->createKey(
+			$userRepo->findByUser( $user->getUserIdentity() ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			$key->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$oathUser = $userRepo->findByUser( $user->getUserIdentity() );
+		$keyId = $oathUser->getKeys()[0]->getId();
+
+		$mandatory2FAChecker = $this->createMock( Mandatory2FAChecker::class );
+		$mandatory2FAChecker->method( 'getGroupsRequiring2FAAcrossWikiFarm' )
+			->willReturn( [ 'remote-wiki' => [ 'interface-admin' ] ] );
+		$this->setService( 'OATHAuth.Mandatory2FAChecker', $mandatory2FAChecker );
+
+		$this->setFakeSiteLookup();
+
+		$context = RequestContext::getMain();
+		$session = $context->getRequest()->getSession();
+		$session->setUser( $user->getUser() );
+
+		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
+			->inLanguage( 'qqx' )
+			->text();
+
+		$request = new FauxRequest(
+			[
+				'action' => 'delete',
+				'module' => 'totp',
+				'keyId' => $keyId,
+				'wpremove-confirm-box' => $confirmText,
+				'wpEditToken' => $session->getToken( '' ),
+			],
+			true,
+			$session
+		);
+
+		$this->expectExceptionMessage( wfMessage( 'oathauth-remove-lastkey-required' )->text() );
+		$this->executeSpecialPage( '', $request, null, $user->getUser() );
+	}
+
+	private function setFakeSiteLookup() {
+		$siteLookup = $this->createMock( SiteLookup::class );
+		$siteLookup->method( 'getSite' )
+			->willReturnCallback( function ( $wikiId ) {
+				$site = $this->createMock( MediaWikiSite::class );
+				$site->method( 'getPageUrl' )->willReturn( 'http://' . $wikiId . '.local/wiki/$1' );
+				return $site;
+			} );
+		$this->setService( 'SiteLookup', $siteLookup );
 	}
 }

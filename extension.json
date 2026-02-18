@@ -366,6 +366,7 @@
 			"services": [
 				"OATHUserRepository",
 				"OATHAuthModuleRegistry",
+				"OATHAuth.Mandatory2FAChecker",
 				"AuthManager",
 				"UserGroupManager"
 			]

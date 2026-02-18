@@ -205,5 +205,7 @@
 	"oathauth-passkey-dialog-title": "Title of the dialog that lets the user add a passkey.",
 	"oathauth-passkey-dialog-text": "Text in the passkey dialog that explains what passkeys are.",
 	"oathauth-passkey-dialog-back": "Label for the button in the passkey dialog that closes the dialog without adding a passkey.",
-	"oathauth-passkey-dialog-add": "Label for the button in the passkey dialog that adds a new passkey."
+	"oathauth-passkey-dialog-add": "Label for the button in the passkey dialog that adds a new passkey.",
+	"oathauth-2fa-required": "A notice shown above authentication methods on Special:AccountSecurity if user is required to have 2FA enabled due to their membership in certain groups.",
+	"oathauth-remove-lastkey-required": "Error message shown if user tries to remove their last 2FA method even if they are required to have 2FA enabled."
 }
