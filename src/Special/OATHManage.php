@@ -198,26 +198,40 @@ class OATHManage extends SpecialPage {
 	 * Prepares data about the current user's groups that require 2FA
 	 */
 	private function get2FAGroupsData(): array {
+		global $wgConf;
+		'@phan-var \MediaWiki\Config\SiteConfiguration $wgConf';
+
 		$groupsRequiring2FA = $this->mandatory2FAChecker->getGroupsRequiring2FAAcrossWikiFarm( $this->getUser() );
 
 		// Keyed by wiki, then by page, with the value being an array of groups
 		$splitGroups = [];
 		foreach ( $groupsRequiring2FA as $wikiId => $groupsOnWiki ) {
+			if ( WikiMap::isCurrentWikiId( $wikiId ) ) {
+				$groupRemovalPages = $this->getConfig()->get( 'OATH2FARequiredGroupRemovalPages' ) ?? [];
+			} else {
+				$groupRemovalPages = $wgConf->get( 'wgOATH2FARequiredGroupRemovalPages', $wikiId ) ?? [];
+			}
 			foreach ( $groupsOnWiki as $group ) {
-				$relevantPage = 'Main_Page';
+				$relevantPage = $groupRemovalPages[$group] ?? $groupRemovalPages['*'] ?? '';
 				$splitGroups[$wikiId][$relevantPage][] = $group;
 			}
 		}
 
+		$lang = $this->getLanguage();
 		$result = [];
 		foreach ( $splitGroups as $wikiId => $pages ) {
 			$wiki = WikiMap::getWiki( $wikiId );
 			foreach ( $pages as $page => $groups ) {
+				$groupNames = $lang->listToText( array_map(
+					fn ( $group ) => $lang->getGroupMemberName( $group, $this->getUser() ),
+					$groups
+				) );
+
 				$result[] = [
 					'wiki' => $wiki->getDisplayName(),
 					'page' => $page,
-					'url' => $wiki->getUrl( $page ),
-					'groupNames' => $this->getLanguage()->listToText( $groups ),
+					'url' => $page !== '' ? $wiki->getUrl( $page ) : '',
+					'groupNames' => $groupNames,
 					'groupCount' => count( $groups ),
 				];
 			}
@@ -225,7 +239,54 @@ class OATHManage extends SpecialPage {
 		return $result;
 	}
 
-	private function buildKeyAccordion( AuthKey $key ): string {
+	private function buildIrremovableKeyNotice(): string {
+		if ( count( $this->groupsRequiring2FA ) === 1 ) {
+			$entry = $this->groupsRequiring2FA[0];
+			if ( $entry['url'] ) {
+				$pageLink = '[' . $entry['url'] . ' ' . $entry['page'] . ']';
+			} else {
+				$pageLink = $this->msg( 'oathauth-2fa-groups-notice-unknown-page' )->parse();
+			}
+			$noticeContent = $this->msg( 'oathauth-2fa-groups-notice-single' )
+				->params( $entry['groupCount'], $entry['groupNames'], $entry['wiki'], $pageLink )
+				->parse();
+		} else {
+			$totalGroups = 0;
+			foreach ( $this->groupsRequiring2FA as $entry ) {
+				$totalGroups += $entry['groupCount'];
+			}
+
+			$noticeContent = $this->msg( 'oathauth-2fa-groups-notice-multiple' )->params( $totalGroups )->parse();
+			$noticeContent .= Html::rawElement(
+				'div',
+				[ 'class' => 'mw-special-OATHManage-2fa-groups-list-intro' ],
+				$this->msg( 'oathauth-2fa-groups-notice-multiple-links-intro' )->params( $totalGroups )->parse()
+			);
+			$noticeContent .= Html::openElement( 'ul' );
+
+			foreach ( $this->groupsRequiring2FA as $entry ) {
+				if ( $entry['url'] ) {
+					$pageLink = '[' . $entry['url'] . ' ' . $entry['page'] . ']';
+				} else {
+					$pageLink = $this->msg( 'oathauth-2fa-groups-notice-unknown-page' )->parse();
+				}
+				$content = $this->msg( 'oathauth-2fa-groups-notice-multiple-links-entry' )
+					->params( $entry['groupCount'], $entry['groupNames'], $entry['wiki'], $pageLink )
+					->parse();
+				$noticeContent .= Html::rawElement( 'li', [], $content );
+			}
+			$noticeContent .= Html::closeElement( 'ul' );
+		}
+		$codex = new Codex();
+		return $codex->message()
+			->setType( 'warning' )
+			->setAttributes( [ 'class' => 'mw-special-OATHManage-2fa-groups-notice' ] )
+			->setContentHtml( $codex->htmlSnippet()->setContent( $noticeContent )->build() )
+			->build()
+			->getHtml();
+	}
+
+	private function buildKeyAccordion( AuthKey $key, string $noticeHtml = '', bool $removable = true ): string {
 		$codex = new Codex();
 		$keyData = $this->getKeyNameAndDescription( $key );
 		$keyAccordion = $codex->accordion()
@@ -253,11 +314,12 @@ class OATHManage extends SpecialPage {
 						->setLabel( $this->msg( 'oathauth-authenticator-delete' )->text() )
 						->setAction( 'destructive' )
 						->setWeight( 'primary' )
+						->setDisabled( !$removable )
 						->setType( 'submit' )
 						->setAttributes( [ 'name' => 'action', 'value' => self::ACTION_DELETE ] )
 						->build()
 						->getHtml()
-				)
+				) . $noticeHtml
 			)->build() );
 		return $keyAccordion->build()->getHtml();
 	}
@@ -266,7 +328,8 @@ class OATHManage extends SpecialPage {
 		$data = [
 			'modules' => [],
 			'keys' => [],
-			'passkeys' => []
+			'passkeys' => [],
+			'groupsRequiring2FA' => $this->groupsRequiring2FA
 		];
 
 		foreach ( $this->moduleRegistry->getAllModules() as $module ) {
@@ -348,6 +411,12 @@ class OATHManage extends SpecialPage {
 		}
 
 		// 2FA section
+		$canRemoveKeys = $this->canRemoveKeys();
+		$irremovableKeyNotice = '';
+		if ( !$canRemoveKeys ) {
+			$irremovableKeyNotice = $this->buildIrremovableKeyNotice();
+		}
+
 		$keyAccordions = '';
 		$keyPlaceholder = '';
 		$mandatory2FAMessage = '';
@@ -360,7 +429,7 @@ class OATHManage extends SpecialPage {
 				continue;
 			}
 
-			$keyAccordions .= $this->buildKeyAccordion( $key );
+			$keyAccordions .= $this->buildKeyAccordion( $key, $irremovableKeyNotice, $canRemoveKeys );
 		}
 		if ( $keyAccordions === '' ) {
 			// User has no keys, display the placeholder message instead

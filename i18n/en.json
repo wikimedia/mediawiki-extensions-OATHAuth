@@ -190,5 +190,10 @@
 	"oathauth-passkey-dialog-back": "Back",
 	"oathauth-passkey-dialog-add": "Add passkey",
 	"oathauth-2fa-required": "You are member of groups that require two-factor authentication.",
+	"oathauth-2fa-groups-notice-single": "You are member of {{PLURAL:$1|a group|groups}} that {{PLURAL:$1|requires|require}} two-factor authentication ($2 on $3). To remove this method you must:\n<ul>\n<li>add another two-factor authetication method, or</li>\n<li>have yourself removed from the {{PLURAL:$1|group|groups}}. Please visit: $4</li>\n</ul>",
+	"oathauth-2fa-groups-notice-multiple": "You are member of {{PLURAL:$1|groups}} that {{PLURAL:$1|require}} two-factor authentication. To remove this method you must:\n<ul>\n<li>add another two-factor authetication method, or</li>\n<li>have yourself removed from the {{PLURAL:$1|groups}}.</li>\n</ul>",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "To be removed from the {{PLURAL:$1|groups}} please visit:",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "For $2 on $3: $4",
+	"oathauth-2fa-groups-notice-unknown-page": "Unknown page",
 	"oathauth-remove-lastkey-required": "You cannot remove your last authentication method if you are a member of groups that require two-factor authentication. Please add another authentication method before removing this one."
 }

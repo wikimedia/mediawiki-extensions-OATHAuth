@@ -66,6 +66,9 @@
 		class="mw-special-OATHManage-authmethods"
 		:class="{ 'mw-special-OATHManage-authmethods--no-keys': !hasKeys }">
 		<h3>{{ $i18n( 'oathauth-authenticator-header' ) }}</h3>
+		<cdx-message v-if="isRequiredToHave2FA" inline>
+			{{ $i18n( 'oathauth-2fa-required' ) }}
+		</cdx-message>
 		<cdx-accordion
 			v-for="key in data.keys"
 			:key="key.id"
@@ -99,10 +102,12 @@
 					type="submit"
 					name="action"
 					value="delete"
+					:disabled="!canRemoveKeys"
 				>
 					{{ $i18n( 'oathauth-authenticator-delete' ) }}
 				</cdx-button>
 			</form>
+			<groups-with-2fa-notice v-if="!canRemoveKeys" :groups="groupsRequiring2FA"></groups-with-2fa-notice>
 		</cdx-accordion>
 
 		<form :action="formAction" class="mw-special-OATHManage-authmethods__addform">
@@ -147,19 +152,25 @@
 
 <script>
 const { defineComponent, reactive, computed } = require( 'vue' );
-const { CdxButton, CdxAccordion } = require( './codex.js' );
+const { CdxAccordion, CdxButton, CdxMessage } = require( './codex.js' );
 const AddPasskeyButton = require( './AddPasskeyButton.vue' );
+const GroupsWith2FANotice = require( './GroupsWith2FANotice.vue' );
 
 module.exports = exports = defineComponent( {
 	components: {
-		CdxButton,
 		CdxAccordion,
-		AddPasskeyButton
+		CdxButton,
+		CdxMessage,
+		AddPasskeyButton,
+		'groups-with-2fa-notice': GroupsWith2FANotice
 	},
 	setup() {
 		const data = reactive( mw.config.get( 'wgOATHManageData' ) );
 		const hasKeys = computed( () => data.keys.length > 0 );
 		const hasPasskeys = computed( () => data.passkeys.length > 0 );
+		const groupsRequiring2FA = reactive( data.groupsRequiring2FA );
+		const isRequiredToHave2FA = computed( () => data.groupsRequiring2FA.length > 0 );
+		const canRemoveKeys = computed( () => !isRequiredToHave2FA.value || data.keys.length > 1 );
 
 		const formAction = mw.config.get( 'wgScript' );
 		const pageTitle = mw.config.get( 'wgPageName' );
@@ -169,7 +180,10 @@ module.exports = exports = defineComponent( {
 			formAction,
 			pageTitle,
 			hasKeys,
-			hasPasskeys
+			hasPasskeys,
+			isRequiredToHave2FA,
+			canRemoveKeys,
+			groupsRequiring2FA
 		};
 	}
 } );

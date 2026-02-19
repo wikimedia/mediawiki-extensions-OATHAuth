@@ -8,6 +8,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Special;
 
+use MediaWiki\Config\SiteConfiguration;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
@@ -18,6 +19,7 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Site\MediaWikiSite;
 use MediaWiki\Site\SiteLookup;
+use MediaWiki\WikiMap\WikiMap;
 use SpecialPageTestBase;
 
 /**
@@ -439,6 +441,77 @@ class OATHManageTest extends SpecialPageTestBase {
 
 		$this->expectExceptionMessage( wfMessage( 'oathauth-remove-lastkey-required' )->text() );
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
+	}
+
+	public function testDisplaysIrremovableWarning() {
+		$localWiki = WikiMap::getCurrentWikiId();
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$key = TOTPKey::newFromRandom();
+		$userRepo->createKey(
+			$userRepo->findByUser( $user->getUserIdentity() ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'totp' ),
+			$key->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$mandatory2FAChecker = $this->createMock( Mandatory2FAChecker::class );
+		$mandatory2FAChecker->method( 'getGroupsRequiring2FAAcrossWikiFarm' )
+			->willReturn( [
+				$localWiki => [ 'interface-admin', 'suppress', 'sysop' ],
+				'remote-wiki' => [ 'interface-admin' ]
+			] );
+		$this->setService( 'OATHAuth.Mandatory2FAChecker', $mandatory2FAChecker );
+
+		$this->setFakeSiteLookup();
+
+		$removalPages = [
+			'sysop' => 'SomePage',
+			'interface-admin' => 'SomePage',
+			'*' => 'DefaultPage'
+		];
+		$siteConfiguration = $this->createMock( SiteConfiguration::class );
+		$siteConfiguration->method( 'get' )
+			->willReturnCallback( static function ( $setting ) use ( $removalPages ) {
+				if ( $setting === 'wgOATH2FARequiredGroupRemovalPages' ) {
+					return $removalPages;
+				}
+				return null;
+			} );
+
+		global $wgConf;
+		$wgConf = $siteConfiguration;
+		$this->overrideConfigValue( 'OATH2FARequiredGroupRemovalPages', $removalPages );
+
+		$context = RequestContext::getMain();
+		$session = $context->getRequest()->getSession();
+		$session->setUser( $user->getUser() );
+
+		$request = new FauxRequest(
+			[],
+			false,
+			$session
+		);
+
+		[ $html ] = $this->executeSpecialPage( '', $request, null, $user->getUser() );
+
+		$entryCount = substr_count( $html, '(oathauth-2fa-groups-notice-multiple-links-entry:' );
+		$this->assertSame( 3, $entryCount, 'There should be 3 entries in the irremovable warning notice' );
+
+		$userName = $user->getUser()->getName();
+		$expectedMessages = [
+			"(oathauth-2fa-groups-notice-multiple-links-entry: 1, (group-interface-admin-member: $userName)" .
+				', remote-wiki.local',
+			"(oathauth-2fa-groups-notice-multiple-links-entry: 2, (group-interface-admin-member: $userName)(and)" .
+				"(word-separator)(group-sysop-member: $userName), $localWiki.local",
+			"(oathauth-2fa-groups-notice-multiple-links-entry: 1, (group-suppress-member: $userName), $localWiki.local",
+		];
+		foreach ( $expectedMessages as $expected ) {
+			$this->assertStringContainsString( $expected, $html );
+		}
 	}
 
 	private function setFakeSiteLookup() {
