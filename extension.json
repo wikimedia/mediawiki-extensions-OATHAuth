@@ -412,6 +412,7 @@
 		},
 		"sysop": {
 			"oathauth-disable-for-user": true,
+			"oathauth-recover-for-user": true,
 			"oathauth-verify-user": true,
 			"oathauth-view-log": true
 		}
