@@ -25,6 +25,7 @@ use stdClass;
 use Webauthn\AuthenticatorSelectionCriteria;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
+use Webauthn\PublicKeyCredentialOptions;
 use Webauthn\PublicKeyCredentialParameters;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
@@ -146,7 +147,7 @@ class WebAuthnAuthenticator {
 		$verificationData['authInfo'] = $authInfo ?? $this->getSessionData(
 			PublicKeyCredentialRequestOptions::class
 		);
-		$this->clearSessionData();
+		$this->clearSessionData( PublicKeyCredentialRequestOptions::class );
 
 		if ( $this->module->verify( $user, $verificationData ) ) {
 			$this->logger->info(
@@ -227,7 +228,7 @@ class WebAuthnAuthenticator {
 					$this->getKeyDataInSession( 'RecoveryCodeKeys' )
 				);
 
-				$this->clearSessionData();
+				$this->clearSessionData( PublicKeyCredentialCreationOptions::class );
 				return Status::newGood();
 			}
 		} catch ( ErrorPageError $error ) {
@@ -236,21 +237,24 @@ class WebAuthnAuthenticator {
 		return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 	}
 
-	private function setSessionData( PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions $data ) {
+	private function setSessionData( PublicKeyCredentialOptions $data ) {
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-		$this->authManager->setAuthenticationSessionData( self::SESSION_KEY,
+		$this->getRequest()->getSession()->setSecret( self::SESSION_KEY . '_' . $data::class,
 			$serializer->serialize( $data, 'json' )
 		);
 	}
 
-	private function clearSessionData() {
-		$this->authManager->setAuthenticationSessionData( self::SESSION_KEY, null );
+	private function clearSessionData( string $returnClass ) {
+		$this->getRequest()->getSession()->remove( self::SESSION_KEY . '_' . $returnClass );
 	}
 
-	private function getSessionData(
-		string $returnClass
-	): PublicKeyCredentialRequestOptions|PublicKeyCredentialCreationOptions|null {
-		$json = $this->authManager->getAuthenticationSessionData( self::SESSION_KEY );
+	/**
+	 * @template T of PublicKeyCredentialOptions
+	 * @param class-string<T> $returnClass
+	 * @return T|null
+	 */
+	private function getSessionData( string $returnClass ) {
+		$json = $this->getRequest()->getSession()->getSecret( self::SESSION_KEY . '_' . $returnClass );
 		if ( $json === null ) {
 			return null;
 		}
