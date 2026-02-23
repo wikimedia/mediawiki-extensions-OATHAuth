@@ -8,7 +8,7 @@ namespace MediaWiki\Extension\OATHAuth\Enforce2FA;
 
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\User\RestrictedUserGroupCheckerFactory;
+use MediaWiki\User\RestrictedUserGroupConfigReader;
 use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
@@ -18,7 +18,7 @@ class Mandatory2FAChecker {
 
 	public function __construct(
 		private readonly UserRequirementsConditionCheckerWith2FAAssumption $userRequirementsChecker,
-		private readonly RestrictedUserGroupCheckerFactory $restrictedUserGroupCheckerFactory,
+		private readonly RestrictedUserGroupConfigReader $restrictedUserGroupConfigReader,
 		private readonly UserGroupManagerFactory $userGroupManagerFactory,
 		private readonly ExtensionRegistry $extensionRegistry
 	) {
@@ -34,15 +34,15 @@ class Mandatory2FAChecker {
 	 */
 	public function getGroupsRequiring2FA( UserIdentity $user ): array {
 		$ugm = $this->userGroupManagerFactory->getUserGroupManager( $user->getWikiId() );
-		$checker = $this->restrictedUserGroupCheckerFactory->getRestrictedUserGroupChecker( $user->getWikiId() );
+		$groupRestrictions = $this->restrictedUserGroupConfigReader->getConfig( $user->getWikiId() );
 
 		$groups = $ugm->getUserGroups( $user );
 		$groupsRequiring2FA = [];
 		foreach ( $groups as $group ) {
-			if ( !$checker->isGroupRestricted( $group ) ) {
+			if ( !isset( $groupRestrictions[$group] ) ) {
 				continue;
 			}
-			$restrictions = $checker->getGroupRestrictions( $group );
+			$restrictions = $groupRestrictions[$group];
 			if ( $this->isUserRequiredToHave2FAToMeetConditions( $user, $restrictions->getMemberConditions() ) ) {
 				$groupsRequiring2FA[] = $group;
 			}

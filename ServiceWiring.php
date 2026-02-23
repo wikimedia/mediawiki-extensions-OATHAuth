@@ -53,7 +53,7 @@ return [
 	'OATHAuth.Mandatory2FAChecker' => static function ( MediaWikiServices $services ): Mandatory2FAChecker {
 		return new Mandatory2FAChecker(
 			$services->getService( 'OATHAuth.UserConditionCheckerWith2FAAssumption' ),
-			$services->getRestrictedUserGroupCheckerFactory(),
+			$services->getRestrictedUserGroupConfigReader(),
 			$services->getUserGroupManagerFactory(),
 			$services->getExtensionRegistry()
 		);
