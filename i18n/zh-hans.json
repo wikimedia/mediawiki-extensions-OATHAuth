@@ -130,6 +130,7 @@
 	"log-action-filter-oath-verify": "检查是否启用双重验证",
 	"log-action-filter-oath-disable-other": "禁用其他用户的双重身份验证",
 	"log-action-filter-oath-recover": "为其他用户生成新恢复代码",
+	"oathauth-verify-automatic-comment": "自动验证以检查用户组资格",
 	"oathauth-ui-no-module": "没有启用",
 	"oathauth-module-totp-label": "身份验证器应用程序",
 	"oathauth-module-recoverycodes-label": "恢复代码",

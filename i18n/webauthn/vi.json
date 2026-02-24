@@ -36,5 +36,5 @@
 	"oathauth-webauthn-credential-label": "Thông tin người dùng",
 	"oathauth-webauthn-credential-help": "Thông tin xác thực của người dùng dựa trên dữ liệu xác thực",
 	"oathauth-webauthn-add-security-key": "Thêm khóa bảo mật",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Sử dụng khóa bảo mật hoặc mã khóa"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Sử dụng khóa bảo mật hoặc khóa truy cập"
 }

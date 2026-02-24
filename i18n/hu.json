@@ -69,7 +69,7 @@
 	"oathauth-auth-token-help": "A kétlépcsős azonosítás második lépcsőjeként használt egyszeri jelszó.",
 	"oathauth-auth-token-help-ui": "Írd be az azonosításhoz használt eszközön látható kódot.",
 	"oathauth-auth-recovery-code-label": "Helyreállítási kódok",
-	"oathauth-auth-use-recovery-code": "Hitelesítés helyreállítási kóddal",
+	"oathauth-auth-use-recovery-code": "Bejelentkezés helyreállítási kóddal",
 	"oathauth-auth-ui": "Írj be egy megerősítő kódot a kétlépcsős azonosítási alkalmazásodból (pl. [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Hitelesítő], [https://www.microsoft.com/hu-hu/security/mobile-authenticator-app Microsoft Authenticator] vagy [https://1password.com/ 1Password]).",
 	"oathauth-auth-switch-module-label": "Azonosító alkalmazás használata",
 	"oathauth-throttled": "Túl sok hitelesítési kísérlet! Várj $1 ideig.",

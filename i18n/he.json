@@ -14,6 +14,7 @@
 	},
 	"oathauth-desc": "מספקת תמיכה באימות באמצעות סיסמאות חד־פעמיות מבוססות HMAC ופרוטוקול WebAuthn",
 	"disableoathforuser": "כיבוי אימות דו־שלבי של משתמש",
+	"recover2faforuser": "שחזור אימות דו־שלבי של המשתמש",
 	"verifyoathforuser": "וידוא מצב אימות דו־גורמי",
 	"oathauth-account": "שם החשבון:",
 	"oathauth-secret": "המפתח הסודי של האימות הדו־שלבי:",

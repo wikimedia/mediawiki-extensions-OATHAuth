@@ -13,7 +13,7 @@
 			"Ата"
 		]
 	},
-	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів",
+	"oathauth-desc": "Забезпечує підтримку автентифікації за допомогою HMAC на основі одноразових паролів і протоколу WebAuthn",
 	"disableoathforuser": "Вимкнути двофакторну автентифікацію користувача",
 	"verifyoathforuser": "Перевірити стан двофакторної автентифікації",
 	"oath": "OATHAuth",
@@ -63,7 +63,7 @@
 	"oathauth-enteruser": "Ім'я користувача:",
 	"oathauth-enterdisablereason": "Причина вимкнення:",
 	"oathauth-enterverifyreason": "Причина перевірки:",
-	"oathauth-user-not-does-not-have-oath-enabled": "Користувач не увімкнув двофакторну автентифікацію, тож нічого вимикати",
+	"oathauth-user-not-does-not-have-oath-enabled": "Користувач не увімкнув двофакторну автентифікацію, тож нічого вимикати.",
 	"right-oathauth-enable": "Вмикання двофакторної автентифікації",
 	"action-oathauth-enable": "вмикання двофакторної автентифікації",
 	"oathauth-auth-token-label": "Двофакторний токен",
