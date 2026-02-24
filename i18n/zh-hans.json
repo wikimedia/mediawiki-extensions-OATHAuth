@@ -34,7 +34,8 @@
 			"ExoHyper2026",
 			"Pawsdt",
 			"0x48fe75df30",
-			"SaoMikoto"
+			"SaoMikoto",
+			"Gsdn"
 		]
 	},
 	"oathauth-desc": "提供“基于HMAC的一次性密码”的身份验证支持",
