@@ -77,6 +77,11 @@ class OATHManage extends SpecialPage {
 	}
 
 	/** @inheritDoc */
+	public function doesWrites() {
+		return true;
+	}
+
+	/** @inheritDoc */
 	public function getDescription() {
 		return $this->msg( 'accountsecurity' );
 	}
