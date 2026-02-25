@@ -13,7 +13,8 @@
 			"렌즈",
 			"밝은소년",
 			"아라",
-			"YeBoy371"
+			"YeBoy371",
+			"Bisang"
 		]
 	},
 	"oathauth-desc": "HMAC 기반 일회용 비밀번호를 이용한 인증 지원 제공",
@@ -31,7 +32,7 @@
 	"oathauth-recoverycodes-copy-success": "복구 코드가 클립보드에 복사되었습니다!",
 	"oathauth-disable": "2요소 인증 비활성화하기",
 	"oathauth-validatedoath": "2요소 자격 정보를 검증했습니다. 이제부터 2요소 인증을 실행합니다.",
-	"oathauth-noscratchforvalidation": "2요소 인증을 확인하기 위해 스크래치 코드를 사용할 수 없습니다. 스크래치 코드는 백업용 및 부수적인 용도 전용입니다. 코드 생성기의 인증 코드를 사용해 주십시오.",
+	"oathauth-noscratchforvalidation": "복구 코드는 2단계 인증을 확인하는 데 사용할 수 없습니다. 복구 코드는 백업 및 비상시 사용을 위한 것입니다. 2요소 인증 애플리케이션(예: [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/ko-kr/security/mobile-authenticator-app Microsoft Authenticator], [https://1password.com/ 1Password] 등)에서 발급받은 코드를 사용해 주십시오.",
 	"oathauth-failedtovalidateoath": "2요소 자격정보를 검증하는 데 실패했습니다",
 	"oathauth-disabledoath": "2요소 인증이 비활성화되었습니다.",
 	"oathauth-prefs-label": "2요소 인증:",
@@ -62,6 +63,7 @@
 	"oathauth-auth-token-help": "2단계 인증의 두 번째 단계로 사용되는 일회용 암호입니다.",
 	"oathauth-auth-token-help-ui": "인증 장치의 코드나 복구 코드를 입력하세요",
 	"oathauth-auth-ui": "2요소 인증 애플리케이션(Google Authenticator 등)의 코드를 입력해 주십시오.",
+	"oathauth-auth-switch-module-keep": "(전환하지 않음)",
 	"oathauth-throttled": "너무 많은 인증을 요청했습니다! $1 기다리세요.",
 	"oathauth-login-failed": "인증 검토 실패.",
 	"oathauth-describe-provider": "2요소 인증(OATH)입니다.",
