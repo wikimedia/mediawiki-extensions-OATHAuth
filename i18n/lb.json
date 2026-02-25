@@ -126,5 +126,7 @@
 	"oathauth-max-keys-exceeded": "Limitt vun den Authentifizéierungsmethoden erreecht",
 	"oathauth-max-keys-exceeded-message": "Dir hutt déi maximal Zuel vun Authentifizéierungsmethoden erreecht, déi bei $1 läit. Huelt wgl. eng Authentifizéierungsmethod ewech, ier Dir eng nei derbäisetzt.",
 	"oathauth-passkey-dialog-back": "Zeréck",
+	"oathauth-2fa-required": "Dir sidd Member vu Gruppen, déi eng Zwee-Faktor-Authentifizéierung verlaangen.",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "Fir $2 op $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Onbekannt Säit"
 }

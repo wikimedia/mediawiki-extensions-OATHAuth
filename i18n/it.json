@@ -111,5 +111,10 @@
 	"oathauth-passkey-dialog-title": "Aggiungi una passkey",
 	"oathauth-passkey-dialog-text": "Le passkey sono il modo più sicuro per accedere al tuo account. Per la maggior parte delle persone, sono anche il modo più semplice.\n\nCon una passkey, puoi accedere a {{SITENAME}} nello stesso modo in cui sblocchi il tuo dispositivo, che sia tramite PIN, impronta digitale o riconoscimento facciale.\n\nIn qualunque modo tu acceda, i tuoi dati biometrici e il tuo PIN rimangono sul tuo dispositivo e non ci vengono mai inviati.",
 	"oathauth-passkey-dialog-back": "Indietro",
-	"oathauth-passkey-dialog-add": "Aggiungi passkey"
+	"oathauth-passkey-dialog-add": "Aggiungi passkey",
+	"oathauth-2fa-groups-notice-single": "Sei membro di {{PLURAL:$1|un gruppo|gruppi}} che {{PLURAL:$1|richiede|richiedono}} l'autenticazione a due fattori ($2 su $3). Per rimuovere questo metodo devi:\n<ul> \n<li>aggiungere un altro metodo di autenticazione a due fattori, oppure</li> \n<li>fatti rimuovere dal {{PLURAL:$1|gruppo|gruppi}}. Visita: $4</li> \n</ul>",
+	"oathauth-2fa-groups-notice-multiple": "Sei membro di {{PLURAL:$1|gruppi}} che {{PLURAL:$1|richiedono}} l'autenticazione a due fattori. Per rimuovere questo metodo devi:\n<ul> \n<li>aggiungere un altro metodo di autenticazione a due fattori, oppure</li> \n<li>fatti rimuovere dai {{PLURAL:$1|gruppi}}.</li> \n</ul>",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "Per essere rimossi dai {{PLURAL:$1|gruppi}}, visita:",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "Per $2 su $3: $4",
+	"oathauth-2fa-groups-notice-unknown-page": "Pagina sconosciuta"
 }
