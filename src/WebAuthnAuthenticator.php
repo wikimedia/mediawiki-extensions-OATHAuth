@@ -14,15 +14,14 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
-use MediaWiki\Json\FormatJson;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
-use stdClass;
 use Webauthn\AuthenticatorSelectionCriteria;
+use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialOptions;
@@ -46,6 +45,8 @@ class WebAuthnAuthenticator {
 	 * 60 seconds
 	 */
 	private const CLIENT_ACTION_TIMEOUT = 60000;
+
+	private const MAX_ACTIVE_CHALLENGES = 5;
 
 	private ?string $serverId;
 
@@ -95,33 +96,30 @@ class WebAuthnAuthenticator {
 	}
 
 	public function startAuthentication( OATHUser $user ): Status {
-		$canAuthenticate = $this->canAuthenticate( $user );
-		if ( !$canAuthenticate->isGood() ) {
-			$this->logger->error(
-				"User {$user->getUser()->getName()} cannot authenticate"
-			);
-			return $canAuthenticate;
-		}
-		$authInfo = $this->getAuthInfo( $user );
-		$this->setSessionData( $authInfo );
-
-		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-
-		return Status::newGood( [
-			'json' => $serializer->serialize( $authInfo, 'json' ),
-			'raw' => $authInfo
-		] );
+		return $this->startAuthenticationInternal( $user, false );
 	}
 
-	public function conditionalAuthentication(): Status {
-		$authInfo = PublicKeyCredentialRequestOptions::create(
-			random_bytes( 32 ),
-			$this->serverId,
-			[],
-			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_REQUIRED,
-			self::CLIENT_ACTION_TIMEOUT
-		);
-		$this->setSessionData( $authInfo );
+	/**
+	 * Initiate a new passwordless authentication session.
+	 *
+	 * This returns a credential request that is not specific to any given user.
+	 */
+	public function startPasswordlessAuthentication(): Status {
+		return $this->startAuthenticationInternal( null, true );
+	}
+
+	private function startAuthenticationInternal( ?OATHUser $user, bool $userVerificationRequired ): Status {
+		if ( $user ) {
+			$canAuthenticate = $this->canAuthenticate( $user );
+			if ( !$canAuthenticate->isGood() ) {
+				$this->logger->error(
+					"User {$user->getUser()->getName()} cannot authenticate"
+				);
+				return $canAuthenticate;
+			}
+		}
+		$authInfo = $this->getAuthInfo( $user, $userVerificationRequired );
+		$this->addPendingRequest( $authInfo );
 
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
@@ -132,9 +130,8 @@ class WebAuthnAuthenticator {
 	}
 
 	public function continueAuthentication(
-		array $verificationData,
 		OATHUser $user,
-		?PublicKeyCredentialRequestOptions $authInfo = null
+		string $credential
 	): Status {
 		$canAuthenticate = $this->canAuthenticate( $user );
 		if ( !$canAuthenticate->isGood() ) {
@@ -144,10 +141,20 @@ class WebAuthnAuthenticator {
 			return $canAuthenticate;
 		}
 
-		$verificationData['authInfo'] = $authInfo ?? $this->getSessionData(
-			PublicKeyCredentialRequestOptions::class
+		$request = $this->getPendingRequestWithChallenge(
+			PublicKeyCredentialRequestOptions::class,
+			$this->getChallengeFromCredential( $credential )
 		);
-		$this->clearSessionData( PublicKeyCredentialRequestOptions::class );
+		$this->clearPendingRequests( PublicKeyCredentialRequestOptions::class );
+		if ( $request === null ) {
+			$this->oathLogger->logFailedVerification( $user->getUser() );
+			return Status::newFatal( 'oathauth-webauthn-error-verification-failed' );
+		}
+
+		$verificationData = [
+			'authInfo' => $request,
+			'credential' => $credential
+		];
 
 		if ( $this->module->verify( $user, $verificationData ) ) {
 			$this->logger->info(
@@ -173,7 +180,7 @@ class WebAuthnAuthenticator {
 			return $canRegister;
 		}
 		$registerInfo = $this->getRegisterInfo( $user, $passkeyMode );
-		$this->setSessionData( $registerInfo );
+		$this->addPendingRequest( $registerInfo );
 
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
 
@@ -184,7 +191,7 @@ class WebAuthnAuthenticator {
 	}
 
 	public function continueRegistration(
-		stdClass $credential, OATHUser $user, bool $passkeyMode = false
+		OATHUser $user, string $credential, string $friendlyName = '', bool $passkeyMode = false
 	): Status {
 		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
@@ -195,20 +202,19 @@ class WebAuthnAuthenticator {
 			return $canRegister;
 		}
 
-		$registerInfo = $this->getSessionData(
-			PublicKeyCredentialCreationOptions::class
+		$registerInfo = $this->getPendingRequestWithChallenge(
+			PublicKeyCredentialCreationOptions::class,
+			$this->getChallengeFromCredential( $credential )
 		);
 		if ( $registerInfo === null ) {
 			return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 		}
 
 		$key = $this->module->newKey();
-		$friendlyName = $credential->friendlyName;
-		$data = FormatJson::encode( $credential );
 		try {
 			$registered = $key->verifyRegistration(
 				$friendlyName,
-				$data,
+				$credential,
 				$registerInfo,
 				$user
 			);
@@ -228,7 +234,7 @@ class WebAuthnAuthenticator {
 					$this->getKeyDataInSession( 'RecoveryCodeKeys' )
 				);
 
-				$this->clearSessionData( PublicKeyCredentialCreationOptions::class );
+				$this->clearPendingRequests( PublicKeyCredentialCreationOptions::class );
 				return Status::newGood();
 			}
 		} catch ( Exception $ex ) {
@@ -242,36 +248,78 @@ class WebAuthnAuthenticator {
 		return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 	}
 
-	private function setSessionData( PublicKeyCredentialOptions $data ) {
+	private function getChallengeFromCredential( string $credential ): string {
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-		$this->getRequest()->getSession()->setSecret( self::SESSION_KEY . '_' . $data::class,
-			$serializer->serialize( $data, 'json' )
+		$publicKeyCredential = $serializer->deserialize(
+			$credential,
+			PublicKeyCredential::class,
+			'json',
 		);
+		return $publicKeyCredential->response->clientDataJSON->challenge;
 	}
 
-	private function clearSessionData( string $returnClass ) {
+	private function addPendingRequest( PublicKeyCredentialOptions $data ) {
+		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
+		$sessionKey = self::SESSION_KEY . '_' . $data::class;
+		$requests = $this->getRequest()->getSession()->getSecret( $sessionKey ) ?? [];
+		$requests[] = [
+			'json' => $serializer->serialize( $data, 'json' ),
+			'expires' => time() + ceil( $data->timeout / 1000 )
+		];
+		$requests = $this->filterExpiredRequests( $requests );
+		$this->getRequest()->getSession()->setSecret( $sessionKey, $requests );
+	}
+
+	private function clearPendingRequests( string $returnClass ) {
 		$this->getRequest()->getSession()->remove( self::SESSION_KEY . '_' . $returnClass );
 	}
 
 	/**
 	 * @template T of PublicKeyCredentialOptions
 	 * @param class-string<T> $returnClass
-	 * @return T|null
+	 * @return T[]
 	 */
-	private function getSessionData( string $returnClass ) {
-		$json = $this->getRequest()->getSession()->getSecret( self::SESSION_KEY . '_' . $returnClass );
-		if ( $json === null ) {
-			return null;
+	private function getPendingRequests( string $returnClass ): array {
+		$sessionKey = self::SESSION_KEY . '_' . $returnClass;
+		$requests = $this->getRequest()->getSession()->getSecret( $sessionKey );
+		if ( $requests === null ) {
+			return [];
+		}
+		$filteredRequests = $this->filterExpiredRequests( $requests );
+		if ( count( $filteredRequests ) < count( $requests ) ) {
+			$this->getRequest()->getSession()->setSecret( $sessionKey, $filteredRequests );
 		}
 		$serializer = ( new WebAuthnSerializerFactory( WebAuthnKey::getAttestationSupportManager() ) )->create();
-		return $serializer->deserialize( $json, $returnClass, 'json' );
+		return array_map(
+			static fn ( $r ) => $serializer->deserialize( $r['json'], $returnClass, 'json' ),
+			$filteredRequests
+		);
+	}
+
+	/**
+	 * @template T of PublicKeyCredentialOptions
+	 * @param class-string<T> $returnClass
+	 * @param string $challenge
+	 * @return T|null
+	 */
+	private function getPendingRequestWithChallenge( string $returnClass, string $challenge ) {
+		$requests = $this->getPendingRequests( $returnClass );
+		return array_find( $requests, static fn ( $request ) => $request->challenge === $challenge );
+	}
+
+	private function filterExpiredRequests( array $requests ): array {
+		$now = time();
+		return array_slice(
+			array_filter( $requests, static fn ( $r ) => $r['expires'] >= $now ),
+			-self::MAX_ACTIVE_CHALLENGES
+		);
 	}
 
 	/**
 	 * Information to be sent to the client to start the authentication process
 	 */
-	private function getAuthInfo( OATHUser $user ): PublicKeyCredentialRequestOptions {
-		$keys = WebAuthn::getWebAuthnKeys( $user );
+	private function getAuthInfo( ?OATHUser $user, bool $userVerificationRequired ): PublicKeyCredentialRequestOptions {
+		$keys = $user ? WebAuthn::getWebAuthnKeys( $user ) : [];
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
 			$credentialDescriptors[] = new PublicKeyCredentialDescriptor(
@@ -285,7 +333,9 @@ class WebAuthnAuthenticator {
 			random_bytes( 32 ),
 			$this->serverId,
 			$credentialDescriptors,
-			PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_PREFERRED,
+			$userVerificationRequired ?
+				PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_REQUIRED :
+				PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_PREFERRED,
 			self::CLIENT_ACTION_TIMEOUT
 		);
 	}

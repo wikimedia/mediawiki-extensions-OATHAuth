@@ -13,7 +13,6 @@ use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
-use MediaWiki\Json\FormatJson;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -186,15 +185,10 @@ class ApiWebAuthn extends ApiBase {
 			$this->dieWithError( 'apierror-oathauth-webauthn-missing-credential' );
 		}
 
-		$credential = FormatJson::decode( $credentialJson );
-		if ( !is_object( $credential ) ) {
-			$this->dieWithError( 'apierror-oathauth-webauthn-invalid-credential' );
-		}
-		$credential->friendlyName = $this->getParameter( 'friendlyname' ) ?? '';
-
 		$result = $this->authenticator->continueRegistration(
-			$credential,
 			$this->getOATHUser(),
+			$credentialJson,
+			$this->getParameter( 'friendlyname' ) ?? '',
 			(bool)$this->getParameter( 'passkeyMode' )
 		);
 

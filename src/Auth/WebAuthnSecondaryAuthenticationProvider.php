@@ -77,7 +77,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 				wfMessage( 'oathauth-webauthn-error-credentials-missing' ), 'error' );
 		}
 
-		$authResult = $authenticator->continueAuthentication( $verificationData, $oathUser );
+		$authResult = $authenticator->continueAuthentication( $oathUser, $verificationData['credential'] );
 		if ( $authResult->isGood() ) {
 			return AuthenticationResponse::newPass( $authResult->getValue()->getUser()->getName() );
 		}
