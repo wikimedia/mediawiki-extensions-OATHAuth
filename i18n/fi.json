@@ -80,7 +80,7 @@
 	"oathauth-recover-fail-no-2fa": "Käyttäjällä ei ole käytössä kaksivaiheista tunnistautumista, joten palautus ei ole mahdollista.",
 	"oathauth-recover-fail-email-required": "Käyttäjällä ei ole tunnukseensa liitettyä vahvistettua sähköpostiosoitetta. Anna sähköpostiosoite, johon viesti lähetetään.",
 	"oathauth-recover-email-title": "{{PLURAL:$1|Lisäpalautuskoodi|Lisäpalautuskoodit}} käyttäjätunnuksellesi",
-	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen tunnistautuminen",
+	"right-oathauth-enable": "Ottaa käyttöön kaksivaiheinen tunnistautuminen",
 	"action-oathauth-enable": "ottaa käyttöön kaksivaiheista tunnistautumista",
 	"oathauth-auth-token-label": "Kaksivaiheisen tunnistautumisen poletti",
 	"oathauth-auth-token-help": "Kertakäyttöinen salasana, jota käytetään kaksivaiheisen tunnistautumisen toisena vaiheena.",

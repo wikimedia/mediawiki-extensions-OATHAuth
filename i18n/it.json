@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asteralee",
 			"Beta16",
 			"Darth Kule",
 			"Dream Indigo",
@@ -98,6 +99,7 @@
 	"oathauth-notifications-disable-primary": "Controlla le impostazioni di autenticazione a due fattori",
 	"oathauth-notifications-enable-help": "Aiuto",
 	"oathauth-notifications-enable-primary": "Controlla le impostazioni di autenticazione a due fattori",
+	"oathauth-notifications-recoverycodes-generated-for-user-help": "Aiuto",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ha l'autenticazione a due fattori abilitata.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} non ha l'autenticazione a due fattori abilitata.",
 	"oathauth-hint": "Non hai accesso al tuo dispositivo o alla tua applicazione di autenticazione? Puoi inserire un codice di recupero (fornito quando hai abilitato 2FA) in questo campo.",
