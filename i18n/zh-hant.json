@@ -19,7 +19,8 @@
 			"予弦",
 			"捍粵者",
 			"神樂坂秀吉",
-			"S8321414"
+			"S8321414",
+			"Leo768"
 		]
 	},
 	"oathauth-desc": "提供認證的支援，這是使用基於HMAC的一次性密碼",
@@ -80,7 +81,7 @@
 	"oathauth-auth-recovery-code-label": "恢復代碼",
 	"oathauth-auth-use-recovery-code": "使用恢復代碼",
 	"oathauth-auth-recovery-code-help": "請輸入您設定雙重認證時建立的代碼。",
-	"oathauth-auth-ui": "請輸入您認證應用程式上顯示的驗證碼。(例如[https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] or [https://1password.com/ 1Password]).",
+	"oathauth-auth-ui": "請輸入您雙重認證應用程式（如[https://www.authy.com/ Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator]、[https://1password.com/ 1Password]）提供的驗證碼。",
 	"oathauth-auth-switch-module-label": "使用認證器的應用程式",
 	"oathauth-auth-switch-module-help": "請將<code>newModule</code>設定為新模組的名稱，即可從其他雙重認證模組獲取新的驗證題。若您正在回應當前的驗證題，請保持此欄位空白。",
 	"oathauth-auth-switch-module-keep": "（請勿切換）",

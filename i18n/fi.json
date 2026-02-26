@@ -13,7 +13,8 @@
 			"Stryn",
 			"Taavi",
 			"Veikk0.ma",
-			"01miki10"
+			"01miki10",
+			"Lentokonefani"
 		]
 	},
 	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen avulla",
