@@ -212,5 +212,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Header for the list of groups and wikis that require 2FA.\n\nParameters:\n* $1 - number of groups that require 2FA",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "List entry, pointing the user to a page where they can ask for removal of specific 2FA-requiring groups.\n\nParameters:\n* $1 - number of groups in this list item\n* $2 - name or names of groups that require 2FA\n* $3 - wiki (server name) on which the user is member of these groups\n* $4 - link to the page, where user can ask for removal from the group(s)",
 	"oathauth-2fa-groups-notice-unknown-page": "Text displayed instead of a link in {{msg-mw|oathauth-2fa-groups-notice-single}} or {{msg-mw|oathauth-2fa-groups-notice-multiple-links-entry}} if the page that the user needs to ask on to have their groups removed hasn't been configured.",
-	"oathauth-remove-lastkey-required": "Error message shown if user tries to remove their last 2FA method even if they are required to have 2FA enabled."
+	"oathauth-remove-lastkey-required": "Error message shown if user tries to remove their last 2FA method even if they are required to have 2FA enabled.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "A text representation of APCOND_OATH_HAS2FA condition, which tests if the user has 2FA configured on their account."
 }
