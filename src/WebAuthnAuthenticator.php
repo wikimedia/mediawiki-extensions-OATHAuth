@@ -7,9 +7,9 @@
 namespace MediaWiki\Extension\OATHAuth;
 
 use Cose\Algorithms;
+use Exception;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -231,8 +231,13 @@ class WebAuthnAuthenticator {
 				$this->clearSessionData( PublicKeyCredentialCreationOptions::class );
 				return Status::newGood();
 			}
-		} catch ( ErrorPageError $error ) {
-			return Status::newFatal( $error->getMessageObject() );
+		} catch ( Exception $ex ) {
+			$this->logger->warning( 'WebAuthn registration failed due to: {message}', [
+				'message' => $ex->getMessage(),
+				'exception' => $ex,
+				'user' => $user->getUser()->getName(),
+			] );
+			return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 		}
 		return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 	}
