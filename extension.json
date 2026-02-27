@@ -492,7 +492,7 @@
 		"oath": "oath-log-header"
 	},
 	"LogActionsHandlers": {
-		"oath/*": "LogFormatter"
+		"oath/*": "MediaWiki\\Logging\\LogFormatter"
 	},
 	"LogRestrictions": {
 		"oath": "oathauth-view-log"
