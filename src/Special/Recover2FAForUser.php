@@ -171,6 +171,7 @@ class Recover2FAForUser extends FormSpecialPage {
 
 	public function onSuccess() {
 		$targetUserName = $this->targetUser->getName();
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable; already proven not-null: line above not fatalling
 		$targetUserLink = $this->linkRenderer->makeUserLink( $this->targetUser, $this->getContext() );
 
 		$successMsg = $this->msg( 'oathauth-recoveredoath' )

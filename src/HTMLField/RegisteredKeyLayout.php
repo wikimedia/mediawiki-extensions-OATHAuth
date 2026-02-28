@@ -13,7 +13,7 @@ class RegisteredKeyLayout extends HTMLFormField {
 
 	/**
 	 * @param array $value
-	 * @return HorizontalLayout
+	 * @return string The HorizontalLayout, stringified
 	 */
 	public function getInputHTML( $value ) {
 		$nameValue = $value['name'];
@@ -31,7 +31,7 @@ class RegisteredKeyLayout extends HTMLFormField {
 			'infusable' => true
 		] );
 
-		return new HorizontalLayout( [
+		return (string)new HorizontalLayout( [
 			'classes' => [ 'webauthn-key-layout' ],
 			'items' => [
 				$name, $removeButton

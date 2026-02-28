@@ -55,7 +55,7 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		$output->addModuleStyles( 'ext.oath.recovery.styles' );
 		$output->addModules( 'ext.oath.recovery' );
 		$output->addHtml(
-			$this->generateRecoveryCodesContent( $recoveryCodes )
+			(string)$this->generateRecoveryCodesContent( $recoveryCodes )
 		);
 	}
 

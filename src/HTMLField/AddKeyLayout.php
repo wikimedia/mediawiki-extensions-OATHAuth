@@ -11,7 +11,7 @@ class AddKeyLayout extends HTMLFormField {
 
 	/**
 	 * @param string $value
-	 * @return ActionFieldLayout
+	 * @return string The ActionFieldLayout, stringified
 	 */
 	public function getInputHTML( $value ) {
 		// We initiate the fields disabled, to avoid user interacting
@@ -31,6 +31,6 @@ class AddKeyLayout extends HTMLFormField {
 			'id' => 'button_add_key',
 			'infusable' => true
 		] );
-		return new ActionFieldLayout( $input, $button );
+		return (string)new ActionFieldLayout( $input, $button );
 	}
 }
