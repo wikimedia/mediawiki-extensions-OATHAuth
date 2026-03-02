@@ -44,9 +44,9 @@ class WebAuthnAuthenticator {
 	private const SESSION_KEY = 'webauthn_session_data';
 
 	/**
-	 * 60 seconds
+	 * 24 hours
 	 */
-	private const CLIENT_ACTION_TIMEOUT = 60000;
+	private const CLIENT_ACTION_TIMEOUT = 86400000;
 
 	private const MAX_ACTIVE_CHALLENGES = 5;
 
