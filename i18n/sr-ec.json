@@ -119,5 +119,7 @@
 	"oathauth-delete-success": "<strong>$1</strong> уклоњен.",
 	"oathauth-created-at": "Додато $1",
 	"oathauth-enable-success": "Додата <strong>$1</strong>.",
-	"oathauth-passkey-dialog-back": "Назад"
+	"oathauth-passkey-dialog-back": "Назад",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "За $2 на $3: $4",
+	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница"
 }
