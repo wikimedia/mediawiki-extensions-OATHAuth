@@ -191,5 +191,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Para eliminarte {{PLURAL:$1|do grupo|dos grupo}}, visita:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Para $2 en $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Páxina descoñecida",
-	"oathauth-remove-lastkey-required": "Non podes eliminar o teu último método de autenticación se pertences a grupos que necesitan autenticación de dous factores. Engade outro método de autenticación antes de eliminares este."
+	"oathauth-remove-lastkey-required": "Non podes eliminar o teu último método de autenticación se pertences a grupos que necesitan autenticación de dous factores. Engade outro método de autenticación antes de eliminares este.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "O usuario ten activada a autenticación de dous factores"
 }

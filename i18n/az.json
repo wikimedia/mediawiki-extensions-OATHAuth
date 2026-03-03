@@ -191,8 +191,9 @@
 	"oathauth-2fa-required": "Siz iki faktorlu autentifikasiya tələb edən qrupların üzvüsünüz.",
 	"oathauth-2fa-groups-notice-single": "Siz iki faktorlu autentifikasiya tələb edən {{PLURAL:$1|qrupun|qrupların}} üzvüsünüz ($3 saytında $2). Bu metodu silmək üçün:\n<ul>\n<li>başqa bir iki faktorlu autentifikasiya metodu əlavə edin, və ya</li>\n<li>özünüzü həmin istifadəçi {{PLURAL:$1|qrupundan|qruplarından}} çıxarın: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Siz iki faktorlu autentifikasiya tələb edən {{PLURAL:$1|qrupun|qrupların}} üzvüsünüz. Bu metodu silmək üçün:\n<ul>\n<li>başqa bir iki faktorlu autentifikasiya metodu əlavə edin, və ya</li>\n<li>özünüzü həmin istifadəçi {{PLURAL:$1|qrupundan|qruplarından}} çıxarın.</li>\n</ul>",
-	"oathauth-2fa-groups-notice-multiple-links-intro": "Qruplardan çıxarılmaq üçün zəhmət olmasa, buranı ziyarət edin:",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "{{PLURAL:$1|Qruplardan}} çıxarılmaq üçün zəhmət olmasa, buranı ziyarət edin:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "$3 saytında $2 üçün: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Naməlum səhifə",
-	"oathauth-remove-lastkey-required": "İki faktorlu autentifikasiya tələb edən qrupların üzvüsünüzsə, son autentifikasiya metodunuzu silə bilməzsiniz. Bunu silməzdən əvvəl başqa bir autentifikasiya metodu əlavə edin."
+	"oathauth-remove-lastkey-required": "İki faktorlu autentifikasiya tələb edən qrupların üzvüsünüzsə, son autentifikasiya metodunuzu silə bilməzsiniz. Bunu silməzdən əvvəl başqa bir autentifikasiya metodu əlavə edin.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "İstifadəçi iki faktorlu autentifikasiyanı aktivləşdirib"
 }

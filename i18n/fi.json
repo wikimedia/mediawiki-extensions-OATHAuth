@@ -108,7 +108,7 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|poisti}} käytöstä käyttäjän $3 kaksivaiheisen tunnistautumisen",
 	"logentry-oath-disable-self": "{{GENDER:$2|Poisti}} käytöstä kaksivaiheisen tunnistautumisen",
 	"logentry-oath-enable-self": "{{GENDER:$2|Otti}} käyttöön kaksivaiheisen tunnistautumisen",
-	"logentry-oath-recover": "$1 loi {{PLURAL:$4|yhden palautuskoodin lisää|lisää palautuskoodeja}} käyttäjälle $3.",
+	"logentry-oath-recover": "$1 {{GENDER:$2|loi}} {{PLURAL:$4|yhden palautuskoodin lisää|lisää palautuskoodeja}} käyttäjälle $3.",
 	"logentry-oath-verify": "$1 {{GENDER:$2|tarkisti}}, onko käyttäjällä $3 kaksivaiheinen tunnistautuminen käytössä",
 	"logentry-oath-verify-failed": "Epäonnistunut kaksivaiheinen tunnistautumisyritys",
 	"logentry-oath-verify-success": "Onnistunut kaksivaiheinen tunnistautumisyritys",
@@ -192,8 +192,9 @@
 	"oathauth-2fa-required": "Kuulut ryhmään, jolta vaaditaan kaksivaiheista tunnistautumista.",
 	"oathauth-2fa-groups-notice-single": "Kuulut {{PLURAL:$1|ryhmään, jolta|ryhmiin, joilta}} vaaditaan kaksivaiheista tunnistautumista ($2 {{GRAMMAR:inessive|$3}}). Poistaaksesi tämän tunnistautumistavan sinun tulee:\n<ul>\n<li>lisätä toinen kaksivaiheisen tunnistautumisen tapa, tai</li>\n<li>poistattaa itsesi {{PLURAL:$1|tästä ryhmästä|näistä ryhmistä}}. Poistoa voi pyytää sivulla: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Kuulut {{PLURAL:$1|ryhmiin, joilta}} vaaditaan kaksivaiheista tunnistautumista. Poistaaksesi tämän tunnistautumistavan sinun tulee:\n<ul>\n<li>lisätä toinen kaksivaiheisen tunnistautumisen tapa, tai</li>\n<li>poistattaa itsesi {{PLURAL:$1|näistä ryhmistä}}.</li>\n</ul>",
-	"oathauth-2fa-groups-notice-multiple-links-intro": "Voit pyytää poistamista ryhmistä seuraavilla sivuilla:",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "Voit pyytää poistamista {{PLURAL:$1|ryhmästä seuraavalla sivulla|ryhmistä seuraavilla sivuilla}}:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "$2 {{GRAMMAR:inessive|$3}}: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Tuntematon sivu",
-	"oathauth-remove-lastkey-required": "Et voi poistaa viimeistä tunnistautumistapaasi, jos kuulut ryhmään, jolta vaaditaan kaksivaiheista tunnistautumista. Lisää ensin toinen tunnistautumistapa ennen tämän poistamista."
+	"oathauth-remove-lastkey-required": "Et voi poistaa viimeistä tunnistautumistapaasi, jos kuulut ryhmään, jolta vaaditaan kaksivaiheista tunnistautumista. Lisää ensin toinen tunnistautumistapa ennen tämän poistamista.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Käyttäjä on ottanut käyttöön kaksivaiheisen tunnistautumisen"
 }
