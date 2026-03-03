@@ -55,6 +55,7 @@
 	"oathauth-login-failed": "Kinnitamine ebaõnnestus.",
 	"grant-oath": "Juurdepääs enda ja teiste kaheastmelise autentimise (OATH) andmetele",
 	"right-oathauth-api-all": "Pärida ja valideerida enda ja teiste OATH-i teavet",
+	"action-oathauth-api-all": "OATH-i olekut kontrollida",
 	"oathauth-user-not-found": "Sellise nimega kontot ei leitud.",
 	"oath-log-name": "Kaheastmelise autentimise logi",
 	"oath-log-header": "Nende logisündmustega peetakse arvet kasutajate kaheastmelise autentimise staatuse muudatuste üle.",
