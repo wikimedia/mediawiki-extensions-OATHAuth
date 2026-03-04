@@ -13,7 +13,8 @@
 			"Stryn",
 			"Veikk0.ma",
 			"Taavi",
-			"01miki10"
+			"01miki10",
+			"Lentokonefani"
 		]
 	},
 	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen avulla",
@@ -55,7 +56,7 @@
 	"oathauth-enterdisablereason": "Käytöstä poistamisen syy:",
 	"oathauth-enterverifyreason": "Tarkastamisen syy:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Käyttäjällä ei ole käytössä kaksivaiheista tunnistautumista, joten sitä ei voida poistaa käytöstä",
-	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen tunnistautuminen",
+	"right-oathauth-enable": "Ottaa käyttöön kaksivaiheinen tunnistautuminen",
 	"action-oathauth-enable": "ottaa käyttöön kaksivaiheista tunnistautumista",
 	"oathauth-auth-token-label": "Kaksivaiheisen tunnistautumisen poletti tai palautuskoodi",
 	"oathauth-auth-token-help": "Kertakäyttöinen salasana, jota käytetään kaksivaiheisen tunnistautumisen toisena vaiheena.",
