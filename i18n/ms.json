@@ -188,5 +188,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Untuk keluar daripada {{PLURAL:$1|kumpulan-kumpulan}} tersebut sila lawati:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Untuk $2 pada $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Laman tidak diketahui",
-	"oathauth-remove-lastkey-required": "Anda tidak boleh membuang kaedah pengesahihan terakhir anda jika anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor. Sila tambahkan kaedah pengesahihan lain sebelum mengalih keluar kaedah ini."
+	"oathauth-remove-lastkey-required": "Anda tidak boleh membuang kaedah pengesahihan terakhir anda jika anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor. Sila tambahkan kaedah pengesahihan lain sebelum mengalih keluar kaedah ini.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Pengguna dengan pengesahihan dwifaktor didayakan"
 }

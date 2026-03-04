@@ -44,7 +44,7 @@
 	"right-oathauth-disable-for-user": "Diweredekaat an dilesadur div-elfenn evit un implijer",
 	"action-oathauth-disable-for-user": "diweradekaat an dilesadur div-elfenn evit un implijer",
 	"right-oathauth-verify-user": "Gwiriañ hag-eñ eo bet gweredekaet an dilesadur div-elfenn gant un implijer",
-	"action-oathauth-verify-user": "gwiriañ hag-eñ eo bet gweredekaet an dilesadur div-elfenn gant un implijer",
+	"action-oathauth-verify-user": "wiriañ hag-eñ eo bet gweredekaet an dilesadur div-elfenn gant un implijer",
 	"right-oathauth-view-log": "Lenn marilh ar c'hemmoù an dilesadur div-elfenn",
 	"action-oathauth-view-log": "gwelout marilh ar c’hemmoù an dilesadur div-elfenn",
 	"oathauth-disable-intro": "Gant ur galloud bras e teu ur gefridi vras",
