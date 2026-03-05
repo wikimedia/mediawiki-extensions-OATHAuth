@@ -67,7 +67,7 @@
 	"oathauth-enterdisablereason": "Käytöstä poistamisen syy:",
 	"oathauth-enterverifyreason": "Tarkastamisen syy:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Käyttäjällä ei ole käytössä kaksivaiheista tunnistautumista, joten sitä ei voida poistaa käytöstä",
-	"right-oathauth-enable": "Ota käyttöön kaksivaiheinen tunnistautuminen",
+	"right-oathauth-enable": "Ottaa käyttöön kaksivaiheinen tunnistautuminen",
 	"action-oathauth-enable": "ottaa käyttöön kaksivaiheista tunnistautumista",
 	"oathauth-auth-token-label": "Kaksivaiheisen tunnistautumisen poletti",
 	"oathauth-auth-token-help": "Kertakäyttöinen salasana, jota käytetään kaksivaiheisen tunnistautumisen toisena vaiheena.",
@@ -151,6 +151,7 @@
 	"oathauth-delete-warning": "Et pysty enää käyttämään tätä tunnistautumistapaa sisäänkirjautumiseen ja palautuskoodisi lakkaavat toimimasta.",
 	"oathauth-delete-confirm-box": "Syötä ”{{int:oathauth-authenticator-delete-text}}” jatkaaksesi",
 	"oathauth-delete-warning-final": "Tämän tavan poistaminen poistaa kaksivaiheisen tunnistautumisen käytöstä kokonaan.",
+	"oathauth-delete-wrong-confirm-message": "Virheellinen syöte viimeisen avaimen poistamiseksi. Kirjoita ”{{int:oathauth-authenticator-delete-text}}” jatkaaksesi",
 	"oathauth-delete-success": "<strong>$1</strong> poistettu.",
 	"oathauth-created-at": "Lisätty $1",
 	"oathauth-enable-success": "<strong>$1</strong> lisätty."
