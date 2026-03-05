@@ -144,6 +144,7 @@
 	"notification-body-oathauth-recoverycodes-generated-for-user": "Ако {{GENDER:$1|вие}} не сте го побарале ова, можеби некој друг се претставува како {{GENDER:$1|вас}} за да добие пристап до вашата сметка.",
 	"oathauth-notifications-recoverycodes-generated-for-user-help": "Помош",
 	"oathauth-notifications-recoverycodes-generated-for-user-contact": "Обратете се кај администраторот на мрежното место",
+	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Проверете си ги поставките за двочинителска заверка",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} има овозможено двочинителска заверка.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} нема овозможено двочинителска заверка.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Оневозможена група|Оневозможени групи}}:",
@@ -180,5 +181,12 @@
 	"oathauth-passkey-dialog-title": "Додај пропустен клуч",
 	"oathauth-passkey-dialog-text": "Пропусните клучеви се најбезбедниот начин за најавување на вашата сметка. За највеќето луѓе ова е воедно и најпростиот начин.\n\nСо пропустен клуч можете да се најавите на {{SITENAME}} на истиот начин како што си го отклучувате уредот, било со ПИН, со отпечаток или препознавање на лице.\n\nКако и да се најавите, вашите биометриски податоци и ПИН остануваат на вашиот уред и ние никогаш не ги добиваме.",
 	"oathauth-passkey-dialog-back": "Назад",
-	"oathauth-passkey-dialog-add": "Додај пропустен клуч"
+	"oathauth-passkey-dialog-add": "Додај пропустен клуч",
+	"oathauth-2fa-required": "Членувате во групи што бараат двочинителска заверка",
+	"oathauth-2fa-groups-notice-single": "Членувате во {{PLURAL:$1|група која|групи кои}} {{PLURAL:$1|бара|бараат}} двочинителска заверка ($2 на $3). За да го отстраните овој начин, ќе мора да:\n<ul>\n<li>додадете друг начин на двочинителска заверка, или</li>\n<li>бидете отстранети од {{PLURAL:$1|групата|групите}}. Појдете на: $4</li>\n</ul>",
+	"oathauth-2fa-groups-notice-multiple": "Членувате во {{PLURAL:$1|групи}} кои {{PLURAL:$1|бараат}} двочинителска заверка. За да го отстраните овој начин, ќе мора да:\n<ul>\n<li>додадете друг начин на двочинителска заверка, или</li>\n<li>бидете отстранети од {{PLURAL:$1|групите}}.</li>\n</ul>",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "За да бидете отстранети од {{PLURAL:$1|групите}} појдете на:",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "За $2 на $3: $4",
+	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница",
+	"oathauth-remove-lastkey-required": "Не можете да го отстраните последниот начин на заверка ако членувате во групи што бараат двочинителска заверка. Додајте друг начин на заверка пред да го отстраните овој."
 }
