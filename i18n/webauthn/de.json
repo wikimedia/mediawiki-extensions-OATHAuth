@@ -18,6 +18,7 @@
 	"oathauth-webauthn-ui-remove-key": "Entfernen",
 	"oathauth-webauthn-error-module-not-enabled": "Das Modul „$1“ ist für {{GENDER:$2|Benutzer „$2“|Benutzerin „$2“}} nicht aktiviert.",
 	"oathauth-webauthn-error-verification-failed": "Die WebAuthn-Verifizierung ist fehlgeschlagen.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Die Passkey-Überprüfung ist fehlgeschlagen.",
 	"oathauth-webauthn-error-credentials-missing": "WebAuthn-Anmeldeinformationen wurden nicht gesendet.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|Benutzer „$1“}} kann einen neuen Berechtigungsnachweis nicht registrieren.",
 	"oathauth-webauthn-error-invalid-new-key": "Der vom Modul zurückgegebene neue Schlüssel ist nicht vom erforderlichen Typ.",

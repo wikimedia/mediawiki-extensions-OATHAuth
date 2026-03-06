@@ -16,6 +16,7 @@
 	"oathauth-webauthn-ui-remove-key": "Sil",
 	"oathauth-webauthn-error-module-not-enabled": "\"$1\" modulu {{GENDER:$2|\"$2\"}} üçün aktiv deyil.",
 	"oathauth-webauthn-error-verification-failed": "WebAuthn doğrulaması uğursuz oldu.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Keçid açarı təsdiqlənməsi uğursuz oldu.",
 	"oathauth-webauthn-error-credentials-missing": "WebAuthn identifikasiyaları göndərilmədi.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|İstifadəçi \"$1\"}} yeni identifikasiyasını qeydiyyatdan keçirə bilməz.",
 	"oathauth-webauthn-error-invalid-new-key": "Modul tərəfindən qaytarılan yeni açar tələb olunan tipdə deyil.",
