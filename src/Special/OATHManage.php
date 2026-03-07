@@ -912,7 +912,7 @@ class OATHManage extends SpecialPage {
 						->setLabel( $this->msg(
 							'oathauth-recoverycodes-create-label',
 							$this->getConfig()->get( 'OATHRecoveryCodesCount' )
-						) )
+						)->parse() )
 						->setType( 'submit' )
 						->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
 						->build()
