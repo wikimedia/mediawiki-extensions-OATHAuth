@@ -14,6 +14,7 @@
 			"Liuxinyu970226",
 			"LowensteinYang",
 			"S8321414",
+			"ShuQizhe",
 			"Simon Shek",
 			"Waihorace",
 			"Winston Sung",
@@ -171,5 +172,6 @@
 	"oathauth-passkey-dialog-title": "新增通行金鑰",
 	"oathauth-passkey-dialog-text": "通行金鑰是您登入帳號最安全的方式。對大多數人來說，也是最簡單的方式。\n\n使用通行金鑰，您可以像解鎖裝置一樣登入{{SITENAME}}，無論是使用 PIN 碼、指紋、或是臉部辨識。\n\n無論您使用哪種方式登入，您的生物辨識資料和 PIN 碼都只會保留在您的裝置上，絕不會傳送給我們。",
 	"oathauth-passkey-dialog-back": "返回",
-	"oathauth-passkey-dialog-add": "新增通行金鑰"
+	"oathauth-passkey-dialog-add": "新增通行金鑰",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "使用者已啟用雙重認證"
 }

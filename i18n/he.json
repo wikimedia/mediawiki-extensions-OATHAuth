@@ -170,5 +170,6 @@
 	"oathauth-passkey-dialog-title": "הוספת מפתח גישה",
 	"oathauth-passkey-dialog-text": "מפתחות גישה הם הדרך הבטוחה ביותר עבורך להיכנס לחשבונך. עבור רוב האנשים, הם גם הדרך הפשוטה ביותר.\n\nבעזרת מפתח גישה, יש לך אפשרות להיכנס לאלר {{SITENAME}} באותו אופן שבו עובדת פתיחת המכשיר שלך, בין אם זה קוד סודי, טביעת אצבע או זיהוי פנים.\n\nבכל שיטת התחברות, הנתונים הביומטריים וה־PIN שלך נשארים במכשיר שלך ולעולם לא נשלחים אלינו.",
 	"oathauth-passkey-dialog-back": "חזרה",
-	"oathauth-passkey-dialog-add": "הוספת מפתח גישה"
+	"oathauth-passkey-dialog-add": "הוספת מפתח גישה",
+	"oathauth-2fa-groups-notice-unknown-page": "דף לא ידוע"
 }

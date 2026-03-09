@@ -141,7 +141,7 @@
 	"oathauth-notifications-recoverycodesleft-help": "Помош",
 	"oathauth-notifications-recoverycodesleft-primary": "Проверете си ги поставките за двочинителска заверка",
 	"notification-header-oathauth-recoverycodes-generated-for-user": "{{PLURAL:$3|Создаден {{GENDER:|ви}} е дополнителен код|Создадени {{GENDER:|ви}} се дополнителни кодови}}",
-	"notification-body-oathauth-recoverycodes-generated-for-user": "Ако {{GENDER:$1|вие}} не сте го побарале ова, можеби некој друг се претставува како {{GENDER:$1|вас}} за да добие пристап до вашата сметка.",
+	"notification-body-oathauth-recoverycodes-generated-for-user": "Ако {{GENDER:|вие}} не сте го побарале ова, можеби некој друг се претставува како {{GENDER:|вас}} за да добие пристап до вашата сметка.",
 	"oathauth-notifications-recoverycodes-generated-for-user-help": "Помош",
 	"oathauth-notifications-recoverycodes-generated-for-user-contact": "Обратете се кај администраторот на мрежното место",
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Проверете си ги поставките за двочинителска заверка",
@@ -188,5 +188,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "За да бидете отстранети од {{PLURAL:$1|групите}} појдете на:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "За $2 на $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница",
-	"oathauth-remove-lastkey-required": "Не можете да го отстраните последниот начин на заверка ако членувате во групи што бараат двочинителска заверка. Додајте друг начин на заверка пред да го отстраните овој."
+	"oathauth-remove-lastkey-required": "Не можете да го отстраните последниот начин на заверка ако членувате во групи што бараат двочинителска заверка. Додајте друг начин на заверка пред да го отстраните овој.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Корисникот има овозможено двочинителска заверка"
 }

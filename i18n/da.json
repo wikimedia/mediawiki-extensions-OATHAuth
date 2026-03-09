@@ -157,7 +157,7 @@
 	"oathauth-hint": "Har du ikke adgang til din enhed eller godkendelsesapp? Du kan indtaste en gendannelseskode (som blev vist, da du aktiverede 2FA) i dette felt.",
 	"oathauth-recovery-code-hint": "Har du mistet din gendannelseskode? Kontakt venligst en [[{{MediaWiki:Grouppage-sysop}}|administrator]].",
 	"oathauth-must-be-central": "{{GENDER:$1|Din konto}} skal være forbundet til det centrale godkendelsessystem for at bruge tofaktorgodkendelse.",
-	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2 .",
+	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2.",
 	"oathauth-remove-nosuchkey": "Nøglen blev ikke fundet.",
 	"oathauth-password-header": "Adgangskode",
 	"oathauth-password-label": "Vælg en stærk adgangskode for at beskytte din konto.",
@@ -192,5 +192,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "For at blive fjernet fra {{PLURAL:$1|gruppen|grupperne}}, besøg venligst:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "For $2 på $3 : $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Ukendt side",
-	"oathauth-remove-lastkey-required": "Du kan ikke fjerne din sidste godkendelsesmetode, hvis du er medlem af grupper, der kræver tofaktorgodkendelse. Tilføj venligst en anden godkendelsesmetode, før du fjerner denne."
+	"oathauth-remove-lastkey-required": "Du kan ikke fjerne din sidste godkendelsesmetode, hvis du er medlem af grupper, der kræver tofaktorgodkendelse. Tilføj venligst en anden godkendelsesmetode, før du fjerner denne.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Brugeren har aktiveret tofaktorgodkendelse"
 }

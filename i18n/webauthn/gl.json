@@ -17,6 +17,7 @@
 	"oathauth-webauthn-ui-remove-key": "Eliminar",
 	"oathauth-webauthn-error-module-not-enabled": "O módulo «$1» non está habilitado para {{GENDER:$2|o usuario|a usuaria}} «$2».",
 	"oathauth-webauthn-error-verification-failed": "Fallou a verificación de WebAuthn.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Fallou a verificación da chave de acceso.",
 	"oathauth-webauthn-error-credentials-missing": "Non se enviaron as credenciais de WebAuthn.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|O usuario|A usuaria}} «$1» non pode rexistrar unha nova credencial.",
 	"oathauth-webauthn-error-invalid-new-key": "A chave nova que devolveu o módulo non é do tipo necesario.",
