@@ -280,6 +280,7 @@
 				"oathauth-passkey-dialog-back",
 				"oathauth-passkey-dialog-add",
 				"oathauth-2fa-required",
+				"oathauth-2fa-required-groups-on-project",
 				"oathauth-2fa-groups-notice-single",
 				"oathauth-2fa-groups-notice-multiple",
 				"oathauth-2fa-groups-notice-multiple-links-intro",
