@@ -66,8 +66,16 @@
 		class="mw-special-OATHManage-authmethods"
 		:class="{ 'mw-special-OATHManage-authmethods--no-keys': !hasKeys }">
 		<h3>{{ $i18n( 'oathauth-authenticator-header' ) }}</h3>
-		<cdx-message v-if="isRequiredToHave2FA" inline>
+		<cdx-message v-if="isRequiredToHave2FA && hasKeys" inline>
 			{{ $i18n( 'oathauth-2fa-required' ) }}
+		</cdx-message>
+		<cdx-message v-if="isRequiredToHave2FA && !hasKeys">
+			{{ $i18n( 'oathauth-2fa-required' ) }}
+			<ul>
+				<li v-for="( { text, count }, wiki ) in groupsRequiring2FAPerWiki" :key="wiki">
+					{{ $i18n( 'oathauth-2fa-required-groups-on-project', count, text, wiki ) }}
+				</li>
+			</ul>
 		</cdx-message>
 		<cdx-accordion
 			v-for="key in data.keys"
@@ -172,6 +180,23 @@ module.exports = exports = defineComponent( {
 		const isRequiredToHave2FA = computed( () => data.groupsRequiring2FA.length > 0 );
 		const canRemoveKeys = computed( () => !isRequiredToHave2FA.value || data.keys.length > 1 );
 
+		const groupsRequiring2FAPerWiki = computed( () => {
+			const wikis = {};
+			data.groupsRequiring2FA.forEach( ( entry ) => {
+				if ( !( entry.wiki in wikis ) ) {
+					wikis[ entry.wiki ] = [];
+				}
+				wikis[ entry.wiki ].push( ...entry.groupNames );
+			} );
+			for ( const wiki in wikis ) {
+				wikis[ wiki ] = {
+					text: mw.language.listToText( wikis[ wiki ] ),
+					count: wikis[ wiki ].length
+				};
+			}
+			return wikis;
+		} );
+
 		const formAction = mw.config.get( 'wgScript' );
 		const pageTitle = mw.config.get( 'wgPageName' );
 
@@ -183,7 +208,8 @@ module.exports = exports = defineComponent( {
 			hasPasskeys,
 			isRequiredToHave2FA,
 			canRemoveKeys,
-			groupsRequiring2FA
+			groupsRequiring2FA,
+			groupsRequiring2FAPerWiki
 		};
 	}
 } );

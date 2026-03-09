@@ -227,24 +227,56 @@ class OATHManage extends SpecialPage {
 		foreach ( $splitGroups as $wikiId => $pages ) {
 			$wiki = WikiMap::getWiki( $wikiId );
 			foreach ( $pages as $page => $groups ) {
-				$groupNames = $lang->listToText( array_map(
+				$groupNames = array_map(
 					fn ( $group ) => $lang->getGroupMemberName( $group, $this->getUser() ),
 					$groups
-				) );
+				);
 
 				$result[] = [
 					'wiki' => $wiki->getDisplayName(),
 					'page' => $page,
 					'url' => $page !== '' ? $wiki->getUrl( $page ) : '',
 					'groupNames' => $groupNames,
-					'groupCount' => count( $groups ),
 				];
 			}
 		}
 		return $result;
 	}
 
+	private function build2FARequiredNotice(): string {
+		$codex = new Codex();
+		$lang = $this->getLanguage();
+		$message = $codex->message();
+		if ( $this->oathUser->isTwoFactorAuthEnabled() ) {
+			$message->setInline( true )
+				->setContentText( $this->msg( 'oathauth-2fa-required' )->text() );
+		} else {
+			$groupsPerWiki = [];
+			foreach ( $this->groupsRequiring2FA as $entry ) {
+				$groupsPerWiki[$entry['wiki']] = array_merge(
+					$groupsPerWiki[$entry['wiki']] ?? [],
+					$entry['groupNames']
+				);
+			}
+
+			$content = $this->msg( 'oathauth-2fa-required' )->parse();
+			$listItems = '';
+			foreach ( $groupsPerWiki as $wiki => $groups ) {
+				$listItems .= Html::rawElement( 'li', [], $this->msg(
+					'oathauth-2fa-required-groups-on-project',
+					count( $groups ),
+					$lang->listToText( $groups ),
+					$wiki
+				)->parse() );
+			}
+			$content .= Html::rawElement( 'ul', [], $listItems );
+			$message->setContentHtml( $codex->htmlSnippet()->setContent( $content )->build() );
+		}
+		return $message->build()->getHtml();
+	}
+
 	private function buildIrremovableKeyNotice(): string {
+		$lang = $this->getLanguage();
 		if ( count( $this->groupsRequiring2FA ) === 1 ) {
 			$entry = $this->groupsRequiring2FA[0];
 			if ( $entry['url'] ) {
@@ -253,12 +285,17 @@ class OATHManage extends SpecialPage {
 				$pageLink = $this->msg( 'oathauth-2fa-groups-notice-unknown-page' )->parse();
 			}
 			$noticeContent = $this->msg( 'oathauth-2fa-groups-notice-single' )
-				->params( $entry['groupCount'], $entry['groupNames'], $entry['wiki'], $pageLink )
+				->params(
+					count( $entry['groupNames'] ),
+					$lang->listToText( $entry['groupNames'] ),
+					$entry['wiki'],
+					$pageLink
+				)
 				->parse();
 		} else {
 			$totalGroups = 0;
 			foreach ( $this->groupsRequiring2FA as $entry ) {
-				$totalGroups += $entry['groupCount'];
+				$totalGroups += count( $entry['groupNames'] );
 			}
 
 			$noticeContent = $this->msg( 'oathauth-2fa-groups-notice-multiple' )->params( $totalGroups )->parse();
@@ -276,7 +313,12 @@ class OATHManage extends SpecialPage {
 					$pageLink = $this->msg( 'oathauth-2fa-groups-notice-unknown-page' )->parse();
 				}
 				$content = $this->msg( 'oathauth-2fa-groups-notice-multiple-links-entry' )
-					->params( $entry['groupCount'], $entry['groupNames'], $entry['wiki'], $pageLink )
+					->params(
+						count( $entry['groupNames'] ),
+						$lang->listToText( $entry['groupNames'] ),
+						$entry['wiki'],
+						$pageLink
+					)
 					->parse();
 				$noticeContent .= Html::rawElement( 'li', [], $content );
 			}
@@ -446,11 +488,7 @@ class OATHManage extends SpecialPage {
 		}
 
 		if ( $this->groupsRequiring2FA ) {
-			$mandatory2FAMessage = $codex->message()
-				->setInline( true )
-				->setContentText( $this->msg( 'oathauth-2fa-required' )->text() )
-				->build()
-				->getHtml();
+			$mandatory2FAMessage = $this->build2FARequiredNotice();
 		}
 
 		$moduleButtons = '';
