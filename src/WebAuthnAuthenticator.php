@@ -328,9 +328,7 @@ class WebAuthnAuthenticator {
 	 */
 	private function getPendingRequestWithChallenge( string $returnClass, string $challenge ) {
 		$requests = $this->getPendingRequests( $returnClass );
-		// We'd like to use array_find here, but that's PHP 8.4+
-		$matching = array_filter( $requests, static fn ( $request ) => $request->challenge === $challenge );
-		return $matching ? reset( $matching ) : null;
+		return array_find( $requests, static fn ( $request ) => $request->challenge === $challenge );
 	}
 
 	private function filterExpiredRequests( array $requests ): array {
