@@ -86,7 +86,6 @@
 				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\PasskeyPrimaryAuthenticationProvider",
 				"services": [
 					"WebAuthnAuthenticator",
-					"OATHUserRepository",
 					"OATHAuthLogger",
 					"UserFactory"
 				],

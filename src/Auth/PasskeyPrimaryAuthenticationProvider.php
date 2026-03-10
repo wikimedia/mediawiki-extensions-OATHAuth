@@ -8,7 +8,6 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserFactory;
@@ -17,7 +16,6 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 
 	public function __construct(
 		private readonly WebAuthnAuthenticator $webAuthnAuthenticator,
-		private readonly OATHUserRepository $userRepository,
 		private readonly OATHAuthLogger $oathLogger,
 		private readonly UserFactory $userFactory
 	) {
