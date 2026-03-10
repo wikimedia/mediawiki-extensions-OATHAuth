@@ -87,15 +87,12 @@ class WebAuthn implements IModule {
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
 	): ?OATHAuthOOUIHTMLForm {
-		$module = $this;
-		$enabledForUser = $this->isEnabled( $user );
-
 		if ( $context->getConfig()->get( 'WebAuthnNewCredsDisabled' ) === false ) {
 			if ( $action === OATHManage::ACTION_ENABLE || $action === static::ACTION_ADD_KEY ) {
-				return new WebAuthnAddKeyForm( $user, $repo, $module, $context, $registry );
+				return new WebAuthnAddKeyForm( $user, $repo, $this, $context, $registry );
 			}
-			if ( $enabledForUser ) {
-				return new WebAuthnManageForm( $user, $repo, $module, $context, $registry );
+			if ( $this->isEnabled( $user ) ) {
+				return new WebAuthnManageForm( $user, $repo, $this, $context, $registry );
 			}
 		}
 
