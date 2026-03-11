@@ -112,5 +112,5 @@
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Dit medlemskab}} i {{PLURAL:$1|denne gruppe|disse grupper}} er deaktiveret, indtil du aktiverer [[Special:Manage Two-factor authentication|tofaktorgodkendelse]].",
 	"oathauth-qrcode-alt": "Scanbar QR-kode, der repræsenterer den hemmelige nøgle.",
 	"oathauth-must-be-central": "{{GENDER:$1|Din konto}} skal være forbundet til det centrale godkendelsessystem for at bruge tofaktorgodkendelse.",
-	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2 ."
+	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2."
 }
