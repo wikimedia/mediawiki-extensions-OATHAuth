@@ -195,10 +195,12 @@
 	"oathauth-passkey-dialog-back": "Zurück",
 	"oathauth-passkey-dialog-add": "Passkey hinzufügen",
 	"oathauth-2fa-required": "{{#FORMAL:Du gehörst|Sie gehören}} Gruppen an, die eine Zwei-Faktor-Authentifizierung erfordern.",
+	"oathauth-2fa-required-groups-on-project": "$2 auf $3",
 	"oathauth-2fa-groups-notice-single": "{{#FORMAL:Du bist|Sie sind}} Mitglied von {{PLURAL:$1|einer Gruppe|Gruppen}}, die die Zwei-Faktor-Authentifizierung {{PLURAL:$1|erfordert|erfordern}} ($2 auf $3). Um diese Methode zu entfernen, {{#FORMAL:musst du|müssen Sie}}:\n<ul> \n<li>eine weitere Zwei-Faktor-Authentifizierungsmethode hinzufügen, oder</li> \n<li>{{#FORMAL:Lasse dich|Lassen Sie sich}} aus {{PLURAL:$1| der Gruppe|den Gruppen}} entfernen. Bitte {{#FORMAL:besuche|besuchen Sie}}: $4</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "{{#FORMAL:Du gehörst|Sie gehören}} zu {{PLURAL:$1|der Gruppe|den Gruppen}}, die die Zwei-Faktor-Authentifizierung {{PLURAL:$1|erfordert|erfordern}}. Um diese Methode zu entfernen, {{#FORMAL:musst du|müssen Sie}}:\n<ul> \n<li>eine weitere Zwei-Faktor-Authentifizierungsmethode hinzufügen, oder</li> \n<li>{{#FORMAL:Lass dich|Lassen Sie sich}} aus {{PLURAL:$1|der Gruppe|den Gruppen}} entfernen.</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Um aus {{PLURAL:$1|der Gruppe|den Gruppen}} entfernt zu werden, {{#FORMAL:besuche|besuchen Sie}} bitte:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Für $2 auf $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Unbekannte Seite",
-	"oathauth-remove-lastkey-required": "{{#FORMAL:Du kannst|Sie können Ihre}} letzte Authentifizierungsmethode nicht entfernen, wenn {{#FORMAL:du Mitglied von Gruppen bist|Sie Mitglied von Gruppen sind}}, die eine Zwei-Faktor-Authentifizierung erfordern. Bitte {{#FORMAL:füge|fügen Sie}} eine weitere Authentifizierungsmethode hinzu, bevor {{#FORMAL:du diese entfernst|Sie diese entfernen}}."
+	"oathauth-remove-lastkey-required": "{{#FORMAL:Du kannst|Sie können Ihre}} letzte Authentifizierungsmethode nicht entfernen, wenn {{#FORMAL:du Mitglied von Gruppen bist|Sie Mitglied von Gruppen sind}}, die eine Zwei-Faktor-Authentifizierung erfordern. Bitte {{#FORMAL:füge|fügen Sie}} eine weitere Authentifizierungsmethode hinzu, bevor {{#FORMAL:du diese entfernst|Sie diese entfernen}}.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Benutzer hat die Zwei-Faktor-Authentifizierung aktiviert"
 }

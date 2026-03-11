@@ -128,6 +128,7 @@
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Você}} tem $3 {{PLURAL:$3|código de recuperação restante|códigos de recuperação restantes}}. Você pode considerar desativar e reativar a autenticação de dois fatores para gerar $4 {{PLURAL:$4|novo código|novos códigos}} de recuperação para usar no futuro.",
 	"oathauth-notifications-recoverycodesleft-help": "Ajuda",
 	"oathauth-notifications-recoverycodesleft-primary": "Verificar suas configurações de autenticação de dois fatores.",
+	"oathauth-notifications-recoverycodes-generated-for-user-help": "Ajuda",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} possui autenticação de dois fatores ativada.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} não possui autenticação de dois fatores ativada.",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Grupo desativado|Grupos desativados}}:",

@@ -189,6 +189,7 @@
 	"oathauth-passkey-dialog-back": "Geriyə",
 	"oathauth-passkey-dialog-add": "Keçid açarı əlavə et",
 	"oathauth-2fa-required": "Siz iki faktorlu autentifikasiya tələb edən qrupların üzvüsünüz.",
+	"oathauth-2fa-required-groups-on-project": "$3 layihəsində $2",
 	"oathauth-2fa-groups-notice-single": "Siz iki faktorlu autentifikasiya tələb edən {{PLURAL:$1|qrupun|qrupların}} üzvüsünüz ($3 saytında $2). Bu metodu silmək üçün:\n<ul>\n<li>başqa bir iki faktorlu autentifikasiya metodu əlavə edin, və ya</li>\n<li>özünüzü həmin istifadəçi {{PLURAL:$1|qrupundan|qruplarından}} çıxarın: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Siz iki faktorlu autentifikasiya tələb edən {{PLURAL:$1|qrupun|qrupların}} üzvüsünüz. Bu metodu silmək üçün:\n<ul>\n<li>başqa bir iki faktorlu autentifikasiya metodu əlavə edin, və ya</li>\n<li>özünüzü həmin istifadəçi {{PLURAL:$1|qrupundan|qruplarından}} çıxarın.</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "{{PLURAL:$1|Qruplardan}} çıxarılmaq üçün zəhmət olmasa, buranı ziyarət edin:",

@@ -10,5 +10,6 @@
 	"oathauth-notifications-recoverycodesleft-help": "مدد",
 	"oathauth-notifications-recoverycodes-generated-for-user-help": "مدد",
 	"oathauth-authenticator-delete": "ہٹاؤ",
-	"oathauth-passkey-dialog-back": "پچھوں"
+	"oathauth-passkey-dialog-back": "پچھوں",
+	"oathauth-2fa-required-groups-on-project": "$2 $3 اتے"
 }

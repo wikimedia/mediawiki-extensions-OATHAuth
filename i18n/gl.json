@@ -186,6 +186,7 @@
 	"oathauth-passkey-dialog-back": "Volver",
 	"oathauth-passkey-dialog-add": "Engadir a clave de acceso",
 	"oathauth-2fa-required": "Pertences a grupos que necesitan unha autenticación de dous pasos.",
+	"oathauth-2fa-required-groups-on-project": "$2 en $3",
 	"oathauth-2fa-groups-notice-single": "Pertences a {{PLURAL:$1|un grupo|grupos}} que {{PLURAL:$1|necesita|necesitan}} unha autenticación de dous pasos ($2 en $3). Para eliminar este método debes:\n<ul> \n<li>engadir outro método de autenticación de dous factores ou</li>\n<li>eliminarte {{PLURAL:$1|do grupo|dos grupo}}. Visita: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Pertences a {{PLURAL:$1|un grupo|grupos}} que {{PLURAL:$1|necesita|necesitan}} unha autenticación de dous pasos. Para eliminar este método debes:\n<ul> \n<li>engadir outro método de autenticación de dous factores ou</li>\n<li>eliminarte {{PLURAL:$1|do grupo|dos grupo}}.</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Para eliminarte {{PLURAL:$1|do grupo|dos grupo}}, visita:",
