@@ -25,7 +25,8 @@
 			"Yasten",
 			"Escargot bleu",
 			"Bananax47",
-			"Raveloaritiana Mamisoa"
+			"Raveloaritiana Mamisoa",
+			"The RedBurn"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -171,5 +172,5 @@
 	"oathauth-delete-wrong-confirm-message": "Saisie erronée pour la suppression de la dernière clé. Veuillez entrer « {{int:oathauth-authenticator-delete-text}} » pour continuer",
 	"oathauth-delete-success": "<strong>$1</strong> supprimé.",
 	"oathauth-created-at": "Ajouté le $1",
-	"oathauth-enable-success": "<strong>$1</strong> ajouté."
+	"oathauth-enable-success": "<strong>$1</strong> ajoutée."
 }

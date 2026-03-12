@@ -133,7 +133,7 @@
 	"oathauth-hint": "Har du ikke adgang til din enhed eller godkendelsesapp? Du kan indtaste en gendannelseskode (som blev vist, da du aktiverede 2FA) i dette felt.",
 	"oathauth-recovery-code-hint": "Har du mistet din gendannelseskode? Kontakt venligst en [[{{MediaWiki:Grouppage-sysop}}|administrator]].",
 	"oathauth-must-be-central": "{{GENDER:$1|Din konto}} skal være forbundet til det centrale godkendelsessystem for at bruge tofaktorgodkendelse.",
-	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2 .",
+	"oathauth-error-multiple-modules": "For nuværende understøttes brugen af flere tofaktorgodkendelsesmetoder ikke. Du kan kun aktivere $1 efter at have deaktiveret $2.",
 	"group-oathauth-twofactorauth": "Brugere, der muligvis bruger tofaktorgodkendelse",
 	"group-oathauth-twofactorauth-member": "Bruger, der kan bruge tofaktorgodkendelse",
 	"oathauth-remove-nosuchkey": "Nøglen blev ikke fundet.",
