@@ -187,6 +187,7 @@
 	"oathauth-passkey-dialog-back": "Tilbage",
 	"oathauth-passkey-dialog-add": "Tilføj adgangsnøgle",
 	"oathauth-2fa-required": "Du er medlem af grupper, der kræver tofaktorgodkendelse.",
+	"oathauth-2fa-required-groups-on-project": "$2 på $3",
 	"oathauth-2fa-groups-notice-single": "Du er medlem af {{PLURAL:$1|en gruppe|grupper}}, der {{PLURAL:$1|kræver}} tofaktor-godkendelse ($2 på $3). For at fjerne denne metode skal du:\n<ul> \n<li>tilføj en anden tofaktor-godkendelsesmetode, eller</li> \n<li>få dig selv fjernet fra {{PLURAL:$1|gruppen|grupperne}}. Besøg venligst: $4</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Du er medlem af {{PLURAL:$1|en gruppe|grupper}}, der {{PLURAL:$1|kræver}} tofaktorgodkendelse. For at fjerne denne metode skal du:\n<ul> \n<li>tilføj en anden tofaktor-godkendelsesmetode, eller</li> \n<li>få dig selv fjernet fra {{PLURAL:$1|grupperne}}.</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "For at blive fjernet fra {{PLURAL:$1|gruppen|grupperne}}, besøg venligst:",

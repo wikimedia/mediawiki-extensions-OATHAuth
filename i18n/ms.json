@@ -183,6 +183,7 @@
 	"oathauth-passkey-dialog-back": "Kembali",
 	"oathauth-passkey-dialog-add": "Tambah kunci laluan",
 	"oathauth-2fa-required": "Anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor.",
+	"oathauth-2fa-required-groups-on-project": "$2 pada $3",
 	"oathauth-2fa-groups-notice-single": "Anda merupakan seorang ahli {{PLURAL:$1|bagi satu kumpulan|bagi beberapa kumpulan}} yang {{PLURAL:$1|memerlukan}} pengesahihan dwifaktor ($2 pada $3). Untuk membuang penggunaan kaedah ini, anda mesti:\n<ul> \n<li>tambah kaedah pengesahihan dwifaktor yang lain, atau</li> \n<li>telah mengeluarkan diri anda daripada {{PLURAL:$1|kumpulan|kumpulan-kumpulan}} terlibat. Sila lawati: $4</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Anda merupakan seorang ahli {{PLURAL:$1|bagi beberapa kumpulan}} yang {{PLURAL:$1|memerlukan}} pengesahihan dwifaktor. Untuk membuang kaedah ini, anda mesti:\n<ul> \n<li>tambah kaedah pengesahihan dwifaktor yang lain, atau</li> \n<li>telah mengeluarkan diri anda daripada {{PLURAL:$1|kumpulan-kumpulan}} tersebut.</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Untuk keluar daripada {{PLURAL:$1|kumpulan-kumpulan}} tersebut sila lawati:",
