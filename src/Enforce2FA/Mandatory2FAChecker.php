@@ -13,6 +13,7 @@ use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class Mandatory2FAChecker {
 
@@ -65,7 +66,10 @@ class Mandatory2FAChecker {
 		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
 			$userName = $localUser->getName();
 			$centralUser = CentralAuthUser::getInstanceByName( $userName );
-			$attachments = $centralUser->queryAttached();
+			// T419772: Read attached accounts from replicas to avoid warnings about accounts
+			// which are just being created. Any newly created accounts are probably not in any
+			// interesting local groups, so this is fine.
+			$attachments = $centralUser->queryAttached( IDBAccessObject::READ_NORMAL );
 
 			// Only wikis where the user has any groups are of interest to us
 			$attachments = array_filter(
