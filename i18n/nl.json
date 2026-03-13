@@ -3,6 +3,7 @@
 		"authors": [
 			"Catrope",
 			"Danieldegroot2",
+			"Erik Baas",
 			"HanV",
 			"Kippenvlees1",
 			"LongJohn nl",
@@ -175,7 +176,7 @@
 	"oathauth-max-keys-exceeded-message": "U hebt het maximale aantal authenticatiemethoden bereikt, namelijk $1. Verwijder een authenticatiemethode voordat u een nieuwe toevoegt.",
 	"oathauth-passkeys-header": "Passkeys",
 	"oathauth-passkeys-placeholder": "Passkeys zijn veiliger dan wachtwoorden. U kunt zich ermee aanmelden zoals u uw apparaat ontgrendelt.",
-	"oathauth-passkeys-no2fa": "Om een passkey toe te voegen moet u eerste de tweetrapsauthenticatie instellen.",
+	"oathauth-passkeys-no2fa": "Om een passkey toe te voegen moet u eerst de tweetrapsauthenticatie instellen.",
 	"oathauth-passkeys-add": "Passkey toevoegen",
 	"oathauth-passkey-dialog-title": "Een passkey toevoegen",
 	"oathauth-passkey-dialog-text": "Passkeys zijn de veiligste manier om u bij uw account aan te melden. Voor de meeste mensen zijn ze ook de eenvoudigste manier.\n\nMet een passkey kunt u zich bij {{SITENAME}} aanmelden zoals u uw apparaat ontgrendelt, of dat nu met een PIN is, met een vingerafdruk of via gezichtsherkenning.\n\nHoe u zich ook aanmeldt, uw biometrische gegevens en PIN blijven op uw apparaat en worden nooit naar ons gestuurd.",
