@@ -262,21 +262,11 @@ class WebAuthnKey extends AuthKey {
 			$friendlyNames[] = strtolower( $friendlyName );
 		}
 
-		$this->checkFriendlyNameInternal( $friendlyNames );
-	}
-
-	/**
-	 * This will not actually work very well, as the third same key will
-	 * be named "Key #2 #3".
-	 *
-	 * It should be refactored once we have defined what this
-	 * behaviour should be, for now it's just a safety feature.
-	 */
-	private function checkFriendlyNameInternal( array $names, int $inc = 2 ): void {
-		if ( in_array( strtolower( $this->friendlyName ), $names ) ) {
-			$this->friendlyName .= " #$inc";
+		$original = $this->friendlyName;
+		$inc = 2;
+		while ( in_array( strtolower( $this->friendlyName ), $friendlyNames ) ) {
+			$this->friendlyName .= "$original #$inc";
 			$inc++;
-			$this->checkFriendlyNameInternal( $names, $inc );
 		}
 	}
 
