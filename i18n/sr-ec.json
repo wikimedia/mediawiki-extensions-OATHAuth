@@ -122,5 +122,6 @@
 	"oathauth-passkey-dialog-back": "Назад",
 	"oathauth-2fa-required-groups-on-project": "$2 на $3",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "За $2 на $3: $4",
-	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница"
+	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Корисник има укључену двофакторску аутентификацију"
 }

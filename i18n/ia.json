@@ -183,10 +183,12 @@
 	"oathauth-passkey-dialog-back": "Retornar",
 	"oathauth-passkey-dialog-add": "Adder clave de accesso",
 	"oathauth-2fa-required": "Tu es membro de gruppos que exige le authentication bifactorial.",
+	"oathauth-2fa-required-groups-on-project": "$2 sur $3",
 	"oathauth-2fa-groups-notice-single": "Tu es membro de {{PLURAL:$1|un gruppo|gruppos}} que exige le authentication bifactorial ($2 sur $3). Pro remover iste methodo, tu debe:\n<ul>\n<li>adder un altere methodo de authentication bifactorial, o</li>\n<li>retirar te de iste gruppo{{PLURAL:$1||s}}. Per favor visita: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Tu es membro de {{PLURAL:$1|un gruppo|gruppos}} que exige le authentication bifactorial. Pro remover iste methodo, tu debe:\n<ul>\n<li>adder un altere methodo de authentication bifactorial, o</li>\n<li>retirar te de iste gruppo{{PLURAL:$1||s}}.</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Pro retirar te del gruppo{{PLURAL:$1||s}}, per favor visita:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Pro $2 sur $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Pagina incognite",
-	"oathauth-remove-lastkey-required": "Tu non pote remover tu ultime methodo de authentication si tu es membro de gruppos que exige le authentication bifactorial. Per favor adde un altere methodo de authentication ante de remover iste."
+	"oathauth-remove-lastkey-required": "Tu non pote remover tu ultime methodo de authentication si tu es membro de gruppos que exige le authentication bifactorial. Per favor adde un altere methodo de authentication ante de remover iste.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Le usator ha activate le authentication bifactorial"
 }
