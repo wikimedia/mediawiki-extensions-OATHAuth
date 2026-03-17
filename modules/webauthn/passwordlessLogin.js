@@ -15,13 +15,14 @@ if ( window.PublicKeyCredential && PublicKeyCredential.isConditionalMediationAva
 				form.getAuthInfo(),
 				true // passwordless login
 			);
-			// TODO retry after timeout
 			authenticator.authenticate().then(
 				( credential ) => {
 					form.submitWithCredential( credential );
 				},
 				( error ) => {
-					form.dieWithError( error );
+					// Don't display errors, these tend to be about failing to set up conditional
+					// auth. Instead just silently don't display the conditional auth UI.
+					mw.log( 'WebAuthn conditional authentication failed', error );
 				}
 			);
 		} );
