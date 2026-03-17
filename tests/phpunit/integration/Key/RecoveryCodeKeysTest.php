@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -16,6 +17,7 @@ use UnexpectedValueException;
  * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\EncryptionHelper
  * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
+ * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCode
  * @covers \MediaWiki\Extension\OATHAuth\Module\TOTP
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  * @group Database
@@ -93,12 +95,13 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 			'nonce' => $data['nonce'],
 		] );
 
-		$this->assertEquals(
-			OATHAuthServices::getInstance( $this->getServiceContainer() )
-				->getEncryptionHelper()
-				->decryptStringArrayValues( $data['recoverycodekeys'], $data['nonce'] ),
-			$keysPostSerialization->getRecoveryCodeKeys(),
-		);
+		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )->getEncryptionHelper();
+		$decryptedKeys = [];
+		foreach ( $data['recoverycodekeys'] as $recoveryCodeKeys ) {
+			$decryptedKeys[] = $encryptionHelper->decrypt( $recoveryCodeKeys, $data['nonce'] );
+		}
+
+		$this->assertEquals( $decryptedKeys, $keysPostSerialization->getRecoveryCodeKeys() );
 	}
 
 	public function testJsonSerializerWithEncryption() {
@@ -117,14 +120,13 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public function testDoNotReencryptEncryptedKeyData() {
 		$this->encryptionIntegrationTestSetup();
 
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
-		$keys->jsonSerialize();
-
-		[ $oldEncryptedRecoveryCodes, $oldNonce ] = $keys->getRecoveryCodeKeysEncryptedAndNonce();
-
-		$newData = $keys->jsonSerialize();
-		$this->assertEquals( $oldEncryptedRecoveryCodes, $newData['recoverycodekeys'] );
-		$this->assertEquals( $oldNonce, $newData['nonce'] );
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
+			'nonce' => self::NONCE,
+		] );
+		$serializedData = $keys->jsonSerialize();
+		$this->assertEquals( [ self::VALID_ENCRYPTED_RECOVERY_KEY ], $serializedData['recoverycodekeys'] );
+		$this->assertEquals( self::NONCE, $serializedData['nonce'] );
 	}
 
 	public function testGetSetFunctions(): void {
@@ -172,6 +174,33 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $keys->verify( $mockOATHUser, $testData ) );
 	}
 
+	/** @dataProvider provideRemoveCode */
+	public function testRemoveCode( int $originalCodeCount, int $expectedCodeCount ): void {
+		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
+		$mockOATHUser = $this->createMock( OATHUser::class );
+		$mockOATHUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' )
+		];
+		while ( count( $codes ) < $originalCodeCount ) {
+			$codes[] = RecoveryCode::newRandom();
+		}
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$this->assertArrayContains( [ 'TESTCODE' ], $keys->getRecoveryCodeKeys() );
+
+		$keys->removeRecoveryCode( $mockOATHUser, 'TESTCODE' );
+		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
+		$this->assertCount( $expectedCodeCount, $keys->getRecoveryCodeKeys() );
+	}
+
+	public static function provideRemoveCode(): iterable {
+		yield 'There are also other keys' => [ 5, 4 ];
+		yield 'The removed key is the last one' => [ 1, 10 ];
+	}
+
 	public function testIsValidRecoveryCode(): void {
 		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
 		$this->assertTrue( $key->isValidRecoveryCode( '64SZLJTTPRI5XBUE' ) );
@@ -213,5 +242,27 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$existingKeysPostSerialization = $keysObjectPostSerialization->getRecoveryCodeKeys();
 		$this->assertCount( 2, $existingKeysPostSerialization );
 		$this->assertSame( $existingKeysInitial[0], $existingKeysPostSerialization[0] );
+	}
+
+	/** @dataProvider provideWithEncryption */
+	public function testDataIsPreservedWhenSerializing( bool $useEncryption ): void {
+		if ( $useEncryption ) {
+			$this->encryptionIntegrationTestSetup();
+		}
+
+		$originalData = [
+			'recoverycodekeys' => [ [ 'KEY', [ 'foo' => 'bar' ] ] ]
+		];
+		$keysObject = RecoveryCodeKeys::newFromArray( $originalData );
+		$serializedData = $keysObject->jsonSerialize();
+
+		// Don't compare nonce, as it hasn't been set in the original data
+		unset( $serializedData['nonce'] );
+		$this->assertSame( $originalData, $serializedData );
+	}
+
+	public static function provideWithEncryption(): iterable {
+		yield 'No encryption' => [ false ];
+		yield 'With encryption' => [ true ];
 	}
 }

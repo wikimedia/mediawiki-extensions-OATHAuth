@@ -6,7 +6,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\Key;
 
-use Base32\Base32;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -16,23 +15,15 @@ use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 
 /**
- * Class representing a two-factor recovery code
+ * Class representing a two-factor recovery codes key
  *
  * Recovery codes are tied to OATHUsers
  *
  * @ingroup Extensions
  */
 class RecoveryCodeKeys extends AuthKey {
-	/** @var string[] List of recovery codes */
-	public array $recoveryCodeKeys;
-
-	/** @var string[] List of encrypted recovery codes */
-	private array $recoveryCodeKeysEncrypted;
-
-	/**
-	 * Length (in bytes) that recovery codes should be
-	 */
-	private const RECOVERY_CODE_LENGTH = 10;
+	/** @var RecoveryCode[] List of recovery codes in this key */
+	private array $recoveryCodes;
 
 	/**
 	 * @param array $data
@@ -43,28 +34,27 @@ class RecoveryCodeKeys extends AuthKey {
 		if ( !array_key_exists( 'recoverycodekeys', $data ) ) {
 			return null;
 		}
-		if ( isset( $data['nonce'] ) ) {
-			$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
-			if ( !$encryptionHelper->isEnabled() ) {
-				throw new UnexpectedValueException( 'Encryption is not configured but database has encrypted data' );
+		$recoveryCodes = [];
+		foreach ( $data['recoverycodekeys'] as $key ) {
+			if ( is_array( $key ) ) {
+				[ $code, $codeData ] = $key;
+			} else {
+				$code = $key;
+				$codeData = [];
 			}
-			$data['recoverycodekeysencrypted'] = $data['recoverycodekeys'];
-			$data['recoverycodekeys'] = $encryptionHelper->decryptStringArrayValues(
-				$data['recoverycodekeys'],
-				$data['nonce']
-			);
-		} else {
-			$data['recoverycodekeysencrypted'] = [];
-			$data['nonce'] = '';
+
+			if ( isset( $data['nonce'] ) ) {
+				$recoveryCodes[] = RecoveryCode::newFromEncrypted( $code, $data['nonce'], $codeData );
+			} else {
+				$recoveryCodes[] = RecoveryCode::newFromPlaintext( $code, $codeData );
+			}
 		}
 
 		return new static(
 			$data['id'] ?? null,
 			null,
 			$data['created_timestamp'] ?? null,
-			$data['recoverycodekeys'],
-			$data['recoverycodekeysencrypted'],
-			$data['nonce']
+			$recoveryCodes,
 		);
 	}
 
@@ -72,26 +62,14 @@ class RecoveryCodeKeys extends AuthKey {
 		?int $id,
 		?string $friendlyName,
 		?string $createdTimestamp,
-		array $recoveryCodeKeys,
-		array $recoveryCodeKeysEncrypted,
-		private string $nonce = '',
+		array $recoveryCodes
 	) {
 		parent::__construct( $id, $friendlyName, $createdTimestamp );
-		$this->recoveryCodeKeys = array_values( $recoveryCodeKeys );
-		$this->recoveryCodeKeysEncrypted = array_values( $recoveryCodeKeysEncrypted );
+		$this->recoveryCodes = $recoveryCodes;
 	}
 
 	public function getRecoveryCodeKeys(): array {
-		return $this->recoveryCodeKeys;
-	}
-
-	public function getRecoveryCodeKeysEncryptedAndNonce(): array {
-		return [ $this->recoveryCodeKeysEncrypted, $this->nonce ];
-	}
-
-	public function setRecoveryCodeKeysEncryptedAndNonce( array $recoveryCodeKeysEncrypted, string $nonce ): void {
-		$this->recoveryCodeKeysEncrypted = $recoveryCodeKeysEncrypted;
-		$this->nonce = $nonce;
+		return array_map( static fn ( $k ) => $k->getCode(), $this->recoveryCodes );
 	}
 
 	public function verify( OATHUser $user, array $data ): bool {
@@ -99,14 +77,12 @@ class RecoveryCodeKeys extends AuthKey {
 			return false;
 		}
 
+		$enteredRecoveryCode = $this->normaliseRecoveryCode( $data['recoverycode'] );
 		$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 		$logger = $this->getLogger();
 
-		foreach ( $this->recoveryCodeKeys as $userRecoveryCode ) {
-			if ( !hash_equals(
-				$this->normaliseRecoveryCode( $data['recoverycode'] ),
-				$userRecoveryCode
-			) ) {
+		foreach ( $this->recoveryCodes as $code ) {
+			if ( !$code->test( $enteredRecoveryCode ) ) {
 				continue;
 			}
 
@@ -126,16 +102,15 @@ class RecoveryCodeKeys extends AuthKey {
 
 	public function removeRecoveryCode( OATHUser $user, string $codeToRemove ) {
 		$codeToRemove = $this->normaliseRecoveryCode( $codeToRemove );
-		$key = array_search( $codeToRemove, $this->recoveryCodeKeys );
-		if ( $key === false ) {
-			return;
+
+		foreach ( $this->recoveryCodes as $key => $recoveryCode ) {
+			if ( $recoveryCode->test( $codeToRemove ) ) {
+				unset( $this->recoveryCodes[ $key ] );
+				break;
+			}
 		}
 
-		unset( $this->recoveryCodeKeys[$key] );
-		// T408297 - Unset the key for the same encrypted token.
-		unset( $this->recoveryCodeKeysEncrypted[$key] );
-
-		if ( $this->recoveryCodeKeys === [] ) {
+		if ( $this->recoveryCodes === [] ) {
 			// If we just deleted the last recovery code, generate new ones
 			$this->regenerateRecoveryCodeKeys();
 
@@ -151,28 +126,28 @@ class RecoveryCodeKeys extends AuthKey {
 
 	/**
 	 * Regenerate the full set of recovery codes, invalidating any existing ones.
+	 * @param array $data Optional additional data to store along codes, see {@see RecoveryCode::__construct}
 	 */
-	public function regenerateRecoveryCodeKeys(): void {
-		$this->recoveryCodeKeys = [];
+	public function regenerateRecoveryCodeKeys( array $data = [] ): void {
+		$this->recoveryCodes = [];
 		$this->generateAdditionalRecoveryCodeKeys(
-			OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' )
+			OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' ), $data
 		);
 	}
 
 	/**
 	 * Generate additional recovery codes and add them to the set, without invalidating existing ones.
 	 * @param int $numCodes Number of codes to generate
+	 * @param array $data Optional additional data to store along codes, see {@see RecoveryCode::__construct}
 	 * @return list<string> Newly generated recovery codes
 	 */
-	public function generateAdditionalRecoveryCodeKeys( int $numCodes ): array {
+	public function generateAdditionalRecoveryCodeKeys( int $numCodes, array $data = [] ): array {
 		$newCodes = [];
 		for ( $i = 0; $i < $numCodes; $i++ ) {
-			$newCodes[] = Base32::encode( random_bytes( self::RECOVERY_CODE_LENGTH ) );
+			$newCodes[] = RecoveryCode::newRandom( $data );
 		}
-		$this->recoveryCodeKeys = array_merge( $this->recoveryCodeKeys, $newCodes );
-		// This causes jsonSerialize() to re-encrypt the full set of recovery codes
-		$this->setRecoveryCodeKeysEncryptedAndNonce( [], '' );
-		return $newCodes;
+		$this->recoveryCodes = array_merge( $this->recoveryCodes, $newCodes );
+		return array_map( static fn ( $code ) => $code->getCode(), $newCodes );
 	}
 
 	/** @inheritDoc */
@@ -186,35 +161,39 @@ class RecoveryCodeKeys extends AuthKey {
 
 	/** @inheritDoc */
 	public function jsonSerialize(): array {
+		// T408299 - array_values() to renumber array keys
+		$codes = array_values( $this->recoveryCodes );
+
 		$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
-		if ( !$encryptionHelper->isEnabled() ) {
+		if ( !$encryptionHelper->isEnabled() || !count( $codes ) ) {
 			// fallback to unencrypted recovery codes
+			$plaintextCodes = [];
+			foreach ( $codes as $code ) {
+				if ( $code->getData() ) {
+					$plaintextCodes[] = [ $code->getCode(), $code->getData() ];
+				} else {
+					$plaintextCodes[] = $code->getCode();
+				}
+			}
 			return [
-				// T408299 - array_values() to renumber array keys
-				'recoverycodekeys' => array_values( $this->getRecoveryCodeKeys() )
+				'recoverycodekeys' => $plaintextCodes
 			];
 		}
 
-		[ $keys, $nonce ] = $this->getRecoveryCodeKeysEncryptedAndNonce();
-		if ( $keys !== [] ) {
-			// do not re - encrypt existing recovery codes
-			return [
-				// T408299 - array_values() to renumber array keys
-				'recoverycodekeys' => array_values( $keys ),
-				'nonce' => $nonce,
-			];
+		// Ensure that all codes are encoded using the same nonce
+		$nonce = $codes[0]->getNonce() ?? $encryptionHelper->generateNonce();
+		$encryptedCodes = [];
+		foreach ( $codes as $code ) {
+			if ( $code->getData() ) {
+				$encryptedCodes[] = [ $code->getCode(), $code->getData() ];
+			} else {
+				$encryptedCodes[] = $code->encryptCode( $nonce );
+			}
 		}
 
-		$nonce ??= '';
-		$encData = $encryptionHelper->encryptStringArrayValues(
-			// T408299 - array_values() to renumber array keys
-			array_values( $this->getRecoveryCodeKeys() ),
-			$nonce
-		);
-		$this->setRecoveryCodeKeysEncryptedAndNonce( $encData['encrypted_array'], $encData['nonce'] );
 		return [
-			'recoverycodekeys' => $encData['encrypted_array'],
-			'nonce' => $encData['nonce']
+			'recoverycodekeys' => $encryptedCodes,
+			'nonce' => $nonce,
 		];
 	}
 
@@ -231,8 +210,8 @@ class RecoveryCodeKeys extends AuthKey {
 	 */
 	public function isValidRecoveryCode( string $token ): bool {
 		$token = $this->normaliseRecoveryCode( $token );
-		foreach ( $this->recoveryCodeKeys as $key ) {
-			if ( hash_equals( $key, $token ) ) {
+		foreach ( $this->recoveryCodes as $key ) {
+			if ( $key->test( $token ) ) {
 				return true;
 			}
 		}

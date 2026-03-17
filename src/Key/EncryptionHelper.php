@@ -87,11 +87,10 @@ class EncryptionHelper {
 	public function encrypt( string $plaintext, string $nonce = '' ) {
 		// Generate a unique nonce
 		if ( $nonce === '' ) {
-			$nonce = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
-		} else {
-			// reused nonces (for array elements et al) are expected to be Base32-encoded
-			$nonce = Base32::decode( $nonce );
+			$nonce = $this->generateNonce();
 		}
+		// Nonces are expected to be Base32-encoded
+		$nonce = Base32::decode( $nonce );
 
 		$ciphertext = sodium_crypto_secretbox( $plaintext, $nonce, $this->getKey() );
 		return [
@@ -100,24 +99,11 @@ class EncryptionHelper {
 		];
 	}
 
-	public function decryptStringArrayValues( array $array, string $nonce ): array {
-		$decryptedArray = [];
-		foreach ( $array as $key => $value ) {
-			$decryptedValue = $this->decrypt( strval( $value ), $nonce );
-			$decryptedArray[$key] = $decryptedValue;
-		}
-		return $decryptedArray;
-	}
-
-	public function encryptStringArrayValues( array $array, string $nonce = '' ): array {
-		$encryptedArray = [];
-		foreach ( $array as $key => $value ) {
-			$encryptedValue = $this->encrypt( strval( $value ), $nonce );
-			$encryptedArray[$key] = $encryptedValue['secret'];
-			if ( $nonce === '' ) {
-				$nonce = $encryptedValue['nonce'];
-			}
-		}
-		return [ 'encrypted_array' => $encryptedArray, 'nonce' => $nonce ];
+	/**
+	 * Generate a base32-encoded nonce
+	 */
+	public function generateNonce(): string {
+		$nonce = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
+		return Base32::encode( $nonce );
 	}
 }

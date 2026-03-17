@@ -38,10 +38,14 @@ class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
 		if ( $useEncryption ) {
 			$this->encryptionIntegrationTestSetup();
 			$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )->getEncryptionHelper();
-			$encrypted = $encryptionHelper->encryptStringArrayValues( $keyData['recoverycodekeys'], self::NONCE );
+			$encrypted = [];
+			foreach ( $keyData['recoverycodekeys'] as $key ) {
+				[ 'secret' => $secret ] = $encryptionHelper->encrypt( $key, self::NONCE );
+				$encrypted[] = $secret;
+			}
 			$keyData = [
-				'recoverycodekeys' => $encrypted['encrypted_array'],
-				'nonce' => $encrypted['nonce']
+				'recoverycodekeys' => $encrypted,
+				'nonce' => self::NONCE,
 			];
 		}
 		$key = RecoveryCodeKeys::newFromArray( $keyData );
