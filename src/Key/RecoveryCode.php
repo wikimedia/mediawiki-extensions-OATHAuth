@@ -10,10 +10,12 @@ use Base32\Base32;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use RuntimeException;
 use UnexpectedValueException;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat as TS;
 
 /**
  * Represents a single recovery code, which is a part of the {@see RecoveryCodeKeys} module.
- * It abstracts out the code encryption.
+ * It abstracts out the code encryption and expiration.
  */
 class RecoveryCode {
 
@@ -59,7 +61,9 @@ class RecoveryCode {
 	/**
 	 * @param EncryptionHelper $encryptionHelper A service to use when encrypting the codes
 	 * @param string $plaintextCode The recovery code in plain text
-	 * @param array $data Optional additional data to be stored along this key. Currently unused.
+	 * @param array $data Optional additional data to be stored along this key.
+	 *   * 'expiry' - a MediaWiki-style timestamp when this code becomes expired (and unusable). If unspecified or set
+	 *     to an invalid value, the code doesn't expire.
 	 * @param string|null $encryptedCode The encrypted representation of this code. If set, will be used as a cache,
 	 *     to prevent re-encrypting of the code on saving.
 	 * @param string|null $nonce The nonce used for encrypting this code. Should be specified together with
@@ -109,9 +113,39 @@ class RecoveryCode {
 	/**
 	 * Returns true if the supplied token matches this code, false otherwise.
 	 * The comparison is resistant to timing attacks.
+	 * If the code is expired, returns false, regardless of the input data.
 	 */
 	public function test( string $suppliedToken ): bool {
+		if ( $this->isExpired() ) {
+			return false;
+		}
 		return hash_equals( $this->getCode(), $suppliedToken );
+	}
+
+	/** Returns the timestamp at which the code expires or null if it doesn't expire. */
+	public function getExpiryTimestamp(): ?string {
+		if ( !isset( $this->data['expiry'] ) ) {
+			return null;
+		}
+		$expiry = ConvertibleTimestamp::convert( TS::MW, $this->data['expiry'] );
+		if ( $expiry === false ) {
+			return null;
+		}
+		return $expiry;
+	}
+
+	/** Returns true if this code has no expiry time set. */
+	public function isPermanent(): bool {
+		return $this->getExpiryTimestamp() === null;
+	}
+
+	/** Checks if this code has expired. Unless explicitly specified, recovery codes don't expire. */
+	public function isExpired(): bool {
+		$expiry = $this->getExpiryTimestamp();
+		if ( $expiry === null ) {
+			return false;
+		}
+		return ConvertibleTimestamp::now() > $expiry;
 	}
 
 	private static function getEncryptionHelper(): EncryptionHelper {

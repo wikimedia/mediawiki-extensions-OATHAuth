@@ -65,7 +65,12 @@ class RecoveryCodeKeys extends AuthKey {
 		array $recoveryCodes
 	) {
 		parent::__construct( $id, $friendlyName, $createdTimestamp );
-		$this->recoveryCodes = $recoveryCodes;
+		$this->recoveryCodes = array_values(
+			array_filter(
+				$recoveryCodes,
+				static fn ( RecoveryCode $code ) => !$code->isExpired()
+			)
+		);
 	}
 
 	public function getRecoveryCodeKeys(): array {
@@ -110,9 +115,11 @@ class RecoveryCodeKeys extends AuthKey {
 			}
 		}
 
-		if ( $this->recoveryCodes === [] ) {
-			// If we just deleted the last recovery code, generate new ones
-			$this->regenerateRecoveryCodeKeys();
+		$remainingPermanentCodes = array_filter( $this->recoveryCodes, static fn ( $code ) => $code->isPermanent() );
+		if ( $remainingPermanentCodes === [] ) {
+			// Don't invalidate existing temporary codes, as this is an automatic action and
+			// the user didn't consciously choose to regenerate all codes
+			$this->generateAdditionalRecoveryCodeKeys( $this->getNumberOfCodesToGenerate() );
 
 			$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 			$this->getLogger()->info(
@@ -125,14 +132,19 @@ class RecoveryCodeKeys extends AuthKey {
 	}
 
 	/**
+	 * Returns the number of recovery codes to generate by default
+	 */
+	private function getNumberOfCodesToGenerate(): int {
+		return OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' );
+	}
+
+	/**
 	 * Regenerate the full set of recovery codes, invalidating any existing ones.
 	 * @param array $data Optional additional data to store along codes, see {@see RecoveryCode::__construct}
 	 */
 	public function regenerateRecoveryCodeKeys( array $data = [] ): void {
 		$this->recoveryCodes = [];
-		$this->generateAdditionalRecoveryCodeKeys(
-			OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' ), $data
-		);
+		$this->generateAdditionalRecoveryCodeKeys( $this->getNumberOfCodesToGenerate(), $data );
 	}
 
 	/**

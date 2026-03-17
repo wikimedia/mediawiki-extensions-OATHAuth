@@ -12,6 +12,7 @@ use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 use SodiumException;
 use UnexpectedValueException;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
@@ -264,5 +265,39 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public static function provideWithEncryption(): iterable {
 		yield 'No encryption' => [ false ];
 		yield 'With encryption' => [ true ];
+	}
+
+	public function testSkipsExpiredKeysWhenInitializing() {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+
+		$keyData = [
+			'recoverycodekeys' => [
+				[ 'VALID_KEY', [ 'expiry' => '20270101000000' ] ],
+				[ 'EXPIRED_KEY', [ 'expiry' => '20250101000000' ] ],
+			]
+		];
+		$keys = RecoveryCodeKeys::newFromArray( $keyData );
+		$this->assertSame( [ 'VALID_KEY' ], $keys->getRecoveryCodeKeys() );
+	}
+
+	public function testRegeneratesCodesWhenLastOneIsUsed() {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
+
+		$mockOATHUser = $this->createMock( OATHUser::class );
+		$mockOATHUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+			RecoveryCode::newFromPlaintext( 'EXPIRINGCODE', [ 'expiry' => '20270101000000' ] ),
+		];
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$this->assertArrayContains( [ 'TESTCODE', 'EXPIRINGCODE' ], $keys->getRecoveryCodeKeys() );
+
+		$keys->removeRecoveryCode( $mockOATHUser, 'TESTCODE' );
+		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
+		$this->assertCount( 11, $keys->getRecoveryCodeKeys() );
 	}
 }
