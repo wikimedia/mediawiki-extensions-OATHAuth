@@ -40,12 +40,16 @@ trait RecoveryCodesTrait {
 	abstract public function msg( $key, ...$params );
 
 	/**
-	 * Retrieve current recovery codes for display purposes
+	 * Retrieve current permanent recovery codes for display purposes
 	 *
 	 * The characters of the token are split in groups of 4
 	 */
 	public function getRecoveryCodesForDisplay( RecoveryCodeKeys $key ): array {
-		return array_map( [ $this, 'tokenFormatterFunction' ], $key->getRecoveryCodeKeys() );
+		$permanentCodes = array_filter( $key->getRecoveryCodes(), static fn ( $code ) => $code->isPermanent() );
+		return array_map(
+			fn ( $code ) => $this->tokenFormatterFunction( $code->getCode() ),
+			array_values( $permanentCodes )
+		);
 	}
 
 	public function setOutputJsConfigVars( array $recoveryCodes ) {
@@ -73,10 +77,7 @@ trait RecoveryCodesTrait {
 
 		if ( $displayExisting && count( $moduleDbKeys ) === RecoveryCodes::RECOVERY_CODE_MODULE_COUNT ) {
 			$key = array_shift( $moduleDbKeys );
-			$recoveryCodes = array_map(
-				[ $this, 'tokenFormatterFunction' ],
-				$key->getRecoveryCodeKeys()
-			);
+			$recoveryCodes = $this->getRecoveryCodesForDisplay( $key );
 
 			$timestamp = $key->getCreatedTimestamp();
 			$snippet = '<p>' . $this->msg( 'oathauth-recoverycodes-exist' )->escaped() . '</p>';

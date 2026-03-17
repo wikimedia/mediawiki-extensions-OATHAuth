@@ -101,7 +101,7 @@ class RecoveryCodes implements IModule {
 		// Use the provided $recoveryCodesData if there is one, otherwise create an empty key
 		// and generate new codes
 		$recoveryCodeKey = $this->newKey( $recoveryCodesData ?? [ 'recoverycodekeys' => [] ] );
-		if ( $recoveryCodeKey->getRecoveryCodeKeys() === [] ) {
+		if ( $recoveryCodeKey->getRecoveryCodes() === [] ) {
 			$recoveryCodeKey->regenerateRecoveryCodeKeys();
 		}
 

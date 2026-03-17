@@ -73,6 +73,20 @@ class RecoveryCodeKeys extends AuthKey {
 		);
 	}
 
+	/**
+	 * Returns a list of all recovery codes in this key (both permanent and expiring ones)
+	 * @return RecoveryCode[]
+	 */
+	public function getRecoveryCodes(): array {
+		return $this->recoveryCodes;
+	}
+
+	/**
+	 * Returns a list of all recovery codes in this key as strings. It's advised to call {@see getRecoveryCodes}
+	 * instead, which returns full {@see RecoveryCode} objects, including whether they are permanent, and other
+	 * attached data.
+	 * @return string[]
+	 */
 	public function getRecoveryCodeKeys(): array {
 		return array_map( static fn ( $k ) => $k->getCode(), $this->recoveryCodes );
 	}

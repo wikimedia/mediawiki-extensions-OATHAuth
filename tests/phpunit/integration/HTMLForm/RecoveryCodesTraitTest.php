@@ -8,6 +8,7 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait
@@ -42,6 +43,19 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 		$formatted1 = array_map( [ $this, 'tokenFormatterFunction' ], $recCodeKeys->getRecoveryCodeKeys() );
 		$formatted2 = $this->getRecoveryCodesForDisplay( $recCodeKeys );
 		$this->assertSame( $formatted1, $formatted2 );
+	}
+
+	public function testGetRecoveryCodesForDisplaySkipsTemporary(): void {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+
+		$recCodeKeys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
+			'ABCDEFGH',
+			[ 'IJKLMNOP', [ 'expiry' => '20300101000000' ] ],
+			[ 'QRSTUVWX', [ 'foo' => 'bar' ] ],
+		] ] );
+
+		$formatted = $this->getRecoveryCodesForDisplay( $recCodeKeys );
+		$this->assertSame( [ 'ABCD EFGH', 'QRST UVWX' ], $formatted );
 	}
 
 	public static function provideTokenFormatterData(): array {

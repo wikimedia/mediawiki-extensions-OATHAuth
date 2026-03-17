@@ -921,10 +921,7 @@ class OATHManage extends SpecialPage {
 		$placeholderMessage = '';
 
 		$this->setOutputJsConfigVars(
-			array_map(
-				[ $this, 'tokenFormatterFunction' ],
-				$key->getRecoveryCodeKeys()
-			)
+			$this->getRecoveryCodesForDisplay( $key )
 		);
 
 		$keyAccordion = $codex->accordion()
@@ -944,7 +941,7 @@ class OATHManage extends SpecialPage {
 					Html::hidden( 'keyId', $key->getId() ) .
 					$this->createRecoveryCodesCopyButton() .
 					$this->createRecoveryCodesDownloadLink(
-						$key->getRecoveryCodeKeys()
+						$this->getRecoveryCodesForDisplay( $key )
 					) .
 					$codex->button()
 						->setLabel( $this->msg(

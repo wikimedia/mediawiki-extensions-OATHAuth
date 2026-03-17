@@ -42,16 +42,16 @@ class WebAuthnAddKeyForm extends OATHAuthOOUIHTMLForm {
 
 		$moduleDbKeys = $this->oathUser->getKeysForModule( $this->module->getName() );
 
-		$recCodeKeys = [];
+		$recCodeKeys = [ 'recoverycodekeys' => [] ];
 		if ( array_key_exists( 0, $moduleDbKeys ) ) {
 			$objRecoveryCodeKeys = array_shift( $moduleDbKeys );
 			if ( $objRecoveryCodeKeys instanceof RecoveryCodeKeys ) {
-				$recCodeKeys = $objRecoveryCodeKeys->getRecoveryCodeKeys();
+				$recCodeKeys = $objRecoveryCodeKeys->jsonSerialize();
 			}
 		}
 		$recCodeKeysForDisplay = $this->setKeyDataInSession(
 			'RecoveryCodeKeys',
-			[ 'recoverycodekeys' => $recCodeKeys ]
+			$recCodeKeys,
 		);
 		$recCodeKeysForContent = $this->getRecoveryCodesForDisplay( $recCodeKeysForDisplay );
 		$this->getOutput()->addModules( 'ext.oath.recovery' );

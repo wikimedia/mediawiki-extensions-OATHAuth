@@ -278,6 +278,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		];
 		$keys = RecoveryCodeKeys::newFromArray( $keyData );
 		$this->assertSame( [ 'VALID_KEY' ], $keys->getRecoveryCodeKeys() );
+		$this->assertSame( '20270101000000', $keys->getRecoveryCodes()[0]->getExpiryTimestamp() );
 	}
 
 	public function testRegeneratesCodesWhenLastOneIsUsed() {
