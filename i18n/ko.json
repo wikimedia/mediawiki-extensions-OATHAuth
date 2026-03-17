@@ -59,7 +59,7 @@
 	"right-oathauth-recover-for-user": "사용자에 대해 2요소 인증 복구하기",
 	"action-oathauth-recover-for-user": "사용자에 대해 2요소 인증 복구하기",
 	"right-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
-	"action-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
+	"action-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인할",
 	"right-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
 	"action-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
 	"oathauth-disable-intro": "권한이 클수록 책임이 커집니다",
@@ -137,5 +137,6 @@
 	"oathauth-passkey-dialog-title": "비밀번호 추가",
 	"oathauth-passkey-dialog-back": "뒤로",
 	"oathauth-passkey-dialog-add": "비밀번호 추가",
-	"oathauth-2fa-groups-notice-unknown-page": "알 수 없는 문서"
+	"oathauth-2fa-groups-notice-unknown-page": "알 수 없는 문서",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "사용자가 2단계 인증을 활성화합니다"
 }
