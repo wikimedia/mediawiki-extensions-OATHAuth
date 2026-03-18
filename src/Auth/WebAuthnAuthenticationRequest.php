@@ -58,8 +58,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		return true;
 	}
 
-	/** @inheritDoc */
-	public function getSubmittedData() {
+	public function getSubmittedData(): array {
 		// Don't trust the submitted auth_info, otherwise the user could control which challenge
 		// we're validating against and do a replay attack. Instead, we use the authInfo blob
 		// in the session, which we stored there when we issued the challenge.
