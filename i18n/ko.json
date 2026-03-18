@@ -49,7 +49,7 @@
 	"right-oathauth-disable-for-user": "사용자에 대해 2요소 인증 비활성화하기",
 	"action-oathauth-disable-for-user": "사용자에 대해 2요소 인증 비활성화하기",
 	"right-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
-	"action-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인",
+	"action-oathauth-verify-user": "사용자에게 2요소 인증이 활성화되어 있는지 확인할",
 	"right-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
 	"action-oathauth-view-log": "2요소 인증 변경 기록에 접근하기",
 	"oathauth-disable-intro": "권한이 클수록 책임이 커집니다",
