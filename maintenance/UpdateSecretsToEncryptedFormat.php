@@ -90,6 +90,7 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 				$key = RecoveryCodeKeys::newFromArray( $data );
 			} else {
 				// Impossible
+				$this->output( "Unable to update row with oad_id {$row->oad_id} and oad_type {$row->oad_type}.\n" );
 				continue;
 			}
 
