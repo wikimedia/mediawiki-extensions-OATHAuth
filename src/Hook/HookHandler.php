@@ -70,6 +70,17 @@ class HookHandler implements
 			];
 		}
 
+		if ( isset( $fieldInfo['RecoveryCode'] ) ) {
+			$formDescriptor['RecoveryCode'] += [
+				'dir' => 'ltr',
+				'autofocus' => true,
+				'persistent' => false,
+				'autocomplete' => 'off',
+				'spellcheck' => false,
+				'help-message' => 'oathauth-auth-recovery-code-help',
+			];
+		}
+
 		if ( isset( $fieldInfo['newModule'] ) ) {
 			// HACK: Hide the newModule <select>, but keep it in form, otherwise HTMLForm won't
 			// understand the button weirdness below. There's no great way for us to inject CSS, so
