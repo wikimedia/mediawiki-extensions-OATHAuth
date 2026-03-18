@@ -30,6 +30,12 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	/** @inheritDoc */
 	public function getFieldInfo() {
 		return [
+			'label' => [
+				'type' => 'null',
+				'label' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
+				// TODO: Use a different message for help?
+				'help' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
+			],
 			// The hidden auth_info field only exists to send the authInfo JSON blob to the client.
 			// It's not used for authentication and ignored when submitted back to us, we get the
 			// authInfo blob from the session instead.

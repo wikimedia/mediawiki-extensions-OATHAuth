@@ -49,10 +49,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 			return AuthenticationResponse::newAbstain();
 		}
 
-		return AuthenticationResponse::newUI(
-			[ new TOTPAuthenticationRequest() ],
-			wfMessage( 'oathauth-auth-ui' ),
-		);
+		return AuthenticationResponse::newUI( [ new TOTPAuthenticationRequest() ] );
 	}
 
 	/** @inheritDoc */

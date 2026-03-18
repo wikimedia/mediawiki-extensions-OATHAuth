@@ -48,10 +48,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 			return AuthenticationResponse::newAbstain();
 		}
 
-		return AuthenticationResponse::newUI(
-			[ new RecoveryCodesAuthenticationRequest() ],
-			wfMessage( 'oathauth-auth-recovery-code-help' ),
-		);
+		return AuthenticationResponse::newUI( [ new RecoveryCodesAuthenticationRequest() ] );
 	}
 
 	/** @inheritDoc */

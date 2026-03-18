@@ -40,8 +40,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		if ( $startAuthResult->isGood() ) {
 			$request = new WebAuthnAuthenticationRequest( $startAuthResult->getValue()['json'] );
 			$this->addModules();
-			return AuthenticationResponse::newUI( [ $request ],
-				wfMessage( 'oathauth-webauthn-ui-login-prompt' ) );
+			return AuthenticationResponse::newUI( [ $request ] );
 		}
 		return AuthenticationResponse::newFail( $startAuthResult->getMessage() );
 	}
