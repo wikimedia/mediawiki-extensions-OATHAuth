@@ -56,6 +56,7 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 		$startTime = time();
 		$updatedCount = 0;
+		$alreadyEncrypted = 0;
 		$totalRows = 0;
 
 		$services = $this->getServiceContainer();
@@ -80,6 +81,7 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 			if ( array_key_exists( 'nonce', $data ) ) {
 				// Already encrypted
+				$alreadyEncrypted++;
 				continue;
 			}
 
@@ -109,6 +111,9 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 		$totalTimeInSeconds = time() - $startTime;
 		$this->output( "Done. Updated {$updatedCount} of {$totalRows} rows in {$totalTimeInSeconds} seconds.\n" );
+		if ( $alreadyEncrypted > 0 ) {
+			$this->output( "{$alreadyEncrypted} rows were already encrypted.\n" );
+		}
 		return true;
 	}
 
