@@ -62,7 +62,7 @@ class TOTPKey extends AuthKey {
 		}
 
 		if ( isset( $data['nonce'] ) ) {
-			$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
+			$encryptionHelper = self::getEncryptionHelper();
 			if ( !$encryptionHelper->isEnabled() ) {
 				throw new UnexpectedValueException(
 					'Encryption is not configured but OATHAuth is attempting to use encryption'
@@ -197,7 +197,7 @@ class TOTPKey extends AuthKey {
 
 	public function jsonSerialize(): array {
 		$encryptedData = $this->getEncryptedSecretAndNonce();
-		$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
+		$encryptionHelper = self::getEncryptionHelper();
 		if ( $encryptionHelper->isEnabled() && in_array( '', $encryptedData ) ) {
 			$data = $encryptionHelper->encrypt( $this->getSecret() );
 			$this->setEncryptedSecretAndNonce( $data['secret'], $data['nonce'] );
@@ -212,5 +212,9 @@ class TOTPKey extends AuthKey {
 
 		$data['friendly_name'] = $this->getFriendlyName();
 		return $data;
+	}
+
+	private static function getEncryptionHelper(): EncryptionHelper {
+		return OATHAuthServices::getInstance()->getEncryptionHelper();
 	}
 }
