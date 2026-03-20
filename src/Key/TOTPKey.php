@@ -33,6 +33,8 @@ class TOTPKey extends AuthKey {
 	/** TOTP binary secret */
 	private array $secret;
 
+	public bool $forceReEncrypt = false;
+
 	public static function newFromRandom(): TOTPKey {
 		return new self(
 			null,
@@ -109,11 +111,6 @@ class TOTPKey extends AuthKey {
 
 	public function getSecret(): string {
 		return $this->secret['secret'];
-	}
-
-	public function setEncryptedSecretAndNonce( string $encryptedSecret, string $nonce ) {
-		$this->secret['encrypted_secret'] = $encryptedSecret;
-		$this->secret['nonce'] = $nonce;
 	}
 
 	public function getEncryptedSecretAndNonce(): array {
@@ -194,9 +191,6 @@ class TOTPKey extends AuthKey {
 		return TOTP::MODULE_NAME;
 	}
 
-	/**
-	 * @return LoggerInterface
-	 */
 	private function getLogger(): LoggerInterface {
 		return LoggerFactory::getInstance( 'authentication' );
 	}
@@ -204,14 +198,18 @@ class TOTPKey extends AuthKey {
 	public function jsonSerialize(): array {
 		$encryptedData = $this->getEncryptedSecretAndNonce();
 		$encryptionHelper = self::getEncryptionHelper();
-		if ( $encryptionHelper->isEnabled() && in_array( '', $encryptedData ) ) {
-			$data = $encryptionHelper->encrypt( $this->getSecret() );
-			$this->setEncryptedSecretAndNonce( $data['secret'], $data['nonce'] );
-		} elseif ( $encryptionHelper->isEnabled() ) {
-			$data = [
-				'secret' => $encryptedData[0],
-				'nonce' => $encryptedData[1]
-			];
+		if ( $encryptionHelper->isEnabled() ) {
+			if ( $this->forceReEncrypt || in_array( '', $encryptedData ) ) {
+				$data = $encryptionHelper->encrypt( $this->getSecret() );
+				$this->secret['encrypted_secret'] = $data['secret'];
+				$this->secret['nonce'] = $data['nonce'];
+			} else {
+				// Don't re-encrypt if unnecessary
+				$data = [
+					'secret' => $encryptedData[0],
+					'nonce' => $encryptedData[1]
+				];
+			}
 		} else {
 			$data = [ 'secret' => $this->getSecret() ];
 		}

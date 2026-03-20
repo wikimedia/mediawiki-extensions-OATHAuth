@@ -75,7 +75,7 @@ class EncryptionHelperTest extends MediaWikiUnitTestCase {
 		$helper = new EncryptionHelper(
 			new ServiceOptions(
 				EncryptionHelper::CONSTRUCTOR_OPTIONS,
-				[ 'OATHSecretKey' => null ],
+				[ 'OATHSecretKey' => false ],
 			),
 		);
 

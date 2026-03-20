@@ -22,16 +22,18 @@ class EncryptionHelper {
 		'OATHSecretKey',
 	];
 
+	private string|false $key;
+
 	public function __construct(
 		private readonly ServiceOptions $options,
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		$this->key = $this->options->get( 'OATHSecretKey' );
 	}
 
 	/** @return bool Whether encryption is enabled. */
 	public function isEnabled(): bool {
-		$key = $this->options->get( 'OATHSecretKey' );
-		if ( !$key ) {
+		if ( !$this->key ) {
 			return false;
 		}
 
@@ -41,11 +43,11 @@ class EncryptionHelper {
 			// @codeCoverageIgnoreEnd
 		}
 
-		if ( strlen( $key ) !== ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 ) ) {
+		if ( strlen( $this->key ) !== ( SODIUM_CRYPTO_SECRETBOX_KEYBYTES * 2 ) ) {
 			throw new UnexpectedValueException( 'OATHAuth encryption key has invalid length' );
 		}
 
-		if ( !ctype_xdigit( $key ) ) {
+		if ( !ctype_xdigit( $this->key ) ) {
 			throw new UnexpectedValueException( 'OATHAuth encryption key must be in hexadecimal' );
 		}
 
@@ -56,7 +58,7 @@ class EncryptionHelper {
 	 * Get the encryption secret key as bytes
 	 */
 	private function getKey(): string {
-		return sodium_hex2bin( $this->options->get( 'OATHSecretKey' ) );
+		return sodium_hex2bin( $this->key );
 	}
 
 	/**
@@ -86,7 +88,7 @@ class EncryptionHelper {
 	 * @return string[] Array with 'secret' and 'nonce' keys, both base32 encoded
 	 */
 	public function encrypt( string $plaintext, string $nonce = '' ) {
-		// Generate a unique nonce
+		// Generates a unique nonce
 		if ( $nonce === '' ) {
 			$nonce = $this->generateNonce();
 		}
@@ -101,10 +103,17 @@ class EncryptionHelper {
 	}
 
 	/**
-	 * Generate a base32-encoded nonce
+	 * Generate unique base32-encoded nonce
 	 */
 	public function generateNonce(): string {
 		$nonce = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
 		return Base32::encode( $nonce );
+	}
+
+	/**
+	 * Shouldn't be used in normal circumstances; exists for maintenance script purposes
+	 */
+	public function setEncryptionKey( string $key ): void {
+		$this->key = $key;
 	}
 }

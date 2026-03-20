@@ -28,6 +28,8 @@ class RecoveryCodeKeys extends AuthKey {
 	/** @var RecoveryCode[] List of recovery codes in this key */
 	private array $recoveryCodes;
 
+	public bool $forceReEncrypt = false;
+
 	/**
 	 * @param array $data
 	 * @return RecoveryCodeKeys|null on invalid data
@@ -256,10 +258,14 @@ class RecoveryCodeKeys extends AuthKey {
 		}
 
 		// Ensure that all codes are encoded using the same nonce
-		$nonce = $codes[0]->getNonce() ?? $encryptionHelper->generateNonce();
+		if ( $this->forceReEncrypt ) {
+			$nonce = $encryptionHelper->generateNonce();
+		} else {
+			$nonce = $codes[0]->getNonce() ?? $encryptionHelper->generateNonce();
+		}
 		$encryptedCodes = [];
 		foreach ( $codes as $code ) {
-			if ( $code->getData() ) {
+			if ( !$this->forceReEncrypt && $code->getData() ) {
 				$encryptedCodes[] = [ $code->encryptCode( $nonce ), $code->getData() ];
 			} else {
 				$encryptedCodes[] = $code->encryptCode( $nonce );
