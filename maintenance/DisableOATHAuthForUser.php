@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\OATHAuth\Maintenance;
+
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Maintenance\Maintenance;
 
