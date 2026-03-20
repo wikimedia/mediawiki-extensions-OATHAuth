@@ -329,7 +329,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				$user->setUserHandle( base64_decode( $userHandle ) );
 			} else {
 				// If the user has any WebAuthn keys, derive their userHandle from that
-				/** @var WebAuthnKey[] */
+				/** @var WebAuthnKey[] $webauthnKeys */
 				$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_ID );
 				'@phan-var WebAuthnKey[] $webauthnKeys';
 				if ( $webauthnKeys ) {
