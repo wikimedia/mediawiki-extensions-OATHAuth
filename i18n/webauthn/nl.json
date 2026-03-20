@@ -20,6 +20,7 @@
 	"oathauth-webauthn-ui-remove-key": "Verwijderen",
 	"oathauth-webauthn-error-module-not-enabled": "Module \"$1\" is niet ingeschakeld voor {{GENDER:$2|gebruiker \"$2\"}}.",
 	"oathauth-webauthn-error-verification-failed": "WebAuthn verificatie mislukt.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Passkey-controle mislukt.",
 	"oathauth-webauthn-error-credentials-missing": "Er zijn geen WebAuthn-aanmeldgegevens verzonden.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|Gebruiker “$1”}} kan geen nieuwe aanmeldgegevens registreren.",
 	"oathauth-webauthn-error-invalid-new-key": "De nieuwe sleutel die door de module wordt geretourneerd, is niet van het vereiste type.",

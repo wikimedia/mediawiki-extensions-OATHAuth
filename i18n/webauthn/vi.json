@@ -20,6 +20,7 @@
 	"oathauth-webauthn-ui-remove-key": "Xóa",
 	"oathauth-webauthn-error-module-not-enabled": "Mô đun “$1” chưa được bật cho thành viên “$2”",
 	"oathauth-webauthn-error-verification-failed": "Xác minh WebAuthn không thành công.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Không thể xác minh khóa truy cập.",
 	"oathauth-webauthn-error-credentials-missing": "Thông tin xác thực WebAuthn chưa được gửi.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|Người dùng \"$1\"}} không thể tạo thông tin xác thực mới.",
 	"oathauth-webauthn-error-invalid-new-key": "Khóa mới do mô đun trả về không thuộc kiểu bắt buộc.",

@@ -188,10 +188,12 @@
 	"oathauth-passkey-dialog-back": "Quay lại",
 	"oathauth-passkey-dialog-add": "Thêm khóa truy cập",
 	"oathauth-2fa-required": "Bạn thuộc nhóm người dùng bắt buộc kích hoạt chức năng xác thực hai yếu tố.",
+	"oathauth-2fa-required-groups-on-project": "$2 tại $3",
 	"oathauth-2fa-groups-notice-single": "Bạn đang là thành viên của {{PLURAL:$1|nhóm|các nhóm}} sau có yêu cầu kích hoạt xác thực hai yếu tố ($2 tại $3). Để gỡ bỏ phương thức này, bạn cần:\n<ul>\n<li>thêm một phương thức xác thực hai yếu tố khác, hoặc</li>\n<li>rời khỏi {{PLURAL:$1|nhóm đó|các nhóm này}}. Vui lòng truy cập: $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Bạn đang là thành viên của {{PLURAL:$1|các nhóm}} yêu cầu bảo mật hai yếu tố. Để gỡ bỏ phương thức này, bạn cần:\n<ul>\n<li>thêm một phương thức xác thực hai yếu tố khác, hoặc</li>\n<li>rời khỏi các nhóm này.</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Để rời khỏi {{PLURAL:$1|nhóm người dùng}} này, vui lòng truy cập:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Nhóm $2 ($3): yêu cầu gỡ tại $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Trang không rõ",
-	"oathauth-remove-lastkey-required": "Bạn không thể xóa phương thức xác thực cuối cùng khi đang là thành viên của các nhóm yêu cầu bảo mật hai lớp. Vui lòng thêm một phương thức xác thực mới trước khi xóa phương thức này."
+	"oathauth-remove-lastkey-required": "Bạn không thể xóa phương thức xác thực cuối cùng khi đang là thành viên của các nhóm yêu cầu bảo mật hai lớp. Vui lòng thêm một phương thức xác thực mới trước khi xóa phương thức này.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Người dùng đã bật chức năng xác thực hai yếu tố"
 }

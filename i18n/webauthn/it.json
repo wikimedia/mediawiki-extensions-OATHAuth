@@ -9,7 +9,7 @@
 	"oathauth-webauthn-ui-add-key": "Aggiungi chiave",
 	"oathauth-webauthn-registered-keys-section-name": "Chiavi registrate",
 	"oathauth-webauthn-error-verification-failed": "Verifica WebAuthn non riuscita.",
-	"oathauth-webauthn-error-passkey-verification-failed": "Verifica della password non riuscita.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Verifica della passkey non riuscita.",
 	"oathauth-webauthn-ui-reload-page-label": "Ricarica la pagina",
 	"oathauth-webauthn-authentication-info-label": "Dati di autenticazione",
 	"oathauth-webauthn-credential-label": "Credenziali utente",
