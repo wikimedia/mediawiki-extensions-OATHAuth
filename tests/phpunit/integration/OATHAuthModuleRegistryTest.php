@@ -7,7 +7,9 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
+use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\ObjectFactory\ObjectFactory;
 use Wikimedia\Rdbms\IConnectionProvider;
@@ -53,5 +55,33 @@ class OATHAuthModuleRegistryTest extends MediaWikiIntegrationTestCase {
 			[ 'first', 'second', 'third' ],
 			array_keys( $registry->getModuleIds() )
 		);
+	}
+
+	public function testGetModuleId() {
+		$registry = $this->makeTestRegistry();
+		$this->assertSame( 1, $registry->getModuleId( 'first' ) );
+
+		$this->expectException( InvalidArgumentException::class );
+		$this->expectExceptionMessage( 'Module nonexistent does not seem to exist' );
+		$registry->getModuleId( 'nonexistent' );
+	}
+
+	public function testGetModuleByKey() {
+		$this->expectException( InvalidArgumentException::class );
+		$this->expectExceptionMessage( 'No such two-factor module nonexistent' );
+
+		$registry = $this->makeTestRegistry();
+		$registry->getModuleByKey( 'nonexistent' );
+	}
+
+	public function testGetAllModules() {
+		$services = $this->getServiceContainer();
+		$registry = new OATHAuthModuleRegistry(
+			$services->getDBLoadBalancerFactory(),
+			$services->getObjectFactory(),
+			ExtensionRegistry::getInstance()->getAttribute( 'OATHAuthModules' ),
+		);
+
+		$this->assertCount( 3, $registry->getAllModules() );
 	}
 }
