@@ -77,7 +77,9 @@ class OATHAuthLogger {
 	 */
 	public function logFailedVerification( UserIdentity $user ): void {
 		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 
 		$logEntry = new ManualLogEntry( 'oath', 'verify-failed' );
@@ -94,7 +96,9 @@ class OATHAuthLogger {
 	 */
 	public function logSuccessfulVerification( UserIdentity $user ): void {
 		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 
 		$logEntry = new ManualLogEntry( 'oath', 'verify-success' );
@@ -127,7 +131,9 @@ class OATHAuthLogger {
 
 	private function updateCheckUserData( ManualLogEntry $logEntry, ?int $logId = null ): void {
 		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 
 		/** @var CheckUserInsert $checkUserInsert */
