@@ -41,4 +41,17 @@ class WebAuthnKeyTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->assertFalse( $key->supportsPasswordlessLogin() );
 	}
+
+	public function testJsonSerialize() {
+		$key = WebAuthnKey::newFromData(
+			self::KEY_DATA
+		);
+
+		$this->assertEquals(
+			$key,
+			WebAuthnKey::newFromData(
+				$key->jsonSerialize()
+			)
+		);
+	}
 }
