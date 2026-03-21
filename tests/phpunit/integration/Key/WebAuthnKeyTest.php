@@ -7,6 +7,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Key\WebAuthnKey
+ * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
  */
 class WebAuthnKeyTest extends MediaWikiIntegrationTestCase {
 
