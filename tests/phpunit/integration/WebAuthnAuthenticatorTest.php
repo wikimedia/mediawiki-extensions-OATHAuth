@@ -9,6 +9,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator
+ * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  * @group Database
  */
 class WebAuthnAuthenticatorTest extends MediaWikiIntegrationTestCase {
