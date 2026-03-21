@@ -64,9 +64,11 @@ class TOTPKey extends AuthKey {
 		if ( isset( $data['nonce'] ) ) {
 			$encryptionHelper = self::getEncryptionHelper();
 			if ( !$encryptionHelper->isEnabled() ) {
+				// @codeCoverageIgnoreStart
 				throw new UnexpectedValueException(
 					'Encryption is not configured but OATHAuth is attempting to use encryption'
 				);
+				// @codeCoverageIgnoreEnd
 			}
 			$data['encrypted_secret'] = $data['secret'];
 			$data['secret'] = $encryptionHelper->decrypt( $data['secret'], $data['nonce'] );
@@ -127,7 +129,9 @@ class TOTPKey extends AuthKey {
 		$token = $data['token'] ?? '';
 
 		if ( $this->secret['mode'] !== 'hotp' ) {
+			// @codeCoverageIgnoreStart
 			throw new DomainException( 'OATHAuth extension does not support non-HOTP tokens' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		// Prevent replay attacks
@@ -135,8 +139,10 @@ class TOTPKey extends AuthKey {
 		$store = $services->getMainObjectStash();
 
 		if ( $store instanceof EmptyBagOStuff ) {
+			// @codeCoverageIgnoreStart
 			// Try and find some usable cache if the MainObjectStash isn't useful
 			$store = $services->getObjectCacheFactory()->getLocalServerInstance( CACHE_ANYTHING );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$key = $store->makeKey( 'oathauth-totp', 'usedtokens', $user->getCentralId() );
