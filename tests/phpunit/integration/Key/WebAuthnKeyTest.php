@@ -23,8 +23,9 @@ class WebAuthnKeyTest extends MediaWikiIntegrationTestCase {
 
 	public function testPasswordlessLoginPasskeysSupportsPasswordless(): void {
 		$key = WebAuthnKey::newFromData(
-			self::KEY_DATA + [ 'supportsPasswordless' => true ]
+			self::KEY_DATA
 		);
+		$key->setPasswordlessSupport( true );
 		$this->assertTrue( $key->supportsPasswordlessLogin() );
 	}
 
