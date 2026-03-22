@@ -42,11 +42,28 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 
 		$this->assertArrayEquals( [ $key ], $repository->findByUser( $user )->getKeys() );
 
-		$this->maintenance->setArg( 'user', $user->getName() );
+		$username = $user->getName();
+		$this->maintenance->setArg( 'user', $username );
+
+		$this->expectOutputString( "Two-factor authentication disabled for $username.\n." );
 		$this->maintenance->execute();
 
-		$this->expectOutputString( "Two-factor authentication disabled for {$user->getName()}.\n." );
-
 		$this->assertArrayEquals( [], $repository->findByUser( $user )->getKeys() );
+	}
+
+	public function testNonExistentUser() {
+		$this->maintenance->setArg( 'user', 'foobar' );
+		$this->expectCallToFatalError();
+		$this->expectOutputString( "User foobar doesn't exist!" );
+		$this->maintenance->execute();
+	}
+
+	public function test2FANotEnabled() {
+		$user = $this->getTestSysop()->getUser();
+		$username = $user->getName();
+		$this->maintenance->setArg( 'user', $username );
+		$this->expectCallToFatalError();
+		$this->expectOutputString( "User $username does not have two-factor authentication enabled!" );
+		$this->maintenance->execute();
 	}
 }
