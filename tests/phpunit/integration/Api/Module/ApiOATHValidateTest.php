@@ -57,7 +57,7 @@ class ApiOATHValidateTest extends ApiTestCase {
 		);
 	}
 
-	public function provideToken() {
+	public static function provideToken() {
 		$key = TOTPKey::newFromRandom();
 		$secret = TestingAccessWrapper::newFromObject( $key )->secret;
 		yield 'correct' => [

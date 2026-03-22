@@ -10,7 +10,7 @@ use MediaWikiUnitTestCase;
  */
 class AAGUIDLookupTest extends MediaWikiUnitTestCase {
 
-	public function provideGetDeviceName() {
+	public static function provideGetDeviceName() {
 		yield [ null, 'foo' ];
 		yield [ 'Chrome on Mac', 'adce0002-35bc-c60a-648b-0b25f1f05503' ];
 		yield [ 'Chrome on Mac', 'ADCE0002-35BC-C60A-648B-0B25F1F05503' ];
@@ -21,7 +21,7 @@ class AAGUIDLookupTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expected, AAGUIDLookup::getDeviceName( $input ) );
 	}
 
-	public function provideGenerateFriendlyName() {
+	public static function provideGenerateFriendlyName() {
 		yield [ 'adce0002-35bc-c60a-648b-0b25f1f05503', 'Chrome on Mac' ];
 		yield [ 'foo', 'Passkey' ];
 	}
