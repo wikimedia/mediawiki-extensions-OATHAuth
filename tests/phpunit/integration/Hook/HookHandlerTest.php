@@ -16,7 +16,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @covers MediaWiki\Extension\OATHAuth\Hook\HookHandler
+ * @covers \MediaWiki\Extension\OATHAuth\Hook\HookHandler
  */
 class HookHandlerTest extends MediaWikiIntegrationTestCase {
 
