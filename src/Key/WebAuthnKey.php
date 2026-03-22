@@ -17,11 +17,10 @@ use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnSerializerFactory;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
@@ -250,8 +249,7 @@ class WebAuthnKey extends AuthKey {
 	}
 
 	private function checkFriendlyName(): void {
-		/** @var OATHUserRepository $repo */
-		$repo = MediaWikiServices::getInstance()->getService( 'OATHUserRepository' );
+		$repo = OATHAuthServices::getInstance()->getUserRepository();
 
 		$friendlyNames = [];
 		foreach ( WebAuthn::getWebAuthnKeys( $repo->findByUser( $this->context->getUser() ) ) as $key ) {

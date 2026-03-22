@@ -60,15 +60,16 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 				$this->assertSame( 'TestUser', $user->getName() );
 				return $oathUser;
 			} );
-		$this->setService( 'OATHUserRepository', $oathUserRepository );
+		$this->setService( 'OATHAuth.UserRepository', $oathUserRepository );
 
 		$moduleRegistry = $this->createNoOpMock( OATHAuthModuleRegistry::class, [ 'getModuleByKey' ] );
 		$moduleRegistry->method( 'getModuleByKey' )->willReturnCallback( function ( $moduleName ) {
 			return $this->getFakeModule( $moduleName );
 		} );
-		$this->setService( 'OATHAuthModuleRegistry', $moduleRegistry );
-		$this->setService( 'OATHAuthLogger',
-			$this->createNoOpMock( OATHAuthLogger::class, [ 'logSuccessfulVerification' ] ) );
+		$this->setService( 'OATHAuth.ModuleRegistry', $moduleRegistry );
+		$this->setService( 'OATHAuth.Logger',
+			$this->createNoOpMock( OATHAuthLogger::class, [ 'logSuccessfulVerification' ] )
+		);
 
 		$provider = new SecondaryAuthenticationProvider();
 		$provider->init(

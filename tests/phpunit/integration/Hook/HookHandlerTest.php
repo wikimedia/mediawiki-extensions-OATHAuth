@@ -23,9 +23,9 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 	protected function createHookHandler(): HookHandler {
 		$services = MediaWikiServices::getInstance();
 		return new HookHandler(
-			$services->get( 'OATHUserRepository' ),
-			$services->get( 'OATHAuthModuleRegistry' ),
-			$services->get( 'OATHAuthLogger' ),
+			$services->get( 'OATHAuth.UserRepository' ),
+			$services->get( 'OATHAuth.ModuleRegistry' ),
+			$services->get( 'OATHAuth.Logger' ),
 			$services->getPermissionManager(),
 			$services->getMainConfig(),
 			$services->getUserGroupManager()
@@ -45,7 +45,7 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 			->with( $userIdentity )
 			->willReturn( $oathUser );
 
-		$this->setService( 'OATHUserRepository', $userRepoMock );
+		$this->setService( 'OATHAuth.UserRepository', $userRepoMock );
 
 		$hookHandler = $this->createHookHandler();
 		$result = null;

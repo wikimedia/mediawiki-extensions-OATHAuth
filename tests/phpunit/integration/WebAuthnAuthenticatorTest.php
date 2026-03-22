@@ -25,9 +25,9 @@ class WebAuthnAuthenticatorTest extends MediaWikiIntegrationTestCase {
 
 	public function testIsEnabled() {
 		/** @var WebAuthnAuthenticator $authenticator */
-		$authenticator = $this->getServiceContainer()->getService( 'WebAuthnAuthenticator' );
+		$authenticator = $this->getServiceContainer()->getService( 'OATHAuth.WebAuthnAuthenticator' );
 		/** @var OATHUserRepository $oathUser */
-		$repo = $this->getServiceContainer()->getService( 'OATHUserRepository' );
+		$repo = $this->getServiceContainer()->getService( 'OATHAuth.UserRepository' );
 
 		$this->assertFalse(
 			$authenticator->isEnabled( $repo->findByUser( $this->getMockUser() ) )

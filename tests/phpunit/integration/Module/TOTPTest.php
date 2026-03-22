@@ -80,7 +80,7 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 				default => []
 			} );
 		$mockUserRepo = $this->createMock( OATHUserRepository::class );
-		$this->setService( 'OATHUserRepository', $mockUserRepo );
+		$this->setService( 'OATHAuth.UserRepository', $mockUserRepo );
 		$module = new TOTP( $mockUserRepo );
 
 		$this->assertTrue( $module->verify( $mockUser, [ 'token' => '64SZLJTTPRI5XBUE' ] ) );

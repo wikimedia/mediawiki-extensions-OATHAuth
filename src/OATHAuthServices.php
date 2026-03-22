@@ -29,11 +29,11 @@ class OATHAuthServices {
 	}
 
 	public function getModuleRegistry(): OATHAuthModuleRegistry {
-		return $this->services->getService( 'OATHAuthModuleRegistry' );
+		return $this->services->getService( 'OATHAuth.ModuleRegistry' );
 	}
 
 	public function getUserRepository(): OATHUserRepository {
-		return $this->services->getService( 'OATHUserRepository' );
+		return $this->services->getService( 'OATHAuth.UserRepository' );
 	}
 
 	public function getEncryptionHelper(): EncryptionHelper {
@@ -49,11 +49,11 @@ class OATHAuthServices {
 	}
 
 	public function getLogger(): OATHAuthLogger {
-		return $this->services->getService( 'OATHAuthLogger' );
+		return $this->services->getService( 'OATHAuth.Logger' );
 	}
 
 	public function getWebAuthnAuthenticator(): WebAuthnAuthenticator {
-		return $this->services->getService( 'WebAuthnAuthenticator' );
+		return $this->services->getService( 'OATHAuth.WebAuthnAuthenticator' );
 	}
 
 	public function getConfig(): Config {

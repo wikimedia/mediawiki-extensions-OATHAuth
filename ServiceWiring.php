@@ -17,27 +17,27 @@ use MediaWiki\Registration\ExtensionRegistry;
 use Wikimedia\ObjectCache\HashBagOStuff;
 
 return [
-	'OATHAuthLogger' => static function ( MediaWikiServices $services ): OATHAuthLogger {
+	'OATHAuth.Logger' => static function ( MediaWikiServices $services ): OATHAuthLogger {
 		return new OATHAuthLogger(
 			$services->getExtensionRegistry(),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' )
 		);
 	},
-	'OATHAuthModuleRegistry' => static function ( MediaWikiServices $services ): OATHAuthModuleRegistry {
+	'OATHAuth.ModuleRegistry' => static function ( MediaWikiServices $services ): OATHAuthModuleRegistry {
 		return new OATHAuthModuleRegistry(
 			$services->getDBLoadBalancerFactory(),
 			$services->getObjectFactory(),
 			ExtensionRegistry::getInstance()->getAttribute( 'OATHAuthModules' ),
 		);
 	},
-	'OATHUserRepository' => static function ( MediaWikiServices $services ): OATHUserRepository {
+	'OATHAuth.UserRepository' => static function ( MediaWikiServices $services ): OATHUserRepository {
 		return new OATHUserRepository(
 			$services->getDBLoadBalancerFactory(),
 			new HashBagOStuff( [
 				'maxKey' => 5
 			] ),
-			$services->getService( 'OATHAuthModuleRegistry' ),
+			$services->getService( 'OATHAuth.ModuleRegistry' ),
 			$services->getCentralIdLookupFactory(),
 			LoggerFactory::getInstance( 'authentication' )
 		);
@@ -75,9 +75,9 @@ return [
 				$services->getUserGroupManager(),
 			);
 		},
-	'WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
+	'OATHAuth.WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
-		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
+		$moduleRegistry = $services->getService( 'OATHAuth.ModuleRegistry' );
 
 		/** @var WebAuthn $webAuthn */
 		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
@@ -85,10 +85,10 @@ return [
 		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 
 		return new WebAuthnAuthenticator(
-			$services->getService( 'OATHUserRepository' ),
+			$services->getService( 'OATHAuth.UserRepository' ),
 			$webAuthn,
 			$recovery,
-			$services->getService( 'OATHAuthLogger' ),
+			$services->getService( 'OATHAuth.Logger' ),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
 			$services->getAuthManager(),

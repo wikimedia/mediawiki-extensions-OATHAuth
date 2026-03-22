@@ -139,7 +139,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 
 		$loggerMock = $this->createMock( OATHAuthLogger::class );
 		$loggerMock->expects( $this->once() )->method( 'logOATHRecovery' );
-		$this->setService( 'OATHAuthLogger', $loggerMock );
+		$this->setService( 'OATHAuth.Logger', $loggerMock );
 
 		$otherUser = $this->getMutableTestUser()->getUser();
 		$otherUser->setEmail( $userEmail ?? '' );
@@ -289,7 +289,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 
 		$loggerMock = $this->createMock( OATHAuthLogger::class );
 		$loggerMock->expects( $this->once() )->method( 'logOATHRecovery' );
-		$this->setService( 'OATHAuthLogger', $loggerMock );
+		$this->setService( 'OATHAuth.Logger', $loggerMock );
 
 		$centralAuthUserCacheMock = $this->createMock( CentralAuthUserCache::class );
 		$centralAuthUserCacheMock->method( 'get' )

@@ -59,13 +59,13 @@
 				"recoverycodes": {
 					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\RecoveryCodes",
 					"services": [
-						"OATHUserRepository"
+						"OATHAuth.UserRepository"
 					]
 				},
 				"totp": {
 					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP",
 					"services": [
-						"OATHUserRepository"
+						"OATHAuth.UserRepository"
 					]
 				},
 				"webauthn": "MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn::factory"
@@ -85,8 +85,8 @@
 			"PasskeyPrimaryAuthenticationProvider": {
 				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\PasskeyPrimaryAuthenticationProvider",
 				"services": [
-					"WebAuthnAuthenticator",
-					"OATHAuthLogger",
+					"OATHAuth.WebAuthnAuthenticator",
+					"OATHAuth.Logger",
 					"UserFactory"
 				],
 				"sort": 50
@@ -122,9 +122,9 @@
 		"main": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Hook\\HookHandler",
 			"services": [
-				"OATHUserRepository",
-				"OATHAuthModuleRegistry",
-				"OATHAuthLogger",
+				"OATHAuth.UserRepository",
+				"OATHAuth.ModuleRegistry",
+				"OATHAuth.Logger",
 				"PermissionManager",
 				"MainConfig",
 				"UserGroupManager"
@@ -393,7 +393,7 @@
 		"DisableOATHForUser": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\DisableOATHForUser",
 			"services": [
-				"OATHUserRepository",
+				"OATHAuth.UserRepository",
 				"UserFactory",
 				"CentralIdLookup",
 				"ExtensionRegistry"
@@ -402,8 +402,8 @@
 		"OATHManage": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\OATHManage",
 			"services": [
-				"OATHUserRepository",
-				"OATHAuthModuleRegistry",
+				"OATHAuth.UserRepository",
+				"OATHAuth.ModuleRegistry",
 				"OATHAuth.Mandatory2FAChecker",
 				"AuthManager",
 				"UserGroupManager"
@@ -412,9 +412,9 @@
 		"Recover2FAForUser": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\Recover2FAForUser",
 			"services": [
-				"OATHUserRepository",
-				"OATHAuthModuleRegistry",
-				"OATHAuthLogger",
+				"OATHAuth.UserRepository",
+				"OATHAuth.ModuleRegistry",
+				"OATHAuth.Logger",
 				"UserFactory",
 				"CentralIdLookup",
 				"LinkRenderer",
@@ -426,7 +426,7 @@
 		"VerifyOATHForUser": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
 			"services": [
-				"OATHUserRepository",
+				"OATHAuth.UserRepository",
 				"UserFactory",
 				"ExtensionRegistry"
 			]
@@ -472,18 +472,18 @@
 		"oathvalidate": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiOATHValidate",
 			"services": [
-				"OATHUserRepository",
+				"OATHAuth.UserRepository",
 				"UserFactory",
-				"OATHAuthLogger"
+				"OATHAuth.Logger"
 			]
 		},
 		"webauthn": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiWebAuthn",
 			"services": [
 				"AuthManager",
-				"OATHAuthModuleRegistry",
-				"OATHUserRepository",
-				"WebAuthnAuthenticator"
+				"OATHAuth.ModuleRegistry",
+				"OATHAuth.UserRepository",
+				"OATHAuth.WebAuthnAuthenticator"
 			]
 		}
 	},
@@ -491,7 +491,7 @@
 		"oath": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiQueryOATH",
 			"services": [
-				"OATHUserRepository"
+				"OATHAuth.UserRepository"
 			]
 		}
 	},

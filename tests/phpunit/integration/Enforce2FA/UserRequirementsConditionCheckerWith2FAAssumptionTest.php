@@ -32,7 +32,7 @@ class UserRequirementsConditionCheckerWith2FAAssumptionTest extends MediaWikiInt
 		$userRepository = $this->createMock( OATHUserRepository::class );
 		$userRepository->method( 'findByUser' )
 			->willReturn( $oathUser );
-		$this->setService( 'OATHUserRepository', $userRepository );
+		$this->setService( 'OATHAuth.UserRepository', $userRepository );
 
 		$checker = OATHAuthServices::getInstance()->getUserConditionCheckerWith2FAAssumption();
 		$checker->setAssumed2FAState( $assumed2FAState );
