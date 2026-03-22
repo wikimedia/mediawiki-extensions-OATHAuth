@@ -62,7 +62,8 @@ return [
 		static function ( MediaWikiServices $services ): UserRequirementsConditionCheckerWith2FAAssumption {
 			return new UserRequirementsConditionCheckerWith2FAAssumption(
 				new ServiceOptions(
-					UserRequirementsConditionCheckerWith2FAAssumption::CONSTRUCTOR_OPTIONS, $services->getMainConfig()
+					UserRequirementsConditionCheckerWith2FAAssumption::CONSTRUCTOR_OPTIONS,
+					$services->getMainConfig()
 				),
 				$services->getGroupPermissionsLookup(),
 				$services->getHookContainer(),
@@ -77,10 +78,6 @@ return [
 	'WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = $services->getService( 'OATHAuthModuleRegistry' );
-		/** @var OATHUserRepository $userRepo */
-		$userRepo = $services->getService( 'OATHUserRepository' );
-		/** @var OATHAuthLogger $oathLogger */
-		$oathLogger = $services->getService( 'OATHAuthLogger' );
 
 		/** @var WebAuthn $webAuthn */
 		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
@@ -88,10 +85,10 @@ return [
 		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 
 		return new WebAuthnAuthenticator(
-			$userRepo,
+			$services->getService( 'OATHUserRepository' ),
 			$webAuthn,
 			$recovery,
-			$oathLogger,
+			$services->getService( 'OATHAuthLogger' ),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
 			$services->getAuthManager(),
