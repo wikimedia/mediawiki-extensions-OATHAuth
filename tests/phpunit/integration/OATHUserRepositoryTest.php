@@ -26,6 +26,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
  * @group Database
  * @covers \MediaWiki\Extension\OATHAuth\OATHUserRepository
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
+ * @covers \MediaWiki\Extension\OATHAuth\OATHUser
  */
 class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 	private function createUserRepo( User $user, $centralId = 12345 ) {
