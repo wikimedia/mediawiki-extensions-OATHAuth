@@ -32,6 +32,10 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	private const VALID_RECOVERY_KEY = 'IETUSRVABHG54F33';
 	private const INVALID_ENCRYPTED_RECOVERY_KEY = '88asdyf09sadf';
 
+	public function setUp(): void {
+		$this->setMwGlobals( 'wgOATHSecretKey', false );
+	}
+
 	public function testDeserializationUnencrypted() {
 		$this->assertNull( RecoveryCodeKeys::newFromArray( [] ) );
 
@@ -116,6 +120,17 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $data['recoverycodekeys'] );
 		$this->assertNotEquals( $data['recoverycodekeys'], $keys->getRecoveryCodeKeys() );
+	}
+
+	public function testEncryptsKeyWithData() {
+		$this->encryptionIntegrationTestSetup();
+		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
+			[ 'TESTCODE', [ 'foo' => 'bar' ] ],
+		] ] );
+		$data = $keys->jsonSerialize();
+		$this->assertArrayHasKey( 'nonce', $data );
+		$this->assertArrayHasKey( 'recoverycodekeys', $data );
+		$this->assertSame( [ 'TESTCODE' ], $keys->getRecoveryCodeKeys() );
 	}
 
 	public function testDoNotReencryptEncryptedKeyData() {
@@ -249,16 +264,19 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public function testDataIsPreservedWhenSerializing( bool $useEncryption ): void {
 		if ( $useEncryption ) {
 			$this->encryptionIntegrationTestSetup();
+			$originalData = [
+				'recoverycodekeys' => [ [ self::VALID_ENCRYPTED_RECOVERY_KEY, [ 'foo' => 'bar' ] ] ],
+				'nonce' => self::NONCE,
+			];
+		} else {
+			$originalData = [
+				'recoverycodekeys' => [ [ 'KEY', [ 'foo' => 'bar' ] ] ]
+			];
 		}
 
-		$originalData = [
-			'recoverycodekeys' => [ [ 'KEY', [ 'foo' => 'bar' ] ] ]
-		];
 		$keysObject = RecoveryCodeKeys::newFromArray( $originalData );
 		$serializedData = $keysObject->jsonSerialize();
 
-		// Don't compare nonce, as it hasn't been set in the original data
-		unset( $serializedData['nonce'] );
 		$this->assertSame( $originalData, $serializedData );
 	}
 

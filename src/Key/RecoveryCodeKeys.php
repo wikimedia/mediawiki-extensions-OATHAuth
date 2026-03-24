@@ -211,7 +211,7 @@ class RecoveryCodeKeys extends AuthKey {
 		$encryptedCodes = [];
 		foreach ( $codes as $code ) {
 			if ( $code->getData() ) {
-				$encryptedCodes[] = [ $code->getCode(), $code->getData() ];
+				$encryptedCodes[] = [ $code->encryptCode( $nonce ), $code->getData() ];
 			} else {
 				$encryptedCodes[] = $code->encryptCode( $nonce );
 			}
