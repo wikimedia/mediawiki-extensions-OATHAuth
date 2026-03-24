@@ -226,6 +226,10 @@ class OATHManage extends SpecialPage {
 		$result = [];
 		foreach ( $splitGroups as $wikiId => $pages ) {
 			$wiki = WikiMap::getWiki( $wikiId );
+			if ( $wiki === null ) {
+				continue;
+			}
+
 			foreach ( $pages as $page => $groups ) {
 				$groupNames = array_map(
 					fn ( $group ) => $lang->getGroupMemberName( $group, $this->getUser() ),
