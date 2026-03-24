@@ -251,6 +251,7 @@ class OATHManage extends SpecialPage {
 		$codex = new Codex();
 		$lang = $this->getLanguage();
 		$message = $codex->message();
+		$message->setAttributes( [ 'class' => 'mw-special-OATHManage-mandatory-2fa' ] );
 		if ( $this->oathUser->isTwoFactorAuthEnabled() ) {
 			$message->setInline( true )
 				->setContentText( $this->msg( 'oathauth-2fa-required' )->text() );

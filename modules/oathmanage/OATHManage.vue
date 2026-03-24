@@ -66,10 +66,10 @@
 		class="mw-special-OATHManage-authmethods"
 		:class="{ 'mw-special-OATHManage-authmethods--no-keys': !hasKeys }">
 		<h3>{{ $i18n( 'oathauth-authenticator-header' ) }}</h3>
-		<cdx-message v-if="isRequiredToHave2FA && hasKeys" inline>
+		<cdx-message v-if="isRequiredToHave2FA && hasKeys" inline class="mw-special-OATHManage-mandatory-2fa">
 			{{ $i18n( 'oathauth-2fa-required' ) }}
 		</cdx-message>
-		<cdx-message v-if="isRequiredToHave2FA && !hasKeys">
+		<cdx-message v-if="isRequiredToHave2FA && !hasKeys" class="mw-special-OATHManage-mandatory-2fa">
 			{{ $i18n( 'oathauth-2fa-required' ) }}
 			<ul>
 				<li v-for="( { text, count }, wiki ) in groupsRequiring2FAPerWiki" :key="wiki">
