@@ -175,6 +175,10 @@
 			"value": 10,
 			"description": "The default amount of recovery codes to generate for a given user."
 		},
+		"OATHAdditionalRecoveryCodesValidityDays": {
+			"value": 7,
+			"description": "Number of days for which codes generated on Special:Recover2FAForUser will be valid."
+		},
 		"OATHMaxKeysPerUser": {
 			"value": 100,
 			"description": "Maximum amount of keys allowed per user."

@@ -23,10 +23,12 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat as TS;
 
 class Recover2FAForUser extends FormSpecialPage {
 
 	private readonly int $codesCount;
+	private readonly int $codeValidityDays;
 	private ?UserIdentity $targetUser = null;
 
 	public function __construct(
@@ -45,6 +47,7 @@ class Recover2FAForUser extends FormSpecialPage {
 		parent::__construct( 'Recover2FAForUser', 'oathauth-recover-for-user' );
 
 		$this->codesCount = $this->getConfig()->get( 'OATHRecoveryCodesCount' );
+		$this->codeValidityDays = $this->getConfig()->get( 'OATHAdditionalRecoveryCodesValidityDays' );
 	}
 
 	/** @inheritDoc */
@@ -155,11 +158,18 @@ class Recover2FAForUser extends FormSpecialPage {
 		$recoveryCodesModule = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 		'@phan-var RecoveryCodes $recoveryCodesModule';
 
+		$expiryTimestamp = ConvertibleTimestamp::convert(
+			TS::MW,
+			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->codeValidityDays * 86400
+		);
 		$key = $recoveryCodesModule->ensureExistence( $oathUser );
-		$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys( $this->codesCount );
+		$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
+			$this->codesCount,
+			[ 'expiry' => $expiryTimestamp ]
+		);
 		$this->userRepo->updateKey( $oathUser, $key );
 
-		$emailStatus = $this->sendEmailWithRecoveryCodes( $userEmail, $newRecoveryCodes, $user );
+		$emailStatus = $this->sendEmailWithRecoveryCodes( $userEmail, $newRecoveryCodes, $user, $expiryTimestamp );
 		if ( !$emailStatus->isOK() ) {
 			return $emailStatus;
 		}
@@ -207,7 +217,8 @@ class Recover2FAForUser extends FormSpecialPage {
 	private function sendEmailWithRecoveryCodes(
 		string $emailAddress,
 		array $recoveryCodes,
-		User $targetUser
+		User $targetUser,
+		string $expiryTimestamp
 	): Status {
 		// PasswordSender is used across MediaWiki for different purposes, that's why we use it here as well.
 		$passwordSender = $this->getConfig()->get( MainConfigNames::PasswordSender );
@@ -255,6 +266,7 @@ class Recover2FAForUser extends FormSpecialPage {
 			->dateTimeParams( $now )
 			->dateParams( $now )
 			->timeParams( $now )
+			->dateParams( $expiryTimestamp )
 			->text();
 
 		return Status::wrap( $this->emailer->send( $to, $sender, $subject, $body ) );

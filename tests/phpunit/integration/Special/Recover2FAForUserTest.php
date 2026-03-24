@@ -22,6 +22,7 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 use StatusValue;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @group Database
@@ -137,6 +138,9 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 		global $wgEchoNotifications;
 		unset( $wgEchoNotifications['oathauth-enable'] );
 
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+		$this->overrideConfigValue( 'OATHAdditionalRecoveryCodesValidityDays', 5 );
+
 		$loggerMock = $this->createMock( OATHAuthLogger::class );
 		$loggerMock->expects( $this->once() )->method( 'logOATHRecovery' );
 		$this->setService( 'OATHAuth.Logger', $loggerMock );
@@ -201,6 +205,9 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 		$this->assertCount( 12, $newCodes );
 
 		$this->assertSame( [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ], array_slice( $newCodes, 0, 2 ) );
+
+		$tempCode = $newKey->getRecoveryCodes()[2];
+		$this->assertSame( '20260106000000', $tempCode->getExpiryTimestamp() );
 	}
 
 	public static function provideGeneratedAdditionalCodes(): array {
