@@ -6,6 +6,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\RecoveryCodesSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
+use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesRemoveTemporaryForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesStatusForm;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -17,6 +18,8 @@ use UnexpectedValueException;
 
 class RecoveryCodes implements IModule {
 	public const MODULE_NAME = "recoverycodes";
+
+	public const ACTION_REMOVE_TEMPORARY = "recoverycodes-temporary-remove";
 
 	/**
 	 * Number of recovery code module instances allowed per user in oathauth_devices
@@ -133,6 +136,9 @@ class RecoveryCodes implements IModule {
 		IContextSource $context,
 		OATHAuthModuleRegistry $registry
 	): ?OATHAuthOOUIHTMLForm {
+		if ( $action === self::ACTION_REMOVE_TEMPORARY ) {
+			return new RecoveryCodesRemoveTemporaryForm( $user, $repo, $this, $context, $registry );
+		}
 		return new RecoveryCodesStatusForm( $user, $repo, $this, $context, $registry );
 	}
 

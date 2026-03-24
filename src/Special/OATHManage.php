@@ -15,6 +15,7 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -959,6 +960,65 @@ class OATHManage extends SpecialPage {
 						->getHtml()
 				)
 			)->build() );
+		$accordionsHtml = $keyAccordion->build()->getHtml();
+
+		$expiringCodes = array_filter(
+			$key->getRecoveryCodes(),
+			static fn ( RecoveryCode $code ) => !$code->isPermanent()
+		);
+		if ( $expiringCodes ) {
+			$expiringCodesCount = count( $expiringCodes );
+			$maxExpiry = '';
+			foreach ( $expiringCodes as $code ) {
+				$codeExpiry = $code->getExpiryTimestamp();
+				if ( $codeExpiry && $codeExpiry > $maxExpiry ) {
+					$maxExpiry = $codeExpiry;
+				}
+			}
+			$temporaryCodesAccordion = $codex->accordion()
+				->setTitle(
+					$this->msg( 'oathauth-recoverycodes-temporary' )
+						->numParams( $expiringCodesCount )
+						->text()
+				)
+				->setDescription(
+					$this->msg( 'oathauth-recoverycodes-temporary-desc' )
+						->numParams( $expiringCodesCount )
+						->dateTimeParams( $maxExpiry )
+						->dateParams( $maxExpiry )
+						->timeParams( $maxExpiry )
+						->text()
+				)
+				// TODO support outlined Accordions in Codex-PHP (T416645)
+				->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] )
+				->setContentHtml( $codex->htmlSnippet()->setContent(
+					$this->msg( 'oathauth-recoverycodes-temporary-intro' )
+						->numParams( $expiringCodesCount )
+						->parse() .
+					Html::rawElement( 'form', [
+						'action' => wfScript(),
+						'class' => 'mw-special-OATHManage-authmethods__method-actions'
+					],
+						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
+						Html::hidden( 'module', $key->getModule() ) .
+						Html::hidden( 'keyId', $key->getId() ) .
+						$codex->button()
+							->setLabel( $this->msg(
+								'oathauth-recoverycodes-temporary-remove-label'
+							)->parse() )
+							->setAction( 'destructive' )
+							->setWeight( 'primary' )
+							->setType( 'submit' )
+							->setAttributes( [
+								'name' => 'action',
+								'value' => RecoveryCodes::ACTION_REMOVE_TEMPORARY
+							] )
+							->build()
+							->getHtml()
+					)
+				)->build() );
+			$accordionsHtml .= $temporaryCodesAccordion->build()->getHtml();
+		}
 
 		$authmethodsClasses = [
 			'mw-special-OATHManage-authmethods'
@@ -970,7 +1030,7 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->addHTML(
 			Html::rawElement( 'div', [ 'class' => $authmethodsClasses ],
 				Html::element( 'h3', [], $this->msg( 'oathauth-' . $module->getName() . '-header' )->text() ) .
-				$keyAccordion->build()->getHTML() .
+				$accordionsHtml .
 				Html::rawElement( 'form', [
 						'action' => wfScript(),
 						'class' => 'mw-special-OATHManage-authmethods__addform'

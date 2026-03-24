@@ -146,6 +146,13 @@ class RecoveryCodeKeys extends AuthKey {
 	}
 
 	/**
+	 * Removes all codes with expiration date from this key
+	 */
+	public function removeTemporaryCodes(): void {
+		$this->recoveryCodes = array_filter( $this->recoveryCodes, static fn ( $code ) => $code->isPermanent() );
+	}
+
+	/**
 	 * Returns the number of recovery codes to generate by default
 	 */
 	private function getNumberOfCodesToGenerate(): int {

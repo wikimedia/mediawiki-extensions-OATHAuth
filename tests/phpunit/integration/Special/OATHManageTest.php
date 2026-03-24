@@ -12,6 +12,7 @@ use MediaWiki\Config\SiteConfiguration;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -21,6 +22,7 @@ use MediaWiki\Site\MediaWikiSite;
 use MediaWiki\Site\SiteLookup;
 use MediaWiki\WikiMap\WikiMap;
 use SpecialPageTestBase;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
@@ -513,6 +515,39 @@ class OATHManageTest extends SpecialPageTestBase {
 		foreach ( $expectedMessages as $expected ) {
 			$this->assertStringContainsString( $expected, $html );
 		}
+	}
+
+	public function testDisplaysTemporaryCodesAccordion() {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+		$user = $this->getTestUser();
+		$userRepo = OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository();
+
+		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
+			'TESTCODE',
+			[ 'EXPIRINGCODE', [ 'expiry' => '20270101000000' ] ],
+		] ] );
+		$userRepo->createKey(
+			$userRepo->findByUser( $user->getUserIdentity() ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getModuleRegistry()
+				->getModuleByKey( 'recoverycodes' ),
+			$key->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$context = RequestContext::getMain();
+		$session = $context->getRequest()->getSession();
+		$session->setUser( $user->getUser() );
+
+		$request = new FauxRequest(
+			[],
+			false,
+			$session
+		);
+
+		[ $html ] = $this->executeSpecialPage( '', $request, null, $user->getUser() );
+
+		$this->assertStringContainsString( '(oathauth-recoverycodes-temporary: 1)', $html );
 	}
 
 	private function setFakeSiteLookup() {

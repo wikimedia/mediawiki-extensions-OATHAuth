@@ -319,4 +319,20 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
 		$this->assertCount( 11, $keys->getRecoveryCodeKeys() );
 	}
+
+	public function testRemoveTemporaryCodes() {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+			RecoveryCode::newFromPlaintext( 'EXPIRINGCODE', [ 'expiry' => '20270101000000' ] ),
+		];
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$this->assertArrayContains( [ 'TESTCODE', 'EXPIRINGCODE' ], $keys->getRecoveryCodeKeys() );
+
+		$keys->removeTemporaryCodes();
+		$this->assertNotContains( 'EXPIRINGCODE', $keys->getRecoveryCodeKeys() );
+		$this->assertCount( 1, $keys->getRecoveryCodeKeys() );
+	}
 }
