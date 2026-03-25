@@ -32,7 +32,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 		return [
 			'label' => [
 				'type' => 'null',
-				'label' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
+				'value' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
 				// TODO: Use a different message for help?
 				'help' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
 			],
