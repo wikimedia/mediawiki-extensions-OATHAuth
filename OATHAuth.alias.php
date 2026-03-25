@@ -94,6 +94,14 @@ $specialPageAliases['pl'] = [
 	]
 ];
 
+/** Slovak (slovenčina) */
+$specialPageAliases['sk'] = [
+	'DisableOATHForUser' => [ 'DeaktivovaťDvojfaktorovúAutentifikáciuPoužívateľa' ],
+	'OATHManage' => [ 'ZabezpečenieÚčtu', 'DvojfaktorováAutentifikácia', 'SpravovaťDvojfaktorovúAutentifikáciu' ],
+	'Recover2FAForUser' => [ 'ObnoviťDvojfaktorovúAutentifikáciuPoužívateľa' ],
+	'VerifyOATHForUser' => [ 'OveriťDvojfaktorovúAutentifikáciuPoužívateľa' ],
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'DisableOATHForUser' => [ 'Онемогућавање_двофакторске_потврде_идентитета' ],
