@@ -434,7 +434,6 @@
 	},
 	"AvailableRights": [
 		"oathauth-enable",
-		"oathauth-api-all",
 		"oathauth-disable-for-user",
 		"oathauth-recover-for-user",
 		"oathauth-verify-user",
@@ -458,7 +457,6 @@
 	},
 	"GrantPermissions": {
 		"oath": {
-			"oathauth-api-all": true,
 			"oathauth-verify-user": true
 		}
 	},
@@ -469,14 +467,6 @@
 		"oath": "internal"
 	},
 	"APIModules": {
-		"oathvalidate": {
-			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiOATHValidate",
-			"services": [
-				"OATHAuth.UserRepository",
-				"UserFactory",
-				"OATHAuth.Logger"
-			]
-		},
 		"webauthn": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Api\\Module\\ApiWebAuthn",
 			"services": [

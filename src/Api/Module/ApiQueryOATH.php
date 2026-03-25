@@ -16,9 +16,9 @@ use Wikimedia\ParamValidator\ParamValidator;
 /**
  * Query module to check if a user has OATH authentication enabled.
  *
- * Usage requires the 'oathauth-api-all' grant which is not given to any group
- * by default. Use of this API is security sensitive and should not be granted
- * lightly. Configuring a special 'oathauth' user group is recommended.
+ * Usage requires the 'oathauth-verify-user' grant.
+ *
+ * Use of this API is security-sensitive and should not be granted lightly.
  *
  * @ingroup API
  * @ingroup Extensions
@@ -33,22 +33,10 @@ class ApiQueryOATH extends ApiQueryBase {
 	}
 
 	public function execute() {
-		// messages used: right-oathauth-api-all, action-oathauth-api-all,
-		// right-oathauth-verify-user, action-oathauth-verify-user
-		$this->checkUserRightsAny( [ 'oathauth-api-all', 'oathauth-verify-user' ] );
+		// messages used: right-oathauth-verify-user, action-oathauth-verify-user
+		$this->checkUserRightsAny( [ 'oathauth-verify-user' ] );
 
 		$params = $this->extractRequestParams();
-
-		$hasOAthauthApiAll = $this->getPermissionManager()
-			->userHasRight(
-				$this->getUser(),
-				'oathauth-api-all'
-			);
-
-		$reasonProvided = $params['reason'] !== null && $params['reason'] !== '';
-		if ( !$hasOAthauthApiAll && !$reasonProvided ) {
-			$this->dieWithError( [ 'apierror-missingparam', 'reason' ] );
-		}
 
 		if ( $params['user'] === null ) {
 			$user = $this->getUser();
@@ -70,15 +58,12 @@ class ApiQueryOATH extends ApiQueryBase {
 			$authUser = $this->oathUserRepository->findByUser( $user );
 			$data['enabled'] = $authUser->isTwoFactorAuthEnabled();
 
-			// Log if the user doesn't have oathauth-api-all or if a reason is provided.
 			// messages used: logentry-oath-verify, log-action-oath-verify
-			if ( !$hasOAthauthApiAll || $reasonProvided ) {
-				$logEntry = new ManualLogEntry( 'oath', 'verify' );
-				$logEntry->setPerformer( $this->getUser() );
-				$logEntry->setTarget( $user->getUserPage() );
-				$logEntry->setComment( $params['reason'] );
-				$logEntry->insert();
-			}
+			$logEntry = new ManualLogEntry( 'oath', 'verify' );
+			$logEntry->setPerformer( $this->getUser() );
+			$logEntry->setTarget( $user->getUserPage() );
+			$logEntry->setComment( $params['reason'] );
+			$logEntry->insert();
 		}
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
@@ -101,6 +86,7 @@ class ApiQueryOATH extends ApiQueryBase {
 			],
 			'reason' => [
 				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 		];
 	}
@@ -108,9 +94,9 @@ class ApiQueryOATH extends ApiQueryBase {
 	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
-			'action=query&meta=oath'
+			'action=query&meta=oath&reason=Test'
 				=> 'apihelp-query+oath-example-1',
-			'action=query&meta=oath&oathuser=Example'
+			'action=query&meta=oath&oathuser=Example&oathreason=Test'
 				=> 'apihelp-query+oath-example-2',
 		];
 	}

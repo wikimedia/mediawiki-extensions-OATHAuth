@@ -108,8 +108,6 @@
 	"oathauth-describe-provider": "Description of the extension as an authentication provider.",
 	"grant-group-authentication": "{{Related|Grant-group}}",
 	"grant-oath": "Name for grant \"oath\".\n{{Related|Grant}}",
-	"right-oathauth-api-all": "{{doc-right|oathauth-api-all}}",
-	"action-oathauth-api-all": "{{doc-action|oathauth-api-all}}",
 	"oathauth-user-not-found": "Message that Special:DisableOATHForUser will display when no user account can be found with the name provided",
 	"oath-log-name": "The Special:Log log name that appears in the drop-down on the Special:Log page",
 	"oath-log-header": "The Special:Log description that appears on the Special:Log page when you filter logs on this specific log name",
