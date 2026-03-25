@@ -67,6 +67,10 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 
 		$authResult = $this->webAuthnAuthenticator->continueAuthentication( $oathUser, $req->credential );
 		if ( $authResult->isGood() ) {
+			$this->logger->info( 'OATHAuth user {user} completed passwordless login from {clientip}', [
+				'user'     => $user->getName(),
+				'clientip' => $user->getRequest()->getIP(),
+			] );
 			$this->oathLogger->logSuccessfulVerification( $user );
 			// Record the fact that the user logged in with a passkey, so that
 			// our SecondaryAuthenticationProvider will skip the 2FA step
