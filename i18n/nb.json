@@ -74,8 +74,6 @@
 	"oathauth-describe-provider": "Tofaktorautentisering (OATH).",
 	"grant-group-authentication": "Utføre autentiseringshandlinger for seg selv og andre",
 	"grant-oath": "Få tilgang til informasjon om tofaktorautentisering (OATH) om en selv og andre",
-	"right-oathauth-api-all": "Spørre mot og validere OATH-informasjon for seg selv og andre",
-	"action-oathauth-api-all": "sjekk OATH-status",
 	"oathauth-user-not-found": "Ingen brukerkontoe funnet med det navnet",
 	"oath-log-name": "Logg for tofaktorautentisering",
 	"oath-log-header": "Disse hendelsene sporer endringer i statusen for tofaktorautentisering for brukere.",

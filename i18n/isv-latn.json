@@ -55,8 +55,6 @@
 	"oathauth-describe-provider": "Dvufaktorna avtentifikacija (OATH).",
 	"grant-group-authentication": "Izpolniti dějanja avtentifikacije za sebe i drugyh",
 	"grant-oath": "Dostup k informaciji o dvufaktornoj avtentifikaciji (OATH) za sebe i drugyh",
-	"right-oathauth-api-all": "Zapyt i prověrka OATH-informacij za sebe i drugyh",
-	"action-oathauth-api-all": "Prověrjenje statusa OATH",
 	"oathauth-user-not-found": "Ne najdeno nijedno koristničsko konto s takym imenem",
 	"oath-log-name": "Dnevnik dvufaktornoj avtentifikacije",
 	"oath-log-header": "Tute sobytja slědet za izměnami v statusu dvufaktornoj avtentifikacije koristnikov.",

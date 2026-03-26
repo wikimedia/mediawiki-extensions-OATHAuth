@@ -89,8 +89,6 @@
 	"oathauth-describe-provider": "Pengesahihan dwifaktor (OATH).",
 	"grant-group-authentication": "Lakukan tindakan pengesahihan untuk diri sendiri dan orang lain",
 	"grant-oath": "Mencapai maklumat pengesahihan dwifaktor (OATH) untuk diri sendiri dan pengguna lain",
-	"right-oathauth-api-all": "Mencari dan mengesahkan maklumat OATH untuk diri sendiri dan orang lain",
-	"action-oathauth-api-all": "periksa status OATH",
 	"oathauth-user-not-found": "Tidak ditemui akaun pengguna dengan nama tersebut",
 	"oath-log-name": "Log pengesahihan dwifaktor",
 	"oath-log-header": "Acara-acara ini mengesan perubahan status pengesahihan dwifaktor pengguna.",

@@ -77,8 +77,6 @@
 	"oathauth-describe-provider": "İki faktörlü kimlik doğrulama (OATH).",
 	"grant-group-authentication": "Kimlik doğrulama işlemlerini kendin ve diğerleri için uygula",
 	"grant-oath": "Kendisi ve diğerleri için iki faktörlü kimlik doğrulama (OATH) bilgilerine erişin",
-	"right-oathauth-api-all": "Kendisi ve diğerleri için OATH bilgilerini sorgulayın ve doğrulayın",
-	"action-oathauth-api-all": "OATH durumunu kontrol et",
 	"oathauth-user-not-found": "Bu ada sahip bir kullanıcı hesabı bulunamadı",
 	"oath-log-name": "İki faktörlü kimlik doğrulama günlüğü",
 	"oath-log-header": "Bu olaylar, kullanıcıların iki öğeli kimlik doğrulama durumundaki değişiklikleri izler.",

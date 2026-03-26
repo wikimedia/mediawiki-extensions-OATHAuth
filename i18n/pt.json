@@ -67,8 +67,6 @@
 	"oathauth-describe-provider": "Autenticação de dois fatores (OATH).",
 	"grant-group-authentication": "Executar as ações de autenticação para si e para outros",
 	"grant-oath": "Aceder a informação da autenticação de dois fatores (OATH) do próprio e de outros",
-	"right-oathauth-api-all": "Consultar e validar informação OATH do próprio e de outros",
-	"action-oathauth-api-all": "verificar o estado OATH",
 	"oathauth-user-not-found": "Não foi encontrada nenhuma conta de utilizador com esse nome",
 	"oath-log-name": "Registo da autenticação de dois fatores",
 	"oath-log-header": "Estes eventos registam alterações do estado da autenticação de dois fatores dos utilizadores.",

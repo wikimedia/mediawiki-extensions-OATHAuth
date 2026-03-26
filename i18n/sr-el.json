@@ -57,8 +57,6 @@
 	"oathauth-describe-provider": "Dvofaktorska potvrda identiteta (OATH).",
 	"grant-group-authentication": "Izvršavanje potvrde identiteta za sebe i druge",
 	"grant-oath": "pristup informacijama o dvofaktorskoj potvrdi identiteta (OATH) za sebe i druge",
-	"right-oathauth-api-all": "upit i provera valjanosti OATH informacija za sebe i druge",
-	"action-oathauth-api-all": "proverite OATH status",
 	"oathauth-user-not-found": "Nije pronađen nijedan korisnički nalog sa tim imenom",
 	"oath-log-name": "Dnevnik dvofaktorske potvrde identiteta",
 	"oath-log-header": "Ovi događaji prate promene statusa dvofaktorske potvrde identiteta korisnika.",

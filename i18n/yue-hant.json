@@ -73,8 +73,6 @@
 	"oathauth-describe-provider": "兩步驟驗證(OATH)。",
 	"grant-group-authentication": "對自己同其他人執行認證動作",
 	"grant-oath": "存取自己同其他人嘅兩步驗證（OATH）資訊",
-	"right-oathauth-api-all": "查詢同驗證自己同其他人嘅OATH資訊",
-	"action-oathauth-api-all": "檢查OATH狀態",
 	"oathauth-user-not-found": "搵唔到呢個名嘅用戶帳戶",
 	"oath-log-name": "兩步驗證日誌",
 	"oath-log-header": "呢啲事件會追蹤用戶兩步驗證狀態嘅更改。",

@@ -76,8 +76,6 @@
 	"oathauth-describe-provider": "دوه‌پړاويز تاييد (OATH)",
 	"grant-group-authentication": "د ځان او نورو لپاره تاييد چارې ترسره کول",
 	"grant-oath": "دوه پړاويز تاييد (OATH) مالومات د ځان او نورو لپاره",
-	"right-oathauth-api-all": "د ځان او نورو لپاره د OATH مالوماتو تپوس او تایید کول",
-	"action-oathauth-api-all": "د OATH دريځ کتل",
 	"oathauth-user-not-found": "په دې نوم هېڅ کارن گڼون ونه موندل شو",
 	"oath-log-name": "دوه‌پړاويز تاييد يادښت",
 	"oath-log-header": "دا پېښې د کارن دوه پړاويز تاييد دريځ کې  بدلونونه څاري.",

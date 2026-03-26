@@ -6,7 +6,7 @@
 	},
 	"oathauth-webauthn-module-label": "सुरक्षा कुँजी",
 	"oathauth-webauthn-javascript-required": "सुरक्षा कुँजी का उपयोग करने के लिए आपके ब्राउज़र में जावास्क्रिप्ट सक्षम होना आवश्यक है।",
-	"oathauth-webauthn-ui-login-prompt": "कृपया अपनी सुरक्षा कुँजी को स्पर्श करें या फिर ब्राउज़र से दिए गए निर्देशों का पालन करें।",
+	"oathauth-webauthn-ui-login-prompt": "अपनी सुरक्षा कुँजी का उपयोग करें या फिर अपने ब्राउज़र में दिए गए निर्देशों का पालन करें।",
 	"oathauth-webauthn-ui-add-key": "कुँजी जोड़ें",
 	"oathauth-webauthn-error-browser-unsupported": "यह ब्राउज़र सुरक्षा कुँजी प्रमाणीकरण समर्थित नहीं करता है, या फिर यह इस वेबसाइट के लिए उपलब्ध नहीं है। कृपया किसी दूसरे ब्राउज़र से प्रयास करें। [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support अधिक जानें]",
 	"oathauth-webauthn-error-browser-unsupported-console": "यह ब्राउज़र सुरक्षा कुँजी प्रमाणीकरण समर्थित नहीं करता है, या फिर यह इस वेबसाइट के लिए उपलब्ध नहीं है।",

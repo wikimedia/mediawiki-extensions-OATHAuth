@@ -82,8 +82,6 @@
 	"oathauth-describe-provider": "توثيق ذو عاملين (OATH)",
 	"grant-group-authentication": "أداء إجراءات التوثيق لنفسك والآخرين",
 	"grant-oath": "الوصول إلى معلومات المصادقة الثنائية (OATH) للذات وغيرها",
-	"right-oathauth-api-all": "الاستعلام والتحقق من صحة معلومات OATH للنفس والآخرين",
-	"action-oathauth-api-all": "تحقق من حالة OATH",
 	"oathauth-user-not-found": "لم يتم العثور على حساب مستخدم بهذا الاسم",
 	"oath-log-name": "سجل التوثيق ذي العاملين",
 	"oath-log-header": "تتبع هذه الأحداث التغييرات على حالة التوثيق ذي العاملين المستخدمين.",

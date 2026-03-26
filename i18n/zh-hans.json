@@ -117,8 +117,6 @@
 	"oathauth-describe-provider": "双重身份验证（OATH）。",
 	"grant-group-authentication": "为自己或他人执行身份验证操作",
 	"grant-oath": "访问自己或他人的双重身份验证（OATH）信息",
-	"right-oathauth-api-all": "查询和验证自己和他人的OATH信息",
-	"action-oathauth-api-all": "检查OATH状态",
 	"oathauth-user-not-found": "未找到匹配该名称的用户",
 	"oath-log-name": "双重身份验证日志",
 	"oath-log-header": "这些事件记录了用户的双重身份验证状态变化。",

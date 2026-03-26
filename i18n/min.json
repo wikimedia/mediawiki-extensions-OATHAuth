@@ -43,8 +43,6 @@
 	"oathauth-describe-provider": "Otentikasi duo-faktor (OATH).",
 	"grant-group-authentication": "Malakuan proses otentikasi untuak diri surang dan pangguno lain",
 	"grant-oath": "Akses informasi otentikasi duo-faktor (OATH) untuak diri surang dan pangguno lain",
-	"right-oathauth-api-all": "Mamintak dan mamvalidasi informasi OATH untuak diri surang dan pangguno lain",
-	"action-oathauth-api-all": "cek statuih OATH",
 	"oathauth-user-not-found": "Indak ado pangguno jo namo tasabuik",
 	"oath-log-name": "Log otentikasi duo-faktor",
 	"oath-log-header": "Paristiwa ko malacak parubahan statuih otentikasi duo-faktor pangguno.",

@@ -57,8 +57,6 @@
 	"oathauth-describe-provider": "Otentikasi dua faktor (OATH).",
 	"grant-group-authentication": "Melakukan proses otentikasi untuk diri sendiri dan pengguna lain",
 	"grant-oath": "Akses informasi otentikasi dua faktor (OATH) untuk diri sendiri dan pengguna lain",
-	"right-oathauth-api-all": "Meminta dan memvalidasi informasi OATH untuk diri sendiri dan pengguna lain",
-	"action-oathauth-api-all": "cek status OATH",
 	"oathauth-user-not-found": "Tidak ada pengguna ditemukan dengan nama tersebut",
 	"oath-log-name": "Log otentikasi dua faktor",
 	"oath-log-header": "Peristiwa ini melacak perubahan status otentikasi dua faktor pengguna.",

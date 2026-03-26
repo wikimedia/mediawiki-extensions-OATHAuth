@@ -78,8 +78,6 @@
 	"oathauth-describe-provider": "Kétlépcsős azonosítás (OATH).",
 	"grant-group-authentication": "hitelesítési műveletek végrehajtása magadnak és másoknak",
 	"grant-oath": "kétlépcsős azonosítás (OATH) információinak elérése magadról és másokról",
-	"right-oathauth-api-all": "OATH-információk lekérdezése és érvényesítése magadról és másokról",
-	"action-oathauth-api-all": "kétlépcsős azonosítási (OATH) státusz lekérdezése",
 	"oathauth-user-not-found": "Nem található ilyen nevű felhasználói fiók",
 	"oath-log-name": "Kétlépcsős azonosítási napló",
 	"oath-log-header": "Ezek az események nyomon követik a felhasználók kétlépcsős azonosítási állapotában bekövetkezett változásokat.",

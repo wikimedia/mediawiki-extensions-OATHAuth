@@ -46,8 +46,6 @@
 	"oathauth-describe-provider": "Dviejų veiksnių autentifikavimas (OATH).",
 	"grant-group-authentication": "Atlikti autentifikavimo veiksmus sau ir kitiems",
 	"grant-oath": "Pasiekti dviejų veiksnių autentifikavimo (OATH) informaciją sau ir kitiems",
-	"right-oathauth-api-all": "Pateiki užklausas ir validuoti OATH informaciją sau ir kitiems",
-	"action-oathauth-api-all": "patikrinti OATH būseną",
 	"oathauth-user-not-found": "Naudotojo paskyra tokiu vardu nerasta",
 	"oath-log-name": "Dviejų veiksnių autentifikavimo žurnalas",
 	"oath-log-header": "Šie įvykiai stebi naudotojų dviejų veiksnių autentifikavimo būsenos pokyčius.",

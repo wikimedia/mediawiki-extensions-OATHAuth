@@ -72,8 +72,6 @@
 	"oathauth-describe-provider": "Dvofaktorska avtentikacija (OATH).",
 	"grant-group-authentication": "Izvajanje dejanj avtentikacije sebe ali drugih",
 	"grant-oath": "Dostop do podatkov o dvofaktorski avtentikaciji (OATH) zase in za druge",
-	"right-oathauth-api-all": "Dostop in potrjevanje podatkov o OATH zase ali za druge",
-	"action-oathauth-api-all": "preveri stanje OATH",
 	"oathauth-user-not-found": "Ni bilo mogoče najti uporabniškega računa s tem imenom",
 	"oath-log-name": "Dnevnik dvofaktorske avtentikacije",
 	"oath-log-header": "Ti dogodki beležijo spremembe uporabnikovega stanja dvofaktorske avtentikacije.",

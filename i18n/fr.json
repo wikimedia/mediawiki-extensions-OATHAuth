@@ -98,8 +98,6 @@
 	"oathauth-describe-provider": "Authentification à deux facteurs (OATH).",
 	"grant-group-authentication": "Effectuer les actions d’authentification pour soi-même et les autres",
 	"grant-oath": "Accéder aux informations d’authentification à deux facteurs (OATH) pour soi-même et les autres",
-	"right-oathauth-api-all": "Demander et valider les informations OATH pour soi-même et les autres",
-	"action-oathauth-api-all": "vérifier l’état OATH",
 	"oathauth-user-not-found": "Aucun compte utilisateur trouvé avec ce nom",
 	"oath-log-name": "Journal d’authentification à deux facteurs",
 	"oath-log-header": "Ces événements tracent les modifications d’état de l’authentification à deux facteurs des utilisateurs.",

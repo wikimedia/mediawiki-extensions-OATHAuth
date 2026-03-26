@@ -84,8 +84,6 @@
 	"oathauth-describe-provider": "Uwierzytelnianie dwuskładnikowe (OATH).",
 	"grant-group-authentication": "Wykonywanie czynności związanych z uwierzytelnianiem dla siebie i innych",
 	"grant-oath": "Dostęp do informacji o uwierzytelnianiu dwuskładnikowym (OATH) dla siebie i innych",
-	"right-oathauth-api-all": "Odpytywanie i potwierdzanie informacji OATH dla siebie i innych",
-	"action-oathauth-api-all": "sprawdzania statusu OATH",
 	"oathauth-user-not-found": "Nie znaleziono konta użytkownika o tej nazwie",
 	"oath-log-name": "Rejestr uwierzytelniania dwuskładnikowego",
 	"oath-log-header": "Śledzenie zmian w statusach uwierzytelniania dwuskładnikowego użytkowników.",
@@ -164,5 +162,14 @@
 	"oathauth-passkey-dialog-title": "Dodaj passkey",
 	"oathauth-passkey-dialog-text": "Passkey to najbezpieczniejsza metoda logowania się do konta. Dla większości osób jest również najprostsza.\n\nWykorzystując passkey możesz zalogować się do {{GRAMMAR:D.lp|{{SITENAME}}}} w taki sam sposób, jak odblokowujesz swoje urządzenie – PIN-em, odciskiem palca lub rozpoznawaniem twarzy.\n\nNiezależnie od metody logowania, twoje dane biometryczne i PIN pozostają na urządzeniu i nigdy nie są do nas wysyłane.",
 	"oathauth-passkey-dialog-back": "Wstecz",
-	"oathauth-passkey-dialog-add": "Dodaj passkey"
+	"oathauth-passkey-dialog-add": "Dodaj passkey",
+	"oathauth-2fa-required": "Jesteś członkiem grup, które wymagają uwierzytelniania dwuskładnikowego.",
+	"oathauth-2fa-required-groups-on-project": "$2 na $3",
+	"oathauth-2fa-groups-notice-single": "Należysz do {{PLURAL:$1|grupy|grup}}, {{PLURAL:$1|która wymaga|które wymagają}} uwierzytelniania dwuskładnikowego ($2 na $3). Aby usunąć tę metodę, musisz:\n<ul> \n<li>dodać inną metodę uwierzytelniania dwuskładnikowego lub</li> \n<li>poprosić o usunięcie z {{PLURAL:$1|tej grupy|tych grup}}. Odwiedź stronę: $4</li> \n</ul>",
+	"oathauth-2fa-groups-notice-multiple": "Należysz do {{PLURAL:$1|grupy|grup}}, {{PLURAL:$1|która wymaga|które wymagają}} uwierzytelniania dwuskładnikowego. Aby usunąć tę metodę, musisz:\n<ul> \n<li>dodać inną metodę uwierzytelniania dwuskładnikowego lub</li> \n<li>poprosić o usunięcie z {{PLURAL:$1|tej grupy|tych grup}}.</li> \n</ul>",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "Aby zostać usuniętym z {{PLURAL:$1|tej grupy|tych grup}}, odwiedź:",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "Dla $2 na $3: $4",
+	"oathauth-2fa-groups-notice-unknown-page": "Nieznana strona",
+	"oathauth-remove-lastkey-required": "Nie możesz usunąć ostatniej metody uwierzytelniania, jeśli jesteś członkiem grup wymagających uwierzytelniania dwuskładnikowego. Dodaj inną metodę uwierzytelniania przed usunięciem tej.",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Użytkownik ma włączone uwierzytelnianie dwuskładnikowe"
 }

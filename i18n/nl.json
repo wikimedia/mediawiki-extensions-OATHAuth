@@ -96,8 +96,6 @@
 	"oathauth-describe-provider": "Tweetrapsauthenticatie (OATH).",
 	"grant-group-authentication": "Authenticatie handelingen voor zichzelf en anderen kunnen uitvoeren",
 	"grant-oath": "Toegang tot tweetrapsauthenticatie (OATH) informatie van zichzelf en anderen",
-	"right-oathauth-api-all": "OATH-informatie voor uzelf en anderen opvragen en valideren",
-	"action-oathauth-api-all": "de OATH status te controleren",
 	"oathauth-user-not-found": "Er is geen gebruikersaccount met die naam",
 	"oath-log-name": "Tweetrapsauthenticatie logboek",
 	"oath-log-header": "Deze gebeurtenissen houden wijzigen bij aan de tweetrapsauthenticatiestatus van gebruikers.",

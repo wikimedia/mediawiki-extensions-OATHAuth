@@ -93,8 +93,6 @@
 	"oathauth-describe-provider": "Tofaktorgodkendelse (OATH).",
 	"grant-group-authentication": "Udfør godkendelseshandlinger for dig selv og andre",
 	"grant-oath": "Få adgang til tofaktorgodkendelse (OATH) for dig selv og andre",
-	"right-oathauth-api-all": "Forespørg og bekræfte OATH-oplysninger for dig selv og andre",
-	"action-oathauth-api-all": "tjek OATH-status",
 	"oathauth-user-not-found": "Der blev ikke fundet nogen brugerkonto med det navn",
 	"oath-log-name": "Log over tofaktorgodkendelse",
 	"oath-log-header": "Disse hændelser sporer ændringer i brugernes status for tofaktorgodkendelse.",

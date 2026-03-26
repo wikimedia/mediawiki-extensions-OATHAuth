@@ -79,8 +79,6 @@
 	"oathauth-describe-provider": "Tvåfaktorsautentisering (OATH).",
 	"grant-group-authentication": "Utför autentiseringsåtgärder för dig själv och andra",
 	"grant-oath": "Tillgång till information om tvåfaktorsautentisering (OATH) för dig själv och andra",
-	"right-oathauth-api-all": "Fråga och bekräfta OATH-information för dig själv och andra",
-	"action-oathauth-api-all": "kolla OATH-status",
 	"oathauth-user-not-found": "Inget användarkonto med detta namn hittades",
 	"oath-log-name": "Logg för tvåfaktorsautentisering",
 	"oath-log-header": "Dessa händelser spårar ändringar i användares status för tvåfaktorautenting.",

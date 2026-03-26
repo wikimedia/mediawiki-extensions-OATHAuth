@@ -94,8 +94,6 @@
 	"oathauth-describe-provider": "Xác thực dùng hai nhân tố (OATH).",
 	"grant-group-authentication": "Thực hiện các tác vụ xác thực cho chính mình và những người khác",
 	"grant-oath": "Truy cập thông tin xác thực dùng hai nhân tố (OATH) về chính mình và những người khác",
-	"right-oathauth-api-all": "Truy vấn và xác nhận thông tin OATH về chính mình và những người khác",
-	"action-oathauth-api-all": "kiểm tra trạng thái OATH",
 	"oathauth-user-not-found": "Không tìm thấy thành viên có tên đó",
 	"oath-log-name": "Nhật trình xác thực dùng hai nhân tố",
 	"oath-log-header": "Các sự kiện này theo dõi sự thay đổi trạng thái xác thực dùng hai nhân tố của người dùng.",

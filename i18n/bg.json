@@ -42,8 +42,6 @@
 	"oathauth-describe-provider": "Двуфакторно удостоверяване (OATH).",
 	"grant-group-authentication": "Извършване на действия за удостоверяване за себе си и други",
 	"grant-oath": "Достъп до данните за двуфакторно удостоверяване (OATH) за себе си и други",
-	"right-oathauth-api-all": "Искане и проверка на данни за OATH за себе си и други",
-	"action-oathauth-api-all": "проверяване на OATH-статус",
 	"oathauth-user-not-found": "Не е открита потребителска сметка с това име",
 	"oath-log-name": "Дневник на двуфакторното удостоверяване",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|изключи}} двуфакторното удостоверяване на $3",

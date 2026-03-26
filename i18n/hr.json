@@ -51,8 +51,6 @@
 	"oathauth-describe-provider": "Dvofaktorska autentifikacija (OATH)",
 	"grant-group-authentication": "Izvođenje provjere dvofaktorske autentifikacije za sebe i druge",
 	"grant-oath": "Pristup podatcima dvofaktorske autentifikacije (OATH) za sebe i druge",
-	"right-oathauth-api-all": "Upit i provjera podataka OATH-a za sebe i druge",
-	"action-oathauth-api-all": "provjeravanje statusa OATH-a",
 	"oathauth-user-not-found": "Sustav nije pronašao suradnički račun s traženim imenom računa",
 	"oath-log-name": "Evidencija dvofaktorske autentifikacije",
 	"oath-log-header": "Ovi događaji prate promjene statusa dvofaktorske autentifikacije suradnika/suradnice.",

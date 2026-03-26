@@ -70,7 +70,6 @@
 	"oathauth-describe-provider": "Zwee-Faktor-Authentifizéierung (OATH).",
 	"grant-group-authentication": "Authentifikatiouns-Aktioune fir sech selwer a fir Anerer maachen",
 	"grant-oath": "Op Informatiounen iwwer d'Zwee-Faktor-Authentifizéierung (OATH) vu sech selwer an aneren zougräifen",
-	"action-oathauth-api-all": "OATH-Status nokucken",
 	"oathauth-user-not-found": "Et gouf kee Kont mat dësem Numm fonnt",
 	"oath-log-name": "Logbuch vun der Zwee-Faktor-Authentifizéierung",
 	"logentry-oath-disable-other": "{{GENDER:$2|De(n) $1|D'$1}} huet d'Zwee-Faktor-Authentifizéierung vu(n) $3 desaktivéiert",

@@ -89,8 +89,6 @@
 	"oathauth-describe-provider": "Authentication bifactorial (OATH).",
 	"grant-group-authentication": "Exequer actiones de authentication pro se e pro alteres",
 	"grant-oath": "Acceder al information de authentication bifactorial (OATH) pro se e pro alteres",
-	"right-oathauth-api-all": "Consultar e validar information OATH pro se e pro alteres",
-	"action-oathauth-api-all": "verificar le stato de OATH",
 	"oathauth-user-not-found": "Nulle conto de usator ha essite trovate con iste nomine",
 	"oath-log-name": "Registro de authentication bifactorial",
 	"oath-log-header": "Iste eventos tracia le modificationes al stato de authentication bifactorial de usatores.",

@@ -92,8 +92,6 @@
 	"oathauth-describe-provider": "雙重認證（OATH）。",
 	"grant-group-authentication": "執行對自己及他人的認證操作",
 	"grant-oath": "存取自己與他人的雙重認證(OATH)資訊",
-	"right-oathauth-api-all": "查詢並確認自己與他人的雙重認證(OATH)資訊",
-	"action-oathauth-api-all": "檢查雙重認證(OATH)狀態",
 	"oathauth-user-not-found": "未找到該名稱的使用者帳號",
 	"oath-log-name": "雙重認證日誌",
 	"oath-log-header": "這些事件追蹤著使用者之雙重認證狀態的變更。",

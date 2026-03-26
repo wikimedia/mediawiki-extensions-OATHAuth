@@ -6,7 +6,7 @@
 	},
 	"oathauth-webauthn-module-label": "Təhlükəsizlik açarı",
 	"oathauth-webauthn-javascript-required": "Təhlükəsizlik açarı istifadə etmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
-	"oathauth-webauthn-ui-login-prompt": "Zəhmət olmasa, təhlükəsizlik açarınıza toxunun və ya brauzerin təlimatlarına əməl edin.",
+	"oathauth-webauthn-ui-login-prompt": "Təhlükəsizlik açarınızdan istifadə edin və ya brauzerinizin təlimatlarına əməl edin.",
 	"oathauth-webauthn-ui-add-key": "Açar əlavə et",
 	"oathauth-webauthn-error-browser-unsupported": "Bu brauzer təhlükəsizlik açarı ilə autentifikasiyanı dəstəkləmir və ya bu veb-sayt üçün əlçatan deyil. Fərqli brauzerlə cəhd edin. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Ətraflı öyrənin]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Bu brauzer təhlükəsizlik açarı ilə autentifikasiyanı dəstəkləmir və ya bu veb-sayt üçün əlçatan deyil.",

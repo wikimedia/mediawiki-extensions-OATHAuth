@@ -59,8 +59,6 @@
 	"oathauth-describe-provider": "Dvoufaktorová autentizace (OATH).",
 	"grant-group-authentication": "Provádění autentizačních akcí pro sebe či ostatní",
 	"grant-oath": "Přístup k informacím o dvoufaktorové autentizaci (OATH) u sebe a ostatních",
-	"right-oathauth-api-all": "Zjišťování a ověřování informací týkajících se OATH u sebe a ostatních",
-	"action-oathauth-api-all": "zjišťovat stav OATH",
 	"oathauth-user-not-found": "Nebyl nalezen uživatelský účet s tímto jménem",
 	"oath-log-name": "Kniha dvoufaktorové autentizace",
 	"oath-log-header": "Tyto události zaznamenávají změny stavu dvoufaktorové autentizace uživatelů.",
