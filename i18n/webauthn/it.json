@@ -6,6 +6,7 @@
 			"Lorem Ipsum"
 		]
 	},
+	"oathauth-webauthn-ui-login-prompt": "Usa la tua chiave di sicurezza o segui le istruzioni del browser.",
 	"oathauth-webauthn-ui-add-key": "Aggiungi chiave",
 	"oathauth-webauthn-registered-keys-section-name": "Chiavi registrate",
 	"oathauth-webauthn-error-verification-failed": "Verifica WebAuthn non riuscita.",

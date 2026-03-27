@@ -87,7 +87,7 @@
 	"action-oathauth-enable": "die Zwei-Faktor-Authentifizierung zu aktivieren",
 	"oathauth-auth-token-label": "Authentifizierungscode",
 	"oathauth-auth-token-help": "Das Einmalpasswort, verwendet als zweiter Faktor der Zwei-Faktor-Authentifizierung.",
-	"oathauth-auth-token-help-ui": "Gib den 6-stelligen Code aus deine Authentifizierungs-App ein.",
+	"oathauth-auth-token-help-ui": "Gib den 6-stelligen Code aus deiner Authentifizierungs-App ein.",
 	"oathauth-auth-recovery-code-label": "Wiederherstellungscode",
 	"oathauth-auth-use-recovery-code": "Wiederherstellungscodes verwenden",
 	"oathauth-auth-recovery-code-help": "Gib einen deiner Wiederherstellungscodes ein.",

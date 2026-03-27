@@ -7,7 +7,7 @@
 	},
 	"oathauth-webauthn-module-label": "Chave de seguranza",
 	"oathauth-webauthn-javascript-required": "Cómpre activar o JavaScript no navegador para usar unha chave de seguranza.",
-	"oathauth-webauthn-ui-login-prompt": "Toca a túa chave de seguranza ou sigue as instrucións do navegador.",
+	"oathauth-webauthn-ui-login-prompt": "Utiliza a túa chave de seguranza ou sigue as instrucións do navegador.",
 	"oathauth-webauthn-ui-add-key": "Engadir unha chave",
 	"oathauth-webauthn-error-browser-unsupported": "Este navegador non admite a autenticación por chave de seguranza ou non está dispoñible para este sitio web. Inténtao cun navegador diferente. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Máis información]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Este navegador non admite a autenticación por chave de seguranza ou non está dispoñible para este sitio web.",
