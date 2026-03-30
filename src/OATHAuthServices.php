@@ -9,7 +9,6 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
-use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\MediaWikiServices;
 
@@ -38,10 +37,6 @@ class OATHAuthServices {
 
 	public function getEncryptionHelper(): EncryptionHelper {
 		return $this->services->getService( 'OATHAuth.EncryptionHelper' );
-	}
-
-	public function getUserConditionCheckerWith2FAAssumption(): UserRequirementsConditionCheckerWith2FAAssumption {
-		return $this->services->getService( 'OATHAuth.UserConditionCheckerWith2FAAssumption' );
 	}
 
 	public function getMandatory2FAChecker(): Mandatory2FAChecker {

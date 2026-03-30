@@ -12,13 +12,14 @@ use MediaWiki\User\RestrictedUserGroupConfigReader;
 use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserRequirementsConditionCheckerFactory;
 use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 class Mandatory2FAChecker {
 
 	public function __construct(
-		private readonly UserRequirementsConditionCheckerWith2FAAssumption $userRequirementsChecker,
+		private readonly UserRequirementsConditionCheckerFactory $userRequirementsCheckerFactory,
 		private readonly RestrictedUserGroupConfigReader $restrictedUserGroupConfigReader,
 		private readonly UserGroupManagerFactory $userGroupManagerFactory,
 		private readonly ExtensionRegistry $extensionRegistry
@@ -112,17 +113,23 @@ class Mandatory2FAChecker {
 	 *   false otherwise
 	 */
 	private function isUserRequiredToHave2FAToMeetConditions( UserIdentity $user, array $conditions ): bool {
-		$conditionsUsed = $this->userRequirementsChecker->extractConditions( $conditions );
+		$evaluator = new UserRequirementsConditionEvaluatorWith2FAAssumption();
+		$conditionChecker = $this->userRequirementsCheckerFactory->getCheckerWithCustomConditions(
+			$this->userGroupManagerFactory->getUserGroupManager( $user->getWikiId() ),
+			[ $evaluator ]
+		);
+
+		$conditionsUsed = $conditionChecker->extractConditions( $conditions );
 		if ( !in_array( APCOND_OATH_HAS2FA, $conditionsUsed ) ) {
 			// If the condition doesn't even use 2FA state, it's not relevant for mandatory 2FA.
 			return false;
 		}
 
-		$this->userRequirementsChecker->setAssumed2FAState( true );
-		$resultWith2FA = $this->userRequirementsChecker->recursivelyCheckCondition( $conditions, $user );
+		$evaluator->setAssumed2FAState( true );
+		$resultWith2FA = $conditionChecker->recursivelyCheckCondition( $conditions, $user );
 
-		$this->userRequirementsChecker->setAssumed2FAState( false );
-		$resultWithout2FA = $this->userRequirementsChecker->recursivelyCheckCondition( $conditions, $user );
+		$evaluator->setAssumed2FAState( false );
+		$resultWithout2FA = $conditionChecker->recursivelyCheckCondition( $conditions, $user );
 
 		return $resultWith2FA && !$resultWithout2FA;
 	}

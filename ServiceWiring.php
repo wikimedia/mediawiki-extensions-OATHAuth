@@ -3,7 +3,6 @@
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
-use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
@@ -52,29 +51,12 @@ return [
 	},
 	'OATHAuth.Mandatory2FAChecker' => static function ( MediaWikiServices $services ): Mandatory2FAChecker {
 		return new Mandatory2FAChecker(
-			$services->getService( 'OATHAuth.UserConditionCheckerWith2FAAssumption' ),
+			$services->getUserRequirementsConditionCheckerFactory(),
 			$services->getRestrictedUserGroupConfigReader(),
 			$services->getUserGroupManagerFactory(),
 			$services->getExtensionRegistry()
 		);
 	},
-	'OATHAuth.UserConditionCheckerWith2FAAssumption' =>
-		static function ( MediaWikiServices $services ): UserRequirementsConditionCheckerWith2FAAssumption {
-			return new UserRequirementsConditionCheckerWith2FAAssumption(
-				new ServiceOptions(
-					UserRequirementsConditionCheckerWith2FAAssumption::CONSTRUCTOR_OPTIONS,
-					$services->getMainConfig()
-				),
-				$services->getGroupPermissionsLookup(),
-				$services->getHookContainer(),
-				LoggerFactory::getInstance( 'UserGroupManager' ),
-				$services->getUserEditTracker(),
-				$services->getUserRegistrationLookup(),
-				$services->getUserFactory(),
-				RequestContext::getMain(),
-				$services->getUserGroupManager(),
-			);
-		},
 	'OATHAuth.WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
 		/** @var OATHAuthModuleRegistry $moduleRegistry */
 		$moduleRegistry = $services->getService( 'OATHAuth.ModuleRegistry' );

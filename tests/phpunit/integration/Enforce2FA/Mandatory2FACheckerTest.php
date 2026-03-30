@@ -9,7 +9,6 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Enforce2FA;
 use MediaWiki\Config\SiteConfiguration;
 use MediaWiki\Extension\CentralAuth\CentralAuthUserCache;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
-use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -17,6 +16,8 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserGroupManagerFactory;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserRequirementsConditionChecker;
+use MediaWiki\User\UserRequirementsConditionCheckerFactory;
 use MediaWiki\WikiMap\WikiMap;
 use MediaWikiIntegrationTestCase;
 
@@ -93,10 +94,13 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		$this->setUserGroupManagerMock( [ 'sysop' ] );
 
-		$userRequirementsChecker = $this->createMock( UserRequirementsConditionCheckerWith2FAAssumption::class );
+		$userRequirementsChecker = $this->createMock( UserRequirementsConditionChecker::class );
 		$userRequirementsChecker->expects( $this->never() )
 			->method( 'recursivelyCheckCondition' );
-		$this->setService( 'OATHAuth.UserConditionCheckerWith2FAAssumption', $userRequirementsChecker );
+		$userRequirementsCheckerFactory = $this->createMock( UserRequirementsConditionCheckerFactory::class );
+		$userRequirementsCheckerFactory->method( 'getCheckerWithCustomConditions' )
+			->willReturn( $userRequirementsChecker );
+		$this->setService( 'UserRequirementsConditionCheckerFactory', $userRequirementsCheckerFactory );
 
 		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
 

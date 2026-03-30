@@ -7,9 +7,9 @@
 namespace MediaWiki\Extension\OATHAuth\Enforce2FA;
 
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserRequirementsConditionChecker;
+use MediaWiki\User\UserRequirementsConditionEvaluatorBase;
 
-class UserRequirementsConditionCheckerWith2FAAssumption extends UserRequirementsConditionChecker {
+class UserRequirementsConditionEvaluatorWith2FAAssumption extends UserRequirementsConditionEvaluatorBase {
 
 	/**
 	 * @var bool|null Assumed 2FA state for the user. If null, uses the actual 2FA state. If true/false, treats
@@ -18,12 +18,16 @@ class UserRequirementsConditionCheckerWith2FAAssumption extends UserRequirements
 	private ?bool $assumed2FAState = null;
 
 	/** @inheritDoc */
-	protected function checkCondition( array $cond, UserIdentity $user ): ?bool {
-		if ( $cond[0] === APCOND_OATH_HAS2FA && $this->assumed2FAState !== null ) {
+	public function checkCondition(
+		string|int $conditionType,
+		array $args,
+		UserIdentity $user,
+		bool $isPerformingRequest
+	): ?bool {
+		if ( $conditionType === APCOND_OATH_HAS2FA ) {
 			return $this->assumed2FAState;
 		}
-
-		return parent::checkCondition( $cond, $user );
+		return null;
 	}
 
 	/**

@@ -6,17 +6,16 @@
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Enforce2FA;
 
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionEvaluatorWith2FAAssumption;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @covers \MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionCheckerWith2FAAssumption
- * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
+ * @covers \MediaWiki\Extension\OATHAuth\Enforce2FA\UserRequirementsConditionEvaluatorWith2FAAssumption
  */
-class UserRequirementsConditionCheckerWith2FAAssumptionTest extends MediaWikiIntegrationTestCase {
+class UserRequirementsConditionEvaluatorWith2FAAssumptionTest extends MediaWikiIntegrationTestCase {
 
 	/** @dataProvider provideCheckConditionWith2FAAssumption */
 	public function testCheckConditionWith2FAAssumption(
@@ -25,6 +24,8 @@ class UserRequirementsConditionCheckerWith2FAAssumptionTest extends MediaWikiInt
 		?bool $assumed2FAState,
 		bool $expectedResult
 	): void {
+		$services = $this->getServiceContainer();
+
 		$oathUser = $this->createMock( OATHUser::class );
 		$oathUser->method( 'isTwoFactorAuthEnabled' )
 			->willReturn( $has2FA );
@@ -34,8 +35,13 @@ class UserRequirementsConditionCheckerWith2FAAssumptionTest extends MediaWikiInt
 			->willReturn( $oathUser );
 		$this->setService( 'OATHAuth.UserRepository', $userRepository );
 
-		$checker = OATHAuthServices::getInstance()->getUserConditionCheckerWith2FAAssumption();
-		$checker->setAssumed2FAState( $assumed2FAState );
+		$evaluator = new UserRequirementsConditionEvaluatorWith2FAAssumption();
+		$checker = $services->getUserRequirementsConditionCheckerFactory()
+			->getCheckerWithCustomConditions(
+				$services->getUserGroupManager(),
+				[ $evaluator ]
+			);
+		$evaluator->setAssumed2FAState( $assumed2FAState );
 
 		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$result = $checker->recursivelyCheckCondition( $condition, $user );
