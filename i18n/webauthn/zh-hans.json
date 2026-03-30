@@ -11,7 +11,7 @@
 	},
 	"oathauth-webauthn-module-label": "安全密钥",
 	"oathauth-webauthn-javascript-required": "您的浏览器必须启用JavaScript才能使用安全密钥。",
-	"oathauth-webauthn-ui-login-prompt": "请触摸您的安全密钥或按照浏览器中的说明进行操作。",
+	"oathauth-webauthn-ui-login-prompt": "请使用您的安全密钥或按照浏览器中的说明进行操作。",
 	"oathauth-webauthn-ui-add-key": "添加密钥",
 	"oathauth-webauthn-error-browser-unsupported": "此浏览器不支持安全密钥认证，或不适用于本网站。请尝试使用其他浏览器。 [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 阅读更多]",
 	"oathauth-webauthn-error-browser-unsupported-console": "此浏览器不支持安全密钥认证，或不适用于此网站。",
