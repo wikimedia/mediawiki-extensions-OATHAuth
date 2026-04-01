@@ -6,7 +6,6 @@ use LogicException;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\MediaWikiServices;
@@ -73,7 +72,6 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		}
 
 		if ( $response->status === AuthenticationResponse::PASS ) {
-			$user->getRequest()->getSession()->set( OATHAuth::AUTHENTICATED_OVER_2FA, true );
 			OATHAuthServices::getInstance()->getLogger()->logSuccessfulVerification( $user );
 		}
 

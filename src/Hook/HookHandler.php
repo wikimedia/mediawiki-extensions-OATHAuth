@@ -9,13 +9,11 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
-use MediaWiki\Extension\OATHAuth\OATHAuth;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
-use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Permissions\Hook\UserGetRightsHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -39,7 +37,6 @@ class HookHandler implements
 	AuthChangeFormFieldsHook,
 	BeforePageDisplayHook,
 	GetPreferencesHook,
-	getUserPermissionsErrorsHook,
 	ReadPrivateUserRequirementsConditionHook,
 	UserEffectiveGroupsHook,
 	UserGetRightsHook,
@@ -282,24 +279,6 @@ class HookHandler implements
 		if ( $disabledGroups ) {
 			$groups = array_diff( $groups, $disabledGroups );
 		}
-	}
-
-	/** @inheritDoc */
-	public function onGetUserPermissionsErrors( $title, $user, $action, &$result ) {
-		if ( !$this->config->has( 'OATHExclusiveRights' ) ) {
-			return true;
-		}
-
-		// TODO: Get the session from somewhere more... sane?
-		$session = $user->getRequest()->getSession();
-		if (
-			!$session->get( OATHAuth::AUTHENTICATED_OVER_2FA, false ) &&
-			in_array( $action, $this->config->get( 'OATHExclusiveRights' ) )
-		) {
-			$result = 'oathauth-action-exclusive-to-2fa';
-			return false;
-		}
-		return true;
 	}
 
 	/**

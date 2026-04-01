@@ -109,7 +109,6 @@
 		"AuthChangeFormFields": "main",
 		"BeforePageDisplay": "main",
 		"GetPreferences": "main",
-		"getUserPermissionsErrors": "main",
 		"LoadExtensionSchemaUpdates": "updater",
 		"ReadPrivateUserRequirementsCondition": "main",
 		"UserEffectiveGroups": "main",
@@ -159,10 +158,6 @@
 		"OATHAuthAccountPrefix": {
 			"value": false,
 			"description": "Prefix for user account shown during enrollment."
-		},
-		"OATHExclusiveRights": {
-			"value": [],
-			"description": "List of permissions that are revoked from users who do not use two-factor authentication."
 		},
 		"OATHRequiredForGroups": {
 			"value": [],
