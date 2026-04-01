@@ -5,7 +5,10 @@
 			"Yupik"
 		]
 	},
+	"verifyoathforuser": "Visásmit kyevtmuddosii tubdâttâttâm tile",
+	"oathauth-secret": "Kyevtmuddosii tubdâttâttâm čiähukoodam čoovdâ:",
 	"oathauth-recoverycodes-download": "Luođii",
 	"oathauth-enteruser": "Kevtteenommâ:",
+	"oath-log-name": "Kyevtmuddosii tubdâttâttâm loki",
 	"oathauth-notifications-disable-help": "Iše"
 }
