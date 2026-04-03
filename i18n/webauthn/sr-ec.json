@@ -5,6 +5,7 @@
 		]
 	},
 	"oathauth-webauthn-module-label": "Сигурносни кључ",
+	"oathauth-webauthn-ui-login-prompt": "Искористите Ваш сигурносни кључ или пратите упутства веб-прегледача.",
 	"oathauth-webauthn-ui-add-key": "Додај кључ",
 	"oathauth-webauthn-ui-remove-key": "Уклони",
 	"oathauth-webauthn-ui-key-register-help": "Изаберите надимак за Ваш кључ:",
