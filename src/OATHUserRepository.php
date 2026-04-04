@@ -118,7 +118,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$key = $module->newKey( $keyData + [ 'id' => $id, 'created_timestamp' => $createdTimestamp ] );
 		$user->addKey( $key );
 
-		$this->logger->info( 'OATHAuth {oathtype} key {key} added for {user} from {clientip}', [
+		$this->logger->info( 'OATHAuth added {oathtype} key {key} for {user} from {clientip}', [
 			'key' => $id,
 			'user' => $user->getUser()->getName(),
 			'clientip' => $clientInfo,
