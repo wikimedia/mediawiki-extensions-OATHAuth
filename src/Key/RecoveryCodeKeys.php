@@ -58,6 +58,9 @@ class RecoveryCodeKeys extends AuthKey {
 		);
 	}
 
+	/**
+	 * Any expired Recovery Codes will be removed
+	 */
 	public function __construct(
 		?int $id,
 		?string $friendlyName,
