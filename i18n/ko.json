@@ -14,12 +14,14 @@
 			"밝은소년",
 			"아라",
 			"YeBoy371",
-			"Bisang"
+			"Bisang",
+			"Tensama0415"
 		]
 	},
 	"oathauth-desc": "HMAC 기반 일회용 비밀번호를 이용한 인증 지원 제공",
 	"disableoathforuser": "사용자에 대해 2요소 인증 비활성화하기",
 	"verifyoathforuser": "2요소 인증 상태 확인",
+	"oath": "OATHAuth",
 	"oathauth-account": "계정 이름:",
 	"oathauth-secret": "2요소 인증 비밀 키:",
 	"oathauth-enable": "2요소 인증 활성화하기",
