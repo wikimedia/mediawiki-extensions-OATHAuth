@@ -163,5 +163,6 @@
 	"oathauth-passkey-dialog-title": "Adicione uma chave de acesso",
 	"oathauth-passkey-dialog-text": "As chaves de acesso são a forma mais segura de você acessar sua conta. Para a maioria das pessoas, elas também são a forma mais simples.\n\nCom uma chave de acesso, você pode entrar em {{SITENAME}} da mesma forma que desbloqueia seu dispositivo, seja com um PIN, impressão digital ou reconhecimento facial.\n\nIndependentemente de como você inicia sessão, seus dados biométricos e PIN permanecem no seu dispositivo e nunca são enviados para nós.",
 	"oathauth-passkey-dialog-back": "Voltar",
-	"oathauth-passkey-dialog-add": "Adicionar chave de acesso"
+	"oathauth-passkey-dialog-add": "Adicionar chave de acesso",
+	"oathauth-2fa-groups-notice-unknown-page": "Página desconhecida"
 }

@@ -13,6 +13,7 @@
 			"Ezarate",
 			"Fitoschido",
 			"Jelou",
+			"Luigi Nakano",
 			"Macofe",
 			"Madamebiblio",
 			"MarcoAurelio",
@@ -53,7 +54,7 @@
 	"right-oathauth-disable-for-user": "Desactivar la autenticación en dos pasos de un usuario",
 	"action-oathauth-disable-for-user": "desactivar la autenticación en dos pasos de un usuario",
 	"right-oathauth-verify-user": "Verificar si un usuario tiene activada la autenticación de dos pasos",
-	"action-oathauth-verify-user": "comprobar si una cuenta tiene activada la autenticación en dos fases",
+	"action-oathauth-verify-user": "comprobar si una cuenta tiene activada la autenticación en dos factores",
 	"right-oathauth-view-log": "Acceder al registro de cambios en la autenticación en dos pasos",
 	"action-oathauth-view-log": "acceder al registro de cambios en la autenticación en dos pasos",
 	"oathauth-disable-intro": "Un gran poder conlleva una gran responsabilidad",
@@ -113,5 +114,6 @@
 	"oathauth-passkey-dialog-title": "Agregar una clave de acceso",
 	"oathauth-passkey-dialog-text": "Las claves de acceso son la forma más segura de iniciar sesión en su cuenta. Para la mayoría de las personas, también son la forma más sencilla.\n\nCon una clave de acceso, puede iniciar sesión en {{SITENAME}} de la misma manera que desbloquea su dispositivo, ya sea con PIN, huella dactilar o reconocimiento facial.\n\nIndependientemente de cómo inicie sesión, sus datos biométricos y PIN permanecerán en su dispositivo y nunca se nos enviarán.",
 	"oathauth-passkey-dialog-back": "Volver",
-	"oathauth-passkey-dialog-add": "Agregar clave de acceso"
+	"oathauth-passkey-dialog-add": "Agregar clave de acceso",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "El usuario tiene la autenticación de dos factores activada"
 }
