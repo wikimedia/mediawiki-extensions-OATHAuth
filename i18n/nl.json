@@ -100,7 +100,7 @@
 	"oathauth-ui-no-module": "Geen ingesteld",
 	"oathauth-module-totp-label": "Authenticatie-app",
 	"oathauth-module-recoverycodes-label": "Herstelcodes",
-	"oathauth-recoverycodes-description": "Een unieke code of een stel unieke codes voor gebruik als tweede authenticatiefactor, of om een account te redden als een eerdere factor onbruikbaar is geworden. Herstelcodes worden automatisch aangemaakt wanneer een andere authenticatiefactor (zoals een authenticatie-app) is ingeschakeld. U kunt herstelcodes op elk moment opnieuw genereren, kopiëren en downloaden, zolang een andere authenticatiefactor is ingeschakeld.",
+	"oathauth-recoverycodes-description": "Een unieke code of een stel unieke codes voor gebruik als tweede authenticatietrap, of om een account te redden als een eerdere trap onbruikbaar is geworden. Herstelcodes worden automatisch aangemaakt wanneer een andere authenticatietrap (zoals een authenticatie-app) is ingeschakeld. U kunt herstelcodes op elk moment opnieuw genereren, kopiëren en downloaden, zolang een andere authenticatietrap is ingeschakeld.",
 	"oathauth-ui-manage": "Beheren",
 	"oathmanage": "Tweetrapsauthenticatie beheren",
 	"accountsecurity": "Accountbeveiliging",
