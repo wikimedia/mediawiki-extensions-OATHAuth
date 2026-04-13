@@ -10,7 +10,7 @@
 	},
 	"oathauth-webauthn-module-label": "Beveiligingssleutel",
 	"oathauth-webauthn-javascript-required": "Om beveiligingssleutel te kunnen gebruiken, moet JavaScript in uw browser ingeschakeld zijn.",
-	"oathauth-webauthn-ui-login-prompt": "Raak uw beveiligingssleutel aan of volg de instructies van de browser.",
+	"oathauth-webauthn-ui-login-prompt": "Gebruik uw beveiligingssleutel of volg de instructies van uw browser.",
 	"oathauth-webauthn-ui-add-key": "Sleutel toevoegen",
 	"oathauth-webauthn-error-browser-unsupported": "Deze browser ondersteunt geen beveiligingssleutelauthenticatie of is niet beschikbaar voor deze website. Probeer het met een andere browser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Lees meer]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Deze browser ondersteunt geen beveiligingssleutelauthenticatie of is niet beschikbaar voor deze website.",

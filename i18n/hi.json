@@ -29,6 +29,8 @@
 	"oathauth-recoverycodes-header": "पुनर्प्राप्ति के विकल्प",
 	"oathauth-recoverycodes-header-create": "नए पुनर्प्राप्ति कोड्स बनाएँ",
 	"oathauth-recoverycodes-regenerate-warning": "अगर आप {{PLURAL:$1|एक नया पुनर्प्राप्ति कोड|नए पुनर्प्राप्ति कोड्स}} बनाते हैं तो <strong>{{PLURAL:$1|आपका मौलिक कोड काम करना बंद कर देगा|आपके मौलिक कोड्स काम करना बंद कर देंगे}}</strong>।",
+	"oathauth-recoverycodes-temporary": "अस्थायी पुनर्प्राप्ति {{PLURAL:$1|कोड|कोड्स}}",
+	"oathauth-recoverycodes-temporary-desc": "{{PLURAL:$1|एक अतिरिक्त कोड|$1 अतिरिक्त कोडों का एक समुच्चय}}, जो $2 को समाप्त होगा।",
 	"oathauth-failedtovalidateoath": "आपके प्रमाणीकरण ऐप्लिकेशन से कोड को सत्यापित करते समय एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
 	"oathauth-disable": "दो-कारक प्रमाणीकरण अक्षम करें",
 	"oathauth-validatedoath": "दो-कारक क्रेडेंशियल्स प्रमाणित हुए। अब से दो-कारक प्रमाणीकरण लागू किया जाएगा।",
