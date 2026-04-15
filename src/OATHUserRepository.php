@@ -90,7 +90,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	/**
-	 * Persists the given OAuth key in the database.
+	 * Persists the given key in the database.
 	 */
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): AuthKey {
 		$uid = $user->getCentralId();
