@@ -20,8 +20,8 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Site\MediaWikiSite;
 use MediaWiki\Site\SiteLookup;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\WikiMap\WikiMap;
-use SpecialPageTestBase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

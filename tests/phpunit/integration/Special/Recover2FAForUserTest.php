@@ -20,7 +20,7 @@ use MediaWiki\Mail\IEmailer;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\FauxRequest;
-use SpecialPageTestBase;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use StatusValue;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 

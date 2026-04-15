@@ -6,10 +6,10 @@
 
 namespace MediaWiki\Extension\OATHAuth\Special;
 
-use ErrorPageError;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
