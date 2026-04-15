@@ -8,6 +8,7 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Enforce2FA;
 
 use MediaWiki\Config\SiteConfiguration;
 use MediaWiki\Extension\CentralAuth\CentralAuthUserCache;
+use MediaWiki\Extension\CentralAuth\GlobalGroup\GlobalGroupAssignmentService;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MainConfigNames;
@@ -167,6 +168,8 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 					'id' => 1,
 				]
 			] );
+		$caUser->method( 'getGlobalGroups' )
+			->willReturn( [] );
 
 		$caUserCache = $this->createMock( CentralAuthUserCache::class );
 		$caUserCache->method( 'get' )
@@ -237,6 +240,121 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			WikiMap::getCurrentWikiId() => [ 'sysop' ],
 		];
 		$this->assertSame( $expected, $result );
+	}
+
+	public static function provideGlobalGroupConditions(): array {
+		return [
+			'2FA condition requires 2FA' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+				'expectedResult' => [ 'central-wiki' => [ 'global-sysop' ] ],
+			],
+			'non-2FA condition does not require 2FA' => [
+				'memberConditions' => [ APCOND_EDITCOUNT, 0 ],
+				'expectedResult' => [],
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideGlobalGroupConditions
+	 */
+	public function testGroupsRequiring2FAAcrossWikiFarm_globalGroups(
+		array $memberConditions,
+		array $expectedResult
+	) {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CentralAuth' );
+
+		$this->setUserGroupManagerMock( [] );
+
+		$caUser = $this->createMock( CentralAuthUser::class );
+		$caUser->method( 'queryAttached' )
+			->willReturn( [] );
+		$caUser->method( 'getGlobalGroups' )
+			->willReturn( [ 'global-sysop' ] );
+
+		$caUserCache = $this->createMock( CentralAuthUserCache::class );
+		$caUserCache->method( 'get' )
+			->willReturn( $caUser );
+		$this->setService( 'CentralAuth.CentralAuthUserCache', $caUserCache );
+
+		$siteConfiguration = $this->createMock( SiteConfiguration::class );
+		$siteConfiguration->method( 'get' )
+			->willReturnCallback( static function ( $setting, $wiki ) use ( $memberConditions ) {
+				if ( $setting === 'wgRestrictedGroups' && $wiki === 'central-wiki' ) {
+					return [
+						'global-sysop' => [
+							'memberConditions' => $memberConditions,
+							'scope' => [ GlobalGroupAssignmentService::RESTRICTION_SCOPE ],
+						],
+					];
+				}
+				return null;
+			} );
+
+		global $wgConf;
+		$wgConf = $siteConfiguration;
+		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [] );
+		$this->overrideConfigValue( 'CentralAuthCentralWiki', 'central-wiki' );
+
+		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
+		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
+
+		$this->assertSame( $expectedResult, $result );
+	}
+
+	public function testGroupsRequiring2FAAcrossWikiFarm_globalAndLocalGroupsMergedUnderCentralWiki() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CentralAuth' );
+
+		// User has a local 'sysop' group on the central wiki, and a global 'global-sysop' group,
+		// both requiring 2FA. Both should appear merged under the central wiki key.
+		$this->setUserGroupManagerMock( [ 'sysop' ] );
+
+		$caUser = $this->createMock( CentralAuthUser::class );
+		$caUser->method( 'queryAttached' )
+			->willReturn( [
+				[
+					'wiki' => 'central-wiki',
+					'groupMemberships' => [ 'sysop' ],
+					'id' => 1,
+				],
+			] );
+		$caUser->method( 'getGlobalGroups' )
+			->willReturn( [ 'global-sysop', 'steward' ] );
+
+		$caUserCache = $this->createMock( CentralAuthUserCache::class );
+		$caUserCache->method( 'get' )
+			->willReturn( $caUser );
+		$this->setService( 'CentralAuth.CentralAuthUserCache', $caUserCache );
+
+		$restrictedGroups = [
+			'sysop' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+			],
+			'global-sysop' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+				'scope' => [ 'centralauth' ],
+			],
+		];
+		$siteConfiguration = $this->createMock( SiteConfiguration::class );
+		$siteConfiguration->method( 'get' )
+			->willReturnCallback( static function ( $setting, $wiki ) use ( $restrictedGroups ) {
+				if ( $setting === 'wgRestrictedGroups' ) {
+					return $restrictedGroups;
+				}
+				return null;
+			} );
+
+		global $wgConf;
+		$wgConf = $siteConfiguration;
+		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [] );
+		$this->overrideConfigValue( 'CentralAuthCentralWiki', 'central-wiki' );
+
+		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
+		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
+
+		$this->assertSame( [ 'central-wiki' => [ 'sysop', 'global-sysop' ] ], $result );
 	}
 
 	private function setUserGroupManagerMock( array $userGroups ) {

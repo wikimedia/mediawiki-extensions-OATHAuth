@@ -54,7 +54,8 @@ return [
 			$services->getUserRequirementsConditionCheckerFactory(),
 			$services->getRestrictedUserGroupConfigReader(),
 			$services->getUserGroupManagerFactory(),
-			$services->getExtensionRegistry()
+			$services->getExtensionRegistry(),
+			$services->getMainConfig()
 		);
 	},
 	'OATHAuth.WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {

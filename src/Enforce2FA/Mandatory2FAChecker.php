@@ -6,6 +6,8 @@
 
 namespace MediaWiki\Extension\OATHAuth\Enforce2FA;
 
+use MediaWiki\Config\Config;
+use MediaWiki\Extension\CentralAuth\GlobalGroup\GlobalGroupAssignmentService;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\RestrictedUserGroupConfigReader;
@@ -22,7 +24,8 @@ class Mandatory2FAChecker {
 		private readonly UserRequirementsConditionCheckerFactory $userRequirementsCheckerFactory,
 		private readonly RestrictedUserGroupConfigReader $restrictedUserGroupConfigReader,
 		private readonly UserGroupManagerFactory $userGroupManagerFactory,
-		private readonly ExtensionRegistry $extensionRegistry
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly Config $config
 	) {
 	}
 
@@ -57,6 +60,8 @@ class Mandatory2FAChecker {
 	 * This function uses the group requirements as they are specified on the remote wiki.
 	 *
 	 * If CentralAuth is not installed, this will just return the result for the local wiki.
+	 * If CentralAuth is installed, global groups requiring 2FA are also included in the result,
+	 * keyed under the central wiki ID (or the current wiki ID if no central wiki is configured).
 	 * @param UserIdentity $localUser
 	 * @return array<string, list<string>> An associative array where the keys are wiki IDs and the values are groups.
 	 *     A given key is present in the array only if the list of groups for that wiki is non-empty. Therefore,
@@ -64,7 +69,9 @@ class Mandatory2FAChecker {
 	 *     on any wiki on the farm.
 	 */
 	public function getGroupsRequiring2FAAcrossWikiFarm( UserIdentity $localUser ): array {
-		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
+		$centralAuthLoaded = $this->extensionRegistry->isLoaded( 'CentralAuth' );
+
+		if ( $centralAuthLoaded ) {
 			$userName = $localUser->getName();
 			$centralUser = CentralAuthUser::getInstanceByName( $userName );
 			// T419772: Read attached accounts from replicas to avoid warnings about accounts
@@ -102,6 +109,54 @@ class Mandatory2FAChecker {
 			$groupsRequiring2FA[$wikiId] = $groupsForWiki;
 		}
 
+		if ( $centralAuthLoaded ) {
+			$centralWiki = $this->config->get( 'CentralAuthCentralWiki' ) ?? WikiMap::getCurrentWikiId();
+			$globalGroups = $this->getGlobalGroupsRequiring2FA( $localUser, $centralWiki );
+			if ( $globalGroups ) {
+				if ( isset( $groupsRequiring2FA[$centralWiki] ) ) {
+					$groupsRequiring2FA[$centralWiki] = array_values( array_unique(
+						array_merge( $groupsRequiring2FA[$centralWiki], $globalGroups )
+					) );
+				} else {
+					$groupsRequiring2FA[$centralWiki] = $globalGroups;
+				}
+			}
+		}
+
+		return $groupsRequiring2FA;
+	}
+
+	/**
+	 * For a given local user, returns their global groups that require 2FA.
+	 * Must only be called when CentralAuth is loaded.
+	 *
+	 * @param UserIdentity $localUser User for whom to check global restricted groups. It will be matched to a
+	 *     CentralAuthUser by name.
+	 * @param string $centralWiki The central wiki ID.
+	 * @return list<string> List of global groups the user is a member of that require 2FA.
+	 */
+	private function getGlobalGroupsRequiring2FA( UserIdentity $localUser, string $centralWiki ): array {
+		$centralUser = CentralAuthUser::getInstanceByName( $localUser->getName() );
+		$globalGroups = $centralUser->getGlobalGroups();
+
+		if ( !$globalGroups ) {
+			return [];
+		}
+
+		$groupRestrictions = $this->restrictedUserGroupConfigReader
+			->getConfig( $centralWiki, GlobalGroupAssignmentService::RESTRICTION_SCOPE );
+
+		$groupsRequiring2FA = [];
+		foreach ( $globalGroups as $group ) {
+			if ( !isset( $groupRestrictions[$group] ) ) {
+				continue;
+			}
+			if ( $this->isUserRequiredToHave2FAToMeetConditions(
+				$localUser, $groupRestrictions[$group]->getMemberConditions()
+			) ) {
+				$groupsRequiring2FA[] = $group;
+			}
+		}
 		return $groupsRequiring2FA;
 	}
 
