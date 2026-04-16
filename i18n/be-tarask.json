@@ -17,7 +17,7 @@
 	"oathauth-recoverycodes-important": "Гэты крок важны! Не прапускайце яго!",
 	"oathauth-recoverycodes-neveragain": "Гэтыя коды больш ніколі не пакажуцца!",
 	"oathauth-recoverytokens-createdat": "Створаныя коды аднаўленьня: $1",
-	"oathauth-recoverycodes-download": "Загрузіць",
+	"oathauth-recoverycodes-download": "Сьцягнуць",
 	"oathauth-recoverycodes-copy": "Скапіяваць",
 	"oathauth-recoverycodes-copy-success": "Коды аднаўленьня скапіяваныя ў ваш буфэр абмену!",
 	"oathauth-failedtovalidateoath": "Памылка спраўджваньня двухфактарнай аўтэнтыфікацыі.",
