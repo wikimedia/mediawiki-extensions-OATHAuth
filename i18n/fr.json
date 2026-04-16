@@ -175,5 +175,6 @@
 	"oathauth-passkeys-add": "Ajouter une clé de passe",
 	"oathauth-passkey-dialog-title": "Ajouter une clé de passe",
 	"oathauth-passkey-dialog-back": "Retour",
-	"oathauth-passkey-dialog-add": "Ajouter une clé de passe"
+	"oathauth-passkey-dialog-add": "Ajouter une clé de passe",
+	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs."
 }
