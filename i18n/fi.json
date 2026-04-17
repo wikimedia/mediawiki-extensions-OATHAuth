@@ -14,7 +14,8 @@
 			"Silvonen",
 			"Stryn",
 			"Taavi",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Wikipeedikko"
 		]
 	},
 	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen ja WebAuthn-protokollan avulla",
@@ -38,6 +39,7 @@
 	"oathauth-recoverycodes-header": "Palautusvaihtoehdot",
 	"oathauth-recoverycodes-header-create": "Luo uudet palautuskoodit",
 	"oathauth-recoverycodes-regenerate-warning": "Jos luot {{PLURAL:$1|uuden palautuskoodin|uudet palautuskoodit}}, <strong>{{PLURAL:$1|alkuperäinen|alkuperäiset}} palautuskoodisi {{PLURAL:$1|lakkaa|lakkaavat}} toimimasta</strong>.",
+	"oathauth-recoverycodes-temporary-remove-label": "Poista {{PLURAL:$1|väliaikainen koodi|väliaikaiset koodit}}",
 	"oathauth-failedtovalidateoath": "Tapahtui virhe yritettäessä vahvistaa tunnistautumissovelluksesi antamaa koodia. Yritä uudelleen.",
 	"oathauth-disable": "Poista käytöstä kaksivaiheinen tunnistautuminen",
 	"oathauth-validatedoath": "Kaksivaiheisen tunnistautumisen valtuutustiedot varmistettu. Kaksivaiheinen tunnistautuminen on tästä lähtien käytössä.",
