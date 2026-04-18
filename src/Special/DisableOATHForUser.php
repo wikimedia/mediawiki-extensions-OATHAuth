@@ -109,15 +109,15 @@ class DisableOATHForUser extends FormSpecialPage {
 			return [ 'oathauth-user-not-found' ];
 		}
 
+		if ( $this->getUser()->pingLimiter( 'disableoath' ) ) {
+			// Arbitrary duration given here
+			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
+		}
+
 		$oathUser = $this->userRepo->findByUser( $user );
 
 		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
 			return [ 'oathauth-user-not-does-not-have-oath-enabled' ];
-		}
-
-		if ( $this->getUser()->pingLimiter( 'disableoath', 0 ) ) {
-			// Arbitrary duration given here
-			return [ 'oathauth-throttled', Message::durationParam( 60 ) ];
 		}
 
 		$this->userRepo->removeAll( $oathUser, $this->getRequest()->getIP(), false );
