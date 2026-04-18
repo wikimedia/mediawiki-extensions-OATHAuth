@@ -209,6 +209,17 @@
 				10,
 				60
 			]
+		},
+		"disableoath": {
+			"&can-bypass": false,
+			"user": [
+				5,
+				60
+			],
+			"user-global": [
+				5,
+				60
+			]
 		}
 	},
 	"load_composer_autoloader": true,
