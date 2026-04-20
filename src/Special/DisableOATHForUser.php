@@ -80,13 +80,6 @@ class DisableOATHForUser extends FormSpecialPage {
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function requiresUnblock() {
-		return false;
-	}
-
-	/**
 	 * @param User $user
 	 * @throws UserBlockedError
 	 * @throws UserNotLoggedIn
