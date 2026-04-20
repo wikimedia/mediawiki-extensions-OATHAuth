@@ -63,11 +63,6 @@ class DisableOATHForUser extends FormSpecialPage {
 	}
 
 	/** @inheritDoc */
-	public function requiresUnblock() {
-		return false;
-	}
-
-	/** @inheritDoc */
 	protected function checkExecutePermissions( User $user ) {
 		$this->requireNamedUser();
 
