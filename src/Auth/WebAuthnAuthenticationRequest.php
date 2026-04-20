@@ -15,8 +15,12 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	/**
 	 * @param string $authInfo Serialized JSON blob obtained from
 	 *   WebAuthnAuthenticator::startAuthentication()
+	 * @param bool $showPrompt Whether to display the prompt telling the user to use their security key.
 	 */
-	public function __construct( public string $authInfo ) {
+	public function __construct(
+		public string $authInfo,
+		public bool $showPrompt = true
+	) {
 	}
 
 	/** @inheritDoc */
@@ -29,13 +33,14 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 
 	/** @inheritDoc */
 	public function getFieldInfo() {
-		return [
+		return ( $this->showPrompt ? [
 			'label' => [
 				'type' => 'null',
 				'value' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
 				// TODO: Use a different message for help?
 				'help' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
-			],
+			]
+		] : [] ) + [
 			// The hidden auth_info field only exists to send the authInfo JSON blob to the client.
 			// It's not used for authentication and ignored when submitted back to us, we get the
 			// authInfo blob from the session instead.

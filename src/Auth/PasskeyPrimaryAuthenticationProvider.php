@@ -39,7 +39,7 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 
 		// TODO make AuthenticationRequest::getUsernameFromRequests() recognize the username
 		// from this, so that ThrottlePreAuthenticationProvider will apply the password throttle
-		return [ new WebAuthnAuthenticationRequest( $authStatus->getValue()['json'] ) ];
+		return [ new WebAuthnAuthenticationRequest( $authStatus->getValue()['json'], false ) ];
 	}
 
 	/** @inheritDoc */
