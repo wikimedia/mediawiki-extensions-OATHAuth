@@ -11,6 +11,9 @@ use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
+/**
+ * Notification sent when 2FA (first factor) has been enabled for this user
+ */
 class EnablePresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */

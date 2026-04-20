@@ -11,6 +11,9 @@ use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
+/**
+ * Notification sent when a 2FA factor has been disabled for this user
+ */
 class DisablePresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */

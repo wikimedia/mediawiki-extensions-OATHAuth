@@ -27,7 +27,7 @@ class Manager {
 	}
 
 	/**
-	 * Send a notification that 2FA has been disabled
+	 * Send a notification that a 2FA factor has been disabled
 	 *
 	 * @param OATHUser $oUser
 	 * @param bool $self Whether they disabled it themselves
@@ -49,7 +49,7 @@ class Manager {
 	}
 
 	/**
-	 * Send a notification that 2FA has been enabled
+	 * Send a notification that 2FA (first factor) has been enabled
 	 */
 	public static function notifyEnabled( OATHUser $oUser ): void {
 		if ( !self::isEnabled() ) {
@@ -102,6 +102,28 @@ class Manager {
 			'extra' => [
 				'codeCount' => $tokenCount
 			],
+		], new RecipientSet( $targetUser ) );
+	}
+
+	/**
+	 * Sends a notification that the user needs to enable 2FA on this wiki
+	 */
+	public static function notify2FARequiredForUser(
+		UserIdentity $targetUser,
+		string $date,
+	): void {
+		if ( !self::isEnabled() ) {
+			return;
+		}
+
+		Event::create( [
+			// message used: notification-header-oathauth-twofactor-required
+			'type' => 'oathauth-twofactor-required',
+			'title' => SpecialPage::getTitleFor( 'OATHManage' ),
+			'agent' => $targetUser,
+			'extra' => [
+				'dateRequired' => $date,
+			]
 		], new RecipientSet( $targetUser ) );
 	}
 }

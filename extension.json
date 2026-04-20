@@ -51,6 +51,16 @@
 					"group": "interactive",
 					"section": "alert",
 					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\RecoveryCodesGeneratedForUserPresentationModel"
+				},
+				"oathauth-twofactor-required": {
+					"category": "system",
+					"group": "interactive",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\OATHAuth\\Notifications\\TwoFactorRequiredPresentationModel",
+					"canNotifyAgent": true,
+					"user-locators": [
+						"MediaWiki\\Extension\\Notifications\\UserLocator::locateEventAgent"
+					]
 				}
 			}
 		},
