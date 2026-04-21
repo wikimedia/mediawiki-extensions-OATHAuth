@@ -179,6 +179,7 @@
 	"oathauth-passkey-dialog-add": "إضافة مفتاح المرور",
 	"oathauth-2fa-required": "أنت عضو في مجموعات تتطلب المصادقة الثنائية.",
 	"oathauth-2fa-required-groups-on-project": "$2 على $3",
+	"oathauth-2fa-groups-notice-multiple-links-entry": "مقابل $2 عند $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "صفحة غير معروفة",
 	"oathauth-remove-lastkey-required": "لا يمكنك حذف طريقة المصادقة الأخيرة إذا كنت عضوًا في مجموعات تتطلب المصادقة الثنائية. يُرجى إضافة طريقة مصادقة أخرى قبل حذف هذه الطريقة.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "تم تفعيل المصادقة الثنائية للمستخدم"
