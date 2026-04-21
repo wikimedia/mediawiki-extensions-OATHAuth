@@ -14,7 +14,8 @@
 			"Minilammas",
 			"Taavi",
 			"01miki10",
-			"Lentokonefani"
+			"Lentokonefani",
+			"Wikipeedikko"
 		]
 	},
 	"oathauth-desc": "Tarjoaa tunnistautumista HMAC-pohjaisten kertakäyttöisten salasanojen avulla",
