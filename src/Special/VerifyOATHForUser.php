@@ -10,6 +10,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MWException;
@@ -22,6 +23,7 @@ class VerifyOATHForUser extends FormSpecialPage {
 	private const OATHAUTH_NOT_ENABLED = 'disabled';
 	private OATHUserRepository $userRepo;
 	private UserFactory $userFactory;
+	private CentralIdLookup $centralIdLookup;
 
 	/** @var string */
 	private $enabledStatus;
@@ -32,13 +34,15 @@ class VerifyOATHForUser extends FormSpecialPage {
 	/**
 	 * @param OATHUserRepository $userRepo
 	 * @param UserFactory $userFactory
+	 * @param CentralIdLookup $centralIdLookup
 	 */
-	public function __construct( $userRepo, $userFactory ) {
+	public function __construct( $userRepo, $userFactory, $centralIdLookup ) {
 		// messages used: verifyoathforuser (display "name" on Special:SpecialPages),
 		// right-oathauth-verify-user, action-oathauth-verify-user
 		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
 		$this->userRepo = $userRepo;
 		$this->userFactory = $userFactory;
+		$this->centralIdLookup = $centralIdLookup;
 	}
 
 	/**
@@ -131,7 +135,9 @@ class VerifyOATHForUser extends FormSpecialPage {
 	public function onSubmit( array $formData ) {
 		$this->targetUser = $formData['user'];
 		$user = $this->userFactory->newFromName( $this->targetUser );
-		if ( !$user || $user->getId() === 0 ) {
+		// T424117, same as T393253 - Check the username is valid, but don't check if
+		// it exists on the local wiki. Instead, check there is a valid central ID.
+		if ( !$user || $this->centralIdLookup->centralIdFromName( $formData['user'] ) === 0 ) {
 			return [ 'oathauth-user-not-found' ];
 		}
 		$oathUser = $this->userRepo->findByUser( $user );
