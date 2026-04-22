@@ -231,7 +231,8 @@
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\VerifyOATHForUser",
 			"services": [
 				"OATHUserRepository",
-				"UserFactory"
+				"UserFactory",
+				"CentralIdLookup"
 			]
 		}
 	},
