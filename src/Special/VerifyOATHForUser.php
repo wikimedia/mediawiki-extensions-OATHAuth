@@ -22,9 +22,14 @@ class VerifyOATHForUser extends FormSpecialPage {
 		private readonly UserFactory $userFactory,
 		private readonly ExtensionRegistry $extensionRegistry,
 	) {
-		// messages used: verifyoathforuser (display "name" on Special:SpecialPages),
-		// right-oathauth-verify-user, action-oathauth-verify-user
-		parent::__construct( 'VerifyOATHForUser', 'oathauth-verify-user' );
+		// messages used: verifyoathforuser (display "name" on Special:SpecialPages)
+		parent::__construct( 'VerifyOATHForUser' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		// messages used: right-oathauth-verify-user, action-oathauth-verify-user
+		return 'oathauth-verify-user';
 	}
 
 	/** @inheritDoc */

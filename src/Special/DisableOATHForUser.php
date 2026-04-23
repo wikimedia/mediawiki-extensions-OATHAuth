@@ -23,9 +23,14 @@ class DisableOATHForUser extends FormSpecialPage {
 		private readonly CentralIdLookup $centralIdLookup,
 		private readonly ExtensionRegistry $extensionRegistry,
 	) {
-		// messages used: disableoathforuser (display "name" on Special:SpecialPages),
-		// right-oathauth-disable-for-user, action-oathauth-disable-for-user
-		parent::__construct( 'DisableOATHForUser', 'oathauth-disable-for-user' );
+		// messages used: disableoathforuser (display "name" on Special:SpecialPages)
+		parent::__construct( 'DisableOATHForUser' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		// messages used: right-oathauth-disable-for-user, action-oathauth-disable-for-user
+		return 'oathauth-disable-for-user';
 	}
 
 	/** @inheritDoc */

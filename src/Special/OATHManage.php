@@ -62,9 +62,14 @@ class OATHManage extends SpecialPage {
 		private readonly AuthManager $authManager,
 		private readonly UserGroupManager $userGroupManager,
 	) {
-		// messages used: oathmanage (display "name" on Special:SpecialPages),
-		// right-oathauth-enable, action-oathauth-enable
-		parent::__construct( 'OATHManage', 'oathauth-enable' );
+		// messages used: oathmanage (display "name" on Special:SpecialPages)
+		parent::__construct( 'OATHManage' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		// messages used: right-oathauth-enable, action-oathauth-enable
+		return 'oathauth-enable';
 	}
 
 	/** @inheritDoc */

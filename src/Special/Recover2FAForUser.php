@@ -42,12 +42,17 @@ class Recover2FAForUser extends FormSpecialPage {
 		private readonly IEmailer $emailer,
 		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
-		// messages used: recover2faforuser (display "name" on Special:SpecialPages),
-		// right-oathauth-recover-for-user, action-oathauth-recover-for-user
-		parent::__construct( 'Recover2FAForUser', 'oathauth-recover-for-user' );
+		// messages used: recover2faforuser (display "name" on Special:SpecialPages)
+		parent::__construct( 'Recover2FAForUser' );
 
 		$this->codesCount = $this->getConfig()->get( 'OATHRecoveryCodesCount' );
 		$this->codeValidityDays = $this->getConfig()->get( 'OATHAdditionalRecoveryCodesValidityDays' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		// messages used: right-oathauth-recover-for-user, action-oathauth-recover-for-user
+		return 'oathauth-recover-for-user';
 	}
 
 	/** @inheritDoc */
