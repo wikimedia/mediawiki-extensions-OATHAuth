@@ -10,6 +10,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
+use OutOfRangeException;
 use SodiumException;
 use UnexpectedValueException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -318,6 +319,72 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$keys->removeRecoveryCode( $mockOATHUser, 'TESTCODE' );
 		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
 		$this->assertCount( 11, $keys->getRecoveryCodeKeys() );
+	}
+
+	public function testDropsTemporaryWhenRegenerating_notEnoughSlots() {
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 2 );
+		$this->setMwGlobals( 'wgOATHMaxRecoveryCodesCount', 3 );
+
+		$mockOATHUser = $this->createMock( OATHUser::class );
+		$mockOATHUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+			RecoveryCode::newFromPlaintext( 'EXPIRING1', [ 'expiry' => '20270101000000' ] ),
+			RecoveryCode::newFromPlaintext( 'EXPIRING2', [ 'expiry' => '20270101000000' ] ),
+		];
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$this->assertArrayContains( [ 'TESTCODE', 'EXPIRING1', 'EXPIRING2' ], $keys->getRecoveryCodeKeys() );
+
+		$keys->removeRecoveryCode( $mockOATHUser, 'TESTCODE' );
+		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
+		$this->assertNotContains( 'EXPIRING1', $keys->getRecoveryCodeKeys() );
+		$this->assertCount( 3, $keys->getRecoveryCodeKeys() );
+	}
+
+	public function testCapsNumberOfCodesAtMaximum() {
+		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 100 );
+		$this->setMwGlobals( 'wgOATHMaxRecoveryCodesCount', 2 );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+		];
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$keys->regenerateRecoveryCodeKeys();
+
+		$this->assertNotContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
+		$this->assertCount( 2, $keys->getRecoveryCodeKeys() );
+	}
+
+	public function testGenerateAdditionalBeyondMaximum() {
+		$this->setMwGlobals( 'wgOATHMaxRecoveryCodesCount', 2 );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+		];
+
+		$this->expectException( OutOfRangeException::class );
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$keys->generateAdditionalRecoveryCodeKeys( 2 );
+	}
+
+	public function testGenerateAdditionalBeyondMaximum_noThrow() {
+		$this->setMwGlobals( 'wgOATHMaxRecoveryCodesCount', 2 );
+
+		$codes = [
+			RecoveryCode::newFromPlaintext( 'TESTCODE' ),
+		];
+
+		$keys = new RecoveryCodeKeys( null, null, null, $codes );
+		$newCodes = $keys->generateAdditionalRecoveryCodeKeys( 2, [], true );
+
+		$this->assertCount( 1, $newCodes );
+		$this->assertCount( 2, $keys->getRecoveryCodeKeys() );
+		$this->assertContains( 'TESTCODE', $keys->getRecoveryCodeKeys() );
 	}
 
 	public function testRemoveTemporaryCodes() {

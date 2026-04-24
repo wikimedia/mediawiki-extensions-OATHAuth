@@ -75,6 +75,7 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "User doesn't have two-factor authentication enabled, so nothing to disable.",
 	"oathauth-recover-fail-no-2fa": "User doesn't have two-factor authentication enabled, so recovery is not applicable.",
 	"oathauth-recover-fail-email-required": "User doesn't have a confirmed email address associated with their account. Please provide an email address to send the message to.",
+	"oathauth-recover-fail-max-codes-reached": "The user has already reached a maximum possible number of recovery codes. Unable to generate additional recovery codes.",
 	"oathauth-recover-email-title": "Additional recovery {{PLURAL:$1|code|codes}} for your account",
 	"oathauth-recover-email-text": "{{GENDER:$1|Dear}} $1,\n\nAdditional recovery {{PLURAL:$2|code|codes}} for your two-factor authentication have been generated on $5. You can use {{PLURAL:$2|this code|these codes}} to log in to your account if you lost access to your other two-factor authentication methods.\n\n$3\n\n{{PLURAL:$2|This code|These codes}} can be used only until $8. Please configure a new two-factor authentication method by this time, to keep access to your account. As long as {{PLURAL:$2|it is|they are}} valid, please keep {{PLURAL:$2|this code|these codes}} in a safe place.\n\nIf {{GENDER:$1|you}} did not initiate this action, somebody may have impersonated {{GENDER:$1|you}} to gain access to your account. $4",
 	"oathauth-recover-email-text-please-contact": "If this is the case, please {{GENDER:$1|contact}} the site administrator.",

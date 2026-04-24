@@ -173,7 +173,11 @@
 		},
 		"OATHRecoveryCodesCount": {
 			"value": 10,
-			"description": "The default amount of recovery codes to generate for a given user."
+			"description": "The default amount of recovery codes to generate for a given user. Should be less than OATHMaxRecoveryCodesCount."
+		},
+		"OATHMaxRecoveryCodesCount": {
+			"value": 100,
+			"description": "The maximum number of recovery codes that a user can have. Both permanent and temporary codes are counted for this limit."
 		},
 		"OATHAdditionalRecoveryCodesValidityDays": {
 			"value": 7,

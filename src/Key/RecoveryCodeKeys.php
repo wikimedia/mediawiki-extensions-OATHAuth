@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
+use OutOfRangeException;
 use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 
@@ -134,9 +135,17 @@ class RecoveryCodeKeys extends AuthKey {
 
 		$remainingPermanentCodes = array_filter( $this->recoveryCodes, static fn ( $code ) => $code->isPermanent() );
 		if ( $remainingPermanentCodes === [] ) {
-			// Don't invalidate existing temporary codes, as this is an automatic action and
+			// Don't automatically invalidate existing temporary codes, as this is an automatic action and
 			// the user didn't consciously choose to regenerate all codes
-			$this->generateAdditionalRecoveryCodeKeys( $this->getNumberOfCodesToGenerate() );
+			// However, if we cannot generate the requested number of permanent codes, we will drop some
+			// temporary ones. It makes some sense, as the user just logged in using a permanent code, so they
+			// don't strictly need the "emergency" temporary codes.
+			$numCodesToGenerate = $this->getNumberOfCodesToGenerate();
+			$maxCodesToGenerate = $this->getMaxNumberOfCodes() - count( $this->recoveryCodes );
+			if ( $maxCodesToGenerate < $numCodesToGenerate ) {
+				$this->recoveryCodes = array_slice( $this->recoveryCodes, $maxCodesToGenerate - $numCodesToGenerate );
+			}
+			$this->generateAdditionalRecoveryCodeKeys( $numCodesToGenerate );
 
 			$clientData = RequestContext::getMain()->getRequest()->getSecurityLogContext( $user->getUser() );
 			$this->getLogger()->info(
@@ -156,10 +165,19 @@ class RecoveryCodeKeys extends AuthKey {
 	}
 
 	/**
-	 * Returns the number of recovery codes to generate by default
+	 * Returns the number of recovery codes to generate by default. Ensures that the return value is not
+	 * greater than value returned by {@see getMaxNumberOfCodes}.
 	 */
 	private function getNumberOfCodesToGenerate(): int {
-		return OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' );
+		$codesCount = OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' );
+		return min( $codesCount, $this->getMaxNumberOfCodes() );
+	}
+
+	/**
+	 * Returns the maximum number of recovery codes that can be stored in this module.
+	 */
+	private function getMaxNumberOfCodes(): int {
+		return OATHAuthServices::getInstance()->getConfig()->get( 'OATHMaxRecoveryCodesCount' );
 	}
 
 	/**
@@ -175,9 +193,28 @@ class RecoveryCodeKeys extends AuthKey {
 	 * Generate additional recovery codes and add them to the set, without invalidating existing ones.
 	 * @param int $numCodes Number of codes to generate
 	 * @param array $data Optional additional data to store along codes, see {@see RecoveryCode::__construct}
+	 * @param bool $noThrow If true, keys will be generated only up to {@see getMaxNumberOfCodes} limit, but
+	 *     no exception will be thrown. It's possible that no codes will get generated.
 	 * @return list<string> Newly generated recovery codes
+	 * @throws OutOfRangeException If the total number of codes would be greater than allowed by
+	 *     {@see getMaxNumberOfCodes} and $noThrow is false.
 	 */
-	public function generateAdditionalRecoveryCodeKeys( int $numCodes, array $data = [] ): array {
+	public function generateAdditionalRecoveryCodeKeys(
+		int $numCodes,
+		array $data = [],
+		bool $noThrow = false
+	): array {
+		$maxCodes = $this->getMaxNumberOfCodes();
+		if ( $numCodes + count( $this->recoveryCodes ) > $maxCodes ) {
+			if ( $noThrow ) {
+				$numCodes = $maxCodes - count( $this->recoveryCodes );
+			} else {
+				throw new OutOfRangeException(
+					"After generating $numCodes codes, a maximum of $maxCodes codes would be exceeded."
+				);
+			}
+		}
+
 		$newCodes = [];
 		for ( $i = 0; $i < $numCodes; $i++ ) {
 			$newCodes[] = RecoveryCode::newRandom( $data );

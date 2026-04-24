@@ -22,12 +22,13 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use OutOfRangeException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat as TS;
 
 class Recover2FAForUser extends FormSpecialPage {
 
-	private readonly int $codesCount;
+	private int $codesCount;
 	private readonly int $codeValidityDays;
 	private ?UserIdentity $targetUser = null;
 
@@ -168,10 +169,26 @@ class Recover2FAForUser extends FormSpecialPage {
 			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->codeValidityDays * 86400
 		);
 		$key = $recoveryCodesModule->ensureExistence( $oathUser );
-		$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
-			$this->codesCount,
-			[ 'expiry' => $expiryTimestamp ]
-		);
+		try {
+			$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
+				$this->codesCount,
+				[ 'expiry' => $expiryTimestamp ]
+			);
+		} catch ( OutOfRangeException ) {
+			// If there's no room for that many recovery codes, first invalidate all existing temporary codes
+			// (which are likely not needed, since user asked for recovery again)
+			$key->removeTemporaryCodes();
+			$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
+				$this->codesCount,
+				[ 'expiry' => $expiryTimestamp ]
+			);
+			$this->codesCount = count( $newRecoveryCodes );
+
+			// If no codes can be generated, that's a problem with the configuration
+			if ( $this->codesCount === 0 ) {
+				return Status::newFatal( 'oathauth-recover-fail-max-codes-reached' );
+			}
+		}
 		$this->userRepo->updateKey( $oathUser, $key );
 
 		$emailStatus = $this->sendEmailWithRecoveryCodes( $userEmail, $newRecoveryCodes, $user, $expiryTimestamp );
