@@ -21,10 +21,26 @@ class OATHAuthServices {
 	public function __construct( private readonly MediaWikiServices $services ) {
 	}
 
+	public function getConfig(): Config {
+		return $this->services->getMainConfig();
+	}
+
 	public static function getInstance( ?MediaWikiServices $services = null ): self {
 		return new self(
 			$services ?? MediaWikiServices::getInstance(),
 		);
+	}
+
+	public function getEncryptionHelper(): EncryptionHelper {
+		return $this->services->getService( 'OATHAuth.EncryptionHelper' );
+	}
+
+	public function getLogger(): OATHAuthLogger {
+		return $this->services->getService( 'OATHAuth.Logger' );
+	}
+
+	public function getMandatory2FAChecker(): Mandatory2FAChecker {
+		return $this->services->getService( 'OATHAuth.Mandatory2FAChecker' );
 	}
 
 	public function getModuleRegistry(): OATHAuthModuleRegistry {
@@ -35,23 +51,7 @@ class OATHAuthServices {
 		return $this->services->getService( 'OATHAuth.UserRepository' );
 	}
 
-	public function getEncryptionHelper(): EncryptionHelper {
-		return $this->services->getService( 'OATHAuth.EncryptionHelper' );
-	}
-
-	public function getMandatory2FAChecker(): Mandatory2FAChecker {
-		return $this->services->getService( 'OATHAuth.Mandatory2FAChecker' );
-	}
-
-	public function getLogger(): OATHAuthLogger {
-		return $this->services->getService( 'OATHAuth.Logger' );
-	}
-
 	public function getWebAuthnAuthenticator(): WebAuthnAuthenticator {
 		return $this->services->getService( 'OATHAuth.WebAuthnAuthenticator' );
-	}
-
-	public function getConfig(): Config {
-		return $this->services->getMainConfig();
 	}
 }
