@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use OutOfRangeException;
 use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
@@ -169,7 +170,7 @@ class RecoveryCodeKeys extends AuthKey {
 	 * greater than value returned by {@see getMaxNumberOfCodes}.
 	 */
 	private function getNumberOfCodesToGenerate(): int {
-		$codesCount = OATHAuthServices::getInstance()->getConfig()->get( 'OATHRecoveryCodesCount' );
+		$codesCount = MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHRecoveryCodesCount' );
 		return min( $codesCount, $this->getMaxNumberOfCodes() );
 	}
 
@@ -177,7 +178,7 @@ class RecoveryCodeKeys extends AuthKey {
 	 * Returns the maximum number of recovery codes that can be stored in this module.
 	 */
 	private function getMaxNumberOfCodes(): int {
-		return OATHAuthServices::getInstance()->getConfig()->get( 'OATHMaxRecoveryCodesCount' );
+		return MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHMaxRecoveryCodesCount' );
 	}
 
 	/**

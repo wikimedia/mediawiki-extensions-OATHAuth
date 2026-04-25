@@ -118,7 +118,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$data = $keys->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
 		$this->assertArrayHasKey( 'recoverycodekeys', $data );
-		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
+		$config = $this->getServiceContainer()->getMainConfig();
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $data['recoverycodekeys'] );
 		$this->assertNotEquals( $data['recoverycodekeys'], $keys->getRecoveryCodeKeys() );
 	}
@@ -183,7 +183,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$testData = [ 'recoverycode' => 'bad_token' ];
 		$this->assertFalse( $keys->verify( $mockOATHUser, $testData ) );
 
-		$config = OATHAuthServices::getInstance( $this->getServiceContainer() )->getConfig();
+		$config = $this->getServiceContainer()->getMainConfig();
 		$this->assertCount( $config->get( 'OATHRecoveryCodesCount' ), $keys->getRecoveryCodeKeys() );
 
 		// Test that verify works with a generated key

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
-use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -25,9 +24,6 @@ trait RecoveryCodesTrait {
 
 	/** @return OutputPage */
 	abstract public function getOutput();
-
-	/** @return Config */
-	abstract public function getConfig();
 
 	/** @return Language */
 	abstract public function getLanguage();

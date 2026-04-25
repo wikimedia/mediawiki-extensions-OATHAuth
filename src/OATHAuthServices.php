@@ -7,7 +7,6 @@
 
 namespace MediaWiki\Extension\OATHAuth;
 
-use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\MediaWikiServices;
@@ -19,10 +18,6 @@ use MediaWiki\MediaWikiServices;
  */
 class OATHAuthServices {
 	public function __construct( private readonly MediaWikiServices $services ) {
-	}
-
-	public function getConfig(): Config {
-		return $this->services->getMainConfig();
 	}
 
 	public static function getInstance( ?MediaWikiServices $services = null ): self {
