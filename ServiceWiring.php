@@ -15,12 +15,30 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use Wikimedia\ObjectCache\HashBagOStuff;
 
+/** @phpcs-require-sorted-array */
 return [
+	'OATHAuth.EncryptionHelper' => static function ( MediaWikiServices $services ): EncryptionHelper {
+		return new EncryptionHelper(
+			new ServiceOptions(
+				EncryptionHelper::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig(),
+			),
+		);
+	},
 	'OATHAuth.Logger' => static function ( MediaWikiServices $services ): OATHAuthLogger {
 		return new OATHAuthLogger(
 			$services->getExtensionRegistry(),
 			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' )
+		);
+	},
+	'OATHAuth.Mandatory2FAChecker' => static function ( MediaWikiServices $services ): Mandatory2FAChecker {
+		return new Mandatory2FAChecker(
+			$services->getUserRequirementsConditionCheckerFactory(),
+			$services->getRestrictedUserGroupConfigReader(),
+			$services->getUserGroupManagerFactory(),
+			$services->getExtensionRegistry(),
+			$services->getMainConfig()
 		);
 	},
 	'OATHAuth.ModuleRegistry' => static function ( MediaWikiServices $services ): OATHAuthModuleRegistry {
@@ -39,23 +57,6 @@ return [
 			$services->getService( 'OATHAuth.ModuleRegistry' ),
 			$services->getCentralIdLookupFactory(),
 			LoggerFactory::getInstance( 'authentication' )
-		);
-	},
-	'OATHAuth.EncryptionHelper' => static function ( MediaWikiServices $services ): EncryptionHelper {
-		return new EncryptionHelper(
-			new ServiceOptions(
-				EncryptionHelper::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig(),
-			),
-		);
-	},
-	'OATHAuth.Mandatory2FAChecker' => static function ( MediaWikiServices $services ): Mandatory2FAChecker {
-		return new Mandatory2FAChecker(
-			$services->getUserRequirementsConditionCheckerFactory(),
-			$services->getRestrictedUserGroupConfigReader(),
-			$services->getUserGroupManagerFactory(),
-			$services->getExtensionRegistry(),
-			$services->getMainConfig()
 		);
 	},
 	'OATHAuth.WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {
