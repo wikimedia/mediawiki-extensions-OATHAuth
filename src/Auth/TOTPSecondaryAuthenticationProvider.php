@@ -96,11 +96,9 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		if ( $user->pingLimiter( 'badoath', 0 ) ) {
 			return AuthenticationResponse::newUI(
 				[ new TOTPAuthenticationRequest() ],
-				new Message(
-					'oathauth-throttled',
-					// Arbitrary duration given here
-					[ Message::durationParam( 60 ) ]
-				), 'error' );
+				new Message( 'oathauth-throttled' ),
+				'error'
+			);
 		}
 
 		if ( $this->module->verify( $authUser, [ 'token' => $token ] ) ) {

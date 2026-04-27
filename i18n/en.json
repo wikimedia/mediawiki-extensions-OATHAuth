@@ -52,7 +52,7 @@
 	"oathauth-auth-token-help": "The one-time password used as the second factor of two-factor authentication.",
 	"oathauth-auth-token-help-ui": "Enter either a code from your authentication device, or a recovery code",
 	"oathauth-auth-ui": "Please enter a code from your two-factor authentication application (such as [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] or [https://1password.com/ 1Password]).",
-	"oathauth-throttled": "Too many verification attempts! Please wait $1.",
+	"oathauth-throttled": "Too many attempts! please wait a few minutes",
 	"oathauth-login-failed": "Verification failed.",
 	"oathauth-describe-provider": "Two-factor authentication (OATH).",
 	"grant-group-authentication": "Perform authentication actions for self and others",
