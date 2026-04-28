@@ -80,7 +80,7 @@
 	"oathauth-ui-enabled-module": "Aktiv autentifikasiya üsulu",
 	"oathauth-enable-generic": "Aktivləşdir",
 	"oathauth-disable-generic": "Deaktivləşdir",
-	"oathauth-invalid-data-format": "Data provayderi seçilmiş doğrulama metodu üçün açar yaratmaq üçün etibarsızdır",
+	"oathauth-invalid-data-format": "Data provayderi seçilmiş təsdiqləmə metodu üçün açar yaratmaq üçün etibarsızdır",
 	"oathauth-disable-page-title": "$1 modulunu deaktiv et",
 	"oathauth-enable-page-title": "$1 modulunu aktivləşdir",
 	"oathauth-action-exclusive-to-2fa": "Bu əməliyyat yalnız iki faktorlu autentifikasiya aktivləşdirilmiş istifadəçilər tərəfindən həyata keçirilə bilər.",
