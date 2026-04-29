@@ -385,13 +385,17 @@ class WebAuthnKey extends AuthKey {
 			$authenticatorAssertionResponseValidator->setLogger( $this->logger );
 
 			// Check the response against the attestation request
-			$authenticatorAssertionResponseValidator->check(
+			$res = $authenticatorAssertionResponseValidator->check(
 				$pubKeySource,
 				$publicKeyCredential->response,
 				$publicKeyCredentialRequestOptions,
 				$this->getHost( $this->context->getRequest() ),
 				$this->userHandle,
 			);
+
+			$key = $this->findKeyByCredentialId( $user, $publicKeyCredential->rawId );
+			$key->setSignCounter( $res->counter );
+
 			return true;
 		} catch ( Throwable $ex ) {
 			$this->logger->warning( 'WebAuthn authentication failed due to: {message}', [
@@ -411,22 +415,32 @@ class WebAuthnKey extends AuthKey {
 		OATHUser $user,
 		string $publicKeyCredentialId
 	): ?CredentialRecord {
+		$key = $this->findKeyByCredentialId( $user, $publicKeyCredentialId );
+
+		if ( $key === null ) {
+			return null;
+		}
+
+		return CredentialRecord::create(
+			publicKeyCredentialId: $key->getAttestedCredentialData()->credentialId,
+			type: $key->getType(),
+			transports: $key->getTransports(),
+			attestationType: $key->getAttestationType(),
+			trustPath: $key->getTrustPath(),
+			aaguid: $key->getAttestedCredentialData()->aaguid,
+			credentialPublicKey: (string)$key->getAttestedCredentialData()->credentialPublicKey,
+			userHandle: $key->getUserHandle(),
+			counter: $key->getSignCounter(),
+		);
+	}
+
+	private function findKeyByCredentialId( OATHUser $user, string $publicKeyCredentialId ): ?WebAuthnKey {
 		foreach ( WebAuthn::getWebAuthnKeys( $user ) as $key ) {
 			if ( $key->getAttestedCredentialData()->credentialId !== $publicKeyCredentialId ) {
 				continue;
 			}
 
-			return CredentialRecord::create(
-				publicKeyCredentialId: $key->getAttestedCredentialData()->credentialId,
-				type: $key->getType(),
-				transports: $key->getTransports(),
-				attestationType: $key->getAttestationType(),
-				trustPath: $key->getTrustPath(),
-				aaguid: $key->getAttestedCredentialData()->aaguid,
-				credentialPublicKey: (string)$key->getAttestedCredentialData()->credentialPublicKey,
-				userHandle: $key->getUserHandle(),
-				counter: $key->getSignCounter(),
-			);
+			return $key;
 		}
 
 		return null;
