@@ -220,9 +220,11 @@ class WebAuthnAuthenticator {
 	): Status {
 		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
-			$username = $user->getUser()->getName();
 			$this->logger->error(
-				"User $username lost registration ability mid-request"
+				"User {username} lost registration ability mid-request",
+				[
+					'username' => $user->getUser()->getName(),
+				]
 			);
 			return $canRegister;
 		}
@@ -243,6 +245,25 @@ class WebAuthnAuthenticator {
 				$registerInfo,
 				$user
 			);
+
+			$pubKey = $key->getAttestedCredentialData()->credentialPublicKey;
+			if ( $pubKey !== null ) {
+				$algo = WebAuthnKey::getPublicKeyAlgorithm( $pubKey );
+				if ( in_array(
+					$algo,
+					WebAuthnKey::DEPRECATED_ALGO
+				) ) {
+					$algoString = Algorithms::getHashAlgorithmFor( $algo );
+					$this->logger->info(
+						"User {username} registered a WebAuthn key using the deprecated algorithm {algorithm}.",
+						[
+							'username' => $user->getUser()->getName(),
+							'algorithm' => $algoString,
+						]
+					);
+				}
+			}
+
 			if ( $passkeyMode ) {
 				$key->setPasswordlessSupport( true );
 			}
