@@ -12,7 +12,7 @@ use MediaWikiIntegrationTestCase;
  */
 class WebAuthnKeyTest extends MediaWikiIntegrationTestCase {
 
-	private const KEY_DATA = [
+	public const array KEY_DATA = [
 		'userHandle' => 'fakeHandle',
 		'friendlyName' => 'testKey',
 		'counter' => 3,
