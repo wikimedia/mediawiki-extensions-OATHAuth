@@ -399,7 +399,7 @@ class WebAuthnAuthenticator {
 
 		// Exclude all already registered keys for user
 		/** @var WebAuthnKey[] $webauthnKeys */
-		$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_ID );
+		$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_NAME );
 		'@phan-var WebAuthnKey[] $webauthnKeys';
 		$excludedPublicKeyDescriptors = array_map( static fn ( $key ) => new PublicKeyCredentialDescriptor(
 			PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,

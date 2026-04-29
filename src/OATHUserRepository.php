@@ -198,7 +198,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 		$moduleName = $key->getModule();
 		// If the user just deleted their last WebAuthn key, delete their User Handle
-		if ( $moduleName === WebAuthn::MODULE_ID && $user->getKeysForModule( $moduleName ) === [] ) {
+		if ( $moduleName === WebAuthn::MODULE_NAME && $user->getKeysForModule( $moduleName ) === [] ) {
 			$this->deleteUserHandle( $user );
 		}
 
@@ -230,7 +230,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$user->removeKeysForModule( $keyType );
 
 		// If the user just deleted all of their WebAuthn keys, delete their User Handle
-		if ( $keyType === WebAuthn::MODULE_ID ) {
+		if ( $keyType === WebAuthn::MODULE_NAME ) {
 			$this->deleteUserHandle( $user );
 		}
 
@@ -332,7 +332,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 			} else {
 				// If the user has any WebAuthn keys, derive their userHandle from that
 				/** @var WebAuthnKey[] $webauthnKeys */
-				$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_ID );
+				$webauthnKeys = $user->getKeysForModule( WebAuthn::MODULE_NAME );
 				'@phan-var WebAuthnKey[] $webauthnKeys';
 				if ( $webauthnKeys ) {
 					$user->setUserHandle( $webauthnKeys[0]->getUserHandle() );

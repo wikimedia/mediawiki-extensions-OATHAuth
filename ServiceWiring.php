@@ -81,7 +81,7 @@ return [
 		$moduleRegistry = $services->getService( 'OATHAuth.ModuleRegistry' );
 
 		/** @var WebAuthn $webAuthn */
-		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
+		$webAuthn = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_NAME );
 		/** @var RecoveryCodes $recovery */
 		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 

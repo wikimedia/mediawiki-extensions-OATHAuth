@@ -22,7 +22,7 @@ class WebAuthn implements IModule {
 	 */
 	public const ACTION_ADD_KEY = 'addkey';
 
-	public const MODULE_ID = "webauthn";
+	public const MODULE_NAME = "webauthn";
 
 	public static function factory(): IModule {
 		return new static();
@@ -33,12 +33,12 @@ class WebAuthn implements IModule {
 	 */
 	public static function getWebAuthnKeys( OATHUser $user ): array {
 		// @phan-suppress-next-line PhanTypeMismatchReturn
-		return $user->getKeysForModule( self::MODULE_ID );
+		return $user->getKeysForModule( self::MODULE_NAME );
 	}
 
 	/** @inheritDoc */
 	public function getName(): string {
-		return self::MODULE_ID;
+		return self::MODULE_NAME;
 	}
 
 	public function getDisplayName(): Message {

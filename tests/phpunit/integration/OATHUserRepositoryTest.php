@@ -144,7 +144,7 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$this->assertNull( $repository->findByUser( $user )->getUserHandle() );
 
 		// Adding a WebAuthn key generates a new User Handle and sets it
-		$webauthnModule = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_ID );
+		$webauthnModule = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_NAME );
 		$generatedUserHandle = random_bytes( 64 );
 		$keyData = $this->randomWebauthnKey( $generatedUserHandle );
 		/** @var WebAuthnKey $key */

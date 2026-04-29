@@ -147,7 +147,7 @@ class ApiWebAuthn extends ApiBase {
 	}
 
 	private function checkModule() {
-		$module = $this->moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_ID );
+		$module = $this->moduleRegistry->getModuleByKey( WebAuthnModule::MODULE_NAME );
 		if ( !( $module instanceof WebAuthnModule ) ) {
 			$this->dieWithError( 'apierror-oathauth-webauthn-module-missing' );
 		}

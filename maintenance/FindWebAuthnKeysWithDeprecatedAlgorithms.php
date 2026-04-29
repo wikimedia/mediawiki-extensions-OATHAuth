@@ -30,7 +30,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 		$services = $this->getServiceContainer();
 
 		$moduleRegistry = OATHAuthServices::getInstance( $services )->getModuleRegistry();
-		$webauthnModuleId = $moduleRegistry->getModuleId( WebAuthn::MODULE_ID );
+		$webauthnModuleId = $moduleRegistry->getModuleId( WebAuthn::MODULE_NAME );
 
 		$dbw = $services
 			->getDBLoadBalancerFactory()

@@ -461,6 +461,6 @@ class WebAuthnKey extends AuthKey {
 
 	/** @inheritDoc */
 	public function getModule(): string {
-		return WebAuthn::MODULE_ID;
+		return WebAuthn::MODULE_NAME;
 	}
 }
