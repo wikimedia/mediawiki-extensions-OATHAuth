@@ -249,10 +249,7 @@ class WebAuthnAuthenticator {
 			$pubKey = $key->getAttestedCredentialData()->credentialPublicKey;
 			if ( $pubKey !== null ) {
 				$algo = WebAuthnKey::getPublicKeyAlgorithm( $pubKey );
-				if ( in_array(
-					$algo,
-					WebAuthnKey::DEPRECATED_ALGO
-				) ) {
+				if ( $algo !== null && WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
 					$algoString = Algorithms::getHashAlgorithmFor( $algo );
 					$this->logger->info(
 						"User {username} registered a WebAuthn key using the deprecated algorithm {algorithm}.",

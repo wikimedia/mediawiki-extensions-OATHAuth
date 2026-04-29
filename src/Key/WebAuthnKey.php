@@ -455,6 +455,10 @@ class WebAuthnKey extends AuthKey {
 		return Key::create( $decoded->normalize() )->alg();
 	}
 
+	public static function isDeprecatedPublicKeyAlgorithm( int $alg ): bool {
+		return in_array( $alg, static::DEPRECATED_ALGO );
+	}
+
 	/** @inheritDoc */
 	public function getModule(): string {
 		return WebAuthn::MODULE_ID;

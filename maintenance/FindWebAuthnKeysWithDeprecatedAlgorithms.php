@@ -55,7 +55,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 				$this->output( "Key Id {$row->oad_id} is not a valid COSE key.\n" );
 				continue;
 			}
-			if ( in_array( $publicKeyAlg, WebAuthnKey::DEPRECATED_ALGO ) ) {
+			if ( WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $publicKeyAlg ) ) {
 				$deprecatedCount++;
 				$algoString = Algorithms::getHashAlgorithmFor( $publicKeyAlg );
 				$this->output(
