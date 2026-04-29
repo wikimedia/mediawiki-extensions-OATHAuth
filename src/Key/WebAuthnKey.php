@@ -7,6 +7,9 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Key;
 
+use CBOR\Decoder;
+use CBOR\Normalizable;
+use CBOR\StringStream;
 use Cose\Algorithm\Manager;
 use Cose\Algorithm\Signature\ECDSA\ES256;
 use Cose\Algorithm\Signature\ECDSA\ES512;
@@ -14,6 +17,8 @@ use Cose\Algorithm\Signature\EdDSA\EdDSA;
 use Cose\Algorithm\Signature\RSA\RS1;
 use Cose\Algorithm\Signature\RSA\RS256;
 use Cose\Algorithm\Signature\RSA\RS512;
+use Cose\Algorithms;
+use Cose\Key\Key;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
@@ -54,6 +59,12 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * by the client with data saved on server
  */
 class WebAuthnKey extends AuthKey {
+
+	public const array DEPRECATED_ALGO = [
+		// SHA-1
+		Algorithms::COSE_ALGORITHM_RS1,
+	];
+
 	private const MODE_CREATE = 'webauthn.create';
 	private const MODE_AUTHENTICATE = 'webauthn.authenticate';
 
@@ -431,6 +442,17 @@ class WebAuthnKey extends AuthKey {
 			new AppleAttestationStatementSupport(),
 			new TPMAttestationStatementSupport( ConvertibleTimestamp::getClock() ),
 		] );
+	}
+
+	public static function getPublicKeyAlgorithm( string $publicKey ): ?int {
+		$decoded = Decoder::create()->decode(
+			new StringStream( base64_decode( $publicKey ) )
+		);
+
+		if ( !$decoded instanceof Normalizable ) {
+			return null;
+		}
+		return Key::create( $decoded->normalize() )->alg();
 	}
 
 	/** @inheritDoc */

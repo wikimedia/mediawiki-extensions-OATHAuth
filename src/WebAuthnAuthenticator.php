@@ -410,6 +410,7 @@ class WebAuthnAuthenticator {
 				'public-key',
 				Algorithms::COSE_ALGORITHM_EDDSA
 			),
+			// SHA1- is deprecated...
 			new PublicKeyCredentialParameters(
 				'public-key',
 				Algorithms::COSE_ALGORITHM_RS1
