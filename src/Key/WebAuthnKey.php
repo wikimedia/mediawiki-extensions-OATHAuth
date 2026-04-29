@@ -285,6 +285,7 @@ class WebAuthnKey extends AuthKey {
 			$stepManagerFactory = new CeremonyStepManagerFactory();
 			$stepManagerFactory->setAttestationStatementSupportManager( $attestationStatementSupportManager );
 			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
+			$stepManagerFactory->setAllowedOrigins( [ $this->context->getConfig()->get( 'CanonicalServer' ) ] );
 
 			$authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
 				ceremonyStepManager: $stepManagerFactory->creationCeremony()
@@ -364,6 +365,7 @@ class WebAuthnKey extends AuthKey {
 			$stepManagerFactory = new CeremonyStepManagerFactory();
 			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
 			$stepManagerFactory->setAlgorithmManager( $coseAlgorithmManager );
+			$stepManagerFactory->setAllowedOrigins( [ $this->context->getConfig()->get( 'CanonicalServer' ) ] );
 
 			$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
 				ceremonyStepManager: $stepManagerFactory->requestCeremony(),
