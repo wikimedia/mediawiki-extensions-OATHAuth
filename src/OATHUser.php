@@ -121,6 +121,16 @@ class OATHUser {
 	}
 
 	/**
+	 * @return bool Whether this user has any keys that support passwordless login
+	 */
+	public function hasPasswordlessKeys(): bool {
+		return array_find(
+			$this->getKeys(),
+			static fn ( AuthKey $key ) => $key->supportsPasswordlessLogin()
+		) !== false;
+	}
+
+	/**
 	 * Disables current (if any) auth method
 	 */
 	public function disable() {

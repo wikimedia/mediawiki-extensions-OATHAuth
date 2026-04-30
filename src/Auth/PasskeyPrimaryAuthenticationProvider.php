@@ -8,6 +8,7 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserFactory;
@@ -16,6 +17,7 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 
 	public function __construct(
 		private readonly WebAuthnAuthenticator $webAuthnAuthenticator,
+		private readonly OATHUserRepository $userRepo,
 		private readonly OATHAuthLogger $oathLogger,
 		private readonly UserFactory $userFactory
 	) {
@@ -32,7 +34,17 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 			return [];
 		}
 
-		$authStatus = $this->webAuthnAuthenticator->startPasswordlessAuthentication();
+		$user = null;
+		if ( isset( $options['securityLevel'] ) ) {
+			// Reauthentication. Generate authInfo specific to this user's keys
+			$user = $this->userRepo->findByUser( $this->manager->getRequest()->getSession()->getUser() );
+			if ( !$user->hasPasswordlessKeys() ) {
+				// This user doesn't have any keys that support passwordless login, so don't offer it
+				return [];
+			}
+		}
+
+		$authStatus = $this->webAuthnAuthenticator->startPasswordlessAuthentication( $user );
 		if ( !$authStatus->isGood() ) {
 			return [];
 		}

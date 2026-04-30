@@ -102,10 +102,12 @@ class WebAuthnAuthenticator {
 	/**
 	 * Initiate a new passwordless authentication session.
 	 *
-	 * This returns a credential request that is not specific to any given user.
+	 * This returns a credential request that is not specific to any given user, unless $user is set.
+	 * @param ?OATHUser $user If set, make the credential request specific to this user's keys.
+	 *   Only use this when reauthenticating a user who is already logged in.
 	 */
-	public function startPasswordlessAuthentication(): Status {
-		return $this->startAuthenticationInternal( null, true );
+	public function startPasswordlessAuthentication( ?OATHUser $user = null ): Status {
+		return $this->startAuthenticationInternal( $user, true );
 	}
 
 	private function startAuthenticationInternal( ?OATHUser $user, bool $userVerificationRequired ): Status {
@@ -344,6 +346,10 @@ class WebAuthnAuthenticator {
 		$keys = $user ? WebAuthn::getWebAuthnKeys( $user ) : [];
 		$credentialDescriptors = [];
 		foreach ( $keys as $key ) {
+			// If user verification is required, skip keys that don't support UV
+			if ( $userVerificationRequired && !$key->supportsPasswordlessLogin() ) {
+				continue;
+			}
 			$credentialDescriptors[] = new PublicKeyCredentialDescriptor(
 				$key->getType(),
 				$key->getAttestedCredentialData()->credentialId,

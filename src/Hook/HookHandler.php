@@ -127,13 +127,15 @@ class HookHandler implements
 			];
 		}
 
-		if ( $this->config->get( 'OATHPasswordlessLogin' ) && isset( $fieldInfo['username'] ) ) {
-			$formDescriptor['username']['autocomplete'] = 'username webauthn';
+		if ( $this->config->get( 'OATHPasswordlessLogin' ) ) {
+			if ( isset( $fieldInfo['username'] ) && isset( $fieldInfo['credential'] ) ) {
+				$formDescriptor['username']['autocomplete'] = 'username webauthn';
 
-			// HACK autofocus the username even when it's prepopulated
-			$formDescriptor['username']['autofocus'] = true;
-			if ( isset( $formDescriptor['password']['autofocus'] ) ) {
-				unset( $formDescriptor['password']['autofocus'] );
+				// HACK autofocus the username even when it's prepopulated
+				$formDescriptor['username']['autofocus'] = true;
+				if ( isset( $formDescriptor['password']['autofocus'] ) ) {
+					unset( $formDescriptor['password']['autofocus'] );
+				}
 			}
 		}
 
