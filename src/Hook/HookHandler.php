@@ -128,8 +128,10 @@ class HookHandler implements
 			}
 		}
 
-		$req = AuthenticationRequest::getRequestByClass( $requests, WebAuthnAuthenticationRequest::class );
-		if ( $req ) {
+		$webauthnReq = AuthenticationRequest::getRequestByClass( $requests, WebAuthnAuthenticationRequest::class );
+		// Display a message about needing JavaScript for WebAuthn, but don't display it if we're on
+		// the initial login page (the WebAuthnAuthenticationRequest there is for passwordless login)
+		if ( $webauthnReq && !isset( $fieldInfo['username'] ) ) {
 			$formDescriptor['webauthn-nojs'] = [
 				'class' => NoJsInfoField::class,
 				'weight' => -50,
