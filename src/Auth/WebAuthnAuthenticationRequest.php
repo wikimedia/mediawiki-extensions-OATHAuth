@@ -16,10 +16,12 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	 * @param string $authInfo Serialized JSON blob obtained from
 	 *   WebAuthnAuthenticator::startAuthentication()
 	 * @param bool $showPrompt Whether to display the prompt telling the user to use their security key.
+	 * @param bool $showPasswordlessButton Whether to display the "Log in with passkey" button
 	 */
 	public function __construct(
 		public string $authInfo,
-		public bool $showPrompt = true
+		public bool $showPrompt = true,
+		public bool $showPasswordlessButton = false
 	) {
 	}
 
@@ -33,14 +35,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 
 	/** @inheritDoc */
 	public function getFieldInfo() {
-		return ( $this->showPrompt ? [
-			'label' => [
-				'type' => 'null',
-				'value' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
-				// TODO: Use a different message for help?
-				'help' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
-			]
-		] : [] ) + [
+		$fields = [
 			// The hidden auth_info field only exists to send the authInfo JSON blob to the client.
 			// It's not used for authentication and ignored when submitted back to us, we get the
 			// authInfo blob from the session instead.
@@ -57,6 +52,24 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 				'help' => wfMessage( 'oathauth-webauthn-credential-help' ),
 			]
 		];
+
+		if ( $this->showPrompt ) {
+			$fields['webauthnLabel'] = [
+				'type' => 'null',
+				'value' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
+				// TODO: Use a different message for help?
+				'help' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
+			];
+		}
+
+		if ( $this->showPasswordlessButton ) {
+			$fields['passwordlessButton'] = [
+				'type' => 'button',
+				'label' => wfMessage( 'oathauth-webauthn-login-passkey-button' ),
+			];
+		}
+
+		return $fields;
 	}
 
 	/** @inheritDoc */

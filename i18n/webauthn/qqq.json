@@ -34,5 +34,6 @@
 	"oathauth-webauthn-credential-label": "WebAuthn user credential label",
 	"oathauth-webauthn-credential-help": "Help message for WebAuthn user credential",
 	"oathauth-webauthn-add-security-key": "Button label for adding a new WebAuthn key",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Label for the 2FA method switcher button on login if passkeys are available"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Label for the 2FA method switcher button on login if passkeys are available",
+	"oathauth-webauthn-login-passkey-button": "Button label for logging in with a passkey directly, without entering a username or password"
 }

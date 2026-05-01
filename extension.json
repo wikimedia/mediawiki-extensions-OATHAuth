@@ -248,6 +248,11 @@
 				"ext.webauthn.ui.base"
 			]
 		},
+		"ext.webauthn.passwordlessLogin.styles": {
+			"styles": [
+				"webauthn/passwordlessLogin.less"
+			]
+		},
 		"ext.oath.manage": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"localBasePath": "modules/oathmanage",

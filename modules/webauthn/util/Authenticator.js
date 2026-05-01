@@ -1,13 +1,13 @@
-mw.ext.webauthn.Authenticator = function ( authInfo = null, passwordless = false ) {
+mw.ext.webauthn.Authenticator = function ( authInfo = null ) {
 	OO.EventEmitter.call( this );
 	this.authInfo = authInfo;
-	this.passwordless = passwordless;
+	this.abortController = null;
 };
 
 OO.initClass( mw.ext.webauthn.Authenticator );
 OO.mixinClass( mw.ext.webauthn.Authenticator, OO.EventEmitter );
 
-mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
+mw.ext.webauthn.Authenticator.prototype.authenticate = function ( conditional = false ) {
 	const dfd = $.Deferred();
 	if ( this.authInfo === null ) {
 		this.getAuthInfo().then( ( response ) => {
@@ -16,13 +16,13 @@ mw.ext.webauthn.Authenticator.prototype.authenticate = function () {
 			}
 			this.authInfo = response.webauthn.auth_info;
 			this.authInfo = JSON.parse( this.authInfo );
-			this.authenticateWithAuthInfo( dfd );
+			this.authenticateWithAuthInfo( dfd, conditional );
 		} ).then( ( error ) => {
 			dfd.reject( error );
 		}
 		);
 	} else {
-		this.authenticateWithAuthInfo( dfd );
+		this.authenticateWithAuthInfo( dfd, conditional );
 	}
 	return dfd.promise();
 };
@@ -34,9 +34,9 @@ mw.ext.webauthn.Authenticator.prototype.getAuthInfo = function () {
 	} );
 };
 
-mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( dfd ) {
+mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( dfd, conditional = false ) {
 	// At this point we assume authInfo is set
-	this.getCredentials()
+	this.getCredentials( conditional )
 		.then( ( assertion ) => {
 			dfd.resolve( this.formatCredential( assertion ) );
 		} )
@@ -47,21 +47,28 @@ mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( df
 		} );
 };
 
-mw.ext.webauthn.Authenticator.prototype.getCredentials = function () {
-	const publicKey = this.authInfo;
+mw.ext.webauthn.Authenticator.prototype.getCredentials = function ( conditional = false ) {
+	// Abort any ongoing authentication ceremony before starting a new one
+	this.abort();
+
+	const publicKey = Object.assign( {}, this.authInfo );
 	publicKey.challenge = mw.ext.webauthn.util.base64ToByteArray( publicKey.challenge );
 
 	if ( publicKey.allowCredentials ) {
 		publicKey.allowCredentials = publicKey.allowCredentials.map(
-			( data ) => Object.assign( data, {
+			( data ) => Object.assign( {}, data, {
 				id: mw.ext.webauthn.util.base64ToByteArray( data.id )
 			} )
 		);
 	}
 
 	mw.log( 'PublicKeyCredentialRequestOptions: ', publicKey );
-	const options = { publicKey };
-	if ( this.passwordless ) {
+	this.abortController = new AbortController();
+	const options = {
+		publicKey,
+		signal: this.abortController.signal
+	};
+	if ( conditional ) {
 		options.mediation = 'conditional';
 	}
 	return navigator.credentials.get( options ).then( ( credential ) => {
@@ -100,4 +107,10 @@ mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion 
 		}
 	};
 	return this.credential;
+};
+
+mw.ext.webauthn.Authenticator.prototype.abort = function () {
+	if ( this.abortController ) {
+		this.abortController.abort( 'newrequest' );
+	}
 };

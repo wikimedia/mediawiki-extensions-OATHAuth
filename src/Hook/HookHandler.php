@@ -137,6 +137,14 @@ class HookHandler implements
 					unset( $formDescriptor['password']['autofocus'] );
 				}
 			}
+
+			if ( isset( $fieldInfo['passwordlessButton'] ) ) {
+				// Make the "Log in with passkey" button a non-primary, non-submit button, make it
+				// progressive, and put it below the login button
+				$formDescriptor['passwordlessButton']['type'] = 'button';
+				$formDescriptor['passwordlessButton']['flags'] = [ 'progressive' ];
+				$formDescriptor['passwordlessButton']['weight'] = 110;
+			}
 		}
 
 		return true;
@@ -246,6 +254,7 @@ class HookHandler implements
 			$out->getTitle()->isSpecial( 'Userlogin' )
 		) {
 			$out->addModules( 'ext.webauthn.passwordlessLogin' );
+			$out->addModuleStyles( 'ext.webauthn.passwordlessLogin.styles' );
 		}
 	}
 }
