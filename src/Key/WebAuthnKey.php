@@ -38,11 +38,11 @@ use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
+use Webauthn\CredentialRecord;
 use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialRequestOptions;
-use Webauthn\PublicKeyCredentialSource;
 use Webauthn\TrustPath\EmptyTrustPath;
 use Webauthn\TrustPath\TrustPath;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -396,13 +396,13 @@ class WebAuthnKey extends AuthKey {
 	private function findOneByCredentialId(
 		OATHUser $user,
 		string $publicKeyCredentialId
-	): ?PublicKeyCredentialSource {
+	): ?CredentialRecord {
 		foreach ( WebAuthn::getWebAuthnKeys( $user ) as $key ) {
 			if ( $key->getAttestedCredentialData()->credentialId !== $publicKeyCredentialId ) {
 				continue;
 			}
 
-			return PublicKeyCredentialSource::create(
+			return CredentialRecord::create(
 				publicKeyCredentialId: $key->getAttestedCredentialData()->credentialId,
 				type: $key->getType(),
 				transports: $key->getTransports(),
