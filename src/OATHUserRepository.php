@@ -27,6 +27,9 @@ use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHUserRepository implements LoggerAwareInterface {
+
+	private const int JSON_LENGTH = 65530;
+
 	private LoggerInterface $logger;
 
 	public function __construct(
@@ -91,6 +94,14 @@ class OATHUserRepository implements LoggerAwareInterface {
 		return $oathUser;
 	}
 
+	private function checkJSONLength( string $json ) {
+		if ( strlen( $json ) >= self::JSON_LENGTH ) {
+			throw new InvalidArgumentException(
+				"oad_data is too long to be saved in the database"
+			);
+		}
+	}
+
 	/**
 	 * Persists the given key in the database.
 	 */
@@ -103,12 +114,16 @@ class OATHUserRepository implements LoggerAwareInterface {
 		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$createdTimestamp = $dbw->timestamp();
+
+		$json = FormatJson::encode( $keyData );
+		$this->checkJSONLength( $json );
+
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'oathauth_devices' )
 			->row( [
 				'oad_user' => $uid,
 				'oad_type' => $moduleId,
-				'oad_data' => FormatJson::encode( $keyData ),
+				'oad_data' => $json,
 				'oad_created' => $createdTimestamp,
 			] )
 			->caller( __METHOD__ )
@@ -161,10 +176,13 @@ class OATHUserRepository implements LoggerAwareInterface {
 			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
 		}
 
+		$json = FormatJson::encode( $key->jsonSerialize() );
+		$this->checkJSONLength( $json );
+
 		$dbw = $this->dbProvider->getPrimaryDatabase( 'virtual-oathauth' );
 		$dbw->newUpdateQueryBuilder()
 			->table( 'oathauth_devices' )
-			->set( [ 'oad_data' => FormatJson::encode( $key->jsonSerialize() ) ] )
+			->set( [ 'oad_data' => $json ] )
 			->where( [ 'oad_user' => $user->getCentralId(), 'oad_id' => $keyId ] )
 			->caller( __METHOD__ )
 			->execute();
