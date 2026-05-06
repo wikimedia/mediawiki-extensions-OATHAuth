@@ -54,7 +54,7 @@
 	"oathauth-auth-switch-module-label": "Префрли на друг начин на заверка",
 	"oathauth-auth-switch-module-help": "За <code>newModule</code> ставете ново име на модул за да добиете нов предизвик од поинеков модул за двочинителска заверка. Оставете го празно ако одговарате на тековниот предизвик.",
 	"oathauth-auth-switch-module-keep": "(не префрлај)",
-	"oathauth-throttled": "Направивте премногу обиди за заверка! Почекајте $1.",
+	"oathauth-throttled": "Направивте премногу обиди! Почекајте неколку минути.",
 	"oathauth-login-failed": "Заверката не успеа.",
 	"oathauth-describe-provider": "Двочинителска заверка (OATH).",
 	"grant-group-authentication": "Вршење заверка за себе и други",

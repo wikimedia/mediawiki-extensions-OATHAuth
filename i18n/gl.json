@@ -57,7 +57,7 @@
 	"oathauth-auth-switch-module-label": "Cambiar a un método de autenticación diferente",
 	"oathauth-auth-switch-module-help": "Configura <code>newModule</code> como o nome do módulo novo para obter un novo desafío dun módulo de autenticación de dous factores diferente. Déixao baleiro se estás a responder ao desafío actual.",
 	"oathauth-auth-switch-module-keep": "(non cambiar)",
-	"oathauth-throttled": "Demasiados intentos de verificación! Agarda $1.",
+	"oathauth-throttled": "Houbo demasiados intentos! Agarda uns intres.",
 	"oathauth-login-failed": "Fallou a verificación.",
 	"oathauth-describe-provider": "Autenticación de dous factores (OATH).",
 	"grant-group-authentication": "Realizar accións de autenticación para ti e para outras persoas",

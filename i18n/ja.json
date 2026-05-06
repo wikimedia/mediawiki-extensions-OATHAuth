@@ -72,7 +72,7 @@
 	"oathauth-auth-ui": "あなたの認証アプリケーションに表示された二要素認証コードを入力してください。（アプリケーションの例：[https://www.authy.com Authy]、[https://freeotp.github.io/ FreeOTP]、[https://support.google.com/accounts/answer/1066447 Google Authenticator]、[https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator]、[https://1password.com/ 1Password]）",
 	"oathauth-auth-switch-module-label": "別の認証方法に切り替え",
 	"oathauth-auth-switch-module-keep": "(切り替えない)",
-	"oathauth-throttled": "検証の試行回数が多すぎます。$1お待ちください。",
+	"oathauth-throttled": "試行回数が多すぎます。数分お待ちください。",
 	"oathauth-login-failed": "検証に失敗しました。",
 	"oathauth-describe-provider": "二要素認証 (OATH)。",
 	"grant-group-authentication": "自分および他人の認証操作を実行",
