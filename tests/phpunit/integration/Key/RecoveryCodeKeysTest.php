@@ -16,6 +16,7 @@ use UnexpectedValueException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
+ * @covers \MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator
  * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
  * @covers \MediaWiki\Extension\OATHAuth\Key\EncryptionHelper
  * @covers \MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys
