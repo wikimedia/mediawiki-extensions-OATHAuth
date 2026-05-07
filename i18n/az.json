@@ -73,7 +73,7 @@
 	"oathauth-auth-switch-module-label": "Autentifikator tətbiqindən istifadə et",
 	"oathauth-auth-switch-module-help": "Fərqli 2FA modulundan yeni problem əldə etmək üçün <code>newModule</code> parametrini yeni modulun adına təyin edin. Cari çağırışa cavab verirsinizsə, boş buraxın.",
 	"oathauth-auth-switch-module-keep": "(dəyişmə)",
-	"oathauth-throttled": "Çoxsaylı təsdiqləmə cəhdi! Zəhmət olmasa, $1 gözləyin.",
+	"oathauth-throttled": "Çoxsaylı təsdiqləmə cəhdi! Zəhmət olmasa, bir neçə dəqiqə gözləyin.",
 	"oathauth-login-failed": "İki faktorlu autentifikasiya uğursuz oldu.",
 	"oathauth-recovery-code-login-failed": "Bərpa kodunun doğrulanması uğursuz oldu.",
 	"oathauth-describe-provider": "İki faktorlu autentifikasiya (OATH).",

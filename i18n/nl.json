@@ -81,7 +81,7 @@
 	"oathauth-auth-switch-module-label": "Authenticatie-app gebruiken",
 	"oathauth-auth-switch-module-help": "Stel <code>newModule</code> in op de naam van de nieuwe module om een nieuwe uitdaging van een andere tweetrapsauthenticatie-module te ontvangen. Laat dit veld leeg als u de huidige uitdaging aan het beantwoorden bent.",
 	"oathauth-auth-switch-module-keep": "(niet omschakelen)",
-	"oathauth-throttled": "Te veel verificatiepogingen! Wacht $1.",
+	"oathauth-throttled": "Te veel pogingen! Wacht alstublieft een paar minuten.",
 	"oathauth-login-failed": "Tweetrapsauthenticatie is mislukt.",
 	"oathauth-recovery-code-login-failed": "Verificatie van herstelcode mislukt.",
 	"oathauth-describe-provider": "Tweetrapsauthenticatie (OATH).",

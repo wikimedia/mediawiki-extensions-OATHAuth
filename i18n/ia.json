@@ -67,7 +67,7 @@
 	"oathauth-auth-switch-module-label": "Usar un app de authentication",
 	"oathauth-auth-switch-module-help": "Mitte <code>newModule</code> al nomine del nove modulo pro obtener un nove defia de un altere modulo de authentication bifactorial. Lassar vacue si se responde al defia actual.",
 	"oathauth-auth-switch-module-keep": "(non cambiar)",
-	"oathauth-throttled": "Troppo de tentativas de verification! Per favor attende $1.",
+	"oathauth-throttled": "Troppo de tentativas! Attende qualque minutas.",
 	"oathauth-login-failed": "Le authentication bifactorial ha fallite.",
 	"oathauth-recovery-code-login-failed": "Le verification del codice de recuperation ha fallite.",
 	"oathauth-describe-provider": "Authentication bifactorial (OATH).",

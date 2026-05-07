@@ -48,7 +48,7 @@
 	"oath-log-name": "Дневник на двуфакторното удостоверяване",
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|изключи}} двуфакторното удостоверяване на $3",
 	"oathauth-ui-no-module": "Не е включено",
-	"oathauth-module-totp-label": "TOTP (еднократен маркер)",
+	"oathauth-module-totp-label": "Приложение за удостоверяване",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление на двуфакторното удостоверяване",
 	"oathauth-ui-enabled-module": "{{PLURAL:$1|Включен метод|Включени методи}} за удостоверяване",
