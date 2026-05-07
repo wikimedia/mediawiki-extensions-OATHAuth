@@ -12,7 +12,6 @@
 	"apierror-oathauth-webauthn-module-missing": "The WebAuthn module is not available.",
 	"apierror-oathauth-webauthn-missing-credential": "No credential data was provided.",
 	"apierror-oathauth-webauthn-invalid-credential": "The credential data is invalid or malformed.",
-	"apierror-oathauth-webauthn-reauthenticate": "You must first reauthenticate through Special:OATHManage before you can take this action.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Register a new WebAuthn credential for the current user.",
 	"apihelp-oathauth-webauthn-param-credential": "JSON-encoded WebAuthn credential response from the browser.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Friendly name for the new credential."

@@ -5,6 +5,7 @@
 
 namespace MediaWiki\Extension\OATHAuth\Api;
 
+use MediaWiki\Api\ApiAuthManagerHelper;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Auth\AuthManager;
@@ -139,10 +140,8 @@ class ApiWebAuthn extends ApiBase {
 		}
 
 		if ( isset( $functionConfig[ 'loginSecurityLevel' ] ) ) {
-			$status = $this->authManager->securitySensitiveOperationStatus( $functionConfig[ 'loginSecurityLevel' ] );
-			if ( $status !== AuthManager::SEC_OK ) {
-				$this->dieWithError( 'apierror-oathauth-webauthn-reauthenticate' );
-			}
+			$helper = new ApiAuthManagerHelper( $this, $this->authManager );
+			$helper->securitySensitiveOperation( $functionConfig[ 'loginSecurityLevel' ] );
 		}
 	}
 
