@@ -155,7 +155,7 @@
 	"oathauth-notifications-enable-help": "Hilfe",
 	"oathauth-notifications-enable-primary": "Überprüfe deine Einstellungen für die Zwei-Faktor-Authentifizierung",
 	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Du}} solltest {{GENDER:$2|dein Konto}} für die Zwei-Faktor-Authentifizierung erneut anmelden.",
-	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Dir}} {{PLURAL:$3|bleibt $3 Code zur Wiederherstellung|bleiben $3 Codes zur Wiederherstellung}}. Du solltest in Erwägung ziehen, die Zwei-Faktor-Authentifizierung zu deaktivieren und wieder zu aktivieren, um $4 {{PLURAL:$4|neuen Code zur Wiederherstellung|neue Codes zur Wiederherstellung}} zu erzeugen, die du in Zukunft verwenden kannst.",
+	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Dir}} {{PLURAL:$3|bleibt $3 Code zur Wiederherstellung|bleiben $3 Codes zur Wiederherstellung}}. Du kannst $4 {{PLURAL:$4|neuen Code zur Wiederherstellung|neue Codes zur Wiederherstellung}} erzeugen, die du in Zukunft verwenden kannst.",
 	"oathauth-notifications-recoverycodesleft-help": "Hilfe",
 	"oathauth-notifications-recoverycodesleft-primary": "Überprüfe deine Einstellungen für die Zwei-Faktor-Authentifizierung",
 	"notification-header-oathauth-recoverycodes-generated-for-user": "Für {{FORMAL:dich|Sie}} {{PLURAL:$3|wurde ein zusätzlicher Wiederherstellungscode|wurden zusätzliche Wiederherstellungscodes}} generiert.",

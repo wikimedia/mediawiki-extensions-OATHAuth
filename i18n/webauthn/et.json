@@ -5,6 +5,7 @@
 		]
 	},
 	"oathauth-webauthn-module-label": "Turbevõti",
+	"oathauth-webauthn-javascript-required": "Et turbevõtit kasutada, peab brauseris olema JavaScript lubatud.",
 	"oathauth-webauthn-ui-login-prompt": "Kasuta turbevõtit või järgi brauseris näidatud juhiseid.",
 	"oathauth-webauthn-ui-add-key": "Lisa võti",
 	"oathauth-webauthn-error-browser-unsupported": "See brauser ei toeta turbevõtmega autentimist või see pole selle saidi jaoks saadaval. Palun proovi teist brauserit. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Loe veel]",
