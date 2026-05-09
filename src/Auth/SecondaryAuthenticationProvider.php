@@ -7,6 +7,7 @@ use LogicException;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\MediaWikiServices;
@@ -14,6 +15,11 @@ use MediaWiki\MediaWikiServices;
 class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
 	public const MODULE_PRIORITY = [ 'webauthn', 'totp', 'recoverycodes' ];
+
+	public function __construct(
+		private readonly OATHAuthLogger $oathLogger,
+	) {
+	}
 
 	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
@@ -75,7 +81,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		}
 
 		if ( $response->status === AuthenticationResponse::PASS ) {
-			OATHAuthServices::getInstance()->getLogger()->logSuccessfulVerification( $user );
+			$this->oathLogger->logSuccessfulVerification( $user );
 		}
 
 		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module );
