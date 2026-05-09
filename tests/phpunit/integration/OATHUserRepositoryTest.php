@@ -184,4 +184,24 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		// Looking up the User Handle no longer finds the user
 		$this->assertNull( $repository->findByUserHandle( $generatedUserHandle ) );
 	}
+
+	public function testUserHas2FAEnabled() {
+		$user = $this->getTestUser()->getUser();
+		$repository = $this->createUserRepo( $user, 12345 );
+
+		$this->assertFalse( $repository->userHas2FAEnabled( $user ) );
+
+		$moduleRegistry = OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry();
+		$totpModule = $moduleRegistry->getModuleByKey( TOTP::MODULE_NAME );
+
+		$oathUser = $repository->findByUser( $user );
+		$repository->createKey(
+			$oathUser,
+			$totpModule,
+			TOTPKey::newFromRandom()->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$this->assertTrue( $repository->userHas2FAEnabled( $user ) );
+	}
 }
