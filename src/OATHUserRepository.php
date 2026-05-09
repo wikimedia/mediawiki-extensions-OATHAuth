@@ -56,6 +56,34 @@ class OATHUserRepository implements LoggerAwareInterface {
 	}
 
 	/**
+	 * Used for a "cheap" lookup whether a user has 2FA enabled.
+	 *
+	 * If you have no subsequent need for access to the full OATHUser object,
+	 * or their 2FA keys, this will check the cache first. If it's not in cache,
+	 * query the database, rather than loading and decrypting the
+	 * whole OATHUser object and their keys.
+	 */
+	public function userHas2FAEnabled( UserIdentity $user ): bool {
+		/** @var OATHUser $oathUser */
+		$oathUser = $this->cache->get( $user->getName() );
+		// If we have the User cache, use the OATHUser from cache
+		if ( $oathUser ) {
+			return $oathUser->isTwoFactorAuthEnabled();
+		}
+
+		// Else look it up from the database
+		return $this->dbProvider
+			->getReplicaDatabase( 'virtual-oathauth' )
+			->newSelectQueryBuilder()
+			->from( 'oathauth_devices' )
+			->where( [
+				'oad_user' => $this->centralIdLookupFactory->getLookup()
+					->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW )
+			] )
+			->fetchRowCount() > 0;
+	}
+
+	/**
 	 * Find the user who owns a given User Handle, and load an OATHUser object for them.
 	 * Use this to identify a user when you only have their WebAuthn authentication result.
 	 * @param string $userHandle User Handle value from the user's WebAuthn key
