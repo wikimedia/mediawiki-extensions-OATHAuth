@@ -42,7 +42,7 @@ class OATHAuthLogger {
 	}
 
 	/**
-	 * Creates a new log entry to resemble an implicit verification of a user's 2FA enrollment,
+	 * Creates a new log entry to resemble implicit verification of a user's 2FA enrollment,
 	 * when checking if user is eligible for being a member of some groups.
 	 */
 	public function logImplicitVerification( UserIdentity $performer, UserIdentity $target ): void {
@@ -160,8 +160,7 @@ class OATHAuthLogger {
 	 */
 	private function getClientIP(): string {
 		try {
-			$request = $this->context->getRequest();
-			return $request->getIP();
+			return $this->context->getRequest()->getIP();
 		} catch ( Exception ) {
 			// Let's log with unknown IP, it's not a serious condition, and it's better to have any
 			// logs around 2FA than not
