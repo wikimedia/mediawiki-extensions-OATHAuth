@@ -72,7 +72,10 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 			return $this->getFakeModule( $moduleName );
 		} );
 		$this->setService( 'OATHAuth.ModuleRegistry', $moduleRegistry );
-		$logger = $this->createNoOpMock( OATHAuthLogger::class, [ 'logSuccessfulVerification' ] );
+		$logger = $this->createNoOpMock(
+			OATHAuthLogger::class,
+			[ 'logSuccessfulVerification', 'logTwoFactorChallengePresented' ]
+		);
 		$this->setService( 'OATHAuth.Logger', $logger );
 
 		$provider = new SecondaryAuthenticationProvider( $logger );

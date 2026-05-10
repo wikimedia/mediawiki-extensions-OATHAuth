@@ -52,7 +52,9 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		if ( !$module ) {
 			throw new LogicException( 'Not possible' );
 		}
-		$response = $this->getProviderForModule( $module )->beginSecondaryAuthentication( $user, [] );
+		$provider = $this->getProviderForModule( $module );
+		$this->oathLogger->logTwoFactorChallengePresented( $user, $provider->getUniqueId() );
+		$response = $provider->beginSecondaryAuthentication( $user, [] );
 
 		// Include information about used module in request so that the correct
 		// provider can be used when continuing

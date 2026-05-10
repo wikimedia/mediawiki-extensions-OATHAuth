@@ -31,6 +31,16 @@ class OATHAuthLogger {
 	) {
 	}
 
+	public function logTwoFactorChallengePresented( UserIdentity $performer, string $type ): void {
+		$this->logger->info(
+			'OATHAuth {type} challenge presented to {user} from {clientip}', [
+				'user' => $performer->getName(),
+				'type' => $type,
+				'clientip' => $this->getClientIP(),
+			]
+		);
+	}
+
 	/**
 	 * Creates a new log entry to resemble an implicit verification of a user's 2FA enrollment,
 	 * when checking if user is eligible for being a member of some groups.
