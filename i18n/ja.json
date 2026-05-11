@@ -170,5 +170,6 @@
 	"oathauth-passkey-dialog-title": "パスキーを追加",
 	"oathauth-passkey-dialog-text": "パスキーはアカウントにサインインする最も安全な方法です。ほとんどの人にとっては、最も簡単な方法でもあります。\n\nパスキーを使うと、PIN、指紋認証、あるいは顔認証など、デバイスのロック解除と同じ方法で{{SITENAME}}にサインインできます。\n\nいずれの方法でサインインしても、生体認証データおよびPINはデバイス上にとどまり、決して送信されることはありません。",
 	"oathauth-passkey-dialog-back": "戻る",
-	"oathauth-passkey-dialog-add": "パスキーを追加"
+	"oathauth-passkey-dialog-add": "パスキーを追加",
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "利用者が二要素認証を有効化していること"
 }
