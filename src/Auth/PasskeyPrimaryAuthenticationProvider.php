@@ -74,8 +74,8 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 		}
 		$user = $this->userFactory->newFromUserIdentity( $oathUser->getUser() );
 
-		// Don't increase pingLimiter, just check for limit exceeded.
-		if ( $user->pingLimiter( 'badoath', 0 ) ) {
+		// Check for (and increment) rate limiter before doing the auth
+		if ( $user->pingLimiter( 'badoath' ) ) {
 			return AuthenticationResponse::newFail(
 				wfMessage( 'oathauth-throttled' )
 			);
@@ -93,9 +93,6 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 			$this->manager->setAuthenticationSessionData( self::SUCCESS_KEY, true );
 			return AuthenticationResponse::newPass( $user->getName() );
 		}
-
-		// Increase rate limit counter for failed request
-		$user->pingLimiter( 'badoath' );
 
 		$this->logger->info( 'OATHAuth user {user} failed passwordless login from {clientip}', [
 			'user'     => $user->getName(),
