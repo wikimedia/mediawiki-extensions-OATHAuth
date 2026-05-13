@@ -62,7 +62,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 		}
 
 		// Check for (and increment) rate limiter before doing the auth
-		if ( $user->pingLimiter( 'badoath' ) ) {
+		if ( $user->pingLimiter( 'badoath' ) || $user->pingLimiter( 'badoath-long' ) ) {
 			return AuthenticationResponse::newUI(
 				[ new RecoveryCodesAuthenticationRequest() ],
 				new Message( 'oathauth-throttled' ),

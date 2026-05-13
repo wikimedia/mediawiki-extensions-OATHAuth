@@ -491,6 +491,25 @@
 			"user-global": [
 				10,
 				60
+			],
+			"ip-all": [
+				20,
+				60
+			]
+		},
+		"badoath-long": {
+			"&can-bypass": false,
+			"user": [
+				20,
+				600
+			],
+			"user-global": [
+				20,
+				600
+			],
+			"ip-all": [
+				40,
+				600
 			]
 		},
 		"disableoath": {

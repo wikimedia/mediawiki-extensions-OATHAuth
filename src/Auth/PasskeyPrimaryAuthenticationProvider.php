@@ -75,7 +75,7 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 		$user = $this->userFactory->newFromUserIdentity( $oathUser->getUser() );
 
 		// Check for (and increment) rate limiter before doing the auth
-		if ( $user->pingLimiter( 'badoath' ) ) {
+		if ( $user->pingLimiter( 'badoath' ) || $user->pingLimiter( 'badoath-long' ) ) {
 			return AuthenticationResponse::newFail(
 				wfMessage( 'oathauth-throttled' )
 			);
