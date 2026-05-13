@@ -246,21 +246,6 @@ class WebAuthnAuthenticator {
 				$user
 			);
 
-			$pubKey = $key->getAttestedCredentialData()->credentialPublicKey;
-			if ( $pubKey !== null ) {
-				$algo = WebAuthnKey::getPublicKeyAlgorithm( $pubKey );
-				if ( $algo !== null && WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
-					$algoString = Algorithms::getHashAlgorithmFor( $algo );
-					$this->logger->info(
-						"User {username} registered a WebAuthn key using the deprecated algorithm {algorithm}.",
-						[
-							'username' => $user->getUser()->getName(),
-							'algorithm' => $algoString,
-						]
-					);
-				}
-			}
-
 			if ( $passkeyMode ) {
 				$key->setPasswordlessSupport( true );
 			}

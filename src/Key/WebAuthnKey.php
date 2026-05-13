@@ -216,6 +216,7 @@ class WebAuthnKey extends AuthKey {
 			] );
 			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
+		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
 		return $this->authenticationCeremony(
 			$data['credential'],
 			$data['authInfo'],
@@ -235,6 +236,7 @@ class WebAuthnKey extends AuthKey {
 			] );
 			throw new LogicException( 'WebAuthnKey::verifyRegistration(): invalid mode' );
 		}
+		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
 		return $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
 	}
 
@@ -471,6 +473,24 @@ class WebAuthnKey extends AuthKey {
 
 	public static function isDeprecatedPublicKeyAlgorithm( int $alg ): bool {
 		return in_array( $alg, static::DEPRECATED_ALGO );
+	}
+
+	private function logIfDeprecatedAlgorithm( ?string $pubKey, OATHUser $user, bool $used ): void {
+		if ( $pubKey === null ) {
+			return;
+		}
+		$algo = self::getPublicKeyAlgorithm( $pubKey );
+		if ( $algo !== null && self::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
+			$algoString = Algorithms::getHashAlgorithmFor( $algo );
+			$usedOrRegistered = $used ? 'used' : 'registered';
+			$this->logger->info(
+				"User {username} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
+				[
+					'username' => $user->getUser()->getName(),
+					'algorithm' => $algoString,
+				]
+			);
+		}
 	}
 
 	/** @inheritDoc */
