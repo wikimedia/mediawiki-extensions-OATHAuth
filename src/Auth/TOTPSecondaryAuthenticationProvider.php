@@ -61,8 +61,8 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 				wfMessage( 'oathauth-login-failed' ), 'error' );
 		}
 
-		// Don't increase pingLimiter, just check for limit exceeded.
-		if ( $user->pingLimiter( 'badoath', 0 ) ) {
+		// Check for (and increment) rate limiter before doing the auth
+		if ( $user->pingLimiter( 'badoath' ) ) {
 			return AuthenticationResponse::newUI(
 				[ new TOTPAuthenticationRequest() ],
 				new Message( 'oathauth-throttled' ),
@@ -76,9 +76,6 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		if ( $this->module->verify( $authUser, [ 'token' => $token ] ) ) {
 			return AuthenticationResponse::newPass();
 		}
-
-		// Increase rate limit counter for failed request
-		$user->pingLimiter( 'badoath' );
 
 		$this->logger->info( 'OATHAuth user {user} failed OTP token/recovery code from {clientip}', [
 			'user'     => $user->getName(),

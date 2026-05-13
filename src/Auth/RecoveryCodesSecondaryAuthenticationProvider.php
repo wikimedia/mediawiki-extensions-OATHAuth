@@ -60,8 +60,8 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 				wfMessage( 'oathauth-recovery-code-login-failed' ), 'error' );
 		}
 
-		// Don't increase pingLimiter, just check for limit exceeded.
-		if ( $user->pingLimiter( 'badoath', 0 ) ) {
+		// Check for (and increment) rate limiter before doing the auth
+		if ( $user->pingLimiter( 'badoath' ) ) {
 			return AuthenticationResponse::newUI(
 				[ new RecoveryCodesAuthenticationRequest() ],
 				new Message( 'oathauth-throttled' ),
@@ -75,9 +75,6 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 		if ( $this->module->verify( $authUser, [ 'recoverycode' => $recoveryCode ] ) ) {
 			return AuthenticationResponse::newPass();
 		}
-
-		// Increase rate limit counter for failed request
-		$user->pingLimiter( 'badoath' );
 
 		$this->logger->info( 'OATHAuth user {user} failed recovery code from {clientip}', [
 			'user'     => $user->getName(),
