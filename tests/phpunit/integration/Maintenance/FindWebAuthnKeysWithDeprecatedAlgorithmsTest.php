@@ -37,7 +37,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithmsTest extends MaintenanceBaseTestCa
 
 		$key = WebAuthnKey::newFromData(
 			[
-				'credentialPublicKey' => KeyUnitTest::KEY_RS1,
+				'credentialPublicKey' => KeyUnitTest::KEY_RS1_2048,
 			] + KeyIntegrationTest::KEY_DATA
 		);
 

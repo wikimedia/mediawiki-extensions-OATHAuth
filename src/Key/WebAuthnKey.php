@@ -19,6 +19,7 @@ use Cose\Algorithm\Signature\RSA\RS256;
 use Cose\Algorithm\Signature\RSA\RS512;
 use Cose\Algorithms;
 use Cose\Key\Key;
+use Cose\Key\RsaKey;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
@@ -217,6 +218,7 @@ class WebAuthnKey extends AuthKey {
 			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
 		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
+		$this->logIfShortRsaKey( $this->getAttestedCredentialData()->credentialPublicKey, $user, false );
 		return $this->authenticationCeremony(
 			$data['credential'],
 			$data['authInfo'],
@@ -237,6 +239,7 @@ class WebAuthnKey extends AuthKey {
 			throw new LogicException( 'WebAuthnKey::verifyRegistration(): invalid mode' );
 		}
 		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
+		$this->logIfShortRsaKey( $this->getAttestedCredentialData()->credentialPublicKey, $user, false );
 		return $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
 	}
 
@@ -460,7 +463,7 @@ class WebAuthnKey extends AuthKey {
 		] );
 	}
 
-	public static function getPublicKeyAlgorithm( string $publicKey ): ?int {
+	private static function getCoseKey( string $publicKey ): ?Key {
 		$decoded = Decoder::create()->decode(
 			new StringStream( base64_decode( $publicKey ) )
 		);
@@ -468,7 +471,19 @@ class WebAuthnKey extends AuthKey {
 		if ( !$decoded instanceof Normalizable ) {
 			return null;
 		}
-		return Key::create( $decoded->normalize() )->alg();
+
+		$normalized = $decoded->normalize();
+
+		if ( !is_array( $normalized ) ) {
+			return null;
+		}
+
+		return Key::create( $normalized );
+	}
+
+	public static function getPublicKeyAlgorithm( string $publicKey ): ?int {
+		$key = self::getCoseKey( $publicKey );
+		return $key?->alg();
 	}
 
 	public static function isDeprecatedPublicKeyAlgorithm( int $alg ): bool {
@@ -491,6 +506,38 @@ class WebAuthnKey extends AuthKey {
 				]
 			);
 		}
+	}
+
+	private const int MIN_RSA_LENGTH = 2048;
+
+	private function logIfShortRsaKey( ?string $pubKey, OATHUser $user, bool $used ): void {
+		if ( $pubKey === null ) {
+			return;
+		}
+		$length = self::getKeyLengthIfRsa( $pubKey );
+		if ( $length === null ) {
+			return;
+		}
+
+		$usedOrRegistered = $used ? 'used' : 'registered';
+		$this->logger->info(
+			"User {username} $usedOrRegistered an RSA WebAuthn key shorter than " . self::MIN_RSA_LENGTH
+			. " bits ({length}).",
+			[
+				'username' => $user->getUser()->getName(),
+				'length' => $length,
+			]
+		);
+	}
+
+	public static function getKeyLengthIfRsa( string $publicKey ): ?int {
+		$key = self::getCoseKey( $publicKey );
+
+		if ( $key?->type() === (string)Key::TYPE_RSA && $key->has( RsaKey::DATA_N ) ) {
+			return strlen( $key->get( RsaKey::DATA_N ) ) * 8;
+		}
+
+		return null;
 	}
 
 	/** @inheritDoc */
