@@ -137,7 +137,7 @@
 	"oathauth-disable-method-warning": "$1 iki faktorlu autentifikasiya üsulunu deaktiv etsəniz, daxil olarkən daha bu üsuldan istifadə edə bilməyəcəksiniz və bu autentifikasiya üsulu ilə əlaqəli bütün məlumatlar silinəcək. Başqa aktiv autentifikasiya üsulunuz varsa, bərpa kodlarınız silinməyəcək.",
 	"oathauth-totp-disable-warning": "Siz artıq bu hesabda qeydiyyatdan keçmiş identifikasiya cihazından istifadə edə bilməyəcəksiniz. Bu hesabla əlaqəli bütün bərpa kodları başqa bir autentifikasiya üsulunu aktivləşdirənə qədər deaktivləşdiriləcək.",
 	"oathauth-invalidrequest": "Etibarsız sorğu",
-	"notification-header-oathauth-disable": "{{GENDER:$2|Hesabınızdakı}} iki faktorlu autentifikasiya deaktiv edildi.",
+	"notification-header-oathauth-disable": "{{GENDER:$2|Hesabınızdakı}} iki faktorlu autentifikasiya deaktiv edildi",
 	"notification-header-oathauth-remove-device": "İki faktorlu autentifikasiya cihazı {{GENDER:$2|hesabınızdan}} silindi",
 	"notification-body-oathauth-disable": "Bunu {{GENDER:$2|siz}} etməmisinizsə, {{GENDER:$2|hesabınız}} ələ keçirilmiş ola bilər.",
 	"notification-body-oathauth-disable-other": "Bunu {{GENDER:$2|siz}} tələb etməmisinizsə, administrator ilə əlaqəyə {{GENDER:$2|keçməlisiniz}}",
