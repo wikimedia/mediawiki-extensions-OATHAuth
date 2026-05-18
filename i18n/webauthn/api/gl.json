@@ -12,7 +12,6 @@
 	"apierror-oathauth-webauthn-module-missing": "O módulo WebAuthn non está dispoñible.",
 	"apierror-oathauth-webauthn-missing-credential": "Non se proporcionaron datos das credenciais.",
 	"apierror-oathauth-webauthn-invalid-credential": "Os datos das credenciais non son válidos ou teñen un formato incorrecto.",
-	"apierror-oathauth-webauthn-reauthenticate": "Primeiro debes volver autenticarte a través de «Special:OATHLanage» antes de poder realizar esta acción.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Rexistrar unha nova credencial de WebAuthn para o usuario actual.",
 	"apihelp-oathauth-webauthn-param-credential": "Resposta do navegador coas credenciais de WebAuthn codificadas en JSON.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Nome amigable para a credencial nova."

@@ -12,7 +12,6 @@
 	"apierror-oathauth-webauthn-module-missing": "Le modulo WebAuthn non es disponibile.",
 	"apierror-oathauth-webauthn-missing-credential": "Nulle credentiales ha essite fornite.",
 	"apierror-oathauth-webauthn-invalid-credential": "Le credentiales non es valide o es mal formate.",
-	"apierror-oathauth-webauthn-reauthenticate": "Tu debe reauthenticar te per Special:OATHManage ante de poter prender iste action.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Registrar un nove credential WebAuthn pro le usator actual.",
 	"apihelp-oathauth-webauthn-param-credential": "Responsa de credential WebAuthn codificatte in JSON ab le navigator.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Nomine facile a leger pro le nove credential."

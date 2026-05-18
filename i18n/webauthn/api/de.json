@@ -10,7 +10,6 @@
 	"apierror-oathauth-webauthn-module-missing": "Das WebAuthn-Modul ist nicht verfügbar.",
 	"apierror-oathauth-webauthn-missing-credential": "Es wurden keine Anmeldeinformationen angegeben.",
 	"apierror-oathauth-webauthn-invalid-credential": "Die Anmeldedaten sind ungültig oder fehlerhaft.",
-	"apierror-oathauth-webauthn-reauthenticate": "{{#FORMAL:Du musst dich|Sie müssen sich}} zuerst über Special:OATHManage erneut authentifizieren, bevor {{#FORMAL:du|Sie}} diese Aktion ausführen {{#FORMAL:kannst|können}}.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Registriere neue WebAuthn-Anmeldeinformationen für den aktuellen Benutzer.",
 	"apihelp-oathauth-webauthn-param-credential": "JSON-kodierte WebAuthn-Anmeldeinformationen vom Browser.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Ein bezeichnender Name für die neuen Anmeldeinformationen."

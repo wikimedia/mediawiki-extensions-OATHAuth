@@ -9,6 +9,7 @@
 			"Escargot bleu",
 			"Gomoko",
 			"JLTRY",
+			"Jérémy-Günther-Heinz Jähnick",
 			"Lofhi",
 			"MacOS Weed",
 			"Mahabarata",
@@ -174,5 +175,6 @@
 	"oathauth-passkey-dialog-title": "Ajouter une clé de passe",
 	"oathauth-passkey-dialog-back": "Retour",
 	"oathauth-passkey-dialog-add": "Ajouter une clé de passe",
-	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs."
+	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs.",
+	"oathauth-2fa-groups-notice-unknown-page": "Page inconnue"
 }

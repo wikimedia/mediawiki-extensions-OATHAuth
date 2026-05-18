@@ -13,7 +13,6 @@
 	"apierror-oathauth-webauthn-module-missing": "WebAuthn 模組不可用。",
 	"apierror-oathauth-webauthn-missing-credential": "未提供任何憑證資料。",
 	"apierror-oathauth-webauthn-invalid-credential": "憑證資料無效或格式錯誤。",
-	"apierror-oathauth-webauthn-reauthenticate": "您必須先透過 Special:OATHManage 重新進行身份驗證，然後才能執行此操作。",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "為目前使用者註冊新的 WebAuthn 憑證。",
 	"apihelp-oathauth-webauthn-param-credential": "來自瀏覽器的 JSON 編碼的 WebAuthn 憑證回應。",
 	"apihelp-oathauth-webauthn-param-friendlyname": "新憑證的友善名稱。"
