@@ -110,6 +110,7 @@
 	"oathauth-notifications-enable-primary": "Iwwerpréift Är Astellunge fir d'Zwee-Faktor-Authentifizéierung",
 	"oathauth-notifications-recoverycodesleft-help": "Hëllef",
 	"oathauth-notifications-recoverycodesleft-primary": "Iwwerpréift Är Astellunge fir d'Zwee-Faktor-Authentifizéierung",
+	"oathauth-notifications-twofactor-required-help": "Hëllef",
 	"oathauth-verify-enabled": "{{GENDER:$1|De(n) $1|D'$1}} huet d'Zwee-Faktor-Authentifizéierung aktivéiert.",
 	"oathauth-verify-disabled": "{{GENDER:$1|De(n) $1|D'$1}} huet d'Zwee-Faktor-Authentifizéierung net aktivéiert.",
 	"oathauth-qrcode-alt": "QR-Code fir ze scannen, deen de geheime Schlëssel representéiert.",

@@ -179,7 +179,7 @@
 	"oathauth-notifications-twofactor-required-primary": "Link text pointing a user where to check their 2FA settings",
 	"oathauth-notifications-twofactor-required-help": "Link text for the help link in the notification\n{{identical|Help}}",
 	"oathauth-notifications-twofactor-required-helplink": "{{notranslate}}",
-	"notification-body-oathauth-twofactor-required": "Notification body text to inform a user that they are required to enable two-factor authentication.\n$3 - Date when the user is required to enable two-factor authentication by",
+	"notification-body-oathauth-twofactor-required": "Notification body text to inform a user that they are required to enable two-factor authentication.\n* $3 - Date when the user is required to enable two-factor authentication by",
 	"notification-header-oathauth-twofactor-required": "Notification header to inform a user that they are required to enable two-factor authentication.\n$3 - Date when the user is required to enable two-factor authentication by",
 	"oathauth-verify-enabled": "Notice that a user has 2FA enabled, shown on success at [[Special:VerifyOATHForUser]].\n$1 - Name of user",
 	"oathauth-verify-disabled": "Notice that a user does not have 2FA enabled, shown on success at [[Special:VerifyOATHForUser]].\n$1 - Name of user",
