@@ -12,7 +12,6 @@ use MediaWiki\Auth\PasswordAuthenticationRequest;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
-use MediaWiki\Extension\OATHAuth\HTMLForm\DisableForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
@@ -45,7 +44,6 @@ class OATHManage extends SpecialPage {
 	use RecoveryCodesTrait;
 
 	public const ACTION_ENABLE = 'enable';
-	public const ACTION_DISABLE = 'disable';
 	public const ACTION_DELETE = 'delete';
 
 	protected OATHUser $oathUser;
@@ -606,24 +604,24 @@ class OATHManage extends SpecialPage {
 		] );
 		$headerLayout = new HorizontalLayout();
 
-		$label = new LabelWidget( [
-			'label' => $module->getDisplayName()->text()
-		] );
-		if ( $this->shouldShowGenericButtons() ) {
-			$enabled = $this->isModuleEnabled( $module );
+		if ( $this->shouldShowGenericButtons() && !$this->isModuleEnabled( $module ) ) {
 			$urlParams = [
-				'action' => $enabled ? static::ACTION_DISABLE : static::ACTION_ENABLE,
+				'action' => static::ACTION_ENABLE,
 				'module' => $module->getName(),
 			];
 			$button = new ButtonWidget( [
 				'label' => $this
-					->msg( $enabled ? 'oathauth-disable-generic' : 'oathauth-enable-generic' )
+					->msg( 'oathauth-enable-generic' )
 					->text(),
 				'href' => $this->getOutput()->getTitle()->getLocalURL( $urlParams )
 			] );
 			$headerLayout->addItems( [ $button ] );
 		}
-		$headerLayout->addItems( [ $label ] );
+		$headerLayout->addItems( [
+			new LabelWidget( [
+				'label' => $module->getDisplayName()->text()
+			] )
+		] );
 
 		$modulePanel->appendContent( $headerLayout );
 		$modulePanel->appendContent( new HtmlSnippet(
@@ -649,26 +647,16 @@ class OATHManage extends SpecialPage {
 			);
 		}
 
-		if ( $this->action === self::ACTION_DISABLE ) {
-			$form = new DisableForm(
-				$this->oathUser,
-				$this->userRepo,
-				$module,
-				$this->getContext(),
-				$this->moduleRegistry
-			);
-		} else {
-			$form = $module->getManageForm(
-				$this->action,
-				$this->oathUser,
-				$this->userRepo,
-				$this->getContext(),
-				$this->moduleRegistry
-			);
+		$form = $module->getManageForm(
+			$this->action,
+			$this->oathUser,
+			$this->userRepo,
+			$this->getContext(),
+			$this->moduleRegistry
+		);
 
-			if ( $form === null ) {
-				return;
-			}
+		if ( $form === null ) {
+			return;
 		}
 
 		$form->setTitle( $this->getOutput()->getTitle() );
@@ -692,7 +680,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function shouldShowGenericButtons(): bool {
-		return !$this->requestedModule instanceof IModule || !$this->isGenericAction();
+		return !$this->requestedModule instanceof IModule;
 	}
 
 	private function isModuleRequested( ?IModule $module ): bool {
@@ -734,24 +722,13 @@ class OATHManage extends SpecialPage {
 	 * the page should contain only the form for that action.
 	 */
 	private function clearPage(): void {
-		if ( $this->isGenericAction() ) {
-			$displayName = $this->requestedModule->getDisplayName();
-			$pageTitleMessage = $this->action === self::ACTION_DISABLE ?
-				$this->msg( 'oathauth-disable-page-title', $displayName ) :
-				$this->msg( 'oathauth-enable-page-title', $displayName );
-			$this->getOutput()->setPageTitleMsg( $pageTitleMessage );
-		}
+		$displayName = $this->requestedModule->getDisplayName();
+		$this->getOutput()->setPageTitleMsg(
+			$this->msg( 'oathauth-enable-page-title', $displayName )
+		);
 
 		$this->getOutput()->clearHTML();
 		$this->getOutput()->addBacklinkSubtitle( $this->getOutput()->getTitle() );
-	}
-
-	/**
-	 * The enable and disable actions are generic, and all modules must
-	 * implement them (except special modules) while all other actions are module-specific.
-	 */
-	private function isGenericAction(): bool {
-		return in_array( $this->action, [ static::ACTION_ENABLE, static::ACTION_DISABLE ] );
 	}
 
 	/**

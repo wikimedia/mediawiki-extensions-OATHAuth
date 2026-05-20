@@ -71,19 +71,6 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'oathauth-step1', $output );
 	}
 
-	public function testTOTPDisableForm() {
-		$user = $this->getTestUser()->getUser();
-		$context = RequestContext::getMain();
-		$context->getRequest()->getSession()->setUser( $user );
-		$context->setLanguage( 'qqx' );
-		$request = new FauxRequest(
-			[ 'action' => 'disable', 'module' => 'totp' ]
-		 );
-
-		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
-		$this->assertStringContainsString( 'oathauth-disable-method-warning', $output );
-	}
-
 	public function testRecoveryCodeFormRenders() {
 		$user = $this->getTestUser()->getUser();
 		$context = RequestContext::getMain();
