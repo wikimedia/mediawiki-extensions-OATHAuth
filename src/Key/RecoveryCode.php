@@ -1,4 +1,5 @@
 <?php
+declare( strict_types=1 );
 /**
  * @license GPL-2.0-or-later
  * @file

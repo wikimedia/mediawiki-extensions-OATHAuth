@@ -4,4 +4,5 @@
 	<file>.</file>
 	<arg name="encoding" value="UTF-8" />
 	<arg name="extensions" value="php,sample" />
+	<rule ref="Generic.PHP.RequireStrictTypes"/>
 </ruleset>

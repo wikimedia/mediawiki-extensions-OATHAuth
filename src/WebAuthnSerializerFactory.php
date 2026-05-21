@@ -1,4 +1,5 @@
 <?php
+declare( strict_types=1 );
 
 /**
  * cf https://github.com/web-auth/webauthn-lib/blob/5.2.3/src/Denormalizer/WebauthnSerializerFactory.php

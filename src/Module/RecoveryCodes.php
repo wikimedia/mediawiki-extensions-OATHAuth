@@ -1,4 +1,5 @@
 <?php
+declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Module;
 
@@ -106,7 +107,7 @@ class RecoveryCodes implements IModule {
 	public function ensureExistence( OATHUser $user, ?array $recoveryCodesData = null ): RecoveryCodeKeys {
 		$rcKeys = $user->getKeysForModule( self::MODULE_NAME );
 		if ( count( $rcKeys ) > self::RECOVERY_CODE_MODULE_COUNT ) {
-			throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' ) );
+			throw new UnexpectedValueException( wfMessage( 'oathauth-recoverycodes-too-many-instances' )->text() );
 		}
 		$recoveryCodeKey = $rcKeys[ 0 ] ?? null;
 		if ( $recoveryCodeKey instanceof RecoveryCodeKeys ) {

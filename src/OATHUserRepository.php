@@ -1,4 +1,5 @@
 <?php
+declare( strict_types=1 );
 /**
  * @license GPL-2.0-or-later
  */
@@ -63,7 +64,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 *   given User Handle
 	 */
 	public function findByUserHandle( string $userHandle ): ?OATHUser {
-		$userId = $this->dbProvider
+		$userIdRaw = $this->dbProvider
 			->getReplicaDatabase( 'virtual-oathauth' )
 			->newSelectQueryBuilder()
 			->select( 'oah_user' )
@@ -71,9 +72,10 @@ class OATHUserRepository implements LoggerAwareInterface {
 			->where( [ 'oah_handle' => base64_encode( $userHandle ) ] )
 			->caller( __METHOD__ )
 			->fetchField();
-		if ( $userId === false ) {
+		if ( $userIdRaw === false ) {
 			return null;
 		}
+		$userId = (int)$userIdRaw;
 
 		$user = $this->centralIdLookupFactory->getLookup()->localUserFromCentralId(
 			$userId, CentralIdLookup::AUDIENCE_RAW

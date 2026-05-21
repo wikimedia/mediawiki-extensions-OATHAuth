@@ -1,4 +1,5 @@
 <?php
+declare( strict_types=1 );
 
 /**
  * @license GPL-2.0-or-later
@@ -123,7 +124,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		 );
 
 		$this->expectException( ErrorPageError::class );
-		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys ) );
+		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys )->text() );
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
 
