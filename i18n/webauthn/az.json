@@ -33,5 +33,6 @@
 	"oathauth-webauthn-credential-label": "İstifadəçi identifikasiyası",
 	"oathauth-webauthn-credential-help": "Doğrulama məlumatlarına əsaslanan istifadəçi identifikasiyası",
 	"oathauth-webauthn-add-security-key": "Təhlükəsizlik açarı əlavə et",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Təhlükəsizlik və ya keçid açarından istifadə et"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Təhlükəsizlik və ya keçid açarından istifadə et",
+	"oathauth-webauthn-login-passkey-button": "Keçid açarı ilə daxil ol"
 }

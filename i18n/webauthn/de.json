@@ -35,5 +35,6 @@
 	"oathauth-webauthn-credential-label": "Anmeldedaten des Benutzers",
 	"oathauth-webauthn-credential-help": "Benutzerberechtigung basierend auf Authentifizierungsdaten",
 	"oathauth-webauthn-add-security-key": "Einen Sicherheitsschlüssel hinzufügen",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Sicherheitsschlüssel oder Passkey verwenden"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Sicherheitsschlüssel oder Passkey verwenden",
+	"oathauth-webauthn-login-passkey-button": "Mit Passkey anmelden"
 }
