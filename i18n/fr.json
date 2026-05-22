@@ -27,7 +27,8 @@
 			"Verdy p",
 			"Wladek92",
 			"Yasten",
-			"Aquasen"
+			"Aquasen",
+			"Jérémy-Günther-Heinz Jähnick"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
@@ -177,5 +178,6 @@
 	"oathauth-passkey-dialog-title": "Ajouter une clé de passe",
 	"oathauth-passkey-dialog-back": "Retour",
 	"oathauth-passkey-dialog-add": "Ajouter une clé de passe",
-	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs."
+	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs.",
+	"oathauth-2fa-groups-notice-unknown-page": "Page inconnue"
 }
