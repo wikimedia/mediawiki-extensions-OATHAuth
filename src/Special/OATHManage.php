@@ -780,7 +780,7 @@ class OATHManage extends SpecialPage {
 			);
 		}
 
-		if ( !$this->canRemoveKeys() ) {
+		if ( !$keyToDelete->supportsPasswordlessLogin() && !$this->canRemoveKeys() ) {
 			throw new ErrorPageError(
 				'oathauth-disable',
 				'oathauth-remove-lastkey-required'
