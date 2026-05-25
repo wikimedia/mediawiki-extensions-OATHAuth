@@ -210,6 +210,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Om uit de {{PLURAL:$1|groepen}} verwijderd te worden, gaat u naar:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Voor $2 op $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Onbekende pagina",
-	"oathauth-remove-lastkey-required": "U kunt uw laatst gebruikte authenticatiemethode niet verwijderen als u lid bent van groepen waarvoor tweetrapsauthenticatie vereist is. Voeg eerst een andere authenticatiemethode toe voordat je deze verwijdert.",
+	"oathauth-remove-lastkey-required": "U kunt uw laatst gebruikte authenticatiemethode niet verwijderen als u lid bent van groepen waarvoor tweetrapsauthenticatie vereist is. Voeg eerst een andere authenticatiemethode toe voordat u deze verwijdert.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "De gebruiker heeft tweetrapsauthenticatie ingeschakeld"
 }
