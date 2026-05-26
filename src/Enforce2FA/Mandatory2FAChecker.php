@@ -91,7 +91,8 @@ class Mandatory2FAChecker {
 				if ( WikiMap::isCurrentWikiId( $wikiId ) ) {
 					$wikiId = UserIdentity::LOCAL;
 				}
-				$identities[] = UserIdentityValue::newRegistered( $attachment['id'], $userName, $wikiId );
+				$userId = intval( $attachment['id'] );
+				$identities[] = UserIdentityValue::newRegistered( $userId, $userName, $wikiId );
 			}
 		} else {
 			$identities = [ $localUser ];
