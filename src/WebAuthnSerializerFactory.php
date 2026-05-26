@@ -14,8 +14,6 @@ declare( strict_types=1 );
  * @license MIT
  */
 
-declare( strict_types = 1 );
-
 namespace MediaWiki\Extension\OATHAuth;
 
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
