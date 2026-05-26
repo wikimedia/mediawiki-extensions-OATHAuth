@@ -6,6 +6,7 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Module;
 use Generator;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -72,7 +73,11 @@ class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
 
 		// Using a recovery code causes it to be removed
 		$mockUserRepository = $this->createMock( OATHUserRepository::class );
-		$module = new RecoveryCodes( $mockUserRepository );
+		$module = new RecoveryCodes(
+			$mockUserRepository,
+			$this->createMock( OATHAuthLogger::class ),
+			$this->getServiceContainer()->getMainConfig()
+		);
 		$mockUserRepository->expects( $this->once() )->method( 'updateKey' )
 			->with( $mockOATHUser, $this->callback( function ( $recoveryCodeKey ) use ( $mockOATHUser ) {
 				$this->assertSame( [ 'IJKL9012MNOP3456' ], array_values( $recoveryCodeKey->getRecoveryCodeKeys() ) );
@@ -87,7 +92,11 @@ class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
 
 		// Using the last recovery code causes new recovery codes to be generated
 		$mockUserRepository = $this->createMock( OATHUserRepository::class );
-		$module = new RecoveryCodes( $mockUserRepository );
+		$module = new RecoveryCodes(
+			$mockUserRepository,
+			$this->createMock( OATHAuthLogger::class ),
+			$this->getServiceContainer()->getMainConfig()
+		);
 		$mockUserRepository->expects( $this->once() )->method( 'updateKey' )
 			->with( $mockOATHUser, $this->callback( function ( $recoveryCodeKey ) use ( $mockOATHUser ) {
 				$this->assertCount( 10, $recoveryCodeKey->getRecoveryCodeKeys() );

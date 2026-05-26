@@ -3,6 +3,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Module;
 
+use Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\RecoveryCodesSecondaryAuthenticationProvider;
@@ -11,11 +12,10 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesRemoveTemporaryForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesStatusForm;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use UnexpectedValueException;
 
@@ -32,7 +32,11 @@ class RecoveryCodes implements IModule {
 	/** Threshold number of recovery codes to trigger notification */
 	private const RECOVERY_CODE_LEFT = 2;
 
-	public function __construct( private readonly OATHUserRepository $userRepository ) {
+	public function __construct(
+		private readonly OATHUserRepository $userRepository,
+		private readonly OATHAuthLogger $oathLogger,
+		private readonly Config $config
+	) {
 	}
 
 	/** @inheritDoc */
@@ -57,7 +61,7 @@ class RecoveryCodes implements IModule {
 		return new RecoveryCodesSecondaryAuthenticationProvider(
 			$this,
 			$this->userRepository,
-			OATHAuthServices::getInstance()->getLogger()
+			$this->oathLogger
 		);
 	}
 
@@ -72,7 +76,7 @@ class RecoveryCodes implements IModule {
 			return false;
 		}
 
-		/** @var $recoveryCodeKey RecoveryCodeKeys */
+		/** @var RecoveryCodeKeys $recoveryCodeKey */
 		$recoveryCodeKey = $recoveryCodeKeys[0];
 		'@phan-var RecoveryCodeKeys $recoveryCodeKey';
 
@@ -87,7 +91,7 @@ class RecoveryCodes implements IModule {
 			Manager::notifyRecoveryTokensRemaining(
 				$user,
 				count( $recoveryCodeKey->getRecoveryCodes() ),
-				MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHRecoveryCodesCount' )
+				$this->config->get( 'OATHRecoveryCodesCount' )
 			);
 		}
 
@@ -123,9 +127,8 @@ class RecoveryCodes implements IModule {
 		}
 
 		// Save the new key to the database
-		$oathRepo = OATHAuthServices::getInstance()->getUserRepository();
 		/** @var RecoveryCodeKeys $newKey */
-		$newKey = $oathRepo->createKey(
+		$newKey = $this->userRepository->createKey(
 			$user,
 			$this,
 			$recoveryCodeKey->jsonSerialize(),

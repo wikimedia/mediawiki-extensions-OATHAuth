@@ -7,6 +7,8 @@ use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWikiIntegrationTestCase;
@@ -24,7 +26,11 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 			->method( 'getKeysForModule' )
 			->willReturnCallback( static fn ( $moduleName ) => $moduleName === TOTP::MODULE_NAME ?
 				[ $key1 ] : [] );
-		$module = new TOTP( $this->createMock( OATHUserRepository::class ) );
+		$module = new TOTP(
+			$this->createMock( OATHUserRepository::class ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry(),
+			$this->createMock( OATHAuthLogger::class )
+		);
 
 		$this->overrideConfigValue( 'OATHAuthWindowRadius', 1 );
 		ConvertibleTimestamp::setFakeTime( '20251121225810' );
@@ -53,7 +59,11 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 			->method( 'getKeysForModule' )
 			->willReturnCallback( static fn ( $moduleName ) => $moduleName === TOTP::MODULE_NAME ?
 				[ $key1, $key2 ] : [] );
-		$module = new TOTP( $this->createMock( OATHUserRepository::class ) );
+		$module = new TOTP(
+			$this->createMock( OATHUserRepository::class ),
+			OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry(),
+			$this->createMock( OATHAuthLogger::class )
+		);
 
 		ConvertibleTimestamp::setFakeTime( '20251121233540' );
 
@@ -82,7 +92,11 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 			} );
 		$mockUserRepo = $this->createMock( OATHUserRepository::class );
 		$this->setService( 'OATHAuth.UserRepository', $mockUserRepo );
-		$module = new TOTP( $mockUserRepo );
+		$module = new TOTP(
+			$mockUserRepo,
+			OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry(),
+			$this->createMock( OATHAuthLogger::class )
+		);
 
 		$this->assertTrue( $module->verify( $mockUser, [ 'token' => '64SZLJTTPRI5XBUE' ] ) );
 	}

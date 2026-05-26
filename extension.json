@@ -69,19 +69,25 @@
 				"recoverycodes": {
 					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\RecoveryCodes",
 					"services": [
-						"OATHAuth.UserRepository"
+						"OATHAuth.UserRepository",
+						"OATHAuth.Logger",
+						"MainConfig"
 					]
 				},
 				"totp": {
 					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\TOTP",
 					"services": [
-						"OATHAuth.UserRepository"
+						"OATHAuth.UserRepository",
+						"OATHAuth.ModuleRegistry",
+						"OATHAuth.Logger"
 					]
 				},
 				"webauthn": {
-					"class": "MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn",
+					"class": "\\MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn",
 					"services": [
-						"OATHAuth.UserRepository"
+						"OATHAuth.UserRepository",
+						"OATHAuth.ModuleRegistry",
+						"OATHAuth.Logger"
 					]
 				}
 			}

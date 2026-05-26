@@ -9,8 +9,8 @@ use MediaWiki\Extension\OATHAuth\Auth\TOTPSecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\TOTPEnableForm;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
+use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -31,6 +31,8 @@ class TOTP implements IModule {
 
 	public function __construct(
 		private readonly OATHUserRepository $userRepository,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly OATHAuthLogger $oathLogger
 	) {
 	}
 
@@ -55,7 +57,7 @@ class TOTP implements IModule {
 		return new TOTPSecondaryAuthenticationProvider(
 			$this,
 			$this->userRepository,
-			OATHAuthServices::getInstance()->getLogger()
+			$this->oathLogger
 		);
 	}
 
@@ -76,8 +78,7 @@ class TOTP implements IModule {
 		// remove this ability (T408044).
 
 		/** @var RecoveryCodes $recoveryCodes */
-		$recoveryCodes = OATHAuthServices::getInstance()->getModuleRegistry()
-			->getModuleByKey( RecoveryCodes::MODULE_NAME );
+		$recoveryCodes = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 		$validRecoveryCode = $recoveryCodes->verify( $user, [ 'recoverycode' => $data['token'] ?? '' ] );
 		if ( $validRecoveryCode ) {
 			LoggerFactory::getInstance( 'authentication' )->info(
