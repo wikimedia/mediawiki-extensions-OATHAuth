@@ -78,7 +78,12 @@
 						"OATHAuth.UserRepository"
 					]
 				},
-				"webauthn": "MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn::factory"
+				"webauthn": {
+					"class": "MediaWiki\\Extension\\OATHAuth\\Module\\WebAuthn",
+					"services": [
+						"OATHAuth.UserRepository"
+					]
+				}
 			}
 		}
 	},

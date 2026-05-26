@@ -11,7 +11,6 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -25,8 +24,9 @@ class WebAuthn implements IModule {
 
 	public const MODULE_NAME = "webauthn";
 
-	public static function factory(): IModule {
-		return new static();
+	public function __construct(
+		private readonly OATHUserRepository $userRepository,
+	) {
 	}
 
 	/**
@@ -71,7 +71,7 @@ class WebAuthn implements IModule {
 			// Pass if any of the keys matches
 			if ( $key->verify( $user, $data ) ) {
 				// Update the key used to persist the sign counter increment
-				OATHAuthServices::getInstance()->getUserRepository()->updateKey( $user, $key );
+				$this->userRepository->updateKey( $user, $key );
 				return true;
 			}
 		}
