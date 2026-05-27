@@ -50,7 +50,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 			$keyData = FormatJson::decode( $row->oad_data, true );
 
 			$publicKeyAlg = WebAuthnKey::getPublicKeyAlgorithm(
-				base64_decode( $keyData['credentialPublicKey'] )
+				WebAuthnKey::getCoseKey( base64_decode( $keyData['credentialPublicKey'] ) )
 			);
 
 			if ( $publicKeyAlg === null ) {

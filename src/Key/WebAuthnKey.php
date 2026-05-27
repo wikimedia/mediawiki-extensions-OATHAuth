@@ -218,8 +218,7 @@ class WebAuthnKey extends AuthKey {
 			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
 		$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
-		$this->logIfDeprecatedAlgorithm( $publicKey, $user, true );
-		$this->logIfShortRsaKey( $publicKey, $user, false );
+		$this->checkIfDeprecated( $publicKey, $user, true );
 		return $this->authenticationCeremony(
 			$data['credential'],
 			$data['authInfo'],
@@ -243,8 +242,7 @@ class WebAuthnKey extends AuthKey {
 		$registered = $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
 		if ( $registered ) {
 			$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
-			$this->logIfDeprecatedAlgorithm( $publicKey, $user, false );
-			$this->logIfShortRsaKey( $publicKey, $user, false );
+			$this->checkIfDeprecated( $publicKey, $user, false );
 		}
 		return $registered;
 	}
@@ -472,7 +470,7 @@ class WebAuthnKey extends AuthKey {
 	/**
 	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
 	 */
-	private static function getCoseKey( string $publicKey ): ?Key {
+	public static function getCoseKey( string $publicKey ): ?Key {
 		$decoded = Decoder::create()->decode(
 			new StringStream( $publicKey )
 		);
@@ -490,11 +488,7 @@ class WebAuthnKey extends AuthKey {
 		return Key::create( $normalized );
 	}
 
-	/**
-	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
-	 */
-	public static function getPublicKeyAlgorithm( string $publicKey ): ?int {
-		$key = self::getCoseKey( $publicKey );
+	public static function getPublicKeyAlgorithm( ?Key $key ): ?int {
 		return $key?->alg();
 	}
 
@@ -502,19 +496,53 @@ class WebAuthnKey extends AuthKey {
 		return in_array( $alg, static::DEPRECATED_ALGO );
 	}
 
-	private function logIfDeprecatedAlgorithm( ?string $pubKey, OATHUser $user, bool $used ): void {
-		if ( $pubKey === null ) {
+	/**
+	 * Currently checks for two things:
+	 * 1) If the key is an RSA key and the length is shorter than 2048 bits
+	 * 2) If the key is using a deprecated algorithm, such as SHA-1
+	 */
+	private function checkIfDeprecated( ?string $publicKey, OATHUser $user, bool $used ): void {
+		if ( $publicKey === null ) {
 			return;
 		}
-		$algo = self::getPublicKeyAlgorithm( $pubKey );
-		if ( $algo !== null && self::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
-			$algoString = Algorithms::getHashAlgorithmFor( $algo );
-			$usedOrRegistered = $used ? 'used' : 'registered';
+
+		$key = self::getCoseKey( $publicKey );
+		if ( $key === null ) {
+			return;
+		}
+
+		$algo = self::getPublicKeyAlgorithm( $key );
+		if ( $algo === null ) {
+			return;
+		}
+
+		$usedOrRegistered = $used ? 'used' : 'registered';
+
+		if ( $key->type() === (string)Key::TYPE_RSA ) {
+			$length = self::getRsaKeyLength( $key );
+			if ( $length === null ) {
+				return;
+			}
+
+			if ( $length < self::MIN_RSA_LENGTH ) {
+				$this->logger->info(
+					"User {username} $usedOrRegistered an RSA WebAuthn key shorter than " .
+					self::MIN_RSA_LENGTH .
+					" bits ({length}).",
+					[
+						'username' => $user->getUser()->getName(),
+						'length' => $length,
+					]
+				);
+			}
+		}
+
+		if ( self::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
 			$this->logger->info(
 				"User {username} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
 				[
 					'username' => $user->getUser()->getName(),
-					'algorithm' => $algoString,
+					'algorithm' => Algorithms::getHashAlgorithmFor( $algo ),
 				]
 			);
 		}
@@ -522,33 +550,8 @@ class WebAuthnKey extends AuthKey {
 
 	private const int MIN_RSA_LENGTH = 2048;
 
-	private function logIfShortRsaKey( ?string $pubKey, OATHUser $user, bool $used ): void {
-		if ( $pubKey === null ) {
-			return;
-		}
-		$length = self::getKeyLengthIfRsa( $pubKey );
-		if ( $length === null ) {
-			return;
-		}
-
-		$usedOrRegistered = $used ? 'used' : 'registered';
-		$this->logger->info(
-			"User {username} $usedOrRegistered an RSA WebAuthn key shorter than " . self::MIN_RSA_LENGTH
-			. " bits ({length}).",
-			[
-				'username' => $user->getUser()->getName(),
-				'length' => $length,
-			]
-		);
-	}
-
-	/**
-	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
-	 */
-	public static function getKeyLengthIfRsa( string $publicKey ): ?int {
-		$key = self::getCoseKey( $publicKey );
-
-		if ( $key?->type() === (string)Key::TYPE_RSA && $key->has( RsaKey::DATA_N ) ) {
+	public static function getRsaKeyLength( ?Key $key ): ?int {
+		if ( $key?->type() === (string)Key::TYPE_RSA && $key?->has( RsaKey::DATA_N ) ) {
 			return strlen( $key->get( RsaKey::DATA_N ) ) * 8;
 		}
 

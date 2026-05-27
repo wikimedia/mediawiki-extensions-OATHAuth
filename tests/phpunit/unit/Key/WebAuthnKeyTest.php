@@ -4,6 +4,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Tests\Unit\Key;
 
 use Cose\Algorithms;
+use Cose\Key\Key;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWikiUnitTestCase;
 
@@ -29,19 +30,19 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 	public const string KEY_ES512 = 'pQECAzgjIAMhWEIAIfAOXVPA4FrdlFcp7UFIda0P0mjfXagxwhz8qHrC9Quj8GF6JweW+mWDgKPUyBkDvUQjrh4Wg/vlgO8n3w8SwzMiWEIAxPWJPBsSeQN5YOyRqt8J/DomhjRQclrRxFsdEMe6E9KfEWSq48zsDleiVxnhXdzBd0xJLipEs50FyLvEgFXSZnk=';
 
 	/** @dataProvider providePublicKeys */
-	public function testIsDeprecatedPublicKeyAlgorithm( string $key, int $algorithm, bool $deprecated ) {
+	public function testIsDeprecatedPublicKeyAlgorithm( Key $key, int $algorithm, bool $deprecated ) {
 		$this->assertEquals( $deprecated, WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $algorithm ) );
 	}
 
-	public function providePublicKeys() {
+	public function providePublicKeys(): array {
 		return [
 			[
-				self::KEY_RS1_2048,
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS1_2048 ) ),
 				Algorithms::COSE_ALGORITHM_RS1,
 				true,
 			],
 			[
-				self::KEY_RS256_2048,
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_2048 ) ),
 				Algorithms::COSE_ALGORITHM_RS256,
 				false,
 			]
@@ -49,14 +50,30 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 	}
 
 	/** @dataProvider providePublicKeys */
-	public function testGetPublicKeyAlgorithm( string $key, int $algorithm ) {
-		$this->assertEquals( $algorithm, WebAuthnKey::getPublicKeyAlgorithm( base64_decode( $key ) ) );
+	public function testGetPublicKeyAlgorithm( Key $key, int $algorithm ) {
+		$this->assertEquals(
+			$algorithm,
+			WebAuthnKey::getPublicKeyAlgorithm( $key )
+		);
 	}
 
 	public function testGetKeyLengthIfRsa() {
-		$this->assertEquals( 2048, WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_RS256_2048 ) ) );
-		$this->assertEquals( 512, WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_RS256_512 ) ) );
+		$this->assertEquals(
+			2048,
+			WebAuthnKey::getRsaKeyLength(
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_2048 ) )
+			)
+		);
+		$this->assertEquals( 512,
+			WebAuthnKey::getRsaKeyLength(
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_512 ) )
+			)
+		);
 
-		$this->assertNull( WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_ES512 ) ) );
+		$this->assertNull(
+			WebAuthnKey::getRsaKeyLength(
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_ES512 ) )
+			)
+		);
 	}
 }
