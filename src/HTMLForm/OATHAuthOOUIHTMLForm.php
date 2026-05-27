@@ -41,7 +41,7 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm {
 		IContextSource $context,
 		protected readonly OATHAuthModuleRegistry $moduleRegistry,
 	) {
-		$this->logger = $this->getLogger();
+		$this->logger = LoggerFactory::getInstance( 'authentication' );
 
 		parent::__construct( $this->getDescriptors(), $context, "oathauth" );
 	}
@@ -66,10 +66,6 @@ abstract class OATHAuthOOUIHTMLForm extends OOUIHTMLForm {
 
 	protected function getDescriptors(): array {
 		return [];
-	}
-
-	private function getLogger(): LoggerInterface {
-		return LoggerFactory::getInstance( 'authentication' );
 	}
 
 	/** @inheritDoc */

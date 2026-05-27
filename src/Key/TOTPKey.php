@@ -16,7 +16,6 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -158,8 +157,6 @@ class TOTPKey extends AuthKey {
 
 		$clientIP = RequestContext::getMain()->getRequest()->getIP();
 
-		$logger = $this->getLogger();
-
 		// Check to see if the user's given token is in the list of tokens generated
 		// for the time window.
 		foreach ( $results as $window => $result ) {
@@ -169,10 +166,11 @@ class TOTPKey extends AuthKey {
 
 			$lastWindow = $window;
 
-			$logger->info( 'OATHAuth user {user} entered a valid OTP from {clientip}', [
-				'user' => $user->getAccount(),
-				'clientip' => $clientIP,
-			] );
+			LoggerFactory::getInstance( 'authentication' )
+				->info( 'OATHAuth user {user} entered a valid OTP from {clientip}', [
+					'user' => $user->getAccount(),
+					'clientip' => $clientIP,
+				] );
 
 			$store->set(
 				$key,
@@ -189,10 +187,6 @@ class TOTPKey extends AuthKey {
 	/** @inheritDoc */
 	public function getModule(): string {
 		return TOTP::MODULE_NAME;
-	}
-
-	private function getLogger(): LoggerInterface {
-		return LoggerFactory::getInstance( 'authentication' );
 	}
 
 	public function jsonSerialize(): array {
