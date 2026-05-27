@@ -128,7 +128,7 @@ class OATHUser {
 		return array_find(
 			$this->getKeys(),
 			static fn ( AuthKey $key ) => $key->supportsPasswordlessLogin()
-		) !== false;
+		) !== null;
 	}
 
 	/**
