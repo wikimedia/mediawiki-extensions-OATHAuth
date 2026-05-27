@@ -34,21 +34,21 @@ class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
 	public function testVerify( bool $useEncryption ): void {
 		$this->overrideConfigValue( 'OATHRecoveryCodesCount', 10 );
 		$keyData = [
-			'recoverycodekeys' => [ 'ABCD1234EFGH5678', 'IJKL9012MNOP3456' ]
+			'recoverycodekeys' => [ 'ABCD1234EFGH5678', 'IJKL9012MNOP3456' ],
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
 		];
 
 		if ( $useEncryption ) {
-			$this->encryptionIntegrationTestSetup();
+			$this->encryptionEnableIntegrationTestSetup();
 			$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )->getEncryptionHelper();
 			$encrypted = [];
 			foreach ( $keyData['recoverycodekeys'] as $key ) {
-				[ 'secret' => $secret ] = $encryptionHelper->encrypt( $key, self::NONCE );
-				$encrypted[] = $secret;
+				$encrypted[] = $encryptionHelper->encrypt( $key, self::NONCE )['secret'];
 			}
-			$keyData = [
-				'recoverycodekeys' => $encrypted,
-				'nonce' => self::NONCE,
-			];
+			$keyData['nonce'] = self::NONCE;
+			$keyData['recoverycodekeys'] = $encrypted;
+			$keyData['format'] = 'encrypted';
 		}
 		$key = RecoveryCodeKeys::newFromArray( $keyData );
 

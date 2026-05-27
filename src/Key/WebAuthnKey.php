@@ -62,13 +62,15 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class WebAuthnKey extends AuthKey {
 
+	public const int VERSION = 1;
+
 	public const array DEPRECATED_ALGO = [
 		// SHA-1
 		Algorithms::COSE_ALGORITHM_RS1,
 	];
 
-	private const MODE_CREATE = 'webauthn.create';
-	private const MODE_AUTHENTICATE = 'webauthn.authenticate';
+	private const string MODE_CREATE = 'webauthn.create';
+	private const string MODE_AUTHENTICATE = 'webauthn.authenticate';
 
 	/**
 	 * User handle represents the unique ID of the user.
@@ -151,19 +153,20 @@ class WebAuthnKey extends AuthKey {
 
 	public function jsonSerialize(): array {
 		return [
-			"userHandle" => base64_encode( $this->userHandle ),
-			"publicKeyCredentialId" => base64_encode( $this->attestedCredentialData->credentialId ),
-			"credentialPublicKey" => base64_encode(
+			'version' => self::VERSION,
+			'userHandle' => base64_encode( $this->userHandle ),
+			'publicKeyCredentialId' => base64_encode( $this->attestedCredentialData->credentialId ),
+			'credentialPublicKey' => base64_encode(
 				(string)$this->attestedCredentialData->credentialPublicKey
 			),
-			"aaguid" => (string)$this->attestedCredentialData->aaguid,
-			"friendlyName" => $this->friendlyName,
-			"counter" => $this->signCounter,
-			"type" => $this->credentialType,
-			"transports" => $this->getTransports(),
-			"attestationType" => $this->credentialAttestationType,
-			"trustPath" => $this->credentialTrustPath,
-			"supportsPasswordless" => $this->supportsPasswordless
+			'aaguid' => (string)$this->attestedCredentialData->aaguid,
+			'friendlyName' => $this->friendlyName,
+			'counter' => $this->signCounter,
+			'type' => $this->credentialType,
+			'transports' => $this->getTransports(),
+			'attestationType' => $this->credentialAttestationType,
+			'trustPath' => $this->credentialTrustPath,
+			'supportsPasswordless' => $this->supportsPasswordless
 		];
 	}
 

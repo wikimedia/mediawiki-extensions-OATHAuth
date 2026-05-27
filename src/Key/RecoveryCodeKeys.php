@@ -25,6 +25,8 @@ use UnexpectedValueException;
  * @ingroup Extensions
  */
 class RecoveryCodeKeys extends AuthKey {
+	public const int VERSION = 1;
+
 	/** @var RecoveryCode[] List of recovery codes in this key */
 	private array $recoveryCodes;
 
@@ -253,6 +255,8 @@ class RecoveryCodeKeys extends AuthKey {
 				}
 			}
 			return [
+				'version' => self::VERSION,
+				'format' => 'unencrypted',
 				'recoverycodekeys' => $plaintextCodes
 			];
 		}
@@ -273,6 +277,8 @@ class RecoveryCodeKeys extends AuthKey {
 		}
 
 		return [
+			'version' => self::VERSION,
+			'format' => 'encrypted',
 			'recoverycodekeys' => $encryptedCodes,
 			'nonce' => $nonce,
 		];

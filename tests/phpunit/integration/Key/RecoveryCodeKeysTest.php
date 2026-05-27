@@ -42,18 +42,24 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	public function testDeserializationUnencrypted() {
 		$this->assertNull( RecoveryCodeKeys::newFromArray( [] ) );
 
-		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$defaultValue = [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => []
+		];
+
+		$key = RecoveryCodeKeys::newFromArray( $defaultValue );
 		$deserialized = RecoveryCodeKeys::newFromArray( json_decode( json_encode( $key ), true ) );
 		$this->assertSame( $key->getRecoveryCodeKeys(), $deserialized->getRecoveryCodeKeys() );
 
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 1 );
-		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$key = RecoveryCodeKeys::newFromArray( $defaultValue );
 		$key->regenerateRecoveryCodeKeys();
 		$deserialized = RecoveryCodeKeys::newFromArray( json_decode( json_encode( $key ), true ) );
 		$this->assertSame( $key->getRecoveryCodeKeys(), $deserialized->getRecoveryCodeKeys() );
 
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
-		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$key = RecoveryCodeKeys::newFromArray( $defaultValue );
 		$key->regenerateRecoveryCodeKeys();
 		$deserialized = RecoveryCodeKeys::newFromArray( json_decode( json_encode( $key ), true ) );
 		$this->assertSame( $key->getRecoveryCodeKeys(), $deserialized->getRecoveryCodeKeys() );
@@ -65,23 +71,29 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ self::INVALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => 'bad_value',
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 		] );
 	}
 
 	public function testNewFromArrayWithNonce_invalidKey() {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 		$this->expectException( SodiumException::class );
 		RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ self::INVALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => 'bad_value',
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 		] );
 	}
 
 	public function testNewFromArrayWithNonce_validKey() {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 		$key = RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => self::NONCE,
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 		] );
 		$this->assertInstanceOf( RecoveryCodeKeys::class, $key );
 
@@ -91,7 +103,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testNewFromArrayWithEncryption() {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
 		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
@@ -101,6 +113,8 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$keysPostSerialization = RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => $data['recoverycodekeys'],
 			'nonce' => $data['nonce'],
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 		] );
 
 		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )->getEncryptionHelper();
@@ -113,9 +127,13 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testJsonSerializerWithEncryption() {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 10 );
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
+			'recoverycodekeys' => [],
+		] );
 		$keys->regenerateRecoveryCodeKeys();
 		$data = $keys->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
@@ -126,10 +144,14 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testEncryptsKeyWithData() {
-		$this->encryptionIntegrationTestSetup();
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
-			[ 'TESTCODE', [ 'foo' => 'bar' ] ],
-		] ] );
+		$this->encryptionEnableIntegrationTestSetup();
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
+			'recoverycodekeys' => [
+				[ 'TESTCODE', [ 'foo' => 'bar' ] ],
+			],
+		] );
 		$data = $keys->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
 		$this->assertArrayHasKey( 'recoverycodekeys', $data );
@@ -137,11 +159,13 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDoNotReencryptEncryptedKeyData() {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$keys = RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => self::NONCE,
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 		] );
 		$serializedData = $keys->jsonSerialize();
 		$this->assertEquals( [ self::VALID_ENCRYPTED_RECOVERY_KEY ], $serializedData['recoverycodekeys'] );
@@ -149,7 +173,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetSetFunctions(): void {
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [],
+		] );
 		$this->assertNull( $keys->getId() );
 		$this->assertSame( [], $keys->getRecoveryCodeKeys() );
 
@@ -177,7 +205,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 			->willReturn( [ 'clientIp' => '1.1.1.1' ] );
 
 		$testData = [];
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [],
+		] );
 		$this->assertFalse( $keys->verify( $mockOATHUser, $testData ) );
 
 		$keys->regenerateRecoveryCodeKeys();
@@ -221,7 +253,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testIsValidRecoveryCode(): void {
-		$key = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
+		$key = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ],
+		] );
 		$this->assertTrue( $key->isValidRecoveryCode( '64SZLJTTPRI5XBUE' ) );
 		// Whitespace is stripped
 		$this->assertTrue( $key->isValidRecoveryCode( ' 64SZLJTTPRI5XBUE ' ) );
@@ -230,7 +266,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGenerateAdditionalCodes(): void {
-		$keys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ 'BL5KE9W38GYGEB9T' ] ] );
+		$keys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [ 'BL5KE9W38GYGEB9T' ],
+		] );
 		$this->assertSame( [ 'BL5KE9W38GYGEB9T' ], $keys->getRecoveryCodeKeys() );
 
 		$newCodes = $keys->generateAdditionalRecoveryCodeKeys( 1 );
@@ -242,9 +282,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGenerateAdditionalCodesWithEncryption(): void {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$keysObject = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'encrypted',
 			'recoverycodekeys' => [ self::VALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => self::NONCE,
 		] );
@@ -266,13 +308,17 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 	/** @dataProvider provideWithEncryption */
 	public function testDataIsPreservedWhenSerializing( bool $useEncryption ): void {
 		if ( $useEncryption ) {
-			$this->encryptionIntegrationTestSetup();
+			$this->encryptionEnableIntegrationTestSetup();
 			$originalData = [
+				'version' => RecoveryCodeKeys::VERSION,
+				'format' => 'encrypted',
 				'recoverycodekeys' => [ [ self::VALID_ENCRYPTED_RECOVERY_KEY, [ 'foo' => 'bar' ] ] ],
 				'nonce' => self::NONCE,
 			];
 		} else {
 			$originalData = [
+				'version' => RecoveryCodeKeys::VERSION,
+				'format' => 'unencrypted',
 				'recoverycodekeys' => [ [ 'KEY', [ 'foo' => 'bar' ] ] ]
 			];
 		}
@@ -292,6 +338,8 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		ConvertibleTimestamp::setFakeTime( '20260101000000' );
 
 		$keyData = [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
 			'recoverycodekeys' => [
 				[ 'VALID_KEY', [ 'expiry' => '20270101000000' ] ],
 				[ 'EXPIRED_KEY', [ 'expiry' => '20250101000000' ] ],

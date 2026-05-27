@@ -16,12 +16,22 @@ trait EncryptionTestTrait {
 		}
 	}
 
-	public function encryptionIntegrationTestSetup() {
+	public function encryptionEnableIntegrationTestSetup() {
 		$this->encryptionUnitTestSetup();
 
 		$this->setMwGlobals( 'wgOATHSecretKey', self::SECRET_KEY );
 		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
 		$this->assertTrue(
+			OATHAuthServices::getInstance( $this->getServiceContainer() )
+				->getEncryptionHelper()
+				->isEnabled()
+		);
+	}
+
+	public function encryptionDisableIntegrationTestSetup() {
+		$this->setMwGlobals( 'wgOATHSecretKey', false );
+		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
+		$this->assertFalse(
 			OATHAuthServices::getInstance( $this->getServiceContainer() )
 				->getEncryptionHelper()
 				->isEnabled()

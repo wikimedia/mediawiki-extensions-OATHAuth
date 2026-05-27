@@ -23,7 +23,7 @@ class RecoveryCode {
 	/**
 	 * Length (in bytes) that recovery codes should be
 	 */
-	private const RECOVERY_CODE_LENGTH = 10;
+	private const int RECOVERY_CODE_LENGTH = 10;
 
 	/**
 	 * Creates a new recovery code for the specified plaintext code

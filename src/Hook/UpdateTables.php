@@ -6,6 +6,7 @@ namespace MediaWiki\Extension\OATHAuth\Hook;
 use MediaWiki\Extension\OATHAuth\Maintenance\MoveRecoveryCodesFromTOTP;
 use MediaWiki\Extension\OATHAuth\Maintenance\PopulateUserHandles;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
+use MediaWiki\Extension\OATHAuth\Maintenance\UpdateKeysToLatestVersion;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class UpdateTables implements LoadExtensionSchemaUpdatesHook {
@@ -43,5 +44,9 @@ class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 		$updater->addPostDatabaseUpdateMaintenance( PopulateUserHandles::class );
 
 		// add new updates here
+
+		// 1.47
+		// This was added in 1.47, but it should be run every time update.php is run, basically...
+		$updater->addPostDatabaseUpdateMaintenance( UpdateKeysToLatestVersion::class );
 	}
 }

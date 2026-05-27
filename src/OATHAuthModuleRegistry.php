@@ -65,6 +65,9 @@ class OATHAuthModuleRegistry {
 		throw new InvalidArgumentException( "Module $key does not seem to exist" );
 	}
 
+	/**
+	 * @return array<string,int>
+	 */
 	public function getModuleIds(): array {
 		if ( $this->moduleIds === null ) {
 			$this->moduleIds = $this->getModuleIdsFromDatabase( false );
@@ -93,6 +96,9 @@ class OATHAuthModuleRegistry {
 		return $this->moduleIds;
 	}
 
+	/**
+	 * @return array<string,int>
+	 */
 	private function getModuleIdsFromDatabase( bool $fromPrimary ): array {
 		$ids = [];
 

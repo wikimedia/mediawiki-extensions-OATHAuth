@@ -22,7 +22,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 	}
 
 	protected function getMaintenanceClass() {

@@ -29,6 +29,9 @@ use Wikimedia\Timestamp\TimestampFormat;
  * @ingroup Extensions
  */
 class TOTPKey extends AuthKey {
+
+	public const int VERSION = 1;
+
 	/** TOTP binary secret */
 	private array $secret;
 
@@ -204,11 +207,17 @@ class TOTPKey extends AuthKey {
 					'nonce' => $encryptedData[1]
 				];
 			}
+
+			$data['format'] = 'encrypted';
 		} else {
-			$data = [ 'secret' => $this->getSecret() ];
+			$data = [
+				'secret' => $this->getSecret(),
+				'format' => 'unencrypted',
+			];
 		}
 
 		$data['friendly_name'] = $this->getFriendlyName();
+		$data['version'] = self::VERSION;
 		return $data;
 	}
 

@@ -26,7 +26,7 @@ class UpdateSecretsToEncryptedFormatTest extends MaintenanceBaseTestCase {
 		[ $repository, $user, , , $recoveryKeys ] = $this->setupUserWith2FA();
 
 		// Enable encryption *after* setting up 2FA, so they aren't created encrypted
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$this->maintenance->execute();
 

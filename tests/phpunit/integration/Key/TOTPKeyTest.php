@@ -33,18 +33,20 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testNewFromArrayWithNonceNoEncryption(): void {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		// bad nonce value will throw a sodium exception
 		$this->expectException( SodiumException::class );
 		TOTPKey::newFromArray( [
 			'secret' => '123456',
 			'nonce' => '789101112',
+			'version' => TOTPKey::VERSION,
+			'format' => 'encrypted',
 		] );
 	}
 
 	public function testNewFromArrayWithEncryption(): void {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$key = TOTPKey::newFromRandom();
 		$data = $key->jsonSerialize();
@@ -52,6 +54,8 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 		$key = TOTPKey::newFromArray( [
 			'secret' => $data['secret'],
 			'nonce' => $data['nonce'],
+			'version' => TOTPKey::VERSION,
+			'format' => 'encrypted',
 		] );
 
 		$this->assertEquals(
@@ -68,7 +72,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testJsonSerializerWithEncryption(): void {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 		$key = TOTPKey::newFromRandom();
 		$data = $key->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
@@ -77,7 +81,7 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testDoNotReencryptEncryptedKeyData(): void {
-		$this->encryptionIntegrationTestSetup();
+		$this->encryptionEnableIntegrationTestSetup();
 
 		$key = TOTPKey::newFromRandom();
 		$key->jsonSerialize();

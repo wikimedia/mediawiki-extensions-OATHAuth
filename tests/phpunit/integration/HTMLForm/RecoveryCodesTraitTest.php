@@ -6,6 +6,7 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\HTMLForm;
 use LogicException;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -14,6 +15,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 	use RecoveryCodesTrait;
+	use EncryptionTestTrait;
 
 	public function getOutput() {
 		throw new LogicException( 'Should not be called' );
@@ -30,7 +32,11 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 	public function testGetRecoveryCodesForDisplay(): void {
 		$this->setMwGlobals( 'wgOATHRecoveryCodesCount', 1 );
 
-		$recCodeKeys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [] ] );
+		$recCodeKeys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [],
+		] );
 		$recCodeKeys->regenerateRecoveryCodeKeys();
 
 		$formatted1 = array_map( [ $this, 'tokenFormatterFunction' ], $recCodeKeys->getRecoveryCodeKeys() );
@@ -39,13 +45,20 @@ class RecoveryCodesTraitTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetRecoveryCodesForDisplaySkipsTemporary(): void {
+		// Something seems to leave state behind...
+		$this->encryptionDisableIntegrationTestSetup();
+
 		ConvertibleTimestamp::setFakeTime( '20260101000000' );
 
-		$recCodeKeys = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
-			'ABCDEFGH',
-			[ 'IJKLMNOP', [ 'expiry' => '20300101000000' ] ],
-			[ 'QRSTUVWX', [ 'foo' => 'bar' ] ],
-		] ] );
+		$recCodeKeys = RecoveryCodeKeys::newFromArray( [
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+			'recoverycodekeys' => [
+				'ABCDEFGH',
+				[ 'IJKLMNOP', [ 'expiry' => '20300101000000' ] ],
+				[ 'QRSTUVWX', [ 'foo' => 'bar' ] ],
+			]
+		] );
 
 		$formatted = $this->getRecoveryCodesForDisplay( $recCodeKeys );
 		$this->assertSame( [ 'ABCD EFGH', 'QRST UVWX' ], $formatted );
