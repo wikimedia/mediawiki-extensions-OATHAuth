@@ -1,7 +1,7 @@
 <?php
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use MediaWiki\User\User;

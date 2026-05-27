@@ -1,7 +1,7 @@
 <?php
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
+namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Maintenance\FindWebAuthnKeysWithDeprecatedAlgorithms;
