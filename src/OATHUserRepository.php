@@ -59,9 +59,15 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * Used for a "cheap" lookup whether a user has 2FA enabled.
 	 *
 	 * If you have no subsequent need for access to the full OATHUser object,
-	 * or their 2FA keys, this will check the cache first. If it's not in cache,
-	 * query the database, rather than loading and decrypting the
-	 * whole OATHUser object and their keys.
+	 * or their 2FA keys, use this function, rather than findByUser or similar.
+	 *
+	 * This function will check the cache first. If the OATHUser object is in
+	 * the cache, we can use OATHUser::isTwoFactorAuthEnabled(). If it is not, it
+	 * will query the database to check for oathauth_devices rows for this user.
+	 *
+	 * This can be more peformant than loading all the oathauth_devices rows,
+	 * de-serializing them, and potentially decrypting values that would never be
+	 * used.
 	 */
 	public function userHas2FAEnabled( UserIdentity $user ): bool {
 		/** @var OATHUser $oathUser */
