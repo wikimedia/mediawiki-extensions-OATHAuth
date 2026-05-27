@@ -50,13 +50,13 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 
 	/** @dataProvider providePublicKeys */
 	public function testGetPublicKeyAlgorithm( string $key, int $algorithm ) {
-		$this->assertEquals( $algorithm, WebAuthnKey::getPublicKeyAlgorithm( $key ) );
+		$this->assertEquals( $algorithm, WebAuthnKey::getPublicKeyAlgorithm( base64_decode( $key ) ) );
 	}
 
 	public function testGetKeyLengthIfRsa() {
-		$this->assertEquals( 2048, WebAuthnKey::getKeyLengthIfRsa( self::KEY_RS256_2048 ) );
-		$this->assertEquals( 512, WebAuthnKey::getKeyLengthIfRsa( self::KEY_RS256_512 ) );
+		$this->assertEquals( 2048, WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_RS256_2048 ) ) );
+		$this->assertEquals( 512, WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_RS256_512 ) ) );
 
-		$this->assertNull( WebAuthnKey::getKeyLengthIfRsa( self::KEY_ES512 ) );
+		$this->assertNull( WebAuthnKey::getKeyLengthIfRsa( base64_decode( self::KEY_ES512 ) ) );
 	}
 }

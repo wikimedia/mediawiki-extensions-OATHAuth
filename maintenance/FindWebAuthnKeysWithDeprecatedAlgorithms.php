@@ -49,7 +49,9 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 			$count++;
 			$keyData = FormatJson::decode( $row->oad_data, true );
 
-			$publicKeyAlg = WebAuthnKey::getPublicKeyAlgorithm( $keyData['credentialPublicKey'] );
+			$publicKeyAlg = WebAuthnKey::getPublicKeyAlgorithm(
+				base64_decode( $keyData['credentialPublicKey'] )
+			);
 
 			if ( $publicKeyAlg === null ) {
 				$this->output( "Key Id {$row->oad_id} is not a valid COSE key.\n" );

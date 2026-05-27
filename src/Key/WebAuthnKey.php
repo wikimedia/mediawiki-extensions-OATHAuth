@@ -217,8 +217,9 @@ class WebAuthnKey extends AuthKey {
 			] );
 			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
-		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
-		$this->logIfShortRsaKey( $this->getAttestedCredentialData()->credentialPublicKey, $user, false );
+		$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
+		$this->logIfDeprecatedAlgorithm( $publicKey, $user, true );
+		$this->logIfShortRsaKey( $publicKey, $user, false );
 		return $this->authenticationCeremony(
 			$data['credential'],
 			$data['authInfo'],
@@ -238,9 +239,14 @@ class WebAuthnKey extends AuthKey {
 			] );
 			throw new LogicException( 'WebAuthnKey::verifyRegistration(): invalid mode' );
 		}
-		$this->logIfDeprecatedAlgorithm( $this->getAttestedCredentialData()->credentialPublicKey, $user, true );
-		$this->logIfShortRsaKey( $this->getAttestedCredentialData()->credentialPublicKey, $user, false );
-		return $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
+		// Run the ceremony first: the public key isn't populated until then.
+		$registered = $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
+		if ( $registered ) {
+			$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
+			$this->logIfDeprecatedAlgorithm( $publicKey, $user, false );
+			$this->logIfShortRsaKey( $publicKey, $user, false );
+		}
+		return $registered;
 	}
 
 	/**
@@ -463,9 +469,12 @@ class WebAuthnKey extends AuthKey {
 		] );
 	}
 
+	/**
+	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
+	 */
 	private static function getCoseKey( string $publicKey ): ?Key {
 		$decoded = Decoder::create()->decode(
-			new StringStream( base64_decode( $publicKey ) )
+			new StringStream( $publicKey )
 		);
 
 		if ( !$decoded instanceof Normalizable ) {
@@ -481,6 +490,9 @@ class WebAuthnKey extends AuthKey {
 		return Key::create( $normalized );
 	}
 
+	/**
+	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
+	 */
 	public static function getPublicKeyAlgorithm( string $publicKey ): ?int {
 		$key = self::getCoseKey( $publicKey );
 		return $key?->alg();
@@ -530,6 +542,9 @@ class WebAuthnKey extends AuthKey {
 		);
 	}
 
+	/**
+	 * @param string $publicKey The raw (base64-decoded) COSE public key bytes
+	 */
 	public static function getKeyLengthIfRsa( string $publicKey ): ?int {
 		$key = self::getCoseKey( $publicKey );
 
