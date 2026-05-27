@@ -197,8 +197,8 @@
 			"description": "Number of days for which codes generated on Special:Recover2FAForUser will be valid."
 		},
 		"OATHMaxKeysPerUser": {
-			"value": 100,
-			"description": "Maximum amount of keys allowed per user."
+			"value": 25,
+			"description": "Maximum amount of OATHAuth devices allowed per user."
 		},
 		"OATH2FARequiredGroupRemovalPages": {
 			"value": [],
@@ -206,7 +206,7 @@
 		},
 		"OATHPasswordlessLogin": {
 			"value": false,
-			"description": "Allow passwordless login with passkeys"
+			"description": "Allow passwordless login with passkeys."
 		},
 		"WebAuthnRelyingPartyName": {
 			"value": null,
@@ -218,7 +218,7 @@
 		},
 		"WebAuthnNewCredsDisabled": {
 			"value": false,
-			"description": "If true, new credentials cannot be added, see T354701"
+			"description": "If true, new credentials cannot be added, see T354701."
 		}
 	},
 	"ResourceModules": {
