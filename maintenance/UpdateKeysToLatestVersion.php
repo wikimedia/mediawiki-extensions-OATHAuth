@@ -78,8 +78,8 @@ class UpdateKeysToLatestVersion extends Maintenance {
 
 				// Re-serialize key to allow the key to update itself to the latest version
 				$key = match ( $mapping[$row->oad_type] ) {
-					RecoveryCodes::MODULE_NAME => RecoveryCodeKeys::newFromArray( $keyData ),
-					TOTP::MODULE_NAME => TOTPKey::newFromArray( $keyData ),
+					RecoveryCodes::MODULE_NAME => RecoveryCodeKeys::newFromArray( $keyData, true ),
+					TOTP::MODULE_NAME => TOTPKey::newFromArray( $keyData, true ),
 					WebAuthn::MODULE_NAME => WebAuthnKey::newFromData( $keyData ),
 				};
 

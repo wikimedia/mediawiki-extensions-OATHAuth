@@ -147,11 +147,11 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 		$this->encryptionEnableIntegrationTestSetup();
 		$keys = RecoveryCodeKeys::newFromArray( [
 			'version' => RecoveryCodeKeys::VERSION,
-			'format' => 'encrypted',
+			'format' => 'unencrypted',
 			'recoverycodekeys' => [
 				[ 'TESTCODE', [ 'foo' => 'bar' ] ],
 			],
-		] );
+		], true );
 		$data = $keys->jsonSerialize();
 		$this->assertArrayHasKey( 'nonce', $data );
 		$this->assertArrayHasKey( 'recoverycodekeys', $data );

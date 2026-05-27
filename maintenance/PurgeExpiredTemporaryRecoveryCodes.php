@@ -59,7 +59,7 @@ class PurgeExpiredTemporaryRecoveryCodes extends Maintenance {
 
 			// Creating a new key object will remove expired codes.
 			// So if the count is the same, there are no expired codes to remove.
-			$key = RecoveryCodeKeys::newFromArray( $data );
+			$key = RecoveryCodeKeys::newFromArray( $data, true );
 			if ( count( $key->getRecoveryCodes() ) === $numberOfKeys ) {
 				continue;
 			}

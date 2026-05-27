@@ -60,12 +60,23 @@ class TOTPKey extends AuthKey {
 	 * @return TOTPKey|null on invalid data
 	 * @throws UnexpectedValueException When encryption is not configured but db is encrypted
 	 */
-	public static function newFromArray( array $data ) {
+	public static function newFromArray( array $data, bool $fromMaintenanceScript = false ) {
 		if ( !isset( $data['secret'] ) ) {
 			return null;
 		}
 
-		if ( isset( $data['nonce'] ) ) {
+		if (
+			( !$fromMaintenanceScript && isset( $data['version'] ) && $data['format'] === 'encrypted' ) ||
+			// If we're being called from a maintenance script, or $wgOATHAuthAllowUnversionedKeys is true,
+			// allow the old format
+			(
+				(
+					$fromMaintenanceScript
+					|| MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHAuthAllowUnversionedKeys' )
+				)
+				&& isset( $data['nonce'] )
+			)
+		) {
 			$encryptionHelper = self::getEncryptionHelper();
 			if ( !$encryptionHelper->isEnabled() ) {
 				// @codeCoverageIgnoreStart
@@ -193,9 +204,9 @@ class TOTPKey extends AuthKey {
 	}
 
 	public function jsonSerialize(): array {
-		$encryptedData = $this->getEncryptedSecretAndNonce();
 		$encryptionHelper = self::getEncryptionHelper();
 		if ( $encryptionHelper->isEnabled() ) {
+			$encryptedData = $this->getEncryptedSecretAndNonce();
 			if ( $this->forceReEncrypt || in_array( '', $encryptedData ) ) {
 				$data = $encryptionHelper->encrypt( $this->getSecret() );
 				$this->secret['encrypted_secret'] = $data['secret'];

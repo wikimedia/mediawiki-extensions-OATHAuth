@@ -33,11 +33,10 @@ class RecoveryCodeKeys extends AuthKey {
 	public bool $forceReEncrypt = false;
 
 	/**
-	 * @param array $data
 	 * @return RecoveryCodeKeys|null on invalid data
 	 * @throws UnexpectedValueException When encryption is not configured but db is encrypted
 	 */
-	public static function newFromArray( array $data ) {
+	public static function newFromArray( array $data, bool $fromMaintenanceScript = false ) {
 		if ( !array_key_exists( 'recoverycodekeys', $data ) ) {
 			return null;
 		}
@@ -50,7 +49,18 @@ class RecoveryCodeKeys extends AuthKey {
 				$codeData = [];
 			}
 
-			if ( isset( $data['nonce'] ) ) {
+			if (
+				( !$fromMaintenanceScript && isset( $data['version'] ) && $data['format'] === 'encrypted' ) ||
+				// If we're being called from a maintenance script, or $wgOATHAuthAllowUnversionedKeys is true,
+				// allow the old format
+				(
+					(
+						$fromMaintenanceScript
+						|| MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHAuthAllowUnversionedKeys' )
+					)
+					&& isset( $data['nonce'] )
+				)
+			) {
 				$recoveryCodes[] = RecoveryCode::newFromEncrypted( $code, $data['nonce'], $codeData );
 			} else {
 				$recoveryCodes[] = RecoveryCode::newFromPlaintext( $code, $codeData );

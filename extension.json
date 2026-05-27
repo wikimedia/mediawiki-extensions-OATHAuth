@@ -219,6 +219,10 @@
 		"WebAuthnNewCredsDisabled": {
 			"value": false,
 			"description": "If true, new credentials cannot be added, see T354701."
+		},
+		"OATHAuthAllowUnversionedKeys": {
+			"value": true,
+			"description": "TEMPORARY: Allow unversioned keys until maintenance script"
 		}
 	},
 	"ResourceModules": {

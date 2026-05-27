@@ -95,7 +95,7 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 			$this->updateRow(
 				$dbw,
 				(int)$row->oad_id,
-				TOTPKey::newFromArray( $data )
+				TOTPKey::newFromArray( $data, true )
 			);
 
 			if ( $recoveryData['recoverycodekeys'] === [] ) {
@@ -115,7 +115,7 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 				$this->updateRow(
 					$dbw,
 					(int)$recoveryCodesRow->oad_id,
-					RecoveryCodeKeys::newFromArray( $recoveryData )
+					RecoveryCodeKeys::newFromArray( $recoveryData, true )
 				);
 			} else {
 				// Insert a new recoverykeys row for this user
@@ -124,7 +124,7 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 					->row( [
 						'oad_user' => $row->oad_user,
 						'oad_type' => $recoveryModuleId,
-						'oad_data' => FormatJson::encode( RecoveryCodeKeys::newFromArray( $recoveryData ) ),
+						'oad_data' => FormatJson::encode( RecoveryCodeKeys::newFromArray( $recoveryData, true ) ),
 						// Use the existing timestamp if available, otherwise use the current timestamp
 						'oad_created' => $row->oad_created ?? $dbw->timestamp(),
 					] )

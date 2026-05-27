@@ -91,9 +91,9 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 			$key = null;
 			if ( (int)$row->oad_type === $totpModuleId ) {
-				$key = TOTPKey::newFromArray( $data );
+				$key = TOTPKey::newFromArray( $data, );
 			} elseif ( (int)$row->oad_type === $recoveryModuleId ) {
-				$key = RecoveryCodeKeys::newFromArray( $data );
+				$key = RecoveryCodeKeys::newFromArray( $data, true );
 			} else {
 				// Impossible
 				$this->output( "Unable to update row with oad_id {$row->oad_id} and oad_type {$row->oad_type}.\n" );

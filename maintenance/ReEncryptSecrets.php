@@ -105,9 +105,9 @@ class ReEncryptSecrets extends Maintenance {
 			$encryptionHelper->setEncryptionKey( $old );
 
 			if ( (int)$row->oad_type === $totpModuleId ) {
-				$key = TOTPKey::newFromArray( $data );
+				$key = TOTPKey::newFromArray( $data, true );
 			} elseif ( (int)$row->oad_type === $recoveryModuleId ) {
-				$key = RecoveryCodeKeys::newFromArray( $data );
+				$key = RecoveryCodeKeys::newFromArray( $data, true );
 			} else {
 				// @codeCoverageIgnoreStart
 				// Impossible
