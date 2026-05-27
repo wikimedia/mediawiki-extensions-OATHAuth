@@ -37,21 +37,25 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'OATHAuth' );
-		$this->addDescription( 'Update TOTP secrets and recovery codes to use encypted format within database' );
+		$this->addDescription( 'Update TOTP secrets and recovery codes to use encrypted format within database' );
 	}
 
 	/** @inheritDoc */
 	protected function doDBUpdates() {
 		if ( !extension_loaded( 'sodium' ) ) {
+			// @codeCoverageIgnoreStart
 			$this->fatalError( "libsodium is not installed with php in this environment!" );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )
 			->getEncryptionHelper();
 
 		if ( !$encryptionHelper->isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			// phpcs:disable Generic.Files.LineLength.TooLong
 			$this->fatalError( "\$wgOATHSecretKey is not set correctly! It should be set to an immutable, 64-character hexadecimal value!" );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$startTime = time();

@@ -4,15 +4,10 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
-use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
-use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Maintenance\ReEncryptSecrets;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use MediaWiki\User\User;
 
@@ -23,6 +18,7 @@ use MediaWiki\User\User;
 class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 
 	use EncryptionTestTrait;
+	use UserWith2FATrait;
 
 	private const string NEW_SECRET_KEY = '22e715e0c785dde0d0f39f8ed94e9f2419ad8d01e91e9343902afba8aaa4ec91';
 
@@ -80,39 +76,6 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	private function setupUserWith2FA(): array {
-		// Ensure to use local because CentralAuth may exist in CI
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
-
-		$user = $this->getTestSysop()->getUser();
-		$services = OATHAuthServices::getInstance( $this->getServiceContainer() );
-		$repository = $services->getUserRepository();
-		$moduleRegistry = $services->getModuleRegistry();
-
-		$oathUser = $repository->findByUser( $user );
-
-		$repository->createKey(
-			$oathUser,
-			$moduleRegistry->getModuleByKey( TOTP::MODULE_NAME ),
-			TOTPKey::newFromRandom()->jsonSerialize(),
-			'127.0.0.1'
-		);
-
-		$recoveryCodes = new RecoveryCodeKeys( null, null, null, [] );
-		$recoveryCodes->regenerateRecoveryCodeKeys();
-
-		$repository->createKey(
-			$oathUser,
-			$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
-			$recoveryCodes->jsonSerialize(),
-			'127.0.0.1'
-		);
-
-		return [ $repository, $user, $recoveryCodes->getRecoveryCodeKeys() ];
-	}
-
 	public function testReEncyptSecrets() {
 		/** @var OATHUserRepository $repository */
 		/** @var User $user */
@@ -130,6 +93,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->overrideConfigValue( 'OATHSecretKey', self::NEW_SECRET_KEY );
 		$this->getServiceContainer()->resetServiceForTesting( 'OATHAuth.EncryptionHelper' );
 
+		// Test we can still verify the recovery codes
 		$oathUser = $repository->findByUser( $user );
 		$modules = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
 		$this->assertCount( 1, $modules );
