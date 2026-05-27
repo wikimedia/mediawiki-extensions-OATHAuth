@@ -186,6 +186,8 @@ class WebAuthnAuthenticator {
 			'credential' => $credential
 		];
 
+		// TODO: At some point we may start preventing login using known bad/deprecated algorithms etc in keys.
+		// Will need to handle the exception similar to continueRegistration
 		if ( $this->module->verify( $user, $verificationData ) ) {
 			$this->logger->info(
 				"User {user} logged in using WebAuthn", [
@@ -279,15 +281,17 @@ class WebAuthnAuthenticator {
 				);
 
 				$this->clearPendingRequests( PublicKeyCredentialCreationOptions::class );
+
 				return Status::newGood();
 			}
+		} catch ( DeprecatedKeyException $ex ) {
+			return Status::newFatal( $ex->getMessage() );
 		} catch ( Exception $ex ) {
 			$this->logger->warning( 'WebAuthn registration failed due to: {message}', [
 				'message' => $ex->getMessage(),
 				'exception' => $ex,
 				'user' => $user->getUser()->getName(),
 			] );
-			return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 		}
 		return Status::newFatal( 'oathauth-webauthn-error-registration-failed' );
 	}

@@ -23,6 +23,7 @@ use Cose\Key\RsaKey;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
+use MediaWiki\Extension\OATHAuth\DeprecatedKeyException;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -236,7 +237,7 @@ class WebAuthnKey extends AuthKey {
 			throw new LogicException( 'WebAuthnKey::verify(): invalid mode' );
 		}
 		$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
-		$this->checkIfDeprecated( $publicKey, $user, true );
+		$this->checkIfDeprecated( $publicKey, $user, true, false );
 		return $this->authenticationCeremony(
 			$data['credential'],
 			$data['authInfo'],
@@ -260,7 +261,7 @@ class WebAuthnKey extends AuthKey {
 		$registered = $this->registrationCeremony( $data, $registrationObject, $user, $friendlyName );
 		if ( $registered ) {
 			$publicKey = (string)$this->getAttestedCredentialData()->credentialPublicKey;
-			$this->checkIfDeprecated( $publicKey, $user, false );
+			$this->checkIfDeprecated( $publicKey, $user, false, true );
 		}
 		return $registered;
 	}
@@ -519,8 +520,10 @@ class WebAuthnKey extends AuthKey {
 	 * Currently checks for two things:
 	 * 1) If the key is an RSA key and the length is shorter than 2048 bits
 	 * 2) If the key is using a deprecated algorithm, such as SHA-1
+	 *
+	 * @throws DeprecatedKeyException
 	 */
-	private function checkIfDeprecated( ?string $publicKey, OATHUser $user, bool $used ): void {
+	private function checkIfDeprecated( ?string $publicKey, OATHUser $user, bool $used, bool $throw ): void {
 		if ( $publicKey === null ) {
 			return;
 		}
@@ -536,14 +539,13 @@ class WebAuthnKey extends AuthKey {
 		}
 
 		$usedOrRegistered = $used ? 'used' : 'registered';
+		$deprecated = false;
 
 		if ( $key->type() === (string)Key::TYPE_RSA ) {
 			$length = self::getRsaKeyLength( $key );
-			if ( $length === null ) {
-				return;
-			}
 
-			if ( $length < self::MIN_RSA_LENGTH ) {
+			if ( $length !== null && $length < self::MIN_RSA_LENGTH ) {
+				$deprecated = true;
 				$this->logger->info(
 					"User {user} $usedOrRegistered an RSA WebAuthn key shorter than " .
 					self::MIN_RSA_LENGTH .
@@ -557,6 +559,7 @@ class WebAuthnKey extends AuthKey {
 		}
 
 		if ( self::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
+			$deprecated = true;
 			$this->logger->info(
 				"User {user} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
 				[
@@ -564,6 +567,10 @@ class WebAuthnKey extends AuthKey {
 					'algorithm' => Algorithms::getHashAlgorithmFor( $algo ),
 				]
 			);
+		}
+
+		if ( $deprecated && $throw ) {
+			throw new DeprecatedKeyException( 'oathauth-webauthn-deprecated-key' );
 		}
 	}
 
