@@ -63,7 +63,7 @@
 	"oathauth-auth-switch-module-label": "التبديل إلى طريقة مصادقة مختلفة",
 	"oathauth-auth-switch-module-help": "اضبط <code>newModule</code> على اسم الوحدة الجديدة للحصول على تحدٍّ جديد من وحدة مصادقة ثنائية مختلفة. اتركه فارغًا إذا كنت تُجيب على التحدي الحالي.",
 	"oathauth-auth-switch-module-keep": "(لا تقم بالتبديل)",
-	"oathauth-throttled": "هناك الكثير من محاولات التحقق! الرجاء انتظار $1.",
+	"oathauth-throttled": "الكثير من المحاولات! من فضلك انتظر بضعة دقائق",
 	"oathauth-login-failed": "فشل التحقق.",
 	"oathauth-describe-provider": "توثيق ذو عاملين (OATH)",
 	"grant-group-authentication": "أداء إجراءات التوثيق لنفسك والآخرين",

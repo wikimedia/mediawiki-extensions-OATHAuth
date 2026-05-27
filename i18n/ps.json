@@ -55,7 +55,7 @@
 	"oathauth-auth-token-help-ui": "له خپل تاييد وسيلې يا بياترلاسنې کوډ دننه کړئ",
 	"oathauth-auth-switch-module-help": "د نوي چلنوال نوم ته <code>newModule</code> وټاکئ؛ ترڅو د چلنوال څخه يوه نوې دوه پړاويزه ننگونه ترلاسه کړئ. که تاسو اوسنۍ ننگونې ته ځواب ورکوئ؛ نو خالي يې پرېږدئ.",
 	"oathauth-auth-switch-module-keep": "(مه بدلوئ)",
-	"oathauth-throttled": "ډېرې زياتې تاييد هېڅ! مهرباني وکړئ $1 په تمه شئ.",
+	"oathauth-throttled": "ډېرې زياتې تاييد هېڅ! مهرباني وکړئ څو دقيقې په تمه شئ.",
 	"oathauth-describe-provider": "دوه‌پړاويز تاييد (OATH)",
 	"grant-group-authentication": "د ځان او نورو لپاره تاييد چارې ترسره کول",
 	"grant-oath": "دوه پړاويز تاييد (OATH) مالومات د ځان او نورو لپاره",
