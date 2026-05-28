@@ -34,7 +34,7 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $deprecated, WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $algorithm ) );
 	}
 
-	public function providePublicKeys(): array {
+	public static function providePublicKeys(): array {
 		return [
 			[
 				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS1_2048 ) ),
