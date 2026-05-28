@@ -23,6 +23,8 @@ require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
 /**
+ * @codeCoverageIgnore
+ *
  * @author Taavi Väänänen <hi@taavi.wtf>
  */
 class UpdateForMultipleDevicesSupport extends LoggedUpdateMaintenance {
