@@ -1,8 +1,8 @@
 /* global PublicKeyCredential:false */
 
 $( () => {
-	const form = new mw.ext.webauthn.LoginFormWidget();
-	const authenticator = new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
+	// We don't initialize `form` here, because doing so immediately throws a user-visible error
+	// if window.PublicKeyCredential doesn't exist (T427562)
 
 	// Conditional UI for the username field
 	if (
@@ -14,6 +14,9 @@ $( () => {
 			if ( !isAvailable ) {
 				return;
 			}
+
+			const form = new mw.ext.webauthn.LoginFormWidget();
+			const authenticator = new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
 
 			authenticator.authenticate( true ).then(
 				( credential ) => {
@@ -31,6 +34,10 @@ $( () => {
 	// "Log in with passkey" button
 	$( '#mw-input-passwordlessButton' ).on( 'click', ( e ) => {
 		e.preventDefault();
+
+		const form = new mw.ext.webauthn.LoginFormWidget();
+		const authenticator = new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
+
 		authenticator.authenticate().then(
 			( credential ) => {
 				form.submitWithCredential( credential );
