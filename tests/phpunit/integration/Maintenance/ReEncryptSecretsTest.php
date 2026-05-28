@@ -29,7 +29,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		return ReEncryptSecrets::class;
 	}
 
-	public function testMismatchInputVersusConfig() {
+	public function testMismatchInputVersusConfig(): void {
 		$this->maintenance->setArg( 0, 'foo' );
 		$this->maintenance->setArg( 1, 'bar' );
 
@@ -41,7 +41,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testIdenticalInput() {
+	public function testIdenticalInput(): void {
 		$this->maintenance->setArg( 0, 'foo' );
 		$this->maintenance->setArg( 1, 'foo' );
 
@@ -53,7 +53,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testInvalidFirstSecret() {
+	public function testInvalidFirstSecret(): void {
 		$this->maintenance->setArg( 0, 'foo' );
 		$this->maintenance->setArg( 1, self::NEW_SECRET_KEY );
 
@@ -63,7 +63,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testInvalidSecondSecret() {
+	public function testInvalidSecondSecret(): void {
 		$this->maintenance->setArg( 0, self::SECRET_KEY );
 		$this->maintenance->setArg( 1, 'foo' );
 
@@ -73,7 +73,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testReEncyptSecrets() {
+	public function testReEncyptSecrets(): void {
 		[ $repository, $user, , , $recoveryKeys ] = $this->setupUserWith2FA();
 
 		$this->maintenance->setArg( 0, self::SECRET_KEY );

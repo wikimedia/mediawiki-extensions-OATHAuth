@@ -22,7 +22,7 @@ class UpdateSecretsToEncryptedFormatTest extends MaintenanceBaseTestCase {
 		return UpdateSecretsToEncryptedFormat::class;
 	}
 
-	public function testReEncyptSecrets() {
+	public function testReEncyptSecrets(): void {
 		[ $repository, $user, , , $recoveryKeys ] = $this->setupUserWith2FA();
 
 		// Enable encryption *after* setting up 2FA, so they aren't created encrypted

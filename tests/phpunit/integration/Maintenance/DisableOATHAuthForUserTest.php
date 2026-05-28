@@ -18,7 +18,7 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 		return DisableOATHAuthForUser::class;
 	}
 
-	public function testDisableOATHAuthForUser() {
+	public function testDisableOATHAuthForUser(): void {
 		[ $repository, $user, $totpKey, $recoveryKey, ] = $this->setupUserWith2FA();
 
 		$this->assertArrayEquals( [ $totpKey, $recoveryKey ], $repository->findByUser( $user )->getKeys() );
@@ -32,14 +32,14 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 		$this->assertArrayEquals( [], $repository->findByUser( $user )->getKeys() );
 	}
 
-	public function testNonExistentUser() {
+	public function testNonExistentUser(): void {
 		$this->maintenance->setArg( 'user', 'foobar' );
 		$this->expectCallToFatalError();
 		$this->expectOutputString( "User foobar doesn't exist!" );
 		$this->maintenance->execute();
 	}
 
-	public function test2FANotEnabled() {
+	public function test2FANotEnabled(): void {
 		$user = $this->getTestSysop()->getUser();
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );

@@ -24,7 +24,7 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		return NotifyTwoFactorRequired::class;
 	}
 
-	public function testNotifyNoUsers() {
+	public function testNotifyNoUsers(): void {
 		$this->maintenance->setOption( 'date', '20260630000000' );
 
 		$this->expectOutputString(
@@ -35,7 +35,7 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testNotifyOneUser() {
+	public function testNotifyOneUser(): void {
 		$this->overrideConfigValues( [
 			MainConfigNames::CentralIdLookupProvider => 'local',
 		] );

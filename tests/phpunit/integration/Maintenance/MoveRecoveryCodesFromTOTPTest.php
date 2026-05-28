@@ -16,7 +16,7 @@ class MoveRecoveryCodesFromTOTPTest extends MaintenanceBaseTestCase {
 		return MoveRecoveryCodesFromTOTP::class;
 	}
 
-	public function testNotifyNoUsers() {
+	public function testNotifyNoUsers(): void {
 		$this->expectOutputString(
 			"Done. Updated 0 of 0 rows"
 		);

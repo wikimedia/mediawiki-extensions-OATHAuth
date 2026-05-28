@@ -21,7 +21,7 @@ class PopulateUserHandlesTest extends MaintenanceBaseTestCase {
 		return PopulateUserHandles::class;
 	}
 
-	public function testPopulateNoUsers() {
+	public function testPopulateNoUsers(): void {
 		$this->expectOutputString(
 			"Done. Processed 0 users and inserted 0 rows"
 		);

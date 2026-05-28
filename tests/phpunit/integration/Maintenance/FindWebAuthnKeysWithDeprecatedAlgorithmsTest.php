@@ -22,7 +22,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithmsTest extends MaintenanceBaseTestCa
 		return FindWebAuthnKeysWithDeprecatedAlgorithms::class;
 	}
 
-	public function testFindDeprecated() {
+	public function testFindDeprecated(): void {
 		[ $repository, $moduleRegistry, $oathUser, ] = $this->setupConfig();
 
 		$key = WebAuthnKey::newFromData(

@@ -16,7 +16,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 		return Recover2FAForUser::class;
 	}
 
-	public function testNonExistentUser() {
+	public function testNonExistentUser(): void {
 		$this->maintenance->setArg( 'user', 'foobar' );
 		$this->maintenance->setArg( 'email', 'foobar@email.com' );
 		$this->expectOutputString( "User foobar doesn't exist!" );
