@@ -55,12 +55,19 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 	throw new Error( this.getErrorText( consoleMsg || '' ) );
 };
 
+/**
+ * Render an error message as HTML. If the error message is an i18n message key, that message will
+ * be used; otherwise the error message will be escaped and displayed as-is.
+ *
+ * @param {string} error Error message name or text
+ * @return {string} HTML
+ */
 mw.ext.webauthn.CredentialForm.prototype.getErrorText = function ( error ) {
 	const message = mw.message( error );
 	if ( message.exists() ) {
 		return message.parse();
 	}
-	return error;
+	return mw.html.escape( error );
 };
 
 mw.ext.webauthn.CredentialForm.prototype.setCredential = function ( credential ) {
