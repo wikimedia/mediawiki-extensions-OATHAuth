@@ -3,13 +3,10 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
-use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Maintenance\ReEncryptSecrets;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
-use MediaWiki\User\User;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\ReEncryptSecrets
@@ -77,10 +74,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testReEncyptSecrets() {
-		/** @var OATHUserRepository $repository */
-		/** @var User $user */
-		/** @var RecoveryCode[] $recoveryKeys */
-		[ $repository, $user, $recoveryKeys ] = $this->setupUserWith2FA();
+		[ $repository, $user, , , $recoveryKeys ] = $this->setupUserWith2FA();
 
 		$this->maintenance->setArg( 0, self::SECRET_KEY );
 		$this->maintenance->setArg( 1, self::NEW_SECRET_KEY );

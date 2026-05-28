@@ -6,10 +6,8 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Maintenance\FindWebAuthnKeysWithDeprecatedAlgorithms;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\Key\WebAuthnKeyTest as KeyIntegrationTest;
 use MediaWiki\Extension\OATHAuth\Tests\Unit\Key\WebAuthnKeyTest as KeyUnitTest;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -17,23 +15,15 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  * @group Database
  */
 class FindWebAuthnKeysWithDeprecatedAlgorithmsTest extends MaintenanceBaseTestCase {
+
+	use UserWith2FATrait;
+
 	protected function getMaintenanceClass() {
 		return FindWebAuthnKeysWithDeprecatedAlgorithms::class;
 	}
 
 	public function testFindDeprecated() {
-		// Ensure to use local because CentralAuth may exist in CI
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
-
-		$user = $this->getTestSysop()->getUser();
-		$services = OATHAuthServices::getInstance( $this->getServiceContainer() );
-		$repository = $services->getUserRepository();
-		$moduleRegistry = $services->getModuleRegistry();
-		$module = $moduleRegistry->getModuleByKey( WebAuthn::MODULE_NAME );
-
-		$oathUser = $repository->findByUser( $user );
+		[ $repository, $moduleRegistry, $oathUser, ] = $this->setupConfig();
 
 		$key = WebAuthnKey::newFromData(
 			[
@@ -43,7 +33,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithmsTest extends MaintenanceBaseTestCa
 
 		$repository->createKey(
 			$oathUser,
-			$module,
+			$moduleRegistry->getModuleByKey( WebAuthn::MODULE_NAME ),
 			$key->jsonSerialize(),
 			'127.0.0.1'
 		);

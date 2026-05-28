@@ -3,11 +3,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
-use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Maintenance\DisableOATHAuthForUser;
-use MediaWiki\Extension\OATHAuth\Module\TOTP;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -16,32 +12,16 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  */
 class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 
+	use UserWith2FATrait;
+
 	protected function getMaintenanceClass() {
 		return DisableOATHAuthForUser::class;
 	}
 
 	public function testDisableOATHAuthForUser() {
-		// Ensure to use local because CentralAuth may exist in CI
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
+		[ $repository, $user, $totpKey, $recoveryKey, ] = $this->setupUserWith2FA();
 
-		$user = $this->getTestSysop()->getUser();
-		$services = OATHAuthServices::getInstance( $this->getServiceContainer() );
-		$repository = $services->getUserRepository();
-		$moduleRegistry = $services->getModuleRegistry();
-		$module = $moduleRegistry->getModuleByKey( TOTP::MODULE_NAME );
-
-		$oathUser = $repository->findByUser( $user );
-
-		$key = $repository->createKey(
-			$oathUser,
-			$module,
-			TOTPKey::newFromRandom()->jsonSerialize(),
-			'127.0.0.1'
-		);
-
-		$this->assertArrayEquals( [ $key ], $repository->findByUser( $user )->getKeys() );
+		$this->assertArrayEquals( [ $totpKey, $recoveryKey ], $repository->findByUser( $user )->getKeys() );
 
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );

@@ -3,14 +3,11 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
-use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateSecretsToEncryptedFormat;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
-use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
-use MediaWiki\User\User;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\UpdateSecretsToEncryptedFormat
@@ -26,10 +23,7 @@ class UpdateSecretsToEncryptedFormatTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testReEncyptSecrets() {
-		/** @var OATHUserRepository $repository */
-		/** @var User $user */
-		/** @var RecoveryCode[] $recoveryKeys */
-		[ $repository, $user, $recoveryKeys ] = $this->setupUserWith2FA();
+		[ $repository, $user, , , $recoveryKeys ] = $this->setupUserWith2FA();
 
 		// Enable encryption *after* setting up 2FA, so they aren't created encrypted
 		$this->encryptionIntegrationTestSetup();
