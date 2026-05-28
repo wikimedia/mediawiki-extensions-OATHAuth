@@ -41,7 +41,6 @@
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje potvrdom u dva koraka",
 	"accountsecurity": "Sigurnost računa",
-	"oathauth-disable-generic": "Isključi",
 	"oathauth-totp-description": "Jednokratni algoritam zasnovan na vremenu (TOTP) proširenje je algoritma zasnovanog na HMAC-u (HOTP) i stvara jednokratnu lozinku uzimajući jedinstvenost trenutnog vremena.",
 	"oathauth-invalidrequest": "Nevažeći zahtjev",
 	"oathauth-notifications-disable-help": "Pomoć",

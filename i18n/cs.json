@@ -69,13 +69,11 @@
 	"oathauth-ui-manage": "Spravovat",
 	"oathmanage": "Spravovat dvoufázové ověření",
 	"oathauth-enable-generic": "Zapnout",
-	"oathauth-disable-generic": "Vypnout",
 	"oathauth-invalid-data-format": "Chybný poskytovatel dat pro vytvoření klíče pro vybranou autentizační metodu",
 	"oathauth-disable-page-title": "Vypnout $1",
 	"oathauth-enable-page-title": "Zapnout $1",
 	"oathauth-action-exclusive-to-2fa": "Tuto akci mohou provádět pouze uživatelé se zapnutou dvoufaktorovou autentizací.",
 	"oathauth-totp-description": "Algoritmus jednorázového hesla založeného na čase (TOTP) je rozšíření algoritmu jednorázového hesla založeného na HMAC (HOTP), které generuje jednorázová hesla, jejichž unikátnost je odvozena z aktuálního času.",
-	"oathauth-disable-method-warning": "Pokud vypnete metodu dvoufaktorového ověřování „$1“, již ji nebudete moci použít pro přihlašování a všechna data spojená s touto metodou ověřování budou smazána.",
 	"oathauth-totp-disable-warning": "Již nebudete moci použít ověřovací zařízení registrované na tento účet. Všechny provizorní kódy přiřazené k tomuto účtu budou neplatné.",
 	"oathauth-invalidrequest": "Neplatný požadavek"
 }

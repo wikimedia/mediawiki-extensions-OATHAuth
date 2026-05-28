@@ -23,7 +23,6 @@
 	"oathauth-ui-manage": "Boshqarish",
 	"oathmanage": "Ikki faktorli autentifikatsiyani boshqarish",
 	"oathauth-enable-generic": "Yoqish",
-	"oathauth-disable-generic": "Oʻchirish",
 	"oathauth-invalidrequest": "Yaroqsiz soʻrov",
 	"oathauth-notifications-disable-help": "Yordam"
 }

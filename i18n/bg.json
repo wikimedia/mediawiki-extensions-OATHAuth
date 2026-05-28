@@ -50,7 +50,6 @@
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление на двуфакторното удостоверяване",
 	"oathauth-enable-generic": "Включване",
-	"oathauth-disable-generic": "Изключване",
 	"oathauth-disable-page-title": "Изключване на $1",
 	"oathauth-enable-page-title": "Включване на $1",
 	"oathauth-notifications-disable-help": "Помощ",

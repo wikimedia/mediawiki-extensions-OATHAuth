@@ -64,7 +64,6 @@
 	"oathauth-ui-manage": "Διαχείριση",
 	"oathmanage": "Διαχείριση πιστοποίησης 2 βημάτων",
 	"oathauth-enable-generic": "Ενεργοποίηση",
-	"oathauth-disable-generic": "Απενεργοποίηση",
 	"oathauth-disable-page-title": "Απενεργοποίηση $1",
 	"oathauth-enable-page-title": "Ενεργοποίηση $1",
 	"oathauth-notifications-disable-help": "Βοήθεια",

@@ -7,6 +7,5 @@
 	},
 	"oathauth-module-totp-label": "TOTP (tikè pou sèvi yon sèl fwa)",
 	"oathauth-ui-manage": "Jere",
-	"oathauth-enable-generic": "Aktive",
-	"oathauth-disable-generic": "Dezaktive"
+	"oathauth-enable-generic": "Aktive"
 }

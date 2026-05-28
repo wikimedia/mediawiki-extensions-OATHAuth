@@ -25,6 +25,5 @@
 	"oathauth-ui-manage": "მართვა",
 	"oathmanage": "ორფაქტორიანი ავთენტიფიკაციის მართვა",
 	"accountsecurity": "ანგარიშის უსაფრთხოება",
-	"oathauth-enable-generic": "ჩართვა",
-	"oathauth-disable-generic": "გამორთვა"
+	"oathauth-enable-generic": "ჩართვა"
 }

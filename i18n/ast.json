@@ -54,7 +54,6 @@
 	"oathauth-ui-manage": "Alministrar",
 	"oathmanage": "Alministrar la identificación de dos factores",
 	"oathauth-enable-generic": "Activar",
-	"oathauth-disable-generic": "Desactivar",
 	"oathauth-invalid-data-format": "El fornidor de datos ye inválidu pa crear una clave pal métodu d'identificación escoyíu",
 	"oathauth-disable-page-title": "Desactivar $1",
 	"oathauth-enable-page-title": "Activar $1",

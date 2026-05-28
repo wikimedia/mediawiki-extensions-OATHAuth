@@ -52,7 +52,6 @@
 	"oathauth-ui-manage": "Atua",
 	"oathmanage": "Atua otentikasi duo-faktor",
 	"oathauth-enable-generic": "Aktipan",
-	"oathauth-disable-generic": "Nonaktipan",
 	"oathauth-invalid-data-format": "Panyedia data gagal mambuek kunci otentikasi nan dipiliah",
 	"oathauth-disable-page-title": "Nonaktip $1",
 	"oathauth-enable-page-title": "Aktip $1",

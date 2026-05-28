@@ -67,7 +67,6 @@
 	"oathauth-ui-manage": "Upravljaj",
 	"oathmanage": "Upravljanje dvofaktorskom potvrdom identiteta",
 	"oathauth-enable-generic": "Uključi",
-	"oathauth-disable-generic": "Onemogući",
 	"oathauth-disable-page-title": "Onemogućavanje $1",
 	"oathauth-enable-page-title": "Uključivanje $1",
 	"oathauth-action-exclusive-to-2fa": "Ovu radnju mogu da izvrše samo korisnici koji imaju uključenu dvofaktorsku potvrdu identiteta.",

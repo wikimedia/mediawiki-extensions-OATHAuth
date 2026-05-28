@@ -56,7 +56,6 @@
 	"oathauth-ui-manage": "จัดการ",
 	"oathmanage": "จัดการการยืนยันตัวตนสองขั้นตอน",
 	"oathauth-enable-generic": "เปิดใช้งาน",
-	"oathauth-disable-generic": "ปิดใช้งาน",
 	"oathauth-disable-page-title": "ปิดใช้งาน $1",
 	"oathauth-enable-page-title": "เปิดใช้งาน $1",
 	"oathauth-totp-disable-warning": "คุณจะไม่สามารถใช้อุปกรณ์การยืนยันตัวตนที่ลงทะเบียนกับบัญชีนี้ได้อีกต่อไป รหัสกู้คืนทั้งหมดที่เกี่ยวข้องกับบัญชีนี้จะถูกยกเลิก",

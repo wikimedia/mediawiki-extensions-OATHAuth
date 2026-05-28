@@ -40,7 +40,6 @@
 	"log-action-filter-oath-verify": "Dárkkisteame, leigo guovtteceahkat autentiseren váldojuvvon atnui",
 	"oathauth-ui-no-module": "Ii oktage",
 	"oathauth-enable-generic": "Váldde atnui",
-	"oathauth-disable-generic": "Váldde eret anus",
 	"oathauth-disable-page-title": "Váldde modula $1 eret anus",
 	"oathauth-enable-page-title": "Váldde modula $1 atnui",
 	"notification-header-oathauth-disable": "{{GENDER:$2|Du geavaheaddjidovddaldagas}} guovtteceahkat autentiseren lea váldojuvvon eret anus.",

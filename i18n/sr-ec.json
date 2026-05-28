@@ -86,7 +86,6 @@
 	"oathmanage": "Управљање двофакторском аутентификацијом",
 	"accountsecurity": "Безбедност налога",
 	"oathauth-enable-generic": "Укључи",
-	"oathauth-disable-generic": "Онемогући",
 	"oathauth-disable-page-title": "Онемогућавање $1",
 	"oathauth-enable-page-title": "Укључивање $1",
 	"oathauth-action-exclusive-to-2fa": "Ову радњу могу да изврше само корисници који имају укључену двофакторску потврду идентитета.",

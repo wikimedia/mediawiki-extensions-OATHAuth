@@ -29,7 +29,6 @@
 	"oathauth-ui-no-module": "ھیچ چالاک نەکراوە",
 	"oathauth-ui-manage": "بەڕێوەبردن",
 	"oathauth-enable-generic": "کاراکردن",
-	"oathauth-disable-generic": "ناچالاک بکە",
 	"oathauth-disable-page-title": "$1 ناچالاک بکە",
 	"oathauth-enable-page-title": "$1 چالاک بکە",
 	"oathauth-invalidrequest": "داوای نادروست"
