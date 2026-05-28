@@ -3,7 +3,9 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\OATHAuth\Maintenance\NotifyTwoFactorRequired;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -11,6 +13,12 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  * @group Database
  */
 class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
+	}
 
 	protected function getMaintenanceClass() {
 		return NotifyTwoFactorRequired::class;
@@ -25,5 +33,32 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		);
 
 		$this->maintenance->execute();
+	}
+
+	public function testNotifyOneUser() {
+		$this->overrideConfigValues( [
+			MainConfigNames::CentralIdLookupProvider => 'local',
+		] );
+
+		$user = $this->getTestSysop()->getUser();
+
+		$this->maintenance->setOption( 'date', '20260630000000' );
+		$this->expectOutputString(
+			"User {$user->getName()} does not have two-factor authentication enabled, so notification has been sent!"
+		);
+
+		$notificationCreated = false;
+		$this->setTemporaryHook(
+			'BeforeEchoEventInsert',
+			static function ( Event $event ) use ( &$notificationCreated ) {
+				if ( $event->getType() === 'oathauth-twofactor-required' ) {
+					$notificationCreated = true;
+				}
+			}
+		);
+
+		$this->maintenance->execute();
+
+		$this->assertTrue( $notificationCreated );
 	}
 }
