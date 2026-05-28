@@ -1,12 +1,13 @@
 /* global PublicKeyCredential:false */
 
-$( () => {
+mw.ext.webauthn.initPasswordlessLogin = function ( $root ) {
+	$root = $root || $( document );
 	// We don't initialize `form` here, because doing so immediately throws a user-visible error
 	// if window.PublicKeyCredential doesn't exist (T427562)
 
 	// Conditional UI for the username field
 	if (
-		$( '.mw-userlogin-username' ).length &&
+		$root.find( '.mw-userlogin-username' ).length &&
 		window.PublicKeyCredential &&
 		PublicKeyCredential.isConditionalMediationAvailable
 	) {
@@ -32,7 +33,7 @@ $( () => {
 	}
 
 	// "Log in with passkey" button
-	$( '#mw-input-passwordlessButton' ).on( 'click', ( e ) => {
+	$root.find( '#mw-input-passwordlessButton' ).on( 'click', ( e ) => {
 		e.preventDefault();
 
 		const form = new mw.ext.webauthn.LoginFormWidget();
@@ -47,4 +48,14 @@ $( () => {
 			}
 		);
 	} );
+};
+
+$( () => {
+	// Bail when the login form isn't on the page (e.g. the QUnit test runner,
+	// where this module may be pulled in as a test dependency). The widget
+	// constructor below requires the form to exist.
+	if ( !$( '#userloginForm' ).length ) {
+		return;
+	}
+	mw.ext.webauthn.initPasswordlessLogin();
 } );

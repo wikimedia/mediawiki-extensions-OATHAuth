@@ -412,6 +412,16 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "OATHAuth/modules"
 	},
+	"QUnitTestModule": {
+		"localBasePath": "tests/qunit/",
+		"remoteExtPath": "OATHAuth/tests/qunit/",
+		"scripts": [
+			"ext.webauthn.passwordlessLogin.test.js"
+		],
+		"dependencies": [
+			"ext.webauthn.passwordlessLogin"
+		]
+	},
 	"SpecialPages": {
 		"DisableOATHForUser": {
 			"class": "\\MediaWiki\\Extension\\OATHAuth\\Special\\DisableOATHForUser",
