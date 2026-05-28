@@ -12,12 +12,21 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  */
 class PurgeExpiredTemporaryRecoveryCodesTest extends MaintenanceBaseTestCase {
 
+	use UserWith2FATrait;
+
 	protected function getMaintenanceClass() {
 		return PurgeExpiredTemporaryRecoveryCodes::class;
 	}
 
 	public function testPurgeForNoRowsToPurge(): void {
 		$this->expectOutputString( "Done. Updated 0 of 0 rows" );
+		$this->maintenance->execute();
+	}
+
+	public function testPurgeUserWith2FA(): void {
+		$this->setupUserWith2FA();
+
+		$this->expectOutputString( "Done. Updated 0 of 1 rows" );
 		$this->maintenance->execute();
 	}
 }
