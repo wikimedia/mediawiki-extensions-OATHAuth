@@ -3,7 +3,8 @@
 		"authors": [
 			"Diman Russkov",
 			"Okras",
-			"Vonavy"
+			"Vonavy",
+			"Shabe"
 		]
 	},
 	"oathauth-webauthn-module-label": "Ключ безопасности",
@@ -26,5 +27,6 @@
 	"oathauth-webauthn-add-key-section-name": "Зарегистрировать новый ключ безопасности",
 	"oathauth-webauthn-error-get-reginfo-fail": "Информация о регистрации не может быть получена.",
 	"oathauth-webauthn-module-description": "WebAuthn находится в экспериментальном состоянии. В настоящее время нет возможности восстановления утерянных или повреждённых устройств аутентификации.\n\n[https://en.wikipedia.org/wiki/WebAuthn Подробнее о WebAuthn]",
-	"oathauth-webauthn-ui-reload-page-label": "Перезагрузить страницу"
+	"oathauth-webauthn-ui-reload-page-label": "Перезагрузить страницу",
+	"oathauth-webauthn-add-security-key": "Добавить ключ безопасности"
 }

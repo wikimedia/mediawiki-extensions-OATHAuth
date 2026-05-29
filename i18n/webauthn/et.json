@@ -14,6 +14,7 @@
 	"oathauth-webauthn-error-reg-generic": "Sinu võtit ei õnnestunud kinnitada. Palun alusta registreerimist uuesti.",
 	"oathauth-webauthn-registered-keys-section-name": "Registreeritud võtmed",
 	"oathauth-webauthn-ui-remove-key": "Eemalda",
+	"oathauth-webauthn-error-passkey-verification-failed": "Pääsuvõtit ei õnnestunud kinnitada.",
 	"oathauth-webauthn-error-credentials-missing": "WebAuthni autentimisandmeid ei saadetud.",
 	"oathauth-webauthn-error-registration-failed": "Uue võtme registreerimine ebaõnnestus.",
 	"oathauth-webauthn-ui-key-register-help": "Vali võtmele lühinimi.",

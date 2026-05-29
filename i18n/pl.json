@@ -13,7 +13,8 @@
 			"Rzuwig",
 			"WTM",
 			"WaldiSt",
-			"Woytecr"
+			"Woytecr",
+			"G3raltJJ"
 		]
 	},
 	"oathauth-desc": "Dodaje wsparcie uwierzytelniania za pomocą haseł jednorazowych opartych o HMAC oraz protokołu WebAuthn",
@@ -178,9 +179,9 @@
 	"oathauth-delete-warning-final": "Usunięcie tej metody spowoduje całkowite wyłączenie uwierzytelniania dwuskładnikowego.\n\nSpowoduje to też usunięcie wszystkich kodów zapasowych i kluczy.\n\n<strong>Twoje konto stanie się mniej zabezpieczone.</strong>",
 	"oathauth-delete-warning-final-privileged-user": "Masz na {{GRAMMAR:MS.lp|{{SITENAME}}}} uprawnienia, które wymagają uwierzytelniania dwuskładnikowego.\n<strong>Jeśli kontynuujesz, możesz utracić te uprawnienia, co może skutkować koniecznością ponownego ubiegania się o ich nadanie.</strong> \n\nWskazówka: Możesz dodać nową metodę uwierzytelniania przed usunięciem tej.",
 	"oathauth-delete-wrong-confirm-message": "Wprowadzony tekst nie odpowiada oczekiwanemu. Wpisz „{{int:oathauth-authenticator-delete-text}}”, aby kontynuować.",
-	"oathauth-delete-success": "Usunięto <strong>$1</strong>.",
+	"oathauth-delete-success": "Usunięto!",
 	"oathauth-created-at": "Dodano $1",
-	"oathauth-enable-success": "Dodano <strong>$1</strong>.",
+	"oathauth-enable-success": "Dodano!",
 	"oathauth-max-keys-exceeded": "Osiągnięto limit liczby metod uwierzytelniania",
 	"oathauth-max-keys-exceeded-message": "Osiągnięto maksymalną liczbę metod uwierzytelniania, równą $1. Przed dodaniem kolejnego składnika, usuń jeden z wcześniej skonfigurowanych.",
 	"oathauth-passkeys-header": "Passkey",
