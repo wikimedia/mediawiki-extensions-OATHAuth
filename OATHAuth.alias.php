@@ -115,6 +115,11 @@ $specialPageAliases['sr-el'] = [
 	'OATHManage' => [ 'Dvofaktorska_potvrda_identiteta' ],
 ];
 
+/** Ukrainian (Українська) */
+$specialPageAliases['uk'] = [
+	'OATHManage' => [ 'Безпека_облікового_запису' ],
+];
+
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
 	'OATHManage' => [ 'حلف_نامہ' ],
