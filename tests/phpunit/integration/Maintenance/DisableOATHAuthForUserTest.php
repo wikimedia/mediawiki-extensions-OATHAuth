@@ -8,6 +8,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\DisableOATHAuthForUser
+ * @covers \MediaWiki\Extension\OATHAuth\OATHUserRepository
  * @group Database
  */
 class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
