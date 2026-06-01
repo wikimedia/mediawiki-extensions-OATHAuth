@@ -35,7 +35,9 @@ class Manager {
 	 */
 	public static function notifyDisabled( OATHUser $oUser, bool $self ): void {
 		if ( !self::isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 		Event::create( [
 			// message used: notification-header-oathauth-disable
@@ -54,7 +56,9 @@ class Manager {
 	 */
 	public static function notifyEnabled( OATHUser $oUser ): void {
 		if ( !self::isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 		Event::create( [
 			// message used: notification-header-oathauth-enable
@@ -74,7 +78,9 @@ class Manager {
 		OATHUser $oUser, int $tokenCount, int $generatedCount
 	): void {
 		if ( !self::isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 		Event::create( [
 			// message used: notification-header-oathauth-recoverycodes-count
@@ -95,7 +101,9 @@ class Manager {
 		int $tokenCount
 	): void {
 		if ( !self::isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 		Event::create( [
 			// message used: notification-header-oathauth-recoverycodes-generated-for-user
@@ -114,7 +122,9 @@ class Manager {
 		string $date,
 	): void {
 		if ( !self::isEnabled() ) {
+			// @codeCoverageIgnoreStart
 			return;
+			// @codeCoverageIgnoreEnd
 		}
 
 		Event::create( [
