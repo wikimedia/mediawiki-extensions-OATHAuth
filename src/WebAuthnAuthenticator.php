@@ -117,7 +117,9 @@ class WebAuthnAuthenticator {
 			$canAuthenticate = $this->canAuthenticate( $user );
 			if ( !$canAuthenticate->isGood() ) {
 				$this->logger->info(
-					"User {$user->getUser()->getName()} cannot authenticate using WebAuthn"
+					"User {user} cannot authenticate using WebAuthn", [
+						'user' => $user->getUser()->getName(),
+					]
 				);
 				return $canAuthenticate;
 			}
@@ -162,7 +164,9 @@ class WebAuthnAuthenticator {
 		$canAuthenticate = $this->canAuthenticate( $user );
 		if ( !$canAuthenticate->isGood() ) {
 			$this->logger->warning(
-				"User {$user->getUser()->getName()} lost ability to authenticate using WebAuthn mid-request"
+				"User {user} lost ability to authenticate using WebAuthn mid-request", [
+					'user' => $user->getUser()->getName(),
+				]
 			);
 			return $canAuthenticate;
 		}
@@ -184,7 +188,9 @@ class WebAuthnAuthenticator {
 
 		if ( $this->module->verify( $user, $verificationData ) ) {
 			$this->logger->info(
-				"User {$user->getUser()->getName()} logged in using WebAuthn"
+				"User {user} logged in using WebAuthn", [
+					'user' => $user->getUser()->getName(),
+				]
 			);
 			return Status::newGood( $user );
 		}
@@ -201,7 +207,7 @@ class WebAuthnAuthenticator {
 		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
 			$this->logger->info(
-				"User {$user->getUser()->getName()} cannot register a WebAuthn credential"
+				"User {user} cannot register a WebAuthn credential"
 			);
 			return $canRegister;
 		}
@@ -222,9 +228,9 @@ class WebAuthnAuthenticator {
 		$canRegister = $this->canRegister( $user );
 		if ( !$canRegister->isGood() ) {
 			$this->logger->warning(
-				"User {username} lost ability to register using WebAuthn ability mid-request",
+				"User {user} lost ability to register using WebAuthn ability mid-request",
 				[
-					'username' => $user->getUser()->getName(),
+					'user' => $user->getUser()->getName(),
 				]
 			);
 			return $canRegister;

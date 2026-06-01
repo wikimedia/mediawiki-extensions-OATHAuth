@@ -545,11 +545,11 @@ class WebAuthnKey extends AuthKey {
 
 			if ( $length < self::MIN_RSA_LENGTH ) {
 				$this->logger->info(
-					"User {username} $usedOrRegistered an RSA WebAuthn key shorter than " .
+					"User {user} $usedOrRegistered an RSA WebAuthn key shorter than " .
 					self::MIN_RSA_LENGTH .
 					" bits ({length}).",
 					[
-						'username' => $user->getUser()->getName(),
+						'user' => $user->getUser()->getName(),
 						'length' => $length,
 					]
 				);
@@ -558,9 +558,9 @@ class WebAuthnKey extends AuthKey {
 
 		if ( self::isDeprecatedPublicKeyAlgorithm( $algo ) ) {
 			$this->logger->info(
-				"User {username} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
+				"User {user} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
 				[
-					'username' => $user->getUser()->getName(),
+					'user' => $user->getUser()->getName(),
 					'algorithm' => Algorithms::getHashAlgorithmFor( $algo ),
 				]
 			);
