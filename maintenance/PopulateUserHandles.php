@@ -75,8 +75,10 @@ class PopulateUserHandles extends LoggedUpdateMaintenance {
 
 				$keyData = FormatJson::decode( $row->oad_data, true );
 				if ( !isset( $keyData['userHandle'] ) ) {
+					// @codeCoverageIgnoreStart
 					$this->error( "Key Id {$row->oad_id} doesn't have a userHandle. This shouldn't happen." );
 					continue;
+					// @codeCoverageIgnoreEnd
 				}
 
 				$dbw->newInsertQueryBuilder()
@@ -97,7 +99,9 @@ class PopulateUserHandles extends LoggedUpdateMaintenance {
 				$totalUsers++;
 
 				if ( $totalUsers % 50 === 0 ) {
+					// @codeCoverageIgnoreStart
 					$this->output( "{$totalUsers}\n" );
+					// @codeCoverageIgnoreEnd
 				}
 			}
 

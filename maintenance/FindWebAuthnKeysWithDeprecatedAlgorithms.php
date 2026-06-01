@@ -54,8 +54,10 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 			);
 
 			if ( $publicKeyAlg === null ) {
+				// @codeCoverageIgnoreStart
 				$this->output( "Key Id {$row->oad_id} is not a valid COSE key.\n" );
 				continue;
+				// @codeCoverageIgnoreEnd
 			}
 			if ( WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $publicKeyAlg ) ) {
 				$deprecatedCount++;

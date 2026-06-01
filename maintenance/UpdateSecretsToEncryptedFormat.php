@@ -109,7 +109,9 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 
 			$updatedCount++;
 			if ( $updatedCount % 50 === 0 ) {
+				// @codeCoverageIgnoreStart
 				$this->output( "{$updatedCount}\n" );
+				// @codeCoverageIgnoreEnd
 			}
 		}
 

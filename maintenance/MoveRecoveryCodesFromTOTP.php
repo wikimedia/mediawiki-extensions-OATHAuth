@@ -135,7 +135,9 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 			$this->commitTransactionRound( __METHOD__ );
 			$updatedCount++;
 			if ( $updatedCount % 50 === 0 ) {
+				// @codeCoverageIgnoreStart
 				$this->output( "{$updatedCount}\n" );
+				// @codeCoverageIgnoreEnd
 			}
 		}
 

@@ -129,7 +129,9 @@ class ReEncryptSecrets extends Maintenance {
 
 			$updatedCount++;
 			if ( $updatedCount % 50 === 0 ) {
+				// @codeCoverageIgnoreStart
 				$this->output( "{$updatedCount}\n" );
+				// @codeCoverageIgnoreEnd
 			}
 		}
 
