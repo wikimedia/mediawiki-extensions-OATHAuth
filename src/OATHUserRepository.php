@@ -262,37 +262,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 
 	/**
 	 * @param OATHUser $user
-	 * @param string $keyType As in IModule::getName()
-	 * @param string $clientInfo
-	 * @param bool $self Whether they disabled it themselves
-	 */
-	public function removeAllOfType( OATHUser $user, string $keyType, string $clientInfo, bool $self ) {
-		$moduleId = $this->moduleRegistry->getModuleId( $keyType );
-		if ( !$moduleId ) {
-			throw new InvalidArgumentException( 'Invalid key type: ' . $keyType );
-		}
-
-		$this->removeSomeKeys( $user, [ 'oad_type' => $moduleId ] );
-		$user->removeKeysForModule( $keyType );
-
-		// If the user just deleted all of their WebAuthn keys, delete their User Handle
-		if ( $keyType === WebAuthn::MODULE_NAME ) {
-			$this->deleteUserHandle( $user );
-		}
-
-		$this->logger->info( 'OATHAuth removed {oathtype} keys for {user} from {clientip}', [
-			'user' => $user->getUser()->getName(),
-			'clientip' => $clientInfo,
-			'oathtype' => $keyType,
-		] );
-
-		if ( !$this->moduleRegistry->getModuleByKey( $keyType )->isSpecial() ) {
-			Manager::notifyDisabled( $user, $self );
-		}
-	}
-
-	/**
-	 * @param OATHUser $user
 	 * @param string $clientInfo
 	 * @param bool $self Whether the user disabled the 2FA themselves
 	 *
