@@ -3,8 +3,11 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Maintenance\PurgeExpiredTemporaryRecoveryCodes;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\PurgeExpiredTemporaryRecoveryCodes
@@ -27,6 +30,25 @@ class PurgeExpiredTemporaryRecoveryCodesTest extends MaintenanceBaseTestCase {
 		$this->setupUserWith2FA();
 
 		$this->expectOutputString( "Done. Updated 0 of 1 rows" );
+		$this->maintenance->execute();
+	}
+
+	public function testRemoveExpired(): void {
+		[ $userRepository, $moduleRegistry, $oathUser, $user ] = $this->setupConfig();
+
+		ConvertibleTimestamp::setFakeTime( '20260101000000' );
+
+		$userRepository->createKey(
+			$oathUser,
+			$moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME ),
+			RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [
+				'ABCDEFGH',
+				[ 'IJKLMNOP', [ 'expiry' => '20200101000000' ] ],
+			] ] )->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$this->expectOutputString( "Done. Updated 1 of 1 rows" );
 		$this->maintenance->execute();
 	}
 }
