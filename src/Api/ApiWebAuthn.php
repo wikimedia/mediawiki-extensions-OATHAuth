@@ -43,7 +43,6 @@ class ApiWebAuthn extends ApiBase {
 		self::ACTION_REGISTER => [
 			'permissions' => [ 'oathauth-enable' ],
 			'mustBeLoggedIn' => true,
-			'loginSecurityLevel' => 'OATHManage'
 		],
 	];
 
@@ -59,6 +58,10 @@ class ApiWebAuthn extends ApiBase {
 	}
 
 	public function execute() {
+		// Require elevated security for any request to this module
+		$helper = new ApiAuthManagerHelper( $this, $this->authManager );
+		$helper->securitySensitiveOperation( 'OATHManage' );
+
 		$func = $this->getParameter( 'func' );
 
 		$this->checkPermissions( $func );
@@ -138,11 +141,6 @@ class ApiWebAuthn extends ApiBase {
 		$funcPermissions = $functionConfig['permissions'];
 		if ( $funcPermissions ) {
 			$this->checkUserRightsAny( $funcPermissions );
-		}
-
-		if ( isset( $functionConfig[ 'loginSecurityLevel' ] ) ) {
-			$helper = new ApiAuthManagerHelper( $this, $this->authManager );
-			$helper->securitySensitiveOperation( $functionConfig[ 'loginSecurityLevel' ] );
 		}
 	}
 
