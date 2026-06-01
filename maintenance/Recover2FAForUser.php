@@ -43,7 +43,7 @@ class Recover2FAForUser extends Maintenance {
 			return;
 		}
 
-		$this->output( "Expiring recovery codes generated successfully and emailed to $user." );
+		$this->output( "Expiring recovery codes generated successfully and emailed to $user.\n" );
 	}
 }
 
