@@ -95,6 +95,14 @@ class WebAuthnKey extends AuthKey {
 	protected array $credentialTransports = [];
 
 	/**
+	 * Whether the most recent registration ceremony verified the user (UV flag).
+	 *
+	 * Only meaningful immediately after verifyRegistration(); it is not persisted
+	 * and is not restored for keys loaded from the database.
+	 */
+	protected bool $userVerified = false;
+
+	/**
 	 * Create a new empty key instance.
 	 *
 	 * Used for new keys.
@@ -175,6 +183,16 @@ class WebAuthnKey extends AuthKey {
 
 	public function setPasswordlessSupport( bool $supportsPasswordlessMode ): void {
 		$this->supportsPasswordless = $supportsPasswordlessMode;
+	}
+
+	/**
+	 * Whether the most recent registration ceremony verified the user.
+	 *
+	 * This reflects the User Verification (UV) flag of the credential as it was
+	 * registered, and is only meaningful immediately after verifyRegistration().
+	 */
+	public function wasUserVerified(): bool {
+		return $this->userVerified;
 	}
 
 	/**
@@ -332,6 +350,7 @@ class WebAuthnKey extends AuthKey {
 				->authData->attestedCredentialData;
 			$this->signCounter = $response->attestationObject->authData->signCount;
 			$this->credentialTransports = $response->transports;
+			$this->userVerified = $response->attestationObject->authData->isUserVerified();
 
 			if ( trim( $friendlyName ) === '' ) {
 				$aaguid = (string)$this->attestedCredentialData->aaguid;

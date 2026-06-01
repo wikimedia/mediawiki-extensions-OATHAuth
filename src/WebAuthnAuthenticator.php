@@ -21,6 +21,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
 use Throwable;
 use Webauthn\AuthenticatorAssertionResponse;
 use Webauthn\AuthenticatorSelectionCriteria;
@@ -246,10 +247,19 @@ class WebAuthnAuthenticator {
 				$user
 			);
 
-			if ( $passkeyMode ) {
-				$key->setPasswordlessSupport( true );
-			}
 			if ( $registered ) {
+				if ( $passkeyMode ) {
+					// Passwordless (passkey) credentials must use User Verification.
+					// Only mark the key as passwordless-capable if the credential was
+					// actually registered with UV; otherwise refuse to register it.
+					if ( !$key->wasUserVerified() ) {
+						throw new RuntimeException(
+							'Passwordless registration requires user verification, ' .
+							'but the credential was registered without it'
+						);
+					}
+					$key->setPasswordlessSupport( true );
+				}
 				$this->userRepo->createKey(
 					$user,
 					$this->module,
