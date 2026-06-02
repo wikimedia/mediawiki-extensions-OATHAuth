@@ -25,7 +25,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 	public function testNonExistentUser(): void {
 		$this->maintenance->setArg( 'user', 'foobar' );
 		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
-		$this->expectOutputString( "User foobar doesn't exist!" );
+		$this->expectOutputString( "No user account was found with that name\n" );
 		$this->maintenance->execute();
 	}
 
@@ -46,7 +46,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );
 		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
-		$this->expectOutputString( 'Expiring recovery codes generated successfully and emailed to ' . $username );
+		$this->expectOutputString( "Expiring recovery codes generated successfully and emailed to $username.\n" );
 		$this->maintenance->execute();
 	}
 }

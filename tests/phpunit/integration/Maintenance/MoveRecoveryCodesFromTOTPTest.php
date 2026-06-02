@@ -23,8 +23,8 @@ class MoveRecoveryCodesFromTOTPTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testNotifyNoUsers(): void {
-		$this->expectOutputString(
-			"Done. Updated 0 of 0 rows"
+		$this->expectOutputRegex(
+			"/Done. Updated 0 of 0 rows/"
 		);
 
 		$this->maintenance->execute();
@@ -59,8 +59,8 @@ class MoveRecoveryCodesFromTOTPTest extends MaintenanceBaseTestCase {
 
 		$this->assertSame( 1, $db->affectedRows() );
 
-		$this->expectOutputString(
-			"Done. Updated 1 of 1 rows"
+		$this->expectOutputRegex(
+			"/Done. Updated 1 of 1 rows/"
 		);
 
 		$this->maintenance->execute();

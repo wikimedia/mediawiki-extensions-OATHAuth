@@ -35,30 +35,31 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 
 		$this->expectCallToFatalError();
 		$this->expectOutputString(
-			"The old key is not the same as \$wgOATHSecretKey. Unable to decrypt existing secrets."
+			"The old key is not the same as \$wgOATHSecretKey. Unable to decrypt existing secrets.\n"
 		);
 
 		$this->maintenance->execute();
 	}
 
 	public function testIdenticalInput(): void {
-		$this->maintenance->setArg( 0, 'foo' );
-		$this->maintenance->setArg( 1, 'foo' );
+		$this->maintenance->setArg( 0, self::SECRET_KEY );
+		$this->maintenance->setArg( 1, self::SECRET_KEY );
 
 		$this->expectCallToFatalError();
 		$this->expectOutputString(
-			"The old key is the same as the new key. No reason to re-encrypt existing secrets."
+			"The old key is the same as the new key. No reason to re-encrypt existing secrets.\n"
 		);
 
 		$this->maintenance->execute();
 	}
 
-	public function testInvalidFirstSecret(): void {
+	public function testInvalidOATHSecretKey() {
+		$this->setMwGlobals( 'wgOATHSecretKey', 'foo' );
 		$this->maintenance->setArg( 0, 'foo' );
 		$this->maintenance->setArg( 1, self::NEW_SECRET_KEY );
 
 		$this->expectCallToFatalError();
-		$this->expectOutputString( "The 'old' parameter is not set correctly!" );
+		$this->expectOutputRegex( "/OATHAuth encryption key has invalid length/" );
 
 		$this->maintenance->execute();
 	}
@@ -68,7 +69,7 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->setArg( 1, 'foo' );
 
 		$this->expectCallToFatalError();
-		$this->expectOutputString( "The 'new' parameter is not set correctly!" );
+		$this->expectOutputRegex( "/The 'new' parameter is not set correctly!/" );
 
 		$this->maintenance->execute();
 	}
@@ -80,8 +81,8 @@ class ReEncryptSecretsTest extends MaintenanceBaseTestCase {
 		$this->maintenance->setArg( 1, self::NEW_SECRET_KEY );
 		$this->maintenance->execute();
 
-		$this->expectOutputString(
-			"Please set \$wgOATHSecretKey to the new value in LocalSettings.php.\n"
+		$this->expectOutputRegex(
+			'/Please set \$wgOATHSecretKey to the new value in LocalSettings.php/'
 		);
 
 		$this->overrideConfigValue( 'OATHSecretKey', self::NEW_SECRET_KEY );

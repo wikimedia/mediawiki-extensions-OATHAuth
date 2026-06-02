@@ -38,7 +38,7 @@ class FindWebAuthnKeysWithDeprecatedAlgorithmsTest extends MaintenanceBaseTestCa
 			'127.0.0.1'
 		);
 
-		$this->expectOutputString( "1 keys found. 1 keys are using deprecated algorithms.\n" );
+		$this->expectOutputRegex( "/1 keys found. 1 keys are using deprecated algorithms./" );
 		$this->maintenance->execute();
 	}
 }

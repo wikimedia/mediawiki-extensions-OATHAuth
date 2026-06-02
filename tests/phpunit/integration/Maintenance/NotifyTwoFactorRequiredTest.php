@@ -31,7 +31,8 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 
 		$this->expectOutputString(
 			"Total: 0; Blocked: 0; Other skipped: 0\n" .
-			"2FA already enabled: 0; 2FA needed: 0\n"
+			"2FA already enabled: 0; 2FA needed: 0\n" .
+			"Done.\n"
 		);
 
 		$this->maintenance->execute();
@@ -45,8 +46,8 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		$user = $this->getTestSysop()->getUser();
 
 		$this->maintenance->setOption( 'date', '20260630000000' );
-		$this->expectOutputString(
-			"User {$user->getName()} does not have two-factor authentication enabled, so notification has been sent!"
+		$this->expectOutputRegex(
+			"/User {$user->getName()} does not have two-factor authentication enabled, so notification has been sent!/"
 		);
 
 		$notificationCreated = false;

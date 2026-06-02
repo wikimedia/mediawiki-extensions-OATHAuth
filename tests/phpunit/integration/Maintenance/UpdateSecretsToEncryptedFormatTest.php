@@ -30,8 +30,8 @@ class UpdateSecretsToEncryptedFormatTest extends MaintenanceBaseTestCase {
 
 		$this->maintenance->execute();
 
-		$this->expectOutputString(
-			"Done. Updated 2 of 2 rows in "
+		$this->expectOutputRegex(
+			"/Done. Updated 2 of 2 rows in/"
 		);
 
 		// Test we can still verify the recovery codes

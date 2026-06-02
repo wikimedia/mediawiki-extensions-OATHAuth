@@ -27,7 +27,7 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );
 
-		$this->expectOutputString( "Two-factor authentication disabled for $username.\n." );
+		$this->expectOutputString( "Two-factor authentication disabled for $username.\n" );
 		$this->maintenance->execute();
 
 		$this->assertArrayEquals( [], $repository->findByUser( $user )->getKeys() );
@@ -36,7 +36,7 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 	public function testNonExistentUser(): void {
 		$this->maintenance->setArg( 'user', 'foobar' );
 		$this->expectCallToFatalError();
-		$this->expectOutputString( "User foobar doesn't exist!" );
+		$this->expectOutputString( "User foobar doesn't exist!\n" );
 		$this->maintenance->execute();
 	}
 
@@ -45,7 +45,7 @@ class DisableOATHAuthForUserTest extends MaintenanceBaseTestCase {
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );
 		$this->expectCallToFatalError();
-		$this->expectOutputString( "User $username does not have two-factor authentication enabled!" );
+		$this->expectOutputString( "User $username does not have two-factor authentication enabled!\n" );
 		$this->maintenance->execute();
 	}
 }

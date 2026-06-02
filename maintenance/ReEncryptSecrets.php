@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Maintenance\Maintenance;
+use UnexpectedValueException;
 
 // @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
@@ -41,11 +42,17 @@ class ReEncryptSecrets extends Maintenance {
 		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )
 			->getEncryptionHelper();
 
-		if ( !$encryptionHelper->isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			// phpcs:disable Generic.Files.LineLength.TooLong
-			$this->fatalError( "\$wgOATHSecretKey is not set correctly! It should be set to an immutable, 64-character hexadecimal value!" );
-			// @codeCoverageIgnoreEnd
+		try {
+			if ( !$encryptionHelper->isEnabled() ) {
+				// @codeCoverageIgnoreStart
+				// phpcs:disable Generic.Files.LineLength.TooLong
+				$this->fatalError(
+					"\$wgOATHSecretKey is not set correctly! It should be set to an immutable, 64-character hexadecimal value!"
+				);
+				// @codeCoverageIgnoreEnd
+			}
+		} catch ( UnexpectedValueException $ex ) {
+			$this->fatalError( $ex->getMessage() );
 		}
 
 		$old = $this->getArg( 0 );
@@ -64,12 +71,7 @@ class ReEncryptSecrets extends Maintenance {
 			$this->output( "The old key is the same as \$wgOATHSecretKey.\n" );
 		}
 
-		$encryptionHelper->setEncryptionKey( $old );
-		try {
-			$encryptionHelper->isEnabled();
-		} catch ( Exception $ex ) {
-			$this->fatalError( "The 'old' parameter is not set correctly! " . $ex->getMessage() );
-		}
+		// Don't need to test $old, as we know it's correct and the same as $wgOATHSecretKey
 
 		$encryptionHelper->setEncryptionKey( $new );
 		try {

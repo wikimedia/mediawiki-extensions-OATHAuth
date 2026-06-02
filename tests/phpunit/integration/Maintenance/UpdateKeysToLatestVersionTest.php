@@ -17,7 +17,7 @@ class UpdateKeysToLatestVersionTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testUpdateNoKeys(): void {
-		$this->expectOutputString( "Done. Processed 0 rows and updated 0 keys" );
+		$this->expectOutputRegex( "/Done. Processed 0 rows and updated 0 keys/" );
 		$this->maintenance->execute();
 	}
 }

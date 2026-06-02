@@ -8,7 +8,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 trait EncryptionTestTrait {
 
 	// Generated once using `MWCryptRand::generateHex( 64 );`
-	private const SECRET_KEY = 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a';
+	private const string SECRET_KEY = 'f901c7d7ecc25c90229c01cec0efec1b521a5e2eb6761d29007dde9566c4536a';
 
 	public function encryptionUnitTestSetup() {
 		if ( !extension_loaded( 'sodium' ) ) {
