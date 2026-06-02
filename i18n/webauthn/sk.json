@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "Na použitie bezpečnostného kľúča musí byť vo vašom prehliadači povolený JavaScript.",
 	"oathauth-webauthn-ui-login-prompt": "Použite svoj bezpečnostný kľúč alebo postupujte podľa pokynov prehliadača.",
 	"oathauth-webauthn-ui-add-key": "Pridať kľúč",
-	"oathauth-webauthn-error-browser-unsupported": "Tento prehliadač nepodporuje autentifikáciu pomocou bezpečnostného kľúča alebo táto funkcia nie je pre túto stránku dostupná. Skúste to, prosím, v inom prehliadači. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Viac informácií]",
+	"oathauth-webauthn-error-browser-unsupported": "Tento prehliadač nepodporuje autentifikáciu pomocou bezpečnostného kľúča alebo táto funkcia nie je pre túto stránku dostupná. Skúste to, prosím, v inom prehliadači. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Viac informácií]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Tento prehliadač nepodporuje autentifikáciu pomocou bezpečnostného kľúča alebo táto funkcia nie je pre túto stránku dostupná.",
 	"oathauth-webauthn-error-auth-generic": "Overovací proces bol prerušený. Spustite ho, prosím, znovu.",
 	"oathauth-webauthn-error-reg-generic": "Váš kľúč sa nepodarilo overiť. Začnite tento proces znovu, prosím.",

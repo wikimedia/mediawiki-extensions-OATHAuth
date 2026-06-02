@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "Η JavaScript πρέπει να είναι ενεργοποιημένη στο πρόγραμμα περιήγησής σας για να χρησιμοποιήσετε ένα κλειδί ασφαλείας.",
 	"oathauth-webauthn-ui-login-prompt": "Χρησιμοποιήστε το κλειδί ασφαλείας σας ή ακολουθήστε τις οδηγίες του προγράμματος περιήγησης.",
 	"oathauth-webauthn-ui-add-key": "Προσθήκη κλειδιού",
-	"oathauth-webauthn-error-browser-unsupported": "Αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει έλεγχο ταυτότητας με κλειδί ασφαλείας ή δεν είναι διαθέσιμος για αυτόν τον ιστότοπο. Δοκιμάστε με διαφορετικό πρόγραμμα περιήγησης. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Διαβάστε περισσότερα]",
+	"oathauth-webauthn-error-browser-unsupported": "Αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει έλεγχο ταυτότητας με κλειδί ασφαλείας ή δεν είναι διαθέσιμος για αυτόν τον ιστότοπο. Δοκιμάστε με διαφορετικό πρόγραμμα περιήγησης. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Διαβάστε περισσότερα]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Αυτό το πρόγραμμα περιήγησης δεν υποστηρίζει τον έλεγχο ταυτότητας με κλειδί ασφαλείας ή δεν είναι διαθέσιμος για αυτόν τον ιστότοπο.",
 	"oathauth-webauthn-error-auth-generic": "Η διαδικασία ελέγχου ταυτότητας διακόπηκε. Ξεκινήστε ξανά τη διαδικασία ελέγχου ταυτότητας.",
 	"oathauth-webauthn-error-reg-generic": "Δεν ήταν δυνατή η επαλήθευση του κλειδιού σας. Ξεκινήστε ξανά τη διαδικασία εγγραφής.",

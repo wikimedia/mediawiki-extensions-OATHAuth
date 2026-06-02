@@ -9,7 +9,7 @@
 	"oathauth-webauthn-javascript-required": "יש להפעיל JavaScript בדפדפן שלך כדי להשתמש במפתח אבטחה.",
 	"oathauth-webauthn-ui-login-prompt": "נא לגעת במפתח האבטחה שלך או לעקוב אחר ההוראות בדפדפן.",
 	"oathauth-webauthn-ui-add-key": "הוספת מפתח",
-	"oathauth-webauthn-error-browser-unsupported": "הדפדפן הזה אינו תומך באימות במפתח אבטחה או שזה לא זמין עבור האתר הזה. נא לנסות עם דפדפן אחר. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support מידע נוסף]",
+	"oathauth-webauthn-error-browser-unsupported": "הדפדפן הזה אינו תומך באימות במפתח אבטחה או שזה לא זמין עבור האתר הזה. נא לנסות עם דפדפן אחר. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support מידע נוסף]",
 	"oathauth-webauthn-error-browser-unsupported-console": "הדפדפן הזה אינו תומך באימות במפתח אבטחה או שזה לא זמין עבור האתר הזה.",
 	"oathauth-webauthn-error-auth-generic": "תהליך האימות נקטע. נא להתחיל את תהליך האימות שוב.",
 	"oathauth-webauthn-error-reg-generic": "לא היה אפשר לאמת את המפתח שלך. נא להתחיל את תהליך הרישום שוב.",

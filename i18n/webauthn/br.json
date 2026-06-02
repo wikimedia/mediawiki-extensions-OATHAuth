@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "Ret eo gweredekaat JavaScript en ho merdeer evit implijout un alc'hwez surentez.",
 	"oathauth-webauthn-ui-login-prompt": "Implijit hoc'h alc'hwez surentez pe grit diouzh kemennoù ho merdeer.",
 	"oathauth-webauthn-ui-add-key": "Ouzhpennañ alc'hwez",
-	"oathauth-webauthn-error-browser-unsupported": "Ne skor ket ar merdeer-mañ an alc'hwezioù surentez, pe n'eo ket hegerz evit al lec'hienn-mañ. Klaskit gant ur merdeer all mar plij. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Lenn muioc'h]",
+	"oathauth-webauthn-error-browser-unsupported": "Ne skor ket ar merdeer-mañ an alc'hwezioù surentez, pe n'eo ket hegerz evit al lec'hienn-mañ. Klaskit gant ur merdeer all mar plij. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Lenn muioc'h]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Ne skor ket ar merdeer-mañ an alc'hwezioù surentez, pe n'eo ket hegerz evit al lec'hienn-mañ.",
 	"oathauth-webauthn-error-auth-generic": "Harzet eo bet an argerzh dilesañ. Krogit gant an argerzh gwiriekaat en-dro mar plij.",
 	"oathauth-webauthn-error-reg-generic": "N'haller ket gwiriañ hoc'h alc'hwez. Mar plij, krogit gant an argerzh enskrivañ en-dro.",

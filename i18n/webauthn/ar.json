@@ -10,7 +10,7 @@
 	"oathauth-webauthn-javascript-required": "يجب تفعيل جافا سكريبت في متصفحك لاستخدام مفتاح الأمان.",
 	"oathauth-webauthn-ui-login-prompt": "استخدم مفتاح الأمان الخاص بك أو اتبع تعليمات متصفحك.",
 	"oathauth-webauthn-ui-add-key": "إضافة مفتاح",
-	"oathauth-webauthn-error-browser-unsupported": "لا يدعم هذا المتصفح مصادقة مفتاح الأمان، أو أنها غير متوفرة لهذا الموقع. يُرجى المحاولة باستخدام متصفح آخر. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support اقرأ المزيد]",
+	"oathauth-webauthn-error-browser-unsupported": "لا يدعم هذا المتصفح مصادقة مفتاح الأمان، أو أنها غير متوفرة لهذا الموقع. يُرجى المحاولة باستخدام متصفح آخر. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support اقرأ المزيد]",
 	"oathauth-webauthn-error-browser-unsupported-console": "لا يدعم هذا المتصفح مصادقة مفتاح الأمان، أو أنها غير متوفرة لهذا الموقع الإلكتروني.",
 	"oathauth-webauthn-error-auth-generic": "انقطعت عملية المصادقة. يُرجى إعادة بدء العملية.",
 	"oathauth-webauthn-error-reg-generic": "تعذر التحقق من مفتاحك. يُرجى بدء عملية التسجيل مجددًا.",

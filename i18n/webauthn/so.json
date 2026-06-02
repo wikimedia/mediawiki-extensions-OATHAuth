@@ -4,5 +4,6 @@
 			"AhmedG612"
 		]
 	},
+	"oathauth-webauthn-error-browser-unsupported": "Biraawsar-kan ma taageero xaqiijinta furaha amniga, ama adeeggan lagama heli karo websaytkan. Fadlan isku day biraawsarka kale. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Wax badan ka akhri]",
 	"oathauth-webauthn-login-passkey-button": "Ku soo gal adigoo adeegsanaya passkey"
 }

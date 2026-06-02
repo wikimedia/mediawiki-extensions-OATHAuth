@@ -15,7 +15,7 @@
 	"oathauth-webauthn-javascript-required": "セキュリティキーを使用するには、ブラウザで JavaScript を有効化する必要があります。",
 	"oathauth-webauthn-ui-login-prompt": "セキュリティキーを使用するか、ブラウザーの指示に従ってください。",
 	"oathauth-webauthn-ui-add-key": "キーを追加",
-	"oathauth-webauthn-error-browser-unsupported": "このブラウザーはセキュリティキー認証に対応していないか、このウェブサイトに対応していません。別のブラウザーで再試行してください。[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support もっと詳しく]",
+	"oathauth-webauthn-error-browser-unsupported": "このブラウザーはセキュリティキー認証に対応していないか、このウェブサイトに対応していません。別のブラウザーで再試行してください。[https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support もっと詳しく]",
 	"oathauth-webauthn-error-browser-unsupported-console": "このブラウザーはセキュリティキー認証に対応していないか、このウェブサイトに対応していません。",
 	"oathauth-webauthn-error-auth-generic": "認証プロセスは中断されました。やり直してください。",
 	"oathauth-webauthn-error-reg-generic": "キーを登録できませんでした。登録の手順をやり直してください。",

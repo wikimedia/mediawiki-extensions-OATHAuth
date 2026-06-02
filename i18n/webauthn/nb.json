@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "Du må aktivere JavaScript i nettleseren din for å bruke WebAuthn.",
 	"oathauth-webauthn-ui-login-prompt": "Trykk på godkjenningsenheten din eller følg instruksjonene i nettleseren.",
 	"oathauth-webauthn-ui-add-key": "Legg til nøkkel",
-	"oathauth-webauthn-error-browser-unsupported": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet. Prøv igjen med en annen nettleser. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Les mer]",
+	"oathauth-webauthn-error-browser-unsupported": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet. Prøv igjen med en annen nettleser. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Les mer]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Denne nettleseren støtter ikke WebAuthentication eller det er ikke tilgjengelig for dette nettstedet.",
 	"oathauth-webauthn-error-auth-generic": "Autentiseringsprosessen ble avbrutt. Begynn på nytt.",
 	"oathauth-webauthn-error-reg-generic": "Kunne ikke bekrefte nøkkelen din. Begynn prosessen på nytt.",

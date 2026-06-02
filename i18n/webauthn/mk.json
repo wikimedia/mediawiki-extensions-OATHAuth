@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "Во вашиот прелистувач мора да е овозможен JavaScript за да користите безбедносен клуч.",
 	"oathauth-webauthn-ui-login-prompt": "Употребете го вашиот безбедносен клуч или проследете ги напатствијата од прелистувачот.",
 	"oathauth-webauthn-ui-add-key": "Додај клуч",
-	"oathauth-webauthn-error-browser-unsupported": "Овој прелистувач не поддржува заверка со безбедносен клучч или пак тој не е достапен за ова мрежно место. Пробајте со друг прелистувач. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Прочитајте повеќе]",
+	"oathauth-webauthn-error-browser-unsupported": "Овој прелистувач не поддржува заверка со безбедносен клучч или пак тој не е достапен за ова мрежно место. Пробајте со друг прелистувач. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Прочитајте повеќе]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Овој прелистувач не поддржува заверка со безбедносен клуч или истиот не е достапен за ова мрежно место.",
 	"oathauth-webauthn-error-auth-generic": "Заверката беше прекината. Почнете ја одново.",
 	"oathauth-webauthn-error-reg-generic": "Не можев да ви го заверам клучот. Почнете го пријавувањето одново.",

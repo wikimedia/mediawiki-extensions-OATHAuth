@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "د خونديتوب کونجي کارولو لپاره بايد ستاسو ښوونگر کې جاواسکريپټ چارن وي.",
 	"oathauth-webauthn-ui-login-prompt": "خپل د خونديتوب کونجي وکاروئ يا د خپل ښوونگر لارښوونې وڅارئ.",
 	"oathauth-webauthn-ui-add-key": "کونجي ورگډول",
-	"oathauth-webauthn-error-browser-unsupported": "دا ښوونگر د خونديتوب کونجي د تاييد ملاتړ نه کوي يا دا د دې وېبپاڼې لپاره شتون نه لري. مهرباني وکړئ د بل ښوونگر کارولو هڅه وکړئ. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support نور ولولئ]",
+	"oathauth-webauthn-error-browser-unsupported": "دا ښوونگر د خونديتوب کونجي د تاييد ملاتړ نه کوي يا دا د دې وېبپاڼې لپاره شتون نه لري. مهرباني وکړئ د بل ښوونگر کارولو هڅه وکړئ. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support نور ولولئ]",
 	"oathauth-webauthn-error-browser-unsupported-console": "دا ښوونگر د خونديتوب کونجي د تاييد ملاتړ نه کوي يا دا د دې وېبپاڼې لپاره شتون نه لري.",
 	"oathauth-webauthn-error-auth-generic": "د تاييد بهير ودرول شو. مهرباني وکړئ د تاييد بهير بيا پيل کړئ.",
 	"oathauth-webauthn-error-reg-generic": "ستاسو کونجي تاييد نه‌شوه. مهرباني وکړئ د نوم‌ليکنې بهير بيا پيل کړئ.",

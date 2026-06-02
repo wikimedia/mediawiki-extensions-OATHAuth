@@ -8,7 +8,7 @@
 	"oathauth-webauthn-module-label": "Autenticação da internet (WebAuthn)",
 	"oathauth-webauthn-ui-login-prompt": "Toque no seu dispositivo de verificação ou siga as instruções do ''browser'', por favor",
 	"oathauth-webauthn-ui-add-key": "Adicionar chave",
-	"oathauth-webauthn-error-browser-unsupported": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet. Tente com um ''browser'' diferente, por favor. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Saiba mais]",
+	"oathauth-webauthn-error-browser-unsupported": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet. Tente com um ''browser'' diferente, por favor. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Saiba mais]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Este ''browser'' não suporta WebAuthentication ou ela não está disponível para este ''site'' da internet.",
 	"oathauth-webauthn-error-auth-generic": "O processo de autenticação foi interrompido. Reinicie o processo de autenticação, por favor",
 	"oathauth-webauthn-error-reg-generic": "Não foi possível verificar a sua chave. Reinicie o processo de registo, por favor",

@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "WebAuthn лело хьайн браузерехь JavaScript дӀахӀоттийна хила йеза.",
 	"oathauth-webauthn-ui-login-prompt": "Дехар до, таллархьама Ӏоттало аппаратах  йа браузер чуьра инструкцино бохург де",
 	"oathauth-webauthn-ui-add-key": "ТӀетоха догӀа",
-	"oathauth-webauthn-error-browser-unsupported": "ХӀокху браузеро ловш йац веб-аутентификаци йа иза кху сайтан тӀехь болх беш йац. Дехар до, хьажа кхийолу браузер тӀера. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Мадарра]",
+	"oathauth-webauthn-error-browser-unsupported": "ХӀокху браузеро ловш йац веб-аутентификаци йа иза кху сайтан тӀехь болх беш йац. Дехар до, хьажа кхийолу браузер тӀера. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Мадарра]",
 	"oathauth-webauthn-error-browser-unsupported-console": "ХӀокху браузеро веб-аутентификаци лелош йац йа иза хӀокху сайтана лерина йац.",
 	"oathauth-webauthn-error-auth-generic": "Аутентификацин процесс йукъахйаьккхина. Дехар до, аутентификацин процесс йухайолайе.",
 	"oathauth-webauthn-error-reg-generic": "Хьан догӀа тӀечӀагӀдан аьтто ца баьлла. Дехар до, йуха йолайе регистрацин процесс.",

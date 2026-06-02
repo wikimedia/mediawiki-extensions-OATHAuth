@@ -11,7 +11,7 @@
 	"oathauth-webauthn-javascript-required": "보안 키를 사용하려면 브라우저에서 자바스크립트를 활성화해야 합니다.",
 	"oathauth-webauthn-ui-login-prompt": "보안 키를 사용하거나 브라우저의 지침을 따르십시오.",
 	"oathauth-webauthn-ui-add-key": "키 추가",
-	"oathauth-webauthn-error-browser-unsupported": "이 브라우저는 보안 키 인증을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 더 알아보기]",
+	"oathauth-webauthn-error-browser-unsupported": "이 브라우저는 보안 키 인증을 지원하지 않거나 이 웹사이트에서 사용할 수 없습니다. 다른 브라우저로 시도해 보십시오. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support 더 알아보기]",
 	"oathauth-webauthn-error-browser-unsupported-console": "이 브라우저가 보안 키 인증을 지원하지 않거나, 이 웹사이트에서 보안 키 인증을 사용할 수 없습니다.",
 	"oathauth-webauthn-error-auth-generic": "인증 과정이 중단되었습니다. 인증 과정을 다시 시작해 주세요.",
 	"oathauth-webauthn-error-reg-generic": "키를 확인하지 못했습니다. 등록 과정을 다시 시작해 주십시오.",

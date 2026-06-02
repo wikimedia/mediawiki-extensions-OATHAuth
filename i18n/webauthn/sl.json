@@ -9,7 +9,7 @@
 	"oathauth-webauthn-javascript-required": "Za uporabo WebAuthn mora biti v vašem brskalniku omogočen JavaScript.",
 	"oathauth-webauthn-ui-login-prompt": "Dotaknite se naprave za preverjanje ali sledite navodilom v brskalniku.",
 	"oathauth-webauthn-ui-add-key": "Dodaj ključ",
-	"oathauth-webauthn-error-browser-unsupported": "Ta brskalnik ne podpira WebAuthentication ali ta ni na voljo za to spletno mesto. Poskusite z drugim brskalnikom. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Več o tem]",
+	"oathauth-webauthn-error-browser-unsupported": "Ta brskalnik ne podpira WebAuthentication ali ta ni na voljo za to spletno mesto. Poskusite z drugim brskalnikom. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Več o tem]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Ta brskalnik ne podpira WebAuthentication ali ta ni na voljo za to spletno mesto.",
 	"oathauth-webauthn-error-auth-generic": "Postopek avtentikacije je bil prekinjen. Začnite postopek avtentikacije znova.",
 	"oathauth-webauthn-error-reg-generic": "Vašega ključa ni bilo mogoče preveriti. Začnite postopek registracije znova.",

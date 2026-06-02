@@ -16,7 +16,7 @@
 	"oathauth-webauthn-javascript-required": "JavaScript doit être activé dans votre navigateur pour utiliser WebAuthn.",
 	"oathauth-webauthn-ui-login-prompt": "Veuillez toucher votre dispositif de vérification ou suivre les instructions du navigateur",
 	"oathauth-webauthn-ui-add-key": "Ajouter une clef",
-	"oathauth-webauthn-error-browser-unsupported": "Ce navigateur ne prend pas en charge le protocole WebAuthentication ou celui-ci n’est pas disponible pour ce site web. Veuillez essayer avec un autre navigateur. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support En savoir plus].",
+	"oathauth-webauthn-error-browser-unsupported": "Ce navigateur ne prend pas en charge le protocole WebAuthentication ou celui-ci n’est pas disponible pour ce site web. Veuillez essayer avec un autre navigateur. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support En savoir plus].",
 	"oathauth-webauthn-error-browser-unsupported-console": "Ce navigateur ne prend pas en charge WebAuthentication ou n’est pas disponible pour ce site web.",
 	"oathauth-webauthn-error-auth-generic": "Le processus d’authentification a été interrompu. Veuillez redémarrer le processus d’authentification.",
 	"oathauth-webauthn-error-reg-generic": "Impossible de vérifier votre clef. Veuillez redémarrer le processus d’inscription.",

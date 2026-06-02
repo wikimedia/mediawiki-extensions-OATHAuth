@@ -8,6 +8,7 @@
 	},
 	"oathauth-webauthn-ui-login-prompt": "Usa la tua chiave di sicurezza o segui le istruzioni del browser.",
 	"oathauth-webauthn-ui-add-key": "Aggiungi chiave",
+	"oathauth-webauthn-error-browser-unsupported": "Questo browser non supporta l'autenticazione tramite chiave di sicurezza oppure questa non è disponibile per questo sito web. Prova con un browser diverso. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Leggi di più]",
 	"oathauth-webauthn-registered-keys-section-name": "Chiavi registrate",
 	"oathauth-webauthn-error-verification-failed": "Verifica WebAuthn non riuscita.",
 	"oathauth-webauthn-error-passkey-verification-failed": "Verifica della passkey non riuscita.",

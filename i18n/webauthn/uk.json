@@ -12,7 +12,7 @@
 	"oathauth-webauthn-module-label": "Ключ безпеки",
 	"oathauth-webauthn-ui-login-prompt": "Використайте свій ключ безпеки або дотримуйтесь інструкцій вашого браузера.",
 	"oathauth-webauthn-ui-add-key": "Додати ключ",
-	"oathauth-webauthn-error-browser-unsupported": "Цей браузер не підтримує автентифікацію ключем безпеки, або вона недоступна для цього сайту. Будь ласка, спробуйте скористатися іншим браузером. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Дізнайтесь більше]",
+	"oathauth-webauthn-error-browser-unsupported": "Цей браузер не підтримує автентифікацію ключем безпеки, або вона недоступна для цього сайту. Будь ласка, спробуйте скористатися іншим браузером. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Дізнайтесь більше]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Цей браузер не підтримує автентифікацію ключем безпеки або вона недоступна для цього сайту.",
 	"oathauth-webauthn-error-auth-generic": "Процес автентифікації було перервано. Будь ласка, розпочніть процес автентифікації ще раз.",
 	"oathauth-webauthn-error-reg-generic": "Не вдалося верифікувати ваш ключ. Будь ласка, розпочніть процес реєстрації ще раз.",

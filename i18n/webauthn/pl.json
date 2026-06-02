@@ -12,7 +12,7 @@
 	"oathauth-webauthn-javascript-required": "Aby korzystać z klucza zabezpieczającego, w przeglądarce musi być włączona obsługa JavaScriptu.",
 	"oathauth-webauthn-ui-login-prompt": "Dotknij swojego klucza zabezpieczającego lub wykonaj instrukcje podane przez przeglądarkę.",
 	"oathauth-webauthn-ui-add-key": "Dodaj klucz",
-	"oathauth-webauthn-error-browser-unsupported": "Ta przeglądarka nie wspiera protokołu autoryzacji przez klucz zabezpieczający lub jest on niedostępny na tej stronie. Spróbuj ponownie, korzystając z innej przeglądarki. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Więcej]",
+	"oathauth-webauthn-error-browser-unsupported": "Ta przeglądarka nie wspiera protokołu autoryzacji przez klucz zabezpieczający lub jest on niedostępny na tej stronie. Spróbuj ponownie, korzystając z innej przeglądarki. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Więcej]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Ta przeglądarka nie wspiera protokołu autoryzacji przez klucz zabezpieczający lub jest on niedostępny na tej stronie.",
 	"oathauth-webauthn-error-auth-generic": "Proces autoryzacji został przerwany. Prosimy rozpocząć proces ponownie.",
 	"oathauth-webauthn-error-reg-generic": "Nie udało się zweryfikować twojego klucza. Prosimy rozpocząć proces ponownie.",

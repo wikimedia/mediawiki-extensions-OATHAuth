@@ -12,7 +12,7 @@
 	"oathauth-webauthn-javascript-required": "Güvenlik anahtarı kullanabilmek için tarayıcınızda JavaScript’in etkinleştirilmiş olması gerekir.",
 	"oathauth-webauthn-ui-login-prompt": "Lütfen güvenlik anahtarınıza dokunun ya da tarayıcının verdiği talimatları izleyin.",
 	"oathauth-webauthn-ui-add-key": "Anahtar ekle",
-	"oathauth-webauthn-error-browser-unsupported": "Bu tarayıcı güvenlik anahtarıyla kimlik doğrulamayı desteklemiyor ya da bu web sitesi için kullanılabilir değil. Lütfen farklı bir tarayıcıyla deneyin. Daha fazla bilgi için [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support adresini okuyun].",
+	"oathauth-webauthn-error-browser-unsupported": "Bu tarayıcı güvenlik anahtarıyla kimlik doğrulamayı desteklemiyor ya da bu web sitesi için kullanılabilir değil. Lütfen farklı bir tarayıcıyla deneyin. Daha fazla bilgi için [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support adresini okuyun].",
 	"oathauth-webauthn-error-browser-unsupported-console": "Bu tarayıcı güvenlik anahtarıyla kimlik doğrulamayı desteklemiyor ya da bu web sitesi için kullanılamıyor.",
 	"oathauth-webauthn-error-auth-generic": "Kimlik doğrulama işlemi yarıda kesildi. Lütfen kimlik doğrulama işlemini tekrar başlatın.",
 	"oathauth-webauthn-error-reg-generic": "Anahtarınız doğrulanamadı. Lütfen kayıt işlemini tekrar başlatın.",

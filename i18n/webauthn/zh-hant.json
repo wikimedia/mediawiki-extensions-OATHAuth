@@ -3,6 +3,7 @@
 		"authors": [
 			"Kly",
 			"LowensteinYang",
+			"Peterxy",
 			"Peterxy12"
 		]
 	},
@@ -10,7 +11,7 @@
 	"oathauth-webauthn-javascript-required": "您的瀏覽器必須啟用JavaScript才能使用安全金鑰。",
 	"oathauth-webauthn-ui-login-prompt": "請輕觸您的安全金鑰或依照瀏覽器的指示說明。",
 	"oathauth-webauthn-ui-add-key": "新增密鑰",
-	"oathauth-webauthn-error-browser-unsupported": "此瀏覽器不支援安全金鑰驗證或是不適用於此網站。請使用別種瀏覽器嘗試。[https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support 了解更多]",
+	"oathauth-webauthn-error-browser-unsupported": "此瀏覽器不支援安全金鑰驗證或是不適用於此網站。請使用別種瀏覽器嘗試。[https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support 了解更多]",
 	"oathauth-webauthn-error-browser-unsupported-console": "此瀏覽器不支援安全金鑰驗證或是不適用於此網站。",
 	"oathauth-webauthn-error-auth-generic": "驗證程序被中斷，請重新開始驗證程序。",
 	"oathauth-webauthn-error-reg-generic": "無法驗證您的金鑰，請重新開始註冊流程。",

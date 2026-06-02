@@ -10,7 +10,7 @@
 	"oathauth-webauthn-module-label": "Ключ безопасности",
 	"oathauth-webauthn-ui-login-prompt": "Пожалуйста, прикоснитесь ключом безопасности или следуйте инструкциям в браузере.",
 	"oathauth-webauthn-ui-add-key": "Добавить ключ",
-	"oathauth-webauthn-error-browser-unsupported": "Этот браузер не поддерживает аутентификацию с помощью ключа безопасности, либо она недоступна для этого сайта. Пожалуйста, попробуйте другой браузер. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Подробнее]",
+	"oathauth-webauthn-error-browser-unsupported": "Этот браузер не поддерживает аутентификацию с помощью ключа безопасности, либо она недоступна для этого сайта. Пожалуйста, попробуйте другой браузер. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Подробнее]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Этот браузер не поддерживает аутентификацию с помощью ключа безопасности, либо она недоступна для этого сайта.",
 	"oathauth-webauthn-error-auth-generic": "Процесс аутентификации был прерван. Пожалуйста, начните процесс аутентификации снова.",
 	"oathauth-webauthn-error-reg-generic": "Не удалось подтвердить ваш ключ. Пожалуйста, начните процесс регистрации снова.",

@@ -12,7 +12,7 @@
 	"oathauth-webauthn-javascript-required": "Debe habilitar JavaScript en su navegador para utilizar una clave de seguridad.",
 	"oathauth-webauthn-ui-login-prompt": "Por favor toque su clave de seguridad o siga las instrucciones del navegador.",
 	"oathauth-webauthn-ui-add-key": "Añadir clave",
-	"oathauth-webauthn-error-browser-unsupported": "Este navegador no admite la autenticación con clave de seguridad o no está disponible para este sitio web. Inténtelo con otro navegador. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leer más]",
+	"oathauth-webauthn-error-browser-unsupported": "Este navegador no admite la autenticación con clave de seguridad o no está disponible para este sitio web. Inténtelo con otro navegador. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Leer más]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Este navegador no admite la autenticación de clave de seguridad o no está disponible para este sitio web.",
 	"oathauth-webauthn-error-auth-generic": "Se interrumpió el proceso de autenticación. Por favor reinicia el proceso.",
 	"oathauth-webauthn-error-reg-generic": "No se pudo verificar tu clave. Por favor reinicia el proceso de registro.",

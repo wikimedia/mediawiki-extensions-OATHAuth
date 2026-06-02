@@ -8,7 +8,7 @@
 	"oathauth-webauthn-javascript-required": "JavaScript debe esser activate in tu navigator pro usar un clave de securitate.",
 	"oathauth-webauthn-ui-login-prompt": "Usa tu clave de securitate o seque le instructiones de tu navigator.",
 	"oathauth-webauthn-ui-add-key": "Adder clave",
-	"oathauth-webauthn-error-browser-unsupported": "Iste navigator non supporta le authentication per clave de securitate o illo non es disponibile pro iste sito web. Per favor tenta lo con un altere navigator. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Leger plus]",
+	"oathauth-webauthn-error-browser-unsupported": "Iste navigator non supporta le authentication per clave de securitate o illo non es disponibile pro iste sito web. Per favor tenta lo con un altere navigator. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Leger plus]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Iste navigator non supporta le authentication per clave de securitate, o illo non es disponibile pro iste sito web.",
 	"oathauth-webauthn-error-auth-generic": "Le processo de authentication ha essite interrumpite. Per favor recomencia le processo de authentication.",
 	"oathauth-webauthn-error-reg-generic": "Non poteva verificar tu clave. Per favor recomencia le processo de authentication.",
