@@ -34,16 +34,10 @@ class OATHAuthModuleRegistry {
 		}
 
 		$data = $this->getModules()[$key];
-		if ( is_callable( $data ) ) {
-			$module = $data();
-		} else {
-			$module = $this->objectFactory->createObject(
-				$data,
-				[ 'assertClass' => IModule::class ]
-			);
-		}
-
-		return $module;
+		return $this->objectFactory->createObject(
+			$data,
+			[ 'assertClass' => IModule::class ]
+		);
 	}
 
 	/**
