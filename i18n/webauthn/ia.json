@@ -34,5 +34,6 @@
 	"oathauth-webauthn-credential-help": "Credential del usator basate sur le datos de authentication",
 	"oathauth-webauthn-add-security-key": "Adder un clave de securitate",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Usar clave de securitate o clave de accesso",
-	"oathauth-webauthn-login-passkey-button": "Aperir session con clave de accesso"
+	"oathauth-webauthn-login-passkey-button": "Aperir session con clave de accesso",
+	"oathauth-webauthn-deprecated-key": "Iste clave non es secur e non debe esser usate. Tenta lo de novo con un altere clave."
 }

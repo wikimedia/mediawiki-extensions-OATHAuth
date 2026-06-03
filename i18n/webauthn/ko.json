@@ -37,5 +37,6 @@
 	"oathauth-webauthn-credential-help": "인증 데이터를 기반으로 한 사용자 자격 증명",
 	"oathauth-webauthn-add-security-key": "보안 키를 추가합니다",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "보안 키 또는 암호를 사용합니다",
-	"oathauth-webauthn-login-passkey-button": "패스키로 로그인"
+	"oathauth-webauthn-login-passkey-button": "패스키로 로그인",
+	"oathauth-webauthn-deprecated-key": "이 키는 안전하지 않으므로 사용해서는 안 됩니다. 다른 키를 사용하여 다시 시도해 주세요."
 }

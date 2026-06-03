@@ -35,5 +35,6 @@
 	"oathauth-webauthn-credential-help": "Credencial do usuario baseada nos datos de autenticación",
 	"oathauth-webauthn-add-security-key": "Engadir unha chave de seguranza",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Usar a chave de seguranza ou a chave de acceso",
-	"oathauth-webauthn-login-passkey-button": "Iniciar sesión cunha chave de acceso"
+	"oathauth-webauthn-login-passkey-button": "Iniciar sesión cunha chave de acceso",
+	"oathauth-webauthn-deprecated-key": "Esta chave non é segura e non debe usarse. Inténtao outra vez cunha chave diferente."
 }
