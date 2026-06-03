@@ -10,7 +10,8 @@
 			"Sakretsu",
 			"GseSro",
 			"Dream Indigo",
-			"Asteralee"
+			"Asteralee",
+			"Titore"
 		]
 	},
 	"oathauth-desc": "Fornisce supporto per l'autenticazione utilizzando password a uso singolo basate su HMAC",
@@ -19,6 +20,7 @@
 	"oathauth-secret": "Chiave segreta per l'autenticazione a due fattori:",
 	"oathauth-enable": "Abilita autenticazione a due fattori",
 	"oathauth-recoverycodes": "Il seguente è un elenco di codici di ripristino monouso. Questi codici possono essere utilizzati solo una volta e sono per casi di emergenza quando non hai accesso al tuo dispositivo. Sei pregato di annotarteli e tenerli in un luogo sicuro. Si consiglia di contrassegnare ciascun codice come utilizzato una volta effettuato l'accesso utilizzandolo. Se perdi il tuo dispositivo, questi codici sono l'unico modo per recuperare l'accesso al tuo account.",
+	"oathauth-recoverycodes-important": "Questo passaggio è importante! Non saltare questo passaggio!",
 	"oathauth-recoverycodes-neveragain": "Questi codici non saranno mostrati mai più!",
 	"oathauth-recoverytokens-createdat": "Codici di recupero creati: $1",
 	"oathauth-recoverycodes-download": "Scarica",
@@ -41,6 +43,7 @@
 	"right-oathauth-disable-for-user": "Disabilita l'autenticazione a due fattori per un utente",
 	"right-oathauth-verify-user": "Controlla se un utente ha l'autenticazione a due fattori abilitata",
 	"action-oathauth-verify-user": "controllare se un utente ha l'autenticazione a due fattori abilitata",
+	"oathauth-disable-intro": "Da un grande potere derivano grandi responsabilità",
 	"oathauth-enteruser": "Nome utente:",
 	"oathauth-enterverifyreason": "Motivo per controllare:",
 	"oathauth-user-not-does-not-have-oath-enabled": "L'utente non ha l'autenticazione a due fattori abilitata, quindi non c'è nulla da disabilitare",
@@ -76,7 +79,11 @@
 	"oathauth-totp-disable-warning": "Non potrai più utilizzare il dispositivo di autenticazione registrato con questa utenza. Tutti i codici di ripristino associati a questa utenza verranno invalidati.",
 	"oathauth-invalidrequest": "Richiesta non valida",
 	"notification-header-oathauth-remove-device": "Un dispositivo di autenticazione a due fattori è stato rimosso dalla {{GENDER:$2|tua utenza}}.",
+	"notification-body-oathauth-disable": "Se non l'hai fatto tu, la tua utenza potrebbe essere stata compromessa.",
+	"notification-body-oathauth-disable-other": "Se non l'hai richiesto tu, dovresti contattare un amministratore.",
+	"notification-body-oathauth-disable-remaining": "{{PLURAL:$3|C'è ancora un dispositivo aggiuntivo attivo|Ci sono ancora $3 dispositivi aggiuntivi attivi}} sulla tua utenza.",
 	"oathauth-notifications-disable-primary": "Controlla le impostazioni di autenticazione a due fattori",
+	"notification-body-oathauth-enable": "Se non l'hai fatto tu, la tua utenza potrebbe essere stata compromessa.",
 	"oathauth-notifications-enable-help": "Aiuto",
 	"oathauth-notifications-enable-primary": "Controlla le impostazioni di autenticazione a due fattori",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ha l'autenticazione a due fattori abilitata.",
