@@ -35,7 +35,9 @@ class UpdateKeysToLatestVersion extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'OATHAuth' );
-		$this->addDescription( '' );
+		$this->addDescription(
+			'Update keys to their latest version. This is designed to be run every time update.php is run'
+		);
 		$this->setBatchSize( 500 );
 	}
 
