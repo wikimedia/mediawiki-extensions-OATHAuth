@@ -38,5 +38,6 @@
 	"oathauth-webauthn-credential-help": "Aanmeldgegevens van de gebruiker, gebaseerd op authenticatiegegevens",
 	"oathauth-webauthn-add-security-key": "Een beveiligingssleutel toevoegen",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Gebruik de beveiligingssleutel",
-	"oathauth-webauthn-login-passkey-button": "Aanmelden met wachtwoordsleutel"
+	"oathauth-webauthn-login-passkey-button": "Aanmelden met wachtwoordsleutel",
+	"oathauth-webauthn-deprecated-key": "Deze sleutel is niet veilig en mag niet worden gebruikt. Probeer het opnieuw met een andere sleutel."
 }
