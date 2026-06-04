@@ -155,7 +155,7 @@
 	"oathauth-delete-warning-header": "$1 제거",
 	"oathauth-delete-confirm-box": "계속하려면 다음을 입력하세요: \"{{int:oathauth-authenticator-delete-text}}\"",
 	"oathauth-delete-wrong-confirm-message": "최종 키 제거를 위한 입력이 잘못되었습니다. 계속하려면 다음을 입력하세요: \"{{int:oathauth-authenticator-delete-text}}\"",
-	"oathauth-delete-success": "<strong>$1</strong>이(가) 제거되었습니다.",
+	"oathauth-delete-success": "제거되었습니다!",
 	"oathauth-created-at": "$1에 추가됨",
-	"oathauth-enable-success": "<strong>$1</strong>이(가) 추가되었습니다."
+	"oathauth-enable-success": "추가되었습니다!"
 }

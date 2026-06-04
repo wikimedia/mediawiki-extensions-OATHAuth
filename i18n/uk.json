@@ -152,7 +152,7 @@
 	"oathauth-delete-warning-header": "Вилучити «$1»",
 	"oathauth-delete-confirm-box": "Введіть «{{int:oathauth-authenticator-delete-text}}», щоб продовжити",
 	"oathauth-delete-wrong-confirm-message": "Неправильне введення для остаточного вилучення ключа. Будь ласка, введіть «{{int:oathauth-authenticator-delete-text}}», щоб продовжити",
-	"oathauth-delete-success": "<strong>$1</strong> вилучено.",
+	"oathauth-delete-success": "Видалено!",
 	"oathauth-created-at": "Додано $1",
-	"oathauth-enable-success": "Додано <strong>$1</strong>."
+	"oathauth-enable-success": "Додано!"
 }

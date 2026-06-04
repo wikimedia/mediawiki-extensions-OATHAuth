@@ -121,7 +121,7 @@
 	"oathauth-delete-warning-header": "Ka saar $1",
 	"oathauth-delete-confirm-box": "Geli \"{{int:oathauth-authenticator-delete-text}}\" si aad u sii wadato",
 	"oathauth-delete-wrong-confirm-message": "Gelin khaldan oo loogu talagalay ka saarista furaha ugu dambeeya. Fadlan ku qor \"{{int:oathauth-authenticator-delete-text}}\" si aad u sii wadato",
-	"oathauth-delete-success": "<strong>$1</strong> waa la saaray.",
+	"oathauth-delete-success": "Waa laga saaray!",
 	"oathauth-created-at": "Lagu daray $1",
-	"oathauth-enable-success": "<strong>$1</strong> waa lagu daray."
+	"oathauth-enable-success": "Waa lagu daray!"
 }

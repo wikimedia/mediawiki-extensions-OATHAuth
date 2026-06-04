@@ -150,7 +150,7 @@
 	"oathauth-delete-confirm-box": "Indtast \"{{int:oathauth-authenticator-delete-text}}\" for at fortsætte",
 	"oathauth-delete-warning-final": "Hvis du fjerner denne metode, deaktiveres tofaktorgodkendelse helt.",
 	"oathauth-delete-wrong-confirm-message": "Forkert input til endelig fjernelse af nøgle. Skriv venligst \"{{int:oathauth-authenticator-delete-text}}\" for at fortsætte.",
-	"oathauth-delete-success": "<strong>$1</strong> fjernet.",
+	"oathauth-delete-success": "Fjernet!",
 	"oathauth-created-at": "Tilføjet på $1",
-	"oathauth-enable-success": "<strong>$1</strong> tilføjet."
+	"oathauth-enable-success": "Tilføjet!"
 }

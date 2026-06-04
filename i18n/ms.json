@@ -139,7 +139,7 @@
 	"oathauth-delete-warning-header": "Buang $1",
 	"oathauth-delete-confirm-box": "Masukkan \"{{int:oathauth-authenticator-delete-text}}\" untuk teruskan",
 	"oathauth-delete-wrong-confirm-message": "Input salah untuk pembuangan kunci akhir. Sila taip \"{{int:oathauth-authenticator-delete-text}}\" untuk teruskan",
-	"oathauth-delete-success": "<strong>$1</strong> dikeluarkan.",
+	"oathauth-delete-success": "Sudah dihapuskan!",
 	"oathauth-created-at": "Ditambah pada $1",
-	"oathauth-enable-success": "<strong>$1</strong> ditambah."
+	"oathauth-enable-success": "Sudah ditambah!"
 }

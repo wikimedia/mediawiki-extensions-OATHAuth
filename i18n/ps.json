@@ -148,7 +148,7 @@
 	"oathauth-delete-warning": "تاسو به نور د دې تاييدي چلندلارې څخه د ننوتلو لپاره کار نشئ اخيستلای او ستاسو د بياترلاسن کوډونه به نور کار ونکړي.",
 	"oathauth-delete-confirm-box": "دوام لپاره \"{{int:oathauth-authenticator-delete-text}}\" وليکئ",
 	"oathauth-delete-wrong-confirm-message": "د وروستۍ کونجۍ لرې کولو لپاره ناسمه ننوتنه. مهرباني وکړئ د دوام ورکولو لپاره \"{{int:oathauth-authenticator-delete-text}}\" وليکئ",
-	"oathauth-delete-success": "<strong>$1</strong> لرې‌شو",
+	"oathauth-delete-success": "لرې‌شو!",
 	"oathauth-created-at": "$1 کې ورگډ شو",
-	"oathauth-enable-success": "<strong>$1</strong> ورگډ شو."
+	"oathauth-enable-success": "ورگډ شو."
 }

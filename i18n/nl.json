@@ -160,7 +160,7 @@
 	"oathauth-delete-confirm-box": "Voer \"{{int:oathauth-authenticator-delete-text}}\" in om door te gaan",
 	"oathauth-delete-warning-final": "Als u deze methode verwijdert, wordt tweetrapsauthenticatie volledig uitgeschakeld.",
 	"oathauth-delete-wrong-confirm-message": "Onjuiste invoer voor definitieve sleutelverwijdering. Typ \"{{int:oathauth-authenticator-delete-text}}\" om door te gaan.",
-	"oathauth-delete-success": "<strong>$1</strong> verwijderd.",
+	"oathauth-delete-success": "Verwijderd!",
 	"oathauth-created-at": "Toegevoegd op $1",
-	"oathauth-enable-success": "<strong>$1</strong> toegevoegd."
+	"oathauth-enable-success": "Toegevoegd!"
 }

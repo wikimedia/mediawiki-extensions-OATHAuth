@@ -126,7 +126,7 @@
 	"oathauth-delete-warning-header": "$1 ewechhuelen",
 	"oathauth-delete-confirm-box": "Gitt „{{int:oathauth-authenticator-delete-text}}“ a fir virunzefueren",
 	"oathauth-delete-warning-final": "Wann Dir dës Method ewechhuelt, gëtt d'Zwee-Faktor-Authentifizéierung komplett desaktivéiert.",
-	"oathauth-delete-success": "<strong>$1</strong> ewechgeholl.",
+	"oathauth-delete-success": "Ewechgeholl!",
 	"oathauth-created-at": "De(n) $1 derbäigesat",
-	"oathauth-enable-success": "<strong>$1</strong> derbäigesat."
+	"oathauth-enable-success": "Derbäigesat!"
 }

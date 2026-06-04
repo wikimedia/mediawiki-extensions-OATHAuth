@@ -128,7 +128,7 @@
 	"oathauth-delete-confirm-box": "Sisesta \"{{int:oathauth-authenticator-delete-text}}\", et jätkata",
 	"oathauth-delete-warning-final": "Selle meetodi eemaldamisega keelatakse kaheastmeline autentimine täielikult.",
 	"oathauth-delete-wrong-confirm-message": "Eemaldamise lõpule viimisel sisestatud vale võti. Palun sisesta \"{{int:oathauth-authenticator-delete-text}}\", et jätkata.",
-	"oathauth-delete-success": "<strong>$1</strong> eemaldatud.",
+	"oathauth-delete-success": "Eemaldatud!",
 	"oathauth-created-at": "Lisamisaeg: $1",
-	"oathauth-enable-success": "<strong>$1</strong> lisatud."
+	"oathauth-enable-success": "Lisatud!"
 }

@@ -119,7 +119,7 @@
 	"oathauth-authenticator-delete": "Уклони",
 	"oathauth-authenticator-delete-text": "уклони",
 	"oathauth-delete-warning-header": "Уклони $1",
-	"oathauth-delete-success": "<strong>$1</strong> уклоњен.",
+	"oathauth-delete-success": "Уклоњено!",
 	"oathauth-created-at": "Додато $1",
-	"oathauth-enable-success": "Додата <strong>$1</strong>."
+	"oathauth-enable-success": "Додато!"
 }
