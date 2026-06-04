@@ -65,7 +65,9 @@ class ExpiringRecoveryCodeGenerator {
 		// Given that the page is normally not used frequently, we defer to the system administrator to set
 		// appropriate limits to account for that behavior.
 		if ( $performer->pingLimiter( 'recover-2fa' ) ) {
+			// @codeCoverageIgnoreStart
 			return Status::newFatal( 'oathauth-throttled' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$oathUser = $this->userRepo->findByUser( $user );
@@ -88,7 +90,7 @@ class ExpiringRecoveryCodeGenerator {
 
 		$expiryTimestamp = ConvertibleTimestamp::convert(
 			TS::MW,
-			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->codeValidityDays * 86400
+			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->codeValidityDays * 86_400
 		);
 		$key = $recoveryCodesModule->ensureExistence( $oathUser );
 		try {
@@ -102,7 +104,9 @@ class ExpiringRecoveryCodeGenerator {
 			$key->removeTemporaryCodes();
 			$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
 				$this->codesCount,
-				[ 'expiry' => $expiryTimestamp ]
+				[ 'expiry' => $expiryTimestamp ],
+				// Don't throw this time, error handling is done below
+				true
 			);
 			$this->codesCount = count( $newRecoveryCodes );
 

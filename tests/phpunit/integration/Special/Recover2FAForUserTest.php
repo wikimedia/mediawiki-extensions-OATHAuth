@@ -35,6 +35,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 class Recover2FAForUserTest extends SpecialPageTestBase {
 	use BypassReauthTrait;
 
+	private const array RECOVERY_KEYS = [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ];
+
 	private ?ExtensionRegistry $mockExtensionRegistry;
 
 	protected function setUp(): void {
@@ -164,7 +166,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 
 		$oathUser = $userRepo->findByUser( $otherUser );
 		$userRepo->createKey( $oathUser, $recoveryCodesModule, [
-			'recoverycodekeys' => [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ],
+			'recoverycodekeys' => self::RECOVERY_KEYS,
 		], '127.0.0.1' );
 
 		$keys = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
@@ -201,7 +203,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 		$newCodes = $newKey->getRecoveryCodeKeys();
 		$this->assertCount( 12, $newCodes );
 
-		$this->assertSame( [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ], array_slice( $newCodes, 0, 2 ) );
+		$this->assertSame( self::RECOVERY_KEYS, array_slice( $newCodes, 0, 2 ) );
 
 		$tempCode = $newKey->getRecoveryCodes()[2];
 		$this->assertSame( '20260106000000', $tempCode->getExpiryTimestamp() );
@@ -249,7 +251,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 
 		$oathUser = $userRepo->findByUser( $otherUser );
 		$userRepo->createKey( $oathUser, $recoveryCodesModule, [
-			'recoverycodekeys' => [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ],
+			'recoverycodekeys' => self::RECOVERY_KEYS,
 		], '127.0.0.1' );
 
 		$keys = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME );
@@ -325,10 +327,8 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 
 		$oathUser = $userRepo->findByUser( $otherUser );
 		$userRepo->createKey( $oathUser, $recoveryCodesModule, [
-			'recoverycodekeys' => [ 'H8572S2FB1LCGYWN', 'V61A5VEM42DGLDMU' ],
+			'recoverycodekeys' => self::RECOVERY_KEYS,
 		], '127.0.0.1' );
-
-		$reason = 'I am required!';
 
 		$user = $this->getTestSysop()->getUser();
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
@@ -337,7 +337,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 			'',
 			new FauxRequest(
 				[
-					'reason' => $reason,
+					'reason' => 'I am required!',
 					'user' => $otherUser->getName(),
 				],
 				true

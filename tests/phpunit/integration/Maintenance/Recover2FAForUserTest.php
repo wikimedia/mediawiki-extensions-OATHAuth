@@ -9,6 +9,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use StatusValue;
 
 /**
+ * @covers \MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\Recover2FAForUser
  * @group Database
  */
@@ -59,12 +60,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 	}
 
-	public function testRecover2FAForUser(): void {
-		[ , $user, , , ] = $this->setupUserWith2FA();
-
-		$user->setEmail( self::EMAIL_ADDRESS );
-		$user->saveSettings();
-
+	private function setEmailerMock(): void {
 		$mailerMock = $this->createMock( IEmailer::class );
 		$mailerMock->expects( $this->once() )
 			->method( 'send' )
@@ -73,12 +69,43 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 				return StatusValue::newGood();
 			} );
 		$this->setService( 'Emailer', $mailerMock );
+	}
+
+	public function testRecover2FAForUser(): void {
+		[ , $user, , , ] = $this->setupUserWith2FA();
+
+		$user->setEmail( self::EMAIL_ADDRESS );
+		$user->saveSettings();
+
+		$this->setEmailerMock();
 
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );
 		// TODO: Shouldn't actually be needed...
 		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
 		$this->expectOutputString( "Expiring recovery codes generated successfully and emailed to $username.\n" );
+		$this->maintenance->execute();
+	}
+
+	public function testTooManyRecoveryCodes(): void {
+		[ , $user, , , ] = $this->setupUserWith2FA();
+
+		$user->setEmail( self::EMAIL_ADDRESS );
+		$user->saveSettings();
+
+		// Generate more than the max..
+		$this->overrideConfigValue( 'OATHRecoveryCodesCount', 10 );
+		$this->overrideConfigValue( 'OATHMaxRecoveryCodesCount', 1 );
+
+		$username = $user->getName();
+		$this->maintenance->setArg( 'user', $username );
+		// TODO: Shouldn't actually be needed...
+		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
+		$this->expectCallToFatalError();
+		$this->expectOutputString(
+			// phpcs:ignore Generic.Files.LineLength.TooLong
+			"The user has already reached a maximum possible number of recovery codes. Unable to generate additional recovery codes.\n"
+		);
 		$this->maintenance->execute();
 	}
 }
