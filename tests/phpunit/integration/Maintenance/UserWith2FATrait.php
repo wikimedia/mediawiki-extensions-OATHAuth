@@ -14,15 +14,19 @@ use MediaWiki\MainConfigNames;
 
 trait UserWith2FATrait {
 
+	private function useLocalCentralIdLookup(): void {
+		// Ensure to use local because CentralAuth may exist in CI
+		$this->overrideConfigValues( [
+			MainConfigNames::CentralIdLookupProvider => 'local',
+		] );
+	}
+
 	/**
 	 * // phpcs:disable Generic.Files.LineLength.TooLong
 	 * @return array{OATHUserRepository, \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry, \MediaWiki\Extension\OATHAuth\OATHUser, \MediaWiki\User\User}
 	 */
 	private function setupConfig(): array {
-		// Ensure to use local because CentralAuth may exist in CI
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
+		$this->useLocalCentralIdLookup();
 
 		$user = $this->getTestSysop()->getUser();
 		$services = OATHAuthServices::getInstance( $this->getServiceContainer() );

@@ -23,7 +23,8 @@ class Recover2FAForUser extends Maintenance {
 		$this->addArg( 'user', 'The username to create recovery codes for' );
 		$this->addArg(
 			'email',
-			"The email address to send recovery codes to (if the user doesn't already have an email set)"
+			"The email address to send recovery codes to (if the user doesn't already have an email set)",
+			false
 		);
 		$this->requireExtension( 'OATHAuth' );
 	}
@@ -35,12 +36,11 @@ class Recover2FAForUser extends Maintenance {
 		$result = $service->attemptToGenerateRecoveryCodes(
 			User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] ),
 			$user,
-			$this->getArg( 1 ),
+			$this->getArg( 1, '' ),
 		);
 
 		if ( !$result->isOK() ) {
-			$this->error( $result->getWikiText() );
-			return;
+			$this->fatalError( $result->getWikiText() );
 		}
 
 		$this->output( "Expiring recovery codes generated successfully and emailed to $user.\n" );

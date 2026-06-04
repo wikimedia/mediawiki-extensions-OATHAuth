@@ -23,9 +23,39 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testNonExistentUser(): void {
+		$this->useLocalCentralIdLookup();
+
 		$this->maintenance->setArg( 'user', 'foobar' );
 		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
+		$this->expectCallToFatalError();
 		$this->expectOutputString( "No user account was found with that name\n" );
+		$this->maintenance->execute();
+	}
+
+	public function testUserWithoutEmailAndNoEmailArgSet(): void {
+		[ , $user, , , ] = $this->setupUserWith2FA();
+		$username = $user->getName();
+		$this->maintenance->setArg( 'user', $username );
+		$this->expectCallToFatalError();
+		$this->expectOutputString(
+			// phpcs:ignore Generic.Files.LineLength.TooLong
+			"User doesn't have a confirmed email address associated with their account. Please provide an email address to send the message to.\n"
+		);
+		$this->maintenance->execute();
+	}
+
+	public function testUserWithout2FA(): void {
+		$this->useLocalCentralIdLookup();
+
+		$user = $this->getTestSysop()->getUser();
+		$user->setEmail( self::EMAIL_ADDRESS );
+		$user->saveSettings();
+		$username = $user->getName();
+		$this->maintenance->setArg( 'user', $username );
+		$this->expectCallToFatalError();
+		$this->expectOutputString(
+			"User doesn't have two-factor authentication enabled, so recovery is not applicable.\n"
+		);
 		$this->maintenance->execute();
 	}
 
@@ -33,6 +63,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 		[ , $user, , , ] = $this->setupUserWith2FA();
 
 		$user->setEmail( self::EMAIL_ADDRESS );
+		$user->saveSettings();
 
 		$mailerMock = $this->createMock( IEmailer::class );
 		$mailerMock->expects( $this->once() )
@@ -45,6 +76,7 @@ class Recover2FAForUserTest extends MaintenanceBaseTestCase {
 
 		$username = $user->getName();
 		$this->maintenance->setArg( 'user', $username );
+		// TODO: Shouldn't actually be needed...
 		$this->maintenance->setArg( 'email', self::EMAIL_ADDRESS );
 		$this->expectOutputString( "Expiring recovery codes generated successfully and emailed to $username.\n" );
 		$this->maintenance->execute();
