@@ -28,6 +28,24 @@ use MediaWikiIntegrationTestCase;
  */
 class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
+	public function testUserRequired2FA(): void {
+		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [
+			'user' => [
+				'memberConditions' => [ APCOND_OATH_HAS2FA ],
+			],
+		] );
+
+		$this->setUserGroupManagerMock( [ 'user' ] );
+
+		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+
+		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
+		$this->assertSame(
+			[ 'user' ],
+			$checker->getGroupsRequiring2FA( $user )
+		);
+	}
+
 	public function testGetGroupsRequiring2FA_simpleCondition() {
 		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [
 			'interface-admin' => [
@@ -41,7 +59,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			]
 		] );
 
-		$this->setUserGroupManagerMock( [ 'interface-admin', 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'interface-admin', 'sysop' ] );
 
 		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
 
@@ -77,7 +95,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			->willReturn( 0 );
 		$this->setService( 'UserEditTracker', $userEditTracker );
 
-		$this->setUserGroupManagerMock( [ 'interface-admin', 'checkuser', 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'interface-admin', 'checkuser', 'sysop' ] );
 
 		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
 
@@ -93,7 +111,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			],
 		] );
 
-		$this->setUserGroupManagerMock( [ 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'sysop' ] );
 
 		$userRequirementsChecker = $this->createMock( UserRequirementsConditionChecker::class );
 		$userRequirementsChecker->expects( $this->never() )
@@ -111,7 +129,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGroupsRequiring2FA_crossWiki() {
-		$this->setUserGroupManagerMock( [ 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'sysop' ] );
 
 		$siteConfiguration = $this->createMock( SiteConfiguration::class );
 		$siteConfiguration->method( 'get' )
@@ -142,7 +160,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 	public function testGroupsRequiring2FAAcrossWikiFarm_withCentralAuth() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CentralAuth' );
 
-		$this->setUserGroupManagerMock( [ 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'sysop' ] );
 
 		$caUser = $this->createMock( CentralAuthUser::class );
 		$caUser->method( 'queryAttached' )
@@ -212,7 +230,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			->willReturn( false );
 		$this->setService( 'ExtensionRegistry', $extensionRegistry );
 
-		$this->setUserGroupManagerMock( [ 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'sysop' ] );
 
 		$restrictedGroups = [
 			'sysop' => [
@@ -308,7 +326,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		// User has a local 'sysop' group on the central wiki, and a global 'global-sysop' group,
 		// both requiring 2FA. Both should appear merged under the central wiki key.
-		$this->setUserGroupManagerMock( [ 'sysop' ] );
+		$this->setUserGroupManagerMock( [ 'user', 'sysop' ] );
 
 		$caUser = $this->createMock( CentralAuthUser::class );
 		$caUser->method( 'queryAttached' )
@@ -364,6 +382,8 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 				$ugm = $this->createMock( UserGroupManager::class );
 				$ugm->method( 'getUserGroups' )
 					->willReturn( $userGroups );
+				$ugm->method( 'getUserImplicitGroups' )
+					->willReturn( [] );
 				return $ugm;
 			} );
 		$this->setService( 'UserGroupManagerFactory', $userGroupManagerFactory );

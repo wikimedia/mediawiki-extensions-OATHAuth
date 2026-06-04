@@ -31,9 +31,8 @@ class Mandatory2FAChecker {
 
 	/**
 	 * For a given user, returns a list of their groups that require 2FA. This function checks the requirement
-	 * in the context of particular user, as some other group conditions may apply.
+	 * in the context of a particular user, as some other group conditions may apply.
 	 *
-	 * Only explicit groups are checked.
 	 * @param UserIdentity $user The user to check
 	 * @return list<string> List of groups the user is a member of that require 2FA.
 	 */
@@ -41,7 +40,7 @@ class Mandatory2FAChecker {
 		$ugm = $this->userGroupManagerFactory->getUserGroupManager( $user->getWikiId() );
 		$groupRestrictions = $this->restrictedUserGroupConfigReader->getConfig( $user->getWikiId() );
 
-		$groups = $ugm->getUserGroups( $user );
+		$groups = array_merge( $ugm->getUserGroups( $user ), $ugm->getUserImplicitGroups( $user ) );
 		$groupsRequiring2FA = [];
 		foreach ( $groups as $group ) {
 			if ( !isset( $groupRestrictions[$group] ) ) {
