@@ -21,6 +21,7 @@
 	"oathauth-webauthn-ui-remove-key": "移除",
 	"oathauth-webauthn-error-module-not-enabled": "未为{{GENDER:$2|用户“$2”}}启用模块“$1”。",
 	"oathauth-webauthn-error-verification-failed": "WebAuthn验证失败。",
+	"oathauth-webauthn-error-passkey-verification-failed": "通行密钥认证失败。",
 	"oathauth-webauthn-error-credentials-missing": "WebAuthn凭证未发送。",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|用户“$1”}}无法注册新凭证。",
 	"oathauth-webauthn-error-invalid-new-key": "模块返回的新密钥不是必需的类型。",
