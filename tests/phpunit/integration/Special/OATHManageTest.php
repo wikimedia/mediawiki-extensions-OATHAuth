@@ -505,6 +505,36 @@ class OATHManageTest extends SpecialPageTestBase {
 		}
 	}
 
+	public function testDisplays2FARequiredNoticeWhenCurrentWikiNotInWikiMap() {
+		$localWiki = WikiMap::getCurrentWikiId();
+
+		$mandatory2FAChecker = $this->createMock( Mandatory2FAChecker::class );
+		$mandatory2FAChecker->method( 'getGroupsRequiring2FAAcrossWikiFarm' )
+			->willReturn( [ $localWiki => [ 'sysop' ] ] );
+		$this->setService( 'OATHAuth.Mandatory2FAChecker', $mandatory2FAChecker );
+
+		// Pretend that the current wiki unresolvable via WikiMap, like on wikis configuring
+		// neither $wgConf nor the sites table.
+		global $wgConf;
+		$wgConf = new SiteConfiguration();
+		$siteLookup = $this->createMock( SiteLookup::class );
+		$siteLookup->method( 'getSite' )->willReturn( null );
+		$this->setService( 'SiteLookup', $siteLookup );
+		$this->assertNull( WikiMap::getWiki( $localWiki ) );
+
+		$this->overrideConfigValue( MainConfigNames::Sitename, 'WikiMapless Wiki' );
+
+		$user = $this->getTestUser()->getUser();
+		$context = RequestContext::getMain();
+		$context->setLanguage( 'qqx' );
+		$context->getRequest()->getSession()->setUser( $user );
+
+		[ $html ] = $this->executeSpecialPage( '', null, null, $user );
+
+		$this->assertStringContainsString( '(oathauth-2fa-required)', $html );
+		$this->assertStringContainsString( 'WikiMapless Wiki', $html );
+	}
+
 	public function testDisplaysTemporaryCodesAccordion() {
 		ConvertibleTimestamp::setFakeTime( '20260101000000' );
 		$user = $this->getTestUser();
