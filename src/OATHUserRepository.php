@@ -269,17 +269,6 @@ class OATHUserRepository implements LoggerAwareInterface {
 	/**
 	 * @param OATHUser $user
 	 * @param string $clientInfo
-	 * @param bool $self Whether the user disabled the 2FA themselves
-	 *
-	 * @deprecated since 1.41, use removeAll() instead
-	 */
-	public function remove( OATHUser $user, $clientInfo, bool $self ) {
-		$this->removeAll( $user, $clientInfo, $self );
-	}
-
-	/**
-	 * @param OATHUser $user
-	 * @param string $clientInfo
 	 * @param bool $self Whether they disabled it themselves
 	 */
 	public function removeAll( OATHUser $user, $clientInfo, bool $self ) {
