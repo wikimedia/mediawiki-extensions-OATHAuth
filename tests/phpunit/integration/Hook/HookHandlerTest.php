@@ -36,14 +36,12 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 	public function testOnUserRequirementsCondition( string $condition, bool $has2FA, ?bool $expectedResult ) {
 		$userIdentity = UserIdentityValue::newRegistered( 1, 'WikiUser' );
 
-		$oathUser = $this->createMock( OATHUser::class );
-		$oathUser->method( 'isTwoFactorAuthEnabled' )
-			->willReturn( $has2FA );
-
 		$userRepoMock = $this->createMock( OATHUserRepository::class );
 		$userRepoMock->method( 'findByUser' )
 			->with( $userIdentity )
-			->willReturn( $oathUser );
+			->willReturn( $this->createMock( OATHUser::class ) );
+		$userRepoMock->method( 'userHas2FAEnabled' )
+			->willReturn( $has2FA );
 
 		$this->setService( 'OATHAuth.UserRepository', $userRepoMock );
 

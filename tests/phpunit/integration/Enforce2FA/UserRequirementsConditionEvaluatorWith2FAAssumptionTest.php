@@ -26,13 +26,11 @@ class UserRequirementsConditionEvaluatorWith2FAAssumptionTest extends MediaWikiI
 	): void {
 		$services = $this->getServiceContainer();
 
-		$oathUser = $this->createMock( OATHUser::class );
-		$oathUser->method( 'isTwoFactorAuthEnabled' )
-			->willReturn( $has2FA );
-
 		$userRepository = $this->createMock( OATHUserRepository::class );
 		$userRepository->method( 'findByUser' )
-			->willReturn( $oathUser );
+			->willReturn( $this->createMock( OATHUser::class ) );
+		$userRepository->method( 'userHas2FAEnabled' )
+			->willReturn( $has2FA );
 		$this->setService( 'OATHAuth.UserRepository', $userRepository );
 
 		$evaluator = new UserRequirementsConditionEvaluatorWith2FAAssumption();
