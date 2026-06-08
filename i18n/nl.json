@@ -140,7 +140,7 @@
 	"oathauth-disable-page-title": "$1 uitschakelen",
 	"oathauth-enable-page-title": "$1 inschakelen",
 	"oathauth-action-exclusive-to-2fa": "Deze handeling kan alleen worden verricht door gebruikers die tweetrapsauthenticatie hebben ingeschakeld.",
-	"oathauth-totp-description": "Het ''Time-based One-Time Password''-algoritme (TOTP) is een extensie van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert dat uniek is door gebruik te maken van het huidige tijdstip.",
+	"oathauth-totp-description": "Het ''Time-based One-Time Password''-algoritme (TOTP) is een uitbreiding van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert dat uniek is door gebruik te maken van het huidige tijdstip.",
 	"oathauth-totp-disable-warning": "U kunt het bij dit account geregistreerde authenticatieapparaat niet langer gebruiken. Alle aan dit account gekoppelde herstelcodes worden onbruikbaar gemaakt, tenzij u een andere authenticatiefactor hebt ingeschakeld.",
 	"oathauth-invalidrequest": "Ongeldige aanvraag",
 	"notification-header-oathauth-disable": "Tweetrapsauthenticatie is uitgeschakeld op {{GENDER:$2|uw account}}",

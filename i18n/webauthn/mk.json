@@ -33,5 +33,7 @@
 	"oathauth-webauthn-credential-label": "Корисничко овластување",
 	"oathauth-webauthn-credential-help": "Корисничко овластување според податоците за заверка",
 	"oathauth-webauthn-add-security-key": "Додај безбедносен клуч",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Користи безбедносен или пропустен клуч"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Користи безбедносен или пропустен клуч",
+	"oathauth-webauthn-login-passkey-button": "Најава со пропусен клуч",
+	"oathauth-webauthn-deprecated-key": "Овој клуч не е безбеден и затоа не треба да се користи. Пробајте повторно со друг клуч."
 }
