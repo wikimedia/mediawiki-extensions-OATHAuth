@@ -69,14 +69,14 @@ class OATHUserRepository implements LoggerAwareInterface {
 	 * the cache, we can use OATHUser::isTwoFactorAuthEnabled(). If it is not, it
 	 * will query the database to check for oathauth_devices rows for this user.
 	 *
-	 * This can be more peformant than loading all the oathauth_devices rows,
+	 * This can be more performant than loading all the oathauth_devices rows,
 	 * de-serializing them, and potentially decrypting values that would never be
 	 * used.
 	 */
 	public function userHas2FAEnabled( UserIdentity $user ): bool {
 		/** @var OATHUser $oathUser */
 		$oathUser = $this->cache->get( $user->getName() );
-		// If we have the User cache, use the OATHUser from cache
+		// Use the OATHUser from cache if it exists (though this is HashBagOfStuff, so limited in-process use only)
 		if ( $oathUser ) {
 			return $oathUser->isTwoFactorAuthEnabled();
 		}

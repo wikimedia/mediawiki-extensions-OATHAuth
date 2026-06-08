@@ -232,9 +232,7 @@ class HookHandler implements
 		if ( $type !== APCOND_OATH_HAS2FA ) {
 			return;
 		}
-
-		$oathUser = $this->userRepo->findByUser( $user );
-		$result = $oathUser->isTwoFactorAuthEnabled();
+		$result = $this->userRepo->userHas2FAEnabled( $user );
 	}
 
 	/** @inheritDoc */
