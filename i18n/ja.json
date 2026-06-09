@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"129femtoseconds",
+			"Amayus",
 			"Dragoniez",
 			"Foomin10",
 			"Kokage si",
@@ -157,9 +158,9 @@
 	"oathauth-delete-confirm-box": "続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
 	"oathauth-delete-warning-final": "この方法を除去すると二要素認証が完全に無効になります。\n\nこれによってすべての回復コードとパスキーも削除されます。\n\n<strong>これによってあなたのアカウントの安全性が低下します。</strong>",
 	"oathauth-delete-wrong-confirm-message": "最終キー除去の入力が間違っています。続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
-	"oathauth-delete-success": "<strong>$1</strong> は除去されました。",
+	"oathauth-delete-success": "除去されました！",
 	"oathauth-created-at": "$1に追加",
-	"oathauth-enable-success": "<strong>$1</strong> が追加されました。",
+	"oathauth-enable-success": "追加されました！",
 	"oathauth-max-keys-exceeded": "認証方法の制限に達しました",
 	"oathauth-max-keys-exceeded-message": "認証方法の数が最大値である $1 に達しました。新しい認証方法を追加する前に認証方法を除去してください。",
 	"oathauth-passkeys-header": "パスキー",
