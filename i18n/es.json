@@ -53,7 +53,7 @@
 	"action-oathauth-disable-for-user": "desactivar la autenticación en dos pasos de un usuario",
 	"right-oathauth-verify-user": "Verificar si un usuario tiene activada la autenticación de dos pasos",
 	"action-oathauth-verify-user": "comprobar si una cuenta tiene activada la autenticación en dos factores",
-	"right-oathauth-view-log": "Acceder al registro de cambios en la autenticación en dos pasos",
+	"right-oathauth-view-log": "Acceder al registro de cambios en la autenticación de dos factores",
 	"action-oathauth-view-log": "acceder al registro de cambios en la autenticación en dos pasos",
 	"oathauth-disable-intro": "Un gran poder conlleva una gran responsabilidad",
 	"oathauth-enteruser": "Nombre de usuario:",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Luky001",
 			"Teslaton",
-			"Vlad5250"
+			"Vlad5250",
+			"Wizzard"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pre autentifikáciu pomocou jednorázových hesiel, založených na HMAC",

@@ -94,7 +94,7 @@
 	"oathauth-action-exclusive-to-2fa": "Deze handeling kan alleen worden verricht door gebruikers die tweetrapsauthenticatie hebben ingeschakeld.",
 	"oathauth-ui-available-modules": "Beschikbare methoden",
 	"oathauth-ui-general-help": "'''Multi-factor authentication''' ('''MFA''') is een authenticatiemethode waarbij een computergebruiker alleen toegang krijgt na het succesvol presenteren van twee of meer bewijsstukken (of factoren) in een authenticatiemechanisme: kennis (iets wat de gebruiker en alleen de gebruiker weet), bezit (iets dat de gebruiker alleen de gebruiker heeft), en inherent (iets wat de gebruiker en alleen de gebruiker is). [https://nl.wikipedia.org/wiki/Multifactorauthenticatie Lees meer]",
-	"oathauth-totp-description": "Het ''Time-based One-Time Password''-algoritme (TOTP) is een extensie van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert dat uniek is door gebruik te maken van het huidige tijdstip.",
+	"oathauth-totp-description": "Het ''Time-based One-Time Password''-algoritme (TOTP) is een uitbreiding van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert dat uniek is door gebruik te maken van het huidige tijdstip.",
 	"oathauth-disable-method-warning-header": "Bevestig het uitschakelen van een authenticatiemethode",
 	"oathauth-disable-method-warning-button-label": "Bevestigen en doorgaan",
 	"oathauth-disable-method-warning": "Als u de tweefactorauthenticatiemethode $1 uitschakelt, kunt u deze methode niet langer gebruiken bij het aanmelden en worden alle gegevens die aan deze authenticatiemethode zijn gekoppeld, verwijderd.",
