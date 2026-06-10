@@ -108,8 +108,13 @@ class Recover2FAForUser extends FormSpecialPage {
 	/** @inheritDoc */
 	protected function getFormFields() {
 		$user = $this->getUserByName( $this->getRequest()->getText( 'user' ) );
-		$oathUser = $user ? $this->userRepo->findByUser( $user ) : null;
-		$showEmailField = $user && $this->getUserEmail( $user ) === null && $oathUser?->isTwoFactorAuthEnabled();
+		$showEmailField = false;
+		if ( $user ) {
+			$userEmail = $this->getUserEmail( $user );
+
+			$showEmailField = $userEmail === null
+				&& $this->userRepo->findByUser( $user )?->isTwoFactorAuthEnabled();
+		}
 
 		return [
 			'user' => [
@@ -224,16 +229,34 @@ class Recover2FAForUser extends FormSpecialPage {
 		$this->getOutput()->returnToMain();
 	}
 
-	private function getUserEmail( User $user ): ?string {
-		if ( $user->isEmailConfirmed() ) {
-			return $user->getEmail();
-		}
+	/**
+	 * @return string|null Non empty string if the user has an email address, null otherwise.
+	 *  If $wgEmailAuthentication = true, email confirmation is respected.
+	 */
+	public function getUserEmail( User $user ): ?string {
+		$emailAuth = $this->getConfig()->get( 'EmailAuthentication' );
+
+		// Prefer email from CentralAuth if loaded
 		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
 			$centralUser = CentralAuthUser::getInstanceByName( $user->getName() );
-			if ( $centralUser->getEmailAuthenticationTimestamp() ) {
-				return $centralUser->getEmail();
+
+			$email = $centralUser->getEmail();
+			if (
+				( !$emailAuth && $email !== '' ) ||
+				$centralUser->getEmailAuthenticationTimestamp()
+			) {
+				return $email;
 			}
 		}
+
+		$email = $user->getEmail();
+		if (
+			( !$emailAuth && $email !== '' ) ||
+			$user->isEmailConfirmed()
+		) {
+			return $email;
+		}
+
 		return null;
 	}
 
