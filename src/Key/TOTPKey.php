@@ -67,15 +67,8 @@ class TOTPKey extends AuthKey {
 
 		if (
 			( !$fromMaintenanceScript && isset( $data['version'] ) && $data['format'] === 'encrypted' ) ||
-			// If we're being called from a maintenance script, or $wgOATHAuthAllowUnversionedKeys is true,
-			// allow the old format
-			(
-				(
-					$fromMaintenanceScript
-					|| MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHAuthAllowUnversionedKeys' )
-				)
-				&& isset( $data['nonce'] )
-			)
+			// If we're being called from a maintenance script, allow the old format.
+			( $fromMaintenanceScript && isset( $data['nonce'] ) )
 		) {
 			$encryptionHelper = self::getEncryptionHelper();
 			if ( !$encryptionHelper->isEnabled() ) {
