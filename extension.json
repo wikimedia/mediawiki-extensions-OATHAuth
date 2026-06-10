@@ -144,6 +144,7 @@
 		"GetPreferences": "main",
 		"LoadExtensionSchemaUpdates": "updater",
 		"ReadPrivateUserRequirementsCondition": "main",
+		"UserModifyCreateAccountEmail": "main",
 		"UserRequirementsCondition": "main",
 		"UnitTestsAfterDatabaseSetup": "test",
 		"UnitTestsBeforeDatabaseTeardown": "test"
@@ -155,6 +156,7 @@
 				"OATHAuth.UserRepository",
 				"OATHAuth.ModuleRegistry",
 				"OATHAuth.Logger",
+				"OATHAuth.ExpiringRecoveryCodeGenerator",
 				"PermissionManager",
 				"MainConfig"
 			]

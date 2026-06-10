@@ -207,6 +207,6 @@
 	"oathauth-2fa-groups-notice-unknown-page": "Unknown page",
 	"oathauth-remove-lastkey-required": "You cannot remove your last authentication method if you are a member of groups that require two-factor authentication. Please add another authentication method before removing this one.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "User has two-factor authentication enabled",
-	"userlogin-reauth-banner-oathmanage": "<strong>You are viewing or managing your 2FA settings</strong> <br>Confirm it’s you to continue."
-
+	"userlogin-reauth-banner-oathmanage": "<strong>You are viewing or managing your 2FA settings</strong> <br>Confirm it’s you to continue.",
+	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} requires two-factor authentication.\n\nTo sign in:\n1. Log in using your username and temporary password.\n2. Enter {{PLURAL:$2|the|one of the}} temporary recovery {{PLURAL:$2|code|codes}} below when prompted.\n3. Set up a two-factor authentication method to continue using {{SITENAME}}.\n\nTemporary recovery codes:\n$3\n\n{{PLURAL:$2|This temporary recovery code|These temporary recovery codes}} can be used until $4.\n\nYou should sign in and set up two-factor authentication as soon as possible.\n\nYou may ignore this message if this account was created in error."
 }

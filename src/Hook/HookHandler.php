@@ -8,11 +8,13 @@ use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
+use MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator;
 use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -20,25 +22,31 @@ use MediaWiki\ResourceLoader\Context;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Hook\ReadPrivateUserRequirementsConditionHook;
+use MediaWiki\User\Hook\UserModifyCreateAccountEmailHook;
 use MediaWiki\User\Hook\UserRequirementsConditionHook;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\LabelWidget;
 use Wikimedia\Message\ListParam;
 use Wikimedia\Message\ListType;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat as TS;
 
 class HookHandler implements
 	AuthChangeFormFieldsHook,
 	BeforePageDisplayHook,
 	GetPreferencesHook,
 	ReadPrivateUserRequirementsConditionHook,
+	UserModifyCreateAccountEmailHook,
 	UserRequirementsConditionHook
 {
 	public function __construct(
 		private readonly OATHUserRepository $userRepo,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly OATHAuthLogger $oathLogger,
+		private readonly ExpiringRecoveryCodeGenerator $recoveryCodeGenerator,
 		private readonly PermissionManager $permissionManager,
 		private readonly Config $config,
 	) {
@@ -274,5 +282,38 @@ class HookHandler implements
 			$out->addModules( 'ext.webauthn.passwordlessLogin' );
 			$out->addModuleStyles( 'ext.webauthn.passwordlessLogin.styles' );
 		}
+	}
+
+	public function onUserModifyCreateAccountEmail(
+		User $user,
+		User $performer,
+		Message &$subject,
+		Message &$body
+	): void {
+		if ( !$this->config->get( 'OATHAuthEnforce2FAForAll' ) && !$this->userRepo->userHas2FAEnabled( $user ) ) {
+			return;
+		}
+
+		$status = $this->recoveryCodeGenerator->attemptToCreateInitial2FACodes(
+			performer: $performer,
+			username: $user->getName(),
+			email: $user->getEmail(),
+			sendEmail: false,
+		);
+
+		$recoveryCodes = $status->getValue();
+		$expiryTimestamp = ConvertibleTimestamp::convert(
+			TS::MW,
+			(int)ConvertibleTimestamp::now( TS::UNIX ) +
+				$this->config->get( 'OATHInitialRecoveryCodesValidityDays' ) * 86_400
+		);
+		$newBody = wfMessage( 'oathauth-createaccount-text-with-2fa' )
+			->params(
+				$body,
+				count( $recoveryCodes ),
+				implode( "\n", $recoveryCodes ),
+				Message::dateParam( $expiryTimestamp )
+			);
+		$body = $newBody;
 	}
 }

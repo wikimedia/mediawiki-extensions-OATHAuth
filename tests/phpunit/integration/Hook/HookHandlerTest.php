@@ -27,9 +27,9 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 			$services->get( 'OATHAuth.UserRepository' ),
 			$services->get( 'OATHAuth.ModuleRegistry' ),
 			$services->get( 'OATHAuth.Logger' ),
+			$services->get( 'OATHAuth.ExpiringRecoveryCodeGenerator' ),
 			$services->getPermissionManager(),
 			$services->getMainConfig(),
-			$services->getUserGroupManager()
 		);
 	}
 
@@ -100,6 +100,7 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 			$oathServices->getUserRepository(),
 			$oathServices->getModuleRegistry(),
 			$loggerMock,
+			$oathServices->getExpiringRecoveryCodeGenerator(),
 			$mwServices->getPermissionManager(),
 			$mwServices->getMainConfig(),
 		);
