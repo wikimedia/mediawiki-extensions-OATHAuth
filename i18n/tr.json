@@ -105,6 +105,9 @@
 	"oathauth-disable-method-next-step": "Bir sonraki adımda, devre dışı bırakabilmek için mevcut iki faktörlü kimlik doğrulama yönteminizle ( $1 ) kendinizi doğrulamanız gerekecektir.",
 	"oathauth-totp-disable-warning": "Artık bu hesapta kayıtlı kimlik doğrulama cihazını kullanamayacaksınız. Bu hesapla ilişkili tüm karalama simgeleri geçersiz kılınacaktır.",
 	"oathauth-invalidrequest": "Geçersiz istek",
+	"oathauth-notifications-disable-help": "Yardım",
+	"oathauth-notifications-enable-help": "Yardım",
+	"oathauth-notifications-recoverycodesleft-help": "Yardım",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirdi.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} iki faktörlü kimlik doğrulamayı etkinleştirmedi."
 }
