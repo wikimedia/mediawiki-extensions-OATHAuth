@@ -8,6 +8,7 @@ namespace MediaWiki\Extension\OATHAuth;
 
 use InvalidArgumentException;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
@@ -35,6 +36,7 @@ class OATHUserRepository {
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly CentralIdLookupFactory $centralIdLookupFactory,
 		private readonly LoggerInterface $logger,
+		private readonly Mandatory2FAChecker $mandatory2FAChecker,
 	) {
 	}
 
@@ -84,6 +86,11 @@ class OATHUserRepository {
 			] )
 			->caller( __METHOD__ )
 			->fetchRowCount() > 0;
+	}
+
+	public function userIsRequiredToHave2FAEnabled( UserIdentity $user ): bool {
+		// If no groups are returned, they aren't required to have 2FA
+		return $this->mandatory2FAChecker->getGroupsRequiring2FA( $user ) !== [];
 	}
 
 	/**

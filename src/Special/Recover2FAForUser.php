@@ -10,6 +10,7 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 
 class Recover2FAForUser extends FormSpecialPage {
 
@@ -17,6 +18,7 @@ class Recover2FAForUser extends FormSpecialPage {
 		private readonly ExpiringRecoveryCodeGenerator $generator,
 		private readonly LinkRenderer $linkRenderer,
 		private readonly OATHUserRepository $userRepo,
+		private readonly UserFactory $userFactory,
 	) {
 		// messages used: recover2faforuser (display "name" on Special:SpecialPages)
 		parent::__construct( 'Recover2FAForUser' );
@@ -118,12 +120,29 @@ class Recover2FAForUser extends FormSpecialPage {
 
 	/** @inheritDoc */
 	public function onSubmit( array $formData ): Status {
-		return $this->generator->attemptToGenerateRecoveryCodes(
-			$this->getUser(),
-			$formData['user'],
-			$formData['email'],
-			$formData['reason']
-		);
+		$username = $formData['user'];
+		$user = $this->userFactory->newFromName( $username );
+
+		$enforce2FA = $this->getConfig()->get( 'OATHAuthEnforce2FAForAll' );
+
+		if ( !$enforce2FA || ( $user && $this->userRepo->findByUser( $user )->isTwoFactorAuthEnabled() ) ) {
+			return $this->generator->attemptToGenerateRecoveryCodes(
+				performer: $this->getUser(),
+				username: $username,
+				email: $formData['email'],
+				reason: $formData['reason'],
+				logToWiki: true,
+			);
+		} elseif ( $user && $this->userRepo->userIsRequiredToHave2FAEnabled( $user ) ) {
+			return $this->generator->attemptToCreateInitial2FACodes(
+				performer: $this->getUser(),
+				username: $username,
+				email: $formData['email'],
+				sendEmail: true,
+			);
+		} else {
+			return Status::newFatal( 'oathauth-recover-fail-no-2fa-or-required' );
+		}
 	}
 
 	public function onSuccess() {

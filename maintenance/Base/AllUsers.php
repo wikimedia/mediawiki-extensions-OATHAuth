@@ -27,8 +27,8 @@ abstract class AllUsers extends Maintenance {
 
 	protected function isRequiredToHave2FAEnabled( User $user ): bool {
 		// If no groups are returned, they aren't required to have 2FA
-		return OATHAuthServices::getInstance( $this->getServiceContainer() )->getMandatory2FAChecker()
-			->getGroupsRequiring2FA( $user ) !== [];
+		return OATHAuthServices::getInstance( $this->getServiceContainer() )->getUserRepository()
+			->userIsRequiredToHave2FAEnabled( $user );
 	}
 
 	public function execute() {

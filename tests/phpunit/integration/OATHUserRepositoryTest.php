@@ -8,6 +8,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
@@ -49,12 +50,15 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 
 		$logger = $this->createMock( LoggerInterface::class );
 
+		$checker = $this->createMock( Mandatory2FAChecker::class );
+
 		return new OATHUserRepository(
 			$dbProvider,
 			new EmptyBagOStuff(),
 			$moduleRegistry,
 			$lookupFactory,
-			$logger
+			$logger,
+			$checker,
 		);
 	}
 

@@ -69,13 +69,29 @@ class OATHAuthLogger {
 		UserIdentity $performer,
 		UserIdentity $target,
 		string $reason,
-		int $codesCount
+		int $codesCount,
+		bool $logToWiki,
 	): void {
-		// messages used: logentry-oath-recover, log-action-oath-recover
-		$this->insertLogEntry( 'recover', $performer, $target, $reason, [ '4::count' => $codesCount ] );
+		if ( $logToWiki ) {
+			// messages used: logentry-oath-recover, log-action-oath-recover
+			$this->insertLogEntry( 'recover', $performer, $target, $reason, [ '4::count' => $codesCount ] );
+		}
 
 		$this->logger->info(
 			'{user} generated additional OATHAuth recovery keys for {usertarget} from {clientip}', [
+				'user' => $performer->getName(),
+				'usertarget' => $target,
+				'clientip' => $this->getClientIP(),
+			]
+		);
+	}
+
+	public function logInitialRecovery(
+		UserIdentity $performer,
+		UserIdentity $target,
+	): void {
+		$this->logger->info(
+			'{user} generated initial OATHAuth recovery keys for {usertarget} from {clientip}', [
 				'user' => $performer->getName(),
 				'usertarget' => $target,
 				'clientip' => $this->getClientIP(),

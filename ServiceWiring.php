@@ -73,7 +73,8 @@ return [
 			] ),
 			$services->getService( 'OATHAuth.ModuleRegistry' ),
 			$services->getCentralIdLookupFactory(),
-			LoggerFactory::getInstance( 'authentication' )
+			LoggerFactory::getInstance( 'authentication' ),
+			$services->getService( 'OATHAuth.Mandatory2FAChecker' ),
 		);
 	},
 	'OATHAuth.WebAuthnAuthenticator' => static function ( MediaWikiServices $services ): WebAuthnAuthenticator {

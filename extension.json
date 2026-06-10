@@ -204,6 +204,10 @@
 			"value": 7,
 			"description": "Number of days for which codes generated on Special:Recover2FAForUser will be valid."
 		},
+		"OATHInitialRecoveryCodesValidityDays": {
+			"value": 30,
+			"description": "Number of days for which initial recovery codes will be valid."
+		},
 		"OATHMaxKeysPerUser": {
 			"value": 25,
 			"description": "Maximum amount of OATHAuth devices allowed per user."
@@ -227,6 +231,10 @@
 		"WebAuthnNewCredsDisabled": {
 			"value": false,
 			"description": "If true, new credentials cannot be added, see T354701."
+		},
+		"OATHAuthEnforce2FAForAll": {
+			"value": false,
+			"description": "Actually enforce 2FA for all users, along with appropriate $wgRestrictedGroups config."
 		}
 	},
 	"ResourceModules": {
@@ -455,7 +463,8 @@
 			"services": [
 				"OATHAuth.ExpiringRecoveryCodeGenerator",
 				"LinkRenderer",
-				"OATHAuth.UserRepository"
+				"OATHAuth.UserRepository",
+				"UserFactory"
 			]
 		},
 		"VerifyOATHForUser": {

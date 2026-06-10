@@ -94,9 +94,9 @@ class Manager {
 	}
 
 	/**
-	 * Sends a notification that the user had additional recovery tokens generated for them
+	 * Sends a notification that the user had additional temporary recovery tokens generated for them
 	 */
-	public static function notifyRecoveryTokensGeneratedForUser(
+	public static function notifyTemporaryRecoveryTokensGeneratedForUser(
 		UserIdentity $targetUser,
 		int $tokenCount
 	): void {

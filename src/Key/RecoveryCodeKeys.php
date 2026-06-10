@@ -175,7 +175,7 @@ class RecoveryCodeKeys extends AuthKey {
 
 	/**
 	 * Returns the number of recovery codes to generate by default. Ensures that the return value is not
-	 * greater than value returned by {@see getMaxNumberOfCodes}.
+	 * greater than the value returned by {@see getMaxNumberOfCodes}.
 	 */
 	private function getNumberOfCodesToGenerate(): int {
 		$codesCount = MediaWikiServices::getInstance()->getMainConfig()->get( 'OATHRecoveryCodesCount' );

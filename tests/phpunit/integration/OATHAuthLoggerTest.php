@@ -61,7 +61,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 
 		$performer = $this->getTestSysop()->getUser();
 		$target = $this->getTestUser()->getUser();
-		$logger->logOATHRecovery( $performer, $target, 'comment', 1 );
+		$logger->logOATHRecovery( $performer, $target, 'comment', 1, true );
 
 		$this->assertSingleLogRow( 'recover', $performer, $target, [ '4::count' => 1 ] );
 	}
@@ -78,7 +78,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 		// but we don't operate on actual numbers.
 		$countBefore = $this->countCuleRows();
 
-		$logger->logOATHRecovery( $performer, $target, 'reason', 1 );
+		$logger->logOATHRecovery( $performer, $target, 'reason', 1, true );
 
 		$countAfter = $this->countCuleRows();
 

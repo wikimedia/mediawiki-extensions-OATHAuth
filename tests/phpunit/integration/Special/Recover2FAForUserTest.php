@@ -48,6 +48,7 @@ class Recover2FAForUserTest extends SpecialPageTestBase {
 			$oathServices->getExpiringRecoveryCodeGenerator(),
 			$this->getServiceContainer()->getLinkRenderer(),
 			$userRepo,
+			$this->getServiceContainer()->getUserFactory(),
 		);
 	}
 

@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Mail\IEmailer;
 use MediaWiki\Mail\MailAddress;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Message\Message;
 use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
@@ -37,27 +38,35 @@ class ExpiringRecoveryCodeGenerator {
 		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		$this->codesCount = $config->get( 'OATHRecoveryCodesCount' );
-		$this->codeValidityDays = $config->get( 'OATHAdditionalRecoveryCodesValidityDays' );
+		$this->additionalCodeValidityDays = $config->get( 'OATHAdditionalRecoveryCodesValidityDays' );
+		$this->initialCodeValidityDays = $config->get( 'OATHInitialRecoveryCodesValidityDays' );
 	}
 
-	private ?UserIdentity $targetUser = null;
+	private ?User $targetUser = null;
 
 	private int $codesCount;
-	private readonly int $codeValidityDays;
+	private readonly int $additionalCodeValidityDays;
+	private readonly int $initialCodeValidityDays;
 
+	/**
+	 * Used to create temporary recovery codes for a user who already has 2FA setup,
+	 * to enable them to get back into their account.
+	 *
+	 * They will need a confirmed email on their account
+	 */
 	public function attemptToGenerateRecoveryCodes(
 		User $performer,
 		string $username,
 		string $email,
-		?string $reason = null
+		?string $reason = null,
+		bool $logToWiki = true,
 	): Status {
-		$user = $this->getUserByName( $username );
-		if ( !$user ) {
-			return Status::newFatal( 'oathauth-user-not-found' );
+		$status = $this->validateUser( $username );
+		if ( !$status->isOK() ) {
+			return $status;
 		}
-		$this->targetUser = $user;
 
-		// This page requires the performer to submit twice if the target user has no email. We count such cases
+		// The special page requires the performer to submit twice if the target user has no email. We count such cases
 		// as two attempts for rate limiting. Otherwise, the special page could be gamed into either unlimited
 		// 2FA verificator for email-less users or unlimited 2FA recovery for email-less users.
 		// We could also use tokens for ensuring that resubmitting the page is counted once, but let's do it only
@@ -70,12 +79,13 @@ class ExpiringRecoveryCodeGenerator {
 			// @codeCoverageIgnoreEnd
 		}
 
-		$oathUser = $this->userRepo->findByUser( $user );
+		$oathUser = $this->userRepo->findByUser( $this->targetUser );
 		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
+			// TODO: This is kinda orphaned if wrappers check for 2FA...
 			return Status::newFatal( 'oathauth-recover-fail-no-2fa' );
 		}
 
-		$userEmail = $this->getUserEmail( $user );
+		$userEmail = $this->getUserEmail( $this->targetUser );
 		if ( $userEmail === null ) {
 			// Attempt to use the one provided instead as the user doesn't have an email set/confirmed (if necessary)
 			$userEmail = $email;
@@ -84,19 +94,70 @@ class ExpiringRecoveryCodeGenerator {
 			}
 		}
 
+		$expiryTimestamp = ConvertibleTimestamp::convert(
+			TS::MW,
+			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->additionalCodeValidityDays * 86_400
+		);
+
+		$status = $this->generateRecoveryCodes(
+			oathUser: $oathUser,
+			data: [ 'expiry' => $expiryTimestamp ],
+		);
+
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		Manager::notifyTemporaryRecoveryTokensGeneratedForUser( $this->targetUser, $this->codesCount );
+		$this->oathLogger->logOATHRecovery(
+			$performer,
+			$this->targetUser,
+			$reason ?? '',
+			$this->codesCount,
+			$logToWiki,
+		);
+
+		$recoveryCodes = $status->getValue();
+
+		$userLanguage = $this->getUserLanguage( $this->targetUser );
+		$now = ConvertibleTimestamp::now();
+
+		$subject = wfMessage( 'oathauth-recover-email-title' )
+			->inLanguage( $userLanguage )
+			->params( count( $recoveryCodes ) );
+		$body = wfMessage( 'oathauth-recover-email-text' )
+			->inLanguage( $userLanguage )
+			->params(
+				$this->targetUser->getName(),
+				count( $recoveryCodes ),
+				implode( "\n", $status->getValue() ),
+				$this->getSiteAdminContact( $this->targetUser, $userLanguage ),
+			)
+			->dateTimeParams( $now )
+			->dateParams( $now )
+			->timeParams( $now )
+			->dateParams( $expiryTimestamp );
+
+		return $this->sendEmailWithRecoveryCodes(
+			emailAddress: $userEmail,
+			subject: $subject,
+			body: $body,
+		);
+	}
+
+	private function generateRecoveryCodes(
+		OATHUser $oathUser,
+		array $data = [],
+	): Status {
 		/** @var RecoveryCodes $recoveryCodesModule */
 		$recoveryCodesModule = $this->moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 		'@phan-var RecoveryCodes $recoveryCodesModule';
 
-		$expiryTimestamp = ConvertibleTimestamp::convert(
-			TS::MW,
-			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->codeValidityDays * 86_400
-		);
 		$key = $recoveryCodesModule->ensureExistence( $oathUser );
 		try {
 			$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
 				$this->codesCount,
-				[ 'expiry' => $expiryTimestamp ]
+				$data
 			);
 		} catch ( OutOfRangeException ) {
 			// If there's no room for that many recovery codes, first invalidate all existing temporary codes
@@ -104,7 +165,7 @@ class ExpiringRecoveryCodeGenerator {
 			$key->removeTemporaryCodes();
 			$newRecoveryCodes = $key->generateAdditionalRecoveryCodeKeys(
 				$this->codesCount,
-				[ 'expiry' => $expiryTimestamp ],
+				$data,
 				// Don't throw this time, error handling is done below
 				true
 			);
@@ -116,16 +177,87 @@ class ExpiringRecoveryCodeGenerator {
 			}
 		}
 		$this->userRepo->updateKey( $oathUser, $key );
+		return Status::newGood( $newRecoveryCodes );
+	}
 
-		// Send notification even if recovery codes were not sent via email
-		Manager::notifyRecoveryTokensGeneratedForUser( $user, $this->codesCount );
-		$this->oathLogger->logOATHRecovery( $performer, $user, $reason ?? '', $this->codesCount );
-
-		$emailStatus = $this->sendEmailWithRecoveryCodes( $userEmail, $newRecoveryCodes, $user, $expiryTimestamp );
-		if ( !$emailStatus->isOK() ) {
-			return $emailStatus;
+	/**
+	 * Creates special, initial 2FA codes for a user who doesn't have 2FA setup yet.
+	 */
+	public function attemptToCreateInitial2FACodes(
+		User $performer,
+		string $username,
+		string $email,
+		bool $sendEmail = false,
+	): Status {
+		$status = $this->validateUser( $username );
+		if ( !$status->isOK() ) {
+			return $status;
 		}
 
+		$oathUser = $this->userRepo->findByUser( $this->targetUser );
+
+		$expiryTimestamp = ConvertibleTimestamp::convert(
+			TS::MW,
+			(int)ConvertibleTimestamp::now( TS::UNIX ) + $this->initialCodeValidityDays * 86_400
+		);
+
+		$status = $this->generateRecoveryCodes(
+			oathUser: $oathUser,
+			data: [
+				'initial' => true,
+				'expiry' => $expiryTimestamp,
+			],
+		);
+
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$this->oathLogger->logInitialRecovery( $performer, $this->targetUser );
+
+		// Some routes, such as new user creation (by a third party) will be sending their own emails,
+		// so we don't need to email them here
+		if ( !$sendEmail ) {
+			return $status;
+		}
+
+		$userLanguage = $this->getUserLanguage( $this->targetUser );
+
+		$recoveryCodes = $status->getValue();
+
+		$subject = wfMessage( 'oathauth-recover-initial-email-title' )
+			->inLanguage( $userLanguage );
+		$body = wfMessage( 'oathauth-recover-initial-email-text' )
+			->inLanguage( $userLanguage )
+			->params(
+				count( $recoveryCodes ),
+				implode( "\n", $recoveryCodes ),
+				Message::dateParam( $expiryTimestamp ),
+				$this->getSiteAdminContact( $this->targetUser, $userLanguage ),
+			);
+
+		$userEmail = $this->getUserEmail( $this->targetUser );
+		if ( $userEmail === null ) {
+			// Attempt to use the one provided instead as the user doesn't have an email set/confirmed (if necessary)
+			$userEmail = $email;
+			if ( !Sanitizer::validateEmail( $userEmail ) ) {
+				return Status::newFatal( 'oathauth-recover-fail-email-required' );
+			}
+		}
+
+		return $this->sendEmailWithRecoveryCodes(
+			emailAddress: $userEmail,
+			subject: $subject,
+			body: $body,
+		);
+	}
+
+	private function validateUser( string $username ): Status {
+		$user = $this->getUserByName( $username );
+		if ( !$user ) {
+			return Status::newFatal( 'oathauth-user-not-found' );
+		}
+		$this->targetUser = $user;
 		return Status::newGood();
 	}
 
@@ -172,9 +304,8 @@ class ExpiringRecoveryCodeGenerator {
 
 	private function sendEmailWithRecoveryCodes(
 		string $emailAddress,
-		array $recoveryCodes,
-		User $targetUser,
-		string $expiryTimestamp
+		Message $subject,
+		Message $body,
 	): Status {
 		// PasswordSender is used across MediaWiki for different purposes, that's why we use it here as well.
 		$passwordSender = $this->config->get( MainConfigNames::PasswordSender );
@@ -182,16 +313,26 @@ class ExpiringRecoveryCodeGenerator {
 			$passwordSender,
 			wfMessage( 'emailsender' )->inContentLanguage()->text()
 		);
-		$to = new MailAddress( $emailAddress );
 
-		$recoveryCodesText = implode( "\n", $recoveryCodes );
+		return Status::wrap(
+			$this->emailer->send(
+				new MailAddress( $emailAddress ),
+				$sender,
+				$subject->text(),
+				$body->text(),
+			)
+		);
+	}
 
+	private function getUserLanguage( User $targetUser ): string {
 		if ( $targetUser->isRegistered() ) {
-			$userLanguage = $this->userOptionsLookup->getOption( $targetUser, 'language' );
+			return $this->userOptionsLookup->getOption( $targetUser, 'language' );
 		} else {
-			$userLanguage = RequestContext::getMain()->getLanguage()->getCode();
+			return RequestContext::getMain()->getLanguage()->getCode();
 		}
+	}
 
+	private function getSiteAdminContact( User $targetUser, string $userLanguage ): string {
 		$siteAdminContact = trim(
 			wfMessage( 'oathauth-recover-email-text-site-admin-contact' )
 				->inContentLanguage()
@@ -199,33 +340,15 @@ class ExpiringRecoveryCodeGenerator {
 		);
 		if ( $siteAdminContact ) {
 			$siteAdminContact = '<' . $siteAdminContact . '>';
-			$contactAdminLine = wfMessage( 'oathauth-recover-email-text-please-contact-with-address' )
+			return wfMessage( 'oathauth-recover-email-text-please-contact-with-address' )
 				->inLanguage( $userLanguage )
 				->params( $targetUser->getName(), $siteAdminContact )
 				->text();
-		} else {
-			$contactAdminLine = wfMessage( 'oathauth-recover-email-text-please-contact' )
-				->inLanguage( $userLanguage )
-				->params( $targetUser->getName() )
-				->text();
 		}
-
-		$now = ConvertibleTimestamp::now();
-
-		$subject = wfMessage( 'oathauth-recover-email-title' )
+		return wfMessage( 'oathauth-recover-email-text-please-contact' )
 			->inLanguage( $userLanguage )
-			->params( count( $recoveryCodes ) )
+			->params( $targetUser->getName() )
 			->text();
-		$body = wfMessage( 'oathauth-recover-email-text' )
-			->inLanguage( $userLanguage )
-			->params( $targetUser->getName(), count( $recoveryCodes ), $recoveryCodesText, $contactAdminLine )
-			->dateTimeParams( $now )
-			->dateParams( $now )
-			->timeParams( $now )
-			->dateParams( $expiryTimestamp )
-			->text();
-
-		return Status::wrap( $this->emailer->send( $to, $sender, $subject, $body ) );
 	}
 
 	public function getCodesCount(): int {

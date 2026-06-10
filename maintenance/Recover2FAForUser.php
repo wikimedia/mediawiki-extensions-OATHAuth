@@ -30,20 +30,40 @@ class Recover2FAForUser extends Maintenance {
 	}
 
 	public function execute() {
-		$service = OATHAuthServices::getInstance( $this->getServiceContainer() )->getExpiringRecoveryCodeGenerator();
+		$services = $this->getServiceContainer();
+		$oathServices = OATHAuthServices::getInstance( $services );
+		$recoveryCodeGenerator = $oathServices->getExpiringRecoveryCodeGenerator();
+		$userRepo = $oathServices->getUserRepository();
 
-		$user = $this->getArg();
-		$result = $service->attemptToGenerateRecoveryCodes(
-			User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] ),
-			$user,
-			$this->getArg( 1, '' ),
-		);
+		$username = $this->getArg();
+
+		$user = $services->getUserFactory()->newFromName( $username );
+		$enforce2FA = $this->getConfig()->get( 'OATHAuthEnforce2FAForAll' );
+
+		if ( !$enforce2FA || ( $user && $userRepo->findByUser( $user )->isTwoFactorAuthEnabled() ) ) {
+			$result = $recoveryCodeGenerator->attemptToGenerateRecoveryCodes(
+				performer: User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] ),
+				username: $username,
+				email: $this->getArg( 1, '' ),
+				reason: 'Recover2FAForUser maintenance script',
+				logToWiki: false,
+			);
+		} elseif ( $user && $userRepo->userIsRequiredToHave2FAEnabled( $user ) ) {
+			$result = $recoveryCodeGenerator->attemptToCreateInitial2FACodes(
+				performer: User::newSystemUser( User::MAINTENANCE_SCRIPT_USER, [ 'steal' => true ] ),
+				username: $username,
+				email: $this->getArg( 1, '' ),
+				sendEmail: true,
+			);
+		} else {
+			$this->fatalError( wfMessage( 'oathauth-recover-fail-no-2fa-or-required' )->text() );
+		}
 
 		if ( !$result->isOK() ) {
 			$this->fatalError( $result->getWikiText() );
 		}
 
-		$this->output( "Expiring recovery codes generated successfully and emailed to $user.\n" );
+		$this->output( "Expiring recovery codes generated successfully and emailed to $username.\n" );
 	}
 }
 

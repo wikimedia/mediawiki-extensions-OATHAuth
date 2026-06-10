@@ -20,22 +20,22 @@ use MediaWiki\Message\Message;
 use UnexpectedValueException;
 
 class RecoveryCodes implements IModule {
-	public const MODULE_NAME = "recoverycodes";
+	public const string MODULE_NAME = "recoverycodes";
 
-	public const ACTION_REMOVE_TEMPORARY = "recoverycodes-temporary-remove";
+	public const string ACTION_REMOVE_TEMPORARY = "recoverycodes-temporary-remove";
 
 	/**
 	 * Number of recovery code module instances allowed per user in oathauth_devices
 	 */
-	public const RECOVERY_CODE_MODULE_COUNT = 1;
+	public const int RECOVERY_CODE_MODULE_COUNT = 1;
 
 	/** Threshold number of recovery codes to trigger notification */
-	private const RECOVERY_CODE_LEFT = 2;
+	private const int RECOVERY_CODE_LEFT = 2;
 
 	public function __construct(
 		private readonly OATHUserRepository $userRepository,
 		private readonly OATHAuthLogger $oathLogger,
-		private readonly Config $config
+		private readonly Config $config,
 	) {
 	}
 
