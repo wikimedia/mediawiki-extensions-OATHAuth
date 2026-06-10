@@ -17,6 +17,10 @@ abstract class AllUsers extends Maintenance {
 			'apply-to-all',
 			'Apply script to all users, rather than following current 2FA requirements in $wgRestrictedGroups'
 		);
+		$this->addOption(
+			'allow-no-email',
+			'Allow users without an email address to be processed',
+		);
 		$this->requireExtension( 'OATHAuth' );
 	}
 
@@ -90,7 +94,7 @@ abstract class AllUsers extends Maintenance {
 				continue;
 			}
 
-			if ( $user->getEmail() === '' ) {
+			if ( !$this->hasOption( 'allow-no-email' ) && $user->getEmail() === '' ) {
 				$this->output( "User $username does not have an email address set..\n" );
 				$withoutEmail++;
 			}
