@@ -3,9 +3,9 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Maintenance;
 
+use MediaWiki\Extension\OATHAuth\Maintenance\Base\AllUsers;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
-use MediaWiki\Maintenance\Maintenance;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\User\User;
 
 // @codeCoverageIgnoreStart
@@ -17,8 +17,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
-class NotifyTwoFactorRequired extends Maintenance {
-
+class NotifyTwoFactorRequired extends AllUsers {
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription(
@@ -34,92 +33,45 @@ class NotifyTwoFactorRequired extends Maintenance {
 			'The date to include in the message sent to users (e.g. 20260630000000)',
 			true, true
 		);
-		$this->addOption( 'skip-blocked', 'Skip users that are blocked' );
-		$this->requireExtension( 'OATHAuth' );
 		$this->requireExtension( 'Echo' );
 	}
 
-	public function execute() {
-		$services = $this->getServiceContainer();
-		$userFactory = $services->getUserFactory();
+	private int $twoFAEnabled = 0;
+	private int $twoFANeeded = 0;
 
-		/** @var User[] $users */
-		$users = [];
-		'@phan-var User[] $users';
-		if ( $this->hasOption( 'user' ) ) {
-			foreach ( (array)$this->getOption( 'user' ) as $username ) {
-				$user = $userFactory->newFromName( $username );
-				if ( $user === null || $user->getId() === 0 ) {
-					$this->error( "User $username doesn't exist!" );
-				}
-				$users[] = $user;
-			}
-		} else {
-			$db = $services
-				->getDBLoadBalancerFactory()
-				->getReplicaDatabase( 'virtual-oathauth' );
+	private int $twoFANotRequired = 0;
 
-			$res = $db->newSelectQueryBuilder()
-				->select( 'user_name' )
-				->from( 'user' )
-				->caller( __METHOD__ )
-				->fetchResultSet();
-
-			foreach ( $res as $row ) {
-				$users[] = $userFactory->newFromName( $row->user_name );
-			}
+	protected function doWork( OATHUserRepository $repo, User $user, string $username ): void {
+		$oathUser = $repo->findByUser( $user );
+		if ( $oathUser->isTwoFactorAuthEnabled() ) {
+			$this->output( "User $username already has two-factor authentication enabled!\n" );
+			$this->twoFAEnabled++;
+			return;
 		}
 
-		$repo = OATHAuthServices::getInstance( $services )->getUserRepository();
-		$skipBlocked = $this->hasOption( 'skip-blocked' );
+		// If this script is not being run with --apply-to-all, check if the user is required to have 2FA
+		// based on APCOND_OATH_HAS2FA for an appropriate group being in $wgRestrictedGroups
+		if ( !$this->getOption( 'apply-to-all' ) && !$this->isRequiredToHave2FAEnabled( $user ) ) {
+			$this->output( "User $username is not required to have two-factor authentication enabled!\n" );
+			$this->twoFANotRequired++;
+			return;
+		}
 
 		$date = $this->getOption( 'date' );
-
-		$total = 0;
-		$blocked = 0;
-		$twoFAEnabled = 0;
-		$twoFANeeded = 0;
-		$otherSkipped = 0;
-		foreach ( $users as $user ) {
-			$total++;
-			$username = $user->getName();
-			if ( $skipBlocked && $user->getBlock() !== null ) {
-				$this->output( "User $username is blocked, skipping...\n" );
-				$blocked++;
-				continue;
-			}
-
-			if ( $user->isSystemUser() ) {
-				$this->output( "User $username is a system user, skipping...\n" );
-				$otherSkipped++;
-				continue;
-			}
-
-			if ( !$user->isNamed() ) {
-				$otherSkipped++;
-				continue;
-			}
-
-			$oathUser = $repo->findByUser( $user );
-			if ( $oathUser->isTwoFactorAuthEnabled() ) {
-				$this->output( "User $username already has two-factor authentication enabled!\n" );
-				$twoFAEnabled++;
-			} else {
-				Manager::notify2FARequiredForUser( $user, $date );
-				$this->output(
-					"User $username does not have two-factor authentication enabled, so notification has been sent!\n"
-				);
-				$twoFANeeded++;
-			}
-		}
-
+		Manager::notify2FARequiredForUser( $user, $date );
 		$this->output(
-			"Total: $total; Blocked: $blocked; Other skipped: $otherSkipped\n" .
-			"2FA already enabled: $twoFAEnabled; 2FA needed: $twoFANeeded\n"
+		// phpcs:disable Generic.Files.LineLength.TooLong
+			"User $username does not have two-factor authentication enabled, so notification has been sent!\n"
 		);
-		$this->output( "Done.\n" );
+		$this->twoFANeeded++;
 	}
 
+	protected function outputAtEnd(): void {
+		$this->output(
+			"2FA already enabled: {$this->twoFAEnabled}; 2FA needed: {$this->twoFANeeded}; "
+				. "2FA not required: {$this->twoFANotRequired}\n"
+		);
+	}
 }
 
 // @codeCoverageIgnoreStart

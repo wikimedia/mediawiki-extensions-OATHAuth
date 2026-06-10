@@ -10,6 +10,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\NotifyTwoFactorRequired
+ * @covers \MediaWiki\Extension\OATHAuth\Maintenance\Base\AllUsers
  * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @group Database
  */
@@ -29,15 +30,15 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		$this->maintenance->setOption( 'date', '20260630000000' );
 
 		$this->expectOutputString(
-			"Total: 0; Blocked: 0; Other skipped: 0\n" .
-			"2FA already enabled: 0; 2FA needed: 0\n" .
+			"Total: 0; Blocked: 0; Without email: 0; Other skipped: 0\n" .
+			"2FA already enabled: 0; 2FA needed: 0; 2FA not required: 0\n" .
 			"Done.\n"
 		);
 
 		$this->maintenance->execute();
 	}
 
-	public function testNotifyOneUser(): void {
+	public function testNotifyOneUserNoRequirements(): void {
 		$this->overrideConfigValues( [
 			MainConfigNames::CentralIdLookupProvider => 'local',
 		] );
@@ -45,6 +46,7 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		$user = $this->getTestSysop()->getUser();
 
 		$this->maintenance->setOption( 'date', '20260630000000' );
+		$this->maintenance->setOption( 'apply-to-all', true );
 		$this->expectOutputRegex(
 			"/User {$user->getName()} does not have two-factor authentication enabled, so notification has been sent!/"
 		);
