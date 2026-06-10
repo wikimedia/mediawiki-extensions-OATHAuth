@@ -117,13 +117,15 @@ class ExpiringRecoveryCodeGenerator {
 		}
 		$this->userRepo->updateKey( $oathUser, $key );
 
+		// Send notification even if recovery codes were not sent via email
+		Manager::notifyRecoveryTokensGeneratedForUser( $user, $this->codesCount );
+		$this->oathLogger->logOATHRecovery( $performer, $user, $reason ?? '', $this->codesCount );
+
 		$emailStatus = $this->sendEmailWithRecoveryCodes( $userEmail, $newRecoveryCodes, $user, $expiryTimestamp );
 		if ( !$emailStatus->isOK() ) {
 			return $emailStatus;
 		}
 
-		Manager::notifyRecoveryTokensGeneratedForUser( $user, $this->codesCount );
-		$this->oathLogger->logOATHRecovery( $performer, $user, $reason ?? '', $this->codesCount );
 		return Status::newGood();
 	}
 
