@@ -81,9 +81,13 @@ class Recover2FAForUser extends FormSpecialPage {
 	/** @inheritDoc */
 	protected function getFormFields() {
 		$user = $this->generator->getUserByName( $this->getRequest()->getText( 'user' ) );
-		$oathUser = $user ? $this->userRepo->findByUser( $user ) : null;
-		$showEmailField = $user && $this->generator->getUserEmail( $user ) === null
-			&& $oathUser?->isTwoFactorAuthEnabled();
+		$showEmailField = false;
+		if ( $user ) {
+			$userEmail = $this->generator->getUserEmail( $user );
+
+			$showEmailField = $userEmail === null
+				&& $this->userRepo->findByUser( $user )?->isTwoFactorAuthEnabled();
+		}
 
 		return [
 			'user' => [

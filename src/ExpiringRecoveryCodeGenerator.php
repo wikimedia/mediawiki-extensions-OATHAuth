@@ -77,7 +77,7 @@ class ExpiringRecoveryCodeGenerator {
 
 		$userEmail = $this->getUserEmail( $user );
 		if ( $userEmail === null ) {
-			// Attempt to use the one provided instead
+			// Attempt to use the one provided instead as the user doesn't have an email set/confirmed (if necessary)
 			$userEmail = $email;
 			if ( !Sanitizer::validateEmail( $userEmail ) ) {
 				return Status::newFatal( 'oathauth-recover-fail-email-required' );
@@ -127,16 +127,34 @@ class ExpiringRecoveryCodeGenerator {
 		return Status::newGood();
 	}
 
+	/**
+	 * @return string|null Non empty string if the user has an email address, null otherwise.
+	 *  If $wgEmailAuthentication = true, email confirmation is respected.
+	 */
 	public function getUserEmail( User $user ): ?string {
-		if ( $user->isEmailConfirmed() ) {
-			return $user->getEmail();
-		}
+		$emailAuth = $this->config->get( 'EmailAuthentication' );
+
+		// Prefer email from CentralAuth if loaded
 		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
 			$centralUser = CentralAuthUser::getInstanceByName( $user->getName() );
-			if ( $centralUser->getEmailAuthenticationTimestamp() ) {
-				return $centralUser->getEmail();
+
+			$email = $centralUser->getEmail();
+			if (
+				( !$emailAuth && $email !== '' ) ||
+				$centralUser->getEmailAuthenticationTimestamp()
+			) {
+				return $email;
 			}
 		}
+
+		$email = $user->getEmail();
+		if (
+			( !$emailAuth && $email !== '' ) ||
+			$user->isEmailConfirmed()
+		) {
+			return $email;
+		}
+
 		return null;
 	}
 
