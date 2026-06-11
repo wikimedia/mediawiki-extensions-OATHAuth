@@ -11,6 +11,7 @@ use StatusValue;
 /**
  * @covers \MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\Recover2FAForUser
+ * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @group Database
  */
 class Recover2FAForUserTest extends MaintenanceBaseTestCase {

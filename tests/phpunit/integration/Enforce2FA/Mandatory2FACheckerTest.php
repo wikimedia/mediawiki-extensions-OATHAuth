@@ -25,6 +25,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker
+ * @covers \MediaWiki\Extension\OATHAuth\Hook\RegistrationCallback
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  */
 class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {

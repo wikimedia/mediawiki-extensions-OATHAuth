@@ -28,9 +28,10 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 /**
  * @group Database
  * @covers \MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator
- * @covers \MediaWiki\Extension\OATHAuth\Special\Recover2FAForUser
+ * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  * @covers \MediaWiki\Extension\OATHAuth\OATHUser
+ * @covers \MediaWiki\Extension\OATHAuth\Special\Recover2FAForUser
  */
 class Recover2FAForUserTest extends SpecialPageTestBase {
 	use BypassReauthTrait;

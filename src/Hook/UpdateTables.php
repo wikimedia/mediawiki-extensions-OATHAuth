@@ -9,6 +9,7 @@ use MediaWiki\Extension\OATHAuth\Maintenance\UpdateForMultipleDevicesSupport;
 use MediaWiki\Extension\OATHAuth\Maintenance\UpdateKeysToLatestVersion;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
+/** @codeCoverageIgnore */
 class UpdateTables implements LoadExtensionSchemaUpdatesHook {
 
 	/** @inheritDoc */

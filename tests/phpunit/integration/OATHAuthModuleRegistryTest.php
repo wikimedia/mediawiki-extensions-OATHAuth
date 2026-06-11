@@ -17,6 +17,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
+ * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry
  * @group Database
  */

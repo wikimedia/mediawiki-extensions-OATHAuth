@@ -7,6 +7,7 @@ use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
 use MediaWiki\Hook\UnitTestsBeforeDatabaseTeardownHook;
 use Wikimedia\Rdbms\ILoadBalancer;
 
+/** @codeCoverageIgnore */
 class TestHandler implements
 	UnitTestsAfterDatabaseSetupHook,
 	UnitTestsBeforeDatabaseTeardownHook

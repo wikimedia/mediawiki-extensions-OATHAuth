@@ -28,6 +28,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>
  * @group Database
+ * @covers \MediaWiki\Extension\OATHAuth\Hook\HookHandler
  * @covers \MediaWiki\Extension\OATHAuth\Special\OATHManage
  * @covers \MediaWiki\Extension\OATHAuth\OATHUser
  */

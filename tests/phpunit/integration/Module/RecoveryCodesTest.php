@@ -15,6 +15,7 @@ use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 
 /**
+ * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @covers \MediaWiki\Extension\OATHAuth\Module\RecoveryCodes
  * @group Database
  */
