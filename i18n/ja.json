@@ -21,7 +21,8 @@
 			"X200b",
 			"RhAnish",
 			"Tensama0415",
-			"Ska101~translate"
+			"Ska101~translate",
+			"Amayus"
 		]
 	},
 	"oathauth-desc": "HMAC に基づいたワンタイムパスワードを使用する認証機能を提供する",
@@ -164,7 +165,7 @@
 	"oathauth-delete-confirm-box": "続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
 	"oathauth-delete-warning-final": "この方法を除去すると二要素認証が完全に無効になります。",
 	"oathauth-delete-wrong-confirm-message": "最終キー除去の入力が間違っています。続けるには「{{int:oathauth-authenticator-delete-text}}」を入力してください",
-	"oathauth-delete-success": "<strong>$1</strong> は除去されました。",
+	"oathauth-delete-success": "除去されました！",
 	"oathauth-created-at": "$1に追加",
-	"oathauth-enable-success": "<strong>$1</strong> が追加されました。"
+	"oathauth-enable-success": "追加されました！"
 }

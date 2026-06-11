@@ -3,7 +3,8 @@
 		"authors": [
 			"Luky001",
 			"Teslaton",
-			"Vlad5250"
+			"Vlad5250",
+			"Wizzard"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pre autentifikáciu pomocou jednorázových hesiel, založených na HMAC",
@@ -137,7 +138,7 @@
 	"oathauth-delete-warning-header": "Odstránenie: $1",
 	"oathauth-delete-confirm-box": "Pre pokračovanie zadajte „{{int:oathauth-authenticator-delete-text}}“.",
 	"oathauth-delete-wrong-confirm-message": "Nesprávny vstup na odstránenie kľúča. Ak chcete pokračovať, napíšte „{{int:oathauth-authenticator-delete-text}}“.",
-	"oathauth-delete-success": "Odstránené: <strong>$1</strong>",
+	"oathauth-delete-success": "Odstránené!",
 	"oathauth-created-at": "Pridané: $1",
-	"oathauth-enable-success": "Pridané: <strong>$1</strong>"
+	"oathauth-enable-success": "Pridané!"
 }
