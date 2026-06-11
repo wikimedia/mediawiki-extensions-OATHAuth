@@ -39,5 +39,6 @@
 	"oathauth-webauthn-credential-help": "基于身份验证数据的用户凭证",
 	"oathauth-webauthn-add-security-key": "添加安全密钥",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "使用安全密钥或通行密钥",
-	"oathauth-webauthn-login-passkey-button": "使用通行密钥登录"
+	"oathauth-webauthn-login-passkey-button": "使用通行密钥登录",
+	"oathauth-webauthn-deprecated-key": "此密钥不安全，请勿使用。请尝试使用其他密钥。"
 }
