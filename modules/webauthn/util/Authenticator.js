@@ -40,9 +40,10 @@ mw.ext.webauthn.Authenticator.prototype.authenticateWithAuthInfo = function ( df
 		.then( ( assertion ) => {
 			dfd.resolve( this.formatCredential( assertion ) );
 		} )
-		.catch( () => {
+		.catch( ( error ) => {
 			// This usually happens when the process gets interrupted
 			// - show generic interrupt error
+			mw.log( 'WebAuthn authentication failed', error );
 			dfd.reject( 'oathauth-webauthn-error-auth-generic' );
 		} );
 };

@@ -3,7 +3,11 @@
 mw.ext.webauthn.initPasswordlessLogin = function ( $root ) {
 	$root = $root || $( document );
 	// We don't initialize `form` here, because doing so immediately throws a user-visible error
-	// if window.PublicKeyCredential doesn't exist (T427562)
+	// if window.PublicKeyCredential doesn't exist (T427562). We can't construct separate
+	// Authenticator objects in each code path, because they need to share state: when the user
+	// clicks the "login with passkey" button, we need to abort the conditional authentication.
+	let form = null;
+	let auth = null;
 
 	// Conditional UI for the username field
 	if (
@@ -16,10 +20,10 @@ mw.ext.webauthn.initPasswordlessLogin = function ( $root ) {
 				return;
 			}
 
-			const form = new mw.ext.webauthn.LoginFormWidget();
-			const authenticator = new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
+			form = form || new mw.ext.webauthn.LoginFormWidget();
+			auth = auth || new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
 
-			authenticator.authenticate( true ).then(
+			auth.authenticate( true ).then(
 				( credential ) => {
 					form.submitWithCredential( credential );
 				},
@@ -36,10 +40,10 @@ mw.ext.webauthn.initPasswordlessLogin = function ( $root ) {
 	$root.find( '#mw-input-passwordlessButton' ).on( 'click', ( e ) => {
 		e.preventDefault();
 
-		const form = new mw.ext.webauthn.LoginFormWidget();
-		const authenticator = new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
+		form = form || new mw.ext.webauthn.LoginFormWidget();
+		auth = auth || new mw.ext.webauthn.Authenticator( form.getAuthInfo() );
 
-		authenticator.authenticate().then(
+		auth.authenticate().then(
 			( credential ) => {
 				form.submitWithCredential( credential );
 			},
