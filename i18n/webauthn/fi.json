@@ -6,7 +6,7 @@
 	},
 	"oathauth-webauthn-module-label": "Suojausavain",
 	"oathauth-webauthn-javascript-required": "JavaScriptin on oltava käytössä selaimessasi käyttääksesi suojausavainta.",
-	"oathauth-webauthn-ui-login-prompt": "Kosketa suojausavaintasi tai seuraa selaimen ohjeita.",
+	"oathauth-webauthn-ui-login-prompt": "Käytä suojausavaintasi tai seuraa selaimesi ohjeita.",
 	"oathauth-webauthn-ui-add-key": "Lisää avain",
 	"oathauth-webauthn-error-browser-unsupported": "Tämä selain ei tue suojausavaimella tunnistautumista tai se ei ole saatavilla tälle verkkosivustolle. Kokeile toista selainta. [https://www.mediawiki.org/wiki/Extension:WebAuthn#Browser_support Lisätietoja]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Tämä selain ei tue suojausavaimella tunnistautumista tai se ei ole saatavilla tälle verkkosivustolle.",
