@@ -21,29 +21,21 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\CentralId\CentralIdLookup;
 use MediaWiki\User\CentralId\CentralIdLookupFactory;
 use MediaWiki\User\UserIdentity;
-use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
 
-class OATHUserRepository implements LoggerAwareInterface {
+class OATHUserRepository {
 
 	private const int JSON_LENGTH = 65530;
-
-	private LoggerInterface $logger;
 
 	public function __construct(
 		private readonly IConnectionProvider $dbProvider,
 		private readonly BagOStuff $cache,
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly CentralIdLookupFactory $centralIdLookupFactory,
-		LoggerInterface $logger,
+		private readonly LoggerInterface $logger,
 	) {
-		$this->setLogger( $logger );
-	}
-
-	public function setLogger( LoggerInterface $logger ): void {
-		$this->logger = $logger;
 	}
 
 	public function findByUser( UserIdentity $user ): OATHUser {
