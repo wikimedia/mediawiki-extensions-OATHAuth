@@ -90,6 +90,7 @@ class OATHUserRepository implements LoggerAwareInterface {
 				'oad_user' => $this->centralIdLookupFactory->getLookup()
 					->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW )
 			] )
+			->caller( __METHOD__ )
 			->fetchRowCount() > 0;
 	}
 
