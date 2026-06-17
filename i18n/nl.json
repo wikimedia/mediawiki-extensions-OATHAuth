@@ -103,7 +103,7 @@
 	"oathauth-disable-method-warning": "Als u de tweefactorauthenticatiemethode $1 uitschakelt, kunt u deze methode niet langer gebruiken bij het aanmelden en worden alle gegevens die aan deze authenticatiemethode zijn gekoppeld, verwijderd.",
 	"oathauth-disable-method-next-step": "In de volgende stap moet u zich authenticeren met uw huidige tweetrapsauthenticatie-methode ($1) om deze te kunnen uitschakelen.",
 	"oathauth-totp-disable-warning": "U kunt het authenticatieapparaat dat bij dit account is geregistreerd niet langer gebruiken. Alle herstelcodes die aan dit account zijn gekoppeld worden ongeldig gemaakt.",
-	"oathauth-invalidrequest": "Ongeldige aanvraag",
+	"oathauth-invalidrequest": "Incorrecte aanvraag",
 	"notification-header-oathauth-disable": "Tweetrapsauthenticatie is uitgeschakeld op {{GENDER:$2|uw account}}.",
 	"notification-header-oathauth-remove-device": "Er is een apparaat voor tweetrapsauthenticatie verwijderd uit {{GENDER:$2|uw account}}.",
 	"notification-body-oathauth-disable": "Als {{GENDER:$2|u}} dit niet gedaan heeft, kan {{GENDER:$2|uw account}} wellicht gehackt zijn.",
