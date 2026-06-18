@@ -155,7 +155,7 @@
 	"oathauth-delete-confirm-box": "أدخل \"{{int:oathauth-authenticator-delete-text}}\" للمتابعة",
 	"oathauth-delete-warning-final": "ستؤدي إزالة هذه الطريقة إلى تعطيل المصادقة الثنائية بالكامل.",
 	"oathauth-delete-wrong-confirm-message": "إدخال خاطئ لإزالة المفتاح النهائي. يُرجى كتابة \"{{int:oathauth-authenticator-delete-text}}\" للمتابعة.",
-	"oathauth-delete-success": "<strong>$1</strong> حذف.",
+	"oathauth-delete-success": "تمت إزالته!",
 	"oathauth-created-at": "تمت الإضافة على $1",
-	"oathauth-enable-success": "تمت إضافة <strong>$1</strong> ."
+	"oathauth-enable-success": "تمت الإضافة!"
 }

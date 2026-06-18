@@ -119,7 +119,7 @@
 	"oathauth-totp-description": "Het ''Time-based One-Time Password''-algoritme (TOTP) is een uitbreiding van het op HMAC gebaseerde eenmalige wachtwoord-algoritme (HOTP) dat een eenmalig wachtwoord genereert dat uniek is door gebruik te maken van het huidige tijdstip.",
 	"oathauth-disable-method-warning": "Als u de tweetrapsauthenticatiemethode $1 uitschakelt, kunt u deze methode niet meer gebruiken bij het aanmelden en worden alle aan deze authenticatiemethode gekoppelde gegevens verwijderd. Als u nog een andere actieve authenticatiemethode hebt, worden uw herstelcodes echter niet verwijderd.",
 	"oathauth-totp-disable-warning": "U kunt het bij dit account geregistreerde authenticatieapparaat niet langer gebruiken. Alle aan dit account gekoppelde herstelcodes worden onbruikbaar gemaakt, tenzij u een andere authenticatiefactor hebt ingeschakeld.",
-	"oathauth-invalidrequest": "Ongeldige aanvraag",
+	"oathauth-invalidrequest": "Incorrecte aanvraag",
 	"notification-header-oathauth-disable": "Tweetrapsauthenticatie is uitgeschakeld op {{GENDER:$2|uw account}}.",
 	"notification-header-oathauth-remove-device": "Er is een apparaat voor tweetrapsauthenticatie verwijderd uit {{GENDER:$2|uw account}}.",
 	"notification-body-oathauth-disable": "Als {{GENDER:$2|u}} dit niet gedaan heeft, kan {{GENDER:$2|uw account}} wellicht gehackt zijn.",
