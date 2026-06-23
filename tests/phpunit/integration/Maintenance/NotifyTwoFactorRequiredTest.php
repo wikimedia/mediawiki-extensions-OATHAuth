@@ -11,7 +11,6 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Maintenance\NotifyTwoFactorRequired
  * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
- * @covers \MediaWiki\Extension\OATHAuth\Notifications\TwoFactorRequiredPresentationModel
  * @group Database
  */
 class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {

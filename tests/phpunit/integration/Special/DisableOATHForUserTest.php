@@ -23,6 +23,7 @@ use MediaWiki\Tests\Specials\SpecialPageTestBase;
 /**
  * @author Taavi Väänänen & Dreamy Jazz
  * @group Database
+ * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @covers \MediaWiki\Extension\OATHAuth\Special\DisableOATHForUser
  */
 class DisableOATHForUserTest extends SpecialPageTestBase {
