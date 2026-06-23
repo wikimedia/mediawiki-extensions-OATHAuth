@@ -17,6 +17,7 @@ use MediaWikiIntegrationTestCase;
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Notifications\Manager
  * @covers \MediaWiki\Extension\OATHAuth\Module\RecoveryCodes
+ * @covers \MediaWiki\Extension\OATHAuth\OATHUserRepository
  * @group Database
  */
 class RecoveryCodesTest extends MediaWikiIntegrationTestCase {

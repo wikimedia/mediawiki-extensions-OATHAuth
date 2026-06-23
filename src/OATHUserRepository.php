@@ -111,7 +111,9 @@ class OATHUserRepository {
 			$userId, CentralIdLookup::AUDIENCE_RAW
 		);
 		if ( $user === null ) {
+			// @codeCoverageIgnoreStart
 			return null;
+			// @codeCoverageIgnoreEnd
 		}
 
 		$oathUser = new OATHUser( $user, $userId );
@@ -123,9 +125,11 @@ class OATHUserRepository {
 
 	private function checkJSONLength( string $json ) {
 		if ( strlen( $json ) >= self::JSON_LENGTH ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException(
 				"oad_data is too long to be saved in the database"
 			);
+			// @codeCoverageIgnoreEnd
 		}
 	}
 
@@ -135,7 +139,9 @@ class OATHUserRepository {
 	public function createKey( OATHUser $user, IModule $module, array $keyData, string $clientInfo ): AuthKey {
 		$uid = $user->getCentralId();
 		if ( !$uid ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "Can't persist a key for user with no central ID available" );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$moduleId = $this->moduleRegistry->getModuleId( $module->getName() );
@@ -200,7 +206,9 @@ class OATHUserRepository {
 	public function updateKey( OATHUser $user, AuthKey $key ): void {
 		$keyId = $key->getId();
 		if ( !$keyId ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
+			// @codeCoverageIgnoreStart
 		}
 
 		$json = FormatJson::encode( $key->jsonSerialize() );
@@ -235,7 +243,9 @@ class OATHUserRepository {
 	public function removeKey( OATHUser $user, AuthKey $key, string $clientInfo, bool $self ) {
 		$keyId = $key->getId();
 		if ( !$keyId ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( 'A non-persisted key cannot be removed' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$this->removeSomeKeys( $user, [ 'oad_id' => $keyId ] );
