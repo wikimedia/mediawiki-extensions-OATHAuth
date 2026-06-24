@@ -30,7 +30,7 @@ mw.ext.webauthn.CredentialForm.prototype.dieWithError = function ( message, cons
 	this.$form
 		.children()
 		// HACK: Don't remove the "switch to" buttons for other auth methods on the login page
-		.not( 'div:has(button[name="newModule"])' )
+		.not( 'div:has(button)' )
 		.hide();
 
 	const errorMessage = new OO.ui.MessageWidget( {

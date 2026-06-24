@@ -4,6 +4,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Hook;
 
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
@@ -128,6 +129,20 @@ class HookHandler implements
 			];
 		}
 
+		$reauthReq = AuthenticationRequest::getRequestByClass( $requests,
+			ElevatedSecurityAuthenticationRequest::class );
+		if ( $reauthReq ) {
+			// If this is a reauth and we're offering a 2FA method directly, remove the password field
+			if ( $webauthnReq || isset( $fieldInfo['OATHToken'] ) ) {
+				unset( $formDescriptor['password'] );
+			}
+			// Also remove the "Log in" button if there is a WebAuthn request: in that case the
+			// passkey or security key button will be primary
+			if ( $webauthnReq ) {
+				unset( $formDescriptor['loginattempt'] );
+			}
+		}
+
 		if ( $this->config->get( 'OATHPasswordlessLogin' ) ) {
 			if ( isset( $fieldInfo['username'] ) && isset( $fieldInfo['credential'] ) ) {
 				$formDescriptor['username']['autocomplete'] = 'username webauthn';
@@ -139,7 +154,7 @@ class HookHandler implements
 				}
 			}
 
-			if ( isset( $fieldInfo['passwordlessButton'] ) ) {
+			if ( isset( $fieldInfo['passwordlessButton'] ) && !$reauthReq ) {
 				// Make the "Log in with passkey" button a non-primary, non-submit button, make it
 				// progressive, and put it below the login button
 				$formDescriptor['passwordlessButton']['type'] = 'button';

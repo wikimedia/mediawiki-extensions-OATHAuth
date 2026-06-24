@@ -36,5 +36,7 @@
 	"oathauth-webauthn-add-security-key": "Button label for adding a new WebAuthn key",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Label for the 2FA method switcher button on login if passkeys are available",
 	"oathauth-webauthn-login-passkey-button": "Button label for logging in with a passkey directly, without entering a username or password",
+	"oathauth-webauthn-reauth-passkey-button": "Button label for reauthenticating with a passkey",
+	"oathauth-webauthn-reauth-security-key-button": "Button label for reauthenticating with a security key",
 	"oathauth-webauthn-deprecated-key": "Error message when a key is deprecated and should not be used."
 }

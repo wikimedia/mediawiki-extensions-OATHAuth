@@ -24,8 +24,6 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 	) {
 	}
 
-	public const SUCCESS_KEY = 'webauthn-passkey-successful';
-
 	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
 		if (
@@ -52,11 +50,11 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 
 		// TODO make AuthenticationRequest::getUsernameFromRequests() recognize the username
 		// from this, so that ThrottlePreAuthenticationProvider will apply the password throttle
-		return [ new WebAuthnAuthenticationRequest(
-			$authStatus->getValue()['json'],
-			/* $showPrompt */ false,
-			/* $showPasswordlessButton */ $user !== null
-		) ];
+		return [ new WebAuthnAuthenticationRequest( $authStatus->getValue()['json'], [
+			'isReauth' => isset( $options['securityLevel'] ),
+			'showPrompt' => false,
+			'showButton' => $user === null ? false : 'passwordless'
+		] ) ];
 	}
 
 	/** @inheritDoc */
@@ -90,7 +88,7 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 			$this->oathLogger->logSuccessfulVerification( $user );
 			// Record the fact that the user logged in with a passkey, so that
 			// our SecondaryAuthenticationProvider will skip the 2FA step
-			$this->manager->setAuthenticationSessionData( self::SUCCESS_KEY, true );
+			$this->manager->setAuthenticationSessionData( SecondaryAuthenticationProvider::SUCCESS_KEY, true );
 			return AuthenticationResponse::newPass( $user->getName() );
 		}
 
@@ -132,6 +130,7 @@ class PasskeyPrimaryAuthenticationProvider extends AbstractPrimaryAuthentication
 		return Status::newGood( 'ignored' );
 	}
 
+	/** @inheritDoc */
 	public function providerChangeAuthenticationData( AuthenticationRequest $req ) {
 		// Do nothing; passkeys can't be managed this way
 	}

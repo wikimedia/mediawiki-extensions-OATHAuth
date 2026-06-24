@@ -103,6 +103,14 @@
 	},
 	"AuthManagerAutoConfig": {
 		"primaryauth": {
+			"ReauthPrimaryAuthenticationProvider": {
+				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\ReauthPrimaryAuthenticationProvider",
+				"services": [
+					"OATHAuth.UserRepository",
+					"OATHAuth.ModuleRegistry"
+				],
+				"sort": 40
+			},
 			"PasskeyPrimaryAuthenticationProvider": {
 				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\PasskeyPrimaryAuthenticationProvider",
 				"services": [

@@ -35,5 +35,7 @@
 	"oathauth-webauthn-add-security-key": "Add a security key",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Use security key or passkey",
 	"oathauth-webauthn-login-passkey-button": "Log in with passkey",
+	"oathauth-webauthn-reauth-passkey-button": "Continue with passkey",
+	"oathauth-webauthn-reauth-security-key-button": "Continue with security key",
 	"oathauth-webauthn-deprecated-key": "This key is not secure and should not be used. Please try again with a different key."
 }

@@ -16,14 +16,23 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 	/**
 	 * @param string $authInfo Serialized JSON blob obtained from
 	 *   WebAuthnAuthenticator::startAuthentication()
-	 * @param bool $showPrompt Whether to display the prompt telling the user to use their security key.
-	 * @param bool $showPasswordlessButton Whether to display the "Log in with passkey" button
+	 * @param array{isReauth?:bool, showPrompt?:bool, showButton?:'passwordless'|'interstitial'|false} $options
+	 *   - isReauth: Whether this request is for a reauthentication (default: false)
+	 *   - showPrompt: Whether to display the prompt telling the user to use their security key (default: true)
+	 *   - showButton: Whether to show a button that activates the WebAuthn authentication.
+	 *       - 'passwordless': Display a "Log in with passkey" or "Continue with passkey" button
+	 *       - 'interstitial': Display a "Continue with security key" button
+	 *       - false: Don't display a button, and activate the WebAuthn authentication immediately (default)
 	 */
 	public function __construct(
 		public string $authInfo,
-		public bool $showPrompt = true,
-		public bool $showPasswordlessButton = false
+		public array $options = []
 	) {
+		$this->options += [
+			'isReauth' => false,
+			'showPrompt' => true,
+			'showButton' => false
+		];
 	}
 
 	/** @inheritDoc */
@@ -54,7 +63,7 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 			]
 		];
 
-		if ( $this->showPrompt ) {
+		if ( $this->options['showPrompt'] ) {
 			$fields['webauthnLabel'] = [
 				'type' => 'null',
 				'value' => wfMessage( 'oathauth-webauthn-ui-login-prompt' ),
@@ -63,10 +72,17 @@ class WebAuthnAuthenticationRequest extends AuthenticationRequest {
 			];
 		}
 
-		if ( $this->showPasswordlessButton ) {
+		if ( $this->options['showButton'] === 'passwordless' ) {
 			$fields['passwordlessButton'] = [
 				'type' => 'button',
-				'label' => wfMessage( 'oathauth-webauthn-login-passkey-button' ),
+				'label' => $this->options['isReauth'] ?
+					wfMessage( 'oathauth-webauthn-reauth-passkey-button' ) :
+					wfMessage( 'oathauth-webauthn-login-passkey-button' ),
+			];
+		} elseif ( $this->options['showButton'] === 'interstitial' ) {
+			$fields['webauthnButton'] = [
+				'type' => 'button',
+				'label' => wfMessage( 'oathauth-webauthn-reauth-security-key-button' ),
 			];
 		}
 

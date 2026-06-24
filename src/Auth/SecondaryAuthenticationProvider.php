@@ -15,6 +15,7 @@ use MediaWiki\MediaWikiServices;
 class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
 	public const MODULE_PRIORITY = [ 'webauthn', 'totp', 'recoverycodes' ];
+	public const SUCCESS_KEY = 'oathauth-skip-2fa';
 
 	public function __construct(
 		private readonly OATHAuthLogger $oathLogger,
@@ -37,8 +38,9 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
-		if ( $this->manager->getAuthenticationSessionData( PasskeyPrimaryAuthenticationProvider::SUCCESS_KEY ) ) {
-			// The user logged in with a passwordless passkey; skip 2FA
+		if ( $this->manager->getAuthenticationSessionData( self::SUCCESS_KEY ) ) {
+			// The user logged in with 2FA through a primary auth provider, like
+			// PasskeyPrimaryAuthenticationProvider or ReauthPrimaryAuthenticationProvider
 			return AuthenticationResponse::newAbstain();
 		}
 
