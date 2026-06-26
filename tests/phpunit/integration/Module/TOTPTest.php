@@ -100,4 +100,33 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertTrue( $module->verify( $mockUser, [ 'token' => '64SZLJTTPRI5XBUE' ] ) );
 	}
+
+	public function testVerifyRejectsRecoveryCodeWhenFallbackDisabled() {
+		$key1 = TOTPKey::newFromArray( [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ] );
+		$rcKey = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
+		$mockUser = $this->createMock( OATHUser::class );
+		$mockUser->method( 'getCentralId' )
+			->willReturn( 12345 );
+		$mockUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
+		$mockUser
+			->method( 'getKeysForModule' )
+			->willReturnCallback( static fn ( $moduleName ) => match ( $moduleName ) {
+				TOTP::MODULE_NAME => [ $key1 ],
+				RecoveryCodes::MODULE_NAME => [ $rcKey ],
+				default => []
+			} );
+		$mockUserRepo = $this->createMock( OATHUserRepository::class );
+		$this->setService( 'OATHAuth.UserRepository', $mockUserRepo );
+		$module = new TOTP(
+			$mockUserRepo,
+			OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry(),
+			$this->createMock( OATHAuthLogger::class )
+		);
+
+		$this->assertFalse( $module->verify( $mockUser, [
+			'token' => '64SZLJTTPRI5XBUE',
+			'disableRecoveryCodeFallback' => true,
+		] ) );
+	}
 }

@@ -9,6 +9,7 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -34,6 +35,9 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			return [];
 		}
 
+		$this->manager->setAuthenticationSessionData(
+			'oathauth-reauth-securitylevel', $options['securityLevel'] );
+
 		$user = $this->manager->getRequest()->getSession()->getUser();
 		$oathUser = $this->userRepo->findByUser( $user );
 		$availableModules = [];
@@ -49,6 +53,9 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			} elseif ( $module->getName() === WebAuthn::MODULE_NAME ) {
 				$hasNonpasswordlessWebAuthn = true;
 			}
+		}
+		if ( $options['securityLevel'] !== 'OATHManage' ) {
+			unset( $availableModules[RecoveryCodes::MODULE_NAME] );
 		}
 		if ( !$availableModules ) {
 			return [];
@@ -108,6 +115,9 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			return AuthenticationResponse::newAbstain();
 		}
 
+		// AuthManager wipes the authn session on first submit, so re-stash here for continuations.
+		$this->manager->setAuthenticationSessionData(
+			'oathauth-reauth-securitylevel', $elevReq->securityLevel );
 		return $this->continuePrimaryAuthentication( $reqs );
 	}
 
@@ -163,5 +173,16 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 	/** @inheritDoc */
 	public function providerChangeAuthenticationData( AuthenticationRequest $req ) {
 		// Do nothing; this is not applicable for this provider
+	}
+
+	/**
+	 * Whether the user is currently reauthenticating for an action other than Special:OATHManage.
+	 * Recovery codes must not be offered or accepted in this state (T428982). The security level
+	 * is stashed in the auth session by {@link self::getAuthenticationRequests} and
+	 * {@link self::beginPrimaryAuthentication}.
+	 */
+	public static function isRestrictedReauth( AuthManager $manager ): bool {
+		$level = $manager->getAuthenticationSessionData( 'oathauth-reauth-securitylevel' );
+		return $level !== null && $level !== 'OATHManage';
 	}
 }

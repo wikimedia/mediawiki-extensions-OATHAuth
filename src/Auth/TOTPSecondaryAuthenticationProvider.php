@@ -74,7 +74,10 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 		$authUser = $this->userRepository->findByUser( $user );
 		$token = $request->OATHToken;
 
-		if ( $this->module->verify( $authUser, [ 'token' => $token ] ) ) {
+		if ( $this->module->verify( $authUser, [
+			'token' => $token,
+			'disableRecoveryCodeFallback' => ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ),
+		] ) ) {
 			return AuthenticationResponse::newPass();
 		}
 

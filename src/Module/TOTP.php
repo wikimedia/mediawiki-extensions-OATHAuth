@@ -73,6 +73,10 @@ class TOTP implements IModule {
 			}
 		}
 
+		if ( !empty( $data['disableRecoveryCodeFallback'] ) ) {
+			return false;
+		}
+
 		// Check recovery codes
 		// TODO: We should deprecate (T408043) logging in on the TOTP form using recovery codes, and eventually
 		// remove this ability (T408044).

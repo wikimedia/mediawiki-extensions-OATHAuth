@@ -7,6 +7,7 @@ use LogicException;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
@@ -176,6 +177,9 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		foreach ( $authUser->getKeys() as $key ) {
 			$module = $moduleRegistry->getModuleByKey( $key->getModule() );
 			$allowedModules[$module->getName()] = $module->getDisplayName();
+		}
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+			unset( $allowedModules[RecoveryCodes::MODULE_NAME] );
 		}
 		// Do not add the select request if there's nothing else to select.
 		if ( count( $allowedModules ) > 1 ) {

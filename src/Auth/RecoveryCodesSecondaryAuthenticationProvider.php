@@ -43,6 +43,10 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ): AuthenticationResponse {
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+			return AuthenticationResponse::newAbstain();
+		}
+
 		$authUser = $this->userRepository->findByUser( $user );
 
 		if ( !$this->module->isEnabled( $authUser ) ) {
@@ -54,6 +58,10 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+			return AuthenticationResponse::newFail( wfMessage( 'oathauth-recovery-code-login-failed' ) );
+		}
+
 		/** @var RecoveryCodesAuthenticationRequest $request */
 		$request = AuthenticationRequest::getRequestByClass( $reqs, RecoveryCodesAuthenticationRequest::class );
 		if ( !$request ) {

@@ -39,7 +39,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 	 *   next call, or nothing if there should be no next call.
 	 *   I.e. these steps roughly correspond to user input from submitting the login form.
 	 */
-	public function testAuthentication( array $enabledModules, array $steps ) {
+	public function testAuthentication( array $enabledModules, array $steps, ?string $reauthSecurityLevel = null ) {
 		$session = $this->createNoOpMock( Session::class, [ 'set' ] );
 		$request = $this->createNoOpMock( WebRequest::class, [ 'getSession' ] );
 		$request->method( 'getSession' )->willReturn( $session );
@@ -78,10 +78,15 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->setService( 'OATHAuth.Logger', $logger );
 
+		$authManager = $this->createNoOpMock( AuthManager::class, [ 'getAuthenticationSessionData' ] );
+		$authManager->method( 'getAuthenticationSessionData' )
+			->willReturnCallback( static fn ( $key ) => $key === 'oathauth-reauth-securitylevel'
+				? $reauthSecurityLevel
+				: null );
 		$provider = new SecondaryAuthenticationProvider( $logger );
 		$provider->init(
 			new NullLogger(),
-			$this->createNoOpMock( AuthManager::class, [ 'getAuthenticationSessionData' ] ),
+			$authManager,
 			$this->createNoOpMock( HookContainer::class ),
 			new HashConfig(),
 			$this->createNoOpMock( UserNameUtils::class )
@@ -268,6 +273,42 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 						$test->assertEquals( AuthenticationResponse::newPass(), $response );
 					},
 				],
+			],
+			'restricted reauth filters recovery codes from switch (T428982)' => [
+				'enabledModules' => [ 'totp', 'recoverycodes' ],
+				'steps' => [
+					static function ( self $test, AuthenticationResponse $response ) {
+						$test->assertUiResponse( $response, message: '2fa-started', moduleName: 'totp',
+							hasSwitchRequest: false );
+					},
+				],
+				'reauthSecurityLevel' => 'edit',
+			],
+			'restricted reauth leaves other switch options intact (T428982)' => [
+				'enabledModules' => [ 'webauthn', 'totp', 'recoverycodes' ],
+				'steps' => [
+					static function ( self $test, AuthenticationResponse $response ) {
+						$test->assertUiResponse( $response, message: '2fa-started', moduleName: 'webauthn',
+							hasSwitchRequest: true );
+						$switchReq = $response->neededRequests[1];
+						$test->assertSame( [ 'webauthn', 'totp' ],
+							array_keys( $switchReq->allowedModules ) );
+					},
+				],
+				'reauthSecurityLevel' => 'edit',
+			],
+			'OATHManage reauth keeps recovery codes available (T428982)' => [
+				'enabledModules' => [ 'totp', 'recoverycodes' ],
+				'steps' => [
+					static function ( self $test, AuthenticationResponse $response ) {
+						$test->assertUiResponse( $response, message: '2fa-started', moduleName: 'totp',
+							hasSwitchRequest: true );
+						$switchReq = $response->neededRequests[1];
+						$test->assertSame( [ 'totp', 'recoverycodes' ],
+							array_keys( $switchReq->allowedModules ) );
+					},
+				],
+				'reauthSecurityLevel' => 'OATHManage',
 			],
 			'three modules, no switch' => [
 				'enabledModules' => [ 'recoverycodes', 'totp', 'webauthn' ],
