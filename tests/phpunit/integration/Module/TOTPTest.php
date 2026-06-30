@@ -19,8 +19,17 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @group Database
  */
 class TOTPTest extends MediaWikiIntegrationTestCase {
+
+	private const array TOTP_ARRAY = [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ];
+
+	private const string RECOVERY_TOKEN = '64SZLJTTPRI5XBUE';
+
+	private const array RECOVERY_ARRAY = [ 'recoverycodekeys' => [ self::RECOVERY_TOKEN ] ];
+
+	private const array RECOVERY_TOKEN_ARRAY = [ 'token' => self::RECOVERY_TOKEN ];
+
 	public function testVerifyTOTP() {
-		$key1 = TOTPKey::newFromArray( [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ] );
+		$key1 = TOTPKey::newFromArray( self::TOTP_ARRAY );
 		$mockUser = $this->createMock( OATHUser::class );
 		$mockUser
 			->method( 'getKeysForModule' )
@@ -52,7 +61,7 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testVerifyTOTPMultiple() {
-		$key1 = TOTPKey::newFromArray( [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ] );
+		$key1 = TOTPKey::newFromArray( self::TOTP_ARRAY );
 		$key2 = TOTPKey::newFromArray( [ 'secret' => '75YQX2JREHDEGJXOCRBZZRT3AM3Y5VG6CD32IWEJCI' ] );
 		$mockUser = $this->createMock( OATHUser::class );
 		$mockUser
@@ -76,8 +85,8 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testVerifyWithRecoveryCode() {
-		$key1 = TOTPKey::newFromArray( [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ] );
-		$rcKey = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
+		$key1 = TOTPKey::newFromArray( self::TOTP_ARRAY );
+		$rcKey = RecoveryCodeKeys::newFromArray( self::RECOVERY_ARRAY );
 		$mockUser = $this->createMock( OATHUser::class );
 		$mockUser->method( 'getCentralId' )
 			->willReturn( 12345 );
@@ -98,12 +107,12 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( OATHAuthLogger::class )
 		);
 
-		$this->assertTrue( $module->verify( $mockUser, [ 'token' => '64SZLJTTPRI5XBUE' ] ) );
+		$this->assertTrue( $module->verify( $mockUser, self::RECOVERY_TOKEN_ARRAY ) );
 	}
 
 	public function testVerifyRejectsRecoveryCodeWhenFallbackDisabled() {
-		$key1 = TOTPKey::newFromArray( [ 'secret' => 'BI5MNFS3MFS577GN7ALT2LY4FYLANBQXBGKNL656YQ' ] );
-		$rcKey = RecoveryCodeKeys::newFromArray( [ 'recoverycodekeys' => [ '64SZLJTTPRI5XBUE' ] ] );
+		$key1 = TOTPKey::newFromArray( self::TOTP_ARRAY );
+		$rcKey = RecoveryCodeKeys::newFromArray( self::RECOVERY_ARRAY );
 		$mockUser = $this->createMock( OATHUser::class );
 		$mockUser->method( 'getCentralId' )
 			->willReturn( 12345 );
@@ -124,9 +133,11 @@ class TOTPTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( OATHAuthLogger::class )
 		);
 
-		$this->assertFalse( $module->verify( $mockUser, [
-			'token' => '64SZLJTTPRI5XBUE',
-			'disableRecoveryCodeFallback' => true,
-		] ) );
+		$this->assertFalse(
+			$module->verify(
+				$mockUser,
+				self::RECOVERY_TOKEN_ARRAY + [ 'disableRecoveryCodeFallback' => true, ]
+			)
+		);
 	}
 }
