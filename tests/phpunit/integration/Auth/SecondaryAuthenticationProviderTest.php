@@ -99,7 +99,9 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 			new NullLogger(),
 			$authManager,
 			$hookContainer,
-			new HashConfig(),
+			new HashConfig( [
+				'OATHAuthEnforce2FAForAll' => false,
+			] ),
 			$userNameUtils,
 		);
 		$response = $provider->beginSecondaryAuthentication( $user, [] );

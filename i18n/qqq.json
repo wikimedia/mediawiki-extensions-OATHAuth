@@ -235,5 +235,6 @@
 	"userlogin-reauth-banner-disableoathforuser": "This is the message for the banner on [[Special:UserLogin]] when the user is redirected there to log in again when trying to visit Special:DisableOATHForUser.",
 	"userlogin-reauth-banner-verifyoathforuser": "This is the message for the banner on [[Special:UserLogin]] when the user is redirected there to log in again when trying to visit Special:VerifyOATHForUser.",
 	"oathauth-createaccount-text-with-2fa": "Extended email sent when an account is created by another user on a wiki, and they are required to set up 2FA.\n\nParameters:\n* $1 - The {{msg-mw|createaccount-text}} message\n* $2 - Number of initial recovery codes (for PLURAL)\n* $3 - The initial recovery codes for the user\n* $4 - Number of days the initial recovery codes are valid for",
-	"oathauth-need-full-2fa": "Message shown on Special:AccountSecurity when a user only has initial temporary recovery codes, and needs to enable another 2FA"
+	"oathauth-need-full-2fa": "Message shown on Special:AccountSecurity when a user only has initial temporary recovery codes, and needs to enable another 2FA",
+	"oathauth-2fa-required-nologin": "Message shown when a user tries to log in to a wiki that requires 2FA, but the user does not have 2FA enabled.\n\nParameters:\n\n* $1 - A sentence instructing the user to contact the site administrator if they have expired ({{msg-mw|oathauth-recover-email-text-please-contact}} or its variant with contact address)"
 }

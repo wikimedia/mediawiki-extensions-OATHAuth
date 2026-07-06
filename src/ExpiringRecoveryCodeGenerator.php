@@ -131,7 +131,7 @@ class ExpiringRecoveryCodeGenerator {
 				$this->targetUser->getName(),
 				count( $recoveryCodes ),
 				implode( "\n", $status->getValue() ),
-				$this->getSiteAdminContact( $this->targetUser, $userLanguage ),
+				self::getSiteAdminContact( $this->targetUser, $userLanguage ),
 			)
 			->dateTimeParams( $now )
 			->dateParams( $now )
@@ -233,7 +233,7 @@ class ExpiringRecoveryCodeGenerator {
 				count( $recoveryCodes ),
 				implode( "\n", $recoveryCodes ),
 				Message::dateParam( $expiryTimestamp ),
-				$this->getSiteAdminContact( $this->targetUser, $userLanguage ),
+				self::getSiteAdminContact( $this->targetUser, $userLanguage ),
 			);
 
 		$userEmail = $this->getUserEmail( $this->targetUser );
@@ -332,7 +332,7 @@ class ExpiringRecoveryCodeGenerator {
 		}
 	}
 
-	private function getSiteAdminContact( User $targetUser, string $userLanguage ): string {
+	public static function getSiteAdminContact( User $targetUser, string $userLanguage ): string {
 		$siteAdminContact = trim(
 			wfMessage( 'oathauth-recover-email-text-site-admin-contact' )
 				->inContentLanguage()

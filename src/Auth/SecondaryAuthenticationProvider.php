@@ -7,6 +7,8 @@ use LogicException;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -54,6 +56,23 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		$authUser = $this->userRepository->findByUser( $user );
 
 		if ( !$authUser->isTwoFactorAuthEnabled() ) {
+			// If we're enforcing 2FA for all users... give them an appropriate error message
+			if (
+				$this->config->get( 'OATHAuthEnforce2FAForAll' ) &&
+				$this->userRepository->userIsRequiredToHave2FAEnabled( $user )
+			) {
+				return AuthenticationResponse::newFail(
+					wfMessage( 'oathauth-2fa-required-nologin' )
+						->params(
+							ExpiringRecoveryCodeGenerator::getSiteAdminContact(
+								$user,
+								// Use site language; prevents leaking of user language
+								RequestContext::getMain()->getLanguage()->getCode()
+							)
+						)
+				);
+			}
+
 			return AuthenticationResponse::newAbstain();
 		}
 
