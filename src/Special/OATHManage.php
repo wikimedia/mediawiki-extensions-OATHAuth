@@ -454,6 +454,33 @@ class OATHManage extends SpecialPage {
 			);
 		}
 
+		if ( $this->hasSpecialModules() ) {
+			$hasInitial = false;
+			foreach ( $this->getSpecialModules() as $module ) {
+				if ( !$module instanceof RecoveryCodes ) {
+					continue;
+				}
+
+				$key = $module->ensureExistence( $this->oathUser );
+				$initialCodes = array_filter(
+					$key->getRecoveryCodes(),
+					static fn ( RecoveryCode $code ) => $code->isInitial()
+				);
+
+				if ( $initialCodes !== [] ) {
+					$hasInitial = true;
+				}
+			}
+
+			if ( $hasInitial ) {
+				$output->addHTML(
+					Html::warningBox(
+						$this->msg( 'oathauth-need-full-2fa' )->escaped()
+					)
+				);
+			}
+		}
+
 		// Password section
 		if ( $this->authManager->allowsAuthenticationDataChange(
 			new PasswordAuthenticationRequest(), false )->isGood()
@@ -545,7 +572,6 @@ class OATHManage extends SpecialPage {
 		);
 
 		// Passkeys section
-		$passkeySection = '';
 		$passkeyAccordions = '';
 		$passkeyPlaceholder = '';
 		$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
@@ -942,9 +968,52 @@ class OATHManage extends SpecialPage {
 			)->build() );
 		$accordionsHtml = $keyAccordion->build()->getHtml();
 
+		$recoveryCodes = $key->getRecoveryCodes();
+
+		$initialCodes = array_filter(
+			$recoveryCodes,
+			static fn ( RecoveryCode $code ) => $code->isInitial()
+		);
+
+		if ( $initialCodes ) {
+			$initialCodesCount = count( $initialCodes );
+			$maxExpiry = '';
+			foreach ( $initialCodes as $code ) {
+				$codeExpiry = $code->getExpiryTimestamp();
+				if ( $codeExpiry && $codeExpiry > $maxExpiry ) {
+					$maxExpiry = $codeExpiry;
+				}
+			}
+
+			$initialCodesAccordion = $codex->accordion()
+				->setTitle(
+					$this->msg( 'oathauth-recoverycodes-initial' )
+						->numParams( $initialCodesCount )
+						->text()
+				)
+				->setDescription(
+					$this->msg( 'oathauth-recoverycodes-initial-desc' )
+						->numParams( $initialCodesCount )
+						->dateTimeParams( $maxExpiry )
+						->dateParams( $maxExpiry )
+						->timeParams( $maxExpiry )
+						->text()
+				)
+				// TODO support outlined Accordions in Codex-PHP (T416645)
+				->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] )
+				->setContentHtml(
+					$codex->htmlSnippet()->setContent(
+						$this->msg( 'oathauth-recoverycodes-initial-intro' )
+							->numParams( $initialCodesCount )
+							->parse()
+					)->build()
+				);
+			$accordionsHtml .= $initialCodesAccordion->build()->getHtml();
+		}
+
 		$expiringCodes = array_filter(
-			$key->getRecoveryCodes(),
-			static fn ( RecoveryCode $code ) => !$code->isPermanent()
+			$recoveryCodes,
+			static fn ( RecoveryCode $code ) => !$code->isPermanent() && !$code->isInitial()
 		);
 		if ( $expiringCodes ) {
 			$expiringCodesCount = count( $expiringCodes );
@@ -971,14 +1040,17 @@ class OATHManage extends SpecialPage {
 				)
 				// TODO support outlined Accordions in Codex-PHP (T416645)
 				->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] )
-				->setContentHtml( $codex->htmlSnippet()->setContent(
+				->setContentHtml(
+					$codex->htmlSnippet()->setContent(
 					$this->msg( 'oathauth-recoverycodes-temporary-intro' )
 						->numParams( $expiringCodesCount )
 						->parse() .
-					Html::rawElement( 'form', [
-						'action' => wfScript(),
-						'class' => 'mw-special-OATHManage-authmethods__method-actions'
-					],
+					Html::rawElement(
+						'form',
+						[
+							'action' => wfScript(),
+							'class' => 'mw-special-OATHManage-authmethods__method-actions'
+						],
 						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
 						Html::hidden( 'module', $key->getModule() ) .
 						Html::hidden( 'keyId', $key->getId() ) .
@@ -995,8 +1067,9 @@ class OATHManage extends SpecialPage {
 							] )
 							->build()
 							->getHtml()
-					)
-				)->build() );
+						)
+					)->build()
+				);
 			$accordionsHtml .= $temporaryCodesAccordion->build()->getHtml();
 		}
 

@@ -149,6 +149,10 @@ class RecoveryCode {
 		return ConvertibleTimestamp::now() > $expiry;
 	}
 
+	public function isInitial(): bool {
+		return $this->data['initial'] ?? false;
+	}
+
 	private static function getEncryptionHelper(): EncryptionHelper {
 		return OATHAuthServices::getInstance()->getEncryptionHelper();
 	}

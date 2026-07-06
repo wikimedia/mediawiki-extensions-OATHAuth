@@ -34,6 +34,9 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Remove temporary recovery {{PLURAL:$1|code|codes}}",
 	"oathauth-recoverycodes-temporary-remove-text": "You are about to remove the temporary recovery {{PLURAL:$1|code|codes}}, which you received as part of the account recovery process.\n\n<strong>Make sure that you have access to other two-factor authentication methods, so that you will still be able to log in to your account.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "Your temporary recovery {{PLURAL:$1|code has|codes have}} been removed. The other recovery {{PLURAL:$2|code remains|codes remain}} intact.",
+	"oathauth-recoverycodes-initial": "Initial recovery {{PLURAL:$1|code|codes}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|An initial code|A set of $1 initial codes}}, which will expire at $2.",
+	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|This code was|These codes were}} generated and emailed to you as part of requiring two-factor authentication on {{SITENAME}}. {{PLURAL:$1|It|They}} will be removed automatically when you enable another two-factor authentication method.",
 	"oathauth-failedtovalidateoath": "An error occurred when attempting to validate the code from your authentication application. Please try again.",
 	"oathauth-disable": "Disable two-factor authentication",
 	"oathauth-validatedoath": "Validated two-factor credentials. Two-factor authentication will now be enforced.",
@@ -208,5 +211,6 @@
 	"oathauth-remove-lastkey-required": "You cannot remove your last authentication method if you are a member of groups that require two-factor authentication. Please add another authentication method before removing this one.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "User has two-factor authentication enabled",
 	"userlogin-reauth-banner-oathmanage": "<strong>You are viewing or managing your 2FA settings</strong> <br>Confirm it’s you to continue.",
-	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} requires two-factor authentication.\n\nTo sign in:\n1. Log in using your username and temporary password.\n2. Enter {{PLURAL:$2|the|one of the}} temporary recovery {{PLURAL:$2|code|codes}} below when prompted.\n3. Set up a two-factor authentication method to continue using {{SITENAME}}.\n\nTemporary recovery codes:\n$3\n\n{{PLURAL:$2|This temporary recovery code|These temporary recovery codes}} can be used until $4.\n\nYou should sign in and set up two-factor authentication as soon as possible.\n\nYou may ignore this message if this account was created in error."
+	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} requires two-factor authentication.\n\nTo sign in:\n1. Log in using your username and temporary password.\n2. Enter {{PLURAL:$2|the|one of the}} temporary recovery {{PLURAL:$2|code|codes}} below when prompted.\n3. Set up a two-factor authentication method to continue using {{SITENAME}}.\n\nTemporary recovery codes:\n$3\n\n{{PLURAL:$2|This temporary recovery code|These temporary recovery codes}} can be used until $4.\n\nYou should sign in and set up two-factor authentication as soon as possible.\n\nYou may ignore this message if this account was created in error.",
+	"oathauth-need-full-2fa": "You currently only have temporary initial recovery codes enabled. Please enable another two-factor authentication method before these codes expire."
 }

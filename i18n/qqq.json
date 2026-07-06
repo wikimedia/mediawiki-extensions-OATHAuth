@@ -52,6 +52,9 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Title on the page, where user has to confirm removal of recovery codes.\n\nParameters: $1 - number of temporary recovery codes",
 	"oathauth-recoverycodes-temporary-remove-text": "Main text on the removal confirmation page, describing what happens after removal of the temporary codes.\n\nParameters: $1 - number of temporary recovery codes",
 	"oathauth-recoverycodes-temporary-remove-success": "Success message displayed after the temporary recovery codes have been removed.\n\nParameters: $1 - number of temporary recovery codes\n$2 - number of permanent recovery codes",
+	"oathauth-recoverycodes-initial": "Title of the section about initial recovery codes on Special:AccountSecurity.\n\nParameters: $1 - number of initial recovery codes",
+	"oathauth-recoverycodes-initial-desc": "Subtitle for the initial recovery codes section.\n\nParameters:\n* $1 - number of initial recovery codes\n* $2 - the date and time when the codes expire\n* $3 - the date when the codes expire\n* $4 - the time when the codes expire",
+	"oathauth-recoverycodes-initial-intro": "Explanation text for what the initial recovery codes are and that user can remove if they have other two factor devices enabled.\n\nParameters: $1 - number of initial recovery codes",
 	"oathauth-failedtovalidateoath": "Error message for when OATH is unable to validate a TOTP code provided by a user.",
 	"oathauth-disable": "Page title on Special:OATH while disabling OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-validatedoath": "Plain text found on Special:OATH after a token has been validated.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
@@ -226,5 +229,6 @@
 	"oathauth-remove-lastkey-required": "Error message shown if user tries to remove their last 2FA method even if they are required to have 2FA enabled.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "A text representation of APCOND_OATH_HAS2FA condition, which tests if the user has 2FA configured on their account.",
 	"userlogin-reauth-banner-oathmanage": "This is the message for the banner on [[Special:UserLogin]] when the user is redirected there to log in again when trying to manage their 2FA settings.",
-	"oathauth-createaccount-text-with-2fa": "Extended email sent when an account is created by another user on a wiki, and they are required to set up 2FA.\n\nParameters:\n* $1 - The {msg-mw|createaccount-text}} message\n* $2 - Number of initial recovery codes (for PLURAL)\n* $3 - The initial recovery codes for the user\n* $4 - Number of days the initial recovery codes are valid for"
+	"oathauth-createaccount-text-with-2fa": "Extended email sent when an account is created by another user on a wiki, and they are required to set up 2FA.\n\nParameters:\n* $1 - The {msg-mw|createaccount-text}} message\n* $2 - Number of initial recovery codes (for PLURAL)\n* $3 - The initial recovery codes for the user\n* $4 - Number of days the initial recovery codes are valid for",
+	"oathauth-need-full-2fa": "Message shown on Special:AccountSecurity when a user only has initial temporary recovery codes, and needs to enable another 2FA"
 }
