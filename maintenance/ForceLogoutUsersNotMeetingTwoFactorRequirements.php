@@ -15,6 +15,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 } else {
 	$IP = __DIR__ . '/../../..';
 }
+// @codeCoverageIgnoreEnd
 
 class ForceLogoutUsersNotMeetingTwoFactorRequirements extends AllUsers {
 	public function __construct() {
