@@ -4,6 +4,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Maintenance\ForceLogoutUsersNotMeetingTwoFactorRequirements;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -20,6 +21,25 @@ class ForceLogoutUsersNotMeetingTwoFactorRequirementsTest extends MaintenanceBas
 		$this->expectOutputString(
 			"Total: 0; Blocked: 0; Without email: 0; Other skipped: 0\n" .
 			"2FA already enabled: 0; 2FA not required: 0; Logged out: 0\n" .
+			"Done.\n"
+		);
+
+		$this->maintenance->execute();
+	}
+
+	public function testLogOutUser(): void {
+		$this->overrideConfigValues( [
+			MainConfigNames::CentralIdLookupProvider => 'local',
+		] );
+
+		$this->getTestSysop()->getUser();
+
+		$this->maintenance->setOption( 'apply-to-all', true );
+
+		$this->expectOutputString(
+			"Invalidated sessions for user UTSysop\n" .
+			"Total: 1; Blocked: 0; Without email: 0; Other skipped: 0\n" .
+			"2FA already enabled: 0; 2FA not required: 0; Logged out: 1\n" .
 			"Done.\n"
 		);
 

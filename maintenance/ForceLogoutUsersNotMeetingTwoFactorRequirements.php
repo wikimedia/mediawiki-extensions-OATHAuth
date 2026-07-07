@@ -48,7 +48,7 @@ class ForceLogoutUsersNotMeetingTwoFactorRequirements extends AllUsers {
 		}
 
 		$child = $this->createChild( InvalidateUserSessions::class );
-		$child->addOption( 'user', $username );
+		$child->setOption( 'user', $username );
 		$child->execute();
 		$this->loggedOut++;
 	}
