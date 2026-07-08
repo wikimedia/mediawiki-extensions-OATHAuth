@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\OATHAuth\Maintenance\NotifyTwoFactorRequired;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -15,6 +14,8 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  * @group Database
  */
 class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
+
+	use UserWith2FATrait;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -39,9 +40,7 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 	}
 
 	public function testNotifyOneUserNoRequirements(): void {
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
+		$this->useLocalCentralIdLookup();
 
 		$user = $this->getTestSysop()->getUser();
 
@@ -64,5 +63,18 @@ class NotifyTwoFactorRequiredTest extends MaintenanceBaseTestCase {
 		$this->maintenance->execute();
 
 		$this->assertTrue( $notificationCreated );
+	}
+
+	public function testOneUserWith2FA(): void {
+		$this->setupUserWith2FA();
+
+		$this->expectOutputString(
+			"User UTSysop already has two-factor authentication enabled!\n" .
+			"Total: 1; Blocked: 0; Without email: 0; Other skipped: 0\n" .
+			"2FA already enabled: 1; 2FA needed: 0; 2FA not required: 0\n" .
+			"Done.\n"
+		);
+
+		$this->maintenance->execute();
 	}
 }

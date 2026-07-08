@@ -4,7 +4,6 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Maintenance;
 
 use MediaWiki\Extension\OATHAuth\Maintenance\ForceLogoutUsersNotMeetingTwoFactorRequirements;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
 /**
@@ -13,6 +12,9 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  * @group Database
  */
 class ForceLogoutUsersNotMeetingTwoFactorRequirementsTest extends MaintenanceBaseTestCase {
+
+	use UserWith2FATrait;
+
 	protected function getMaintenanceClass() {
 		return ForceLogoutUsersNotMeetingTwoFactorRequirements::class;
 	}
@@ -28,9 +30,7 @@ class ForceLogoutUsersNotMeetingTwoFactorRequirementsTest extends MaintenanceBas
 	}
 
 	public function testLogOutUser(): void {
-		$this->overrideConfigValues( [
-			MainConfigNames::CentralIdLookupProvider => 'local',
-		] );
+		$this->useLocalCentralIdLookup();
 
 		$this->getTestSysop()->getUser();
 
@@ -40,6 +40,19 @@ class ForceLogoutUsersNotMeetingTwoFactorRequirementsTest extends MaintenanceBas
 			"Invalidated sessions for user UTSysop\n" .
 			"Total: 1; Blocked: 0; Without email: 0; Other skipped: 0\n" .
 			"2FA already enabled: 0; 2FA not required: 0; Logged out: 1\n" .
+			"Done.\n"
+		);
+
+		$this->maintenance->execute();
+	}
+
+	public function testOneUserWith2FA(): void {
+		$this->setupUserWith2FA();
+
+		$this->expectOutputString(
+			"User UTSysop already has two-factor authentication enabled!\n" .
+			"Total: 1; Blocked: 0; Without email: 0; Other skipped: 0\n" .
+			"2FA already enabled: 1; 2FA not required: 0; Logged out: 0\n" .
 			"Done.\n"
 		);
 
