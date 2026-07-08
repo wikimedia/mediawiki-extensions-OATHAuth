@@ -165,8 +165,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Uw instellingen voor tweetrapsauthenticatie controleren",
 	"oathauth-notifications-twofactor-required-primary": "Controleer uw instellingen voor tweetrapsauthenticatie",
 	"oathauth-notifications-twofactor-required-help": "Hulp",
-	"notification-body-oathauth-twofactor-required": "Tweetrapsauthenticate is vanaf $3 vereist voordat {{GENDER:$2|u}} toegang kriigt tot deze wiki.\n\nMet deze wijziging worden de informatie en de accounts op deze wiki beter beschermd.",
-	"notification-header-oathauth-twofactor-required": "Tweetrapsauthenticate is vanaf $3 vereist voordat {{GENDER:$2|u}} toegang kriigt tot deze wiki.",
+	"notification-body-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.\n\nMet deze wijziging worden de informatie en de accounts op deze wiki beter beschermd.",
+	"notification-header-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.",
 	"oathauth-verify-enabled": "Voor $1 is tweetrapsauthenticatie ingeschakeld.",
 	"oathauth-verify-disabled": "Voor $1 is tweetrapsauthenticatie uitgeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
@@ -209,5 +209,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Voor $2 op $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Onbekende pagina",
 	"oathauth-remove-lastkey-required": "U kunt uw laatst gebruikte authenticatiemethode niet verwijderen als u lid bent van groepen waarvoor tweetrapsauthenticatie vereist is. Voeg eerst een andere authenticatiemethode toe voordat u deze verwijdert.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "De gebruiker heeft tweetrapsauthenticatie ingeschakeld"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "De gebruiker heeft tweetrapsauthenticatie ingeschakeld",
+	"userlogin-reauth-banner-oathmanage": "<strong>U gaat uw tweetrapsauthenticatie-instellingen bekijken of beheren.</strong> <br>Bevestig uw identiteit om door te gaan."
 }

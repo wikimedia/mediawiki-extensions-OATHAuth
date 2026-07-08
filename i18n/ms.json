@@ -151,8 +151,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Periksa tetapan pengesahihan dwifaktor anda",
 	"oathauth-notifications-twofactor-required-primary": "Periksa tetapan pengesahihan dwifaktor anda",
 	"oathauth-notifications-twofactor-required-help": "Bantuan",
-	"notification-body-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} supaya dapat akses kepada wiki ini, bermula $3.\n\nPerubahan ini akan melindungi maklumat dan akaun di wiki ini dengan lebih baik.",
-	"notification-header-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} supaya dapat akses kepada wiki ini, bermula $3",
+	"notification-body-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} untuk mengakses {{SITENAME}}, bermula $3.\n\nPerubahan ini akan melindungi maklumat dan akaun di wiki ini dengan lebih baik.",
+	"notification-header-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} supaya dapat mengakses {{SITENAME}}, bermula $3",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} mempunyai pendayaan pengesahihan dwifaktor.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak mempunyai pendayaan pengesahihan dwifaktor.",
 	"oathauth-qrcode-alt": "Kod QR boleh imbas mewakili kunci rahsia.",
@@ -195,5 +195,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Untuk $2 pada $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Laman tidak diketahui",
 	"oathauth-remove-lastkey-required": "Anda tidak boleh membuang kaedah pengesahihan terakhir anda jika anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor. Sila tambahkan kaedah pengesahihan lain sebelum mengalih keluar kaedah ini.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Pengguna dengan pengesahihan dwifaktor didayakan"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Pengguna dengan pengesahihan dwifaktor didayakan",
+	"userlogin-reauth-banner-oathmanage": "<strong>Anda sedang melihat atau mengurus tetapan 2FA anda</strong> <br>Anda perlu disahkan untuk sambung."
 }

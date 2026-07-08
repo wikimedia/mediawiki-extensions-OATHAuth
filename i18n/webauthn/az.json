@@ -35,5 +35,7 @@
 	"oathauth-webauthn-add-security-key": "Təhlükəsizlik açarı əlavə et",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Təhlükəsizlik və ya keçid açarından istifadə et",
 	"oathauth-webauthn-login-passkey-button": "Keçid açarı ilə daxil ol",
+	"oathauth-webauthn-reauth-passkey-button": "Keçid açarı ilə davam et",
+	"oathauth-webauthn-reauth-security-key-button": "Təhlükəsizlik açarı ilə davam et",
 	"oathauth-webauthn-deprecated-key": "Bu açar təhlükəsiz deyil və istifadə edilməməlidir. Xahiş edirik, başqa açarla yenidən cəhd edin."
 }

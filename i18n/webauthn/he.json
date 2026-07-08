@@ -33,5 +33,6 @@
 	"oathauth-webauthn-credential-label": "נתוני הזדהות משתמש",
 	"oathauth-webauthn-credential-help": "נתון הזדהות משתמש מבוסס על נתוני אימות",
 	"oathauth-webauthn-add-security-key": "הוספת מפתח אבטחה",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "להשתמש במפתח אבטחה או במפתח גישה"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "להשתמש במפתח אבטחה או במפתח גישה",
+	"oathauth-webauthn-login-passkey-button": "כניסה עם מפתח גישה"
 }

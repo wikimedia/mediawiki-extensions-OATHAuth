@@ -35,5 +35,7 @@
 	"oathauth-webauthn-add-security-key": "Ku dar furaha amniga",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Isticmaal furaha amniga ama passkey",
 	"oathauth-webauthn-login-passkey-button": "Ku soo gal adigoo adeegsanaya passkey",
+	"oathauth-webauthn-reauth-passkey-button": "Ku sii wad passkey",
+	"oathauth-webauthn-reauth-security-key-button": "Ku sii wad furaha amniga",
 	"oathauth-webauthn-deprecated-key": "Furahaan ma aha mid ammaan ah mana aha in la isticmaalo. Fadlan isku day mar kale adigoo adeegsanaya fure kale."
 }

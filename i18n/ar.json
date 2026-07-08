@@ -138,6 +138,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-help": "مساعدة",
 	"oathauth-notifications-recoverycodes-generated-for-user-contact": "اتصل بمسؤول الموقع",
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "تحقق من إعدادات المصادقة الثنائية الخاصة بك",
+	"oathauth-notifications-twofactor-required-primary": "تحقق من إعدادات المصادقة الثنائية الخاصة بك",
+	"oathauth-notifications-twofactor-required-help": "يساعد",
 	"oathauth-verify-enabled": "{{GENDER:$1| تم تمكين المصادقة الثنائية $1 }}.",
 	"oathauth-verify-disabled": "{{GENDER:$1| لم يتم تمكين المصادقة الثنائية $1 }}.",
 	"oathauth-qrcode-alt": "رمز الاستجابة السريعة القابل للمسح يمثل المفتاح السري.",

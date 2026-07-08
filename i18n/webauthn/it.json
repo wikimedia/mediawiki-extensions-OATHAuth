@@ -17,5 +17,7 @@
 	"oathauth-webauthn-credential-label": "Credenziali utente",
 	"oathauth-webauthn-credential-help": "Credenziali dell'utente basate sui dati di autenticazione",
 	"oathauth-webauthn-add-security-key": "Aggiungi una chiave di sicurezza",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Utilizza chiave di sicurezza o passkey"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Utilizza chiave di sicurezza o passkey",
+	"oathauth-webauthn-reauth-passkey-button": "Continua con passkey",
+	"oathauth-webauthn-reauth-security-key-button": "Continua con chiave di sicurezza"
 }

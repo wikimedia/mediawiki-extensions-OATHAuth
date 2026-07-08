@@ -36,5 +36,7 @@
 	"oathauth-webauthn-add-security-key": "Tilføj en sikkerhedsnøgle",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Brug sikkerhedsnøgle eller adgangsnøgle",
 	"oathauth-webauthn-login-passkey-button": "Log ind med adgangsnøgle",
+	"oathauth-webauthn-reauth-passkey-button": "Fortsæt med adgangsnøgle",
+	"oathauth-webauthn-reauth-security-key-button": "Fortsæt med sikkerhedsnøglen",
 	"oathauth-webauthn-deprecated-key": "Denne nøgle er ikke sikker og bør ikke bruges. Prøv igen med en anden nøgle."
 }

@@ -125,7 +125,7 @@
 	"oathauth-notifications-enable-primary": "Controlla le impostazioni di autenticazione a due fattori",
 	"notification-body-oathauth-recoverycodes-generated-for-user": "Se non hai effettuato {{GENDER:|tu}} questa richiesta, qualcuno potrebbe aver tentato di accedere alla tua utenza a tuo nome.",
 	"oathauth-notifications-recoverycodes-generated-for-user-help": "Aiuto",
-	"notification-body-oathauth-twofactor-required": "A partire dal $3, per {{GENDER:$2|accedere}} a questo wiki sarà necessaria l'autenticazione a due fattori.\n\nQuesta modifica permetterà di proteggere meglio le informazioni e le utenze su questo wiki.",
+	"notification-body-oathauth-twofactor-required": "A partire dal $3, per {{GENDER:$2|accedere}} a {{SITENAME}} sarà necessaria l'autenticazione a due fattori.\n\nQuesta modifica permetterà di proteggere meglio le informazioni e le utenze su questo wiki.",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} ha l'autenticazione a due fattori abilitata.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} non ha l'autenticazione a due fattori abilitata.",
 	"oathauth-hint": "Non hai accesso al tuo dispositivo o alla tua applicazione di autenticazione? Puoi inserire un codice di recupero (fornito quando hai abilitato 2FA) in questo campo.",

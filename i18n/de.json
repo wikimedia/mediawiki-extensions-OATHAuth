@@ -163,8 +163,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Überprüfe {{#FORMAL:deine|Ihre}} Einstellungen für die Zwei-Faktor-Authentifizierung",
 	"oathauth-notifications-twofactor-required-primary": "{{#FORMAL:Überprüfe deine|Überprüfen Sie Ihre}} Einstellungen für die Zwei-Faktor-Authentifizierung",
 	"oathauth-notifications-twofactor-required-help": "Hilfe",
-	"notification-body-oathauth-twofactor-required": "Ab dem $3 ist für {{#FORMAL|deinen|Ihren}} {{GENDER:$2|Zugriff}} auf dieses Wiki eine Zwei-Faktor-Authentifizierung erforderlich.\n\nDiese Änderung dient dem besseren Schutz der Informationen und Konten auf diesem Wiki.",
-	"notification-header-oathauth-twofactor-required": "Ab dem $3 ist {{GENDER:$2|für}} {{#FORMAL:dich|Sie}} eine Zwei-Faktor-Authentifizierung erforderlich, um auf dieses Wiki zugreifen zu können.",
+	"notification-body-oathauth-twofactor-required": "Ab dem $3 ist für {{#FORMAL|deinen|Ihren}} {{GENDER:$2|Zugriff}} auf dieses Wiki eine Zwei-Faktor-Authentifizierung erforderlich.\n\nDiese Änderung dient dem besseren Schutz der Informationen und Konten von {{SITENAME}}.",
+	"notification-header-oathauth-twofactor-required": "Ab dem $3 ist {{GENDER:$2|für}} {{#FORMAL:dich|Sie}} eine Zwei-Faktor-Authentifizierung erforderlich, um auf {{SITENAME}} zugreifen zu können.",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} hat die Zwei-Faktor-Authentifizierung aktiviert.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} hat die Zwei-Faktor-Authentifizierung nicht aktiviert.",
 	"oathauth-qrcode-alt": "Scanbarer QR-Code, der den geheimen Schlüssel darstellt.",
@@ -207,5 +207,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Für $2 auf $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Unbekannte Seite",
 	"oathauth-remove-lastkey-required": "{{#FORMAL:Du kannst|Sie können Ihre}} letzte Authentifizierungsmethode nicht entfernen, wenn {{#FORMAL:du Mitglied von Gruppen bist|Sie Mitglied von Gruppen sind}}, die eine Zwei-Faktor-Authentifizierung erfordern. Bitte {{#FORMAL:füge|fügen Sie}} eine weitere Authentifizierungsmethode hinzu, bevor {{#FORMAL:du diese entfernst|Sie diese entfernen}}.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Benutzer hat die Zwei-Faktor-Authentifizierung aktiviert"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Benutzer hat die Zwei-Faktor-Authentifizierung aktiviert",
+	"userlogin-reauth-banner-oathmanage": "<strong>{{FORMAL:Du siehst gerade deine|Sie sehen gerade Ihre}} 2FA-Einstellungen an oder verwalten diese</strong> <br>{{FORMAL:Bestätige, dass du es bist|Bestätigen Sie, dass Sie es sind}}, um fortzufahren."
 }

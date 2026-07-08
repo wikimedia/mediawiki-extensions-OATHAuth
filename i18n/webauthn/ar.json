@@ -35,5 +35,9 @@
 	"oathauth-webauthn-credential-label": "بيانات اعتماد المستخدم",
 	"oathauth-webauthn-credential-help": "اعتماد المستخدم على أساس بيانات المصادقة",
 	"oathauth-webauthn-add-security-key": "إضافة مفتاح أمان",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "استخدم مفتاح الأمان أو رمز المرور"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "استخدم مفتاح الأمان أو رمز المرور",
+	"oathauth-webauthn-login-passkey-button": "سجّل الدخول باستخدام رمز المرور",
+	"oathauth-webauthn-reauth-passkey-button": "تابع باستخدام مفتاح المرور",
+	"oathauth-webauthn-reauth-security-key-button": "تابع باستخدام مفتاح الأمان",
+	"oathauth-webauthn-deprecated-key": "هذا المفتاح غير آمن ولا ينبغي استخدامه. يرجى المحاولة مرة أخرى باستخدام مفتاح مختلف."
 }

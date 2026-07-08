@@ -157,8 +157,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "İki faktorlu autentifikasiya parametrlərinizi yoxlayın",
 	"oathauth-notifications-twofactor-required-primary": "İki faktorlu autentifikasiya parametrlərinizi yoxlayın",
 	"oathauth-notifications-twofactor-required-help": "Kömək",
-	"notification-body-oathauth-twofactor-required": "$3 tarixindən etibarən bu vikiyə {{GENDER:$2|giriş}} etmək üçün iki faktorlu autentifikasiya tələb olunur.\n\nBu dəyişiklik bu vikidəki məlumatları və hesabları daha yaxşı qoruyacaq.",
-	"notification-header-oathauth-twofactor-required": "$3 tarixindən etibarən bu vikiyə {{GENDER:$2|giriş}} etmək üçün iki faktorlu autentifikasiya tələb olunur.",
+	"notification-body-oathauth-twofactor-required": "$3 tarixindən etibarən {{SITENAME}} saytına {{GENDER:$2|giriş}} etmək üçün iki faktorlu autentifikasiya tələb olunur.\n\nBu dəyişiklik bu vikidəki məlumatları və hesabları daha yaxşı qoruyacaq.",
+	"notification-header-oathauth-twofactor-required": "$3 tarixindən etibarən {{SITENAME}} saytına {{GENDER:$2|giriş}} etmək üçün iki faktorlu autentifikasiya tələb olunur.",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} istifadəçisi iki faktorlu autentifikasiyanı aktivləşdirib.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} istifadəçisi iki faktorlu autentifikasiyanı aktivləşdirməyib.",
 	"oathauth-qrcode-alt": "Gizli açarı təmsil edən skan edilə bilən QR kodu.",
@@ -201,5 +201,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "$3 saytında $2 üçün: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Naməlum səhifə",
 	"oathauth-remove-lastkey-required": "İki faktorlu autentifikasiya tələb edən qrupların üzvüsünüzsə, son autentifikasiya metodunuzu silə bilməzsiniz. Bunu silməzdən əvvəl başqa bir autentifikasiya metodu əlavə edin.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "İstifadəçi iki faktorlu autentifikasiyanı aktivləşdirib"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "İstifadəçi iki faktorlu autentifikasiyanı aktivləşdirib",
+	"userlogin-reauth-banner-oathmanage": "<strong>2FA parametlərinizə baxır və ya idarə edirsiniz</strong> <br>Davam etmək üçün kimliyinizi təsdiqləyin."
 }

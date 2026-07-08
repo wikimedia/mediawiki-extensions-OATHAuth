@@ -151,8 +151,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Проверете си ги поставките за двочинителска заверка",
 	"oathauth-notifications-twofactor-required-primary": "Проверете си ги поставките за двочинителска заверка",
 	"oathauth-notifications-twofactor-required-help": "Помош",
-	"notification-body-oathauth-twofactor-required": "Ќе се бара двочинителска заверка за да {{GENDER:$2|добиете}} пристап до ова вики, почнувајќи од $3.\n\nОваа промена ќе овозможи подобра заштита на информациите и сметките на ова вики.",
-	"notification-header-oathauth-twofactor-required": "Ќе се бара двочинителска заверка за да {{GENDER:$2|добиете}} пристап до ова вики, почнувајќи од $3",
+	"notification-body-oathauth-twofactor-required": "Ќе се бара двочинителска заверка за да {{GENDER:$2|добиете}} пристап до {{SITENAME}}, почнувајќи од $3.\n\nОваа промена ќе овозможи подобра заштита на информациите и сметките на ова вики.",
+	"notification-header-oathauth-twofactor-required": "Ќе се бара двочинителска заверка за да {{GENDER:$2|добиете}} пристап до {{SITENAME}}, почнувајќи од $3",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} има овозможено двочинителска заверка.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} нема овозможено двочинителска заверка.",
 	"oathauth-qrcode-alt": "Отчитлив QR-код што го претставува тајниот клуч.",
@@ -174,9 +174,9 @@
 	"oathauth-delete-confirm-box": "Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
 	"oathauth-delete-warning-final": "Отстранувањето на овој начин целосно ќе ја оневозможи двочинителската заверка.\n\nОва воедно ќе ги избрише вашите кодови за повраток.\n\n<strong>Ова ќе ја направи вашата сметка помалку безбедна.</strong>",
 	"oathauth-delete-wrong-confirm-message": "Погрешен внос за конечно остранување на клучот. Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
-	"oathauth-delete-success": "Отстранет <strong>$1</strong>.",
+	"oathauth-delete-success": "Отстрането!",
 	"oathauth-created-at": "Додадено на $1",
-	"oathauth-enable-success": "Додаден <strong>$1</strong>.",
+	"oathauth-enable-success": "Додадено!",
 	"oathauth-max-keys-exceeded": "Достигнато е ограничувањето на начини на заверка",
 	"oathauth-max-keys-exceeded-message": "Го достигнавте дозволениот број на начини на заверка, кој изнесува $1. Отстранете нечин на заверка пред да додадете нов.",
 	"oathauth-passkeys-header": "Пропусни клучеви",
@@ -195,5 +195,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "За $2 на $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Непозната страница",
 	"oathauth-remove-lastkey-required": "Не можете да го отстраните последниот начин на заверка ако членувате во групи што бараат двочинителска заверка. Додајте друг начин на заверка пред да го отстраните овој.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Корисникот има овозможено двочинителска заверка"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Корисникот има овозможено двочинителска заверка",
+	"userlogin-reauth-banner-oathmanage": "<strong>Гледате или управувате со нагодувања за двочинителска заверка</strong> <br>Потврдете дека тоа сте вие за да продолжите."
 }

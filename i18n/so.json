@@ -150,8 +150,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Hubi dejimaha xaqiijinta laba-tallaabo",
 	"oathauth-notifications-twofactor-required-primary": "Hubi dejimaha xaqiijinta laba-tallaabo",
 	"oathauth-notifications-twofactor-required-help": "Caawin",
-	"notification-body-oathauth-twofactor-required": "Xaqiijinta laba-tallaabo ayaa laga rabayaa {{GENDER:$2|adiga}} si aad u gasho wiki-kan, laga bilaabo $3.\n\nIsbeddelkan wuxuu si fiican u ilaalin doonaa xogta iyo xisaabaadka ku jira wiki-kan.",
-	"notification-header-oathauth-twofactor-required": "Xaqiijinta laba-tallaabo ayaa laga rabayaa {{GENDER:$2|adiga}} si aad u gasho wiki-kan, laga bilaabo $3",
+	"notification-body-oathauth-twofactor-required": "Xaqiijinta laba-tallaabo ayaa laga rabayaa {{GENDER:$2|adiga}} si aad u gasho {{SITENAME}}, laga bilaabo $3.\n\nIsbeddelkan wuxuu si fiican u ilaalin doonaa xogta iyo xisaabaadka ku jira wiki-kan.",
+	"notification-header-oathauth-twofactor-required": "Xaqiijinta laba-tallaabo ayaa laga rabayaa {{GENDER:$2|adiga}} si aad u gasho {{SITENAME}}, laga bilaabo $3",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} waxa uu leeyahay xaqiijinta laba-tallaabo oo shaqaynaysa.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} ma haysto xaqiijinta laba-tallaabo oo shaqaynaysa.",
 	"oathauth-qrcode-alt": "QR code la iska akhriyi karo oo matalaya furaha sirta ah.",
@@ -194,5 +194,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "$2 ku jira $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Bog aan la aqoon",
 	"oathauth-remove-lastkey-required": "Ma saari kartid habkaaga ugu dambeeya ee xaqiijinta haddii aad ka tirsan tahay kooxo u baahan xaqiijinta laba-tallaabo. Fadlan ku dar hab kale oo xaqiijin ah ka hor intaadan kan ka saarin.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Isticmaaluhu waxa uu haystaa xaqiijinta laba-tallaabo oo shaqaynaysa"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Isticmaaluhu waxa uu haystaa xaqiijinta laba-tallaabo oo shaqaynaysa",
+	"userlogin-reauth-banner-oathmanage": "<strong>Waxaad arkaysaa ama maareynaysaa dejimahaaga 2FA</strong> <br>Xaqiiji in aad adigu tahay si aad u sii waddo."
 }

@@ -23,5 +23,7 @@
 	"oathauth-webauthn-ui-reload-page-label": "Laadi lehekülg uuesti",
 	"oathauth-webauthn-add-security-key": "Lisa turbevõti",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "Kasuta turbe- või pääsuvõtit",
-	"oathauth-webauthn-login-passkey-button": "Logi sisse pääsuvõtmega"
+	"oathauth-webauthn-login-passkey-button": "Logi sisse pääsuvõtmega",
+	"oathauth-webauthn-reauth-passkey-button": "Jätka pääsuvõtmega",
+	"oathauth-webauthn-reauth-security-key-button": "Jätka turbevõtmega"
 }

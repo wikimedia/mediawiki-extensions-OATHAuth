@@ -166,5 +166,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Vikis $3, kus oled $2: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Teadmata lehekülg",
 	"oathauth-remove-lastkey-required": "Sa ei saa eemaldada enda viimast autentimismeetodit, kui oled liige rühmades, mis nõuavad kaheastmelist autentimist. Palun lisa enne selle meetodi eemaldamist teine meetod.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Kasutajal on kaheastmeline autentimine lubatud"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Kasutajal on kaheastmeline autentimine lubatud",
+	"userlogin-reauth-banner-oathmanage": "<strong>Vaatad või haldad enda 2FA-sätteid.</strong> <br>Jätkamiseks kinnita, et see oled sina."
 }

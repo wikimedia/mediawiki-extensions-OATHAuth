@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pratik11"
+		]
+	},
+	"oathauth-webauthn-reauth-passkey-button": "पासकी प्रयोग गरी जारी राख्नुहोस्",
+	"oathauth-webauthn-reauth-security-key-button": "सुरक्षा साँचो प्रयोग गरी जारी राख्नुहोस्"
+}
