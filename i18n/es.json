@@ -50,6 +50,8 @@
 	"oathauth-recoverycodes-temporary-desc": "{{PLURAL:$1|Un código adicional, que expirará|Un conjunto de $1 códigos adicionales, que expirarán}} en $2.",
 	"oathauth-recoverycodes-temporary-remove-label": "Eliminar {{PLURAL:$1|código temporal|códigos temporales}}",
 	"oathauth-recoverycodes-temporary-remove-header": "Eliminar {{PLURAL:$1|código temporal|códigos temporales}} de recuperación",
+	"oathauth-recoverycodes-temporary-remove-text": "Estás a punto de eliminar {{PLURAL:$1|el código temporal|los códigos temporales}} de recuperación que recibiste como parte del proceso de recuperación de la cuenta.\n\n<strong>Asegúrate de tener acceso a otros métodos de autenticación en dos pasos para seguir pudiendo iniciar sesión en tu cuenta.</strong>",
+	"oathauth-recoverycodes-temporary-remove-success": "Se {{PLURAL:$1|ha eliminado tu código temporal|han eliminado tus códigos temporales}} de recuperación. {{PLURAL:$2|El otro código de recuperación permanece intacto|Los demás códigos de recuperación permanecen intactos}}.",
 	"oathauth-failedtovalidateoath": "Se produjo un error al tratar de validar el código de tu aplicación de autenticación. Por favor, inténtalo de nuevo.",
 	"oathauth-disable": "Desactivar la autenticación en dos pasos",
 	"oathauth-validatedoath": "Se han validado las credenciales en dos pasos. Ahora se aplicará la autenticación en dos pasos.",
