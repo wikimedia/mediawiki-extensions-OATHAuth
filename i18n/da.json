@@ -28,7 +28,7 @@
 	"oathauth-recoverycodes-exist": "Du har eksisterende gendannelseskoder. Her er de igen, så du kan kopiere eller downloade dem til et sikkert sted.",
 	"oathauth-recoverycodes-header": "Gendannelsesmuligheder",
 	"oathauth-recoverycodes-header-create": "Opret nye gendannelseskoder",
-	"oathauth-recoverycodes-regenerate-warning": "Hvis du opretter {{PLURAL:$1|en ny gendannelseskode|nye gendannelseskoder}}<strong>, vil din oprindelige {{PLURAL:$1|gendannelseskode|gendannelseskoder}} ikke længere virke.</strong>",
+	"oathauth-recoverycodes-regenerate-warning": "Hvis du opretter {{PLURAL:$1|en ny gendannelseskode|nye gendannelseskoder}}<strong>, vil din(e) oprindelige {{PLURAL:$1|gendannelseskode|gendannelseskoder}} ikke længere virke.</strong>",
 	"oathauth-failedtovalidateoath": "Der opstod en fejl under forsøget på at validere koden fra din godkendelsesapplikation. Prøv igen.",
 	"oathauth-disable": "Deaktiver tofaktorgodkendelse",
 	"oathauth-validatedoath": "Validerede oplysninger for login med tofaktorgodkendelse, der nu er slået til.",

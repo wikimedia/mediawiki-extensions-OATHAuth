@@ -123,5 +123,5 @@
 	"oathauth-delete-confirm-box": "Merkit \"{{int:oathauth-authenticator-delete-text}}\" evit kenderc'hel",
 	"oathauth-delete-success": "<strong>$1</strong> dilamet.",
 	"oathauth-created-at": "Ouzhpennet war $1",
-	"oathauth-enable-success": "<strong>$1</strong> ouzhpennet."
+	"oathauth-enable-success": "Ouzhpennetǃ"
 }

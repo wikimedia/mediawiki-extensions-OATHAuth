@@ -146,7 +146,7 @@
 	"oathauth-delete-confirm-box": "Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
 	"oathauth-delete-warning-final": "Отстранувањето на овој начин целосно ќе ја оневозможи двочинителската заверка.",
 	"oathauth-delete-wrong-confirm-message": "Погрешен внос за конечно остранување на клучот. Внесете „{{int:oathauth-authenticator-delete-text}}“ за да продолжите",
-	"oathauth-delete-success": "Отстранет <strong>$1</strong>.",
+	"oathauth-delete-success": "Отстрането!",
 	"oathauth-created-at": "Додадено на $1",
-	"oathauth-enable-success": "Додаден <strong>$1</strong>."
+	"oathauth-enable-success": "Додадено!"
 }

@@ -153,7 +153,7 @@
 	"oathauth-delete-confirm-box": "Syötä ”{{int:oathauth-authenticator-delete-text}}” jatkaaksesi",
 	"oathauth-delete-warning-final": "Tämän tavan poistaminen poistaa kaksivaiheisen tunnistautumisen käytöstä kokonaan.",
 	"oathauth-delete-wrong-confirm-message": "Virheellinen syöte viimeisen avaimen poistamiseksi. Kirjoita ”{{int:oathauth-authenticator-delete-text}}” jatkaaksesi",
-	"oathauth-delete-success": "<strong>$1</strong> poistettu.",
+	"oathauth-delete-success": "Poistettu!",
 	"oathauth-created-at": "Lisätty $1",
-	"oathauth-enable-success": "<strong>$1</strong> lisätty."
+	"oathauth-enable-success": "Lisätty!"
 }

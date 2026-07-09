@@ -172,7 +172,7 @@
 	"oathauth-delete-warning": "Vous ne pourrez plus utiliser cette méthode d'authentification pour vous connecter.",
 	"oathauth-delete-confirm-box": "Saisissez « {{int:oathauth-authenticator-delete-text}} » pour continuer",
 	"oathauth-delete-wrong-confirm-message": "Saisie erronée pour la suppression de la dernière clé. Veuillez entrer « {{int:oathauth-authenticator-delete-text}} » pour continuer",
-	"oathauth-delete-success": "<strong>$1</strong> supprimé.",
+	"oathauth-delete-success": "Supprimé!",
 	"oathauth-created-at": "Ajouté le $1",
-	"oathauth-enable-success": "<strong>$1</strong> ajoutée."
+	"oathauth-enable-success": "Ajoutée !"
 }
