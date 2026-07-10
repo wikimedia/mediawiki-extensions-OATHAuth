@@ -10,34 +10,33 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
-use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\User\User;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Extension\OATHAuth\WebAuthnAuthenticator;
 
 class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
+
+	public function __construct(
+		private readonly OATHUserRepository $userRepository,
+		private readonly WebAuthnAuthenticator $authenticator,
+	) {
+	}
 
 	/** @inheritDoc */
 	public function getAuthenticationRequests( $action, array $options ) {
 		return [];
 	}
 
-	private function getOATHUser( User $user ): OATHUser {
-		return OATHAuthServices::getInstance()
-			->getUserRepository()->findByUser( $user );
-	}
-
 	/** @inheritDoc */
 	public function beginSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = OATHAuthServices::getInstance()->getWebAuthnAuthenticator();
-		$oathUser = $this->getOATHUser( $user );
-		if ( !$authenticator->isEnabled( $oathUser ) ) {
+		$oathUser = $this->userRepository->findByUser( $user );
+		if ( !$this->authenticator->isEnabled( $oathUser ) ) {
 			return AuthenticationResponse::newAbstain();
 		}
-		$canAuthenticate = $authenticator->canAuthenticate( $oathUser );
+		$canAuthenticate = $this->authenticator->canAuthenticate( $oathUser );
 		if ( !$canAuthenticate->isGood() ) {
 			return AuthenticationResponse::newFail( $canAuthenticate->getMessage() );
 		}
-		$startAuthResult = $authenticator->startAuthentication( $oathUser );
+		$startAuthResult = $this->authenticator->startAuthentication( $oathUser );
 		if ( $startAuthResult->isGood() ) {
 			$request = new WebAuthnAuthenticationRequest( $startAuthResult->getValue()['json'] );
 			$this->addModules();
@@ -48,9 +47,8 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
-		$authenticator = OATHAuthServices::getInstance()->getWebAuthnAuthenticator();
-		$oathUser = $this->getOATHUser( $user );
-		$canAuthenticate = $authenticator->canAuthenticate( $oathUser );
+		$oathUser = $this->userRepository->findByUser( $user );
+		$canAuthenticate = $this->authenticator->canAuthenticate( $oathUser );
 		if ( !$canAuthenticate->isGood() ) {
 			return AuthenticationResponse::newFail( $canAuthenticate->getMessage() );
 		}
@@ -63,7 +61,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 		if ( !$request ) {
 			// Re-ask user for credentials
 			$request = new WebAuthnAuthenticationRequest(
-				$authenticator->startAuthentication( $oathUser )->getValue()['json']
+				$this->authenticator->startAuthentication( $oathUser )->getValue()['json']
 			);
 			$this->addModules();
 			return AuthenticationResponse::newUI( [ $request ],
@@ -77,7 +75,7 @@ class WebAuthnSecondaryAuthenticationProvider extends AbstractSecondaryAuthentic
 				wfMessage( 'oathauth-webauthn-error-credentials-missing' ), 'error' );
 		}
 
-		$authResult = $authenticator->continueAuthentication( $oathUser, $verificationData['credential'] );
+		$authResult = $this->authenticator->continueAuthentication( $oathUser, $verificationData['credential'] );
 		if ( $authResult->isGood() ) {
 			return AuthenticationResponse::newPass( $authResult->getValue()->getUser()->getName() );
 		}

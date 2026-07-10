@@ -11,6 +11,7 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnAddKeyForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\WebAuthnManageForm;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
+use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
@@ -20,9 +21,9 @@ class WebAuthn implements IModule {
 	/**
 	 * Custom action for the manage form
 	 */
-	public const ACTION_ADD_KEY = 'addkey';
+	public const string ACTION_ADD_KEY = 'addkey';
 
-	public const MODULE_NAME = "webauthn";
+	public const string MODULE_NAME = "webauthn";
 
 	public function __construct(
 		private readonly OATHUserRepository $userRepository,
@@ -54,7 +55,10 @@ class WebAuthn implements IModule {
 	}
 
 	public function getSecondaryAuthProvider(): WebAuthnSecondaryAuthenticationProvider {
-		return new WebAuthnSecondaryAuthenticationProvider();
+		return new WebAuthnSecondaryAuthenticationProvider(
+			$this->userRepository,
+			OATHAuthServices::getInstance()->getWebAuthnAuthenticator(),
+		);
 	}
 
 	/** @inheritDoc */

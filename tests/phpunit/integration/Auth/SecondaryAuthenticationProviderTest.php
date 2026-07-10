@@ -82,14 +82,25 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$authManager->method( 'getAuthenticationSessionData' )
 			->willReturnCallback( static fn ( $key ) => $key === 'oathauth-reauth-securitylevel'
 				? $reauthSecurityLevel
-				: null );
-		$provider = new SecondaryAuthenticationProvider( $logger );
+				: null
+			);
+
+		$hookContainer = $this->createNoOpMock( HookContainer::class );
+		$userNameUtils = $this->createNoOpMock( UserNameUtils::class );
+
+		$provider = new SecondaryAuthenticationProvider(
+			$logger,
+			$moduleRegistry,
+			$oathUserRepository,
+			$hookContainer,
+			$userNameUtils,
+		);
 		$provider->init(
 			new NullLogger(),
 			$authManager,
-			$this->createNoOpMock( HookContainer::class ),
+			$hookContainer,
 			new HashConfig(),
-			$this->createNoOpMock( UserNameUtils::class )
+			$userNameUtils,
 		);
 		$response = $provider->beginSecondaryAuthentication( $user, [] );
 		foreach ( $steps as $step ) {

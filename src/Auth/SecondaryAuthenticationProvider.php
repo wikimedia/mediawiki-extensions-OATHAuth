@@ -9,17 +9,23 @@ use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
-use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUser;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\User\UserNameUtils;
 
 class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationProvider {
 
-	public const MODULE_PRIORITY = [ 'webauthn', 'totp', 'recoverycodes' ];
-	public const SUCCESS_KEY = 'oathauth-skip-2fa';
+	public const array MODULE_PRIORITY = [ 'webauthn', 'totp', 'recoverycodes' ];
+	public const string SUCCESS_KEY = 'oathauth-skip-2fa';
 
 	public function __construct(
 		private readonly OATHAuthLogger $oathLogger,
+		private readonly OATHAuthModuleRegistry $moduleRegistry,
+		private readonly OATHUserRepository $userRepository,
+		private readonly HookContainer $hookContainer,
+		private readonly UserNameUtils $usernameUtils,
 	) {
 	}
 
@@ -45,7 +51,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			return AuthenticationResponse::newAbstain();
 		}
 
-		$authUser = OATHAuthServices::getInstance()->getUserRepository()->findByUser( $user );
+		$authUser = $this->userRepository->findByUser( $user );
 
 		if ( !$authUser->isTwoFactorAuthEnabled() ) {
 			return AuthenticationResponse::newAbstain();
@@ -68,7 +74,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
-		$authUser = OATHAuthServices::getInstance()->getUserRepository()->findByUser( $user );
+		$authUser = $this->userRepository->findByUser( $user );
 
 		$module = $this->getModule( $authUser, $reqs );
 		if ( !$module ) {
@@ -146,18 +152,15 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 	}
 
 	private function getProviderForModule( string $moduleId ): AbstractSecondaryAuthenticationProvider {
-		$module = OATHAuthServices::getInstance()
-			->getModuleRegistry()
-			->getModuleByKey( $moduleId );
+		$module = $this->moduleRegistry->getModuleByKey( $moduleId );
 
 		$provider = $module->getSecondaryAuthProvider();
-		$services = MediaWikiServices::getInstance();
 		$provider->init(
 			$this->logger,
 			$this->manager,
-			$services->getHookContainer(),
+			$this->hookContainer,
 			$this->config,
-			$services->getUserNameUtils()
+			$this->usernameUtils,
 		);
 		return $provider;
 	}
@@ -172,10 +175,8 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		}
 
 		$allowedModules = [];
-		$moduleRegistry = OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
-			->getModuleRegistry();
 		foreach ( $authUser->getKeys() as $key ) {
-			$module = $moduleRegistry->getModuleByKey( $key->getModule() );
+			$module = $this->moduleRegistry->getModuleByKey( $key->getModule() );
 			$allowedModules[$module->getName()] = $module->getDisplayName();
 		}
 		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {

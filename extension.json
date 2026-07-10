@@ -126,7 +126,11 @@
 			"OATHSecondaryAuthenticationProvider": {
 				"class": "\\MediaWiki\\Extension\\OATHAuth\\Auth\\SecondaryAuthenticationProvider",
 				"services": [
-					"OATHAuth.Logger"
+					"OATHAuth.Logger",
+					"OATHAuth.ModuleRegistry",
+					"OATHAuth.UserRepository",
+					"HookContainer",
+					"UserNameUtils"
 				],
 				"sort": 50
 			}
