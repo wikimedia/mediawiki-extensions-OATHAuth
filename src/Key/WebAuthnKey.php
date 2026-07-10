@@ -401,6 +401,8 @@ class WebAuthnKey extends AuthKey {
 				new ES256(),
 				new ES512(),
 				new EdDSA(),
+				// RS1 is deprecated; at some point we should stop allowing auth. May need further handling,
+				// along with prior notifications to users - T424851
 				new RS1(),
 				new RS256(),
 				new RS512()
