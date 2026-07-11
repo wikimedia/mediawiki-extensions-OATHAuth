@@ -2,7 +2,7 @@
 	<cdx-dialog
 		v-model:open="wrappedOpen"
 		class="mw-oathauth-passkeydialog"
-		:title="$i18n( 'oathauth-passkey-dialog-title' )"
+		:title="$i18n( 'oathauth-passkey-dialog-title' ).text()"
 		:primary-action="primaryAction"
 		:default-action="defaultAction"
 		@primary="createPasskey"
