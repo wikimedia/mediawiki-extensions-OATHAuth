@@ -1,6 +1,9 @@
 <template>
+	<cdx-message v-if="supportsPasskeys === false" type="notice">
+		{{ $i18n( 'oathauth-passkeys-unsupported' ) }}
+	</cdx-message>
 	<cdx-button
-		:disabled="!supportsPasskeys"
+		:disabled="supportsPasskeys === false"
 		@click.prevent="open = true"
 	>
 		{{ $i18n( 'oathauth-passkeys-add' ) }}
@@ -10,7 +13,7 @@
 
 <script>
 const { defineComponent, ref } = require( 'vue' );
-const { CdxButton } = require( './codex.js' );
+const { CdxButton, CdxMessage } = require( './codex.js' );
 const AddPasskeyDialog = require( './AddPasskeyDialog.vue' );
 
 /**
@@ -49,11 +52,12 @@ async function checkPasskeySupport() {
 module.exports = exports = defineComponent( {
 	components: {
 		CdxButton,
+		CdxMessage,
 		AddPasskeyDialog
 	},
 	setup() {
 		const open = ref( false );
-		const supportsPasskeys = ref( true );
+		const supportsPasskeys = ref( null );
 		checkPasskeySupport().then( ( support ) => {
 			supportsPasskeys.value = support;
 		} );

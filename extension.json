@@ -319,6 +319,7 @@
 				"oathauth-passkeys-placeholder",
 				"oathauth-passkeys-no2fa",
 				"oathauth-passkeys-add",
+				"oathauth-passkeys-unsupported",
 				"oathauth-passkey-dialog-title",
 				"oathauth-passkey-dialog-text",
 				"oathauth-passkey-dialog-back",

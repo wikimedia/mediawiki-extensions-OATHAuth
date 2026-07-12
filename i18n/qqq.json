@@ -216,6 +216,7 @@
 	"oathauth-passkeys-placeholder": "Text shown in the passkeys section on Special:AccountSecurity when the user does not have any passkeys set up.",
 	"oathauth-passkeys-no2fa": "Additional text shown in the passkeys section on Special:AccountSecurity when the user does not have 2FA set up.",
 	"oathauth-passkeys-add": "Label for the button that adds a new passkey. This button opens the passkey dialog.",
+	"oathauth-passkeys-unsupported": "Notice shown in the passkeys section on Special:AccountSecurity when the user's browser does not support passkeys.",
 	"oathauth-passkey-dialog-title": "Title of the dialog that lets the user add a passkey.",
 	"oathauth-passkey-dialog-text": "Text in the passkey dialog that explains what passkeys are.",
 	"oathauth-passkey-dialog-back": "Label for the button in the passkey dialog that closes the dialog without adding a passkey.",
