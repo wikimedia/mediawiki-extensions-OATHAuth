@@ -64,6 +64,7 @@ class HookHandler implements
 				'persistent' => false,
 				'autocomplete' => 'one-time-code',
 				'spellcheck' => false,
+				'inputmode' => 'numeric',
 				'help-message' => 'oathauth-auth-token-help-ui',
 			];
 		}

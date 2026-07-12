@@ -32,7 +32,7 @@ class TOTPAuthenticationRequest extends AuthenticationRequest {
 			'OATHToken' => [
 				'type' => 'string',
 				'label' => wfMessage( 'oathauth-auth-token-label' ),
-				'help' => wfMessage( 'oathauth-auth-token-help' )
+				'help' => wfMessage( 'oathauth-auth-token-help' ),
 			]
 		];
 	}
