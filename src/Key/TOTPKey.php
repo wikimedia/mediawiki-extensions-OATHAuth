@@ -55,6 +55,11 @@ class TOTPKey extends AuthKey {
 		return rtrim( $paddedBase32String, '=' );
 	}
 
+	private static function addBase32Padding( string $unpaddedBase32String ): string {
+		$padChars = strlen( $unpaddedBase32String ) % 8;
+		return $unpaddedBase32String . str_repeat( '=', 8 - $padChars );
+	}
+
 	/**
 	 * @param array $data
 	 * @return TOTPKey|null on invalid data
@@ -152,7 +157,7 @@ class TOTPKey extends AuthKey {
 		$lastWindow = (int)$store->get( $key );
 
 		$results = HOTP::generateByTimeWindow(
-			Base32::decode( $this->secret['secret'] ),
+			Base32::decode( self::addBase32Padding( $this->secret['secret'] ) ),
 			$this->secret['period'],
 			-$wgOATHAuthWindowRadius,
 			$wgOATHAuthWindowRadius,

@@ -3,13 +3,13 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
+use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWikiIntegrationTestCase;
-use SodiumException;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Key\AuthKey
@@ -35,8 +35,8 @@ class TOTPKeyTest extends MediaWikiIntegrationTestCase {
 	public function testNewFromArrayWithNonceNoEncryption(): void {
 		$this->encryptionEnableIntegrationTestSetup();
 
-		// bad nonce value will throw a sodium exception
-		$this->expectException( SodiumException::class );
+		// bad nonce value will throw an exception
+		$this->expectException( InvalidArgumentException::class );
 		TOTPKey::newFromArray( [
 			'secret' => '123456',
 			'nonce' => '789101112',

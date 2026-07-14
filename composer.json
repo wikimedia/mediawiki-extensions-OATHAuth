@@ -1,6 +1,6 @@
 {
 	"require": {
-		"christian-riesen/base32": "^1.4.0",
+		"christian-riesen/base32": "^2.0.1",
 		"endroid/qr-code": "6.0.9",
 		"jakobo/hotp-php": "2.0.0",
 		"okvpn/clock-lts": "^1.0.0",

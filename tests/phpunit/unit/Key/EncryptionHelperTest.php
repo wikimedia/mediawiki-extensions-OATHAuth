@@ -3,6 +3,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Unit\Key;
 
+use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\Key\EncryptionHelper;
 use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
@@ -47,7 +48,7 @@ class EncryptionHelperTest extends MediaWikiUnitTestCase {
 		$magicPhrase = 'super secret phrase';
 		$invalidMagicPhrase = 'a different phrase that isn\'t encrypted';
 		$encrypted = $helper->encrypt( $magicPhrase );
-		$this->expectException( UnexpectedValueException::class );
+		$this->expectException( InvalidArgumentException::class );
 		$helper->decrypt( $invalidMagicPhrase, $encrypted['nonce'] );
 	}
 

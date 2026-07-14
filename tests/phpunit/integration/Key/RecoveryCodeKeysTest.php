@@ -3,6 +3,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration\Key;
 
+use InvalidArgumentException;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -12,7 +13,6 @@ use MediaWiki\Extension\OATHAuth\Tests\Integration\EncryptionTestTrait;
 use MediaWiki\Request\WebRequest;
 use MediaWikiIntegrationTestCase;
 use OutOfRangeException;
-use SodiumException;
 use UnexpectedValueException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -78,7 +78,7 @@ class RecoveryCodeKeysTest extends MediaWikiIntegrationTestCase {
 
 	public function testNewFromArrayWithNonce_invalidKey() {
 		$this->encryptionEnableIntegrationTestSetup();
-		$this->expectException( SodiumException::class );
+		$this->expectException( InvalidArgumentException::class );
 		RecoveryCodeKeys::newFromArray( [
 			'recoverycodekeys' => [ self::INVALID_ENCRYPTED_RECOVERY_KEY ],
 			'nonce' => 'bad_value',
