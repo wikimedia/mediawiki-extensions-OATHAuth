@@ -6,7 +6,8 @@
 			"Hmxhmx",
 			"Ivi104",
 			"MaGa",
-			"Neptune, the Mystic"
+			"Neptune, the Mystic",
+			"Ponor"
 		]
 	},
 	"oathauth-desc": "Omogućava autentifikaciju suradnika pomoću HMAC-a na temelju jednokratnih zaporki",
@@ -23,12 +24,12 @@
 	"oathauth-recoverycodes-filename": "kodovi za oporavak",
 	"oathauth-recoverycodes-copy": "Kopiraj",
 	"oathauth-recoverycodes-copy-success": "Kodove za oporavak kopirali ste u svoj međuspremnik!",
-	"oathauth-recoverycodes-create-label": "Stvorite {{PLURAL:$1|novi kod za oporavak|nove kodove za oporavak}}",
+	"oathauth-recoverycodes-create-label": "Stvorite {{PLURAL:$1|1=novi kod za oporavak|nove kodove za oporavak}}",
 	"oathauth-recoverycodes-too-many-instances": "Za ovog je suradnika u bazi podataka pronađeno više kodova za oporavak.",
 	"oathauth-recoverycodes-exist": "Imate sadašnje kodove za oporavak. Ponovno vam se prikazuju kako biste ih kopiranjem ili preuzimanjem mogli spremiti na sigurno mjesto.",
 	"oathauth-recoverycodes-header": "Mogućnosti oporavka",
 	"oathauth-recoverycodes-header-create": "Stvorite nove kodove za oporavak",
-	"oathauth-recoverycodes-regenerate-warning": "Ako stvarate {{PLURAL:$1|novi kod za oporavak|nove kodove za oporavak}}, <strong>{{PLURAL:$1|vaš prethodni kod za oporavak|vaši prethodni kodovi za oporavak}} više neće vrijediti.</strong>",
+	"oathauth-recoverycodes-regenerate-warning": "Ako stvarate {{PLURAL:$1|1=novi kod za oporavak|nove kodove za oporavak}}, <strong>{{PLURAL:$1|1=vaš prethodni kod za oporavak|vaši prethodni kodovi za oporavak}} više neće vrijediti.</strong>",
 	"oathauth-failedtovalidateoath": "Dogodila se pogreška dok se potvrđivao kod s vaše aplikacije za autentifikaciju. Pokušajte ponovno.",
 	"oathauth-disable": "Onemogući dvofaktorsku autentifikaciju",
 	"oathauth-validatedoath": "Ovjereno je dvofaktorsko punomoćje. Dvofaktorska autentifikacija odsad će biti provođena.",
