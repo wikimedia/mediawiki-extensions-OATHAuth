@@ -6,6 +6,7 @@
 	},
 	"oathauth-desc": "Davaje podpor avtentifikaciji s pomočju jednokratnyh parol osnovanyh na HMAC i protokola WebAuthn",
 	"disableoathforuser": "Izključenje dvufaktornoj avtentifikacije za koristnika",
+	"recover2faforuser": "Odnovjenje dvufaktornoj avtentifikacije koristnika",
 	"verifyoathforuser": "Prověrka statusa dvufaktornoj avtentifikacije",
 	"oathauth-account": "Nazva koristničskogo konta:",
 	"oathauth-secret": "Tajny ključ dvufaktornoj avtentifikacije:",
