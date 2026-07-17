@@ -170,7 +170,7 @@ class OATHUserRepository {
 			->execute();
 		$id = $dbw->insertId();
 
-		$hasExistingKey = $user->isTwoFactorAuthEnabled();
+		$hasExistingKey = $user->userHasNonSpecialEnabledKeys();
 
 		$key = $module->newKey( $keyData + [ 'id' => $id, 'created_timestamp' => $createdTimestamp ] );
 		$user->addKey( $key );
@@ -189,7 +189,9 @@ class OATHUserRepository {
 			$this->insertUserHandle( $user );
 		}
 
-		if ( !$hasExistingKey ) {
+		// Don't notify when the first key added is a special key. Instead, wait to notify the user
+		// until the first non-special key is added.
+		if ( !$hasExistingKey && !$module->isSpecial() ) {
 			Manager::notifyEnabled( $user );
 
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
