@@ -74,6 +74,7 @@
 	"oathauth-recover-fail-no-2fa": "L'utente non ha abilitato l'autenticazione a due fattori, quindi il ripristino non è applicabile.",
 	"oathauth-recover-email-title": "{{PLURAL:$1|Codice di recupero aggiuntivo|Codici di recupero aggiuntivi}} per la tua utenza",
 	"oathauth-recover-email-text": "{{GENDER:$1|Gentile}} $1,\n\nIl $5 {{PLURAL:$2|è stato generato un codice di recupero aggiuntivo|sono stati generati codici di recupero aggiuntivi}} per l'autenticazione a due fattori. Puoi usare {{PLURAL:$2|questo codice|questi codici}} per accedere alla tua utenza se perdi l'accesso agli altri metodi di autenticazione a due fattori.\n\n$3\n\n{{PLURAL:$2|Questo codice può essere usato|Questi codici possono essere usati}} fino al $8. Configura un nuovo metodo di autenticazione a due fattori entro tale data per mantenere l'accesso alla tua utenza. Finché {{PLURAL:$2|è valido|sono validi}}, conserva {{PLURAL:$2|questo codice|questi codici}} in un luogo sicuro.\n\nSe non hai effettuato questa richiesta, qualcuno potrebbe aver tentato di accedere alla tua utenza a tuo nome. $4",
+	"oathauth-recover-initial-email-title": "Azione richiesta: configurare l'autenticazione a due fattori per {{SITENAME}}",
 	"oathauth-recover-email-text-please-contact": "In tal caso, {{GENDER:$1|contatta}} l'amministratore del sito.",
 	"oathauth-recover-email-text-please-contact-with-address": "In tal caso, {{GENDER:$1|contatta}} l'amministratore del sito ($2).",
 	"right-oathauth-enable": "Abilita autenticazione a due fattori",

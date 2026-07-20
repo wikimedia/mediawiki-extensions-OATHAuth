@@ -159,5 +159,6 @@
 	"oathauth-passkey-dialog-back": "پر شا کېدل",
 	"oathauth-passkey-dialog-add": "پاس‌کونجي ورگډول",
 	"oathauth-2fa-groups-notice-unknown-page": "ناڅرگند مخ",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "کارن دوه پړاويز تاييد چارن کړی دی"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "کارن دوه پړاويز تاييد چارن کړی دی",
+	"userlogin-reauth-banner-oathmanage": "<strong>تاسو خپل 2FA اوڼنې گورئ يا يې مهاروئ</strong> تاييد کړئ چې دا تاسو ياست او دوام ورکړئ."
 }

@@ -33,6 +33,9 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Buang {{PLURAL:$1|kod}} pemulihan sementara",
 	"oathauth-recoverycodes-temporary-remove-text": "Anda akan membuang {{PLURAL:$1|kod}} pemulihan sementara yang anda telah terima sebagai sebahagian daripada proses pemulihan akaun.\n\n<strong>Pastikan anda mempunyai akses kepada kaedah pengesahihan dwifaktor yang lain, supaya anda masih boleh log masuk ke akaun anda.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "{{PLURAL:$1|Kod}} pemulihan sementara anda telah dibuang. {{PLURAL:$2|Kod}} pemulihan yang lain kekal tersedia.",
+	"oathauth-recoverycodes-initial": "{{PLURAL:$1|Kod}} pemulihan sementara awal",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|Sebuah kod awal|Satu set bagi $1 kod awal}}, yang akan tamat tempoh pada $2.",
+	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|Kod ini telah|Kod-kod ini telah}} dijana dan die-melkan kepada anda sebagai sebahagian daripada keperluan pengesahihan dwifaktor pada {{SITENAME}}. {{PLURAL:$1|Kod tersebut|Kod-kod tersebut}} akan dialih keluar secara automatik apabila anda mendayakan kaedah pengesahihan dwifaktor yang lain.",
 	"oathauth-failedtovalidateoath": "Ralat berlaku semasa cuba mengesahkan kod daripada aplikasi pengesahihan anda. Sila cuba lagi.",
 	"oathauth-disable": "Matikan pengesahihan dwifaktor",
 	"oathauth-validatedoath": "Kelayakan dwifaktor disahkan. Pengesahihan dwifaktor kini akan berkuat kuasa.",
@@ -73,10 +76,13 @@
 	"oathauth-enterverifyreason": "Sebab untuk memeriksa:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Pengguna tidak mendayakan pengesahihan dwifaktor, jadi tidak ada apa yang perlu dilumpuhkan.",
 	"oathauth-recover-fail-no-2fa": "Pengguna tidak mendayakan pengesahihan dwifaktor, jadi pemulihan tidak diguna pakai.",
+	"oathauth-recover-fail-no-2fa-or-required": "Pengguna tersebut tidak mendayakan pengesahihan dwifaktor, dan bukannya diperlukan, jadi pemulihan tidak diguna pakai.",
 	"oathauth-recover-fail-email-required": "Pengguna tidak mempunyai alamat e-mel sah yang berkaitan dengan akaunnya. Sila berikan alamat e-mel untuk menghantar mesej tersebut.",
 	"oathauth-recover-fail-max-codes-reached": "Pengguna tersebut telah mencapai bilangan maksimum kod pemulihan. Tidak dapat menjana kod pemulihan tambahan.",
 	"oathauth-recover-email-title": "Pemulihan tambahan {{PLURAL:$1|kod}} untuk akaun anda",
 	"oathauth-recover-email-text": "{{GENDER:$1|Salam}} $1,\n\nPemulihan tambahan {{PLURAL:$2|kod}} untuk pengesahihan dwifaktor anda telah dijana pada $5. Anda boleh menggunakan {{PLURAL:$2|kod ini|kod-kod ini}} untuk log masuk ke akaun anda jika anda kehilangan akses kepada kaedah pengesahihan dwifaktor anda yang lain.\n\n$3 \n\n{{PLURAL:$2|Kod ini|Kod-kod ini}} hanya boleh digunakan sehingga $8. Sila mengkonfigurasikan kaedah pengesahihan dwifaktor baharu pada waktu ini untuk mengekalkan akses ke akaun anda. Selagi mana {{PLURAL:$2|kod tersebut|semua kod tersebut}} sah, sila simpan {{PLURAL:$2|kod tersebut|semua kod tersebut}} di tempat yang selamat.\n\nJika bukannya {{GENDER:$1|anda}} yang memulakan tindakan ini, mungkin ada orang yang menyamar sebagai {{GENDER:$1|anda}} untuk mendapatkan akses ke akaun anda. $4",
+	"oathauth-recover-initial-email-title": "Tindakan diperlukan: Sediakan pengesahihan dwifaktor untuk {{SITENAME}}",
+	"oathauth-recover-initial-email-text": "Pengesahihan dwifaktor kini diperlukan untuk mengakses {{SITENAME}}.\n\n{{PLURAL:$1|Sebuah kod pemulihan sementara telah|Beberapa kod pemulihan sementara telah}} dijana untuk akaun anda.\n\nUntuk terus menggunakan wiki ini:\n1. Log masuk menggunakan nama pengguna dan kata laluan sedia ada anda.\n2. Masukkan {{PLURAL:$1|kod pemulihan sementara tersebut|salah satu daripada kod pemulihan sementara}} di bawah apabila digesa.\n3. Tetapkan kaedah pengesahihan dwifaktor sebelum tempoh tangguh tamat.\n\nPemulihan sementara {{PLURAL:$1|kod}}:\n$2 \n\n{{PLURAL:$1|Kod pemulihan ini|Kod-kod pemulihan ini}} hanya boleh digunakan sehingga $3.\n\nJika anda tidak menetapkan pengesahihan dwifaktor sebelum {{PLURAL:$1|kod pemulihan anda tamat tempoh|kod-kod pemulihan anda tamat tempoh}}, anda akan dikunci keluar dari akaun anda. $4",
 	"oathauth-recover-email-text-please-contact": "Jika hal ini berlaku, sila {{GENDER:$1|hubungi}} penyelia tapak tersebut.",
 	"oathauth-recover-email-text-please-contact-with-address": "Jika hal ini berlaku, sila {{GENDER:$1|hubungi}} penyelia tapak ($2).",
 	"right-oathauth-enable": "Dayakan pengesahihan dwifaktor",
@@ -196,5 +202,7 @@
 	"oathauth-2fa-groups-notice-unknown-page": "Laman tidak diketahui",
 	"oathauth-remove-lastkey-required": "Anda tidak boleh membuang kaedah pengesahihan terakhir anda jika anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor. Sila tambahkan kaedah pengesahihan lain sebelum mengalih keluar kaedah ini.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Pengguna dengan pengesahihan dwifaktor didayakan",
-	"userlogin-reauth-banner-oathmanage": "<strong>Anda sedang melihat atau mengurus tetapan 2FA anda</strong> <br>Anda perlu disahkan untuk sambung."
+	"userlogin-reauth-banner-oathmanage": "<strong>Anda sedang melihat atau mengurus tetapan 2FA anda</strong> <br>Anda perlu disahkan untuk sambung.",
+	"oathauth-createaccount-text-with-2fa": "$1 \n\n{{SITENAME}} memerlukan pengesahihan dwifaktor.\n\nUntuk log masuk:\n1. Log masuk menggunakan nama pengguna dan kata laluan sementara anda.\n2. Masukkan {{PLURAL:$2|sebuah|salah satu daripada}} {{PLURAL:$2|kod|kod-kod}} pemulihan sementara berikut apabila digesa.\n3. Sediakan kaedah pengesahihan dwifaktor untuk terus menggunakan {{SITENAME}}.\n\nKod pemulihan sementara:\n$3 \n\n{{PLURAL:$2|Kod pemulihan sementara ini|Kod-kod pemulihan sementara ini}} boleh digunakan sehingga $4.\n\nAnda perlu log masuk dan menyediakan pengesahihan dwifaktor secepat mungkin.\n\nAnda boleh mengabaikan mesej ini jika akaun ini dicipta dengan ralat.",
+	"oathauth-need-full-2fa": "Anda kini hanya mengaktifkan kod pemulihan awal sementara pada masa ini. Sila dayakan kaedah pengesahihan dwifaktor yang lain sebelum kod ini tamat tempoh."
 }

@@ -70,6 +70,9 @@
 	"oathauth-recoverycodes-temporary-remove-header": "移除临时恢复{{PLURAL:$1|代码}}",
 	"oathauth-recoverycodes-temporary-remove-text": "您即将移除在账号恢复过程中收到的临时恢复{{PLURAL:$1|代码}}。\n\n<strong>请确保您可以使用其他双重认证方式，以使您后续仍然能够登录自己的账号。</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "您的临时恢复{{PLURAL:$1|代码}}已移除。其他恢复{{PLURAL:$2|代码不受}}影响。",
+	"oathauth-recoverycodes-initial": "初始恢复{{PLURAL:$1|代码}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|一个初始代码|$1个初始代码}}，在$2之前有效。",
+	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|此代码|这些代码}}已生成并通过电子邮件发送给您，作为在{{SITENAME}}上启用双重认证的一部分。当您启用其他双重认证方法时，{{PLURAL:$1|此|这些}}代码将自动移除。",
 	"oathauth-failedtovalidateoath": "尝试验证身份验证应用程序中的代码时发生错误。请重试。",
 	"oathauth-disable": "禁用双重认证",
 	"oathauth-validatedoath": "已验证双重认证凭据。双重认证从现在起将会强制执行。",
@@ -116,6 +119,7 @@
 	"oathauth-recover-email-title": "您账号的额外恢复{{PLURAL:$1|代码}}",
 	"oathauth-recover-email-text": "{{GENDER:$1|亲爱的}}$1，\n\n您双重认证的额外恢复{{PLURAL:$2|代码}}已于$5生成。如果您无法访问其他双重认证方式，可以使用{{PLURAL:$2|此代码|这些代码}}来登录您的账号。\n\n$3\n\n{{PLURAL:$2|此代码|这些代码}}仅可在$8之前使用，请在此期限前配置新的双重认证方式以维持对您账号的访问权限。请在有效期限内妥善保管{{PLURAL:$2|此代码|这些代码}}。\n\n如果{{GENDER:$1|您}}未执行过此操作，则可能有人冒充您访问了{{GENDER:$1|您的}}账号。$4",
 	"oathauth-recover-initial-email-title": "需要执行的操作：为{{SITENAME}}设置双重认证",
+	"oathauth-recover-initial-email-text": "现在需要启用双重认证才能访问{{SITENAME}}。\n\n已为您的账号生成{{PLURAL:$1|临时恢复代码}}。\n\n要继续使用此wiki：\n1. 请使用您现有的用户名和密码登录。\n2. 在出现提示时，请输入下方的{{PLURAL:$1|临时恢复代码|临时恢复代码之一}}。\n3. 请在宽限期结束前设置双重认证方法。\n\n临时恢复{{PLURAL:$1|代码}}：\n$2\n\n{{PLURAL:$1|此恢复代码|这些恢复代码}}仅可在$3前使用。\n\n如果您未在恢复{{PLURAL:$1|代码过期}}前设置双重认证，您的账号将被锁定。$4",
 	"oathauth-recover-email-text-please-contact": "如果情况属实，请{{GENDER:$1|联系}}站点管理员。",
 	"oathauth-recover-email-text-please-contact-with-address": "如果情况属实，请{{GENDER:$1|联系}}站点管理员（$2）。",
 	"right-oathauth-enable": "启用双重认证",
@@ -235,5 +239,7 @@
 	"oathauth-2fa-groups-notice-unknown-page": "未知页面",
 	"oathauth-remove-lastkey-required": "如果您是需要双重认证的用户组成员，则无法移除您最后一个身份验证方式。请先添加另一个身份验证方式，再移除此方式。",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "用户已启用双重认证",
-	"userlogin-reauth-banner-oathmanage": "<strong>您正在查看或管理自己的双重认证设置</strong><br>请确认是本人操作后继续。"
+	"userlogin-reauth-banner-oathmanage": "<strong>您正在查看或管理自己的双重认证设置</strong><br>请确认是本人操作后继续。",
+	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}}需要启用双重认证。\n\n要想登录：\n1. 请使用您的用户名和临时密码登录。\n2. 在出现提示时，请输入下方的临时恢复{{PLURAL:$2|代码}}{{PLURAL:$2||之一}}。\n3. 请设置双重认证方法以继续使用{{SITENAME}}。\n\n临时恢复代码：\n$3\n\n{{PLURAL:$2|此恢复代码|这些恢复代码}}仅可在$4前使用。\n\n您应当尽快登录并设置双重认证。\n\n如何此账号被错误创建，您可以忽略此消息。",
+	"oathauth-need-full-2fa": "您目前仅启用了临时初始恢复代码。请在这些代码过期前启用其他双重认证方法。"
 }

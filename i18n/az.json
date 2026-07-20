@@ -39,6 +39,7 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Müvəqqəti bərpa {{PLURAL:$1|kodunu|kodlarını}} sil",
 	"oathauth-recoverycodes-temporary-remove-text": "Hesabın bərpa prosesinin bir hissəsi olaraq aldığınız müvəqqəti bərpa {{PLURAL:$1|kodunu|kodlarını}} silmək üzrəsiniz.\n\n<strong>Hesabınıza daxil ola bilmək üçün digər iki faktorlu autentifikasiya metodlarına girişinizin olduğundan əmin olun.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "Müvəqqəti bərpa {{PLURAL:$1|kodunuz|kodlarınız}} silindi. Digər bərpa {{PLURAL:$2|kodunuz|kodlarınız}} toxunulmaz qalır.",
+	"oathauth-recoverycodes-initial": "İlkin bərpa {{PLURAL:$1|kodu|kodları}}",
 	"oathauth-failedtovalidateoath": "Təsdiqləmə tətbiqinizdən kodu təsdiqetmə cəhd edərkən xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
 	"oathauth-disable": "İki faktorlu autentifikasiyanı deaktiv et",
 	"oathauth-validatedoath": "İki faktor məlumatları doğrulandı. Artıq iki faktorlu autentifikasiya tətbiq ediləcək.",

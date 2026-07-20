@@ -33,5 +33,6 @@
 	"oathauth-webauthn-credential-label": "کارن باور",
 	"oathauth-webauthn-credential-help": "د کارن باور د تاييد اومتوکو پربنسټ",
 	"oathauth-webauthn-add-security-key": "خونديتوب کونجي ورگډول",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "خونديتوب کونجي يا پاس‌کونجي وکاروئ"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "خونديتوب کونجي يا پاس‌کونجي وکاروئ",
+	"oathauth-webauthn-reauth-passkey-button": "پاس‌کونجي سره دوام ورکړئ"
 }

@@ -61,6 +61,8 @@
 	"oathauth-enterdisablereason": "Grond fir d'Desaktivéierung:",
 	"oathauth-enterverifyreason": "Grond fir nozekucken:",
 	"oathauth-user-not-does-not-have-oath-enabled": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung guer net aktivéiert, et gëtt also näischt ze desaktivéieren.",
+	"oathauth-recover-fail-no-2fa-or-required": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung net aktivéiert a muss dat och net maachen, dofir ass eng Recuperatioun net méiglech.",
+	"oathauth-recover-initial-email-text": "Fir den Zougrëff op {{SITENAME}} ass elo eng Zwee-Faktor-Authentifizéierung néideg.\n\nEt {{PLURAL:$1|gouf en temporäre Recuperatiounscode|goufen temporär Recuperatiounscodë}} fir Äre Kont generéiert.\n\nFir dës Wiki weider ze benotzen:\n1. Loggt Iech mat Ärem besteeënde Benotzernumm a Passwuert an.\n2. Gitt {{PLURAL:$1|den temporäre Recuperatiounscode|ee vun den temporäre Recuperatiounscoden}} ënnen an, wann Dir dozou opgefuerdert gitt.\n3. Riicht eng Zwee-Faktor-Authentifizéierungsmethod an, ier d'Karenzperiod eriwwer ass.\n\n{{PLURAL:$1|Temporäre Recuperatiounscode|Temporär Recuperatiounscoden}}:\n$2\n\n{{PLURAL:$1|Dëse Recuperatiounscode ka|Dës Recuperatiounscodë kënne}} just bis $3 benotzt ginn.\n\nWann Dir keng Zwee-Faktor-Authentifizéierung ariicht, ier {{PLURAL:$1|Äre Recuperatiounscode ofgelaf ass|Är Recuperatiounscoden ofgelaf sinn}}, gitt Dir aus Ärem Kont ausgespaart. $4",
 	"right-oathauth-enable": "Zwee-Faktor-Authentifizéierung aktivéieren",
 	"action-oathauth-enable": "d'Zwee-Faktor-Authentifizéierung z'aktivéieren",
 	"oathauth-auth-token-label": "Authentifizéierungscode",
@@ -134,5 +136,6 @@
 	"oathauth-2fa-required-groups-on-project": "$2 op $3",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Fir $2 op $3: $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Onbekannt Säit",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung aktivéiert"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "De Benotzer huet d'Zwee-Faktor-Authentifizéierung aktivéiert",
+	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} verlaangt Zwee-Faktor-Authentifizéierung.\n\nFir Iech unzemellen:\n1. Loggt Iech mat Ärem Benotzernumm an temporäre Passwuert an.\n2. Gitt {{PLURAL:$2|den temporäre Recuperatiounscode|ee vun den temporäre Recuperatiounscoden}} ënnen an, wann Dir dozou opgefuerdert gitt.\n3. Riichteng Zwee-Faktor-Authentifizéierungsmethod an, fir {{SITENAME}} weider ze benotzen.\n\nTemporär Recuperatiounscoden:\n$3\n\n{{PLURAL:$1|Dësen temporäre Recuperatiounscode ka|Dës temporär Recuperatiounscodë kënne}} bis $4 benotzt ginn.\n\nDir sollt Iech am Beschte sou séier wéi méiglech aloggen an d'Zwee-Faktor-Authentifizéierung ariichten.\n\nDir kënnt dëse Message ignoréieren, wann dëse Kont ongewollt ugeluecht gouf."
 }

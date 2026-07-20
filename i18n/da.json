@@ -37,6 +37,9 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Midlertidig gendannelses{{PLURAL:$1|kode|koder}}",
 	"oathauth-recoverycodes-temporary-remove-text": "Du er ved at fjerne {{PLURAL:$1|den midlertidige gendannelseskode|de midlertidige gendannelseskoder}}, som du modtog som en del af kontogendannelsesprocessen.\n\n<strong>Sørg for, at du har adgang til andre tofaktor-godkendelsesmetoder, så du stadig kan logge ind på din konto.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "{{PLURAL:$1|Din midlertidige gendannelseskode|Dine midlertidige gendannelseskoder}} er blevet fjernet. {{PLURAL:$2|Den anden gendannelseskode|De andre gendannelseskoder}} forbliver intakt.",
+	"oathauth-recoverycodes-initial": "Indledende gendannelse {{PLURAL:$1|kode|koder}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|En startkode|Et sæt af $1 startkoder}}, som udløber kl. $2.",
+	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|Denne kode blev|Disse koder blev}} genereret og sendt til dig via e-mail som en del af kravet om tofaktorgodkendelse på {{SITENAME}}. {{PLURAL:$1|Den|De}} vil blive fjernet automatisk, når du aktiverer en anden tofaktorgodkendelsesmetode.",
 	"oathauth-failedtovalidateoath": "Der opstod en fejl under forsøget på at validere koden fra din godkendelsesapplikation. Prøv igen.",
 	"oathauth-disable": "Deaktiver tofaktorgodkendelse",
 	"oathauth-validatedoath": "Validerede oplysninger for login med tofaktorgodkendelse, der nu er slået til.",
@@ -77,10 +80,13 @@
 	"oathauth-enterverifyreason": "Årsag til kontrol:",
 	"oathauth-user-not-does-not-have-oath-enabled": "Brugeren har ikke aktiveret tofaktorgodkendelse, så der er intet at deaktivere.",
 	"oathauth-recover-fail-no-2fa": "Brugeren har ikke aktiveret tofaktorgodkendelse, så gendannelse er ikke mulig.",
+	"oathauth-recover-fail-no-2fa-or-required": "Brugeren har ikke aktiveret tofaktorgodkendelse, og det er heller ikke påkrævet, så gendannelse er ikke mulig.",
 	"oathauth-recover-fail-email-required": "Brugeren har ikke en bekræftet e-mailadresse knyttet til sin konto. Angiv venligst en e-mailadresse, som beskeden skal sendes til.",
 	"oathauth-recover-fail-max-codes-reached": "Brugeren har allerede nået det maksimalt mulige antal gendannelseskoder. Det er ikke muligt at generere yderligere gendannelseskoder.",
 	"oathauth-recover-email-title": "Yderligere {{PLURAL:$1|gendannelseskode|gendannelseskoder}} til din konto",
 	"oathauth-recover-email-text": "{{GENDER:$1|Kære}} $1 ,\n\nYderligere {{PLURAL:$2|gendannelseskode|gendannelseskoder}} til din tofaktor-godkendelse er blevet genereret den $5. Du kan bruge {{PLURAL:$2|denne kode|disse koder}} til at logge ind på din konto, hvis du har mistet adgangen til dine andre tofaktor-godkendelsesmetoder.\n\n$3\n\n{{PLURAL:$2|Denne kode|Disse koder}} kan kun bruges indtil $8. Konfigurer venligst en ny tofaktor-godkendelsesmetode inden da for at bevare adgangen til din konto. Så længe {{PLURAL:$2|den|de}} er gyldige, bedes du opbevare {{PLURAL:$2| denne kode|disse koder}} et sikkert sted.\n\nHvis {{GENDER:$1|du}} ikke har startet denne handling, kan nogen have udgivet sig for at være {{GENDER:$1|dig}} for at få adgang til din konto. $4",
+	"oathauth-recover-initial-email-title": "Handling påkrævet: Konfigurer tofaktorgodkendelse for {{SITENAME}}",
+	"oathauth-recover-initial-email-text": "Tofaktor-godkendelse er nu påkrævet for at få adgang til {{SITENAME}}.\n\n{{PLURAL:$1|En midlertidig gendannelseskode er|Midlertidige gendannelseskoder er}} blevet genereret til din konto.\n\nFor at fortsætte med at bruge denne wiki:\n1. Log ind med dit eksisterende brugernavn og din adgangskode.\n2. Indtast {{PLURAL:$1|den midlertidige gendannelseskode|en af de midlertidige gendannelseskoder}} nedenfor, når du bliver bedt om det.\n3. Opret en tofaktor-godkendelsesmetode, før den midlertidige frist udløber.\n\nMidlertidig gendannelseskode {{PLURAL:$1|kode|koder}}: $2\n\n{{PLURAL:$1|Denne gendannelseskode|Disse gendannelseskoder}} kan kun bruges indtil $3.\n\nHvis du ikke opsætter tofaktor-godkendelse, før din gendannelseskode {{PLURAL:$1|udløber}}, vil du blive låst ude af din konto. $4",
 	"oathauth-recover-email-text-please-contact": "Hvis dette er tilfældet, bedes du {{GENDER:$1|kontakte}} webstedsadministratoren.",
 	"oathauth-recover-email-text-please-contact-with-address": "Hvis dette er tilfældet, bedes du {{GENDER:$1|kontakte}} webstedsadministratoren ($2).",
 	"right-oathauth-enable": "Aktivere tofaktorgodkendelse",
@@ -200,5 +206,7 @@
 	"oathauth-2fa-groups-notice-unknown-page": "Ukendt side",
 	"oathauth-remove-lastkey-required": "Du kan ikke fjerne din sidste godkendelsesmetode, hvis du er medlem af grupper, der kræver tofaktorgodkendelse. Tilføj venligst en anden godkendelsesmetode, før du fjerner denne.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Brugeren har aktiveret tofaktorgodkendelse",
-	"userlogin-reauth-banner-oathmanage": "<strong>Du ser eller administrerer dine 2FA-indstillinger</strong><br> Bekræft din identitet for at fortsætte."
+	"userlogin-reauth-banner-oathmanage": "<strong>Du ser eller administrerer dine 2FA-indstillinger</strong><br> Bekræft din identitet for at fortsætte.",
+	"oathauth-createaccount-text-with-2fa": "$1 \n\n{{SITENAME}} kræver tofaktor-godkendelse.\n\nFor at logge ind:\n1. Log ind med dit brugernavn og din midlertidige adgangskode.\n2. Indtast {{PLURAL:$2|den|af}} midlertidige gendannelses {{PLURAL:$2|kode|koder}} nedenfor, når du bliver bedt om det.\n3. Opret en tofaktor-godkendelsesmetode for at fortsætte med at bruge {{SITENAME}}.\n\nMidlertidige gendannelseskoder:\n$3\n\n{{PLURAL:$2|Denne midlertidige gendannelseskode|Disse midlertidige gendannelseskoder}} kan bruges indtil $4.\n\nDu bør logge ind og opsætte tofaktor-godkendelse så hurtigt som muligt.\n\nDu kan ignorere denne besked, hvis denne konto blev oprettet ved en fejl.",
+	"oathauth-need-full-2fa": "Du har i øjeblikket kun midlertidige indledende gendannelseskoder aktiveret. Aktiver venligst en anden tofaktorgodkendelsesmetode, før disse koder udløber."
 }

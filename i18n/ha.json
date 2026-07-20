@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bashir Gwanki",
+			"Gwanki"
+		]
+	},
+	"oathauth-recoverycodes-initial": "Farkon dawo da youtube {{PLURAL:$1|lambobi|lambobi}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL\n:$1|Lambar farko|Saitin lambobin farko na $1}}, wanda zai ƙare a $2.",
+	"oathauth-recoverycodes-initial-intro": "{{PLURAL\n:$1|An ƙirƙiri wannan lambar|An aika muku da waɗannan lambobin}} ta imel a matsayin wani ɓangare na buƙatar tabbatar da abubuwa biyu a kan {{SITENAME}}. {{PLURAL:$1|It|They}} za a cire ta atomatik lokacin da kuka kunna wata hanyar tabbatar da abubuwa biyu.",
+	"oathauth-auth-ui": "Da fatan za a shigar da lamba daga aikace-aikacen tabbatar da abubuwa guda biyu (kamar [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microthentic.software.com/en-security] ko [https://1password.com/ 1Password]).",
+	"oathauth-need-full-2fa": "A halin yanzu kuna da lambobin dawo da farko na ɗan lokaci kawai. Da fatan za a kunna wata hanyar tabbatar da abubuwa biyu kafin waɗannan lambobin su ƙare."
+}
