@@ -55,6 +55,17 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 			return AuthenticationResponse::newAbstain();
 		}
 
+		// If the user only has recovery codes, and is reauthenticating, allow them to skip 2FA.
+		// This prevents users with initial recovery codes from needing two codes to set up 2FA.
+		// If we got here, the reauth has to be for 'OATHManage', otherwise the isRestrictedReauth
+		// check would have prevented us from getting here.
+		if (
+			!$oathUser->userHasNonSpecialEnabledKeys() &&
+			$this->manager->getAuthenticationSessionData( 'oathauth-reauth-securitylevel' )
+		) {
+			return AuthenticationResponse::newAbstain();
+		}
+
 		$initialCodesOnly = false;
 		if ( $this->config->get( 'OATHAuthEnforce2FAForAll' ) ) {
 			// Figure out whether the user has initial recovery codes
