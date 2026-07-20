@@ -82,11 +82,11 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		}
 		$provider = $this->getProviderForModule( $module );
 		$this->oathLogger->logTwoFactorChallengePresented( $user, $provider->getUniqueId() );
-		$response = $provider->beginSecondaryAuthentication( $user, [] );
+		$response = $provider->beginSecondaryAuthentication( $user, $reqs );
 
 		// Include information about used module in request so that the correct
 		// provider can be used when continuing
-		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module );
+		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module, $reqs );
 
 		return $response;
 	}
@@ -105,7 +105,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		$request = AuthenticationRequest::getRequestByClass( $reqs, TwoFactorModuleSelectAuthenticationRequest::class );
 		if ( $request && $request->newModule ) {
 			// The user is switching modules, restart
-			$response = $provider->beginSecondaryAuthentication( $user, [] );
+			$response = $provider->beginSecondaryAuthentication( $user, $reqs );
 		} else {
 			$response = $provider->continueSecondaryAuthentication( $user, $reqs );
 		}
@@ -114,7 +114,7 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			$this->oathLogger->logSuccessfulVerification( $user );
 		}
 
-		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module );
+		$this->maybeAddSelectAuthenticationRequest( $authUser, $response, $module, $reqs );
 		return $response;
 	}
 
@@ -184,10 +184,17 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		return $provider;
 	}
 
+	/**
+	 * @param OATHUser $authUser
+	 * @param AuthenticationResponse $response
+	 * @param string $currentModule
+	 * @param AuthenticationRequest[] $reqs
+	 */
 	private function maybeAddSelectAuthenticationRequest(
 		OATHUser $authUser,
 		AuthenticationResponse $response,
-		string $currentModule
+		string $currentModule,
+		array $reqs
 	): void {
 		if ( !in_array( $response->status, [ AuthenticationResponse::UI, AuthenticationResponse::REDIRECT ] ) ) {
 			return;
@@ -198,7 +205,8 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			$module = $this->moduleRegistry->getModuleByKey( $key->getModule() );
 			$allowedModules[$module->getName()] = $module->getDisplayName();
 		}
-		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $reqs ) ) {
+			// Recovery codes are not allowed for reauth in most cases
 			unset( $allowedModules[RecoveryCodes::MODULE_NAME] );
 		}
 		// Do not add the select request if there's nothing else to select.

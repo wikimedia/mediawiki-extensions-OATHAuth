@@ -9,7 +9,7 @@ namespace MediaWiki\Extension\OATHAuth\Auth;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
-use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
@@ -45,7 +45,8 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 	 * @inheritDoc
 	 */
 	public function beginSecondaryAuthentication( $user, array $reqs ): AuthenticationResponse {
-		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $reqs ) ) {
+			// Recovery codes are not allowed for reauth in most cases
 			return AuthenticationResponse::newAbstain();
 		}
 
@@ -61,7 +62,7 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 		// check would have prevented us from getting here.
 		if (
 			!$oathUser->userHasNonSpecialEnabledKeys() &&
-			$this->manager->getAuthenticationSessionData( 'oathauth-reauth-securitylevel' )
+			AuthenticationRequest::getRequestByClass( $reqs, ElevatedSecurityAuthenticationRequest::class )
 		) {
 			return AuthenticationResponse::newAbstain();
 		}
@@ -92,7 +93,8 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 
 	/** @inheritDoc */
 	public function continueSecondaryAuthentication( $user, array $reqs ) {
-		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ) ) {
+		if ( ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $reqs ) ) {
+			// Recovery codes are not allowed for reauth in most cases
 			return AuthenticationResponse::newFail( wfMessage( 'oathauth-recovery-code-login-failed' ) );
 		}
 

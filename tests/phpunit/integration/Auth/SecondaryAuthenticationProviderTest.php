@@ -7,6 +7,7 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\TwoFactorModuleSelectAuthenticationRequest;
@@ -24,11 +25,15 @@ use MediaWiki\User\UserNameUtils;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider
  */
 class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
+
+	/** Security level of the reauth in the current test case, or null for a normal login */
+	private ?string $reauthSecurityLevel = null;
 
 	/**
 	 * @dataProvider provideAuthentication
@@ -40,6 +45,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 	 *   I.e. these steps roughly correspond to user input from submitting the login form.
 	 */
 	public function testAuthentication( array $enabledModules, array $steps, ?string $reauthSecurityLevel = null ) {
+		$this->reauthSecurityLevel = $reauthSecurityLevel;
 		$session = $this->createNoOpMock( Session::class, [ 'set' ] );
 		$request = $this->createNoOpMock( WebRequest::class, [ 'getSession' ] );
 		$request->method( 'getSession' )->willReturn( $session );
@@ -79,12 +85,6 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$this->setService( 'OATHAuth.Logger', $logger );
 
 		$authManager = $this->createNoOpMock( AuthManager::class, [ 'getAuthenticationSessionData' ] );
-		$authManager->method( 'getAuthenticationSessionData' )
-			->willReturnCallback( static fn ( $key ) => $key === 'oathauth-reauth-securitylevel'
-				? $reauthSecurityLevel
-				: null
-			);
-
 		$hookContainer = $this->createNoOpMock( HookContainer::class );
 		$userNameUtils = $this->createNoOpMock( UserNameUtils::class );
 
@@ -104,11 +104,18 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 			] ),
 			$userNameUtils,
 		);
-		$response = $provider->beginSecondaryAuthentication( $user, [] );
+
+		$initialReqs = [];
+		if ( $reauthSecurityLevel !== null ) {
+			$elevatedSecurityRequest = TestingAccessWrapper::construct( ElevatedSecurityAuthenticationRequest::class );
+			$elevatedSecurityRequest->securityLevel = $reauthSecurityLevel;
+			$initialReqs[] = $elevatedSecurityRequest;
+		}
+		$response = $provider->beginSecondaryAuthentication( $user, $initialReqs );
 		foreach ( $steps as $step ) {
 			$requests = $step( $this, $response );
 			if ( $requests ) {
-				$response = $provider->continueSecondaryAuthentication( $user, $requests );
+				$response = $provider->continueSecondaryAuthentication( $user, array_merge( $requests, $initialReqs ) );
 			}
 		}
 	}
@@ -352,7 +359,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$provider->method( 'beginSecondaryAuthentication' )->willReturnCallback(
 			function ( User $user, array $reqs ) use ( $name ) {
 				$this->assertSame( 'TestUser', $user->getName() );
-				$this->assertSame( [], $reqs );
+				$this->assertReauthRequestPassedThrough( $reqs );
 				return AuthenticationResponse::newUI(
 					[ new FakeModuleAuthenticationRequest( $name ) ],
 					$this->getMockMessage( '2fa-started' )
@@ -362,6 +369,7 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$provider->method( 'continueSecondaryAuthentication' )->willReturnCallback(
 			function ( User $user, array $reqs ) use ( $name ) {
 				$this->assertSame( 'TestUser', $user->getName() );
+				$this->assertReauthRequestPassedThrough( $reqs );
 				$req = AuthenticationRequest::getRequestByClass( $reqs, FakeModuleAuthenticationRequest::class );
 				/** @var FakeModuleAuthenticationRequest $req */
 				$this->assertNotNull( $req );
@@ -383,6 +391,23 @@ class SecondaryAuthenticationProviderTest extends MediaWikiIntegrationTestCase {
 		$module->method( 'getDisplayName' )->willReturn( $this->getMockMessage( 'mock-name-' . $name ) );
 		$module->method( 'getSecondaryAuthProvider' )->willReturn( $provider );
 		return $module;
+	}
+
+	/**
+	 * Check that SecondaryAuthenticationProvider passes the ElevatedSecurityAuthenticationRequest
+	 * on to the provider of the 2FA module. That provider needs it to detect a reauth.
+	 * @param AuthenticationRequest[] $reqs
+	 */
+	private function assertReauthRequestPassedThrough( array $reqs ): void {
+		$elevatedSecurityReq = AuthenticationRequest::getRequestByClass(
+			$reqs, ElevatedSecurityAuthenticationRequest::class
+		);
+		if ( $this->reauthSecurityLevel === null ) {
+			$this->assertNull( $elevatedSecurityReq );
+		} else {
+			$this->assertNotNull( $elevatedSecurityReq );
+			$this->assertSame( $this->reauthSecurityLevel, $elevatedSecurityReq->securityLevel );
+		}
 	}
 
 	private function assertUiResponse(

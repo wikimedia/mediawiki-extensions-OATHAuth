@@ -35,9 +35,6 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			return [];
 		}
 
-		$this->manager->setAuthenticationSessionData(
-			'oathauth-reauth-securitylevel', $options['securityLevel'] );
-
 		$user = $this->manager->getRequest()->getSession()->getUser();
 		$oathUser = $this->userRepo->findByUser( $user );
 		$availableModules = [];
@@ -90,7 +87,11 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			// Not supposed to be possible
 			return [];
 		}
-		$reqs = $secondaryAuthProvider->beginSecondaryAuthentication( $user, [] )->neededRequests;
+		// HACK: Fake an ElevatedSecurityAuthenticationRequest so that SecondaryAuthenticationProvider
+		// will know whether to exclude recovery codes
+		$elevatedSecurityReq = ElevatedSecurityAuthenticationRequest::create(
+			$this->manager->getRequest()->getSession(), $options['securityLevel'] );
+		$reqs = $secondaryAuthProvider->beginSecondaryAuthentication( $user, [ $elevatedSecurityReq ] )->neededRequests;
 
 		// Display a "Continue with security key" button if the primary method is a security key
 		$webauthnReq = AuthenticationRequest::getRequestByClass( $reqs, WebAuthnAuthenticationRequest::class );
@@ -105,9 +106,6 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 	/** @inheritDoc */
 	public function beginPrimaryAuthentication( array $reqs ) {
 		$elevReq = AuthenticationRequest::getRequestByClass( $reqs, ElevatedSecurityAuthenticationRequest::class );
-		// AuthManager wipes the authn session on first submit, so re-stash here for continuations.
-		$this->manager->setAuthenticationSessionData(
-			'oathauth-reauth-securitylevel', $elevReq?->securityLevel );
 		$oathUser = $this->userRepo->findByUser( $this->manager->getRequest()->getSession()->getUser() );
 
 		// Skip non-reauth logins, or users without 2FA
@@ -151,7 +149,7 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 		$selectReq = AuthenticationRequest::getRequestByClass( $reqs,
 			TwoFactorModuleSelectAuthenticationRequest::class );
 		if ( $selectReq && $selectReq->newModule ) {
-			if ( $selectReq->newModule === RecoveryCodes::MODULE_NAME && self::isRestrictedReauth( $this->manager ) ) {
+			if ( $selectReq->newModule === RecoveryCodes::MODULE_NAME && self::isRestrictedReauth( $reqs ) ) {
 				// Recovery codes are not allowed for reauthentication (except for OATHManage)
 				// This shouldn't happen because recovery codes shouldn't be offered
 				return AuthenticationResponse::newFail( wfMessage( 'oathauth-invalidrequest' ) );
@@ -199,12 +197,12 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 	/**
 	 * Whether the user is currently reauthenticating for an action other than Special:OATHManage.
 	 * Recovery codes must not be offered or accepted in this situation (T428982).
-	 * The security level is stashed in the auth session by {@link self::getAuthenticationRequests}
-	 * and {@link self::beginPrimaryAuthentication}.
+	 * @param AuthenticationRequest[] $reqs
 	 */
-	public static function isRestrictedReauth( AuthManager $manager ): bool {
-		// TODO replace this with a method in AuthManager
-		$level = $manager->getAuthenticationSessionData( 'oathauth-reauth-securitylevel' );
-		return $level !== null && $level !== 'OATHManage';
+	public static function isRestrictedReauth( array $reqs ): bool {
+		$elevatedSecurityReq = AuthenticationRequest::getRequestByClass(
+			$reqs, ElevatedSecurityAuthenticationRequest::class
+		);
+		return $elevatedSecurityReq !== null && $elevatedSecurityReq->securityLevel !== 'OATHManage';
 	}
 }

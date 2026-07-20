@@ -73,7 +73,7 @@ class TOTP implements IModule {
 			}
 		}
 
-		if ( !empty( $data['disableRecoveryCodeFallback'] ) ) {
+		if ( $data['disableRecoveryCodeFallback'] ?? false ) {
 			return false;
 		}
 

@@ -9,7 +9,6 @@ namespace MediaWiki\Extension\OATHAuth\Auth;
 use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -76,7 +75,7 @@ class TOTPSecondaryAuthenticationProvider extends AbstractSecondaryAuthenticatio
 
 		if ( $this->module->verify( $authUser, [
 			'token' => $token,
-			'disableRecoveryCodeFallback' => ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $this->manager ),
+			'disableRecoveryCodeFallback' => ReauthPrimaryAuthenticationProvider::isRestrictedReauth( $reqs )
 		] ) ) {
 			return AuthenticationResponse::newPass();
 		}
