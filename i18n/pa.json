@@ -5,5 +5,7 @@
 		]
 	},
 	"oathauth-account": "ਖਾਤੇ ਦਾ ਨਾਂ:",
-	"oathauth-notifications-disable-help": "ਮਦਦ"
+	"oathauth-notifications-disable-help": "ਮਦਦ",
+	"oathauth-notifications-enable-help": "ਮਦਦ",
+	"oathauth-notifications-recoverycodesleft-help": "ਮਦਦ"
 }
