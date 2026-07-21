@@ -240,7 +240,7 @@
 		},
 		"OATHAuthEnforce2FAForAll": {
 			"value": false,
-			"description": "Actually enforce 2FA for all users, along with appropriate $wgRestrictedGroups config."
+			"description": "Enforce 2FA for all users on the wiki."
 		}
 	},
 	"ResourceModules": {
