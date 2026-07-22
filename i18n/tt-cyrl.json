@@ -5,5 +5,14 @@
 			"Ильгиз"
 		]
 	},
-	"oathauth-disable-method-warning-button-label": "Раслау һәм дәвам иттерү"
+	"oathauth-validatedoath": "2FA хисапъязма мәгълүматлары тикшерелгән. Хәзер 2FA таныклавы кулланылачак.",
+	"oathauth-disabledoath": "2FA таныклавы сүндерелгән.",
+	"oathauth-prefs-label": "2FA таныклавы:",
+	"oathauth-verify-for-user": "Кулланучы өчен 2FA таныклавы кабызылганмы икәнен тикшерү",
+	"right-oathauth-verify-user": "Кулланучы өчен 2FA таныклавы кабызылганмы икәнен тикшерү",
+	"action-oathauth-verify-user": "кулланучы өчен 2FA таныклавы кабызылганмы икәнен тикшерү",
+	"oathauth-describe-provider": "2FA таныклавы (OATH).",
+	"oathauth-disable-method-warning-button-label": "Раслау һәм дәвам иттерү",
+	"oathauth-verify-enabled": "{{GENDER:$1|$1}} өчен 2FA таныклавы кабызылган.",
+	"oathauth-verify-disabled": "{{GENDER:$1|$1}} өчен 2FA таныклавы сүндерелгән."
 }
