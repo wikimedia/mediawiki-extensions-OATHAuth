@@ -61,6 +61,18 @@ class OATHManageTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(oathmanage-summary)', $output );
 	}
 
+	public function testViewingPageDoesNotCreateRecoveryCodes() {
+		$user = $this->getTestUser()->getUser();
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		$this->executeSpecialPage( '', null, null, $user );
+
+		$oathUser = OATHAuthServices::getInstance( $this->getServiceContainer() )
+			->getUserRepository()
+			->findByUser( $user );
+		$this->assertSame( [], $oathUser->getKeys() );
+	}
+
 	public function testTOTPEnableCreationForm() {
 		$user = $this->getTestUser()->getUser();
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );

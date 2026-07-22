@@ -16,6 +16,7 @@ use MediaWiki\Extension\OATHAuth\HTMLForm\OATHAuthOOUIHTMLForm;
 use MediaWiki\Extension\OATHAuth\HTMLForm\RecoveryCodesTrait;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
 use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
@@ -456,12 +457,11 @@ class OATHManage extends SpecialPage {
 
 		if ( $this->hasSpecialModules() ) {
 			$hasInitial = false;
-			foreach ( $this->getSpecialModules() as $module ) {
-				if ( !$module instanceof RecoveryCodes ) {
+			foreach ( $this->oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME ) as $key ) {
+				if ( !$key instanceof RecoveryCodeKeys ) {
 					continue;
 				}
 
-				$key = $module->ensureExistence( $this->oathUser );
 				$initialCodes = array_filter(
 					$key->getRecoveryCodes(),
 					static fn ( RecoveryCode $code ) => $code->isInitial()
