@@ -6,6 +6,7 @@
 			"Hwboehm",
 			"IWL04",
 			"Inkowik",
+			"Kallichore",
 			"Kghbln",
 			"Killarnee",
 			"Luke081515",
@@ -211,6 +212,6 @@
 	"oathauth-2fa-groups-notice-unknown-page": "Unbekannte Seite",
 	"oathauth-remove-lastkey-required": "{{#FORMAL:Du kannst|Sie können Ihre}} letzte Authentifizierungsmethode nicht entfernen, wenn {{#FORMAL:du Mitglied von Gruppen bist|Sie Mitglied von Gruppen sind}}, die eine Zwei-Faktor-Authentifizierung erfordern. Bitte {{#FORMAL:füge|fügen Sie}} eine weitere Authentifizierungsmethode hinzu, bevor {{#FORMAL:du diese entfernst|Sie diese entfernen}}.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Benutzer hat die Zwei-Faktor-Authentifizierung aktiviert",
-	"userlogin-reauth-banner-oathmanage": "<strong>{{FORMAL:Du siehst gerade deine|Sie sehen gerade Ihre}} 2FA-Einstellungen an oder verwalten diese</strong> <br>{{FORMAL:Bestätige, dass du es bist|Bestätigen Sie, dass Sie es sind}}, um fortzufahren.",
+	"userlogin-reauth-banner-oathmanage": "<strong>{{#FORMAL:Du betrachtest oder verwaltest gerade deine|Sie betrachten oder verwalten gerade Ihre}} 2FA-Einstellungen. </strong> <br>{{#FORMAL:Bestätige, dass du es bist|Bestätigen Sie, dass Sie es sind}}, um fortzufahren.",
 	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} erfordert eine Zwei-Faktor-Authentifizierung.\n\nSo meldest du dich an:\n1. Melde dich mit deinem Benutzernamen und deinem temporären Passwort an.\n2. Gib den unten stehenden temporären Wiederherstellungscode ein, wenn du dazu aufgefordert wirst.\n3. Richte eine Zwei-Faktor-Authentifizierungsmethode ein, um {{SITENAME}} weiterhin nutzen zu können.\n\nTemporäre Wiederherstellungscodes:\n$3\n\n{{PLURAL:$2|Dieser temporäre Wiederherstellungscode kann|Diese temporären Wiederherstellungscodes können}} \n \nbis $4 verwendet werden.\n\nDu solltest dich so schnell wie möglich anmelden und die Zwei-Faktor-Authentifizierung einrichten.\n\nDu kannst diese Meldung ignorieren, wenn dieses Konto versehentlich erstellt wurde."
 }

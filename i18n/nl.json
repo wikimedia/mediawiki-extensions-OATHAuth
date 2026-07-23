@@ -47,6 +47,8 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Tijdelijke {{PLURAL:$1|herstelcode|herstelcodes}} verwijderen",
 	"oathauth-recoverycodes-temporary-remove-text": "U staat op het de tijdelijke {{PLURAL:$1|herstelcode|herstelcodes}} te verwijderen die u hebt ontvangen als onderdeel van het accountherstelproces.\n\n<strong>Zorg ervoor dat u toegang hebt tot andere methoden voor tweetrapsauthenticatie, zodat u nog steeds kunt aanmelden bij uw account.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "Uw tijdelijke {{PLURAL:$1|herstelcode is|herstelcodes zijn}} verwijderd. De andere {{PLURAL:$2|herstelcode blijft|herstelcodes blijven}} intact.",
+	"oathauth-recoverycodes-initial": "Initiële {{PLURAL:$1|herstelcode|herstelcodes}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|Een initiële code|Een set van $1 initiële codes}}, die {{PLURAL:$1|verloopt|verlopen}} op $2.",
 	"oathauth-failedtovalidateoath": "Er is een fout opgetreden bij het valideren van de code uit uw authenticatieprogramma. Probeer het opnieuw.",
 	"oathauth-disable": "Tweetrapsauthenticatie uitschakelen",
 	"oathauth-validatedoath": "De gebruikersgegevens voor tweetrapsauthenticatie zijn gevalideerd. Tweetrapsauthenticatie is nu verplicht.",
