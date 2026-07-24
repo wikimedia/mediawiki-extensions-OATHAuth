@@ -10,8 +10,10 @@ use InvalidArgumentException;
 use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\IModule;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Json\FormatJson;
@@ -203,6 +205,14 @@ class OATHUserRepository {
 				/** @var CheckUserInsert $checkUserInsert */
 				$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
 				$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
+			}
+
+			// If the user still has initial recovery codes, remove them
+			$recoveryCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
+			$recoveryCodeKeys = $recoveryCodes[ 0 ] ?? null;
+			if ( $recoveryCodeKeys instanceof RecoveryCodeKeys ) {
+				$recoveryCodeKeys->removeInitialCodes();
+				$this->updateKey( $user, $recoveryCodeKeys );
 			}
 		}
 

@@ -167,10 +167,24 @@ class RecoveryCodeKeys extends AuthKey {
 	}
 
 	/**
-	 * Removes all codes with expiration date from this key
+	 * Removes all codes with expiration date from this key. Does not remove initial codes.
 	 */
 	public function removeTemporaryCodes(): void {
-		$this->recoveryCodes = array_filter( $this->recoveryCodes, static fn ( $code ) => $code->isPermanent() );
+		$this->recoveryCodes = array_filter(
+			$this->recoveryCodes,
+			static fn ( RecoveryCode $code ) =>
+				$code->isPermanent() || $code->isInitial()
+		);
+	}
+
+	/**
+	 * Removes all initial codes from this key.
+	 */
+	public function removeInitialCodes(): void {
+		$this->recoveryCodes = array_filter(
+			$this->recoveryCodes,
+			static fn ( RecoveryCode $code ) => !$code->isInitial()
+		);
 	}
 
 	/**

@@ -9,8 +9,11 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\Tests\Integration;
 
 use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Key\TOTPKey;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\TOTP;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
@@ -207,5 +210,67 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$this->assertTrue( $repository->userHas2FAEnabled( $user ) );
+	}
+
+	public function testInitialCodeDeletion(): void {
+		$user = $this->getTestUser()->getUser();
+		$repository = $this->createUserRepo( $user );
+		$moduleRegistry = OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry();
+
+		$oathUser = $repository->findByUser( $user );
+
+		// Create a recovery codes key with a mix of regular and initial codes
+		$expiry = time() + 30 * 86_400;
+		$recoveryCodesModule = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
+		$recoveryCodeKeys = new RecoveryCodeKeys(
+			null,
+			null,
+			null,
+			[
+				RecoveryCode::newFromPlaintext( 'regularcode1' ),
+				RecoveryCode::newFromPlaintext( 'regularcode2' ),
+				RecoveryCode::newFromPlaintext( 'initialcode1', [ 'initial' => true, 'expiry' => $expiry ] ),
+				RecoveryCode::newFromPlaintext( 'initialcode2', [ 'initial' => true, 'expiry' => $expiry ] ),
+			]
+		);
+		$repository->createKey(
+			$oathUser,
+			$recoveryCodesModule,
+			$recoveryCodeKeys->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		// Sanity check: both regular and initial codes are present
+		/** @var RecoveryCodeKeys $storedRecoveryCodeKeys */
+		$storedRecoveryCodeKeys = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME )[0];
+		$this->assertArrayEquals(
+			[ 'regularcode1', 'regularcode2', 'initialcode1', 'initialcode2' ],
+			$storedRecoveryCodeKeys->getRecoveryCodeKeys()
+		);
+
+		// Creating a TOTP key (the user's first non-special key) should delete the initial codes
+		$totpModule = $moduleRegistry->getModuleByKey( TOTP::MODULE_NAME );
+		$repository->createKey(
+			$oathUser,
+			$totpModule,
+			TOTPKey::newFromRandom()->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		/** @var RecoveryCodeKeys $updatedRecoveryCodeKeys */
+		$updatedRecoveryCodeKeys = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME )[0];
+		$this->assertArrayEquals(
+			[ 'regularcode1', 'regularcode2' ],
+			$updatedRecoveryCodeKeys->getRecoveryCodeKeys()
+		);
+
+		// The change should have been persisted to the database as well
+		$reloadedOathUser = $repository->findByUser( $user );
+		/** @var RecoveryCodeKeys $reloadedRecoveryCodeKeys */
+		$reloadedRecoveryCodeKeys = $reloadedOathUser->getKeysForModule( RecoveryCodes::MODULE_NAME )[0];
+		$this->assertArrayEquals(
+			[ 'regularcode1', 'regularcode2' ],
+			$reloadedRecoveryCodeKeys->getRecoveryCodeKeys()
+		);
 	}
 }
