@@ -18,6 +18,11 @@ use MediaWiki\Language\RawMessage;
 class RecoveryCodesAuthenticationRequest extends AuthenticationRequest {
 	public string $RecoveryCode;
 
+	public function __construct(
+		public bool $initialCodesOnly = false
+	) {
+	}
+
 	/** @inheritDoc */
 	public function describeCredentials() {
 		return [
@@ -28,12 +33,23 @@ class RecoveryCodesAuthenticationRequest extends AuthenticationRequest {
 
 	/** @inheritDoc */
 	public function getFieldInfo() {
-		return [
+		$fields = [];
+		if ( $this->initialCodesOnly ) {
+			$fields['info-temporary-recovery-code'] = [
+				'type' => 'null',
+				'value' => wfMessage( 'oathauth-auth-initial-recovery-code-info' )
+			];
+		}
+
+		return $fields + [
 			'RecoveryCode' => [
 				'type' => 'string',
-				'label' => wfMessage( 'oathauth-auth-recovery-code-label' ),
-				'help' => wfMessage( 'oathauth-auth-recovery-code-help' ),
-				'optional' => true
+				'label' => $this->initialCodesOnly ?
+					wfMessage( 'oathauth-auth-initial-recovery-code-label' ) :
+					wfMessage( 'oathauth-auth-recovery-code-label' ),
+				'help' => $this->initialCodesOnly ?
+					wfMessage( 'oathauth-auth-initial-recovery-code-help' ) :
+					wfMessage( 'oathauth-auth-recovery-code-help' ),
 			]
 		];
 	}

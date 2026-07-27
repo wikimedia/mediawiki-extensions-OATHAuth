@@ -11,14 +11,19 @@ use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
 use MediaWiki\Extension\OATHAuth\ExpiringRecoveryCodeGenerator;
 use MediaWiki\Extension\OATHAuth\HTMLField\NoJsInfoField;
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
+use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
+use MediaWiki\Html\Html;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Context;
+use MediaWiki\Skin\Hook\SiteNoticeAfterHook;
 use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Hook\ReadPrivateUserRequirementsConditionHook;
@@ -39,6 +44,7 @@ class HookHandler implements
 	BeforePageDisplayHook,
 	GetPreferencesHook,
 	ReadPrivateUserRequirementsConditionHook,
+	SiteNoticeAfterHook,
 	UserModifyCreateAccountEmailHook,
 	UserRequirementsConditionHook
 {
@@ -76,8 +82,16 @@ class HookHandler implements
 				'persistent' => false,
 				'autocomplete' => 'off',
 				'spellcheck' => false,
-				'help-message' => 'oathauth-auth-recovery-code-help',
+				'help-message' => $fieldInfo['RecoveryCode']['help']
 			];
+		}
+
+		if ( isset( $fieldInfo['info-temporary-recovery-code'] ) ) {
+			// Transform the info-temporary-recovery-code field into a notice box
+			$formDescriptor['info-temporary-recovery-code']['default'] = Html::noticeBox(
+				wfMessage( 'oathauth-auth-initial-recovery-code-info' )->parseAsBlock()
+			);
+			$formDescriptor['info-temporary-recovery-code']['raw'] = true;
 		}
 
 		if ( isset( $fieldInfo['newModule'] ) ) {
@@ -154,6 +168,23 @@ class HookHandler implements
 			if ( $webauthnReq ) {
 				unset( $formDescriptor['loginattempt'] );
 			}
+		}
+
+		if (
+			$this->config->get( 'OATHAuth2FAForAllWarnings' ) &&
+			!$this->config->get( 'OATHAuthEnforce2FAForAll' ) &&
+			isset( $fieldInfo['username'] )
+		) {
+			// 2FA is going to be required for all users, but is not yet. Show a message at the top
+			// of the first stage of the login form.
+			$formDescriptor['info-2fa-required-soon'] = [
+				'type' => 'info',
+				'default' => Html::noticeBox(
+					wfMessage( 'oathauth-2fa-required-soon' )->parseAsBlock()
+				),
+				'raw' => true,
+				'weight' => -100,
+			];
 		}
 
 		if ( $this->config->get( 'OATHPasswordlessLogin' ) ) {
@@ -316,5 +347,37 @@ class HookHandler implements
 				Message::dateParam( $expiryTimestamp )
 			);
 		$body = $newBody;
+	}
+
+	/** @inheritDoc */
+	public function onSiteNoticeAfter( &$siteNotice, $skin ): void {
+		if (
+			!$this->config->get( 'OATHAuthEnforce2FAForAll' ) ||
+			!$this->config->get( 'OATHAuth2FAForAllWarnings' )
+		) {
+			return;
+		}
+		$oathUser = $this->userRepo->findByUser( $skin->getUser() );
+		if ( !$oathUser->isTwoFactorAuthEnabled() || $oathUser->userHasNonSpecialEnabledKeys() ) {
+			return;
+		}
+
+		// The user only has recovery codes. Display a message urging them to set up other 2FA.
+		$recoveryCodes = $oathUser->getKeysForModule( RecoveryCodes::MODULE_NAME )[ 0 ] ?? null;
+		if ( !$recoveryCodes instanceof RecoveryCodeKeys ) {
+			return;
+		}
+		// Get the expiry date of the user's initial recovery codes
+		$expiryTimestamp = max( array_map(
+			static fn ( RecoveryCode $code ) => $code->isInitial() ? $code->getExpiryTimestamp() : null,
+			$recoveryCodes->getRecoveryCodes()
+		) );
+
+		$siteNotice .= Html::warningBox(
+			$skin->msg( 'oathauth-recovery-code-only-sitenotice' )
+				->dateParams( $expiryTimestamp )
+				->parseAsBlock(),
+			'mw-oathauth-sitenotice'
+		);
 	}
 }

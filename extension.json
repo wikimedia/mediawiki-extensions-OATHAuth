@@ -148,6 +148,7 @@
 		"GetPreferences": "main",
 		"LoadExtensionSchemaUpdates": "updater",
 		"ReadPrivateUserRequirementsCondition": "main",
+		"SiteNoticeAfter": "main",
 		"UserModifyCreateAccountEmail": "main",
 		"UserRequirementsCondition": "main",
 		"UnitTestsAfterDatabaseSetup": "test",
@@ -241,6 +242,10 @@
 		"OATHAuthEnforce2FAForAll": {
 			"value": false,
 			"description": "Enforce 2FA for all users on the wiki."
+		},
+		"OATHAuth2FAForAllWarnings": {
+			"value": false,
+			"description": "Display warnings for users who don't have 2FA set up yet. If OATHAuthEnforce2FAForAll is false, the warnings will say 2FA will be required soon; if it's true, the warnings will say that it's required already."
 		}
 	},
 	"ResourceModules": {

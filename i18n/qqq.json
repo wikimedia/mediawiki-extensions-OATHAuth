@@ -114,6 +114,9 @@
 	"oathauth-auth-recovery-code-label": "Label of the recovery code field on special pages and in the API.",
 	"oathauth-auth-use-recovery-code": "Plain text, label of the button on the secondary authentication button to use recovery codes.",
 	"oathauth-auth-recovery-code-help": "Helper text shown below the recovery code field during login.",
+	"oathauth-auth-initial-recovery-code-label": "Label of the recovery code field when the user has a temporary recovery code for initially setting up 2FA.",
+	"oathauth-auth-initial-recovery-code-help": "Helper text shown below the recovery code field when the user has a temporary recovery code for initially setting up 2FA.",
+	"oathauth-auth-initial-recovery-code-info": "Message shown above the recovery code field explaining that the user should enter a temporary recovery code from an email they should have received.",
 	"oathauth-auth-ui": "Shown on top of the login form when second factor is required",
 	"oathauth-auth-switch-module-label": "Label for the 2FA method switcher button on login",
 	"oathauth-auth-switch-module-help": "API help for the 2FA method switcher on login",
@@ -236,5 +239,8 @@
 	"userlogin-reauth-banner-verifyoathforuser": "This is the message for the banner on [[Special:UserLogin]] when the user is redirected there to log in again when trying to visit Special:VerifyOATHForUser.",
 	"oathauth-createaccount-text-with-2fa": "Extended email sent when an account is created by another user on a wiki, and they are required to set up 2FA.\n\nParameters:\n* $1 - The {{msg-mw|createaccount-text}} message\n* $2 - Number of initial recovery codes (for PLURAL)\n* $3 - The initial recovery codes for the user\n* $4 - Date when the initial recovery codes expire",
 	"oathauth-need-full-2fa": "Message shown on Special:AccountSecurity when a user only has initial temporary recovery codes, and needs to enable another 2FA",
-	"oathauth-2fa-required-nologin": "Message shown when a user tries to log in to a wiki that requires 2FA, but the user does not have 2FA enabled.\n\nParameters:\n\n* $1 - A sentence instructing the user to contact the site administrator if they have expired ({{msg-mw|oathauth-recover-email-text-please-contact}} or its variant with contact address)"
+	"oathauth-2fa-required-nologin": "Message shown when a user tries to log in to a wiki that requires 2FA, but the user does not have 2FA enabled.\n\nParameters:\n\n* $1 - A sentence instructing the user to contact the site administrator if they have expired ({{msg-mw|oathauth-recover-email-text-please-contact}} or its variant with contact address)",
+	"oathauth-recovery-code-only-sitenotice": "Warning shown at the top of every page when the user needs to set up 2FA by a certain date in order to keep accessing the wiki.\n\nParameters:\n* $1 - The date by which the user needs to set up 2FA",
+	"oathauth-2fa-required-soon": "Message shown on the login form when 2FA will soon be required for all users on the wiki.",
+	"oathauth-recovery-codes-expired-error": "Error message shown on the login form when the user's temporary recovery codes have expired. Users in this situation can't login and need assistance."
 }

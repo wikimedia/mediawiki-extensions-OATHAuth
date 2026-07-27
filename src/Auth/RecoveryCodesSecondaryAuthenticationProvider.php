@@ -10,6 +10,8 @@ use MediaWiki\Auth\AbstractSecondaryAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCode;
+use MediaWiki\Extension\OATHAuth\Key\RecoveryCodeKeys;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
@@ -47,13 +49,34 @@ class RecoveryCodesSecondaryAuthenticationProvider extends AbstractSecondaryAuth
 			return AuthenticationResponse::newAbstain();
 		}
 
-		$authUser = $this->userRepository->findByUser( $user );
+		$oathUser = $this->userRepository->findByUser( $user );
 
-		if ( !$this->module->isEnabled( $authUser ) ) {
+		if ( !$this->module->isEnabled( $oathUser ) ) {
 			return AuthenticationResponse::newAbstain();
 		}
 
-		return AuthenticationResponse::newUI( [ new RecoveryCodesAuthenticationRequest() ] );
+		$initialCodesOnly = false;
+		if ( $this->config->get( 'OATHAuthEnforce2FAForAll' ) ) {
+			// Figure out whether the user has initial recovery codes
+			/** @var RecoveryCodeKeys $recoveryCodes */
+			$recoveryCodes = $oathUser->getKeysForModule( $this->module->getName() )[ 0 ];
+			'@phan-var RecoveryCodeKeys $recoveryCodes';
+			$initialCodes = array_filter( $recoveryCodes->getRecoveryCodes(),
+				static fn ( RecoveryCode $code ) => $code->isInitial() );
+			$temporaryCodes = array_filter( $recoveryCodes->getRecoveryCodes(),
+				static fn ( RecoveryCode $code ) => !$code->isPermanent() );
+
+			if ( $initialCodes === [] && $temporaryCodes === [] && !$oathUser->userHasNonSpecialEnabledKeys() ) {
+				// The user has no initial or temporary recovery codes, no other keys, and 2FA is required.
+				// This means their initial recovery codes have expired and they cannot log in.
+				// We do have to allow non-initial temporary recovery codes here, so that users in this
+				// situation can use assisted account recovery.
+				return AuthenticationResponse::newFail( wfMessage( 'oathauth-recovery-codes-expired-error' ) );
+			}
+			$initialCodesOnly = $initialCodes !== [];
+
+		}
+		return AuthenticationResponse::newUI( [ new RecoveryCodesAuthenticationRequest( $initialCodesOnly ) ] );
 	}
 
 	/** @inheritDoc */

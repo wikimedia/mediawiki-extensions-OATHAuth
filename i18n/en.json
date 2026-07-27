@@ -95,6 +95,9 @@
 	"oathauth-auth-recovery-code-label": "Recovery code",
 	"oathauth-auth-use-recovery-code": "Use recovery codes",
 	"oathauth-auth-recovery-code-help": "Enter one of your recovery codes.",
+	"oathauth-auth-initial-recovery-code-label": "Temporary recovery code",
+	"oathauth-auth-initial-recovery-code-help": "Your temporary recovery codes were sent to the email address associated with your account.",
+	"oathauth-auth-initial-recovery-code-info": "<strong>Two-factor authentication is now required to access {{SITENAME}}</strong>.\n\nEnter one of the temporary recovery codes emailed to you. After signing in, you should set up two-factor authentication.",
 	"oathauth-auth-ui": "Please enter a code from your two-factor authentication app (such as [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] or [https://1password.com/ 1Password]).",
 	"oathauth-auth-switch-module-label": "Use authenticator app",
 	"oathauth-auth-switch-module-help": "Set <code>newModule</code> to the name of the new module to get a new challenge from a different 2FA module. Leave empty if you are answering the current challenge.",
@@ -217,5 +220,8 @@
 	"userlogin-reauth-banner-verifyoathforuser": "<strong>You are verifying the 2FA status of another user</strong> <br>Confirm it’s you to continue.",
 	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} requires two-factor authentication.\n\nTo sign in:\n1. Log in using your username and temporary password.\n2. Enter {{PLURAL:$2|the|one of the}} temporary recovery {{PLURAL:$2|code|codes}} below when prompted.\n3. Set up a two-factor authentication method to continue using {{SITENAME}}.\n\nTemporary recovery codes:\n$3\n\n{{PLURAL:$2|This temporary recovery code|These temporary recovery codes}} can be used until $4.\n\nYou should sign in and set up two-factor authentication as soon as possible.\n\nYou may ignore this message if this account was created in error.",
 	"oathauth-need-full-2fa": "You currently only have temporary initial recovery codes enabled. Please enable another two-factor authentication method before these codes expire.",
-	"oathauth-2fa-required-nologin": "All users are required to use 2FA on {{SITENAME}}. Because you do not have 2FA enabled, you cannot log in. $1"
+	"oathauth-2fa-required-nologin": "All users are required to use 2FA on {{SITENAME}}. Because you do not have 2FA enabled, you cannot log in. $1",
+	"oathauth-recovery-code-only-sitenotice": "<strong>Set up two-factor authentication before $1</strong>\n\nYou're curently signed in using a temporary recovery code. To continue accessing {{SITENAME}} after <strong>$1</strong>, visit [[Special:AccountSecurity|account security]] and add a two-factor authentication method.",
+	"oathauth-2fa-required-soon": "<strong>Two-factor authentication will soon be required</strong>\n\nTo keep {{SITENAME}} secure, you'll need to set up two-factor authentication soon. You'll be notified when this requirement takes effect.",
+	"oathauth-recovery-codes-expired-error": "<strong>Your temporary recovery codes have expired</strong>\n\nThe temporary recovery codes that were emailed to you have expired. To regain access to your account, please contact the site administrator."
 }
