@@ -203,6 +203,9 @@
 	"oathauth-remove-lastkey-required": "Anda tidak boleh membuang kaedah pengesahihan terakhir anda jika anda merupakan ahli kumpulan yang memerlukan pengesahihan dwifaktor. Sila tambahkan kaedah pengesahihan lain sebelum mengalih keluar kaedah ini.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Pengguna dengan pengesahihan dwifaktor didayakan",
 	"userlogin-reauth-banner-oathmanage": "<strong>Anda sedang melihat atau mengurus tetapan 2FA anda</strong> <br>Anda perlu disahkan untuk sambung.",
+	"userlogin-reauth-banner-recover2faforuser": "<strong>Anda sedang memulihkan 2FA bagi pengguna lain</strong> <br>Sahkan bahawa tindakan tersebut tindakan anda untuk meneruskan.",
+	"userlogin-reauth-banner-disableoathforuser": "<strong>Anda sedang melumpuhkan 2FA bagi pengguna lain</strong> <br>Sahkan bahawa tindakan tersebut tindakan anda untuk meneruskan.",
+	"userlogin-reauth-banner-verifyoathforuser": "<strong>Anda sedang mengesahkan status 2FA bagi pengguna lain</strong> <br>Sahkan bahawa tindakan tersebut tindakan anda untuk meneruskan.",
 	"oathauth-createaccount-text-with-2fa": "$1 \n\n{{SITENAME}} memerlukan pengesahihan dwifaktor.\n\nUntuk log masuk:\n1. Log masuk menggunakan nama pengguna dan kata laluan sementara anda.\n2. Masukkan {{PLURAL:$2|sebuah|salah satu daripada}} {{PLURAL:$2|kod|kod-kod}} pemulihan sementara berikut apabila digesa.\n3. Sediakan kaedah pengesahihan dwifaktor untuk terus menggunakan {{SITENAME}}.\n\nKod pemulihan sementara:\n$3 \n\n{{PLURAL:$2|Kod pemulihan sementara ini|Kod-kod pemulihan sementara ini}} boleh digunakan sehingga $4.\n\nAnda perlu log masuk dan menyediakan pengesahihan dwifaktor secepat mungkin.\n\nAnda boleh mengabaikan mesej ini jika akaun ini dicipta dengan ralat.",
 	"oathauth-need-full-2fa": "Anda kini hanya mengaktifkan kod pemulihan awal sementara pada masa ini. Sila dayakan kaedah pengesahihan dwifaktor yang lain sebelum kod ini tamat tempoh."
 }

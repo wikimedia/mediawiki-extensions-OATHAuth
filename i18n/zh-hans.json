@@ -240,6 +240,9 @@
 	"oathauth-remove-lastkey-required": "如果您是需要双重认证的用户组成员，则无法移除您最后一个身份验证方式。请先添加另一个身份验证方式，再移除此方式。",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "用户已启用双重认证",
 	"userlogin-reauth-banner-oathmanage": "<strong>您正在查看或管理自己的双重认证设置</strong><br>请确认是本人操作后继续。",
+	"userlogin-reauth-banner-recover2faforuser": "<strong>您正在为另一名用户恢复双重认证</strong><br>请确认是本人操作后继续。",
+	"userlogin-reauth-banner-disableoathforuser": "<strong>您正在为另一名用户禁用双重认证</strong><br>请确认是本人操作后继续。",
+	"userlogin-reauth-banner-verifyoathforuser": "<strong>您正在为另一名用户验证双重认证</strong><br>请确认是本人操作后继续。",
 	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}}需要启用双重认证。\n\n要想登录：\n1. 请使用您的用户名和临时密码登录。\n2. 在出现提示时，请输入下方的临时恢复{{PLURAL:$2|代码}}{{PLURAL:$2||之一}}。\n3. 请设置双重认证方法以继续使用{{SITENAME}}。\n\n临时恢复代码：\n$3\n\n{{PLURAL:$2|此恢复代码|这些恢复代码}}仅可在$4前使用。\n\n您应当尽快登录并设置双重认证。\n\n如何此账号被错误创建，您可以忽略此消息。",
 	"oathauth-need-full-2fa": "您目前仅启用了临时初始恢复代码。请在这些代码过期前启用其他双重认证方法。"
 }

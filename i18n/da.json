@@ -207,6 +207,9 @@
 	"oathauth-remove-lastkey-required": "Du kan ikke fjerne din sidste godkendelsesmetode, hvis du er medlem af grupper, der kræver tofaktorgodkendelse. Tilføj venligst en anden godkendelsesmetode, før du fjerner denne.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Brugeren har aktiveret tofaktorgodkendelse",
 	"userlogin-reauth-banner-oathmanage": "<strong>Du ser eller administrerer dine 2FA-indstillinger</strong><br> Bekræft din identitet for at fortsætte.",
+	"userlogin-reauth-banner-recover2faforuser": "<strong>Du gendanner 2FA for en anden bruger</strong><br> Bekræft din identitet for at fortsætte.",
+	"userlogin-reauth-banner-disableoathforuser": "<strong>Du deaktiverer 2FA for en anden bruger</strong><br> Bekræft din identitet for at fortsætte.",
+	"userlogin-reauth-banner-verifyoathforuser": "<strong>Du verificerer en anden brugers 2FA-status</strong><br> Bekræft din identitet for at fortsætte.",
 	"oathauth-createaccount-text-with-2fa": "$1 \n\n{{SITENAME}} kræver tofaktor-godkendelse.\n\nFor at logge ind:\n1. Log ind med dit brugernavn og din midlertidige adgangskode.\n2. Indtast {{PLURAL:$2|den|af}} midlertidige gendannelses {{PLURAL:$2|kode|koder}} nedenfor, når du bliver bedt om det.\n3. Opret en tofaktor-godkendelsesmetode for at fortsætte med at bruge {{SITENAME}}.\n\nMidlertidige gendannelseskoder:\n$3\n\n{{PLURAL:$2|Denne midlertidige gendannelseskode|Disse midlertidige gendannelseskoder}} kan bruges indtil $4.\n\nDu bør logge ind og opsætte tofaktor-godkendelse så hurtigt som muligt.\n\nDu kan ignorere denne besked, hvis denne konto blev oprettet ved en fejl.",
 	"oathauth-need-full-2fa": "Du har i øjeblikket kun midlertidige indledende gendannelseskoder aktiveret. Aktiver venligst en anden tofaktorgodkendelsesmetode, før disse koder udløber."
 }
