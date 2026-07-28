@@ -25,4 +25,19 @@ class Enable2FAForUsersWithoutTest extends MaintenanceBaseTestCase {
 
 		$this->maintenance->execute();
 	}
+
+	public function testEnableForOneUser(): void {
+		$user = $this->getTestUser();
+
+		$this->expectOutputString(
+			"User {$user->getUser()->getName()} did not have two-factor authentication enabled, " .
+			"so initial codes have been sent by email!\n" .
+			"Total: 1; Blocked: 0; Without email: 0; Other skipped: 0\n" .
+			"2FA already enabled: 0; 2FA setup: 1; 2FA not required: 0\n" .
+			"Done.\n"
+		);
+
+		$this->maintenance->setOption( 'apply-to-all', true );
+		$this->maintenance->execute();
+	}
 }
