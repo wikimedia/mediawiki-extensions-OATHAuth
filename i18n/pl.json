@@ -67,7 +67,7 @@
 	"oathauth-auth-switch-module-label": "Przełącz się na inną metodę uwierzytelniania",
 	"oathauth-auth-switch-module-help": "Ustaw wartość <code>newModule</code> na nazwę nowego modułu, aby otrzymać wyzwanie z innego modułu uwierzytelniania dwuskładnikowego. Pozostaw pole puste, jeśli rozwiązujesz obecne wyzwanie.",
 	"oathauth-auth-switch-module-keep": "(nie przełączaj)",
-	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
+	"oathauth-throttled": "Zbyt wiele prób! Poczekaj parę minut.",
 	"oathauth-login-failed": "Weryfikacja nie powiodła się.",
 	"oathauth-describe-provider": "Uwierzytelnianie dwuskładnikowe (OATH).",
 	"grant-group-authentication": "Wykonywanie czynności związanych z uwierzytelnianiem dla siebie i innych",
