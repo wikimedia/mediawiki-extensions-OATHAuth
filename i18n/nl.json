@@ -171,8 +171,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Uw instellingen voor tweetrapsauthenticatie controleren",
 	"oathauth-notifications-twofactor-required-primary": "Controleer uw instellingen voor tweetrapsauthenticatie",
 	"oathauth-notifications-twofactor-required-help": "Hulp",
-	"notification-body-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.\n\nMet deze wijziging worden de informatie en de accounts op deze wiki beter beschermd.",
 	"notification-header-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.",
+	"notification-body-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.\n\nMet deze wijziging worden de informatie en de accounts op deze wiki beter beschermd.",
 	"oathauth-verify-enabled": "Voor $1 is tweetrapsauthenticatie ingeschakeld.",
 	"oathauth-verify-disabled": "Voor $1 is tweetrapsauthenticatie uitgeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
@@ -203,6 +203,7 @@
 	"oathauth-passkeys-placeholder": "Passkeys zijn veiliger dan wachtwoorden. U kunt zich ermee aanmelden zoals u uw apparaat ontgrendelt.",
 	"oathauth-passkeys-no2fa": "Om een passkey toe te voegen moet u eerst de tweetrapsauthenticatie instellen.",
 	"oathauth-passkeys-add": "Passkey toevoegen",
+	"oathauth-passkeys-unsupported": "Uw browser en/of wachtwoordbeheerder ondersteunt geen wachtwoordsleutels of staat deze niet toe.",
 	"oathauth-passkey-dialog-title": "Een passkey toevoegen",
 	"oathauth-passkey-dialog-text": "Passkeys zijn de veiligste manier om u bij uw account aan te melden. Voor de meeste mensen zijn ze ook de eenvoudigste manier.\n\nMet een passkey kunt u zich bij {{SITENAME}} aanmelden zoals u uw apparaat ontgrendelt, of dat nu met een PIN is, met een vingerafdruk of via gezichtsherkenning.\n\nHoe u zich ook aanmeldt, uw biometrische gegevens en PIN blijven op uw apparaat en worden nooit naar ons gestuurd.",
 	"oathauth-passkey-dialog-back": "Terug",
@@ -221,5 +222,6 @@
 	"userlogin-reauth-banner-disableoathforuser": "<strong>U schakelt 2FA uit voor een andere gebruiker.</strong> <br>Bevestig dat u het bent om verder te gaan.",
 	"userlogin-reauth-banner-verifyoathforuser": "<strong>U controleert de 2FA-status van een andere gebruiker.</strong> <br>Bevestig dat u het bent om verder te gaan.",
 	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} vereist tweetrapsauthenticatie.\n\nOm aan te melden:\n1. Meld u aan met uw bestaande gebruikersnaam en wachtwoord.\n2. Voer hieronder {{PLURAL:$2|de tijdelijke herstelcode|een van de tijdelijke herstelcodes}} in wanneer u daarom wordt gevraagd.\n3. Stel een tweetrapsauthenticatiemethode in voordat de respijtperiode afloopt.\n\nTijdelijke {{PLURAL:$1|herstelcode|herstelcodes}}:\n$3\n\nDeze {{PLURAL:$2|herstelcode kan|herstelcodes kunnen}} slechts tot $4 worden gebruikt worden.\n\nU dient zo snel mogelijk aan te melden en tweetrapsauthenticatie in te stellen.\n\nU kunt dit bericht negeren als deze account per ongeluk is aangemaakt.",
-	"oathauth-need-full-2fa": "Momenteel zijn alleen tijdelijke herstelcodes ingeschakeld. Schakel een andere tweetrapsauthenticatiemethode in voordat deze codes verlopen."
+	"oathauth-need-full-2fa": "Momenteel zijn alleen tijdelijke herstelcodes ingeschakeld. Schakel een andere tweetrapsauthenticatiemethode in voordat deze codes verlopen.",
+	"oathauth-2fa-required-nologin": "Alle gebruikers moeten 2FA gebruiken op {{SITENAME}}. Omdat u 2FA niet hebt ingeschakeld, kunt u niet aanmelden. $1"
 }
