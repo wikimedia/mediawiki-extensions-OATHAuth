@@ -80,7 +80,7 @@
 	"oathauth-auth-switch-module-label": "Użyj aplikacji uwierzytelniającej",
 	"oathauth-auth-switch-module-help": "Ustaw wartość <code>newModule</code> na nazwę nowego modułu, aby otrzymać wyzwanie z innego modułu uwierzytelniania dwuskładnikowego. Pozostaw pole puste, jeśli rozwiązujesz obecne wyzwanie.",
 	"oathauth-auth-switch-module-keep": "(nie przełączaj)",
-	"oathauth-throttled": "Zbyt wiele prób weryfikacji! Poczekaj $1.",
+	"oathauth-throttled": "Zbyt wiele prób! Poczekaj parę minut.",
 	"oathauth-login-failed": "Uwierzytelnianie dwuskładnikowe zakończyło się niepowodzeniem.",
 	"oathauth-recovery-code-login-failed": "Weryfikacja kodu zapasowego nie powiodła się.",
 	"oathauth-describe-provider": "Uwierzytelnianie dwuskładnikowe (OATH).",
