@@ -107,6 +107,9 @@
 	"oathauth-auth-recovery-code-label": "Herstelcode",
 	"oathauth-auth-use-recovery-code": "Herstelcodes gebruiken",
 	"oathauth-auth-recovery-code-help": "Voer een van uw herstelcodes in.",
+	"oathauth-auth-initial-recovery-code-label": "Tijdelijke herstelcode",
+	"oathauth-auth-initial-recovery-code-help": "Uw tijdelijke herstelcodes zijn verzonden naar het e-mailadres dat aan uw account is gekoppeld.",
+	"oathauth-auth-initial-recovery-code-info": "<strong>Tweetrapsauthenticatie is nu vereist om toegang te krijgen tot {{SITENAME}}</strong>.\n\nVoer een van de tijdelijke herstelcodes in die u per e-mail hebt ontvangen. Nadat u bent aangemeld, dient u tweetrapsauthenticatie in te stellen.",
 	"oathauth-auth-ui": "Voer een code in van uw tweetrapsauthenticatie-app (bv. [https://www.authy.com Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] of [https://1password.com/ 1Password]).",
 	"oathauth-auth-switch-module-label": "Authenticatie-app gebruiken",
 	"oathauth-auth-switch-module-help": "Stel <code>newModule</code> in op de naam van de nieuwe module om een nieuwe uitdaging van een andere tweetrapsauthenticatie-module te ontvangen. Laat dit veld leeg als u de huidige uitdaging aan het beantwoorden bent.",
@@ -171,8 +174,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Uw instellingen voor tweetrapsauthenticatie controleren",
 	"oathauth-notifications-twofactor-required-primary": "Controleer uw instellingen voor tweetrapsauthenticatie",
 	"oathauth-notifications-twofactor-required-help": "Hulp",
-	"notification-header-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.",
-	"notification-body-oathauth-twofactor-required": "Vanaf $3 is tweetrapsauthenticatie vereist voordat {{GENDER:$2|u}} toegang krijgt tot {{SITENAME}}.\n\nMet deze wijziging worden de informatie en de accounts op deze wiki beter beschermd.",
+	"notification-header-oathauth-twofactor-required": "Vanaf $3 heeft {{GENDER:$2|u}} tweetrapsauthenticatie nodig om toegang te krijgen tot {{SITENAME}}.",
+	"notification-body-oathauth-twofactor-required": "Stel tweefactorauthenticatie in vóór $3 om uw toegang te behouden.",
 	"oathauth-verify-enabled": "Voor $1 is tweetrapsauthenticatie ingeschakeld.",
 	"oathauth-verify-disabled": "Voor $1 is tweetrapsauthenticatie uitgeschakeld.",
 	"oathauth-qrcode-alt": "Scanbare QR-code die de geheime sleutel vertegenwoordigt.",
@@ -223,5 +226,8 @@
 	"userlogin-reauth-banner-verifyoathforuser": "<strong>U controleert de 2FA-status van een andere gebruiker.</strong> <br>Bevestig dat u het bent om verder te gaan.",
 	"oathauth-createaccount-text-with-2fa": "$1\n\n{{SITENAME}} vereist tweetrapsauthenticatie.\n\nOm aan te melden:\n1. Meld u aan met uw bestaande gebruikersnaam en wachtwoord.\n2. Voer hieronder {{PLURAL:$2|de tijdelijke herstelcode|een van de tijdelijke herstelcodes}} in wanneer u daarom wordt gevraagd.\n3. Stel een tweetrapsauthenticatiemethode in voordat de respijtperiode afloopt.\n\nTijdelijke {{PLURAL:$1|herstelcode|herstelcodes}}:\n$3\n\nDeze {{PLURAL:$2|herstelcode kan|herstelcodes kunnen}} slechts tot $4 worden gebruikt worden.\n\nU dient zo snel mogelijk aan te melden en tweetrapsauthenticatie in te stellen.\n\nU kunt dit bericht negeren als deze account per ongeluk is aangemaakt.",
 	"oathauth-need-full-2fa": "Momenteel zijn alleen tijdelijke herstelcodes ingeschakeld. Schakel een andere tweetrapsauthenticatiemethode in voordat deze codes verlopen.",
-	"oathauth-2fa-required-nologin": "Alle gebruikers moeten 2FA gebruiken op {{SITENAME}}. Omdat u 2FA niet hebt ingeschakeld, kunt u niet aanmelden. $1"
+	"oathauth-2fa-required-nologin": "Alle gebruikers moeten 2FA gebruiken op {{SITENAME}}. Omdat u 2FA niet hebt ingeschakeld, kunt u niet aanmelden. $1",
+	"oathauth-recovery-code-only-sitenotice": "<strong>Stel tweetrapsauthenticatie in vóór $1</strong> \n\nU bent momenteel aangemeld met een tijdelijke herstelcode. Om na <strong>$1</strong> toegang te blijven houden tot {{SITENAME}}, gaat u naar [[Special:AccountSecurity|accountbeveiliging]] en voegt u een tweetrapsauthenticatiemethode toe.",
+	"oathauth-2fa-required-soon": "<strong>Tweetrapsauthenticatie wordt binnenkort verplicht</strong> \n\nOm de beveiliging van {{SITENAME}} te waarborgen, moet u binnenkort tweetrapsauthenticatie instellen. U wordt op de hoogte gesteld wanneer deze vereiste ingaat.",
+	"oathauth-recovery-codes-expired-error": "<strong>Uw tijdelijke herstelcodes zijn verlopen</strong>\n\nDe tijdelijke herstelcodes die u per e-mail zijn toegestuurd, zijn verlopen. Neem contact op met de sitebeheerder om weer toegang tot uw account te krijgen."
 }

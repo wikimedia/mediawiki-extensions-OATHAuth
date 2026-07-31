@@ -93,6 +93,9 @@
 	"oathauth-auth-recovery-code-label": "Kod pemulihan",
 	"oathauth-auth-use-recovery-code": "Gunakan kod pemulihan",
 	"oathauth-auth-recovery-code-help": "Masukkan salah satu kod pemulihan anda.",
+	"oathauth-auth-initial-recovery-code-label": "Kod pemulihan sementara",
+	"oathauth-auth-initial-recovery-code-help": "Kod pemulihan sementara anda telah dihantar ke alamat e-mel yang dikaitkan dengan akaun anda.",
+	"oathauth-auth-initial-recovery-code-info": "<strong>Pengesahihan dwifaktor kini diperlukan untuk mengakses {{SITENAME}}</strong>.\n\nMasukkan salah satu kod pemulihan sementara yang diemelkan kepada anda. Selepas log masuk, anda perlu tetapkan pengesahihan dwifaktor.",
 	"oathauth-auth-ui": "Sila masukkan kod daripada aplikasi pengesahihan dwifaktor anda (seperti [https://www.authy.com/Authy], [https://freeotp.github.io/FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] atau [https://1password.com/1Password]).",
 	"oathauth-auth-switch-module-label": "Gunakan aplikasi pengesahihan",
 	"oathauth-auth-switch-module-help": "Tetapkan <code>newModule</code> ke nama modul baharu untuk mendapatkan cabaran baharu dari modul 2FA yang berbeza. Tinggalkan kosong jika anda sedang menjawab cabaran semasa.",
@@ -157,8 +160,8 @@
 	"oathauth-notifications-recoverycodes-generated-for-user-primary": "Periksa tetapan pengesahihan dwifaktor anda",
 	"oathauth-notifications-twofactor-required-primary": "Periksa tetapan pengesahihan dwifaktor anda",
 	"oathauth-notifications-twofactor-required-help": "Bantuan",
-	"notification-header-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} supaya dapat mengakses {{SITENAME}}, bermula $3",
-	"notification-body-oathauth-twofactor-required": "Pengesahihan dwifaktor akan diwajibkan kepada {{GENDER:$2|anda}} untuk mengakses {{SITENAME}}, bermula $3.\n\nPerubahan ini akan melindungi maklumat dan akaun di wiki ini dengan lebih baik.",
+	"notification-header-oathauth-twofactor-required": "Bermula $3 , {{GENDER:$2|anda}} memerlukan pengesahihan dwifaktor untuk mengakses {{SITENAME}}.",
+	"notification-body-oathauth-twofactor-required": "Tetapkan pengesahihan dwifaktor sebelum $3 untuk mengekalkan akses anda.",
 	"oathauth-verify-enabled": "{{GENDER:$1|$1}} mempunyai pendayaan pengesahihan dwifaktor.",
 	"oathauth-verify-disabled": "{{GENDER:$1|$1}} tidak mempunyai pendayaan pengesahihan dwifaktor.",
 	"oathauth-qrcode-alt": "Kod QR boleh imbas mewakili kunci rahsia.",
@@ -209,5 +212,8 @@
 	"userlogin-reauth-banner-verifyoathforuser": "<strong>Anda sedang mengesahkan status 2FA bagi pengguna lain</strong> <br>Sahkan bahawa tindakan tersebut tindakan anda untuk meneruskan.",
 	"oathauth-createaccount-text-with-2fa": "$1 \n\n{{SITENAME}} memerlukan pengesahihan dwifaktor.\n\nUntuk log masuk:\n1. Log masuk menggunakan nama pengguna dan kata laluan sementara anda.\n2. Masukkan {{PLURAL:$2|sebuah|salah satu daripada}} {{PLURAL:$2|kod|kod-kod}} pemulihan sementara berikut apabila digesa.\n3. Sediakan kaedah pengesahihan dwifaktor untuk terus menggunakan {{SITENAME}}.\n\nKod pemulihan sementara:\n$3 \n\n{{PLURAL:$2|Kod pemulihan sementara ini|Kod-kod pemulihan sementara ini}} boleh digunakan sehingga $4.\n\nAnda perlu log masuk dan menyediakan pengesahihan dwifaktor secepat mungkin.\n\nAnda boleh mengabaikan mesej ini jika akaun ini dicipta dengan ralat.",
 	"oathauth-need-full-2fa": "Anda kini hanya mengaktifkan kod pemulihan awal sementara pada masa ini. Sila dayakan kaedah pengesahihan dwifaktor yang lain sebelum kod ini tamat tempoh.",
-	"oathauth-2fa-required-nologin": "Semua pengguna dikehendaki menggunakan 2FA di {{SITENAME}}. Oleh kerana anda tidak mendayakan 2FA, anda tidak boleh log masuk. $1"
+	"oathauth-2fa-required-nologin": "Semua pengguna dikehendaki menggunakan 2FA di {{SITENAME}}. Oleh kerana anda tidak mendayakan 2FA, anda tidak boleh log masuk. $1",
+	"oathauth-recovery-code-only-sitenotice": "<strong>Tetapkan pengesahihan dwifaktor sebelum $1</strong>\n\nAnda sedang log masuk menggunakan kod pemulihan sementara. Untuk terus mengakses {{SITENAME}} selepas <strong>$1</strong>, lawati [[Special:AccountSecurity|keselamatan akaun]] dan tambahkan kaedah pengesahihan dwifaktor.",
+	"oathauth-2fa-required-soon": "<strong>Pengesahihan dwifaktor akan diperlukan tidak lama lagi</strong>\n\nUntuk memastikan {{SITENAME}} selamat, anda perlu menyediakan pengesahihan dwifaktor tidak lama lagi. Anda akan dimaklumkan apabila keperluan ini berkuat kuasa.",
+	"oathauth-recovery-codes-expired-error": "<strong>Kod pemulihan sementara anda telah tamat tempoh</strong>\n\nKod pemulihan sementara yang diemelkan kepada anda telah tamat tempoh. Untuk mendapatkan semula akses kepada akaun anda, sila hubungi penyelia tapak."
 }
