@@ -108,6 +108,7 @@
 	"oathauth-auth-recovery-code-label": "복구 코드",
 	"oathauth-auth-use-recovery-code": "복구 코드 사용",
 	"oathauth-auth-recovery-code-help": "복구 코드 중 하나를 입력하세요.",
+	"oathauth-auth-initial-recovery-code-label": "임시 복구 코드",
 	"oathauth-auth-ui": "2단계 인증 앱의 코드를 입력해 주십시오. (예: [https://www.authy.com/ Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/ko-kr/security/mobile-authenticator-app Microsoft Authenticator], [https://1password.com/ 1Password] 등)",
 	"oathauth-auth-switch-module-label": "인증 앱 사용",
 	"oathauth-auth-switch-module-help": "<code>newModule</code> 에 새 모듈의 이름을 입력하면 다른 2단계 인증 모듈에서 새로운 챌린지를 받을 수 있습니다. 현재 챌린지에 응답중인 경우에는 비워 두세요.",

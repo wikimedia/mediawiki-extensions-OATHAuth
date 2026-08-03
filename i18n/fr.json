@@ -16,6 +16,7 @@
 			"Mahabarata",
 			"Manaviko",
 			"McDutchie",
+			"NClara",
 			"Od1n",
 			"Orlodrim",
 			"Peter17",
@@ -55,7 +56,7 @@
 	"oathauth-recoverycodes-header-create": "Créer de nouveaux codes de récupération",
 	"oathauth-recoverycodes-regenerate-warning": "Si vous créez {{PLURAL:$1|un nouveau code|de nouveaux codes}} de récupération, <strong>{{PLURAL:$1|votre code de récupération original cessera de fonctionner|vos codes de récupération originaux cesseront de fonctionner}}.</strong>",
 	"oathauth-recoverycodes-temporary": "{{PLURAL:$1|Code|Codes}} de vérification {{PLURAL:$1|temporaire|temporaires}}",
-	"oathauth-recoverycodes-temporary-desc": "{{PLURAL:$1|Un code supplémentaire|Un ensemble de $1 codes supplémentaires}}, qui expireront le $2.",
+	"oathauth-recoverycodes-temporary-desc": "{{PLURAL:$1|Un code supplémentaire|Un ensemble de $1 codes supplémentaires}}, qui {{PLURAL:$1|expirera|expireront}} le $2.",
 	"oathauth-recoverycodes-temporary-intro": "{{PLURAL:$1|Ce code a été généré et vous a été envoyé par courriel lorsque vous avez demandé à récupérer l'accès à votre compte. Il est valide pendant une courte durée, et peut être supprimé manuellement avant son expiration.|Ces codes ont été générés et vous ont été envoyés par courriel lorsque vous avez demandé à récupérer l'accès à votre compte. Ils sont valides pendant une courte durée, et peuvent être supprimés manuellement avant leur expiration.}}",
 	"oathauth-recoverycodes-temporary-remove-label": "Supprimer {{PLURAL:$1|le code temporaire|les codes temporaires}}",
 	"oathauth-failedtovalidateoath": "Une erreur s'est produite lors de la tentative de validation du code de votre application d'authentification. S'il vous plaît, réessayez.",
@@ -187,5 +188,5 @@
 	"oathauth-2fa-required": "Vous faites partie de groupes qui exigent l’authentification à deux facteurs.",
 	"oathauth-2fa-groups-notice-unknown-page": "Page inconnue",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "L'utilisateur à l'authentification deux facteurs activé",
-	"userlogin-reauth-banner-oathmanage": "<strong>Vous vous apprêtez à paramétrer la configuration 2FA de votre compte.</strong> <br>Veillez vérifier votre authentification."
+	"userlogin-reauth-banner-oathmanage": "<strong>Vous vous apprêtez à paramétrer la configuration 2FA de votre compte.</strong> <br>Veuillez confirmer votre identité pour continuer."
 }

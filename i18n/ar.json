@@ -80,6 +80,8 @@
 	"oathauth-auth-recovery-code-label": "رمز الاسترداد",
 	"oathauth-auth-use-recovery-code": "استخدم رموز الاسترداد",
 	"oathauth-auth-recovery-code-help": "أدخل أحد رموز الاسترداد الخاصة بك.",
+	"oathauth-auth-initial-recovery-code-label": "رمز الاسترداد المؤقت",
+	"oathauth-auth-initial-recovery-code-help": "تم إرسال رموز الاسترداد المؤقتة إلى عنوان البريد الإلكتروني المرتبط بحسابك.",
 	"oathauth-auth-ui": "يرجى إدخال رمز من تطبيق المصادقة الثنائية الخاص بك (مثل [https://www.authy.com أوثي]، [https://freeotp.github.io/ فري أوه.تي.بي]، [https://support.google.com/accounts/answer/1066447 جوجل أوثنتيكاتور]، [https://www.microsoft.com/en-us/security/mobile-authenticator-app مايكروسوفت أوثنتيكاتور]، [https://1password.com/ باسورد1]).",
 	"oathauth-auth-switch-module-label": "استخدم تطبيق المصادقة",
 	"oathauth-auth-switch-module-help": "اضبط <code>newModule</code> على اسم الوحدة الجديدة للحصول على تحدٍّ جديد من وحدة مصادقة ثنائية مختلفة. اتركه فارغًا إذا كنت تُجيب على التحدي الحالي.",
