@@ -51,13 +51,22 @@ class TOTPKey extends AuthKey {
 	/**
 	 * @see T408225, T401393
 	 */
-	private static function removeBase32Padding( string $paddedBase32String ): string {
+	public static function removeBase32Padding( string $paddedBase32String ): string {
 		return rtrim( $paddedBase32String, '=' );
 	}
 
-	private static function addBase32Padding( string $unpaddedBase32String ): string {
-		$padChars = strlen( $unpaddedBase32String ) % 8;
-		return $unpaddedBase32String . str_repeat( '=', 8 - $padChars );
+	public static function addBase32Padding( string $unpaddedBase32String ): string {
+		// Remove any existing padding if it exists
+		$unpaddedBase32String = self::removeBase32Padding( $unpaddedBase32String );
+
+		// If it's already 8 characters, we don't need to do anything
+		$remainder = strlen( $unpaddedBase32String ) % 8;
+		if ( $remainder === 0 ) {
+			return $unpaddedBase32String;
+		}
+
+		// Pad to make to a multiple of 8 as necessary
+		return $unpaddedBase32String . str_repeat( '=', 8 - $remainder );
 	}
 
 	/**
