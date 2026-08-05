@@ -8,6 +8,15 @@ use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\User;
 
+// @codeCoverageIgnoreStart
+if ( getenv( 'MW_INSTALL_PATH' ) ) {
+	$IP = getenv( 'MW_INSTALL_PATH' );
+} else {
+	$IP = __DIR__ . '/../../..';
+}
+require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
+
 abstract class AllUsers extends Maintenance {
 
 	public function __construct() {

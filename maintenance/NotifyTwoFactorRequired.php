@@ -8,14 +8,7 @@ use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\User\User;
 
-// @codeCoverageIgnoreStart
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
-	$IP = __DIR__ . '/../../..';
-}
-require_once "$IP/maintenance/Maintenance.php";
-// @codeCoverageIgnoreEnd
+require_once __DIR__ . "/Base/AllUsers.php";
 
 class NotifyTwoFactorRequired extends AllUsers {
 	public function __construct() {
