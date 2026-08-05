@@ -3,19 +3,12 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Maintenance;
 
-// @codeCoverageIgnoreStart
 use MediaWiki\Extension\OATHAuth\Maintenance\Base\AllUsers;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\User\User;
 
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
-	$IP = __DIR__ . '/../../..';
-}
-require_once "$IP/maintenance/Maintenance.php";
-// @codeCoverageIgnoreEnd
+require_once __DIR__ . "/Base/AllUsers.php";
 
 class Enable2FAForUsersWithout extends AllUsers {
 	public function __construct() {
