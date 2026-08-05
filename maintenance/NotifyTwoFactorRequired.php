@@ -15,7 +15,9 @@ class NotifyTwoFactorRequired extends AllUsers {
 		parent::__construct();
 		$this->addDescription(
 			"Sends a notification to users that they're required to have 2FA enabled. " .
-			"Can be used to send to one user by passing the username, else all users on the wiki without 2FA enabled."
+			"Can be used to send to one user by passing --user=username, " .
+			"to all users if --apply-to-all is passed, else to all users that are required to have 2FA enabled, " .
+			"if you have configured requirements via \$wgRestrictedGroups"
 		);
 		$this->addOption(
 			'user', 'The username to send the notification to',
