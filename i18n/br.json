@@ -121,7 +121,7 @@
 	"oathauth-delete-warning-header": "Dilemel $1",
 	"oathauth-delete-warning": "Ne c’halloc’h ket implijout an doare dilesadur-mañ evit kevreañ ken ha n’ez aio ket en-dro ho kodoù restaoler ken.",
 	"oathauth-delete-confirm-box": "Merkit \"{{int:oathauth-authenticator-delete-text}}\" evit kenderc'hel",
-	"oathauth-delete-success": "<strong>$1</strong> dilamet.",
+	"oathauth-delete-success": "Dilamet ǃ",
 	"oathauth-created-at": "Ouzhpennet war $1",
 	"oathauth-enable-success": "Ouzhpennetǃ"
 }
