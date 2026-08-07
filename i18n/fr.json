@@ -28,11 +28,14 @@
 			"Wladek92",
 			"Yasten",
 			"Aquasen",
-			"Jérémy-Günther-Heinz Jähnick"
+			"Jérémy-Günther-Heinz Jähnick",
+			"Framawiki",
+			"NClara"
 		]
 	},
 	"oathauth-desc": "Prend en charge l’authentification utilisant des mots de passe HMAC à utilisation unique.",
 	"disableoathforuser": "Désactiver l’authentification à deux facteurs de l’utilisateur",
+	"recover2faforuser": "Réinitialiser l'authentification à deux facteurs de l'utilisateur",
 	"verifyoathforuser": "Vérifier l’état de l’authentification à deux facteurs",
 	"oath": "OATHAuth",
 	"oathauth-account": "Nom du compte :",
@@ -52,6 +55,10 @@
 	"oathauth-recoverycodes-header": "Options de récupération",
 	"oathauth-recoverycodes-header-create": "Créer de nouveaux codes de récupération",
 	"oathauth-recoverycodes-regenerate-warning": "Si vous créez {{PLURAL:$1|un nouveau code|de nouveaux codes}} de récupération, <strong>{{PLURAL:$1|votre code de récupération original cessera de fonctionner|vos codes de récupération originaux cesseront de fonctionner}}.</strong>",
+	"oathauth-recoverycodes-temporary": "{{PLURAL:$1|Code|Codes}} de vérification {{PLURAL:$1|temporaire|temporaires}}",
+	"oathauth-recoverycodes-temporary-desc": "{{PLURAL:$1|Un code supplémentaire|Un ensemble de $1 codes supplémentaires}}, qui {{PLURAL:$1|expirera|expireront}} le $2.",
+	"oathauth-recoverycodes-temporary-intro": "{{PLURAL:$1|Ce code a été généré et vous a été envoyé par courriel lorsque vous avez demandé à récupérer l'accès à votre compte. Il est valide pendant une courte durée, et peut être supprimé manuellement avant son expiration.|Ces codes ont été générés et vous ont été envoyés par courriel lorsque vous avez demandé à récupérer l'accès à votre compte. Ils sont valides pendant une courte durée, et peuvent être supprimés manuellement avant leur expiration.}}",
+	"oathauth-recoverycodes-temporary-remove-label": "Supprimer {{PLURAL:$1|le code temporaire|les codes temporaires}}",
 	"oathauth-failedtovalidateoath": "Une erreur s'est produite lors de la tentative de validation du code de votre application d'authentification. S'il vous plaît, réessayez.",
 	"oathauth-disable": "Désactiver l’authentification à deux facteurs",
 	"oathauth-validatedoath": "Informations d’identification à deux facteurs validées. L’authentification à deux facteurs sera désormais appliquée.",
