@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dvorapa",
+			"Henryk Siuda",
 			"Martin Urbanec",
 			"Matěj Suchánek",
 			"Mormegil",
@@ -68,6 +69,7 @@
 	"oathauth-module-totp-label": "Autentizační aplikace",
 	"oathauth-ui-manage": "Spravovat",
 	"oathmanage": "Spravovat dvoufázové ověření",
+	"accountsecurity": "Zabezpečení účtu",
 	"oathauth-enable-generic": "Zapnout",
 	"oathauth-invalid-data-format": "Chybný poskytovatel dat pro vytvoření klíče pro vybranou autentizační metodu",
 	"oathauth-disable-page-title": "Vypnout $1",
@@ -75,5 +77,13 @@
 	"oathauth-action-exclusive-to-2fa": "Tuto akci mohou provádět pouze uživatelé se zapnutou dvoufaktorovou autentizací.",
 	"oathauth-totp-description": "Algoritmus jednorázového hesla založeného na čase (TOTP) je rozšíření algoritmu jednorázového hesla založeného na HMAC (HOTP), které generuje jednorázová hesla, jejichž unikátnost je odvozena z aktuálního času.",
 	"oathauth-totp-disable-warning": "Již nebudete moci použít ověřovací zařízení registrované na tento účet. Všechny provizorní kódy přiřazené k tomuto účtu budou neplatné.",
-	"oathauth-invalidrequest": "Neplatný požadavek"
+	"oathauth-invalidrequest": "Neplatný požadavek",
+	"oathauth-password-label": "Nastavte si silné heslo, aby byl váš účet chráněn.",
+	"oathauth-password-action": "Změnit heslo",
+	"oathauth-authenticator-placeholder": "Přidejte další krok při přihlašovaní, abyste si lépe zabezpečili účet.",
+	"oathauth-totp-add-key": "Přidat autentizační aplikaci",
+	"oathauth-passkeys-header": "Přístupové klíče (passkeys)",
+	"oathauth-passkeys-placeholder": "Přístupové klíče jsou bezpečnější než hesla a umožňují vám přihlásit se stejným způsobem, jakým odemykáte zařízení.",
+	"oathauth-passkeys-no2fa": "Chcete-li přidat přístupový klíč, musíte nejprve nastavit dvoufaktorovou autentizaci.",
+	"userlogin-reauth-banner-oathmanage": "<strong>Prohlížíte si nebo spravujete své nastavení 2FA</strong> <br>Pro pokračování potvrďte, že jste to vy."
 }
