@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dj"
+		]
+	},
+	"apihelp-oathauth-webauthn-summary": "API-modul a kiszolgáló és a kliens közötti kommunikációhoz a regisztrációs/hitelesítési folyamat során.",
+	"apihelp-oathauth-webauthn-param-func": "A végrehajtandó függvény neve.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "Hitelesítési információk.",
+	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Regisztrációs információk.",
+	"apihelp-oathauth-webauthn-param-passkeymode": "A regisztrált kulcs jelkulcs módban van-e. (Csak a getRegisterInfo esetén.)",
+	"apierror-oathauth-webauthn-module-missing": "A WebAuthn modul nem érhető el."
+}
