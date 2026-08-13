@@ -147,6 +147,7 @@
 		"BeforePageDisplay": "main",
 		"GetPreferences": "main",
 		"LoadExtensionSchemaUpdates": "updater",
+		"LocalUserCreated": "main",
 		"ReadPrivateUserRequirementsCondition": "main",
 		"SiteNoticeAfter": "main",
 		"UserModifyCreateAccountEmail": "main",

@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\OATHAuth\Hook;
 
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Auth\ElevatedSecurityAuthenticationRequest;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\OATHAuth\Auth\SecondaryAuthenticationProvider;
 use MediaWiki\Extension\OATHAuth\Auth\WebAuthnAuthenticationRequest;
@@ -43,6 +44,7 @@ class HookHandler implements
 	AuthChangeFormFieldsHook,
 	BeforePageDisplayHook,
 	GetPreferencesHook,
+	LocalUserCreatedHook,
 	ReadPrivateUserRequirementsConditionHook,
 	SiteNoticeAfterHook,
 	UserModifyCreateAccountEmailHook,
@@ -403,6 +405,21 @@ class HookHandler implements
 				->dateParams( $expiryTimestamp )
 				->parseAsBlock(),
 			'mw-oathauth-sitenotice'
+		);
+	}
+
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
+		// Only create initial 2FA codes if enforcing for all, and the user hasn't got 2FA enabled by something else..
+		if ( !$this->config->get( 'OATHAuthEnforce2FAForAll' ) && !$this->userRepo->userHas2FAEnabled( $user ) ) {
+			return;
+		}
+
+		$this->recoveryCodeGenerator->attemptToCreateInitial2FACodes(
+			performer: $user,
+			username: $user->getName(),
+			email: $user->getEmail(),
+			sendEmail: true,
 		);
 	}
 }
