@@ -8,7 +8,8 @@
 			"Patriccck",
 			"Patrik L.",
 			"Urbanecm",
-			"Polda18"
+			"Polda18",
+			"Henryk Siuda"
 		]
 	},
 	"oathauth-desc": "Poskytuje podporu pro ověření pomocí jednorázových hesel založených na HMAC",
@@ -70,6 +71,7 @@
 	"oathauth-module-totp-label": "Autentizační aplikace",
 	"oathauth-ui-manage": "Spravovat",
 	"oathmanage": "Spravovat dvoufázové ověření",
+	"accountsecurity": "Zabezpečení účtu",
 	"oathauth-ui-not-enabled-modules": "Přepnout na jinou metodu",
 	"oathauth-ui-enabled-module": "Zapnutá autentizační metoda",
 	"oathauth-enable-generic": "Zapnout",
@@ -85,5 +87,9 @@
 	"oathauth-totp-disable-warning": "Již nebudete moci použít ověřovací zařízení registrované na tento účet. Všechny provizorní kódy přiřazené k tomuto účtu budou neplatné.",
 	"oathauth-invalidrequest": "Neplatný požadavek",
 	"oathauth-prefs-disabledgroups": "{{PLURAL:$1|Zablokovaná skupina|Zablokované skupiny}}:",
-	"oathauth-prefs-disabledgroups-help": "Vaše členství v {{PLURAL:$1|této skupině|těchto skupinách}} je zablokováno, dokud si {{GENDER:$2|nezapnete}} [[Special:Manage Two-factor authentication|dvoufaktorovou autentizaci]]."
+	"oathauth-prefs-disabledgroups-help": "Vaše členství v {{PLURAL:$1|této skupině|těchto skupinách}} je zablokováno, dokud si {{GENDER:$2|nezapnete}} [[Special:Manage Two-factor authentication|dvoufaktorovou autentizaci]].",
+	"oathauth-password-label": "Nastavte si silné heslo, aby byl váš účet chráněn.",
+	"oathauth-password-action": "Změnit heslo",
+	"oathauth-authenticator-placeholder": "Přidejte další krok při přihlašovaní, abyste si lépe zabezpečili účet.",
+	"oathauth-totp-add-key": "Přidat autentizační aplikaci"
 }
