@@ -242,5 +242,6 @@
 	"oathauth-2fa-required-nologin": "Message shown when a user tries to log in to a wiki that requires 2FA, but the user does not have 2FA enabled.\n\nParameters:\n\n* $1 - A sentence instructing the user to contact the site administrator if they have expired ({{msg-mw|oathauth-recover-email-text-please-contact}} or its variant with contact address)",
 	"oathauth-recovery-code-only-sitenotice": "Warning shown at the top of every page when the user needs to set up 2FA by a certain date in order to keep accessing the wiki.\n\nParameters:\n* $1 - The date by which the user needs to set up 2FA",
 	"oathauth-2fa-required-soon": "Message shown on the login form when 2FA will soon be required for all users on the wiki.",
+	"oathauth-2fa-required-soon-banner": "Message shown on all pages when 2FA will soon be required for all users on the wiki.",
 	"oathauth-recovery-codes-expired-error": "Error message shown on the login form when the user's temporary recovery codes have expired. Users in this situation can't login and need assistance."
 }
