@@ -95,7 +95,7 @@
 	"oathauth-auth-switch-module-label": "Sử dụng ứng dụng xác thực",
 	"oathauth-auth-switch-module-help": "Đặt <code>newModule</code> thành tên của mô-đun mới để nhận thử thách mới từ một mô-đun 2FA khác. Để trống nếu bạn đang trả lời thử thách hiện tại.",
 	"oathauth-auth-switch-module-keep": "(không chuyển đổi)",
-	"oathauth-throttled": "Đã cố xác nhận danh tính nhiều lần quá! Xin hãy chờ $1.",
+	"oathauth-throttled": "Đã thử quá nhiều lần! Vui lòng đợi vài phút.",
 	"oathauth-login-failed": "Có lỗi trong khi xác minh xác thực hai yếu tố.",
 	"oathauth-recovery-code-login-failed": "Đã xảy ra lỗi khi xác thực mã khôi phục.",
 	"oathauth-describe-provider": "Xác thực dùng hai nhân tố (OATH).",
