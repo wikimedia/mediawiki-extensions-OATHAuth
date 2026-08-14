@@ -34,8 +34,8 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Remove temporary recovery {{PLURAL:$1|code|codes}}",
 	"oathauth-recoverycodes-temporary-remove-text": "You are about to remove the temporary recovery {{PLURAL:$1|code|codes}}, which you received as part of the account recovery process.\n\n<strong>Make sure that you have access to other two-factor authentication methods, so that you will still be able to log in to your account.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "Your temporary recovery {{PLURAL:$1|code has|codes have}} been removed. The other recovery {{PLURAL:$2|code remains|codes remain}} intact.",
-	"oathauth-recoverycodes-initial": "Initial recovery {{PLURAL:$1|code|codes}}",
-	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|An initial code|A set of $1 initial codes}}, which will expire at $2.",
+	"oathauth-recoverycodes-initial": "Temporary initial recovery {{PLURAL:$1|code|codes}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|A temporary initial code|A set of $1 temporary initial codes}}, which will expire at $2.",
 	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|This code was|These codes were}} generated and emailed to you as part of requiring two-factor authentication on {{SITENAME}}. {{PLURAL:$1|It|They}} will be removed automatically when you enable another two-factor authentication method.",
 	"oathauth-failedtovalidateoath": "An error occurred when attempting to validate the code from your authentication application. Please try again.",
 	"oathauth-disable": "Disable two-factor authentication",
@@ -224,5 +224,5 @@
 	"oathauth-recovery-code-only-sitenotice": "<strong>Set up two-factor authentication before $1</strong>\n\nYou're curently signed in using a temporary recovery code. To continue accessing {{SITENAME}} after <strong>$1</strong>, visit [[Special:AccountSecurity|account security]] and add a two-factor authentication method.",
 	"oathauth-2fa-required-soon": "<strong>Two-factor authentication will soon be required</strong>\n\nTo keep {{SITENAME}} secure, you'll need to set up two-factor authentication soon. You'll be notified when this requirement takes effect.",
 	"oathauth-2fa-required-soon-banner": "<strong>Two-factor authentication will soon be required</strong>\n\nTo keep {{SITENAME}} secure, you'll need to set up two-factor authentication soon. You'll be notified when this requirement takes effect. To dismiss this banner, visit [[Special:AccountSecurity|account security]] and add a two-factor authentication method.",
-	"oathauth-recovery-codes-expired-error": "<strong>Your temporary recovery codes have expired</strong>\n\nThe temporary recovery codes that were emailed to you have expired. To regain access to your account, please contact the site administrator."
+	"oathauth-recovery-codes-expired-error": "<strong>Your temporary initial recovery codes have expired</strong>\n\nThe temporary initial recovery codes that were emailed to you have expired. To regain access to your account, please contact the site administrator."
 }
