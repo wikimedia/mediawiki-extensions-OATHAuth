@@ -223,5 +223,6 @@
 	"oathauth-2fa-required-nologin": "All users are required to use 2FA on {{SITENAME}}. Because you do not have 2FA enabled, you cannot log in. $1",
 	"oathauth-recovery-code-only-sitenotice": "<strong>Set up two-factor authentication before $1</strong>\n\nYou're curently signed in using a temporary recovery code. To continue accessing {{SITENAME}} after <strong>$1</strong>, visit [[Special:AccountSecurity|account security]] and add a two-factor authentication method.",
 	"oathauth-2fa-required-soon": "<strong>Two-factor authentication will soon be required</strong>\n\nTo keep {{SITENAME}} secure, you'll need to set up two-factor authentication soon. You'll be notified when this requirement takes effect.",
+	"oathauth-2fa-required-soon-banner": "<strong>Two-factor authentication will soon be required</strong>\n\nTo keep {{SITENAME}} secure, you'll need to set up two-factor authentication soon. You'll be notified when this requirement takes effect. To dismiss this banner, visit [[Special:AccountSecurity|account security]] and add a two-factor authentication method.",
 	"oathauth-recovery-codes-expired-error": "<strong>Your temporary recovery codes have expired</strong>\n\nThe temporary recovery codes that were emailed to you have expired. To regain access to your account, please contact the site administrator."
 }

@@ -351,14 +351,38 @@ class HookHandler implements
 
 	/** @inheritDoc */
 	public function onSiteNoticeAfter( &$siteNotice, $skin ): void {
-		if (
-			!$this->config->get( 'OATHAuthEnforce2FAForAll' ) ||
-			!$this->config->get( 'OATHAuth2FAForAllWarnings' )
-		) {
+		$user = $skin->getUser();
+
+		// Only display the banner to fully logged-in (non-temporary) users
+		if ( !$user->isNamed() ) {
 			return;
 		}
-		$oathUser = $this->userRepo->findByUser( $skin->getUser() );
-		if ( !$oathUser->isTwoFactorAuthEnabled() || $oathUser->userHasNonSpecialEnabledKeys() ) {
+
+		$twoFAForAll = $this->config->get( 'OATHAuthEnforce2FAForAll' );
+		$twoFAForAllWarnings = $this->config->get( 'OATHAuth2FAForAllWarnings' );
+
+		// Neither relevant setting is true, so we're not displaying anything in any case
+		if ( !$twoFAForAll && !$twoFAForAllWarnings ) {
+			return;
+		}
+
+		$oathUser = $this->userRepo->findByUser( $user );
+		// If the user already has proper 2FA enabled, nothing to do either
+		if ( $oathUser->userHasNonSpecialEnabledKeys() ) {
+			return;
+		}
+
+		if ( !$twoFAForAll && $twoFAForAllWarnings ) {
+			// Display a "coming soon" warning on all pages
+			$siteNotice .= Html::warningBox(
+				$skin->msg( 'oathauth-2fa-required-soon-banner' )->parseAsBlock(),
+				'mw-oathauth-sitenotice'
+			);
+			return;
+		}
+
+		// Only display the remaining banner if both settings are true
+		if ( !$twoFAForAll || !$twoFAForAllWarnings ) {
 			return;
 		}
 
