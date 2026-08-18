@@ -227,7 +227,7 @@ class OATHUserRepository {
 		if ( !$keyId ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( 'updateKey() can only be used with already existing keys' );
-			// @codeCoverageIgnoreStart
+			// @codeCoverageIgnoreEnd
 		}
 
 		$json = FormatJson::encode( $key->jsonSerialize() );
