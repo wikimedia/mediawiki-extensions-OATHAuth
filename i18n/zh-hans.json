@@ -252,5 +252,6 @@
 	"oathauth-2fa-required-nologin": "{{SITENAME}}上的所有用户都必须启用双重认证。由于您未启用双重认证，因此无法登录。$1",
 	"oathauth-recovery-code-only-sitenotice": "<strong>请在$1前设置双重认证</strong>\n\n您当前正使用临时恢复代码登录。要在<strong>$1</strong>之后继续访问{{SITENAME}}，请参阅[[Special:AccountSecurity|账号安全]]并添加双重认证方法。",
 	"oathauth-2fa-required-soon": "<strong>即将要求启用双重认证</strong>\n\n为了确保{{SITENAME}}的安全，您需要尽快设置双重认证。此要求正式生效时我们会通知您。",
+	"oathauth-2fa-required-soon-banner": "<strong>即将要求启用双重认证</strong>\n\n为了确保{{SITENAME}}的安全，您需要尽快设置双重认证。此要求正式生效时我们会通知您。要关闭此横幅，请访问[[Special:AccountSecurity|账号安全]]并添加双重认证方法。",
 	"oathauth-recovery-codes-expired-error": "<strong>您的临时恢复代码已过期</strong>\n\n我们通过电子邮件发送给您的临时恢复代码已过期。要重新获得您对自己账号的访问权限，请联系网站管理员。"
 }
