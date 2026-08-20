@@ -219,5 +219,6 @@
 	"oathauth-2fa-required-nologin": "Alle brugere skal bruge 2FA på {{SITENAME}}. Da du ikke har aktiveret 2FA, kan du ikke logge ind. $1",
 	"oathauth-recovery-code-only-sitenotice": "<strong>Opsæt tofaktorgodkendelse før $1</strong> \n\nDu er i øjeblikket logget ind med en midlertidig gendannelseskode. For at fortsætte med at få adgang til {{SITENAME}} efter <strong>$1</strong>, skal du besøge [[Special:AccountSecurity|kontosikkerhed]] og tilføje en tofaktorgodkendelsesmetode.",
 	"oathauth-2fa-required-soon": "<strong>Tofaktorgodkendelse vil snart være påkrævet</strong> \n\nFor at holde {{SITENAME}} sikker, skal du snart konfigurere tofaktorgodkendelse. Du får besked, når dette krav træder i kraft.",
+	"oathauth-2fa-required-soon-banner": "<strong>Tofaktorgodkendelse vil snart være påkrævet</strong> \n\nFor at holde {{SITENAME}} sikker skal du snart konfigurere tofaktorgodkendelse. Du får besked, når dette krav træder i kraft. For at lukke dette banner skal du besøge [[Special:AccountSecurity|kontosikkerhed]] og tilføje en tofaktorgodkendelsesmetode.",
 	"oathauth-recovery-codes-expired-error": "<strong>Dine midlertidige gendannelseskoder er udløbet</strong> \n\nDe midlertidige gendannelseskoder, der blev sendt til dig via e-mail, er udløbet. For at få adgang til din konto igen, bedes du kontakte webstedsadministratoren."
 }
