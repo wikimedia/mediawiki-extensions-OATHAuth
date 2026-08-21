@@ -42,14 +42,14 @@
 				</cdx-button>
 			</form>
 		</cdx-accordion>
-		<div class="mw-special-OATHManage-authmethods__addform">
+		<div v-if="!WebAuthnNewCredsDisabled" class="mw-special-OATHManage-authmethods__addform">
 			<add-passkey-button></add-passkey-button>
 		</div>
 	</div>
 
 	<!-- Empty passkeys section -->
 	<div
-		v-if="hasKeys && !hasPasskeys"
+		v-if="hasKeys && !hasPasskeys && !WebAuthnNewCredsDisabled"
 		class="mw-special-OATHManage-passkeys mw-special-OATHManage-passkeys--no-keys"
 	>
 		<h3>{{ $i18n( 'oathauth-passkeys-header' ) }}</h3>
@@ -148,7 +148,10 @@
 	</div>
 
 	<!-- Empty passkey without MFA section -->
-	<div v-if="!hasKeys" class="mw-special-OATHManage-passkeys--no-keys">
+	<div
+		v-if="!hasKeys && !WebAuthnNewCredsDisabled"
+		class="mw-special-OATHManage-passkeys--no-keys"
+	>
 		<h3>{{ $i18n( 'oathauth-passkeys-header' ) }}</h3>
 		<div class="mw-special-OATHManage-authmethods__addform">
 			<p class="mw-special-OATHManage-passkeys__placeholder">
@@ -166,6 +169,7 @@ const { defineComponent, reactive, computed } = require( 'vue' );
 const { CdxAccordion, CdxButton, CdxMessage } = require( './codex.js' );
 const AddPasskeyButton = require( './AddPasskeyButton.vue' );
 const GroupsWith2FANotice = require( './GroupsWith2FANotice.vue' );
+const { WebAuthnNewCredsDisabled } = require( './data.json' );
 
 module.exports = exports = defineComponent( {
 	components: {
@@ -212,7 +216,8 @@ module.exports = exports = defineComponent( {
 			isRequiredToHave2FA,
 			canRemoveKeys,
 			groupsRequiring2FA,
-			groupsRequiring2FAPerWiki
+			groupsRequiring2FAPerWiki,
+			WebAuthnNewCredsDisabled
 		};
 	}
 } );

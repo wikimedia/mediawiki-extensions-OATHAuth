@@ -573,6 +573,7 @@ class OATHManage extends SpecialPage {
 		);
 
 		// Passkeys section
+		$newCredsDisabled = $this->getConfig()->get( 'WebAuthnNewCredsDisabled' );
 		$passkeyAccordions = '';
 		$passkeyPlaceholder = '';
 		$passkeyClasses = [ 'mw-special-OATHManage-passkeys' ];
@@ -598,18 +599,21 @@ class OATHManage extends SpecialPage {
 			$passkeyClasses[] = 'mw-special-OATHManage-passkeys--no-keys';
 		}
 		// Only display the "Add passkey" button if the user can add passkeys
-		$passkeyAddButton = $keyAccordions === '' ? '' : $codex->button()
+		$passkeyAddButton = $keyAccordions === '' || $newCredsDisabled ? '' : $codex->button()
 			->setLabel( $this->msg( 'oathauth-passkeys-add' )->text() )
 			->setAttributes( [ 'class' => 'mw-special-OATHManage-passkeys__addbutton' ] )
 			->build()
 			->getHtml();
-		$passkeySection = Html::rawElement( 'div', [ 'class' => $passkeyClasses ],
+		// Only display the passkey section if the user has passkeys or can add passkeys
+		$passkeySection = $passkeyAccordions === '' && $newCredsDisabled ? '' : Html::rawElement(
+			'div',
+			[ 'class' => $passkeyClasses ],
 			Html::element( 'h3', [], $this->msg( 'oathauth-passkeys-header' )->text() ) .
-			$passkeyAccordions .
-			Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-authmethods__addform' ],
-				$passkeyPlaceholder .
-				$passkeyAddButton
-			)
+				$passkeyAccordions .
+				Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-authmethods__addform' ],
+					$passkeyPlaceholder .
+					$passkeyAddButton
+				)
 		);
 
 		$output->addHTML( Html::rawElement( 'div', [ 'class' => 'mw-special-OATHManage-vue-container' ],
