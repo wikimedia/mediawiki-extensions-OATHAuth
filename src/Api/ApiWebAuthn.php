@@ -39,10 +39,12 @@ class ApiWebAuthn extends ApiBase {
 		self::ACTION_GET_REGISTER_INFO => [
 			'permissions' => [ 'oathauth-enable' ],
 			'mustBeLoggedIn' => true,
+			'requiresNewCreds' => true,
 		],
 		self::ACTION_REGISTER => [
 			'permissions' => [ 'oathauth-enable' ],
 			'mustBeLoggedIn' => true,
+			'requiresNewCreds' => true,
 		],
 	];
 
@@ -98,9 +100,18 @@ class ApiWebAuthn extends ApiBase {
 
 	/** @inheritDoc */
 	public function getAllowedParams() {
+		// Don't allow the register and getRegisterInfo endpoints to be used if new keys
+		// cannot be created
+		$functions = self::REGISTERED_FUNCTIONS;
+		if ( $this->getConfig()->get( 'WebAuthnNewCredsDisabled' ) ) {
+			$functions = array_filter( $functions, static function ( $config ) {
+				return !( $config['requiresNewCreds'] ?? false );
+			} );
+		}
+
 		return [
 			'func' => [
-				ParamValidator::PARAM_TYPE => array_keys( self::REGISTERED_FUNCTIONS ),
+				ParamValidator::PARAM_TYPE => array_keys( $functions ),
 				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-oathauth-webauthn-param-func',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
@@ -136,6 +147,15 @@ class ApiWebAuthn extends ApiBase {
 			if ( !$user->isNamed() ) {
 				$this->dieWithError( [ 'apierror-mustbeloggedin', $this->msg( 'action-oathauth-enable' ) ] );
 			}
+		}
+
+		// This should not be reachable because getAllowedParams() should already filter out functions
+		// with requiresNewCreds, but double-checking here for paranoia
+		if (
+			( $functionConfig['requiresNewCreds'] ?? false ) &&
+			$this->getConfig()->get( 'WebAuthnNewCredsDisabled' )
+		) {
+				$this->dieWithError( [ 'apierror-oathauth-webauthn-new-creds-disabled' ] );
 		}
 
 		$funcPermissions = $functionConfig['permissions'];
