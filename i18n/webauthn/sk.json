@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luky001"
+			"Luky001",
+			"Wizzard"
 		]
 	},
 	"oathauth-webauthn-module-label": "Bezpečnostný kľúč",
@@ -33,5 +34,9 @@
 	"oathauth-webauthn-credential-label": "Osobné údaje používateľa",
 	"oathauth-webauthn-credential-help": "Prihlasovacie údaje na základe autentifikačných dát",
 	"oathauth-webauthn-add-security-key": "Pridať bezpečnostný kľúč (security key)",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Použiť bezpečnostný kľúč alebo prístupový kľúč"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Použiť bezpečnostný kľúč alebo prístupový kľúč",
+	"oathauth-webauthn-login-passkey-button": "Prihlásiť sa prístupovým kľúčom",
+	"oathauth-webauthn-reauth-passkey-button": "Pokračovať s prístupovým kľúčom",
+	"oathauth-webauthn-reauth-security-key-button": "Pokračovať s bezpečnostným kľúčom",
+	"oathauth-webauthn-deprecated-key": "Tento kľúč nie je bezpečný a nemal by sa používať. Skúste to, prosím, znova s iným kľúčom."
 }
