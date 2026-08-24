@@ -173,7 +173,8 @@ class HookHandler implements
 		if (
 			$this->config->get( 'OATHAuth2FAForAllWarnings' ) &&
 			!$this->config->get( 'OATHAuthEnforce2FAForAll' ) &&
-			isset( $fieldInfo['username'] )
+			isset( $fieldInfo['username'] ) &&
+			!$reauthReq
 		) {
 			// 2FA is going to be required for all users, but is not yet. Show a message at the top
 			// of the first stage of the login form.
