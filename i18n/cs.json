@@ -85,5 +85,6 @@
 	"oathauth-passkeys-header": "Přístupové klíče (passkeys)",
 	"oathauth-passkeys-placeholder": "Přístupové klíče jsou bezpečnější než hesla a umožňují vám přihlásit se stejným způsobem, jakým odemykáte zařízení.",
 	"oathauth-passkeys-no2fa": "Chcete-li přidat přístupový klíč, musíte nejprve nastavit dvoufaktorovou autentizaci.",
+	"oathauth-passkeys-unsupported": "Váš prohlížeč a/nebo správce hesel nepodporuje ani neumožňuje přístupové klíče.",
 	"userlogin-reauth-banner-oathmanage": "<strong>Prohlížíte si nebo spravujete své nastavení 2FA</strong> <br>Pro pokračování potvrďte, že jste to vy."
 }
