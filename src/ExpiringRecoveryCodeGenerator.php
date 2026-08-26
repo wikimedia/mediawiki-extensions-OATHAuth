@@ -237,6 +237,7 @@ class ExpiringRecoveryCodeGenerator {
 				implode( "\n", $recoveryCodes ),
 				Message::dateParam( $expiryTimestamp ),
 				self::getSiteAdminContact( $this->targetUser, $userLanguage ),
+				$this->targetUser->getName(),
 			);
 
 		$userEmail = $this->getUserEmail( $this->targetUser );
