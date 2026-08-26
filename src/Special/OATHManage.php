@@ -38,6 +38,7 @@ use OOUI\HorizontalLayout;
 use OOUI\HtmlSnippet;
 use OOUI\LabelWidget;
 use OOUI\PanelLayout;
+use Wikimedia\Codex\Localization\MediaWikiLocalization;
 use Wikimedia\Codex\Utility\Codex;
 
 /**
@@ -268,7 +269,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function build2FARequiredNotice(): string {
-		$codex = new Codex();
+		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 		$lang = $this->getLanguage();
 		$message = $codex->message();
 		$message->setAttributes( [ 'class' => 'mw-special-OATHManage-mandatory-2fa' ] );
@@ -349,7 +350,7 @@ class OATHManage extends SpecialPage {
 			}
 			$noticeContent .= Html::closeElement( 'ul' );
 		}
-		$codex = new Codex();
+		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 		return $codex->message()
 			->setType( 'warning' )
 			->setAttributes( [ 'class' => 'mw-special-OATHManage-2fa-groups-notice' ] )
@@ -359,7 +360,7 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function buildKeyAccordion( AuthKey $key, string $noticeHtml = '', bool $removable = true ): string {
-		$codex = new Codex();
+		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 		$keyData = $this->getKeyNameAndDescription( $key );
 		$keyAccordion = $codex->accordion()
 			->setTitle( $keyData['name'] )
@@ -435,7 +436,7 @@ class OATHManage extends SpecialPage {
 		$output->addModuleStyles( 'ext.oath.manage.styles' );
 		$output->addModules( 'ext.oath.manage' );
 		$output->addJsConfigVars( 'wgOATHManageData', $this->buildVueData() );
-		$codex = new Codex();
+		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 
 		// Show the delete success message, if applicable
 		$deletedKeyName = $this->getRequest()->getVal( 'deletesuccess' );
@@ -929,7 +930,7 @@ class OATHManage extends SpecialPage {
 
 		$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
 		$this->getOutput()->addModules( 'ext.oath.recovery' );
-		$codex = new Codex();
+		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 		$placeholderMessage = '';
 
 		$this->setOutputJsConfigVars(
