@@ -4,6 +4,7 @@
 			"Matma Rex",
 			"Msz2001",
 			"Odder",
+			"PanWor",
 			"Rail",
 			"Woytecr"
 		]
@@ -15,12 +16,12 @@
 	"oathauth-webauthn-error-browser-unsupported": "Ta przeglądarka nie wspiera protokołu autoryzacji przez klucz zabezpieczający lub jest on niedostępny na tej stronie. Spróbuj ponownie, korzystając z innej przeglądarki. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support Więcej]",
 	"oathauth-webauthn-error-browser-unsupported-console": "Ta przeglądarka nie wspiera protokołu autoryzacji przez klucz zabezpieczający lub jest on niedostępny na tej stronie.",
 	"oathauth-webauthn-error-auth-generic": "Proces autoryzacji został przerwany. Prosimy rozpocząć proces ponownie.",
-	"oathauth-webauthn-error-reg-generic": "Nie udało się zweryfikować twojego klucza. Prosimy rozpocząć proces ponownie.",
+	"oathauth-webauthn-error-reg-generic": "Nie udało się zweryfikować Twojego klucza. Prosimy rozpocząć proces ponownie.",
 	"oathauth-webauthn-registered-keys-section-name": "Zarejestrowane klucze",
 	"oathauth-webauthn-ui-remove-key": "Usuń",
 	"oathauth-webauthn-error-module-not-enabled": "Moduł „$1” nie jest włączony dla {{GENDER:$2|użytkownika|użytkowniczki}} „$2”.",
 	"oathauth-webauthn-error-verification-failed": "Weryfikacja nie powiodła się.",
-	"oathauth-webauthn-error-passkey-verification-failed": "Weryfikacja passkeya nie powiodła się.",
+	"oathauth-webauthn-error-passkey-verification-failed": "Weryfikacja klucza dostępu nie powiodła się.",
 	"oathauth-webauthn-error-credentials-missing": "Poświadczenia WebAuthn nie zostały przesłane.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|Użytkownik|Użytkowniczka}} „$1” nie może zarejestrować nowego poświadczenia.",
 	"oathauth-webauthn-error-invalid-new-key": "Nowy klucz zwrócony przed moduł nie jest wymaganego typu.",
@@ -37,9 +38,9 @@
 	"oathauth-webauthn-credential-label": "Poświadczenie użytkownika",
 	"oathauth-webauthn-credential-help": "Poświadczenie użytkownika oparte na danych uwierzytelniajacych",
 	"oathauth-webauthn-add-security-key": "Dodaj klucz zabezpieczeń",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Użyj klucza zabezpieczającego lub passkeya",
-	"oathauth-webauthn-login-passkey-button": "Zaloguj się passkeyem",
-	"oathauth-webauthn-reauth-passkey-button": "Kontynuuj z passkeyem",
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Użyj klucza zabezpieczającego lub klucza dostępu",
+	"oathauth-webauthn-login-passkey-button": "Zaloguj się kluczem dostępu",
+	"oathauth-webauthn-reauth-passkey-button": "Kontynuuj z kluczem dostępu",
 	"oathauth-webauthn-reauth-security-key-button": "Kontynuuj z kluczem zabezpieczeń",
 	"oathauth-webauthn-deprecated-key": "Ten klucz nie jest bezpieczny i nie powinien być używany. Spróbuj ponownie z użyciem innego klucza."
 }
