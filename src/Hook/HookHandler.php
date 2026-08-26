@@ -19,6 +19,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthModuleRegistry;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Html\Html;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Permissions\PermissionManager;
@@ -335,6 +336,17 @@ class HookHandler implements
 			email: $user->getEmail(),
 			sendEmail: false,
 		);
+
+		if ( !$status->isGood() ) {
+			LoggerFactory::getInstance( 'authentication' )->error(
+				'Failed to create initial 2FA codes for user {user} with error message {msg}',
+				[
+					'user' => $user->getName(),
+					'msg' => $status->getWikiText( false, false, 'en' )
+				]
+			);
+			return;
+		}
 
 		$recoveryCodes = $status->getValue();
 		$expiryTimestamp = ConvertibleTimestamp::convert(
