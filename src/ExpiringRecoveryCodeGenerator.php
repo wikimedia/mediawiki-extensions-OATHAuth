@@ -21,6 +21,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use OutOfRangeException;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat as TS;
 
@@ -194,7 +195,9 @@ class ExpiringRecoveryCodeGenerator {
 			return $status;
 		}
 
-		$oathUser = $this->userRepo->findByUser( $this->targetUser );
+		// T436066 - Use READ_LATEST because we may be doing a query from a replica when a user has only
+		// just been created
+		$oathUser = $this->userRepo->findByUser( $this->targetUser, IDBAccessObject::READ_LATEST );
 
 		$expiryTimestamp = ConvertibleTimestamp::convert(
 			TS::MW,
@@ -296,7 +299,12 @@ class ExpiringRecoveryCodeGenerator {
 		$user = $this->userFactory->newFromName( $username );
 		// T393253 - Check the username is valid, but don't check if it exists on the local wiki.
 		// Instead, check there is a valid central ID.
-		if ( !$user || $this->centralIdLookup->centralIdFromName( $username ) === 0 ) {
+		// T436066 - Use READ_LATEST because we may be doing a query from a replica when a user has
+		// only just been created
+		if (
+			!$user ||
+			$this->centralIdLookup->centralIdFromName( $username, flags: IDBAccessObject::READ_LATEST ) === 0
+		) {
 			return null;
 		}
 		return $user;
