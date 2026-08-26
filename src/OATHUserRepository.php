@@ -27,6 +27,7 @@ use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class OATHUserRepository {
 
@@ -42,11 +43,11 @@ class OATHUserRepository {
 	) {
 	}
 
-	public function findByUser( UserIdentity $user ): OATHUser {
+	public function findByUser( UserIdentity $user, int $flags = IDBAccessObject::READ_NORMAL ): OATHUser {
 		$oathUser = $this->cache->get( $user->getName() );
 		if ( !$oathUser ) {
 			$uid = $this->centralIdLookupFactory->getLookup()
-				->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW );
+				->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW, $flags );
 			$oathUser = new OATHUser( $user, $uid );
 			$this->loadKeysFromDatabase( $oathUser );
 
