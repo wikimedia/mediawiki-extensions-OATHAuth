@@ -38,7 +38,7 @@
 	"oathauth-recoverycodes-temporary-remove-label": "Ideiglenes {{PLURAL:$1|kód|kódok}} eltávolítása",
 	"oathauth-recoverycodes-temporary-remove-header": "Ideiglenes helyreállítási {{PLURAL:$1|kód|kódok}} eltávolítása",
 	"oathauth-recoverycodes-temporary-remove-text": "Arra készülsz, hogy eltávolítsd a fiók-helyreállítási folyamat részeként kapott ideiglenes helyreállítási {{PLURAL:$1|kódot|kódokat}}.\n\n<strong>Győződj meg arról, hogy hozzáférsz más kétlépcsős hitelesítési módokhoz, hogy ezután is be tudj jelentkezni a fiókodba.</strong>",
-	"oathauth-recoverycodes-temporary-remove-success": "Az ideiglenes helyreállítási {{PLURAL:$1|kódodat eltávolítottuk|kódjaidat eltávolítottuk}}. A többi helyreállítási kód változatlan maradt.",
+	"oathauth-recoverycodes-temporary-remove-success": "Az ideiglenes helyreállítási {{PLURAL:$1|kódodat eltávolítottuk|kódjaidat eltávolítottuk}}. A többi helyreállítási {{PLURAL:$2|kód}} változatlan maradt.",
 	"oathauth-recoverycodes-initial": "Kezdeti helyreállítási {{PLURAL:$1|kód|kódok}}",
 	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|Egy kezdeti kód|$1 kezdeti kódból álló készlet}}, amely $2-kor jár le.",
 	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|Ezt a kódot|Ezeket a kódokat}} a(z) {{SITENAME}} kétlépcsős hitelesítési követelményének részeként hoztuk létre és küldtük el neked e-mailben. {{PLURAL:$1|Automatikusan eltávolítjuk|Automatikusan eltávolítjuk őket}}, amikor engedélyezel egy másik kétlépcsős hitelesítési módot.",
