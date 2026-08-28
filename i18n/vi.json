@@ -79,6 +79,7 @@
 	"oathauth-user-not-does-not-have-oath-enabled": "Người dùng này hiện không bật chức năng xác thực hai yếu tố, do đó không cần thực hiện tắt.",
 	"oathauth-recover-fail-no-2fa": "Người dùng này hiện không bật chức năng xác thực hai yếu tố, do đó việc không cần thực hiện việc phục hồi.",
 	"oathauth-recover-fail-email-required": "Tài khoản này chưa có email xác thực. Vui lòng nhập địa chỉ email để nhận tin nhắn.",
+	"oathauth-recover-fail-max-codes-reached": "Người dùng đã đạt đến số lượng mã khôi phục tối đa. Không thể tạo thêm mã khôi phục.",
 	"oathauth-recover-email-title": "{{PLURAL:$1|Mã}} phục hồi bổ sung cho tài khoản của bạn",
 	"oathauth-recover-email-text": "{{GENDER:$1|Xin chào}} $1,\n\nCác mã khôi phục bổ sung cho xác thực hai yếu tố của bạn đã được tạo vào ngày $5. Bạn có thể sử dụng {{PLURAL:$2|mã này|các mã này}} để đăng nhập vào tài khoản nếu không còn truy cập được vào các phương thức xác thực hai yếu tố khác.\n\n$3\n\n{{PLURAL:$2|Mã này|Những mã này}} chỉ có thể được sử dụng cho đến $8. Vui lòng cấu hình phương thức xác thực hai yếu tố mới trước thời điểm này để duy trì quyền truy cập vào tài khoản của bạn. Miễn là {{PLURAL:$2|nó|chúng}} còn hiệu lực, vui lòng lưu giữ {{PLURAL:$2|mã này|những mã này}} ở nơi an toàn.\n\nNếu bạn không phải là người thực hiện hành động này, có thể ai đó đã mạo danh bạn để cố gắng truy cập vào tài khoản. $4",
 	"oathauth-recover-email-text-please-contact": "Trong trường hợp này, bạn nên {{GENDER:$1|liên hệ}} một bảo quản viên để được hỗ trợ.",
