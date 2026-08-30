@@ -125,6 +125,14 @@ $specialPageAliases['ur'] = [
 	'OATHManage' => [ 'حلف_نامہ' ],
 ];
 
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = [
+	'DisableOATHForUser' => [ 'Tắt_OATH_cho_thành_viên' ],
+	'OATHManage' => [ 'Bảo_mật_tài_khoản' ],
+	'Recover2FAForUser' => [ 'Khôi_phục_xác_thực_hai_yếu_tố_cho_thành_viên' ],
+	'VerifyOATHForUser' => [ 'Xác_minh_OATH_của_thành_viên' ],
+];
+
 /** Chinese (中文) */
 $specialPageAliases['zh'] = [
 	'DisableOATHForUser' => [ 'DisableOATHForUser' ],
