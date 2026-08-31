@@ -38,6 +38,8 @@
 	"oathauth-recoverycodes-temporary-remove-header": "Revoca {{PLURAL:$1|codice temporaneo|codici temporanei}}",
 	"oathauth-recoverycodes-temporary-remove-text": "Stai per revocare {{PLURAL:$1|il codice di recupero temporaneo|i codici di recupero temporanei}} che hai ricevuto durante il processo di recupero dell'utenza.\n\n<strong>Assicurati di avere accesso ad altri metodi di autenticazione a due fattori, in modo da poter ancora accedere alla tua utenza.</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "{{PLURAL:$1|Il tuo codice di recupero temporaneo è stato revocato|I tuoi codici di recupero temporanei sono stati revocati}}. {{PLURAL:$2|L'altro codice di recupero è ancora valido|Gli altri codici di recupero sono ancora validi}}.",
+	"oathauth-recoverycodes-initial": "{{PLURAL:$1|Codice di recupero temporaneo|Codici di recupero temporanei}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1| Un codice iniziale temporaneo|Un set di $1 codici iniziali temporanei}}, che scadranno il $2.",
 	"oathauth-failedtovalidateoath": "Si è verificato un errore durante il tentativo di convalidare il codice dall'applicazione di autenticazione. Riprova.",
 	"oathauth-disable": "Disabilita autenticazione a due fattori",
 	"oathauth-validatedoath": "Convalidate le credenziali a due fattori. D'ora in poi sarà applicata l'autenticazione a due fattori.",
@@ -153,5 +155,6 @@
 	"oathauth-2fa-groups-notice-multiple": "Sei membro di {{PLURAL:$1|gruppi}} che {{PLURAL:$1|richiedono}} l'autenticazione a due fattori. Per rimuovere questo metodo devi:\n<ul> \n<li>aggiungere un altro metodo di autenticazione a due fattori, oppure</li> \n<li>farti rimuovere dai {{PLURAL:$1|gruppi}}.</li> \n</ul>",
 	"oathauth-2fa-groups-notice-multiple-links-intro": "Per essere rimossi dai {{PLURAL:$1|gruppi}}, visita:",
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Per $2 su $3: $4",
-	"oathauth-2fa-groups-notice-unknown-page": "Pagina sconosciuta"
+	"oathauth-2fa-groups-notice-unknown-page": "Pagina sconosciuta",
+	"oathauth-recovery-codes-expired-error": "<strong>I tuoi codici di recupero iniziali temporanei sono scaduti</strong>\n\nI codici di recupero iniziali temporanei che ti sono stati inviati via email sono scaduti. Per riottenere l'accesso alla tua utenza, contatta l'amministratore del sito."
 }

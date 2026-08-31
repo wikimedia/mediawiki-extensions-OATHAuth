@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hide on Rosé",
 			"Minh Nguyen",
 			"NguoiDungKhongDinhDanh",
 			"NguyenHung",
@@ -203,5 +204,6 @@
 	"oathauth-2fa-groups-notice-multiple-links-entry": "Nhóm $2 ($3): yêu cầu gỡ tại $4",
 	"oathauth-2fa-groups-notice-unknown-page": "Trang không rõ",
 	"oathauth-remove-lastkey-required": "Bạn không thể xóa phương thức xác thực cuối cùng khi đang là thành viên của các nhóm yêu cầu bảo mật hai lớp. Vui lòng thêm một phương thức xác thực mới trước khi xóa phương thức này.",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Người dùng đã bật chức năng xác thực hai yếu tố"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Người dùng đã bật chức năng xác thực hai yếu tố",
+	"userlogin-reauth-banner-oathmanage": "<strong>Bạn đang xem hoặc quản lý cài đặt xác thực hai yếu tố</strong> <br>Vui lòng xác nhận đây là bạn để tiếp tục."
 }
