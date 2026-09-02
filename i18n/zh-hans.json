@@ -25,6 +25,7 @@
 			"Peterxy12",
 			"SaoMikoto",
 			"Saoutax",
+			"Shizhao",
 			"ShuQizhe",
 			"Stang",
 			"Tiger",
@@ -70,8 +71,8 @@
 	"oathauth-recoverycodes-temporary-remove-header": "移除临时恢复{{PLURAL:$1|代码}}",
 	"oathauth-recoverycodes-temporary-remove-text": "您即将移除在账号恢复过程中收到的临时恢复{{PLURAL:$1|代码}}。\n\n<strong>请确保您可以使用其他双重认证方式，以使您后续仍然能够登录自己的账号。</strong>",
 	"oathauth-recoverycodes-temporary-remove-success": "您的临时恢复{{PLURAL:$1|代码}}已移除。其他恢复{{PLURAL:$2|代码不受}}影响。",
-	"oathauth-recoverycodes-initial": "初始恢复{{PLURAL:$1|代码}}",
-	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|一个初始代码|$1个初始代码}}，在$2之前有效。",
+	"oathauth-recoverycodes-initial": "临时初始恢复{{PLURAL:$1|码}}",
+	"oathauth-recoverycodes-initial-desc": "{{PLURAL:$1|一个临时初始码|一组$1的临时初始码}}，将在$2过期。",
 	"oathauth-recoverycodes-initial-intro": "{{PLURAL:$1|此代码|这些代码}}已生成并通过电子邮件发送给您，作为在{{SITENAME}}上启用双重认证的一部分。当您启用其他双重认证方法时，{{PLURAL:$1|此|这些}}代码将自动移除。",
 	"oathauth-failedtovalidateoath": "尝试验证身份验证应用程序中的代码时发生错误。请重试。",
 	"oathauth-disable": "禁用双重认证",
@@ -119,7 +120,7 @@
 	"oathauth-recover-email-title": "您账号的额外恢复{{PLURAL:$1|代码}}",
 	"oathauth-recover-email-text": "{{GENDER:$1|亲爱的}}$1，\n\n您双重认证的额外恢复{{PLURAL:$2|代码}}已于$5生成。如果您无法访问其他双重认证方式，可以使用{{PLURAL:$2|此代码|这些代码}}来登录您的账号。\n\n$3\n\n{{PLURAL:$2|此代码|这些代码}}仅可在$8之前使用，请在此期限前配置新的双重认证方式以维持对您账号的访问权限。请在有效期限内妥善保管{{PLURAL:$2|此代码|这些代码}}。\n\n如果{{GENDER:$1|您}}未执行过此操作，则可能有人冒充您访问了{{GENDER:$1|您的}}账号。$4",
 	"oathauth-recover-initial-email-title": "需要执行的操作：为{{SITENAME}}设置双重认证",
-	"oathauth-recover-initial-email-text": "现在需要启用双重认证才能访问{{SITENAME}}。\n\n已为您的账号生成{{PLURAL:$1|临时恢复代码}}。\n\n要继续使用此wiki：\n1. 请使用您现有的用户名和密码登录。\n2. 在出现提示时，请输入下方的{{PLURAL:$1|临时恢复代码|临时恢复代码之一}}。\n3. 请在宽限期结束前设置双重认证方法。\n\n临时恢复{{PLURAL:$1|代码}}：\n$2\n\n{{PLURAL:$1|此恢复代码|这些恢复代码}}仅可在$3前使用。\n\n如果您未在恢复{{PLURAL:$1|代码过期}}前设置双重认证，您的账号将被锁定。$4",
+	"oathauth-recover-initial-email-text": "{{GENDER:$5|亲爱的}}$5，\n\n现在需要启用双重身份验证才能访问{{SITENAME}}。\n\n您的帐户已生成{PLURAL:$1|一个临时恢复码}}。\n\n要继续使用这个wiki：\n1. 使用您现有的用户名和密码登录。\n2. 出现提示时，输入{{PLURAL:$1|以下临时恢复码之一}}。\n3. 在宽限期结束前设置双重身份验证方法。\n\n{{PLURAL:$1|临时恢复代码}}：\n$2\n\n{{PLURAL:$1|此恢复码}}只能使用到$3。\n\n如果您未在恢复{{PLURAL:$1|码过期}}前设置双重身份验证，您的帐户将被锁定。$4",
 	"oathauth-recover-email-text-please-contact": "如果情况属实，请{{GENDER:$1|联系}}站点管理员。",
 	"oathauth-recover-email-text-please-contact-with-address": "如果情况属实，请{{GENDER:$1|联系}}站点管理员（$2）。",
 	"right-oathauth-enable": "启用双重认证",
@@ -253,5 +254,5 @@
 	"oathauth-recovery-code-only-sitenotice": "<strong>请在$1前设置双重认证</strong>\n\n您当前正使用临时恢复代码登录。要在<strong>$1</strong>之后继续访问{{SITENAME}}，请参阅[[Special:AccountSecurity|账号安全]]并添加双重认证方法。",
 	"oathauth-2fa-required-soon": "<strong>即将要求启用双重认证</strong>\n\n为了确保{{SITENAME}}的安全，您需要尽快设置双重认证。此要求正式生效时我们会通知您。",
 	"oathauth-2fa-required-soon-banner": "<strong>即将要求启用双重认证</strong>\n\n为了确保{{SITENAME}}的安全，您需要尽快设置双重认证。此要求正式生效时我们会通知您。要关闭此横幅，请访问[[Special:AccountSecurity|账号安全]]并添加双重认证方法。",
-	"oathauth-recovery-codes-expired-error": "<strong>您的临时恢复代码已过期</strong>\n\n我们通过电子邮件发送给您的临时恢复代码已过期。要重新获得您对自己账号的访问权限，请联系网站管理员。"
+	"oathauth-recovery-codes-expired-error": "<strong>您的临时初始恢复码已过期</strong>\n\n发送给您的临时初始恢复码已过期。要重新访问您的帐户，请联系网站管理员。"
 }
