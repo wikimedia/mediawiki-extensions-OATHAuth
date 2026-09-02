@@ -403,7 +403,9 @@ class WebAuthnKey extends AuthKey {
 				new EdDSA(),
 				// RS1 is deprecated; at some point we should stop allowing auth. May need further handling,
 				// along with prior notifications to users - T424851
-				new RS1(),
+				new RS1(
+					acknowledgeInsecureAlgorithm: true
+				),
 				new RS256(),
 				new RS512()
 			);
