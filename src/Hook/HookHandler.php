@@ -423,7 +423,7 @@ class HookHandler implements
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
 		// Only create initial 2FA codes if enforcing for all, and the user hasn't got 2FA enabled by something else..
-		if ( !$this->config->get( 'OATHAuthEnforce2FAForAll' ) && !$this->userRepo->userHas2FAEnabled( $user ) ) {
+		if ( !$this->config->get( 'OATHAuthEnforce2FAForAll' ) || $this->userRepo->userHas2FAEnabled( $user ) ) {
 			return;
 		}
 
