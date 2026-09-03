@@ -8,24 +8,18 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Notifications;
 
-use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\OATHAuth\OATHUser;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Notification\Notification;
 use MediaWiki\Notification\RecipientSet;
-use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Notification\Types\WikiNotification;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
 
 /**
- * Manages logic for configuring and sending out notifications with Echo
+ * Manages logic for configuring and sending out notifications via the core NotificationService
  */
 class Manager {
-
-	/**
-	 * Whether Echo is installed and can be used
-	 */
-	private static function isEnabled(): bool {
-		return ExtensionRegistry::getInstance()->isLoaded( 'Echo' );
-	}
 
 	/**
 	 * Send a notification that a 2FA factor has been disabled
@@ -34,58 +28,45 @@ class Manager {
 	 * @param bool $self Whether they disabled it themselves
 	 */
 	public static function notifyDisabled( OATHUser $oUser, bool $self ): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-		Event::create( [
+		$user = $oUser->getUser();
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-disable
-			'type' => 'oathauth-disable',
-			'title' => SpecialPage::getTitleFor( 'Preferences' ),
-			'agent' => $oUser->getUser(),
-			'extra' => [
+			new WikiNotification( 'oathauth-disable', SpecialPage::getTitleFor( 'Preferences' ), $user, [
 				'self' => $self,
 				'activeDevices' => count( $oUser->getNonSpecialKeys() ),
-			]
-		] );
+			] ),
+			new RecipientSet( $user )
+		);
 	}
 
 	/**
 	 * Send a notification that 2FA (first factor) has been enabled
 	 */
 	public static function notifyEnabled( OATHUser $oUser ): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-		Event::create( [
+		$user = $oUser->getUser();
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-enable
-			'type' => 'oathauth-enable',
-			'title' => SpecialPage::getTitleFor( 'Preferences' ),
-			'agent' => $oUser->getUser(),
-			'extra' => [
+			new WikiNotification( 'oathauth-enable', SpecialPage::getTitleFor( 'Preferences' ), $user, [
 				'activeDevices' => count( $oUser->getNonSpecialKeys() ),
-			],
-		] );
+			] ),
+			new RecipientSet( $user )
+		);
 	}
 
 	/**
 	 * Send a notification that the user's recovery codes have been regenerated
 	 */
 	public static function notifyRecoveryCodesRegenerated( OATHUser $oUser ): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-		Event::create( [
+		$user = $oUser->getUser();
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-recoverycodes-regenerated
-			'type' => 'oathauth-recoverycodes-regenerated',
-			'title' => SpecialPage::getTitleFor( 'OATHManage' ),
-			'agent' => $oUser->getUser(),
-		] );
+			new WikiNotification(
+				'oathauth-recoverycodes-regenerated',
+				SpecialPage::getTitleFor( 'OATHManage' ),
+				$user
+			),
+			new RecipientSet( $user )
+		);
 	}
 
 	/**
@@ -94,20 +75,15 @@ class Manager {
 	public static function notifyRecoveryTokensRemaining(
 		OATHUser $oUser, int $tokenCount, int $generatedCount
 	): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-		Event::create( [
+		$user = $oUser->getUser();
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-recoverycodes-count
-			'type' => 'oathauth-recoverycodes-count',
-			'agent' => $oUser->getUser(),
-			'extra' => [
+			new OATHAuthAgentNotification( 'oathauth-recoverycodes-count', $user, [
 				'codeCount' => $tokenCount,
 				'generatedCount' => $generatedCount,
-			],
-		] );
+			] ),
+			new RecipientSet( $user )
+		);
 	}
 
 	/**
@@ -117,18 +93,13 @@ class Manager {
 		UserIdentity $targetUser,
 		int $tokenCount
 	): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-		Event::create( [
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-recoverycodes-generated-for-user
-			'type' => 'oathauth-recoverycodes-generated-for-user',
-			'extra' => [
+			new Notification( 'oathauth-recoverycodes-generated-for-user', [
 				'codeCount' => $tokenCount
-			],
-		], new RecipientSet( $targetUser ) );
+			] ),
+			new RecipientSet( $targetUser )
+		);
 	}
 
 	/**
@@ -138,20 +109,15 @@ class Manager {
 		UserIdentity $targetUser,
 		string $date,
 	): void {
-		if ( !self::isEnabled() ) {
-			// @codeCoverageIgnoreStart
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-
-		Event::create( [
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-twofactor-required
-			'type' => 'oathauth-twofactor-required',
-			'title' => SpecialPage::getTitleFor( 'OATHManage' ),
-			'agent' => $targetUser,
-			'extra' => [
-				'dateRequired' => $date,
-			]
-		], new RecipientSet( $targetUser ) );
+			new WikiNotification(
+				'oathauth-twofactor-required',
+				SpecialPage::getTitleFor( 'OATHManage' ),
+				$targetUser,
+				[ 'dateRequired' => $date ]
+			),
+			new RecipientSet( $targetUser )
+		);
 	}
 }
