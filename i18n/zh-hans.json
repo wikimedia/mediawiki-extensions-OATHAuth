@@ -120,7 +120,7 @@
 	"oathauth-recover-email-title": "您账号的额外恢复{{PLURAL:$1|代码}}",
 	"oathauth-recover-email-text": "{{GENDER:$1|亲爱的}}$1，\n\n您双重认证的额外恢复{{PLURAL:$2|代码}}已于$5生成。如果您无法访问其他双重认证方式，可以使用{{PLURAL:$2|此代码|这些代码}}来登录您的账号。\n\n$3\n\n{{PLURAL:$2|此代码|这些代码}}仅可在$8之前使用，请在此期限前配置新的双重认证方式以维持对您账号的访问权限。请在有效期限内妥善保管{{PLURAL:$2|此代码|这些代码}}。\n\n如果{{GENDER:$1|您}}未执行过此操作，则可能有人冒充您访问了{{GENDER:$1|您的}}账号。$4",
 	"oathauth-recover-initial-email-title": "需要执行的操作：为{{SITENAME}}设置双重认证",
-	"oathauth-recover-initial-email-text": "{{GENDER:$5|亲爱的}}$5，\n\n现在需要启用双重身份验证才能访问{{SITENAME}}。\n\n您的帐户已生成{PLURAL:$1|一个临时恢复码}}。\n\n要继续使用这个wiki：\n1. 使用您现有的用户名和密码登录。\n2. 出现提示时，输入{{PLURAL:$1|以下临时恢复码之一}}。\n3. 在宽限期结束前设置双重身份验证方法。\n\n{{PLURAL:$1|临时恢复代码}}：\n$2\n\n{{PLURAL:$1|此恢复码}}只能使用到$3。\n\n如果您未在恢复{{PLURAL:$1|码过期}}前设置双重身份验证，您的帐户将被锁定。$4",
+	"oathauth-recover-initial-email-text": "{{GENDER:$5|亲爱的}}$5，\n\n现在需要启用双重认证才能访问{{SITENAME}}。\n\n已为您的账号生成{{PLURAL:$1|临时恢复代码}}。\n\n要继续使用此wiki：\n1. 请使用您现有的用户名和密码登录。\n2. 在出现提示时，请输入下方的{{PLURAL:$1|临时恢复代码|临时恢复代码之一}}。\n3. 请在宽限期结束前设置双重认证方法。\n\n临时恢复{{PLURAL:$1|代码}}：\n$2\n\n{{PLURAL:$1|此恢复代码|这些恢复代码}}仅可在$3前使用。\n\n如果您未在恢复{{PLURAL:$1|代码过期}}前设置双重认证，您的账号将被锁定。$4",
 	"oathauth-recover-email-text-please-contact": "如果情况属实，请{{GENDER:$1|联系}}站点管理员。",
 	"oathauth-recover-email-text-please-contact-with-address": "如果情况属实，请{{GENDER:$1|联系}}站点管理员（$2）。",
 	"right-oathauth-enable": "启用双重认证",
