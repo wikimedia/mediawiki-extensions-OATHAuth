@@ -38,7 +38,8 @@
 			"佛壁灯",
 			"科劳",
 			"铁桶",
-			"Peterxy"
+			"Peterxy",
+			"Shizhao"
 		]
 	},
 	"oathauth-desc": "提供基于HMAC的一次性密码和WebAuthn协议的身份验证支持",

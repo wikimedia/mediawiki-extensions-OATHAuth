@@ -38,7 +38,7 @@
 	"oathauth-recoverycodes-temporary-remove-label": "Ideiglenes {{PLURAL:$1|kód|kódok}} eltávolítása",
 	"oathauth-recoverycodes-temporary-remove-header": "Ideiglenes helyreállítási {{PLURAL:$1|kód|kódok}} eltávolítása",
 	"oathauth-recoverycodes-temporary-remove-text": "Arra készülsz, hogy eltávolítsd a fiók-helyreállítási folyamat részeként kapott ideiglenes helyreállítási {{PLURAL:$1|kódot|kódokat}}.\n\n<strong>Győződj meg arról, hogy hozzáférsz más kétlépcsős hitelesítési módokhoz, hogy ezután is be tudj jelentkezni a fiókodba.</strong>",
-	"oathauth-recoverycodes-temporary-remove-success": "Az ideiglenes helyreállítási {{PLURAL:$1|kódodat eltávolítottuk|kódjaidat eltávolítottuk}}. A többi helyreállítási kód változatlan maradt.",
+	"oathauth-recoverycodes-temporary-remove-success": "Az ideiglenes helyreállítási {{PLURAL:$1|kódodat eltávolítottuk|kódjaidat eltávolítottuk}}. A többi helyreállítási {{PLURAL:$2|kód}} változatlan maradt.",
 	"oathauth-failedtovalidateoath": "Hiba történt a hitelesítő alkalmazásból származó kód ellenőrzése közben. Próbáld újra.",
 	"oathauth-disable": "A kétlépcsős hitelesítés kikapcsolása",
 	"oathauth-validatedoath": "A kétlépcsős hitelesítési adatokat ellenőriztük. A kétlépcsős hitelesítés használata mostantól kötelező.",
