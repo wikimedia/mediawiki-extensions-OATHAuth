@@ -12,7 +12,6 @@ use MediaWiki\Extension\OATHAuth\OATHAuthLogger;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 
@@ -22,7 +21,7 @@ use MediaWikiIntegrationTestCase;
 class HookHandlerTest extends MediaWikiIntegrationTestCase {
 
 	protected function createHookHandler(): HookHandler {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		return new HookHandler(
 			$services->get( 'OATHAuth.UserRepository' ),
 			$services->get( 'OATHAuth.ModuleRegistry' ),
@@ -95,7 +94,7 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 		}
 
 		$oathServices = OATHAuthServices::getInstance();
-		$mwServices = MediaWikiServices::getInstance();
+		$mwServices = $this->getServiceContainer();
 		$hookHandler = new HookHandler(
 			$oathServices->getUserRepository(),
 			$oathServices->getModuleRegistry(),
