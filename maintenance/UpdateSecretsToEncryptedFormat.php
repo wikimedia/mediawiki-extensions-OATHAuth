@@ -48,8 +48,9 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 			// @codeCoverageIgnoreEnd
 		}
 
-		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )
-			->getEncryptionHelper();
+		$services = $this->getServiceContainer();
+		$oathServices = OATHAuthServices::getInstance( $services );
+		$encryptionHelper = $oathServices->getEncryptionHelper();
 
 		if ( !$encryptionHelper->isEnabled() ) {
 			// @codeCoverageIgnoreStart
@@ -63,9 +64,7 @@ class UpdateSecretsToEncryptedFormat extends LoggedUpdateMaintenance {
 		$alreadyEncrypted = 0;
 		$totalRows = 0;
 
-		$services = $this->getServiceContainer();
-
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		$moduleRegistry = $oathServices->getModuleRegistry();
 		$totpModuleId = $moduleRegistry->getModuleId( TOTP::MODULE_NAME );
 		$recoveryModuleId = $moduleRegistry->getModuleId( RecoveryCodes::MODULE_NAME );
 

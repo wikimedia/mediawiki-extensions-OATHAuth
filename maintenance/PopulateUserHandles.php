@@ -47,7 +47,7 @@ class PopulateUserHandles extends LoggedUpdateMaintenance {
 
 		$services = $this->getServiceContainer();
 
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		$moduleRegistry = OATHAuthServices::getInstance( $services )->getModuleRegistry();
 		$webauthnModuleId = $moduleRegistry->getModuleId( WebAuthn::MODULE_NAME );
 
 		$dbw = $services

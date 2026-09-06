@@ -32,7 +32,7 @@ class DisableOATHAuthForUser extends Maintenance {
 			$this->fatalError( "User $username doesn't exist!" );
 		}
 
-		$repo = OATHAuthServices::getInstance()->getUserRepository();
+		$repo = OATHAuthServices::getInstance( $services )->getUserRepository();
 		$oathUser = $repo->findByUser( $user );
 		if ( !$oathUser->isTwoFactorAuthEnabled() ) {
 			$this->fatalError( "User $username does not have two-factor authentication enabled!" );

@@ -39,8 +39,8 @@ class ReEncryptSecrets extends Maintenance {
 		}
 
 		$services = $this->getServiceContainer();
-		$encryptionHelper = OATHAuthServices::getInstance( $this->getServiceContainer() )
-			->getEncryptionHelper();
+		$oathServices = OATHAuthServices::getInstance( $services );
+		$encryptionHelper = $oathServices->getEncryptionHelper();
 
 		try {
 			if ( !$encryptionHelper->isEnabled() ) {
@@ -84,7 +84,7 @@ class ReEncryptSecrets extends Maintenance {
 		$updatedCount = 0;
 		$totalRows = 0;
 
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		$moduleRegistry = $oathServices->getModuleRegistry();
 		$totpModuleId = $moduleRegistry->getModuleId( TOTP::MODULE_NAME );
 		$recoveryModuleId = $moduleRegistry->getModuleId( RecoveryCodes::MODULE_NAME );
 

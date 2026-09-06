@@ -50,7 +50,7 @@ class MoveRecoveryCodesFromTOTP extends LoggedUpdateMaintenance {
 
 		$services = $this->getServiceContainer();
 
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		$moduleRegistry = OATHAuthServices::getInstance( $services )->getModuleRegistry();
 		$recoveryModuleId = $moduleRegistry->getModuleId( RecoveryCodes::MODULE_NAME );
 		$totpModuleId = $moduleRegistry->getModuleId( TOTP::MODULE_NAME );
 
