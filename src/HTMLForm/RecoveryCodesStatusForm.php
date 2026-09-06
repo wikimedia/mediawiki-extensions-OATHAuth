@@ -4,6 +4,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth\HTMLForm;
 
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
+use MediaWiki\Extension\OATHAuth\Notifications\Manager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Status\Status;
 
@@ -64,6 +65,8 @@ class RecoveryCodesStatusForm extends OATHAuthOOUIHTMLForm {
 		$key = $this->module->ensureExistence( $this->oathUser );
 		$key->regenerateRecoveryCodeKeys();
 		$this->oathRepo->updateKey( $this->oathUser, $key );
+
+		Manager::notifyRecoveryCodesRegenerated( $this->oathUser );
 
 		LoggerFactory::getInstance( 'authentication' )->info(
 			"OATHAuth {user} generated new recovery codes from {clientip}", [
