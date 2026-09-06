@@ -21,10 +21,8 @@ class OATHAuthServices {
 	public function __construct( private readonly MediaWikiServices $services ) {
 	}
 
-	public static function getInstance( ?MediaWikiServices $services = null ): self {
-		return new self(
-			$services ?? MediaWikiServices::getInstance(),
-		);
+	public static function getInstance( MediaWikiServices $services ): self {
+		return new self( $services );
 	}
 
 	public function getEncryptionHelper(): EncryptionHelper {

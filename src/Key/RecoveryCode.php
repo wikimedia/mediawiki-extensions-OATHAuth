@@ -9,6 +9,7 @@ namespace MediaWiki\Extension\OATHAuth\Key;
 
 use Base32\Base32;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
+use MediaWiki\MediaWikiServices;
 use RuntimeException;
 use UnexpectedValueException;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -154,6 +155,7 @@ class RecoveryCode {
 	}
 
 	private static function getEncryptionHelper(): EncryptionHelper {
-		return OATHAuthServices::getInstance()->getEncryptionHelper();
+		return OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+			->getEncryptionHelper();
 	}
 }

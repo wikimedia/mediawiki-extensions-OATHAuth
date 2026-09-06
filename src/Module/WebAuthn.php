@@ -15,6 +15,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\OATHUserRepository;
 use MediaWiki\Extension\OATHAuth\Special\OATHManage;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 
 class WebAuthn implements IModule {
@@ -57,7 +58,9 @@ class WebAuthn implements IModule {
 	public function getSecondaryAuthProvider(): WebAuthnSecondaryAuthenticationProvider {
 		return new WebAuthnSecondaryAuthenticationProvider(
 			$this->userRepository,
-			OATHAuthServices::getInstance()->getWebAuthnAuthenticator(),
+			// TODO: Inject as a dependency, currently has a circular dependency
+			OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+				->getWebAuthnAuthenticator(),
 		);
 	}
 

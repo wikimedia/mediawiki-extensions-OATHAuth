@@ -240,6 +240,7 @@ class TOTPKey extends AuthKey {
 	}
 
 	private static function getEncryptionHelper(): EncryptionHelper {
-		return OATHAuthServices::getInstance()->getEncryptionHelper();
+		return OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+			->getEncryptionHelper();
 	}
 }

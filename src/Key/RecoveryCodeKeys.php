@@ -260,7 +260,8 @@ class RecoveryCodeKeys extends AuthKey {
 		// T408299 - array_values() to renumber array keys
 		$codes = array_values( $this->recoveryCodes );
 
-		$encryptionHelper = OATHAuthServices::getInstance()->getEncryptionHelper();
+		$encryptionHelper = OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+			->getEncryptionHelper();
 		if ( !$encryptionHelper->isEnabled() || !count( $codes ) ) {
 			// fallback to unencrypted recovery codes
 			$plaintextCodes = [];

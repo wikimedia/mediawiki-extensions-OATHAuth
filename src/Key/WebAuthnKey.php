@@ -29,6 +29,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\WebAuthnSerializerFactory;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
@@ -284,7 +285,8 @@ class WebAuthnKey extends AuthKey {
 	}
 
 	private function checkFriendlyName(): void {
-		$repo = OATHAuthServices::getInstance()->getUserRepository();
+		$repo = OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+			->getUserRepository();
 
 		$friendlyNames = [];
 		foreach ( WebAuthn::getWebAuthnKeys( $repo->findByUser( $this->context->getUser() ) ) as $key ) {

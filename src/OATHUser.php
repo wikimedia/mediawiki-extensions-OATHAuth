@@ -7,6 +7,7 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\OATHAuth;
 
 use MediaWiki\Extension\OATHAuth\Key\AuthKey;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -143,7 +144,9 @@ class OATHUser {
 	 * @return AuthKey[]
 	 */
 	public function getNonSpecialKeys(): array {
-		$moduleRegistry = OATHAuthServices::getInstance()->getModuleRegistry();
+		// TODO: inject
+		$moduleRegistry = OATHAuthServices::getInstance( MediaWikiServices::getInstance() )
+			->getModuleRegistry();
 		return array_values(
 			array_filter(
 				$this->keys,
