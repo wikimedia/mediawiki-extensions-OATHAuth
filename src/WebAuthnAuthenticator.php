@@ -10,11 +10,12 @@ namespace MediaWiki\Extension\OATHAuth;
 use Cose\Algorithms;
 use Exception;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Context\IContextSource;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OATHAuth\HTMLForm\KeySessionStorageTrait;
 use MediaWiki\Extension\OATHAuth\Key\WebAuthnKey;
 use MediaWiki\Extension\OATHAuth\Module\RecoveryCodes;
 use MediaWiki\Extension\OATHAuth\Module\WebAuthn;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Status\Status;
 use MediaWiki\User\UserFactory;
@@ -40,7 +41,6 @@ use Webauthn\PublicKeyCredentialUserEntity;
  * the authentication process
  */
 class WebAuthnAuthenticator {
-
 	use KeySessionStorageTrait;
 
 	private const string SESSION_KEY = 'webauthn_session_data';
@@ -50,19 +50,28 @@ class WebAuthnAuthenticator {
 
 	private const int MAX_ACTIVE_CHALLENGES = 5;
 
+	/** @internal Only public for service wiring usage. */
+	public const CONSTRUCTOR_OPTIONS = [
+		MainConfigNames::Sitename,
+		MainConfigNames::Server,
+		'WebAuthnRelyingPartyID',
+		'WebAuthnRelyingPartyName',
+	];
+
 	private ?string $serverId;
 
 	public function __construct(
+		private readonly ServiceOptions $options,
 		private readonly OATHUserRepository $userRepo,
 		private readonly WebAuthn $module,
 		private readonly RecoveryCodes $recoveryCodesModule,
 		private readonly OATHAuthLogger $oathLogger,
-		private readonly IContextSource $context,
 		private readonly LoggerInterface $logger,
 		private readonly AuthManager $authManager,
 		private readonly UrlUtils $urlUtils,
 		private readonly UserFactory $userFactory,
 	) {
+		$this->options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->serverId = $this->getServerId();
 	}
 
@@ -470,12 +479,12 @@ class WebAuthnAuthenticator {
 	 * Get identifier for this server
 	 */
 	private function getServerId(): ?string {
-		$rpId = $this->context->getConfig()->get( 'WebAuthnRelyingPartyID' );
+		$rpId = $this->options->get( 'WebAuthnRelyingPartyID' );
 		if ( $rpId && is_string( $rpId ) ) {
 			return $rpId;
 		}
 
-		$server = $this->context->getConfig()->get( 'Server' );
+		$server = $this->options->get( MainConfigNames::Server );
 		$serverBits = $this->urlUtils->parse( $server );
 		if ( $serverBits !== null ) {
 			return $serverBits['host'];
@@ -488,14 +497,10 @@ class WebAuthnAuthenticator {
 	 * Get the name for this server
 	 */
 	private function getServerName(): string {
-		$serverName = $this->context->getConfig()->get( 'WebAuthnRelyingPartyName' );
+		$serverName = $this->options->get( 'WebAuthnRelyingPartyName' );
 		if ( $serverName && is_string( $serverName ) ) {
 			return $serverName;
 		}
-		if ( $this->context->getConfig()->has( 'Sitename' ) ) {
-			return $this->context->getConfig()->get( 'Sitename' );
-		}
-
-		return WikiMap::getCurrentWikiId();
+		return $this->options->get( MainConfigNames::Sitename ) ?? WikiMap::getCurrentWikiId();
 	}
 }

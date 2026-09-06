@@ -87,11 +87,14 @@ return [
 		$recovery = $moduleRegistry->getModuleByKey( RecoveryCodes::MODULE_NAME );
 
 		return new WebAuthnAuthenticator(
+			new ServiceOptions(
+				WebAuthnAuthenticator::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig(),
+			),
 			$services->getService( 'OATHAuth.UserRepository' ),
 			$webAuthn,
 			$recovery,
 			$services->getService( 'OATHAuth.Logger' ),
-			RequestContext::getMain(),
 			LoggerFactory::getInstance( 'authentication' ),
 			$services->getAuthManager(),
 			$services->getUrlUtils(),
