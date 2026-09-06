@@ -93,8 +93,8 @@ class HookHandlerTest extends MediaWikiIntegrationTestCase {
 				->method( 'logImplicitVerification' );
 		}
 
-		$oathServices = OATHAuthServices::getInstance();
 		$mwServices = $this->getServiceContainer();
+		$oathServices = OATHAuthServices::getInstance( $mwServices );
 		$hookHandler = new HookHandler(
 			$oathServices->getUserRepository(),
 			$oathServices->getModuleRegistry(),

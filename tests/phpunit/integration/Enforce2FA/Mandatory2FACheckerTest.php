@@ -11,6 +11,7 @@ use MediaWiki\Config\SiteConfiguration;
 use MediaWiki\Extension\CentralAuth\CentralAuthUserCache;
 use MediaWiki\Extension\CentralAuth\GlobalGroup\GlobalGroupAssignmentService;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
+use MediaWiki\Extension\OATHAuth\Enforce2FA\Mandatory2FAChecker;
 use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -29,6 +30,9 @@ use MediaWikiIntegrationTestCase;
  * @covers \MediaWiki\Extension\OATHAuth\OATHAuthServices
  */
 class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
+	private function getMandatory2FAChecker(): Mandatory2FAChecker {
+		return OATHAuthServices::getInstance( $this->getServiceContainer() )->getMandatory2FAChecker();
+	}
 
 	public function testUserRequired2FA(): void {
 		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [
@@ -39,7 +43,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		$this->setUserGroupManagerMock( [ 'user' ] );
 
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 
 		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$this->assertSame(
@@ -63,7 +67,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		$this->setUserGroupManagerMock( [ 'user', 'interface-admin', 'sysop' ] );
 
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 
 		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$groups2FA = $checker->getGroupsRequiring2FA( $user );
@@ -99,7 +103,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		$this->setUserGroupManagerMock( [ 'user', 'interface-admin', 'checkuser', 'sysop' ] );
 
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 
 		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$groups2FA = $checker->getGroupsRequiring2FA( $user );
@@ -123,7 +127,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $userRequirementsChecker );
 		$this->setService( 'UserRequirementsConditionCheckerFactory', $userRequirementsCheckerFactory );
 
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 
 		$user = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$groups2FA = $checker->getGroupsRequiring2FA( $user );
@@ -151,7 +155,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, [] );
 
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 
 		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
 		$userRemote = UserIdentityValue::newRegistered( 1, 'TestUser', 'remote-wiki' );
@@ -216,7 +220,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 
 		// The username and id don't matter, we're mocked to always return the same central user
 		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
 
 		$expected = [
@@ -253,7 +257,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 		$this->overrideConfigValue( MainConfigNames::RestrictedGroups, $restrictedGroups );
 
 		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
 
 		$expected = [
@@ -317,7 +321,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 		$this->overrideConfigValue( 'CentralAuthCentralWiki', 'central-wiki' );
 
 		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
 
 		$this->assertSame( $expectedResult, $result );
@@ -371,7 +375,7 @@ class Mandatory2FACheckerTest extends MediaWikiIntegrationTestCase {
 		$this->overrideConfigValue( 'CentralAuthCentralWiki', 'central-wiki' );
 
 		$userLocal = UserIdentityValue::newRegistered( 1, 'TestUser' );
-		$checker = OATHAuthServices::getInstance()->getMandatory2FAChecker();
+		$checker = $this->getMandatory2FAChecker();
 		$result = $checker->getGroupsRequiring2FAAcrossWikiFarm( $userLocal );
 
 		$this->assertSame( [ 'central-wiki' => [ 'sysop', 'global-sysop' ] ], $result );

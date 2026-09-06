@@ -22,9 +22,12 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
+	private function getLogger(): OATHAuthLogger {
+		return OATHAuthServices::getInstance( $this->getServiceContainer() )->getLogger();
+	}
 
 	public function testLogImplicitVerification(): void {
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$this->assertNoLogs( 'verify' );
 
@@ -38,7 +41,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	public function testLogImplicitVerification_CheckUser(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
 
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$performer = $this->getTestSysop()->getUser();
 		$target = $this->getTestUser()->getUser();
@@ -55,7 +58,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testLogOATHRecovery(): void {
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$this->assertNoLogs( 'recover' );
 
@@ -69,7 +72,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	public function testLogOATHRecovery_CheckUser(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
 
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$performer = $this->getTestSysop()->getUser();
 		$target = $this->getTestUser()->getUser();
@@ -86,7 +89,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testLogFailedVerification(): void {
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$this->assertNoLogs( 'verify-failed' );
 
@@ -99,7 +102,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	public function testLogFailedVerification_CheckUser(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
 
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$user = $this->getTestUser()->getUser();
 		$countBefore = $this->countCuPrivateRows();
@@ -133,7 +136,7 @@ class OATHAuthLoggerTest extends MediaWikiIntegrationTestCase {
 	public function testLogSuccessfulVerification_CheckUser(): void {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
 
-		$logger = OATHAuthServices::getInstance()->getLogger();
+		$logger = $this->getLogger();
 
 		$user = $this->getTestUser()->getUser();
 		$countBefore = $this->countCuPrivateRows();
