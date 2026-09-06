@@ -29,9 +29,6 @@ class RecoveryCodes implements IModule {
 	 */
 	public const int RECOVERY_CODE_MODULE_COUNT = 1;
 
-	/** Threshold number of recovery codes to trigger notification */
-	private const int RECOVERY_CODE_LEFT = 2;
-
 	public function __construct(
 		private readonly OATHUserRepository $userRepository,
 		private readonly OATHAuthLogger $oathLogger,
@@ -87,13 +84,11 @@ class RecoveryCodes implements IModule {
 		// Remove the key that was used
 		$recoveryCodeKey->removeRecoveryCode( $user, $data['recoverycode'] );
 
-		if ( count( $recoveryCodeKey->getRecoveryCodes() ) <= self::RECOVERY_CODE_LEFT ) {
-			Manager::notifyRecoveryTokensRemaining(
-				$user,
-				count( $recoveryCodeKey->getRecoveryCodes() ),
-				$this->config->get( 'OATHRecoveryCodesCount' )
-			);
-		}
+		Manager::notifyRecoveryTokensRemaining(
+			$user,
+			count( $recoveryCodeKey->getRecoveryCodes() ),
+			$this->config->get( 'OATHRecoveryCodesCount' )
+		);
 
 		// Save the key removal to the database
 		$this->userRepository->updateKey( $user, $recoveryCodeKey );

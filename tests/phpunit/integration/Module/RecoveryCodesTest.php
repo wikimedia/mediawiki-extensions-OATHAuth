@@ -108,4 +108,47 @@ class RecoveryCodesTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertTrue( $module->verify( $mockOATHUser, [ 'recoverycode' => 'IJKL9012MNOP3456' ] ) );
 	}
+
+	public function testVerifyNotifiesWithManyCodesRemaining(): void {
+		$this->overrideConfigValue( 'OATHRecoveryCodesCount', 10 );
+
+		// Ten codes, well above any low-count threshold
+		$keyData = [
+			'recoverycodekeys' => [
+				'CODE0001', 'CODE0002', 'CODE0003', 'CODE0004', 'CODE0005',
+				'CODE0006', 'CODE0007', 'CODE0008', 'CODE0009', 'CODE0010',
+			],
+			'version' => RecoveryCodeKeys::VERSION,
+			'format' => 'unencrypted',
+		];
+		$key = RecoveryCodeKeys::newFromArray( $keyData );
+
+		$mockOATHUser = $this->createMock( OATHUser::class );
+		$mockOATHUser->method( 'getCentralId' )->willReturn( 12345 );
+		$mockOATHUser->method( 'getUser' )
+			->willReturn( $this->getTestUser()->getUser() );
+		$mockOATHUser->method( 'getKeysForModule' )
+			->willReturnCallback( static fn ( $moduleName ) => $moduleName === RecoveryCodes::MODULE_NAME ?
+				[ $key ] : []
+			);
+
+		$mockUserRepository = $this->createMock( OATHUserRepository::class );
+		$module = new RecoveryCodes(
+			$mockUserRepository,
+			$this->createMock( OATHAuthLogger::class ),
+			$this->getServiceContainer()->getMainConfig()
+		);
+
+		// Using just one code out of ten leaves nine remaining -- far from
+		// any "running low" threshold. Prior to this change, the
+		// notifyRecoveryTokensRemaining() call was skipped in this case;
+		// it should now fire unconditionally on every consumption.
+		$mockUserRepository->expects( $this->once() )->method( 'updateKey' )
+			->with( $mockOATHUser, $this->callback( function ( $recoveryCodeKey ) {
+				$this->assertCount( 9, $recoveryCodeKey->getRecoveryCodeKeys() );
+				return true;
+			} ) );
+
+		$this->assertTrue( $module->verify( $mockOATHUser, [ 'recoverycode' => 'CODE0001' ] ) );
+	}
 }
