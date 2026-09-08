@@ -108,6 +108,10 @@ class HookHandler implements
 				// buttons can't be used without filling in this field
 				$formDescriptor['OATHToken']['required'] = false;
 			}
+			if ( isset( $formDescriptor['RecoveryCode'] ) ) {
+				// Ditto for the recovery code field (T436012)
+				$formDescriptor['RecoveryCode']['required'] = false;
+			}
 			// Check the weight of the form submit button to make sure other authentication
 			// options are placed below it
 			$loginButtonWeight = $formDescriptor['loginattempt']['weight'] ?? 100;
