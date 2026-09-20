@@ -412,10 +412,11 @@ class HookHandler implements
 			return;
 		}
 		// Get the expiry date of the user's recovery codes
-		$expiryTimestamp = max( array_map(
+		$expiries = array_map(
 			static fn ( RecoveryCode $code ) => $code->getExpiryTimestamp(),
 			$recoveryCodes->getRecoveryCodes()
-		) );
+		);
+		$expiryTimestamp = $expiries ? max( $expiries ) : null;
 
 		// Protect against $expiryTimestamp somehow being null, which causes ->dateParams() to
 		// die with an error
