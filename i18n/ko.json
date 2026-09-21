@@ -162,7 +162,7 @@
 	"notification-body-oathauth-enable": "만약 {{GENDER:$2|당신}}이 하지 않았다면, {{GENDER:$2|계정}}이 해킹당했을 수 있습니다.",
 	"oathauth-notifications-enable-help": "도움말",
 	"oathauth-notifications-enable-primary": "2단계 인증 설정을 확인하세요",
-	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|당신}}은 2단계 인증을 위해 {{GENDER:$2|당신의 계정}}을 다시 등록해야 합니다.",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|당신}}은 복구 코드를 사용해 로그인했습니다.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|당신}}의 복구 {{PLURAL:$3|코드}}는 $3개 남아 있습니다. $4개의 새로운 복구 {{PLURAL:$4|코드}}를 생성하는 것을 고려해 보시기 바랍니다.",
 	"oathauth-notifications-recoverycodesleft-help": "도움말",
 	"oathauth-notifications-recoverycodesleft-primary": "2단계 인증 설정을 확인하세요",
