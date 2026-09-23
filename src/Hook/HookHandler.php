@@ -411,18 +411,22 @@ class HookHandler implements
 		if ( !$recoveryCodes instanceof RecoveryCodeKeys ) {
 			return;
 		}
-		// Get the expiry date of the user's initial recovery codes
+		// Get the expiry date of the user's recovery codes
 		$expiryTimestamp = max( array_map(
-			static fn ( RecoveryCode $code ) => $code->isInitial() ? $code->getExpiryTimestamp() : null,
+			static fn ( RecoveryCode $code ) => $code->getExpiryTimestamp(),
 			$recoveryCodes->getRecoveryCodes()
 		) );
 
-		$siteNotice .= Html::warningBox(
-			$skin->msg( 'oathauth-recovery-code-only-sitenotice' )
-				->dateParams( $expiryTimestamp )
-				->parseAsBlock(),
-			'mw-oathauth-sitenotice'
-		);
+		// Protect against $expiryTimestamp somehow being null, which causes ->dateParams() to
+		// die with an error
+		if ( $expiryTimestamp !== null ) {
+			$siteNotice .= Html::warningBox(
+				$skin->msg( 'oathauth-recovery-code-only-sitenotice' )
+					->dateParams( $expiryTimestamp )
+					->parseAsBlock(),
+				'mw-oathauth-sitenotice'
+			);
+		}
 	}
 
 	/** @inheritDoc */
