@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Escargot bleu",
-			"Mahabarata"
+			"Mahabarata",
+			"NClara"
 		]
 	},
 	"apihelp-oathauth-webauthn-summary": "Module API pour communiquer entre serveur et client pendant le processus d’inscription/authentification.",
 	"apihelp-oathauth-webauthn-param-func": "Nom de la requête à exécuter souhaitée.",
 	"apihelp-oathauth-webauthn-paramvalue-func-getauthinfo": "Informations d'authentification.",
 	"apihelp-oathauth-webauthn-paramvalue-func-getregisterinfo": "Informations d'inscription.",
-	"apihelp-oathauth-webauthn-param-passkeymode": "La clé enregistrée est en mode clé de passe (seulement pour getRegisterInfo)."
+	"apihelp-oathauth-webauthn-param-passkeymode": "La clé enregistrée est en mode clé de passe (seulement pour getRegisterInfo).",
+	"apierror-oathauth-webauthn-new-creds-disabled": "Il est impossible de créer de nouvelles informations d'identification WebAuthn car le serveur a désactivé cette fonctionnalité."
 }
