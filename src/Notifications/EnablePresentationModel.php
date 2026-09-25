@@ -23,6 +23,13 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 	}
 
 	/** @inheritDoc */
+	protected function getHeaderMessageKey() {
+		return $this->event->getExtraParam( 'activeDevices', 1 ) <= 1
+			? 'notification-header-oathauth-enable'
+			: 'notification-header-oathauth-add-device';
+	}
+
+	/** @inheritDoc */
 	public function getPrimaryLink() {
 		return [
 			'url' => SpecialPage::getTitleFor( 'OATHManage' )->getLocalURL(),
@@ -47,6 +54,19 @@ class EnablePresentationModel extends EchoEventPresentationModel {
 
 	/** @inheritDoc */
 	public function getBodyMessage() {
-		return $this->getMessageWithAgent( 'notification-body-oathauth-enable' );
+		$message = $this->getMessageWithAgent( 'notification-body-oathauth-enable' );
+
+		if ( $this->event->getExtraParam( 'activeDevices', 1 ) > 1 ) {
+			$remainingMessage = $this->getMessageWithAgent( 'notification-body-oathauth-enable-remaining' );
+			$remainingMessage->params( $this->event->getExtraParam( 'activeDevices', 1 ) );
+
+			$message = $this->msg( 'rawmessage' )->rawParams(
+				$message->escaped()
+				. $this->msg( 'word-separator' )->escaped()
+				. $remainingMessage->escaped()
+			);
+		}
+
+		return $message;
 	}
 }

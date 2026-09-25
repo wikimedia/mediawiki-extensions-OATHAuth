@@ -164,6 +164,8 @@
 	"notification-body-oathauth-disable": "Notification body text for when two-factor authentication has been disabled.\n$2 - Name of user for GENDER",
 	"notification-body-oathauth-disable-other": "Notification body text for when two-factor authentication has been disabled by an administrator or sysadmin.\n$2 - Name of user for GENDER.",
 	"notification-body-oathauth-disable-remaining": "Notification body text for when a single two-factor device was removed, but there are still additional keys remaining.\n$2 - Name of user for GENDER.\n$3 - Number of keys remaining.",
+	"notification-header-oathauth-add-device": "Notification header shown when an additional (non-first) 2FA device is added to the user's account.\n$2 - Name of user for GENDER",
+	"notification-body-oathauth-enable-remaining": "Appended to notification-body-oathauth-enable to show the total number of active devices.\n$2 - Name of user for GENDER\n$3 - Total number of active devices",
 	"oathauth-notifications-disable-help": "Link text for the help link in the notification\n{{identical|Help}}",
 	"oathauth-notifications-disable-helplink": "{{notranslate}}",
 	"oathauth-notifications-disable-primary": "Link text pointing a user where to check their 2FA settings",

@@ -192,28 +192,30 @@ class OATHUserRepository {
 			$this->insertUserHandle( $user );
 		}
 
-		// Don't notify when the first key added is a special key. Instead, wait to notify the user
-		// until the first non-special key is added.
-		if ( !$hasExistingKey && !$module->isSpecial() ) {
+		// Don't notify when a special key is added.
+		if ( !$module->isSpecial() ) {
 			Manager::notifyEnabled( $user );
 
-			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
-				$logEntry = new ManualLogEntry( 'oath', 'enable-self' );
-				$logEntry->setPerformer( $user->getUser() );
-				$logEntry->setTarget(
-					PageReferenceValue::localReference( NS_USER, $user->getUser()->getName() )
-				);
-				/** @var CheckUserInsert $checkUserInsert */
-				$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
-				$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
-			}
+			// The rest of this only applies the first time a non-special key is added.
+			if ( !$hasExistingKey ) {
+				if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+					$logEntry = new ManualLogEntry( 'oath', 'enable-self' );
+					$logEntry->setPerformer( $user->getUser() );
+					$logEntry->setTarget(
+						PageReferenceValue::localReference( NS_USER, $user->getUser()->getName() )
+					);
+					/** @var CheckUserInsert $checkUserInsert */
+					$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+					$checkUserInsert->updateCheckUserData( $logEntry->getRecentChange() );
+				}
 
-			// If the user still has initial recovery codes, remove them
-			$recoveryCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
-			$recoveryCodeKeys = $recoveryCodes[ 0 ] ?? null;
-			if ( $recoveryCodeKeys instanceof RecoveryCodeKeys ) {
-				$recoveryCodeKeys->removeInitialCodes();
-				$this->updateKey( $user, $recoveryCodeKeys );
+				// If the user still has initial recovery codes, remove them
+				$recoveryCodes = $user->getKeysForModule( RecoveryCodes::MODULE_NAME );
+				$recoveryCodeKeys = $recoveryCodes[ 0 ] ?? null;
+				if ( $recoveryCodeKeys instanceof RecoveryCodeKeys ) {
+					$recoveryCodeKeys->removeInitialCodes();
+					$this->updateKey( $user, $recoveryCodeKeys );
+				}
 			}
 		}
 

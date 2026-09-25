@@ -145,6 +145,8 @@
 	"notification-body-oathauth-disable": "If {{GENDER:$2|you}} did not do this, {{GENDER:$2|your account}} may have been compromised.",
 	"notification-body-oathauth-disable-other": "If {{GENDER:$2|you}} did not request this, {{GENDER:$2|you}} should contact an administrator.",
 	"notification-body-oathauth-disable-remaining": "There still {{PLURAL:$3|is an additional device|are $3 additional devices}} active on {{GENDER:$2|your account}}.",
+	"notification-header-oathauth-add-device": "A two-factor authentication device has been added to {{GENDER:$2|your account}}.",
+	"notification-body-oathauth-enable-remaining": "In total, there {{PLURAL:$3|is now one device|are now $3 devices}} active on {{GENDER:$2|your account}}.",
 	"oathauth-notifications-disable-help": "Help",
 	"oathauth-notifications-disable-helplink": "mw:Special:MyLanguage/Help:Two-factor authentication",
 	"oathauth-notifications-disable-primary": "Check your two-factor authentication settings",
