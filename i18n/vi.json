@@ -7,12 +7,13 @@
 			"Nvdtn19",
 			"Tryvix1509",
 			"Vinhtantran",
-			"Hide on Rosé"
+			"Hide on Rosé",
+			"Veritas Sapientiae"
 		]
 	},
 	"oathauth-desc": "Cung cấp hỗ trợ xác thực bằng mật khẩu dùng một lần dựa trên HMAC và giao thức WebAuthn.",
 	"disableoathforuser": "Tắt xác thực hai yếu tố của thành viên",
-	"recover2faforuser": "Khôi phục chức năng xác thực hai yếu tố của người dùng",
+	"recover2faforuser": "Khôi phục xác thực hai yếu tố cho thành viên",
 	"verifyoathforuser": "Kiểm tra tình trạng xác thực hai yếu tố",
 	"oath": "Xác thực OATH",
 	"oathauth-account": "Tên tài khoản:",
@@ -58,7 +59,7 @@
 	"oathauth-entertoken": "Nhập một mã từ ứng dụng xác thực của bạn để xác nhận:",
 	"oathauth-enter-recovery-code": "Nhập mã khôi phục đã tạo của bạn",
 	"oathauth-disable-for-user": "Tắt xác thực dùng hai nhân tố của thành viên",
-	"oathauth-recover-for-user": "Khôi phục chức năng xác thực hai yếu tố của một người dùng",
+	"oathauth-recover-for-user": "Khôi phục xác thực hai yếu tố cho một thành viên",
 	"oathauth-verify-for-user": "Xác minh xem thành viên có bật xác thực dùng hai nhân tố không",
 	"right-oathauth-disable-for-user": "Tắt xác thực dùng hai nhân tố của thành viên",
 	"action-oathauth-disable-for-user": "tắt xác thực dùng hai nhân tố của thành viên",
