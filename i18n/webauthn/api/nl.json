@@ -13,6 +13,7 @@
 	"apierror-oathauth-webauthn-module-missing": "De WebAuthn-module is niet beschikbaar.",
 	"apierror-oathauth-webauthn-missing-credential": "Er zijn geen aanmeldgegevens verstrekt.",
 	"apierror-oathauth-webauthn-invalid-credential": "De aanmeldgegevens zijn onjuist of verkeerd gevormd.",
+	"apierror-oathauth-webauthn-new-creds-disabled": "Er kunnen geen nieuwe aanmeldgegevens voor WebAuthn worden aangemaakt omdat de server deze functionaliteit heeft uitgeschakeld.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Nieuwe WebAuthn-aanmeldinformatie voor de huidige gebruiker registreren.",
 	"apihelp-oathauth-webauthn-param-credential": "In JSON gecodeerd antwoord van de browser met WebAuthn-aanmeldgegevens.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Handige naam voor het nieuwe aanmeldgegeven."
