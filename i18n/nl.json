@@ -157,6 +157,8 @@
 	"notification-body-oathauth-disable": "Als {{GENDER:$2|u}} dit niet gedaan heeft, kan {{GENDER:$2|uw account}} wellicht gehackt zijn.",
 	"notification-body-oathauth-disable-other": "Als {{GENDER:$2|u}} hier niet om hebt gevraagd, neem dan contact op met een moderator.",
 	"notification-body-oathauth-disable-remaining": "Er {{PLURAL:$3|is nog een apparaat|zijn nog $3 apparaten}} actief op {{GENDER:$2|uw account}}.",
+	"notification-header-oathauth-add-device": "Er is een tweetrapsauthenticatieapparaat toegevoegd aan {{GENDER:$2|uw}} account.",
+	"notification-body-oathauth-enable-remaining": "In totaal {{PLURAL:$3|is nu één apparaat|zijn nu $3 apparaten}} actief op {{GENDER:$2|uw}} account.",
 	"oathauth-notifications-disable-help": "Hulp",
 	"oathauth-notifications-disable-primary": "Uw instellingen voor tweetrapsauthenticatie controleren",
 	"notification-header-oathauth-enable": "Tweetrapsauthenticatie is ingeschakeld op {{GENDER:$2|uw account}}",

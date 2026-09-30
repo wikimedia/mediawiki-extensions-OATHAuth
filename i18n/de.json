@@ -156,6 +156,8 @@
 	"notification-body-oathauth-disable": "Wenn {{GENDER:$2|du}} dies nicht getan hast, kann {{GENDER:$2|dein Konto}} kompromittiert worden sein.",
 	"notification-body-oathauth-disable-other": "Wenn {{GENDER:$2|du}} dies nicht beantragt hast, solltest {{GENDER:$2|du}} einen Administrator kontaktieren.",
 	"notification-body-oathauth-disable-remaining": "Es {{PLURAL:$3|ist immer noch ein zusätzliches Gerät|sind immer noch $3 zusätzliche Geräte}} in {{GENDER:$2|deinem Konto}} aktiv.",
+	"notification-header-oathauth-add-device": "Ein Zwei-Faktor-Authentifizierungsgerät wurde zu {{GENDER:$2|deinem Konto}} hinzugefügt.",
+	"notification-body-oathauth-enable-remaining": "Insgesamt {{PLURAL:$3|ist jetzt ein Gerät|sind jetzt $3 Geräte}} auf {{GENDER:$2|deinem Konto}} aktiv.",
 	"oathauth-notifications-disable-help": "Hilfe",
 	"oathauth-notifications-disable-primary": "Überprüfe deine Einstellungen für die Zwei-Faktor-Authentifizierung",
 	"notification-header-oathauth-enable": "Die Zwei-Faktor-Authentifizierung wurde für {{GENDER:$2|dein Konto}} aktiviert",

@@ -142,6 +142,8 @@
 	"notification-body-oathauth-disable": "Haddii {{GENDER:$2|aad}} aadan tan samayn, {{GENDER:$2|xisaabtaada}} waxaa laga yaabaa in la jabsaday.",
 	"notification-body-oathauth-disable-other": "Haddii {{GENDER:$2|aad}} aadan codsan tan, {{GENDER:$2|waa inaad}} la xiriirtaa maamule.",
 	"notification-body-oathauth-disable-remaining": "Weli {{PLURAL:$3|wuu jiraa qalab dheeraad ah|waxaa jira $3 qalab oo dheeraad ah}} oo ku xiran {{GENDER:$2|xisaabtaada}}.",
+	"notification-header-oathauth-add-device": "Qalab xaqiijin laba tallaabo ah ayaa lagu daray {{GENDER:$2|akoonkaaga}}.",
+	"notification-body-oathauth-enable-remaining": "Wadarta, hadda {{PLURAL:$3|hal qalab|waxaa jira $3 qalab}} oo ka hawlgalaya {{GENDER:$2|akoonkaaga}}.",
 	"oathauth-notifications-disable-help": "Caawin",
 	"oathauth-notifications-disable-primary": "Hubi dejimaha xaqiijinta laba-tallaabo",
 	"notification-header-oathauth-enable": "Xaqiijinta laba-tallaabo waa lagu hawlgeliyay {{GENDER:$2|xisaabtaada}}",

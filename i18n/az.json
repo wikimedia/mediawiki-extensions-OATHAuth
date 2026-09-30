@@ -149,6 +149,8 @@
 	"notification-body-oathauth-disable": "Bunu {{GENDER:$2|siz}} etməmisinizsə, {{GENDER:$2|hesabınız}} ələ keçirilmiş ola bilər.",
 	"notification-body-oathauth-disable-other": "Bunu {{GENDER:$2|siz}} tələb etməmisinizsə, administrator ilə əlaqəyə {{GENDER:$2|keçməlisiniz}}",
 	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|Hesabınızda}} hələ də aktiv {{PLURAL:$3|əlavə cihaz|əlavə cihazlar}} mövcuddur.",
+	"notification-header-oathauth-add-device": "{{GENDER:$2|Hesabınıza}} iki mərhələli doğrulama cihazı əlavə edildi.",
+	"notification-body-oathauth-enable-remaining": "Ümumilikdə, {{GENDER:$2|hesabınızda}} hal-hazırda {{PLURAL:$3|$3 cihaz}} aktivdir.",
 	"oathauth-notifications-disable-help": "Kömək",
 	"oathauth-notifications-disable-primary": "İki faktorlu autentifikasiya parametrlərinizi yoxlayın",
 	"notification-header-oathauth-enable": "İki faktorlu autentifikasiya {{GENDER:$2|hesabınızda}} aktivləşdirildi",

@@ -147,6 +147,8 @@
 	"notification-body-oathauth-disable": "Hvis {{GENDER:$2|du}} ikke gjorde dette, kan {{GENDER:$2|din konto}} muligvis være blevet kompromiteret.",
 	"notification-body-oathauth-disable-other": "Hvis {{GENDER:$2|du}} ikke anmodede om dette, bør {{GENDER:$2|du}} kontakte en administrator.",
 	"notification-body-oathauth-disable-remaining": "Der er stadig {{PLURAL:$3|en ekstra enhed|$3 ekstra enheder}} aktive på {{GENDER:$2|din konto}}.",
+	"notification-header-oathauth-add-device": "En tofaktorgodkendelsesenhed er blevet tilføjet til {{GENDER:$2| din konto}}.",
+	"notification-body-oathauth-enable-remaining": "I alt er der {{PLURAL:$3|nu én enhed|er der nu $3 enheder}} aktive på {{GENDER:$2|din konto}}.",
 	"oathauth-notifications-disable-help": "Hjælp",
 	"oathauth-notifications-disable-primary": "Tjek dine indstillinger for tofaktorgodkendelse",
 	"notification-header-oathauth-enable": "Tofaktorgodkendelse er blevet aktiveret på {{GENDER:$2|din konto}}",

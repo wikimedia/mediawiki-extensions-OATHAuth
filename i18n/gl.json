@@ -146,6 +146,8 @@
 	"notification-body-oathauth-disable": "Se non {{GENDER:$2|fixeches}} isto, se cadra {{GENDER:$2|a túa conta}} está comprometida.",
 	"notification-body-oathauth-disable-other": "Se non {{GENDER:$2|solicitaches}} isto, ponte en contacto coa administración.",
 	"notification-body-oathauth-disable-remaining": "Aínda hai {{PLURAL:$3|un dispositivo adicional activo|$3 dispositivos adicionais activos}} {{GENDER:$2|na túa conta}}.",
+	"notification-header-oathauth-add-device": "Engadiuse un dispositivo de autenticación de dous factores {{GENDER:$2|á túa conta}}.",
+	"notification-body-oathauth-enable-remaining": "En total, hai {{PLURAL:$3|un dispositivo activo|$3 dispositivos activos}} {{GENDER:$2|na túa conta}}.",
 	"oathauth-notifications-disable-help": "Axuda",
 	"oathauth-notifications-disable-primary": "Comproba a túa configuración de autenticación de dous factores",
 	"notification-header-oathauth-enable": "A autenticación de dous factores activouse {{GENDER:$2|na túa conta}}",
