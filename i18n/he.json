@@ -74,7 +74,7 @@
 	"oathauth-auth-switch-module-label": "להשתמש ביישום אימות",
 	"oathauth-auth-switch-module-help": "להגדיר את <code>newModule</code> לשם המודול החדש כדי לקבל אתגר חדש ממודול 2FA אחר.יש להשאיר את זה ריק בעת מענה על האתגר הנוכחי.",
 	"oathauth-auth-switch-module-keep": "(לא להחליף)",
-	"oathauth-throttled": "יותר מדי ניסיונות אימות! נא לנסות $1.",
+	"oathauth-throttled": "יותר מדי ניסיונות אימות! נא לנסות בעוד כמה דקות.",
 	"oathauth-login-failed": "אימות דו־שלבי נכשל.",
 	"oathauth-recovery-code-login-failed": "אימות קוד השחזור נכשל.",
 	"oathauth-describe-provider": "אימות דו־שלבי (OATH).",
@@ -153,7 +153,7 @@
 	"oathauth-delete-confirm-box": "יש להזין \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
 	"oathauth-delete-warning-final": "הסרת השיטה הזאת תכבה את האימות הדו־שלבי לגמרי.",
 	"oathauth-delete-wrong-confirm-message": "קלט שגוי להסרת מפתח אחרון. נא להקליד \"{{int:oathauth-authenticator-delete-text}}\" כדי להמשיך",
-	"oathauth-delete-success": "<strong>$1</strong> הוסרה.",
+	"oathauth-delete-success": "הוסרה!",
 	"oathauth-created-at": "נוסף ב־$1",
-	"oathauth-enable-success": "נוסף שיטת התחברות <strong>$1</strong>."
+	"oathauth-enable-success": "נוספה!"
 }
