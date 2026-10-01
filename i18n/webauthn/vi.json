@@ -37,5 +37,9 @@
 	"oathauth-webauthn-credential-label": "Thông tin người dùng",
 	"oathauth-webauthn-credential-help": "Thông tin xác thực của người dùng dựa trên dữ liệu xác thực",
 	"oathauth-webauthn-add-security-key": "Thêm khóa bảo mật",
-	"oathauth-webauthn-auth-switch-module-label-passkey": "Sử dụng khóa bảo mật hoặc khóa truy cập"
+	"oathauth-webauthn-auth-switch-module-label-passkey": "Sử dụng khóa bảo mật hoặc khóa truy cập",
+	"oathauth-webauthn-login-passkey-button": "Đăng nhập bằng khoá truy cập",
+	"oathauth-webauthn-reauth-passkey-button": "Tiếp tục bằng khoá truy cập",
+	"oathauth-webauthn-reauth-security-key-button": "Tiếp tục bằng khóa bảo mật",
+	"oathauth-webauthn-deprecated-key": "Khóa này không an toàn và không nên sử dụng. Vui lòng thử lại với một khóa khác."
 }

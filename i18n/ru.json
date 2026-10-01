@@ -4,6 +4,7 @@
 			"Alexander Istomin",
 			"Alexandr Efremov",
 			"Amire80",
+			"Colt browning",
 			"Diman Russkov",
 			"Engineer56",
 			"Iniquity",
@@ -110,6 +111,7 @@
 	"oathauth-notifications-disable-help": "Справка",
 	"oathauth-notifications-enable-help": "Справка",
 	"oathauth-notifications-recoverycodesleft-help": "Справка",
+	"notification-body-oathauth-twofactor-required": "Включите двухфакторную аутентификацию до $3, чтобы сохранить доступ.",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} включена двухфакторная аутентификация.",
 	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} не включена двухфакторная аутентификация.",
 	"oathauth-password-header": "Пароль",
@@ -124,5 +126,6 @@
 	"oathauth-2fa-groups-notice-single": "Вы — член {{PLURAL:$1|группы|групп}}, {{PLURAL:$1|требующей|требующих}} двухфакторную аутентификацию ($2 на $3). Чтобы убрать этот способ, вы должны:\n<ul>\n<li>добавить другой метод двухфакторной аутентификации</li>\n<li>или убрать себя из {{PLURAL:$1|этой группы|этих групп}}. Пожалуйста, посетите $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Вы — член {{PLURAL:$1|групп}}, {{PLURAL:$1|требующих}} двухфакторную аутентификацию. Чтобы убрать этот способ, вы должны:\n<ul>\n<li>добавить другой метод двухфакторной аутентификации</li>\n<li>или убрать себя из {{PLURAL:$1|этих групп}}.</li>\n</ul>",
 	"oathauth-2fa-groups-notice-unknown-page": "Неизвестная страница",
-	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "У участника включена двухфакторная аутентификация"
+	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "У участника включена двухфакторная аутентификация",
+	"oathauth-recovery-code-only-sitenotice": "<strong>Включите двухфакторную аутентификацию до $1</strong> \n\nВы вошли с помощью временного кода восстановления. Чтобы сохранить доступ к вики {{SITENAME}} после <strong>$1</strong>, добавьте какой-нибудь метод двухфакторной аутентификации в [[Special:AccountSecurity|настройках безопасности]]."
 }

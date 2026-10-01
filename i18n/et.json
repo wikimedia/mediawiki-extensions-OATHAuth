@@ -124,7 +124,7 @@
 	"notification-body-oathauth-enable": "Kui {{GENDER:$2|sa}} ei teinud seda ise, siis võib {{GENDER:$2|sinu konto}} turvalisus ohus olla.",
 	"oathauth-notifications-enable-help": "Abi",
 	"oathauth-notifications-enable-primary": "Kontrolli kaheastmelise autentimise sätteid",
-	"notification-header-oathauth-recoverycodes-count": "Peaksid {{GENDER:$2|enda konto}} kaheastmelise autentimise ümber registreerima.",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Kasutasid}} sisselogimisel taastekoodi.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Sul}} on alles $3 {{PLURAL:$3|taastekood|taastekoodi}}. Kaalu $4 {{PLURAL:$4|uue taastekoodi}} genereerimist edaspidiseks kasutamiseks.",
 	"oathauth-notifications-recoverycodesleft-help": "Abi",
 	"oathauth-notifications-recoverycodesleft-primary": "Kontrolli kaheastmelise autentimise sätteid",

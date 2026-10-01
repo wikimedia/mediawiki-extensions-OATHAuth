@@ -181,6 +181,8 @@
 	"notification-body-oathauth-disable": "如果{{GENDER:$2|您}}并未这么做，{{GENDER:$2|您的账号}}可能已被盗用。",
 	"notification-body-oathauth-disable-other": "如果{{GENDER:$2|您}}并未提出此要求，{{GENDER:$2|您}}应当联系管理员。",
 	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|您的账号}}上还有{{PLURAL:$3|另外$3个设备}}处于活动状态。",
+	"notification-header-oathauth-add-device": "已向{{GENDER:$2|您的账号}}中添加了一个双重认证设备。",
+	"notification-body-oathauth-enable-remaining": "目前，{{GENDER:$2|您的账号}}上共有{{PLURAL:$3|一台设备|$3台设备}}活跃。",
 	"oathauth-notifications-disable-help": "帮助",
 	"oathauth-notifications-disable-primary": "检查您的双重认证设置",
 	"notification-header-oathauth-enable": "已启用{{GENDER:$2|您的账号}}上的双重认证",
