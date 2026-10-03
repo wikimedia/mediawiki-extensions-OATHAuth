@@ -3,7 +3,7 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\OATHAuth\Module;
 
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\Auth\RecoveryCodesSecondaryAuthenticationProvider;
