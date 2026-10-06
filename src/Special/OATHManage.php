@@ -428,6 +428,10 @@ class OATHManage extends SpecialPage {
 		$output->addModuleStyles( 'ext.oath.manage.styles' );
 		$output->addModules( 'ext.oath.manage' );
 		$output->addJsConfigVars( 'wgOATHManageData', $this->buildVueData() );
+		// Pass wgWebAuthnNewCredsDisabled here, instead of in HookHandler::getOathManageModuleData(),
+		// because in WMF production it differs between the local domain and the central domain (T440256)
+		$output->addJsConfigVars( 'wgWebAuthnNewCredsDisabled',
+			(bool)$this->getConfig()->get( 'WebAuthnNewCredsDisabled' ) );
 		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 
 		// Show the delete success message, if applicable

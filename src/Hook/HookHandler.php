@@ -285,7 +285,6 @@ class HookHandler implements
 	public static function getOathManageModuleData( Context $context, Config $config ): array {
 		return [
 			'passkeyDialogTextHtml' => $context->msg( 'oathauth-passkey-dialog-text' )->parseAsBlock(),
-			'WebAuthnNewCredsDisabled' => (bool)$config->get( 'WebAuthnNewCredsDisabled' )
 		];
 	}
 
