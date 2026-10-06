@@ -169,7 +169,9 @@ const { defineComponent, reactive, computed } = require( 'vue' );
 const { CdxAccordion, CdxButton, CdxMessage } = require( './codex.js' );
 const AddPasskeyButton = require( './AddPasskeyButton.vue' );
 const GroupsWith2FANotice = require( './GroupsWith2FANotice.vue' );
-const { WebAuthnNewCredsDisabled } = require( './data.json' );
+// This is passed through mw.config instead of data.json because on WMF production, it differs
+// between the local domain and the central domain (T440256)
+const WebAuthnNewCredsDisabled = mw.config.get( 'wgWebAuthnNewCredsDisabled' );
 
 module.exports = exports = defineComponent( {
 	components: {
