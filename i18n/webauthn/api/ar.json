@@ -12,6 +12,7 @@
 	"apierror-oathauth-webauthn-module-missing": "وحدة WebAuthn غير متوفرة.",
 	"apierror-oathauth-webauthn-missing-credential": "لم يتم تقديم أي بيانات اعتماد.",
 	"apierror-oathauth-webauthn-invalid-credential": "بيانات الاعتماد غير صالحة أو مشوهة.",
+	"apierror-oathauth-webauthn-new-creds-disabled": "لا يمكن إنشاء بيانات اعتماد WebAuthn جديدة لأن الخادم قد عطل هذه الوظيفة.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "قم بتسجيل بيانات اعتماد WebAuthn جديدة للمستخدم الحالي.",
 	"apihelp-oathauth-webauthn-param-credential": "استجابة بيانات اعتماد WebAuthn المشفرة بصيغة JSON من المتصفح.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "اسم مناسب للوثيقة الجديدة."

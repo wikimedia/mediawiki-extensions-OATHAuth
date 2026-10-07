@@ -133,7 +133,7 @@
 	"notification-body-oathauth-enable": "إذا لم تكن {{GENDER:$2|أنت|أنتِ}} من قام بهذا، فإن {{GENDER:$2|حسابكَ|حسابكِ}} ربما تم اختراقه.",
 	"oathauth-notifications-enable-help": "مساعدة",
 	"oathauth-notifications-enable-primary": "تحقق من إعدادات المصادقة الثنائية الخاصة بك",
-	"notification-header-oathauth-recoverycodes-count": "يجب عليك إعادة تسجيل {{GENDER:$2|حسابك}} للمصادقة الثنائية.",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|أنت}} استخدمت رمز استرداد لتسجيل الدخول.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|لديك}} $3 {{PLURAL:$3|كود}} متبقية. قد ترغب في التفكير في إعادة توليد $4 {{PLURAL:$4|كود}} استرداد جديدة لاستخدامها في المستقبل.",
 	"oathauth-notifications-recoverycodesleft-help": "مساعدة",
 	"oathauth-notifications-recoverycodesleft-primary": "تحقق من إعدادات المصادقة الثنائية الخاصة بك",
