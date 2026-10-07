@@ -38,7 +38,10 @@ class OATHManageTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->overrideConfigValue( MainConfigNames::CentralIdLookupProvider, 'local' );
+		$this->overrideConfigValues( [
+			MainConfigNames::CentralIdLookupProvider => 'local',
+			MainConfigNames::Sitename => 'Local Wiki',
+		] );
 		$this->bypassReauthentication();
 	}
 
@@ -81,7 +84,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		);
 
 		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
-		$this->assertStringContainsString( 'oathauth-step1', $output );
+		$this->assertStringContainsString( '(oathauth-step1)', $output );
 	}
 
 	public function testRecoveryCodeFormRenders() {
@@ -94,7 +97,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		);
 
 		[ $output ] = $this->executeSpecialPage( '', $request, null, $user );
-		$this->assertStringContainsString( 'oathauth-recoverycodes-regenerate-warning', $output );
+		$this->assertStringContainsString( '(oathauth-recoverycodes-regenerate-warning:', $output );
 	}
 
 	public function testMaxKeysPerUser() {
@@ -124,7 +127,8 @@ class OATHManageTest extends SpecialPageTestBase {
 		 );
 
 		$this->expectException( ErrorPageError::class );
-		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys )->text() );
+		$this->expectExceptionMessage( wfMessage( 'oathauth-max-keys-exceeded-message', $maxTestKeys )
+			->inLanguage( 'en' )->text() );
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
 
@@ -176,10 +180,6 @@ class OATHManageTest extends SpecialPageTestBase {
 		$session = $context->getRequest()->getSession();
 		$session->setUser( $user->getUser() );
 
-		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
-		->inLanguage( 'qqx' )
-		->text();
-
 		$token = $session->getToken( '' );
 
 		$request = new FauxRequest(
@@ -187,7 +187,7 @@ class OATHManageTest extends SpecialPageTestBase {
 			'action' => 'delete',
 			'module' => 'totp',
 			'keyId' => $keyId,
-			'wpremove-confirm-box' => $confirmText,
+			'wpremove-confirm-box' => '(oathauth-authenticator-delete-text)',
 			'wpEditToken' => $token,
 		],
 		true,
@@ -234,16 +234,12 @@ class OATHManageTest extends SpecialPageTestBase {
 		$session = $context->getRequest()->getSession();
 		$session->setUser( $user->getUser() );
 
-		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
-			->inLanguage( 'qqx' )
-			->text();
-
 		$request = new FauxRequest(
 			[
 				'action' => 'delete',
 				'module' => 'totp',
 				'keyId' => $keyId,
-				'wpremove-confirm-box' => $confirmText,
+				'wpremove-confirm-box' => '(oathauth-authenticator-delete-text)',
 				'wpEditToken' => $session->getToken( '' ),
 			],
 			true,
@@ -351,7 +347,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		$oathUser = $userRepository->findByUser( $user );
 		$this->assertCount( 1, $oathUser->getKeys() );
 
-		$this->assertStringContainsString( 'oathauth-delete-wrong-confirm-message', $output );
+		$this->assertStringContainsString( '(oathauth-delete-wrong-confirm-message)', $output );
 	}
 
 	public function testDeleteNonLastKeyWithoutConfirmation() {
@@ -427,23 +423,20 @@ class OATHManageTest extends SpecialPageTestBase {
 		$session = $context->getRequest()->getSession();
 		$session->setUser( $user->getUser() );
 
-		$confirmText = wfMessage( 'oathauth-authenticator-delete-text' )
-			->inLanguage( 'qqx' )
-			->text();
-
 		$request = new FauxRequest(
 			[
 				'action' => 'delete',
 				'module' => 'totp',
 				'keyId' => $keyId,
-				'wpremove-confirm-box' => $confirmText,
+				'wpremove-confirm-box' => '(oathauth-authenticator-delete-text)',
 				'wpEditToken' => $session->getToken( '' ),
 			],
 			true,
 			$session
 		);
 
-		$this->expectExceptionMessage( wfMessage( 'oathauth-remove-lastkey-required' )->text() );
+		$this->expectExceptionMessage( wfMessage( 'oathauth-remove-lastkey-required' )
+			->inLanguage( 'en' )->text() );
 		$this->executeSpecialPage( '', $request, null, $user->getUser() );
 	}
 
@@ -510,8 +503,8 @@ class OATHManageTest extends SpecialPageTestBase {
 			"(oathauth-2fa-groups-notice-multiple-links-entry: 1, (group-interface-admin-member: $userName)" .
 				', remote-wiki.local',
 			"(oathauth-2fa-groups-notice-multiple-links-entry: 2, (group-interface-admin-member: $userName)(and)" .
-				"(word-separator)(group-sysop-member: $userName), $localWiki.local",
-			"(oathauth-2fa-groups-notice-multiple-links-entry: 1, (group-suppress-member: $userName), $localWiki.local",
+				"(word-separator)(group-sysop-member: $userName), Local Wiki",
+			"(oathauth-2fa-groups-notice-multiple-links-entry: 1, (group-suppress-member: $userName), Local Wiki",
 		];
 		foreach ( $expectedMessages as $expected ) {
 			$this->assertStringContainsString( $expected, $html );
@@ -533,9 +526,6 @@ class OATHManageTest extends SpecialPageTestBase {
 		$siteLookup = $this->createMock( SiteLookup::class );
 		$siteLookup->method( 'getSite' )->willReturn( null );
 		$this->setService( 'SiteLookup', $siteLookup );
-		$this->assertNull( WikiMap::getWiki( $localWiki ) );
-
-		$this->overrideConfigValue( MainConfigNames::Sitename, 'WikiMapless Wiki' );
 
 		$user = $this->getTestUser()->getUser();
 		$context = RequestContext::getMain();
@@ -545,7 +535,7 @@ class OATHManageTest extends SpecialPageTestBase {
 		[ $html ] = $this->executeSpecialPage( '', null, null, $user );
 
 		$this->assertStringContainsString( '(oathauth-2fa-required)', $html );
-		$this->assertStringContainsString( 'WikiMapless Wiki', $html );
+		$this->assertStringContainsString( 'Local Wiki', $html );
 	}
 
 	public function testDisplaysTemporaryCodesAccordion() {

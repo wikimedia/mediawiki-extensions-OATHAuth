@@ -30,7 +30,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Title\Title;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonWidget;
@@ -235,10 +234,14 @@ class OATHManage extends SpecialPage {
 		$result = [];
 		foreach ( $splitGroups as $wikiId => $pages ) {
 			$wiki = WikiMap::getWiki( $wikiId );
-			if ( $wiki === null && !WikiMap::isCurrentWikiId( $wikiId ) ) {
+			if ( !$wiki ) {
 				// Skip remote wikis that cannot be resolved via WikiMap.
 				continue;
 			}
+
+			$wikiName = WikiMap::isCurrentWikiId( $wikiId ) ?
+				$this->getConfig()->get( MainConfigNames::Sitename ) :
+				$wiki->getDisplayName();
 
 			foreach ( $pages as $page => $groups ) {
 				$groupNames = array_map(
@@ -246,21 +249,10 @@ class OATHManage extends SpecialPage {
 					$groups
 				);
 
-				if ( $wiki !== null ) {
-					$wikiName = $wiki->getDisplayName();
-					$url = $page !== '' ? $wiki->getUrl( $page ) : '';
-				} else {
-					// If there's no $wgConf nor sites table, the current wiki may not be resolvable using WikiMap
-					// Fallback to local resolution of relevant settings
-					$wikiName = $this->getConfig()->get( MainConfigNames::Sitename );
-					$title = $page !== '' ? Title::newFromText( $page ) : null;
-					$url = $title ? $title->getFullURL() : '';
-				}
-
 				$result[] = [
 					'wiki' => $wikiName,
 					'page' => $page,
-					'url' => $url,
+					'url' => $page !== '' ? $wiki->getUrl( $page ) : '',
 					'groupNames' => $groupNames,
 				];
 			}
