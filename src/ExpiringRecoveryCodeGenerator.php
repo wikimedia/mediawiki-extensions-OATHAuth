@@ -270,7 +270,7 @@ class ExpiringRecoveryCodeGenerator {
 	 *  If $wgEmailAuthentication = true, email confirmation is respected.
 	 */
 	public function getUserEmail( User $user ): ?string {
-		$emailAuth = $this->config->get( 'EmailAuthentication' );
+		$emailAuth = $this->config->get( MainConfigNames::EmailAuthentication );
 
 		// Prefer email from CentralAuth if loaded
 		if ( $this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {

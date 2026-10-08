@@ -29,6 +29,7 @@ use MediaWiki\Extension\OATHAuth\OATHAuthServices;
 use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\Extension\OATHAuth\WebAuthnSerializerFactory;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\WebRequest;
 use Psr\Log\LoggerInterface;
@@ -330,7 +331,9 @@ class WebAuthnKey extends AuthKey {
 			$stepManagerFactory = new CeremonyStepManagerFactory();
 			$stepManagerFactory->setAttestationStatementSupportManager( $attestationStatementSupportManager );
 			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
-			$stepManagerFactory->setAllowedOrigins( [ $this->context->getConfig()->get( 'CanonicalServer' ) ] );
+			$stepManagerFactory->setAllowedOrigins( [
+				$this->context->getConfig()->get( MainConfigNames::CanonicalServer ),
+			] );
 
 			$authenticatorAttestationResponseValidator = new AuthenticatorAttestationResponseValidator(
 				ceremonyStepManager: $stepManagerFactory->creationCeremony()
@@ -415,7 +418,9 @@ class WebAuthnKey extends AuthKey {
 			$stepManagerFactory = new CeremonyStepManagerFactory();
 			$stepManagerFactory->setExtensionOutputCheckerHandler( new ExtensionOutputCheckerHandler() );
 			$stepManagerFactory->setAlgorithmManager( $coseAlgorithmManager );
-			$stepManagerFactory->setAllowedOrigins( [ $this->context->getConfig()->get( 'CanonicalServer' ) ] );
+			$stepManagerFactory->setAllowedOrigins( [
+				$this->context->getConfig()->get( MainConfigNames::CanonicalServer ),
+			] );
 
 			$authenticatorAssertionResponseValidator = new AuthenticatorAssertionResponseValidator(
 				ceremonyStepManager: $stepManagerFactory->requestCeremony(),
