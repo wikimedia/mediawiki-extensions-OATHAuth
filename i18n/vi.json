@@ -153,7 +153,7 @@
 	"oathauth-delete-confirm-box": "Nhập \"{{int:oathauth-authenticator-delete-text}}\" để tiếp tục",
 	"oathauth-delete-warning-final": "Việc xóa phương pháp này sẽ vô hiệu hóa hoàn toàn xác thực hai yếu tố.",
 	"oathauth-delete-wrong-confirm-message": "Mã xác nhận sai. Vui lòng nhập \"{{int:oathauth-authenticator-delete-text}}\" để tiếp tục.",
-	"oathauth-delete-success": "Đã xóa <strong>$1</strong>.",
+	"oathauth-delete-success": "Đã xóa!",
 	"oathauth-created-at": "Đã thêm vào $1",
-	"oathauth-enable-success": "Đã thêm <strong>$1</strong>."
+	"oathauth-enable-success": "Đã thêm!"
 }

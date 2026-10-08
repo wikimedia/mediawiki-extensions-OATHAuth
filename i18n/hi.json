@@ -70,7 +70,7 @@
 	"oathauth-auth-switch-module-label": "प्रमाणक ऐप का उपयोग करें",
 	"oathauth-auth-switch-module-help": "एक दूसरे 2FA मॉड्यूल से एक नई चुनौती प्राप्त करने के लिए नए मॉड्यूल के नाम को <code>newModule</code> पर सेट करें। अगर आप वर्तमान चुनौती का उत्तर दे रहे हैं तो खाली छोड़ दें।",
 	"oathauth-auth-switch-module-keep": "(न बदलें)",
-	"oathauth-throttled": "प्रमाणीकरण के बहुत ज़्यादा प्रयास किए गए! कृपया $1 रुक जाएँ।",
+	"oathauth-throttled": "बहुत ज़्यादा प्रयास किए गए! कृपया कुछ मिनट रुक जाएँ।",
 	"oathauth-login-failed": "दो-कारक प्रमाणीकरण असफल रहा।",
 	"oathauth-recovery-code-login-failed": "पुनर्प्राप्ति कोड प्रमाणीकरण असफल रहा।",
 	"oathauth-describe-provider": "दो-कारक प्रमाणीकरण (OATH)।",
