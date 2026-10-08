@@ -15,8 +15,14 @@ use Wikimedia\Rdbms\IConnectionProvider;
 
 class OATHAuthModuleRegistry {
 
+	/** @var array<string,int>|null Maps module names to ids */
 	private ?array $moduleIds = null;
 
+	/**
+	 * @param IConnectionProvider $dbProvider
+	 * @param ObjectFactory $objectFactory
+	 * @param array<string,callable> $modules
+	 */
 	public function __construct(
 		private readonly IConnectionProvider $dbProvider,
 		private readonly ObjectFactory $objectFactory,
@@ -25,15 +31,15 @@ class OATHAuthModuleRegistry {
 	}
 
 	public function moduleExists( string $moduleKey ): bool {
-		return isset( $this->getModules()[$moduleKey] );
+		return isset( $this->modules[$moduleKey] );
 	}
 
 	public function getModuleByKey( string $key ): IModule {
-		if ( !isset( $this->getModules()[$key] ) ) {
+		if ( !isset( $this->modules[$key] ) ) {
 			throw new InvalidArgumentException( "No such two-factor module $key" );
 		}
 
-		$data = $this->getModules()[$key];
+		$data = $this->modules[$key];
 		return $this->objectFactory->createObject(
 			$data,
 			[ 'assertClass' => IModule::class ]
@@ -47,7 +53,7 @@ class OATHAuthModuleRegistry {
 	 */
 	public function getAllModules(): array {
 		$modules = [];
-		foreach ( $this->getModules() as $key => $callback ) {
+		foreach ( $this->modules as $key => $callback ) {
 			$modules[$key] = $this->getModuleByKey( $key );
 		}
 		return $modules;
@@ -66,15 +72,13 @@ class OATHAuthModuleRegistry {
 	}
 
 	/**
-	 * @return array<string,int>
+	 * @return array<string,int> Maps module names to ids
 	 */
 	public function getModuleIds(): array {
-		if ( $this->moduleIds === null ) {
-			$this->moduleIds = $this->getModuleIdsFromDatabase( false );
-		}
+		$this->moduleIds ??= $this->getModuleIdsFromDatabase( false );
 
 		$missing = array_diff(
-			array_keys( $this->getModules() ),
+			array_keys( $this->modules ),
 			array_keys( $this->moduleIds )
 		);
 
@@ -97,7 +101,7 @@ class OATHAuthModuleRegistry {
 	}
 
 	/**
-	 * @return array<string,int>
+	 * @return array<string,int> Maps module names to ids
 	 */
 	private function getModuleIdsFromDatabase( bool $fromPrimary ): array {
 		$ids = [];
@@ -121,7 +125,4 @@ class OATHAuthModuleRegistry {
 		return $ids;
 	}
 
-	private function getModules(): array {
-		return $this->modules;
-	}
 }
