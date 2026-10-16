@@ -151,6 +151,8 @@
 	"oathauth-notifications-enable-primary": "Kiểm tra tùy chọn xác thực dùng hai nhân tố",
 	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|}}Bạn nên cân nhắc tắt và bật lại xác thực hai yếu tố cho {{GENDER:$2|}}tài khoản của bạn.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Bạn}} còn lại $3 {{PLURAL:$3|mã}} khôi phục. Bạn có thể muốn tạo lại $4 {{PLURAL:$4|mã}} khôi phục mới để sử dụng trong tương lai.",
+	"notification-header-oathauth-recoverycodes-regenerated": "Mã khôi phục của bạn đã được tạo lại.",
+	"notification-body-oathauth-recoverycodes-regenerated": "{{GENDER:$2|Bạn}} đã tạo một bộ mã khôi phục mới. Mã cũ của bạn sẽ không còn hoạt động nữa.",
 	"oathauth-notifications-recoverycodesleft-help": "Trợ giúp",
 	"oathauth-notifications-recoverycodesleft-primary": "Kiểm tra cài đặt xác thực hai yếu tố của bạn",
 	"notification-header-oathauth-recoverycodes-generated-for-user": "{{PLURAL:$3|Mã phục hồi}} bổ sung đã được tạo cho bạn",
