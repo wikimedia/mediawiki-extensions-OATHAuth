@@ -30,7 +30,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\User\UserGroupManager;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
@@ -62,7 +61,6 @@ class OATHManage extends SpecialPage {
 		private readonly OATHAuthModuleRegistry $moduleRegistry,
 		private readonly Mandatory2FAChecker $mandatory2FAChecker,
 		private readonly AuthManager $authManager,
-		private readonly UserGroupManager $userGroupManager,
 	) {
 		// messages used: oathmanage (display "name" on Special:SpecialPages)
 		parent::__construct( 'OATHManage' );

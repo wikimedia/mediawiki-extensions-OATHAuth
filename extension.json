@@ -477,8 +477,7 @@
 				"OATHAuth.UserRepository",
 				"OATHAuth.ModuleRegistry",
 				"OATHAuth.Mandatory2FAChecker",
-				"AuthManager",
-				"UserGroupManager"
+				"AuthManager"
 			]
 		},
 		"Recover2FAForUser": {

@@ -52,7 +52,6 @@ class OATHManageTest extends SpecialPageTestBase {
 			$services->getModuleRegistry(),
 			$services->getMandatory2FAChecker(),
 			$this->getServiceContainer()->getAuthManager(),
-			$this->getServiceContainer()->getUserGroupManager()
 		);
 	}
 
