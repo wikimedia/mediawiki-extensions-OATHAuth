@@ -19,7 +19,7 @@ use Wikimedia\Timestamp\TimestampFormat;
 /**
  * Helper trait to display and manage recovery codes within various contexts
  *
- * @property OATHUser $oathUser
+ * @property-read OATHUser $oathUser
  */
 trait RecoveryCodesTrait {
 
