@@ -45,7 +45,17 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_2048 ) ),
 				Algorithms::COSE_ALGORITHM_RS256,
 				false,
-			]
+			],
+			[
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_512 ) ),
+				Algorithms::COSE_ALGORITHM_RS256,
+				false,
+			],
+			[
+				WebAuthnKey::getCoseKey( base64_decode( self::KEY_ES512 ) ),
+				Algorithms::COSE_ALGORITHM_ES512,
+				false,
+			],
 		];
 	}
 
@@ -54,26 +64,6 @@ class WebAuthnKeyTest extends MediaWikiUnitTestCase {
 		$this->assertEquals(
 			$algorithm,
 			WebAuthnKey::getPublicKeyAlgorithm( $key )
-		);
-	}
-
-	public function testGetKeyLengthIfRsa() {
-		$this->assertEquals(
-			2048,
-			WebAuthnKey::getRsaKeyLength(
-				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_2048 ) )
-			)
-		);
-		$this->assertEquals( 512,
-			WebAuthnKey::getRsaKeyLength(
-				WebAuthnKey::getCoseKey( base64_decode( self::KEY_RS256_512 ) )
-			)
-		);
-
-		$this->assertNull(
-			WebAuthnKey::getRsaKeyLength(
-				WebAuthnKey::getCoseKey( base64_decode( self::KEY_ES512 ) )
-			)
 		);
 	}
 }

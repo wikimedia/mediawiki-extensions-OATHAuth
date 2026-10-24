@@ -20,6 +20,7 @@ use Cose\Algorithm\Signature\RSA\RS512;
 use Cose\Algorithms;
 use Cose\Key\Key;
 use Cose\Key\RsaKey;
+use Cose\Key\RsaKeyValidator;
 use LogicException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\OATHAuth\AAGUIDLookup;
@@ -519,7 +520,7 @@ class WebAuthnKey extends AuthKey {
 			return null;
 		}
 
-		return Key::create( $normalized );
+		return Key::createFromData( $normalized );
 	}
 
 	public static function getPublicKeyAlgorithm( ?Key $key ): ?int {
@@ -537,7 +538,7 @@ class WebAuthnKey extends AuthKey {
 	 *
 	 * @throws DeprecatedKeyException
 	 */
-	private function checkIfDeprecated( ?string $publicKey, OATHUser $user, bool $used, bool $throw ): void {
+	public function checkIfDeprecated( ?string $publicKey, OATHUser $user, bool $used, bool $throw ): void {
 		if ( $publicKey === null ) {
 			return;
 		}
@@ -555,14 +556,15 @@ class WebAuthnKey extends AuthKey {
 		$usedOrRegistered = $used ? 'used' : 'registered';
 		$deprecated = false;
 
-		if ( (string)$key->type() === (string)Key::TYPE_RSA ) {
-			$length = self::getRsaKeyLength( $key );
+		// 4.9.x of cose-lib: if ( $key->typeIs( Key::TYPE_RSA ) ) {
+		if ( $key instanceof RsaKey ) {
+			$length = RsaKeyValidator::modulusLength( $key );
 
-			if ( $length !== null && $length < self::MIN_RSA_LENGTH ) {
+			if ( $length < RsaKeyValidator::MINIMUM_MODULUS_LENGTH ) {
 				$deprecated = true;
 				$this->logger->info(
 					"User {user} $usedOrRegistered an RSA WebAuthn key shorter than " .
-					self::MIN_RSA_LENGTH .
+					RsaKeyValidator::MINIMUM_MODULUS_LENGTH .
 					" bits ({length}).",
 					[
 						'user' => $user->getUser()->getName(),
@@ -578,7 +580,11 @@ class WebAuthnKey extends AuthKey {
 				"User {user} $usedOrRegistered a WebAuthn key using the deprecated algorithm {algorithm}.",
 				[
 					'user' => $user->getUser()->getName(),
-					'algorithm' => Algorithms::getHashAlgorithmFor( $algo ),
+					'algorithm' => Algorithms::getHashAlgorithmFor(
+						$algo,
+						// We don't care if the algo is deprecated here
+						true
+					),
 				]
 			);
 		}
@@ -586,16 +592,6 @@ class WebAuthnKey extends AuthKey {
 		if ( $deprecated && $throw ) {
 			throw new DeprecatedKeyException( 'oathauth-webauthn-deprecated-key' );
 		}
-	}
-
-	private const int MIN_RSA_LENGTH = 2048;
-
-	public static function getRsaKeyLength( ?Key $key ): ?int {
-		if ( (string)$key?->type() === (string)Key::TYPE_RSA && $key?->has( RsaKey::DATA_N ) ) {
-			return strlen( $key->get( RsaKey::DATA_N ) ) * 8;
-		}
-
-		return null;
 	}
 
 	/** @inheritDoc */
