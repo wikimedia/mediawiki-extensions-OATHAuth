@@ -84,5 +84,7 @@
 	"oathauth-notifications-recoverycodesleft-primary": "Праверце налады сваёй двухфактарнай аўтэнтыфікацыі",
 	"oathauth-verify-enabled": "У {{GENDER:$1|$1}} уключаная двухфактарная аўтэнтыфікацыя.",
 	"oathauth-verify-disabled": "У {{GENDER:$1|$1}} ня ўключаная двухфактарная аўтэнтыфікацыя.",
-	"oathauth-qrcode-alt": "Сканавальны QR-код з сакрэтным ключом."
+	"oathauth-qrcode-alt": "Сканавальны QR-код з сакрэтным ключом.",
+	"oathauth-authenticator-delete": "Прыбраць",
+	"oathauth-authenticator-delete-text": "прыбраць"
 }
