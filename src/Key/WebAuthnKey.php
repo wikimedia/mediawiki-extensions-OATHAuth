@@ -555,7 +555,7 @@ class WebAuthnKey extends AuthKey {
 		$usedOrRegistered = $used ? 'used' : 'registered';
 		$deprecated = false;
 
-		if ( $key->type() === (string)Key::TYPE_RSA ) {
+		if ( (string)$key->type() === (string)Key::TYPE_RSA ) {
 			$length = self::getRsaKeyLength( $key );
 
 			if ( $length !== null && $length < self::MIN_RSA_LENGTH ) {
@@ -591,7 +591,7 @@ class WebAuthnKey extends AuthKey {
 	private const int MIN_RSA_LENGTH = 2048;
 
 	public static function getRsaKeyLength( ?Key $key ): ?int {
-		if ( $key?->type() === (string)Key::TYPE_RSA && $key?->has( RsaKey::DATA_N ) ) {
+		if ( (string)$key?->type() === (string)Key::TYPE_RSA && $key?->has( RsaKey::DATA_N ) ) {
 			return strlen( $key->get( RsaKey::DATA_N ) ) * 8;
 		}
 

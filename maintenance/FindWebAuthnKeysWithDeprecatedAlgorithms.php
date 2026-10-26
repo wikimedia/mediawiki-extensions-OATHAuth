@@ -61,7 +61,8 @@ class FindWebAuthnKeysWithDeprecatedAlgorithms extends Maintenance {
 			}
 			if ( WebAuthnKey::isDeprecatedPublicKeyAlgorithm( $publicKeyAlg ) ) {
 				$deprecatedCount++;
-				$algoString = Algorithms::getHashAlgorithmFor( $publicKeyAlg );
+				// TODO: eventually this will throw in future web-auth/cose-lib releases
+				$algoString = Algorithms::getHashAlgorithmFor( $publicKeyAlg, true );
 				$this->output(
 					"Key Id {$row->oad_id} is using a deprecated algorithm: {$algoString}.\n"
 				);
