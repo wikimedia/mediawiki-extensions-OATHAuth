@@ -920,22 +920,34 @@ class OATHManage extends SpecialPage {
 	}
 
 	private function getRecoveryCodesHTML( RecoveryCodes $module ): void {
-		$key = $module->ensureExistence( $this->oathUser );
+		// Note ->getKeys() might return null if the user has no recovery codes
+		// If that is the case, we won't display any codes, but we do still display the
+		// "Create recovery codes" button.
+		$key = $module->getKeys( $this->oathUser );
 
 		$this->getOutput()->addModuleStyles( 'ext.oath.recovery.styles' );
 		$this->getOutput()->addModules( 'ext.oath.recovery' );
 		$codex = new Codex( new MediaWikiLocalization( $this->getContext() ) );
 		$placeholderMessage = '';
 
-		$this->setOutputJsConfigVars(
-			$this->getRecoveryCodesForDisplay( $key )
-		);
+		if ( $key ) {
+			$this->setOutputJsConfigVars(
+				$this->getRecoveryCodesForDisplay( $key )
+			);
+		}
 
 		$keyAccordion = $codex->accordion()
 			->setTitle( $module->getDisplayName()->text() )
 			->setDescription(
-				$this->msg( 'oathauth-recoverycodes' )->text()
+				$key ?
+					$this->msg( 'oathauth-recoverycodes' )->text() :
+					$this->msg( 'oathauth-recoverycodes-none' )
+						->params( $this->getConfig()->get( 'OATHRecoveryCodesCount' ) )
+						->text()
 			)
+			// If the user doesn't have recovery codes, open the accordion to start, so that
+			// the create button is visible
+			->setOpen( !$key )
 			// TODO support outlined Accordions in Codex-PHP (T416645)
 			->setAttributes( [ 'class' => 'cdx-accordion--separation-outline' ] )
 			->setContentHtml( $codex->htmlSnippet()->setContent(
@@ -944,26 +956,25 @@ class OATHManage extends SpecialPage {
 						'class' => 'mw-special-OATHManage-authmethods__method-actions'
 					],
 					Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-					Html::hidden( 'module', $key->getModule() ) .
-					Html::hidden( 'keyId', $key->getId() ) .
-					$this->createRecoveryCodesCopyButton() .
-					$this->createRecoveryCodesDownloadLink(
+					Html::hidden( 'module', $module->getName() ) .
+					( $key ? $this->createRecoveryCodesCopyButton() : '' ) .
+					( $key ? $this->createRecoveryCodesDownloadLink(
 						$this->getRecoveryCodesForDisplay( $key )
-					) .
+					) : '' ) .
 					$codex->button()
 						->setLabel( $this->msg(
 							'oathauth-recoverycodes-create-label',
 							$this->getConfig()->get( 'OATHRecoveryCodesCount' )
 						)->parse() )
 						->setType( 'submit' )
-						->setAttributes( [ 'name' => 'action', 'value' => 'create-' . $module->getName() ] )
+						->setAttributes( [ 'name' => 'action', 'value' => 'create-recoverycodes' ] )
 						->build()
 						->getHtml()
 				)
 			)->build() );
 		$accordionsHtml = $keyAccordion->build()->getHtml();
 
-		$recoveryCodes = $key->getRecoveryCodes();
+		$recoveryCodes = $key?->getRecoveryCodes() ?? [];
 
 		$initialCodes = array_filter(
 			$recoveryCodes,
@@ -1047,8 +1058,7 @@ class OATHManage extends SpecialPage {
 							'class' => 'mw-special-OATHManage-authmethods__method-actions'
 						],
 						Html::hidden( 'title', $this->getPageTitle()->getPrefixedDBkey() ) .
-						Html::hidden( 'module', $key->getModule() ) .
-						Html::hidden( 'keyId', $key->getId() ) .
+						Html::hidden( 'module', $module->getName() ) .
 						$codex->button()
 							->setLabel( $this->msg(
 								'oathauth-recoverycodes-temporary-remove-label'

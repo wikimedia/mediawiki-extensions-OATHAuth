@@ -14,6 +14,7 @@
 	"oathauth-secret": "Two-factor authentication secret key:",
 	"oathauth-enable": "Enable two-factor authentication",
 	"oathauth-recoverycodes": "Use this if you lose access to your two-factor authentication methods.",
+	"oathauth-recoverycodes-none": "Please create {{PLURAL:$1|a recovery code|recovery codes}}, so you can recover your account if you lose access to your two-factor authentication methods.",
 	"oathauth-recoverycodes-important": "This step is important! Do not skip this step!",
 	"oathauth-recoverycodes-neveragain": "These codes will never be shown again!",
 	"oathauth-recoverytokens-createdat": "Recovery codes created: $1",

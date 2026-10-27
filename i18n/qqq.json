@@ -33,6 +33,7 @@
 	"oathauth-secret": "Plain text found on Special:OATH while enabling OATH\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two-factor authentication]",
 	"oathauth-enable": "Page title on Special:OATH, when enabling OATH.\n\nSee [https://en.wikipedia.org/wiki/Two_factor_authentication two factor authentication]",
 	"oathauth-recoverycodes": "Plain text, found on Special:OATH while enabling OATH.",
+	"oathauth-recoverycodes-none": "Plain text, found on Special:AccountSecurity when the user has no recovery codes.\n\nParameters: $1 - number of recovery codes to create",
 	"oathauth-recoverycodes-important": "Plain text, found on Special:OATH while enabling OATH.",
 	"oathauth-recoverycodes-neveragain": "Plain text, found on Special:OATH while enabling OATH.",
 	"oathauth-recoverytokens-createdat": "Plain text, found on Special:OATH while enabling OATH.",
