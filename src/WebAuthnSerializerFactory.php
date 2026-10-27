@@ -1,7 +1,7 @@
 <?php
 
 /**
- * cf https://github.com/web-auth/webauthn-lib/blob/5.2.3/src/Denormalizer/WebauthnSerializerFactory.php
+ * cf https://github.com/web-auth/webauthn-lib/blob/5.3.9/src/Denormalizer/WebauthnSerializerFactory.php
  *
  * Changes:
  * * Re-namespaced and capitalisation of class name changed
@@ -36,13 +36,19 @@ use Webauthn\Denormalizer\AuthenticatorAttestationResponseDenormalizer;
 use Webauthn\Denormalizer\AuthenticatorDataDenormalizer;
 use Webauthn\Denormalizer\AuthenticatorResponseDenormalizer;
 use Webauthn\Denormalizer\CollectedClientDataDenormalizer;
+use Webauthn\Denormalizer\CredentialRecordDenormalizer;
 use Webauthn\Denormalizer\ExtensionDescriptorDenormalizer;
 use Webauthn\Denormalizer\PublicKeyCredentialDenormalizer;
 use Webauthn\Denormalizer\PublicKeyCredentialDescriptorNormalizer;
 use Webauthn\Denormalizer\PublicKeyCredentialOptionsDenormalizer;
+use Webauthn\Denormalizer\PublicKeyCredentialRpEntityDenormalizer;
 use Webauthn\Denormalizer\PublicKeyCredentialSourceDenormalizer;
 use Webauthn\Denormalizer\PublicKeyCredentialUserEntityDenormalizer;
+use Webauthn\Denormalizer\SignalAllAcceptedCredentialsDenormalizer;
+use Webauthn\Denormalizer\SignalCurrentUserDetailsDenormalizer;
+use Webauthn\Denormalizer\SignalUnknownCredentialDenormalizer;
 use Webauthn\Denormalizer\TrustPathDenormalizer;
+use Webauthn\Denormalizer\UrlNormalizer;
 use Webauthn\Denormalizer\VerificationMethodANDCombinationsDenormalizer;
 
 final readonly class WebAuthnSerializerFactory {
@@ -58,6 +64,7 @@ final readonly class WebAuthnSerializerFactory {
 			new AuthenticationExtensionNormalizer(),
 			new PublicKeyCredentialDescriptorNormalizer(),
 			new AttestedCredentialDataNormalizer(),
+			new UrlNormalizer(),
 			new AttestationObjectDenormalizer(),
 			new AttestationStatementDenormalizer( $this->attestationStatementSupportManager ),
 			new AuthenticationExtensionsDenormalizer(),
@@ -68,8 +75,13 @@ final readonly class WebAuthnSerializerFactory {
 			new CollectedClientDataDenormalizer(),
 			new PublicKeyCredentialDenormalizer(),
 			new PublicKeyCredentialOptionsDenormalizer(),
+			new CredentialRecordDenormalizer(),
 			new PublicKeyCredentialSourceDenormalizer(),
+			new PublicKeyCredentialRpEntityDenormalizer(),
 			new PublicKeyCredentialUserEntityDenormalizer(),
+			new SignalAllAcceptedCredentialsDenormalizer(),
+			new SignalCurrentUserDetailsDenormalizer(),
+			new SignalUnknownCredentialDenormalizer(),
 			new TrustPathDenormalizer(),
 			new UidNormalizer(),
 			new ArrayDenormalizer(),
