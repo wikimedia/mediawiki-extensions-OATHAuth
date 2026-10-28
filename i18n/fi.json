@@ -140,6 +140,7 @@
 	"notification-body-oathauth-disable": "Jos {{GENDER:$2|sinä}} et tehnyt tätä, {{GENDER:$2|tunnuksesi}} on voinut vaarantua.",
 	"notification-body-oathauth-disable-other": "Jos {{GENDER:$2|et}} pyytänyt tätä, {{GENDER:$2|sinun}} kannattaa ottaa yhteyttä ylläpitäjään.",
 	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|Tunnuksellasi}} on edelleen {{PLURAL:$3|yksi muu aktiivinen laite|$3 muuta aktiivista laitetta}}.",
+	"notification-header-oathauth-add-device": "Kaksivaiheisen tunnistautumisen laite on lisätty {{GENDER:$2|tunnuksellesi}}.",
 	"oathauth-notifications-disable-help": "Ohje",
 	"oathauth-notifications-disable-primary": "Tarkista kaksivaiheisen tunnistautumisen asetuksesi",
 	"notification-header-oathauth-enable": "Kaksivaiheinen tunnistautuminen on otettu käyttöön {{GENDER:$2|tunnuksellasi}}",
