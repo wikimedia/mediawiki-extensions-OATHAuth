@@ -28,7 +28,7 @@ class DisableOATHAuthForUser extends Maintenance {
 		$services = $this->getServiceContainer();
 
 		$user = $services->getUserFactory()->newFromName( $username );
-		if ( $user === null || $user->getId() === 0 ) {
+		if ( !$user || !$user->isRegistered() ) {
 			$this->fatalError( "User $username doesn't exist!" );
 		}
 

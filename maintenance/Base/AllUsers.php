@@ -53,7 +53,7 @@ abstract class AllUsers extends Maintenance {
 		if ( $this->hasOption( 'user' ) ) {
 			foreach ( (array)$this->getOption( 'user' ) as $username ) {
 				$user = $userFactory->newFromName( $username );
-				if ( $user === null || $user->getId() === 0 ) {
+				if ( !$user || !$user->isRegistered() ) {
 					$this->error( "User $username doesn't exist!" );
 				}
 				$users[] = $user;
