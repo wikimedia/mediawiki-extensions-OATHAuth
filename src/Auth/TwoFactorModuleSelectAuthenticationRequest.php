@@ -18,9 +18,6 @@ use MediaWiki\Message\Message;
  */
 class TwoFactorModuleSelectAuthenticationRequest extends AuthenticationRequest {
 
-	/** The module being rendered in the current UI (as in IModule::getName()). */
-	public string $currentModule;
-
 	/**
 	 * The new module selected by the user (as in IModule::getName()). Initially null, returning
 	 * a TwoFactorModuleSelectAuthenticationRequest with this field set means the 2FA check will
@@ -29,19 +26,16 @@ class TwoFactorModuleSelectAuthenticationRequest extends AuthenticationRequest {
 	public ?string $newModule = null;
 
 	/**
-	 * The list of modules the user can switch to, in an internal name => display name format
-	 * (as in IModule::getName() / IModule::getDisplayName()). Includes the current module.
-	 * @var array<string,Message>
+	 * @param string $currentModule The module being rendered in the current UI (as in
+	 *  {@link IModule::getName}).
+	 * @param array<string,Message> $allowedModules The list of modules the user can switch to, in
+	 *  an internal name => display name format (as in {@link IModule::getName} /
+	 *  {@link IModule::getDisplayName}). Includes the current module.
 	 */
-	public array $allowedModules;
-
-	/**
-	 * @param string $currentModule See {@link ::$currentModule}.
-	 * @param array $allowedModules See {@link ::$allowedModules}.
-	 */
-	public function __construct( string $currentModule, array $allowedModules ) {
-		$this->currentModule = $currentModule;
-		$this->allowedModules = $allowedModules;
+	public function __construct(
+		public string $currentModule = '',
+		public array $allowedModules = [],
+	) {
 	}
 
 	/** @inheritDoc */
@@ -79,15 +73,6 @@ class TwoFactorModuleSelectAuthenticationRequest extends AuthenticationRequest {
 		$data += [ 'newModule' => '' ];
 		$ret = parent::loadFromSubmission( $data );
 		$this->newModule = $this->newModule ?: null;
-		return $ret;
-	}
-
-	/** @inheritDoc */
-	public static function __set_state( $data ) {
-		$ret = new static( '', [] );
-		foreach ( $data as $k => $v ) {
-			$ret->$k = $v;
-		}
 		return $ret;
 	}
 
