@@ -83,8 +83,10 @@
 	"oathauth-auth-token-help-ui": "Введите либо код с вашего устройства аутентификации, либо код восстановления.",
 	"oathauth-auth-use-recovery-code": "Использовать код восстановления",
 	"oathauth-auth-ui": "Пожалуйста, введите код из вашего приложения для двухфакторной аутентификации (например, [https://www.authy.com Authy], [https://freeotp.github.io/ FreeOTP], [https://support.google.com/accounts/answer/1066447 Google Authenticator], [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] или [https://1password.com/ 1Password]).",
+	"oathauth-auth-switch-module-label": "Использовать аутентификационное приложение",
 	"oathauth-throttled": "Слишком много попыток проверки! пожалуйста, подождите $1.",
 	"oathauth-login-failed": "Не удалось выполнить проверку TOTP.",
+	"oathauth-recovery-code-login-failed": "Проверка кода восстановления не удалась.",
 	"oathauth-describe-provider": "Двухфакторная аутентификация (OATH).",
 	"grant-group-authentication": "Выполнять действия, связанные с проверкой подлинности для себя и других",
 	"grant-oath": "Доступ к двухфакторной аутентификации (OATH) для себя и других",
@@ -96,6 +98,7 @@
 	"logentry-oath-disable-other": "$1 {{GENDER:$2|отключил|отключила}} двухфакторную аутентификацию для $3",
 	"oathauth-ui-no-module": "Не включена",
 	"oathauth-module-totp-label": "Приложение-аутентификатор",
+	"oathauth-module-recoverycodes-label": "Коды восстановления",
 	"oathauth-ui-manage": "Управление",
 	"oathmanage": "Управление двухфакторной аутентификацией",
 	"accountsecurity": "Безопасность учётной записи",
@@ -128,5 +131,6 @@
 	"oathauth-password-action": "Изменить пароль",
 	"oathauth-authenticator-header": "Двухфакторная аутентификация",
 	"oathauth-authenticator-placeholder": "Добавьте дополнительный шаг при входе в систему для повышения безопасности вашей учётной записи.",
+	"oathauth-authenticator-delete-text": "удалить",
 	"oathauth-totp-add-key": "Добавить приложение-аутентификатор"
 }

@@ -94,5 +94,7 @@
 	"oathauth-prefs-disabledgroups-help": "{{GENDER:$2|Вашае сяброўства}} ў {{PLURAL:$1|гэтай групе|гэтых групах}} спыненае, пакуль вы ня ўключыце [[Special:Manage Two-factor authentication|двухфактарную аўтэнтыфікацыю]].",
 	"oathauth-qrcode-alt": "Сканавальны QR-код з сакрэтным ключом.",
 	"group-oathauth-twofactorauth": "Удзельнікі, якія могуць выкарыстоўваць двухфактарную аўтэнтыфікацыю",
-	"group-oathauth-twofactorauth-member": "Удзельнік, які можа выкарыстоўваць двухфактарную аўтэнтыфікацыю"
+	"group-oathauth-twofactorauth-member": "Удзельнік, які можа выкарыстоўваць двухфактарную аўтэнтыфікацыю",
+	"oathauth-authenticator-delete": "Прыбраць",
+	"oathauth-authenticator-delete-text": "прыбраць"
 }
