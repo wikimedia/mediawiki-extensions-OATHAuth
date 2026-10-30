@@ -104,7 +104,7 @@
 	"oathauth-auth-switch-module-label": "Verwende die Authentifizierungs-App",
 	"oathauth-auth-switch-module-help": "Setze <code>newModule</code> auf den Namen des neuen Moduls, um eine neue Sicherheitsabfrage aus einem anderen 2FA-Modul zu erhalten. Freilassen, wenn du die aktuelle Sicherheitsabfrage beantwortest.",
 	"oathauth-auth-switch-module-keep": "(nicht wechseln)",
-	"oathauth-throttled": "Zu viele Verifizierungsversuche! Bitte warte $1.",
+	"oathauth-throttled": "Zu viele Versuche! Bitte {{#FORMAL:warte|warten Sie}} einige Minuten.",
 	"oathauth-login-failed": "Die Zwei-Faktor-Authentifizierung ist fehlgeschlagen.",
 	"oathauth-recovery-code-login-failed": "Die Überprüfung des Wiederherstellungscodes ist fehlgeschlagen.",
 	"oathauth-describe-provider": "Zwei-Faktor-Authentifizierung (OATH).",
