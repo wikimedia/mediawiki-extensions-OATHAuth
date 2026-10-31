@@ -397,7 +397,13 @@ class WebAuthnKey extends AuthKey {
 				return false;
 			}
 
-			$pubKeySource = $this->findOneByCredentialId( $user, $publicKeyCredential->rawId );
+			$pubKeySource = $this->findOneByCredentialId(
+				$user,
+				$publicKeyCredential->rawId,
+				// If User Verification was required, only consider keys that support UV
+				$publicKeyCredentialRequestOptions->userVerification ===
+					PublicKeyCredentialRequestOptions::USER_VERIFICATION_REQUIREMENT_REQUIRED
+			);
 			if ( $pubKeySource === null ) {
 				return false;
 			}
@@ -457,9 +463,10 @@ class WebAuthnKey extends AuthKey {
 
 	private function findOneByCredentialId(
 		OATHUser $user,
-		string $publicKeyCredentialId
+		string $publicKeyCredentialId,
+		bool $userVerificationRequired
 	): ?CredentialRecord {
-		$key = $this->findKeyByCredentialId( $user, $publicKeyCredentialId );
+		$key = $this->findKeyByCredentialId( $user, $publicKeyCredentialId, $userVerificationRequired );
 
 		if ( $key === null ) {
 			return null;
@@ -478,9 +485,17 @@ class WebAuthnKey extends AuthKey {
 		);
 	}
 
-	private function findKeyByCredentialId( OATHUser $user, string $publicKeyCredentialId ): ?WebAuthnKey {
+	private function findKeyByCredentialId(
+		OATHUser $user,
+		string $publicKeyCredentialId,
+		bool $userVerificationRequired = false
+	): ?WebAuthnKey {
 		foreach ( WebAuthn::getWebAuthnKeys( $user ) as $key ) {
 			if ( $key->getAttestedCredentialData()->credentialId !== $publicKeyCredentialId ) {
+				continue;
+			}
+
+			if ( $userVerificationRequired && !$key->supportsPasswordlessLogin() ) {
 				continue;
 			}
 
