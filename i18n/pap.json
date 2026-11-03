@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kallmemel"
+		]
+	},
+	"oathauth-enable": "Aktivá outentifikashon di dos faktor",
+	"oathauth-auth-use-recovery-code": "Usa kódigo di rekuperashon",
+	"oathauth-auth-switch-module-label": "Usa app di outentifikashon"
+}
