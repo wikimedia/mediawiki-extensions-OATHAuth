@@ -8,6 +8,7 @@
 	},
 	"oathauth-desc": "Võimaldab autentimist HMAC-põhiste ühekordsete paroolidega ja WebAuthni protokolliga.",
 	"disableoathforuser": "Kasutaja kaheastmelise autentimise keelamine",
+	"recover2faforuser": "Kasutaja kaheastmelise autentimise taastamine",
 	"verifyoathforuser": "Kaheastmelise autentimise oleku kontroll",
 	"oathauth-account": "Konto nimi:",
 	"oathauth-secret": "Kaheastmelise autentimise salavõti:",
@@ -118,6 +119,8 @@
 	"notification-body-oathauth-disable": "Kui {{GENDER:$2|sa}} ei teinud seda ise, siis võib {{GENDER:$2|sinu konto}} turvalisus ohus olla.",
 	"notification-body-oathauth-disable-other": "Kui {{GENDER:$2|sa}} ei taotlenud seda, siis peaksid võtma ühendust administraatoriga.",
 	"notification-body-oathauth-disable-remaining": "{{GENDER:$2|Sinu}} kontol on jätkuvalt {{PLURAL:$3|täiendav aktiivne seade|aktiivsed $3 täiendavat seadet}}.",
+	"notification-header-oathauth-add-device": "{{GENDER:$2|Sinu kontole}} on lisatud kaheastmelise autentimise seade.",
+	"notification-body-oathauth-enable-remaining": "{{GENDER:$2|Sinu}} kontoga on nüüd seotud kokku {{PLURAL:$3|üks aktiivne seade|$3 aktiivset seadet}}.",
 	"oathauth-notifications-disable-help": "Abi",
 	"oathauth-notifications-disable-primary": "Kontrolli kaheastmelise autentimise sätteid",
 	"notification-header-oathauth-enable": "{{GENDER:$2|Sinu konto}} kaheastmeline autentimine on lubatud",
@@ -126,6 +129,8 @@
 	"oathauth-notifications-enable-primary": "Kontrolli kaheastmelise autentimise sätteid",
 	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|Kasutasid}} sisselogimisel taastekoodi.",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|Sul}} on alles $3 {{PLURAL:$3|taastekood|taastekoodi}}. Kaalu $4 {{PLURAL:$4|uue taastekoodi}} genereerimist edaspidiseks kasutamiseks.",
+	"notification-header-oathauth-recoverycodes-regenerated": "Sinu taastekoodid on uuesti genereeritud.",
+	"notification-body-oathauth-recoverycodes-regenerated": "{{GENDER:$2|Genereerisid}} uue komplekti taastekoode. Sinu vanad koodid ei tööta enam.",
 	"oathauth-notifications-recoverycodesleft-help": "Abi",
 	"oathauth-notifications-recoverycodesleft-primary": "Kontrolli kaheastmelise autentimise sätteid",
 	"notification-header-oathauth-recoverycodes-generated-for-user": "Sulle on loodud {{PLURAL:$3|täiendav taastekood|täiendavad taastekoodid}}",
@@ -167,5 +172,8 @@
 	"oathauth-2fa-groups-notice-unknown-page": "Teadmata lehekülg",
 	"oathauth-remove-lastkey-required": "Sa ei saa eemaldada enda viimast autentimismeetodit, kui oled liige rühmades, mis nõuavad kaheastmelist autentimist. Palun lisa enne selle meetodi eemaldamist teine meetod.",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "Kasutajal on kaheastmeline autentimine lubatud",
-	"userlogin-reauth-banner-oathmanage": "<strong>Vaatad või haldad enda 2FA-sätteid.</strong> <br>Jätkamiseks kinnita, et see oled sina."
+	"userlogin-reauth-banner-oathmanage": "<strong>Vaatad või haldad enda 2FA-sätteid.</strong> <br>Jätkamiseks kinnita, et see oled sina.",
+	"userlogin-reauth-banner-recover2faforuser": "<strong>Taastad teise kasutaja 2FA.</strong> <br>Jätkamiseks kinnita, et see oled sina.",
+	"userlogin-reauth-banner-disableoathforuser": "<strong>Keelad teise kasutaja 2FA.</strong> <br>Jätkamiseks kinnita, et see oled sina.",
+	"userlogin-reauth-banner-verifyoathforuser": "<strong>Kontrollid teise kasutaja 2FA olekut.</strong> <br>Jätkamiseks kinnita, et see oled sina."
 }
