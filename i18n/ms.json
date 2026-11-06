@@ -13,6 +13,7 @@
 	"oathauth-secret": "Kunci rahsia pengesahihan dwifaktor:",
 	"oathauth-enable": "Dayakan pengesahihan dwifaktor",
 	"oathauth-recoverycodes": "Gunakan kaedah ini jika anda kehilangan akses kepada kaedah pengesahihan dwifaktor anda.",
+	"oathauth-recoverycodes-none": "Sila cipta {{PLURAL:$1|satu kod pemulihan|berbilang kod pemulihan}}, supaya anda boleh memulihkan akaun anda jika anda kehilangan akses kepada kaedah pengesahihan dwifaktor anda.",
 	"oathauth-recoverycodes-important": "Langkah ini penting! Jangan langkau langkah ini!",
 	"oathauth-recoverycodes-neveragain": "Kod-kod ini tidak akan dipaparkan lagi!",
 	"oathauth-recoverytokens-createdat": "Kod pemulihan dicipta: $1",
