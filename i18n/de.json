@@ -26,7 +26,7 @@
 	"oathauth-secret": "Geheimer Schlüssel für die Zwei-Faktor-Authentifizierung:",
 	"oathauth-enable": "Zwei-Faktor-Authentifizierung aktivieren",
 	"oathauth-recoverycodes": "Verwende dies, wenn du den Zugriff auf deine Zwei-Faktor-Authentifizierungsmethoden verlierst.",
-	"oathauth-recoverycodes-none": "Bitte erstellen {{PLURAL:$1|einen Wiederherstellungscode|Wiederherstellungscodes}}, damit du dein Konto wiederherstellen kannst, falls du den Zugriff auf deine Zwei-Faktor-Authentifizierungsmethoden verlierst.",
+	"oathauth-recoverycodes-none": "Bitte erstelle {{PLURAL:$1|einen Wiederherstellungscode|Wiederherstellungscodes}}, damit du dein Konto wiederherstellen kannst, falls du den Zugriff auf deine Zwei-Faktor-Authentifizierungsmethoden verlierst.",
 	"oathauth-recoverycodes-important": "Dieser Schritt ist wichtig! Überspringe diesen Schritt nicht!",
 	"oathauth-recoverycodes-neveragain": "Diese Codes werden nie wieder angezeigt!",
 	"oathauth-recoverytokens-createdat": "Erstellte Wiederherstellungscodes: $1",

@@ -19,6 +19,7 @@
 	"oathauth-secret": "İki faktorlu autentifikasiya məxfi kodu:",
 	"oathauth-enable": "İki faktorlu autentifikasiyanı aktivləşdir",
 	"oathauth-recoverycodes": "İki faktorlu autentifikasiya üsullarınıza girişi itirsəniz, bundan istifadə edin.",
+	"oathauth-recoverycodes-none": "İki mərhələli doğrulama üsullarınıza girişi itirdiyiniz təqdirdə hesabınızı bərpa edə bilmək üçün {{PLURAL:$1|bbərpa kodu|bərpa kodları}} yaradın.",
 	"oathauth-recoverycodes-important": "Bu addım vacibdir! Bu addımı atlamayın!",
 	"oathauth-recoverycodes-neveragain": "Bu kodlar bir daha heç vaxt göstərilməyəcək!",
 	"oathauth-recoverytokens-createdat": "Yaradılan bərpa kodları: $1",
