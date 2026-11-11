@@ -35,9 +35,6 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			return [];
 		}
 
-		$this->manager->setAuthenticationSessionData(
-			'oathauth-reauth-securitylevel', $options['securityLevel'] );
-
 		$user = $this->manager->getRequest()->getSession()->getUser();
 		$oathUser = $this->userRepo->findByUser( $user );
 		$availableModules = [];
@@ -90,7 +87,17 @@ class ReauthPrimaryAuthenticationProvider extends AbstractPrimaryAuthenticationP
 			// Not supposed to be possible
 			return [];
 		}
-		$reqs = $secondaryAuthProvider->beginSecondaryAuthentication( $user, [] )->neededRequests;
+		// Set the level only while the requests are built. An authentication that is in progress
+		// in this session reads the same key, so restore its value afterwards.
+		$levelInProgress = $this->manager->getAuthenticationSessionData( 'oathauth-reauth-securitylevel' );
+		$this->manager->setAuthenticationSessionData(
+			'oathauth-reauth-securitylevel', $options['securityLevel'] );
+		$reqs = [];
+		try {
+			$reqs = $secondaryAuthProvider->beginSecondaryAuthentication( $user, [] )->neededRequests;
+		} finally {
+			$this->manager->setAuthenticationSessionData( 'oathauth-reauth-securitylevel', $levelInProgress );
+		}
 
 		// Display a "Continue with security key" button if the primary method is a security key
 		$webauthnReq = AuthenticationRequest::getRequestByClass( $reqs, WebAuthnAuthenticationRequest::class );

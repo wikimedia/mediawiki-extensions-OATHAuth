@@ -106,6 +106,10 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 		if ( $request && $request->newModule ) {
 			// The user is switching modules, restart
 			$response = $provider->beginSecondaryAuthentication( $user, [] );
+			if ( $response->status === AuthenticationResponse::ABSTAIN ) {
+				// The user has 2FA. A module that does not ask for a factor must not complete it.
+				return AuthenticationResponse::newFail( wfMessage( 'oathauth-invalidrequest' ) );
+			}
 		} else {
 			$response = $provider->continueSecondaryAuthentication( $user, $reqs );
 		}
