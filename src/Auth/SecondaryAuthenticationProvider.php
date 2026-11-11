@@ -110,6 +110,10 @@ class SecondaryAuthenticationProvider extends AbstractSecondaryAuthenticationPro
 			$response = $provider->continueSecondaryAuthentication( $user, $reqs );
 		}
 
+		if ( $response->status === AuthenticationResponse::ABSTAIN ) {
+			// The user has 2FA. A module that does not ask for a factor must not complete it.
+			return AuthenticationResponse::newFail( wfMessage( 'oathauth-invalidrequest' ) );
+		}
 		if ( $response->status === AuthenticationResponse::PASS ) {
 			$this->oathLogger->logSuccessfulVerification( $user );
 		}
