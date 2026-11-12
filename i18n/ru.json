@@ -39,7 +39,7 @@
 	"oathauth-account": "Имя учётной записи:",
 	"oathauth-secret": "Двухфакторный секретный ключ аутентификации:",
 	"oathauth-enable": "Включить двухфакторную аутентификацию",
-	"oathauth-recoverycodes": "Ниже приведен список одноразовых кодов восстановления. Эти коды можно использовать только один раз, они предназначены для экстренного использования, когда у вас нет доступа к вашему устройству. Пожалуйста, запишите их и храните в надежном месте. Рекомендуется отмечать каждый код как использованный при входе в систему. Если вы потеряете свое устройство, эти коды - единственный способ восстановить вашу учетную запись.",
+	"oathauth-recoverycodes": "Используйте это при потере доступа к вашим методам двухфакторной аутентификации.",
 	"oathauth-recoverycodes-important": "Этот шаг важен! Не пропускайте его!",
 	"oathauth-recoverycodes-neveragain": "Эти коды больше никогда не будут показаны!",
 	"oathauth-recoverytokens-createdat": "Коды восстановления созданы: $1",
@@ -47,6 +47,12 @@
 	"oathauth-recoverycodes-filename": "коды восстановления",
 	"oathauth-recoverycodes-copy": "Скопировать",
 	"oathauth-recoverycodes-copy-success": "Коды восстановления скопированы в ваш буфер обмена!",
+	"oathauth-recoverycodes-create-label": "Создать {{PLURAL:$1|новый код восстановления|новые коды восстановления}}",
+	"oathauth-recoverycodes-too-many-instances": "В базе данных для этого участника было обнаружено более одного экземпляра кодов восстановления.",
+	"oathauth-recoverycodes-exist": "У вас уже есть коды восстановления. Здесь они приведены ещё раз, чтобы их можно было скопировать или загрузить в безопасное место.",
+	"oathauth-recoverycodes-header": "Варианты восстановления",
+	"oathauth-recoverycodes-header-create": "Создать новые коды восстановления",
+	"oathauth-recoverycodes-regenerate-warning": "При создании {{PLURAL:$1|нового кода восстановления|новых кодов восстановления}} <strong>{{PLURAL:$1|первоначальный код восстановления перестанет|все первоначальные коды восстановления перестанут}} работать.</strong>",
 	"oathauth-failedtovalidateoath": "Не удалось проверить двухфакторные учётные данные",
 	"oathauth-disable": "Отключить двухфакторную аутентификацию",
 	"oathauth-validatedoath": "Двухфакторные учётные данные проверены. Теперь будет использоваться двухфакторная аутентификация.",
@@ -131,6 +137,10 @@
 	"oathauth-password-action": "Изменить пароль",
 	"oathauth-authenticator-header": "Двухфакторная аутентификация",
 	"oathauth-authenticator-placeholder": "Добавьте дополнительный шаг при входе в систему для повышения безопасности вашей учётной записи.",
+	"oathauth-authenticator-delete": "Удалить",
 	"oathauth-authenticator-delete-text": "удалить",
-	"oathauth-totp-add-key": "Добавить приложение-аутентификатор"
+	"oathauth-totp-add-key": "Добавить приложение-аутентификатор",
+	"oathauth-delete-warning-header": "Удалить $1",
+	"oathauth-delete-confirm-box": "Введите «{{int:oathauth-authenticator-delete-text}}», чтобы продолжить",
+	"oathauth-enable-success": "Добавлено!"
 }
