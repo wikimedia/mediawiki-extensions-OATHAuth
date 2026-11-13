@@ -151,7 +151,7 @@
 	"oathauth-2fa-required-groups-on-project": "$2 в проекте $3",
 	"oathauth-2fa-groups-notice-single": "Вы — член {{PLURAL:$1|группы|групп}}, {{PLURAL:$1|требующей|требующих}} двухфакторную аутентификацию ($2 на $3). Чтобы убрать этот способ, вы должны:\n<ul>\n<li>добавить другой метод двухфакторной аутентификации</li>\n<li>или убрать себя из {{PLURAL:$1|этой группы|этих групп}}. Пожалуйста, посетите $4</li>\n</ul>",
 	"oathauth-2fa-groups-notice-multiple": "Вы — член {{PLURAL:$1|групп}}, {{PLURAL:$1|требующих}} двухфакторную аутентификацию. Чтобы убрать этот способ, вы должны:\n<ul>\n<li>добавить другой метод двухфакторной аутентификации</li>\n<li>или убрать себя из {{PLURAL:$1|этих групп}}.</li>\n</ul>",
-	"oathauth-2fa-groups-notice-multiple-links-intro": "Чтобы удалить себя из {{PLURAL:$1|группы|групп}}, перейдите по ссылке:",
+	"oathauth-2fa-groups-notice-multiple-links-intro": "Чтобы удалить себя из {{PLURAL:$1|групп}}, перейдите по ссылкам:",
 	"oathauth-2fa-groups-notice-unknown-page": "Неизвестная страница",
 	"listgrouprights-restrictedgroups-cond-oath.has_2fa": "У участника включена двухфакторная аутентификация"
 }
