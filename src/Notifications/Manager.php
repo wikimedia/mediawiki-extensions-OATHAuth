@@ -12,6 +12,7 @@ use MediaWiki\Extension\OATHAuth\OATHUser;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Notification\Notification;
 use MediaWiki\Notification\RecipientSet;
+use MediaWiki\Notification\Types\AgentNotification;
 use MediaWiki\Notification\Types\WikiNotification;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
@@ -78,7 +79,7 @@ class Manager {
 		$user = $oUser->getUser();
 		MediaWikiServices::getInstance()->getNotificationService()->notify(
 			// message used: notification-header-oathauth-recoverycodes-count
-			new OATHAuthAgentNotification( 'oathauth-recoverycodes-count', $user, [
+			new AgentNotification( 'oathauth-recoverycodes-count', $user, [
 				'codeCount' => $tokenCount,
 				'generatedCount' => $generatedCount,
 			] ),
