@@ -26,6 +26,7 @@
 	"oathauth-secret": "Tajny klucz uwierzytelniania dwuskładnikowego:",
 	"oathauth-enable": "Włączanie uwierzytelniania dwuskładnikowego",
 	"oathauth-recoverycodes": "Skorzystaj z kodów zapasowych, jeśli utracisz dostęp do pozostałych metod uwierzytelniania dwuskładnikowego.",
+	"oathauth-recoverycodes-none": "Zalecamy utworzenie {{PLURAL:$1|kodu|kodów}} odzyskiwania, aby móc odzyskać dostęp do konta w przypadku utraty dostępu do metod uwierzytelniania dwuskładnikowego.",
 	"oathauth-recoverycodes-important": "Ten krok jest bardzo ważny! Nie pomijaj go!",
 	"oathauth-recoverycodes-neveragain": "Te kody nie zostaną pokazane ponownie nigdy więcej!",
 	"oathauth-recoverytokens-createdat": "Utworzono kody odzyskiwania: $1",

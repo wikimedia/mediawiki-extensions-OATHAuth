@@ -128,7 +128,7 @@
 	"notification-body-oathauth-enable": "如果{{GENDER:$2|您}}未曾這樣做，{{GENDER:$2|您的帳號}}可能已被盜用。",
 	"oathauth-notifications-enable-help": "說明",
 	"oathauth-notifications-enable-primary": "請檢查您的雙重驗證的設定",
-	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|您}}應重新為{{GENDER:$2|您的帳號}}重新註冊雙重驗證功能。",
+	"notification-header-oathauth-recoverycodes-count": "{{GENDER:$2|您}}已使用復原碼登入。",
 	"notification-body-oathauth-recoverycodesleft": "{{GENDER:$2|您}}還剩下$3個恢復{{PLURAL:$3|代碼}}。您可能想要重新產生$4個新的恢復{{PLURAL:$4|代碼}}供未來使用。",
 	"oathauth-notifications-recoverycodesleft-help": "說明",
 	"oathauth-notifications-recoverycodesleft-primary": "請檢查您的雙重認證的設定",
