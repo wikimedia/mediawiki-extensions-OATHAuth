@@ -17,6 +17,7 @@
 	"oathauth-secret": "Hemmelig nøgle til tofaktorgodkendelse:",
 	"oathauth-enable": "Aktiver tofaktorgodkendelse",
 	"oathauth-recoverycodes": "Brug dette, hvis du mister adgangen til dine tofaktorgodkendelsesmetoder.",
+	"oathauth-recoverycodes-none": "Opret venligst {{PLURAL:$1|en gendannelseskode|gendannelseskoder}}, så du kan gendanne din konto, hvis du mister adgangen til dine tofaktorgodkendelsesmetoder.",
 	"oathauth-recoverycodes-important": "Dette trin er vigtigt! Spring ikke dette trin over!",
 	"oathauth-recoverycodes-neveragain": "Disse koder vil aldrig blive vist igen!",
 	"oathauth-recoverytokens-createdat": "Gendannelseskoder oprettet: $1",

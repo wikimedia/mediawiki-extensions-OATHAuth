@@ -16,6 +16,7 @@
 	"oathauth-secret": "Clave secreta da autenticación de dous factores:",
 	"oathauth-enable": "Activar a autenticación de dous factores",
 	"oathauth-recoverycodes": "Utiliza isto se perdes o acceso aos teus métodos de autenticación de dous factores.",
+	"oathauth-recoverycodes-none": "Crea {{PLURAL:$1|un código de recuperación|varios códigos de recuperación}} para recuperares a túa conta se perdes o acceso aos teus métodos de autenticación de dous factores.",
 	"oathauth-recoverycodes-important": "Este paso é importante! Non o saltes!",
 	"oathauth-recoverycodes-neveragain": "Esta é a única vez que poderás ver os códigos!",
 	"oathauth-recoverytokens-createdat": "Códigos de recuperación creados: $1",

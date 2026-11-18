@@ -12,6 +12,7 @@
 	"apierror-oathauth-webauthn-module-missing": "Модулот WebAuthn не е недостапен.",
 	"apierror-oathauth-webauthn-missing-credential": "Нема внесено најавни податоци.",
 	"apierror-oathauth-webauthn-invalid-credential": "Најавните податоци се неважечки или погрешно срочени.",
+	"apierror-oathauth-webauthn-new-creds-disabled": "Не можат да се создадат нови најавни податоци за WebAuthn бидејќи опслужувачот ја има оневозможено таа функција.",
 	"apihelp-oathauth-webauthn-paramvalue-func-register": "Заведете нова најава со WebAuthn за тековниот корисник.",
 	"apihelp-oathauth-webauthn-param-credential": "Одговор за WebAuthn-најавни податоци од прелистувач кодиран во JSON.",
 	"apihelp-oathauth-webauthn-param-friendlyname": "Описно име за новите најавни податоци."

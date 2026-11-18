@@ -12,6 +12,7 @@
 	"oathauth-secret": "Furaha sirta ah ee xaqiijinta laba-tallaabo:",
 	"oathauth-enable": "Dhaqangelin xaqiijinta laba tallaabo",
 	"oathauth-recoverycodes": "Isticmaal tan haddii aad lumiso gelitaanka hababkaaga xaqiijinta laba-tallaabo.",
+	"oathauth-recoverycodes-none": "Fadlan samee {{PLURAL:$1|koodh soo kabasho|koodhadh soo kabasho}}, si aad u soo ceshan karto akoonkaaga haddii aad lumiso marin u helidda hababka xaqiijinta laba tallaabo.",
 	"oathauth-recoverycodes-important": "Tallaabadani waa muhiim! Ha ka boodin tallaabadan!",
 	"oathauth-recoverycodes-neveragain": "Koodhadhkan mar dambe lama muujin doono!",
 	"oathauth-recoverytokens-createdat": "Koodhadhka soo kabashada waa la sameeyay: $1",
