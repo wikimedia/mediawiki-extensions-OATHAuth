@@ -78,15 +78,17 @@ class OATHUserRepository {
 			return $oathUser->isTwoFactorAuthEnabled();
 		}
 
-		// Else look it up from the database
+		// Else look it up from the database.
+		// Use the owned lookup, because the local account may not exist yet (for example, during
+		// account autocreation). The central user owns the name, thus their 2FA status applies (T445326).
+		$name = $user->getName();
+		$centralId = $this->centralIdLookupFactory->getLookup()
+			->lookupOwnedUserNames( [ $name => 0 ], CentralIdLookup::AUDIENCE_RAW )[$name];
 		return $this->dbProvider
 			->getReplicaDatabase( 'virtual-oathauth' )
 			->newSelectQueryBuilder()
 			->from( 'oathauth_devices' )
-			->where( [
-				'oad_user' => $this->centralIdLookupFactory->getLookup()
-					->centralIdFromLocalUser( $user, CentralIdLookup::AUDIENCE_RAW )
-			] )
+			->where( [ 'oad_user' => $centralId ] )
 			->caller( __METHOD__ )
 			->fetchRowCount() > 0;
 	}
