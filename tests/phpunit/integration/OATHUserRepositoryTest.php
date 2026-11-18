@@ -34,7 +34,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
  * @covers \MediaWiki\Extension\OATHAuth\OATHUser
  */
 class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
-	private function createUserRepo( User $user, $centralId = 12345 ) {
+	private function createUserRepo( User $user, $centralId = 12345, bool $attached = true ) {
 		$dbProvider = $this->createMock( IConnectionProvider::class );
 		$dbProvider->method( 'getPrimaryDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->getDb() );
 		$dbProvider->method( 'getReplicaDatabase' )->with( 'virtual-oathauth' )->willReturn( $this->getDb() );
@@ -44,7 +44,10 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		$lookup = $this->createMock( CentralIdLookup::class );
 		$lookup->method( 'centralIdFromLocalUser' )
 			->with( $user )
-			->willReturn( $centralId );
+			->willReturn( $attached ? $centralId : 0 );
+		$lookup->method( 'lookupOwnedUserNames' )
+			->with( [ $user->getName() => 0 ] )
+			->willReturn( [ $user->getName() => $centralId ] );
 		$lookup->method( 'localUserFromCentralId' )
 			->with( $centralId )
 			->willReturn( $user );
@@ -210,6 +213,25 @@ class OATHUserRepositoryTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$this->assertTrue( $repository->userHas2FAEnabled( $user ) );
+	}
+
+	public function testUserHas2FAEnabled_unattachedOwnedUser() {
+		// The local account does not exist yet, but the central user owns the name (T445326)
+		$user = $this->getTestUser()->getUser();
+		$attachedRepository = $this->createUserRepo( $user, 12345 );
+		$unattachedRepository = $this->createUserRepo( $user, 12345, false );
+
+		$this->assertFalse( $unattachedRepository->userHas2FAEnabled( $user ) );
+
+		$moduleRegistry = OATHAuthServices::getInstance( $this->getServiceContainer() )->getModuleRegistry();
+		$attachedRepository->createKey(
+			$attachedRepository->findByUser( $user ),
+			$moduleRegistry->getModuleByKey( TOTP::MODULE_NAME ),
+			TOTPKey::newFromRandom()->jsonSerialize(),
+			'127.0.0.1'
+		);
+
+		$this->assertTrue( $unattachedRepository->userHas2FAEnabled( $user ) );
 	}
 
 	public function testInitialCodeDeletion(): void {
