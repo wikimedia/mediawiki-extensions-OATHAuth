@@ -76,7 +76,7 @@
 	"oathauth-auth-recovery-code-help": "کدی که هنگام تنظیم اصالت‌سنجی دوعاملی برای شما ایجاد شد را وارد کنید.",
 	"oathauth-auth-ui": "لطفاً یک کد تأیید را از دستگاه اپلیکیشن دومرحله‌ای خودتان وارد کنید (نظیر [https://www.authy.com Authy]، [https://freeotp.github.io/ FreeOTP]، [https://support.google.com/accounts/answer/1066447 Google Authenticator]، [https://www.microsoft.com/en-us/security/mobile-authenticator-app Microsoft Authenticator] یا [https://1password.com/ 1Password]).",
 	"oathauth-auth-switch-module-label": "استفاده از نرم‌افزار اصالت‌سنجی",
-	"oathauth-auth-switch-module-help": "<code>newModule</code> را روی نام ماژول جدید تنظیم کنید تا یک چالش تازه از ماژول دومرحله‌ای دیگر دریافت کنید. اگر به چالش فعلی پاسخ می‌دهید، آن را خالی بگذارید.",
+	"oathauth-auth-switch-module-help": "<code>newModule</code> را روی نام پودمان جدید تنظیم کنید تا یک چالش تازه از پودمان دومرحله‌ای دیگر دریافت کنید. اگر به چالش کنونی پاسخ می‌دهید، آن را خالی بگذارید.",
 	"oathauth-auth-switch-module-keep": "(تعویض نکن)",
 	"oathauth-throttled": "تعداد تلاش‌ها بیش از حد بود! لطفاً چند دقیقه صبر کنید.",
 	"oathauth-login-failed": "اعتبارسنجی دومرحله‌ای ناموفق بود.",
