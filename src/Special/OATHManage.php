@@ -99,6 +99,7 @@ class OATHManage extends SpecialPage {
 		$this->getOutput()->disallowUserJs();
 		$this->setAction();
 		$this->setModule();
+		$this->addHelpLink( 'Extension:OATHAuth' );
 
 		parent::execute( $subPage );
 
