@@ -94,16 +94,26 @@ mw.ext.webauthn.Authenticator.prototype.formatCredential = function ( assertion 
 			'base64', 'padded' ),
 		response: {
 			authenticatorData: mw.ext.webauthn.util.byteArrayToBase64(
-				new Uint8Array( assertion.response.authenticatorData ), 'base64url', 'unpadded' ),
+				new Uint8Array( assertion.response.authenticatorData ),
+				'base64url',
+				'unpadded'
+			),
 			// encoding should match CollectedClientData::createFormJson()
 			clientDataJSON: mw.ext.webauthn.util.byteArrayToBase64(
-				new Uint8Array( assertion.response.clientDataJSON ), 'base64url', 'unpadded' ),
+				new Uint8Array( assertion.response.clientDataJSON ),
+				'base64url',
+				'unpadded'
+			),
 			signature: mw.ext.webauthn.util.byteArrayToBase64(
-				new Uint8Array( assertion.response.signature ), 'base64url', 'unpadded' ),
+				new Uint8Array( assertion.response.signature ),
+				'base64url',
+				'unpadded'
+			),
 			userHandle: assertion.response.userHandle ?
 				mw.ext.webauthn.util.byteArrayToBase64(
 					new Uint8Array( assertion.response.userHandle ),
-					'base64', 'padded'
+					'base64url',
+					'unpadded'
 				) : null
 		}
 	};
