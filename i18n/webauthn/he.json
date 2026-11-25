@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Guycn2"
+			"Guycn2",
+			"A100Star"
 		]
 	},
 	"oathauth-webauthn-module-label": "מפתח אבטחה",
 	"oathauth-webauthn-javascript-required": "יש להפעיל JavaScript בדפדפן שלך כדי להשתמש במפתח אבטחה.",
-	"oathauth-webauthn-ui-login-prompt": "נא לגעת במפתח האבטחה שלך או לעקוב אחר ההוראות בדפדפן.",
+	"oathauth-webauthn-ui-login-prompt": "יש להשתמש במפתח האבטחה שלך או לפעול לפי הוראות הדפדפן.",
 	"oathauth-webauthn-ui-add-key": "הוספת מפתח",
 	"oathauth-webauthn-error-browser-unsupported": "הדפדפן הזה אינו תומך באימות במפתח אבטחה או שזה לא זמין עבור האתר הזה. נא לנסות עם דפדפן אחר. [https://www.mediawiki.org/wiki/Extension:OATHAuth#WebAuthn_browser_support מידע נוסף]",
 	"oathauth-webauthn-error-browser-unsupported-console": "הדפדפן הזה אינו תומך באימות במפתח אבטחה או שזה לא זמין עבור האתר הזה.",
@@ -17,6 +18,7 @@
 	"oathauth-webauthn-ui-remove-key": "הסרה",
 	"oathauth-webauthn-error-module-not-enabled": "המודול \"$1\" לא מופעל עבור {{GENDER:$2|משתמש \"$2\"}}.",
 	"oathauth-webauthn-error-verification-failed": "האימות ב־WebAuthn נכשל.",
+	"oathauth-webauthn-error-passkey-verification-failed": "אימות באמצעות מפתח גישה נכשל.",
 	"oathauth-webauthn-error-credentials-missing": "נתוני ההזדהות לא נשלחו.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|המשתמש|המשתמשת}} \"$1\" לא יכול לרשום נתון האמנה חדש.",
 	"oathauth-webauthn-error-invalid-new-key": "מפתח חדש שהוחזר על־ידי מודול לא שייך לסוג הדרוש.",
@@ -35,5 +37,7 @@
 	"oathauth-webauthn-add-security-key": "הוספת מפתח אבטחה",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "להשתמש במפתח אבטחה או במפתח גישה",
 	"oathauth-webauthn-login-passkey-button": "כניסה עם מפתח גישה",
-	"oathauth-webauthn-reauth-passkey-button": "המשך עם מפתח גישה"
+	"oathauth-webauthn-reauth-passkey-button": "המשך עם מפתח גישה",
+	"oathauth-webauthn-reauth-security-key-button": "המשך באמצעות מפתח אבטחה",
+	"oathauth-webauthn-deprecated-key": "המפתח הזה אינו מאובטח ואין להשתמש בו. יש לנסות שוב באמצעות מפתח אחר."
 }
