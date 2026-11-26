@@ -18,7 +18,6 @@
 	"oathauth-webauthn-ui-remove-key": "הסרה",
 	"oathauth-webauthn-error-module-not-enabled": "המודול \"$1\" לא מופעל עבור {{GENDER:$2|משתמש \"$2\"}}.",
 	"oathauth-webauthn-error-verification-failed": "האימות ב־WebAuthn נכשל.",
-	"oathauth-webauthn-error-passkey-verification-failed": "אימות באמצעות מפתח גישה נכשל.",
 	"oathauth-webauthn-error-credentials-missing": "נתוני ההזדהות לא נשלחו.",
 	"oathauth-webauthn-error-cannot-register": "{{GENDER:$1|המשתמש|המשתמשת}} \"$1\" לא יכול לרשום נתון האמנה חדש.",
 	"oathauth-webauthn-error-invalid-new-key": "מפתח חדש שהוחזר על־ידי מודול לא שייך לסוג הדרוש.",
@@ -37,7 +36,5 @@
 	"oathauth-webauthn-add-security-key": "הוספת מפתח אבטחה",
 	"oathauth-webauthn-auth-switch-module-label-passkey": "להשתמש במפתח אבטחה או במפתח גישה",
 	"oathauth-webauthn-login-passkey-button": "כניסה עם מפתח גישה",
-	"oathauth-webauthn-reauth-passkey-button": "המשך עם מפתח גישה",
-	"oathauth-webauthn-reauth-security-key-button": "המשך באמצעות מפתח אבטחה",
-	"oathauth-webauthn-deprecated-key": "המפתח הזה אינו מאובטח ואין להשתמש בו. יש לנסות שוב באמצעות מפתח אחר."
+	"oathauth-webauthn-reauth-passkey-button": "המשך עם מפתח גישה"
 }
